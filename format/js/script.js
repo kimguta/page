@@ -128,8 +128,7 @@ $(function() {
 			$(this).parent().removeClass('active');
 			$(this).parent().next('.depth_02').slideUp(300);
 		} else{
-            $('#gnb_mobile h2').removeClass('active on');
-            $('#gnb_mobile h3').removeClass('on');
+            $('#gnb_mobile h2').removeClass('active');
             $('#gnb_mobile .depth_02').slideUp(300);
             $(this).parent().addClass('active');
             $(this).parent().next('.depth_02').slideDown(300);
@@ -157,11 +156,9 @@ $(function() {
         }
     });
     
-    $("#btn_top").on('click', function() {
-        $('html, body').animate({
-            scrollTop : 0
-        }, 300);
-        return false;
+    $("#btn_top").on('click', function(e) {
+		e.preventDefault();
+        $('html, body').animate({scrollTop : 0}, 300);
     });
 
 
