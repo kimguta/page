@@ -15,8 +15,8 @@ $(function() {
 		$('#header').addClass('active');
 		$('.gnb_pc nav h2').removeClass('active');
 		$(this).children('h2').addClass('active');
-		$('.gnb_pc nav .depth_02').slideDown(400);
-		$('.bg_pc').slideDown(400).addClass('active');
+		$('.gnb_pc nav .depth_02').stop().slideDown(400);
+		$('.bg_pc').stop().slideDown(400).addClass('active');
 		/*
 		$('.bg_pc h2').text(Ttext);
 		$('.bg_pc').attr('class','bg_pc p0'+idx);
@@ -38,8 +38,8 @@ $(function() {
 	$('#header').on('mouseleave', function () {
 		$('#header').removeClass('active');
 		$('.gnb_pc nav h2').removeClass('active');
-		$('.bg_pc').slideUp(400).removeClass('active');
-		$('.gnb_pc nav .depth_02').slideUp(400);
+		$('.bg_pc').stop().slideUp(400).removeClass('active');
+		$('.gnb_pc nav .depth_02').stop().slideUp(400);
 	});	
 
 	$('.gnb_pc .depth_02 a:last').on('focusout', function () {
