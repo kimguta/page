@@ -261,14 +261,13 @@ button{display:inline-block;background:transparent;font-size:inherit;font-weight
 .skinTb >tbody >tr >td,
 .skinTb >tfoot >tr >td,
 .skinTb-th,
-.skinTb-td {display: table-cell;padding: 11px 16px;border-width: 0 0px 1px 1px;border-style: solid;border-color: #c2c2c2;vertical-align: middle;font-weight:400;color:#313131;}
+.skinTb-td {display: table-cell;padding: 11px 16px;border-width: 0 0px 1px 1px;border-style: solid;border-color: #c2c2c2;vertical-align: middle;font-weight:300;color:#313131;}
 .skinTb >thead >tr >th {padding: 15px 16px 11px}
 .skinTb-th,
 .skinTb >tr >th,
 .skinTb >thead >tr >th,
-.skinTb >tbody >tr >th,
-.skinTb >tfoot >tr >th {font-weight: 700;background-color: #f7f7f7;}
-
+.skinTb >tfoot >tr >th {font-weight: 400;background-color: #f2f2f2;}
+.skinTb >tbody >tr >th{font-weight: 400;background-color: #fbfbfb;}
 
 .skinTb-data-resList.skinTb-tr >.skinTb-th:first-child,
 .skinTb-data-resList.skinTb-tr >.skinTb-td:first-child,
@@ -286,19 +285,25 @@ button{display:inline-block;background:transparent;font-size:inherit;font-weight
 
 .ctSrchArea + .skinTb-wrapper .skinTb >tbody >tr:nth-child(even) >td.skinTxa-left:first-child {border-left-width: 1px;}
 .skinTb-date {min-width: 122px;}
+
+/*
 .skinTb li {font-size: 16px;}
 .skinTb .listLv li:last-child,
 .skinTb .listLv2 li:last-child,
 .skinTb .listLv3 li:last-child,
 .skinTb .listLv4 li:last-child,
 .skinTb .listLv5 li:last-child {margin-bottom: 0;}
+*/
+
+.skinTb li{color:#313131;font-weight: 300;}
 tbody .skinTb-sbj {text-align:left;}
 .skinTb .newWin-go {padding:5px 10px; border:1px solid #b8b8b8; background-color:#dfdfdf; color:#000000; }
 .skinTb-hidden {display: none;}
 .eminwon .skinTb-conts{word-wrap: break-word;}
+/*
 .skinTb .listLv >li{padding-top:0;padding-bottom:10px;}
 .skinTb p.listLv:before, .skinTb div.listLv:before, .skinTb span.listLv:before, .skinTb .listLv >li:before, .skinTb .listLv >dt:before{top:11px;}
-
+*/
 
 /*
 .skinTb >tbody [rowspan],
@@ -877,7 +882,7 @@ progress[role]:after {content: "";position: absolute;top: 0;right: 0;bottom: 0;l
 .skinTb-wrapper + .titLv{margin-top:20px;}
 .img-box + .titLv{margin-top: 20px;}
 
-.titLv:first-of-type{margin-top:45px;}
+.titLv:first-of-type:nth-child(1){margin-top:45px;}
 .titLv {position: relative;padding-left: 23px;font-weight:700;font-size: 21px;letter-spacing:-1.5px; color:#000;line-height:1.5;}
 .titLv:before {position: absolute;content:'';display:block;top: 6px;left: 0;background:url(/page/headquarter/images/common/sp_hq02.png) -1px -771px no-repeat;background-size:520px 796px;line-height: 0;width: 17px;height: 21px;}
 [lang=zh] .titLv:before {top: 6px;}
@@ -886,19 +891,25 @@ progress[role]:after {content: "";position: absolute;top: 0;right: 0;bottom: 0;l
 @media screen and (max-width: 1199px){
 	.titLv {font-size: 20px;}
 	.titLv:before{top:5px;}
+
+	.skinTb-wrapper + .titLv{margin-top:15px;}
 }
 
 @media screen and (max-width: 991px){
 	.titLv {font-size: 19px;}
 	.titLv:before{top:5px;}
 	.pager + .titLv{margin-top: 20px;}
-	.titLv:first-of-type{margin-top:35px;}
+	.titLv:first-of-type:nth-child(1){margin-top:35px;}
+
+	.skinTb-wrapper + .titLv{margin-top:10px;}
 }
 
 @media screen and (max-width: 760px){
 	.titLv {font-size: 18px;}
-	.titLv:before{top:5px !important;}
-	.titLv:first-of-type{margin-top:25px;}
+	.titLv:before{top:4px !important;}
+	.titLv:first-of-type:nth-child(1){margin-top:25px;}
+
+	.skinTb-wrapper + .titLv{margin-top:5px;}
 }
 
 
@@ -2384,9 +2395,7 @@ img[src*="btn-calendar"]{width:30px;}
 
 @media (max-width: 760px) {
 	.pgraph{font-size:15px;margin-bottom:15px;}
-	.titLv{font-size:20px;}
 	.titLv:before{top:9px;}
-	.titLv2{font-size:17px;}
 	.titLv2:before{top:9px;}
 	.listLv,
 	.listLv2,
@@ -2395,6 +2404,10 @@ img[src*="btn-calendar"]{width:30px;}
 	.temp-txt{font-size: 15px !important;line-height:1.5;}
 	.imptBox{font-size: 15px;line-height:1.5;}
 	.skinTb{font-size:15px;}
+	.skinTb .listLv,
+	.skinTb .listLv2,
+	.skinTb .listLv3,
+	.skinTb .listLv4{font-size: 14px;line-height:1.5;}
 	.contsBtn{font-size:15px;height:42px;line-height:40px;}
 	p.listLv, div.listLv, span.listLv, .listLv >li, .listLv >dt, .listLv >dd{padding-top: 6px;}
 	p.listLv2, div.listLv2, span.listLv2, .listLv2 >li, .listLv2 >dt, .listLv2 >dd{margin-bottom:5px;} 
