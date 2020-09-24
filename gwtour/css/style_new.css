@@ -1,0 +1,2113 @@
+@charset "utf-8";
+
+/* 레이아웃 공통 */
+html, body{position:relative; width:100%;}
+body{color:#000; font-size:16px; line-height:1.5; font-family:'Noto Sans KR', sans-serif; word-break:break-all;letter-spacing:-1px;}
+main{display:block;}
+.confirmIframe body{overflow:hidden;}
+body input{font-family:'Noto Sans KR', sans-serif;}
+
+
+/* 본문바로가기 */
+.skipnav{position:absolute;z-index:2999;top:-100px;width:100%;padding:0;list-style:none;font-size:14px;}
+.skipnav li{position:relative;top:0;left:0;width:100%}
+.skipnav li a{display:block;position:absolute;top:0;width:100%;padding:15px 0;background:#000;color:#fff;text-align:center;text-decoration:none}
+.skipnav li a:focus,.skipnav li a:active{top:100px}
+
+/* slick 플러그인 */
+.slick-slider .slick-list{display:block; overflow-x:hidden; overflow-y:hidden; position:relative}
+.slick-slider .slick-list.dragging{cursor:pointer}
+.slick-slider .slick-list .slick-track{display:block; position:relative; top:0; left:0}
+.slick-slider .slick-list .slick-track:before, .slick-slider .slick-list .slick-track:after{display:table; content:''}
+.slick-slider .slick-list .slick-track:after{clear:both}
+.slick-slider .slick-list.slick-loading .slick-track{visibility:hidden}
+.slick-slider .slick-list .slick-track .slick-slide{display:none; float:left}
+.slick-slider[dir='rtl'] .slick-list .slick-track .slick-slide{float:right}
+.slick-slider .slick-list .slick-track .slick-slide img{display:block;width:100%;}
+.slick-slider .slick-list .slick-track .slick-slide.slick-loading img{display:none}
+.slick-slider.slick-initialized .slick-list .slick-track .slick-slide{display:block}
+.slick-slider .slick-list .slick-track.slick-loading .slick-slide{visibility:hidden}
+.slick-slider .slick-arrow.slick-hidden{display:none}
+
+
+/* 공통 */
+.inner{max-width:1200px;position:relative;margin:0 auto;}
+
+/* 헤더 */
+#header{position:fixed;z-index:2000;transition:all .4s;width:100%;border-bottom:1px solid rgba(255,255,255,.3)}
+#header:after{content:'';display:block;background:rgba(255,255,255,.3);height:1px;width:100%;position:absolute;top:47px;left:0px;}
+#header.fixed{background:#fff;box-shadow:0px 2px 7px 0px rgba(0,0,0,.15);border-bottom:1px solid #e0e0e0;}
+#header.active{background:#fff;border-bottom:1px solid #e0e0e0;}
+#header.active:after, #header.fixed:after{background:#e0e0e0;}
+
+#header h1{position:absolute;left:20px;top:67px;z-index:15;}
+#header h1 a{display:block;width:118px;height:50px;position:relative;overflow:hidden;text-indent:-9999px;}
+#header h1 a:after{content:'';display:block;width:118px;height:50px;background:url(/page/gwtour/images/common/logo01.png) 0 0 no-repeat;position:absolute;top:0;left:0;}
+#header.active h1 a:after, #header.fixed h1 a:after{background-image:url(/page/gwtour/images/common/logo02.png);}
+
+.gnb_pc{position:relative;z-index:10;}
+.gnb_pc .top_box{height:46px;padding-right:20px;text-align:right;padding-top:9px;}
+.gnb_pc .top_box a{display:inline-block;margin-left:0px;width:30px;height:30px;background:url(/page/common/images/sp_dq.png) -30px -240px no-repeat;background-size:390px 1124px;overflow:hidden;text-indent:9999px;transition:all .2s;font-size:0;color:transparent}
+.gnb_pc .top_box a:hover{transform:scale(1.15);}
+.gnb_pc .top_box a.instagram{background-position:-120px -240px;}
+.gnb_pc .top_box a.blog{background-position:0px -240px;}
+.gnb_pc .top_box a.english{background-position:0px -509px;}
+.gnb_pc .top_box a.chinese{background-position:-29px -509px;}
+.gnb_pc .top_box a.japanese{background-position:-60px -509px;}
+.gnb_pc .top_box a.search{background-position:-89px -509px;}
+.gnb_pc .top_box a.login{background-position:-149px -509px;}
+.gnb_pc .top_box a.loginout{background-position:-120px -509px;}
+.gnb_pc nav{padding:0 70px 0 234px;text-align:center;}
+.gnb_pc .depth_01 > li{width:185px;float:left;position:relative;}
+.gnb_pc .depth_01 h2 a{display:block;height:83px;line-height:83px;padding:0 10px;font-weight:700;color:#fefeff;font-size:20px;position:relative;text-shadow: 2px 2px 2px rgba(0,0,0,.3);}
+.gnb_pc .depth_01 h2 a:hover{text-decoration:none;}
+.gnb_pc .depth_01 h2 a:after{content:'';display:block;height:2px;background:#0384bd;position:absolute;bottom:-3px;left:50%;right:50%;transition:all .2s;z-index:5;}
+.gnb_pc .depth_01 h2.active a:after{left:0px;right:-1px;}
+#header.active .gnb_pc .depth_01 h2 a, #header.fixed .gnb_pc .depth_01 h2 a{color:#1c1c1c;text-shadow:none;}
+
+#header.fixed .gnb_pc .top_box{display:none;}
+#header.fixed:after{display:none;}
+#header.fixed h1{top:21px;}
+
+.gnb_pc .sitemap{width:28px;height:24px;overflow:hidden;text-indent:9999px;background:url(/page/gwtour/images/common/btn_sitemap.png) 0 0 no-repeat;position:absolute;right:20px;bottom:28px;transition:all .2s;}
+.gnb_pc .sitemap:hover{transform:scale(1.1);}
+#header.active .gnb_pc .sitemap, #header.fixed .gnb_pc .sitemap{background-position:-36px 0;}
+#header .bg_pc{position:absolute;top:130px;left:0px;right:0px;height:270px;background:#fff;display:none;border-bottom: 1px solid #e8e8e8;}
+#header .bg_pc .inner{height:100%;}
+#header .bg_pc .inner:after{content:'';display:block;width:133px;height:111px;background:url(/page/gwtour/images/common/bg_01.png) 0 0 no-repeat;position:absolute;top:0;left:55px;transition:all .3s;}
+#header .bg_pc .inner:before{content:'';display:block;width:214px;height:211px;background:url(/page/gwtour/images/common/bg_02.png) 0 0 no-repeat;position:absolute;top:40px;right:30px;transition:all .3s;z-index:10;}
+#header .bg_pc.on .inner:before{right:20px;}
+
+#header.fixed .bg_pc{border-bottom:1px solid #e8e8e8;top:84px;}
+
+
+.plan001 #header{background:#fff;border-bottom:1px solid #e0e0e0;} 
+.plan001 #header .gnb_pc .depth_01 h2 a{color:#1c1c1c;text-shadow:none;}
+.plan001 #header h1 a:after{background-image:url(/page/gwtour/images/common/logo02.png);}
+.plan001 #header .gnb_pc .sitemap{background-position:-36px 0;}
+.plan001 #header:after{background:#e0e0e0;}
+
+.plan001 #header.fixed .gnb_pc .top_box{display:block !important;}
+.plan001 #header.fixed:after{display:block !important;}
+.plan001 #header.fixed h1{top:67px;}
+.plan001 #header.fixed .bg_pc{top:130px;}
+
+
+/*
+#header .bg_pc.active .inner:after{left:60px}
+#header .bg_pc.active .inner:before{right:33px;}
+*/
+.gnb_pc .depth_02{position:absolute;top:83px;width:100%;left:0px;border-left:1px solid #e8e8e8;height:270px;padding-top:13px;display:none;}
+.gnb_pc .depth_01 h2.active + .depth_02{background:#f7f7f7}
+.gnb_pc .depth_02 h3 a{display:block;line-height:1.2;text-align:center;font-weight:300;font-size:15px;color:#000;padding:7.3px 10px;}
+.gnb_pc .depth_02 h3 a:hover,.gnb_pc .depth_02 h3 a:hover span{text-decoration:none;}
+.gnb_pc .depth_02 h3 a span{display:inline-block;position:relative;padding:0 2px 0;}
+.gnb_pc .depth_02 h3 a span:after{content:'';display:block;height:1px;background:#0384bd;position:absolute;bottom:-3px;left:51%;right:51%;transition:all .2s;z-index:5;}
+.gnb_pc .depth_02 h3.active a{color:#0384bd}
+.gnb_pc .depth_02 h3.active a span:after{left:0px;right:0px;}
+.gnb_pc .depth_02 h3 a[target="_blank"]:after{content:'';display:inline-block;background:url(/page/common/images/sp_dq.png) -11px -92px no-repeat;background-size:520px 1500px;width:17px;height:17px;margin-left:2px;vertical-align:-2px;}
+
+.gnb_mobile{display:none;}
+.gnb_mobile .top_box{position:absolute;top:20px;right:20px;}
+.gnb_mobile .top_box a{display:inline-block;margin-left:6px;width:29px;height:29px;background:url(/page/common/images/sp_dq.png) -30px -241px no-repeat;background-size:390px 1124px;overflow:hidden;text-indent:9999px;vertical-align:middle;}
+.gnb_mobile .top_box a.search{background-position:-91px -509px;}
+.gnb_mobile .top_box a.login{background-position:-150px -509px;}
+.gnb_mobile .top_box a.loginout{background-position:-121px -509px;}
+.gnb_mobile .top_box .open{display:inline-block;width:28px;height:24px;overflow:hidden;text-indent:9999px;background:url(/page/gwtour/images/common/btn_sitemap.png) -36px 0 no-repeat;margin-left:10px;vertical-align:middle;}
+.gnb_mobile .top_box .close{display:none;width:28px;height:24px;overflow:hidden;text-indent:9999px;width:30px;height:30px;background:url(/page/common/images/sp_dq.png) -406px -5px no-repeat;background-size:520px 1500px;margin-left:10px;vertical-align:middle;}
+
+.gnb_mobile .side{background:#fff;max-width:414px;position:fixed;top:71px;right:-414px;width:100%;overflow-y:auto;padding:0 0 130px;height:100%;z-index:102;}
+.gnb_mobile .language_box{text-align:center;height:57px;background:#eee;padding-top:14px;}
+.gnb_mobile .language_box a{display:inline-block;margin-left:1px;width:29px;height:29px;background:url(/page/common/images/sp_dq.png) -30px -241px no-repeat;background-size:390px 1124px;overflow:hidden;text-indent:9999px;vertical-align:middle;}
+.gnb_mobile .language_box a.instagram{background-position:-121px -241px;}
+.gnb_mobile .language_box a.blog{background-position:0px -241px;}
+.gnb_mobile .language_box a.english{background-position:-2px -509px;}
+.gnb_mobile .language_box a.chinese{background-position:-31px -509px;}
+.gnb_mobile .language_box a.japanese{background-position:-62px -509px;}
+.gnb_mobile .depth_01 h2 a{display:block;height:57px;line-height:57px;padding:0 20px;font-weight:500;font-size:20px;position:relative;background:#fff;border-bottom:1px solid #dcdcdc;color:#1c1c1c;}
+.gnb_mobile .depth_01 h2.active a{background:#0384bd;color:#fefeff;border-bottom:0;}
+.gnb_mobile .depth_01 li:first-child h2 a{border-top:1px solid #dcdcdc}
+.gnb_mobile .depth_01 li:first-child h2.active a{border-top:0;}
+.gnb_mobile .depth_01 h2 a:after{content:'';display:block;width:16px;height:2px;background:#0384bd;position:absolute;top:28px;right:20px;}
+.gnb_mobile .depth_01 h2 a:before{content:'';display:block;width:2px;height:16px;background:#0384bd;position:absolute;top:21px;right:27px;}
+.gnb_mobile .depth_01 h2.active a:after{background:#fff;}
+.gnb_mobile .depth_01 h2.active a:before{display:none;}
+
+.gnb_mobile .depth_02{background:#f7f7f7;display:none;}
+.gnb_mobile .depth_02 > li{border-bottom:1px solid #dcdcdc}
+.gnb_mobile .depth_02 h3 a{color:#000;font-size:15px;font-weight:300;display:block;height:44px;line-height:44px;padding:0 22px;}
+.gnb_mobile .depth_02 h3 a[target="_blank"]:after{content:'';display:inline-block;background:url(/page/common/images/sp_dq.png) -11px -92px no-repeat;background-size:520px 1500px;width:17px;height:17px;margin-left:5px;vertical-align:-3px;}
+.gnb_mobile .depth_02 h3.active a{color:#0384bd}
+.gnb_mobile .depth_03{margin:0px 25px 15px;}
+.gnb_mobile .depth_03 a{font-size:14px;font-weight:300;display:block;height:28px;line-height:28px;padding:0 10px;display:block;position:relative;}
+.gnb_mobile .depth_03 a:before{content:'-';position:absolute;top:0px;left:0px;}
+.gnb_mobile .depth_03 li.active a{color:#0384bd}
+.gnb_mobile .depth_03 a[target="_blank"]:after{content:'';display:inline-block;background:url(/page/common/images/sp_dq.png) -11px -92px no-repeat;background-size:520px 1500px;width:17px;height:17px;margin-left:5px;vertical-align:-3px;}
+
+.gnb_mobile a:focus, .gnb_mobile a:hover{text-decoration:none;}
+
+#mask_mobile{position:fixed;left:0px;top:71px;width:100%;height:100%;background:rgba(0,0,0,.6);z-index:101;display:none;}
+
+@media (max-width:1199px) {
+
+    #header{height:71px;background:#fff;border-bottom:1px solid #e0e0e0;}
+    #header:after{display:none;}
+    #header h1{left:20px;top:18px !important;}
+    #header h1 a{width:87px;height:36px;}
+    #header h1 a:after{width:87px;height:36px;background-image:url(/page/gwtour/images/common/logo02.png);background-size:87px 36px;}
+    .gnb_pc{display:none;}
+
+    .gnb_mobile{display:block;} 
+}
+
+@media (min-width:1200px) {
+    #mask_mobile{display:none !important}
+    body{position:relative !important;}
+}
+
+#footer {text-align: center; background: #3d464f; color: #7d8388;z-index:1000;}
+#footer .inner {position: relative; padding: 25px 15px; font-size: 14px;}
+#footer .wrap {position: relative;}
+#footer h1 {font-size: 24px; font-weight: 600;}
+#footer .menu {margin: 25px 0 5px;}
+#footer .menu li {border: 1px solid #7e848a; padding: 5px 0; border-radius: 3px; font-size: 14px;}
+#footer .menu li:not(:last-child) {margin-bottom: 5px;}
+#footer .menu li a {color: #9ea3a7;}
+#footer address {font-style: normal; margin-top: 25px;}
+#footer .relation-wrap {position: relative;}
+#footer .btn-relation {color: #9ea3a7; position: relative; background: #2b353e; width: 100%; height: 33px; line-height: 33px;padding-left:12px;}
+#footer .btn-relation:after {content: ''; display: inline-block; background: url(/_images/bg_fold2.png) no-repeat left top; width: 15px; height: 8px; background-position: 0 -8px;vertical-align:1px;margin-left:8px;}
+#footer .btn-relation.active:after {background-position: 0 0;}
+#footer .relation-wrap ul {display:none; position:absolute; width: 100%; left: 0; bottom: 33px;overflow-y:auto;height:290px;z-index:1002;}
+#footer .relation-wrap li{background: #2b353e; padding: 5px 0;}
+#footer .relation-wrap li:hover {background: #3c4a56;}
+#footer .relation-wrap li:first-child{padding:15px 0 5px;}
+#footer .relation-wrap li:last-child{padding:5px 0 15px;}
+#footer .relation-wrap li a {color: #9ea3a7;}
+/*
+#footer .btn-relation.active + ul {display: block;}
+*/
+
+@media (min-width: 768px) and (max-width: 991px) {
+    #footer h1 {font-size: 26px;}
+    #footer .menu {width: calc(75% - 10px);}
+    #footer .menu li {float: left; width: calc((100% - 20px) / 3); margin-bottom: 0;}
+    #footer .menu li:not(:last-child) {margin-right: 10px;}
+    #footer .relation-wrap {position: absolute; right: 0; top: 0; width: 25%;}
+
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    #footer .inner {padding: 30px 0 30px 212px;}
+    #footer h1 {position: absolute; left: 30px; top: 23px; font-size: 30px;}
+    #footer .menu {margin: 0 0 25px 0;}
+    #footer .menu li {float: left; width: 130px; margin-bottom: 0;}
+    #footer .menu li:not(:last-child) {margin-right: 10px;}
+    #footer .relation-wrap {position: absolute; right: 20px; top: 0; width: 180px;}
+    #footer address {margin-top: 0;}
+    #footer address, #footer p {text-align: left;}
+}
+
+@media (min-width: 1200px) {
+    #footer .inner{padding: 30px 0 30px 212px;background:#3d464f;}
+    #footer h1{position: absolute; left: 30px; top: 23px; font-size: 30px;}
+    #footer .menu{margin: 0 0 25px 0;}
+    #footer .menu li{float: left; margin-bottom: 0;padding: 5px 20px;}
+    #footer .menu li:not(:last-child){margin-right: 10px;}
+    #footer .btn-relation{padding-left:5px;}
+    #footer .relation-wrap{position: absolute; right: 0; top: 0; width: 180px;}
+    #footer address{margin-top: 0;}
+    #footer address, #footer p{text-align: left;}
+}
+
+.center {position: absolute !important; left: 50%; top: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%);}
+.headerBullet {background: url(/page/gwtour/images/sub/ico_tlt.png) no-repeat left center;padding-left: 28px;margin-bottom: 10px;background-size:20px 20px;}
+.acc {width: 0 !important; height: 0 !important; overflow: hidden; font-size: 0; line-height: 0; position: absolute;}
+
+#search {width: 100%; height: 100%; position: fixed; left: 0; top: 0; z-index: 5000; opacity: 0; display: none; transition: all 0.5s;}
+#search:after {content: ""; background: #000; width: 100%; height: 100%; display: block; position: absolute; left: 0; top: 0; opacity: 0.7; z-index: -1;}
+.search-show {opacity: 1 !important; display: block !important;}
+#search .center {background: #fff;box-sizing: border-box;padding: 20px;background-size: 100%;width: 800px;}
+#search .search {width: 100%;margin-bottom: 20px;overflow: hidden;}
+#search .search input[type=search] {font-size: 17px;height: 52px;float: left;width: 93%;border: 3px solid #000;box-sizing: border-box;padding-left: 18px;background: #fff;}
+#search .search input[type=submit] {font-size: 0;height: 52px;float: left;width: 7%;outline: none;border-style: none;background: #000 url(/page/common/images/ico_white_search.png) no-repeat center center;cursor: pointer;background-size: 26px 26px;}
+#search .search input[type=submit]:focus {border: 3px solid #c7c7c7;}
+#search .tag {position: relative;}
+#search .tag h1 {position: absolute;left: 0;top: 2px;font-size: 18px;color: #0384bd;font-weight: 500;}
+#search .tag ul {margin-left: 100px;}
+#search .tag ul li {float: left;border-radius: 20px;background: #0384bd;font-size: 16px;text-align: center;padding: 2px 10px 4px;box-sizing: border-box;margin: 0 6px 0px 0;font-weight: 300;}
+#search .tag ul li:last-child {margin-right: 0;}
+#search .tag ul li a {color: #fff;}
+#search .btn-close {width: 40px;height: 40px;display: block;right: 0px;top: -45px;position: absolute;text-align: center;}
+#search .btn-close:focus {outline: #fff dotted 1px;}
+#search .btn-close img {width: 100%; height: auto; vertical-align: middle;}
+
+
+#login {width: 100%; height: 100%; position: fixed; left: 0; top: 0; z-index: 5000; opacity: 0; display: none; transition: all 0.5s;}
+#login:after {content: ""; background: #000; width: 100%; height: 100%; display: block; position: absolute; left: 0; top: 0; opacity: 0.7; z-index: -1;}
+#login .center {padding: 20px 50px !important;background: #fff;width: 800px;height: auto;z-index: 2;}
+.login-show {opacity: 1 !important; display: block !important;}
+.login-show:focus section {border: 2px solid #a6c7ff;}
+#login .headerBullet {color: #222; font-size: 18px; line-height: 28px;}
+#login .center > div:first-child {float: left; width: 42%;}
+#login .center > div:first-child li {border-radius: 5px;font-size: 16px;line-height: 44px;margin-bottom: 5px;}
+#login .center > div:first-child li img {vertical-align: middle;margin: -3px 65px 0 10px;max-width: 26px;}
+#login .center > div:first-child li a {color: #fff; display: inline-block;}
+#login .center > div:first-child .facebook {background: #4267b2;}
+#login .center > div:first-child .kakao {background: #ffeb00;}
+#login .center > div:first-child .kakao a {color: #222;}
+#login .center > div:first-child .naver {background: #1ec800;}
+#login .center > div:first-child .google {background: #4285f4;}
+#login .center > div:first-child .insta {background: #938d86; margin-bottom: 0;}
+#login .center > div:nth-of-type(2) {float: right; width: 42%;}
+#login .center > div:nth-of-type(2) .clear {position: relative;}
+#login input[type=text] {background: #ebebeb;border: 1px solid #d5d5d5;height: 42px;box-sizing: border-box;width: 100%;padding-left: 18px;font-size: 16px;}
+#login input[type=text]:last-chid {border-top-style: none;}
+#login input[type=password] {background: #ebebeb;border: 1px solid #d5d5d5;height: 41px;box-sizing: border-box;width: 100%;padding-left: 18px;font-size: 16px;margin-top: 5px;}
+#login input[type=password]:last-chid {border-top-style: none;}
+#login label {color: #989898; font-size: 20px; position: absolute; left: 15px; top: 15px;}
+#login input[type=submit] {color: #fff;font-size: 16px;background: #000;text-align: center;outline: none;border-style: none;width: 100%;padding: 10px 0;margin-top: 10px;}
+#login input[type=submit]:focus {outline: #000 dashed 1px;}
+#login .btns {width: 100%;margin-top: 18px;}
+#login .btns a {float: left;background: url(/page/common/images/ico_login_search.png) no-repeat left center;padding-left: 45px;font-size: 14px;line-height: 35px;height: 35px;}
+#login .btns a:last-child {float: right;background: url(/page/common/images/ico_login_register.png) no-repeat 2px center;width: 36%;}
+#login .btn-close {width: 40px;height: 40px;display: block;right: 0px;top: -45px;position: absolute;text-align: center;}
+#login .btn-close:focus {outline: #fff dashed 2px;}
+#login .btn-close img {width: 100%; height: auto; vertical-align: middle;}
+
+@media (min-width: 768px) and (max-width: 979px) {
+
+     #search .center {width: 90%;background-size: cover;}
+
+    #login .center {width: 95%;max-width: 800px;}
+    #login .center > div:first-child li {font-size: 16px;}
+    #login input[type=text] {font-size: 16px;}
+    #login label {font-size: 16px;}
+    #login .btns a {text-align: left;background: url(/page/common/images/ico_login_search.png) no-repeat left center;padding-left: 40px;font-size: 14px;line-height: 35px;height: 35px;display: block;}
+      
+}
+
+@media (max-width: 767px) {
+
+    #search .center {width: 95%;background-size: cover;}
+
+    #login .center {padding: 20px 20px !important;/* width: 290px; */width: 85%;max-width: 320px;min-width: 290px;}
+    #login .headerBullet {color: #222;font-size: 16px;margin-bottom: 6px;}
+    #login .center > div:first-child {float: none; width: 100%;}
+    #login .center > div:first-child li {font-size: 15px;line-height: 36px;margin-bottom: 2%;}
+    #login .center > div:first-child li img {height: 22px;width: auto;}
+    #login .center > div:first-child li a {color: #fff;}
+    #login .center > div:first-child .facebook, #login > div:first-child .kakao, #login > div:first-child .naver, #login > div:first-child .google, #login > div:first-child .insta  {background-size: 20px;}
+    /* #login .center > div:last-child {float: none; width: 100%; margin-top: 10px;} */
+    #login .center > div:nth-of-type(2) {float: none;width: 100%;margin-top: 15px;}
+    #login input[type=text], #login input[type=password] {height: 30px;padding-left: 10px;font-size: 14px;}
+    #login input[type=password] {/* border-top-style: none; */}
+    #login label {font-size: 15px; position: absolute; left: 5px; top: 5px;}
+    #login input[type=submit] {font-size: 14px;background: #000;padding: 8px 0;margin-top: 10px;}
+    #login .btns {margin-top: 15px;}
+    #login .btns a {float: none;width: 100%;display: block;padding-left: 30px;font-size: 14px;line-height: 25px;height: 25px;background-size: 20px;text-align: left;box-sizing: border-box;}
+    #login .btns a:last-child {background: url(/page/common/images/ico_login_register.png) no-repeat left center; width: 100%; float: none; background-size: 20px;}
+
+    #search .search input[type=search]{width:90%;}
+    #search .search input[type=submit]{width:10%;}
+}
+
+
+@media (max-width: 480px) {
+    #search .center {background-size: contain;padding: 15px;}
+    #search .search{margin-bottom:15px;}
+    #search .search input[type=search] {width: 85%;-moz-appearance: none;-webkit-appearance: none;appearance: none;font-size: 15px;height: 46px;}
+    #search .search input[type=submit] {width: 15%;height: 46px;background-size: 24px 24px;}
+    #search .tag h1 {width: 80px; font-size: 16px;}
+    #search .tag ul {width: 80%; box-sizing: border-box; margin-left: 90px;}
+    #search .tag ul li {font-size: 14px;}
+} 
+
+
+
+
+/* 임시 */
+.modal {position: fixed;left: 50%;top: 50%;opacity: 0;visibility: hidden;backface-visibility: hidden;width: 80%;-webkit-transform: translate(-50%, 30%);transform: translate(-50%, 30%);-webkit-transition: all .3s;transition: all .3s;z-index: -1;}
+.preload {transition: none !important;}
+.modal-show {background: #fff; opacity: 1; visibility: visible; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%);  -webkit-transition: all .6s; transition: all .6s; z-index: 9999;}
+.modal-overlay {background: rgba(0, 0, 0, .7);width: 100%;height: 100%;position: fixed;left: 0;top: 0;z-index: 2020;}
+.nanum {font-family: 'Noto Sans KR', sans-serif;}
+.mjo {font-family: 'Nanum Myeongjo', serif;}
+.btnClose {width: 55px; height: 55px; display: block; background-size: 100% 100%; right: 0; top: -65px;}
+.btnPrev span {background: url(/page/common/images/ico_prev.png) no-repeat left top; width: 31px; height: 59px; display: block; background-size: 100% 100%; visibility: visible;}
+.btnNext span {background: url(/page/common/images/ico_next.png) no-repeat left top; width: 31px; height: 59px; display: block; background-size: 100% 100%; visibility: visible;}
+.redBox {background: #d70c0c; text-align: center; color: #fff; padding: 0 10px; box-sizing: border-box;}
+.blackBox {background: #31343d; text-align: center; color: #fff; padding: 0 10px; box-sizing: border-box;}
+.btnList {text-align: center;position:relative;margin:16px auto;}
+.btnList a {width: 20%;margin: 0 0 50px 0;border: 2px solid #000;padding: 10px 12px 10px 22px;box-sizing: border-box;display: block;font-size: 16px;color: #000;float:right;}
+.btnList a img {margin-right: 15px;}
+.pageMore {text-align: center; border-top: 1px solid #000; margin-top: 25px;}
+.pageMore button {width: 30%; color: #fff; font-size: 20px; background: #31343d; padding: 10px 0; display: inline-block;}
+select::-ms-expand {display: none;}
+.hidden {visibility: hidden; width: 0; height: 0;}
+.mt-xsmall {margin-top:10px}
+.mt-small {margin-top:20px}
+.mt-medium {margin-top:30px}
+.mt-xlarge {margin-top:50px}
+
+.mb-xsmall {margin-bottom:10px}
+.mb-small {margin-bottom:20px}
+.mb-medium {margin-bottom:30px}
+.mb-large {margin-bottom:40px}
+.mb-xlarge {margin-bottom:50px}
+
+.leftNo {float: none !important}
+.fluid {width: 100%; height: auto;}
+
+section#login {height: auto; box-sizing: border-box;}
+.headerBullet {background: url(/page/common/images/ico_pr_bullet.png) no-repeat left 5px; padding-left: 30px; margin-bottom: 20px;}
+
+#terms-agree-info-popup {font-size: 16px; width: 100%; height: 100%; position: fixed; left: 0; top: 0; z-index: 5000; opacity: 0; display: none; transition: all 0.5s;}
+#terms-agree-info-popup:after {content: ""; background: #000; width: 100%; height: 100%; display: block; position: absolute; left: 0; top: 0; opacity: 0.7; z-index: -1;}
+#terms-agree-info-popup .center {padding: 20px 50px !important; background: #fff; width: 800px; height: auto; z-index: 2;}
+#terms-agree-info-popup.show {opacity: 1 !important; display: block !important;}
+#terms-agree-info-popup .title {text-align: center; margin: 10px 0;/* margin-top: 15px; */}
+#terms-agree-info-popup p {border: 1px solid grey; padding: 15px; margin: 15px 0;}
+#terms-agree-info-popup .bold {font-weight: bold;}
+#terms-agree-info-popup .colored {color: #f79646;}
+#terms-agree-info-popup ul {}
+#terms-agree-info-popup ul li {float: left; list-style: disc; margin-left: 20px;}
+#terms-agree-info-popup ul li:nth-of-type(2) {margin-left: 40px;}
+#terms-agree-info-popup .btns {margin: 20px auto 15px auto; width: 50%; text-align: center; font-size: 18px;}
+#terms-agree-info-popup .btns a {float: left; width: 45%; heght: 44px; line-height: 44px; background: black; color: white; border: 2px solid black; padding: 0;}
+#terms-agree-info-popup .btns a:last-child {float: right; width: 45%; background: white; color: black;}
+#terms-agree-info-popup .btn-close {width: 30px; height: 30px; right: 5px; top: 5px; position: absolute; display: block;}
+#terms-agree-info-popup .btn-close img {width: 100%; height: auto; vertical-align: middle;}
+
+.pageHeader {text-align: center; height: 208px; color: #fff; box-sizing: border-box; padding-top: 60px; text-shadow: #000 0 2px;}
+.pageHeader {background: url(/page/common/images/bg_sub1.jpg) no-repeat top center;}
+.pageHeader.gangwondo_trip {background: url(/page/common/images/bg_sub1.jpg) no-repeat top center;}
+.pageHeader.go_to_kangwondo {background: url(/page/common/images/bg_article_style.jpg) no-repeat top center;}
+.pageHeader.sightseeing_guide {background: url(/page/common/images/bg_pr.jpg) no-repeat top center;}
+.pageHeader.sightseeing_news {background: url(/page/common/images/bg_board.jpg) no-repeat top center;}
+.pageHeader.searchView {background: url(/page/common/images/bg_service.jpg) no-repeat top center;}
+.pageHeader.supplementary_services {background: url(/page/common/images/bg_service.jpg) no-repeat top center;}
+.pageHeader h1 {font-size: 50px; letter-spacing: -5px; margin-bottom: 10px;}
+
+.pageTitle {float: left; font-size: 48px;}
+.contentWrap .contentHeader {margin-bottom: 40px; padding-bottom: 25px; border-bottom: 2px solid #cbcbcb; position: relative;}
+.contentWrap .contentHeader ul {float: right; margin-top: 25px;}
+.contentWrap .contentHeader ul li {float: left; padding-left: 4px;}
+.contentWrap .contentHeader ul li:first-child {padding-left: 0;}
+/* .contentWrap .contentHeader ul li:nth-child(3) {display:  none;} */
+.contentWrap .contentHeader .lineL {position: absolute; left: 0; bottom: -2px; width: 168px; height: 2px; background: #fb3c5d;}
+.contentWrap .contentHeader .lineR {position: absolute; right: 0; bottom: -2px; width: 15px; height: 2px; background: #000;}
+.locationWrap {float: right; line-height: 49px;}
+.locationTitle {background: url(/page/common/images/ico_map.png) no-repeat left center; padding-left: 20px; color: #000; font-size: 20px; font-weight: normal; margin-right: 20px; float: left;}
+.btnSetLocation {background: #53575e; padding: 0 30px; text-align: center; color: #fff; box-sizing: border-box; float: right; font-size: 20px; border: 1px solid #91959b; height: 46px; line-height: 46px;}
+.mapWrap {background: none; margin-top: 20px;}
+.map2 {width: 100%; height: 540px; float:none; overflow: hidden;}
+.mapSelect {width: 260px; float: right;}
+.mapSelect h2 {background: #6887f1; color: #fff; font-size: 20px; line-height: 50px; padding: 0 25px 0 30px; box-sizing: border-box; cursor: pointer;}
+.mapSelect h2 span {float: right;}
+.mapSelect .binder {background: #53575e; padding: 20px; box-sizing: border-box; height: 390px; overflow: auto;}
+.mapSelect form h2.only-one + .binder {height: 440px;}
+.mapSelect .binder .clear {float: left; width: 49%; box-sizing: border-box;}
+.mapSelect .binder .clear:nth-child(2n) {margin-right: 0;}
+.mapSelect input[type=checkbox] {width: 0; opacity: 0;}
+.mapSelect label {font-size: 14px; color: #fff; line-height: 40px; letter-spacing: -1px; padding-left: 20px; background: url(/page/common/images/ico_check.png) no-repeat; background-position: 0 4px; background-size: 15px;}
+.mapSelect input[type=checkbox]:checked + label {background-position: 0 -17px;}
+.mapSelect form button[type="button"] {width: 100%; background: #31343d; color: #fff; font-size: 20px; height: 50px; line-height: 50px;}
+.listPage > p, p.result {color: #000; font-size: 20px; padding: 30px 0 30px 20px; background: url(/page/common/images/ico_resultarrow.png) no-repeat left center;}
+.listPage > p span, p.result span {color: #d70c0c; font-size: 20px;}
+.listStyle > li {position: relative; width: 490px; height: 295px; float: left; margin-right: 20px;} 
+.listStyle > li:nth-child(2n) {margin-right: 0;} 
+.listStyle > li .img {position: absolute; left: 0; top: 0; z-index: 1; overflow: hidden; width: 454px; height:242px;}
+.listStyle > li .img img {height: 100%; width: auto;}
+.listStyle > li article {position: absolute; z-index: 2; right: 0; bottom: 35px; width: 235px; height: 192px; background: #fff; box-shadow: 5px 5px 8px 0px rgba(0,0,0,0.75); box-sizing: border-box; padding: 18px; letter-spacing: -1px;}
+.listStyle > li article h1 {font-size: 24px; margin-bottom: 10px; color: #000; line-height: 24px;}
+.listStyle > li article h1 span {float: left; background: url(/page/common/images/ico_tourmap.png) no-repeat top center; color: #fff; font-size: 16px; text-align: center; width: 24px; height: 33px; box-sizing: border-box; margin-right: 5px;}
+.listStyle > li article p {font-size: 18px; color: #4e4e4e; margin-bottom: 18px;}
+.listStyle > li article p {display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;}
+.listStyle > li article p {line-height: 22px; max-height: 66px;}
+.listStyle > li article dl {position: relative; color: #222; font-size: 15px;}
+.listStyle > li article dt {float: left; border-right: 1px solid #dd4848;  padding-right: 8px;}
+.listStyle > li article dd {padding-left: 8px; margin-bottom: 10px; float: left;}
+.listStyle > li article .detail {position: absolute; left: 0; top: 0; box-sizing: border-box; background: url(/page/common/images/bg_detail.jpg) repeat left top; text-align: center; width: 0; height: 0;}
+.listStyle > li article .detail a {padding: 0; border-style: none; width: 0; height: 0; font-size: 0;}
+.listStyle > li article:hover .detail, .listStyle > li article.on .detail {display: block; cursor: pointer; width: 100%; height: 100%;}
+.listStyle > li article:hover .detail a, .listStyle > li article.on .detail a {color: #fff; box-sizing: border-box; padding: 0 10px; border: 1px solid #fff; width: 40%; height: 40px; line-height: 40px; font-size: 13px;}
+.listStyle > li button, .listStyle > li input[type=checkbox] {position: absolute; left: 20px; top: 20px; z-index: 100;}
+.listStyle > li input[type=checkbox] {width: 0; opacity: 0;}
+.listStyle > li input[type=checkbox] + label {font-size: 18px; padding-left: 30px; background: url(/page/common/images/ico_check.png) no-repeat; background-position: 0 4px; background-size: 20px; cursor: pointer; position: absolute; left: 20px; top: 20px; z-index: 100; width: 30px; height: 27px;}
+.listStyle > li input[type=checkbox]:checked + label {background-position: 0 -24px;}
+.pagination {margin-top: 30px; text-align: center;}
+.pagination ul {display: inline-block; font-size: 14px;}
+.pagination ul li {float: left; padding: 10px; border: 1px solid #e0e0e0; box-sizing: border-box; width:31px; height: 38px; margin-right: 3px;}
+.pagination ul li a {color: #656565;}
+.pagination ul li.on {background: #ed1010;}
+.pagination ul li.on a {color: #fff;}
+.pagination ul li.begin {background: url(/page/common/images/ico_pagefirst.png) no-repeat center center;}
+.pagination ul li.prev {background: url(/page/common/images/ico_pageprev.png) no-repeat center center; margin-right: 10px;}
+.pagination ul li.next {background: url(/page/common/images/ico_pagenext.png) no-repeat center center; margin-left: 10px;}
+.pagination ul li.end {background: url(/page/common/images/ico_pageend.png) no-repeat center center;}
+.pagination ul li.begin a, .pagination ul li.prev a, .pagination ul li.next a, .pagination ul li.end a {font-size: 0; width: 100%; height: 100%; display: block;}
+.viewPage .header {box-sizing: border-box; margin-bottom: 170px;}
+.viewPage .header .inner {position: relative; height: 0;}
+.viewPage .header .inner .wrap {width: 55%; padding: 25px; background: url(/page/common/images/bg_blue_transparent.png) repeat left top; color: #fff; box-shadow: 5px 5px 8px 0px rgba(0,0,0,0.75); position: absolute; left: 0; bottom: -140px;}
+.viewPage .header h1 {float: left; margin-right: 25px; font-size: 30px; position: relative; padding-bottom: 20px;}
+.viewPage .header h1 span {position: absolute; width: 70px; height: 1px; background: #fff; left:0; bottom: 0;}
+.viewPage .header ul {float: left; margin-top: 8px;}
+.viewPage .header ul li {float: left; margin-right: 25px; line-height: 28px; color: #eb151c; font-size: 20px;}
+.viewPage .header ul li a {float: left; background: url(/page/common/images/ico_heart.png) no-repeat center center; width: 29px; height: 28px; display: block; margin-right: 5px; text-indent: -9999px;}
+.viewPage .header ul li:last-child {margin-right: 0; color: #fff;}
+.viewPage .header ul li:last-child a {cursor: default; float: left; background: url(/page/common/images/ico_v_share.png) no-repeat center center; width: 28px; height: 22px; display: block;}
+.viewPage .header .binder {margin-top: 20px; color: #fff; font-size: 20px; line-height: 28px; font-weight: 200;}
+.viewPage .header .binder p {line-height: 30px;}
+.viewPage .header dl {margin-top: 35px; position: relative;}
+.viewPage .header dt {width: 20%; text-align: center; border: 1px solid #878787; border-radius: 20px; box-sizing: border-box; position: absolute; left:0; top: 0; overflow: hidden;  background: #fff; color: #000;}
+.viewPage .header dt:nth-child(3) {top: 36px;}
+.viewPage .header dt:nth-child(5) {top: 73px;}
+.viewPage .header dd {padding-left: 22%; line-height: 35px;}
+.viewPage .header .binder a {width: 210px; margin: 25px auto 0; display: block; box-sizing: border-box; text-align: center; color: #fff; background: #eb151c; line-height: 50px;}
+.viewPage .header .binder a img {margin-left: 15px;}
+.viewPage .header figure img {width: 100%; height: auto;}
+/* .viewPage .header .bg {position: absolute; left: 0; top: 0; z-index: -1; width: 100%; height: 468px; overflow: hidden;} */
+.viewPage .guide {color: #000; margin-top: 45px;}
+.viewPage .title, .articleView1 .title, .articleView2 .title, .articleView3 .title {text-align: center; font-size: 38px; padding-bottom: 15px; margin-bottom: 28px; position: relative;}
+.viewPage .title:after, .articleView1 .title:after, .articleView2 .title:after, .articleView3 .title:after {content: ""; display: block; width: 60px; height: 1px; background: #000; position: absolute; left: 50%; bottom: 0; margin-left: -30px;}
+.viewPage .guide article {font-size: 20px; text-align: center; line-height: 30px;}
+.viewPage .represent {margin-top: 50px;}
+.viewPage .represent img {width: 100%; height: auto;}
+.viewPage .help {padding-top: 50px;}
+.viewPage .help .binder {float: left; width: 49%; margin-right: 2%;}
+.viewPage .help .binder:last-child {float: left; margin-right: 0;}
+.viewPage .help .binder .clear {margin-bottom: 15px;}
+.viewPage .help h2 {font-size: 20px; padding-left: 40px; line-height: 31px; box-sizing: border-box; margin-right: 1%; width: 24%; display: inline-block;}
+.viewPage .help .tel h2 {background: url(/page/common/images/ico_help_phone.png) no-repeat left center;}
+.viewPage .help .price h2 {background: url(/page/common/images/ico_help_price.png) no-repeat left center;}
+.viewPage .help .park h2 {background: url(/page/common/images/ico_help_park.png) no-repeat left center;}
+.viewPage .help .homepage h2 {background: url(/page/common/images/ico_help_homepage.png) no-repeat left center;}
+.viewPage .help .dayoff h2 {background: url(/page/common/images/ico_help_dayoff.png) no-repeat left center;}
+.viewPage .help .handicap h2 {background: url(/page/common/images/ico_help_handicap.png) no-repeat left center; width: 36%;}
+.viewPage .help .usetime h2 {background: url(/page/common/images/ico_help_menu.png) no-repeat left center;}
+.viewPage .help .menu h2 {background: url(/page/common/images/ico_help_time.png) no-repeat left center;}
+.viewPage .help .facility h2 {background: url(/page/common/images/ico_additional_menu.png) no-repeat left center;}
+.viewPage .help p {float: right; font-size: 20px; line-height: 31px; position: relative; padding-left: 15px; box-sizing: border-box; width: 73%;}
+.viewPage .help p:after {content: ""; display: block; position: absolute; left: 0; top: 7px; background: #acacac; width: 1px; height: 18px;}
+.viewPage .help .handicap p {width: 62%;}
+.viewPage section.imgs ul {margin-top: 40px;}
+.viewPage section.imgs li {float: left; width: 49%; margin: 0 2% 30px 0; box-sizing: border-box; cursor: pointer;}
+.viewPage section.imgs li img {width: 100%; height: auto;}
+.viewPage section.imgs li:nth-child(2n) {float: right; margin-right: 0;}
+.viewPage section.imgs li:nth-last-child(-n+2) {margin-bottom: 0;}
+.information {background: #2c4f8f; margin-top: 50px; padding: 50px 0 30px;}
+.information .title {color: #fff;}
+.information .title:after {background: #fff;}
+.information form ul {border: 3px solid #000; width: 495px; margin: 0 auto; background: #ccd2e2; margin-bottom: 35px;}
+.information form ul li button:focus {outline: none;}
+.information form ul li {float: left; width: 33.3%; box-sizing: border-box; padding: 10px 0 10px 15px; border-right: 1px solid #b0b7c7; border-bottom: 1px solid #b0b7c7; text-align: left;}
+.information form ul li.on {background: #1647a3 !important;}
+.information form ul li:nth-child(1), .information form ul li:nth-child(2) {width: 50%;}
+.information form ul li:nth-child(4) {width: 33.4%;}
+.information form ul li:last-child {border-right-style: none;}
+.information form ul li:nth-last-child(-n+3) {border-bottom-style: none;}
+.information input[type=radio] {width: 0; opacity: 0;}
+.information label {color: #222;  height: 25px; font-size: 20px; background: url(/page/common/images/bg_radio.png) no-repeat; background-position: 0 5px; padding-left: 30px; cursor: pointer;}
+.information label:focus {outline: #000 dotted 1px;}
+.information li button {padding: 0; font-size: 0;}
+.information form ul li.on label,.information form ul li.on .distance {color: #fff !important;}
+.information li button.distance {font-size: 14px;width: 100%;height: 100%;}
+.information input[type=radio]:checked + label {background-position: 0 -25px;}
+.information input[type=radio]:focus + label {outline: #000 dotted 1px;}
+/* .viewPage .information h1 {color: #fff;} */
+.viewPage .information h1 span {background: #fff;}
+.viewPage .review {padding: 50px 0;}
+.viewPage .review form {background: #cfd5e3; box-sizing: border-box; padding: 20px 20px 40px; margin-bottom: 15px;}
+.viewPage .review .binder {margin-bottom: 15px;}
+.viewPage .review h1 {float: left; color: #000; font-size: 24px; margin-right: 12px;}
+.viewPage .review .binder ul {float:left; margin-top: 7px;}
+.viewPage .review .binder li {float: left; padding-top: 5px; margin-right: 10px;}
+.viewPage .review .binder li:last-child {margin-right: 0;}
+.viewPage .review .binder li input {float: left; position: relative; top: -2px;}
+.viewPage .review .binder li input:focus + img {border: 1px dotted #000;}
+.viewPage .review .binder li img {float: left; margin-right: 3px;}
+.viewPage .review .binder li img:last-child {margin-right: 0;}
+.viewPage .review .pack {float: left; width: 86%; height: 95px; position: relative;}
+.viewPage .review textarea {padding: 15px; width: 100%; height: 100%; box-sizing: border-box; margin-bottom: 10px;}
+.viewPage .review textarea::-webkit-placeholder {font-size: 16px; color: #a6a9b0;}
+.viewPage .review .pack p {font-size: 14px; color: #6b7a93; text-align: right; position: absolute; right:0; bottom: -25px;}
+.viewPage .review .clear button {float: right; width: 11%; height: 95px; background: #36527e; color: #fff; font-size: 18px; text-align: center;}
+.viewPage .review .clear button:focus {outline: #000 dotted 1px;}
+.viewPage .review table, .boardView .comments table {border-top: 2px solid #000; margin-top: 30px; color: #000; font-size: 18px;}
+.viewPage .review table td, .boardView .comments table td {border: 1px solid #c7c7c7; text-align: center; padding: 15px 0;}
+.viewPage .review table td:first-child,
+.boardView .comments table td:first-child {width: 75%; border-left-style: none; text-align: left; padding: 0 15px;}
+.viewPage .review table td:first-child {width: 60%;}
+.viewPage .review table td:first-child p,
+.boardView .comments table td:first-child p {position: relative; display: inline-block;}
+.viewPage .review table td:first-child p button,
+.boardWrite td .clear p button {position: absolute; right: -30px; top: 5px; width: 20px; height: 20px; background: #fff url(/page/common/images/ico_comment_del.png) no-repeat center center; border: 1px solid #c7c7c7; display: none;}
+.boardView .comments table td:first-child button {margin-left: 5px; width: 20px; height: 20px; background: #fff url(/page/common/images/ico_comment_del.png) no-repeat center center; border: 1px solid #c7c7c7; display: none;}
+.viewPage .review table td:first-child:hover p button,
+.boardWrite td .clear:hover p button {display: block;}
+.boardView .comments table td:first-child:hover button {display: inline-block;}
+.viewPage .review table td:last-child , .boardView .comments table td:last-child {border-right-style: none;}
+.review + .btnList {margin-top: 0;}
+.information + .btnList {margin: 40px 0;}
+
+header.headerSearch p.result {float: left; position: relative; top: -10px;}
+header.headerSearch form {float: right; font-size: 20px;}
+header.headerSearch form select {float: left; width: 120px; height: 50px; margin-right: 5px; font-size: 20px; padding: 5px; box-sizing: border-box; border: 1px solid #cfcfcf; -moz-appearance: none; -webkit-appearance: none; appearance: none; background: #fff url(/page/common/images/ico_select.png) no-repeat right top; background-size: auto 50px; border-right-style: none;}
+/* header.headerSearch form select.searchGroup {width: 120px;} */
+header.headerSearch form .binder {float: right;}
+header.headerSearch form .binder input {float: left; height: 50px; box-sizing: border-box; border: 1px solid #cfcfcf; background: #fff; width: inherit;}
+header.headerSearch form .binder label {float: left; height: 50px; line-height: 50px; margin-right: 3px;}
+/* header.headerSearch form .binder a {float: left; background: #31343d; text-align: center; color: #fff; padding: 0 10px; box-sizing: border-box; height: 50px; line-height: 50px;} */
+header.headerSearch form .binder a {float: left; height: 50px; line-height: 50px; margin-right: 3px; color: white;}
+.articleList .links {background: url(/page/common/images/bg_article1.jpg) no-repeat left top; padding: 20px 15px 10px; box-sizing: border-box; width: 234px; height: 264px; float: left; margin-right: 22px;}
+.articleList .links a {color: #fff;}
+.articleList .links h1 {font-size: 24px; position: relative; padding-bottom: 20px; margin-bottom: 20px;}
+.articleList .links h1 span {position: absolute; left: 0; bottom: 0; width: 20px; height: 1px; background: #fff;}
+.articleList .links ul {font-size: 18px; line-height: 30px; color: #fff;}
+.headLine {position: relative; font-size: 20px; width: 489px; height: 264px; float: left;}
+.headLine a {color: #fff; font-size: 16px; display: block;}
+.headLine a img {width: 100%; height: auto;}
+.headLine .binder {position: absolute; left: 0; bottom: 0; background: url(/page/common/images/bg_black_transparent.png) repeat left top; padding: 12px 10px; width: 100%; box-sizing: border-box;}
+.headLine h1 {font-size: 20px; margin-bottom: 8px;}
+.headLine time {color: #dadada; font-size: 16px;}
+
+.articleList article{width: 234px; height: 264px; float: left; margin: 20px 21px 0 0; font-size: 20px; box-sizing: border-box;}
+.articleList article:nth-of-type(1),
+.articleList article.articleListLarge {position: relative; font-size: 20px; width: 489px; height: 264px; margin: 0 21px 0 0;}
+.articleList article:nth-of-type(1) a,
+.articleList article.articleListLarge a {color: #fff; font-size: 16px;}
+.articleList article:nth-of-type(1) div,
+.articleList article.articleListLarge div {position: absolute; left: 0; bottom: 0; background: url(/page/common/images/bg_black_transparent.png) repeat left top; padding: 12px 10px; width: 100%; box-sizing: border-box;}
+.articleList article:nth-of-type(1) h1,
+.articleList article.articleListLarge h1 {font-size: 20px; margin-bottom: 8px; background: none; color: #fff; padding-left: 0;}
+.articleList article:nth-of-type(2) {float: left; margin: 0;}
+.articleList article:nth-of-type(6) {margin-right: 0;}
+.articleList article:nth-of-type(n+6):nth-of-type(4n+2) {margin-right: 0;}
+.articleList2 article:nth-of-type(n+6):nth-of-type(4n+2) {margin: 20px 21px 0 0;}
+.articleList2 article:nth-of-type(n+6):nth-of-type(4n+3) {margin-right: 0;}
+.articleList2 article:nth-of-type(2) {float: left; margin: 0 21px 0 0;}
+.articleList2 article:nth-of-type(3) {float: left; margin: 0;}
+.articleList2 article:nth-of-type(4n+3) {margin-right: 0;}
+.articleList article.articleListLarge {float: left; margin: 0 21px 21px 0;}
+.articleList article.articleListLarge:nth-of-type(2n) {margin-right: 0;}
+.articleList article a {color: #222;}
+.articleList article h1 {padding-left: 40px; margin: 10px 0 5px; height: 29px; box-sizing: border-box; padding-top: 3px; font-size: 19px; font-weight: normal;}
+.articleList article p {line-height: 30px; font-weight: 300;}
+.articleList article .recommend {background: url(/page/common/images/ico_recommend.png) no-repeat left center;}
+.articleList article .theme {background: url(/page/common/images/ico_theme.png) no-repeat left center;}
+.articleList article .story {background: url(/page/common/images/ico_story.png) no-repeat left center;}
+.articleList article .olympic {background: url(/page/common/images/ico_olympic.png) no-repeat left center;}
+.articleList article .rainbow {background: url(/page/common/images/ico_rainbowcity.png) no-repeat left center;}
+.headerStyle1 {text-align: center; height: 468px; box-sizing: border-box; padding: 105px 0;}
+.headerStyle1 h1 {background: url(/page/common/images/bg_article_view.png) no-repeat top center;width: 486px;height: 257px;margin: 0 auto;box-sizing: border-box;padding: 70px 0 0 0;color: #fff;font-size: 30px;letter-spacing: -2px;}
+.headerStyle1 .mjo {display: block;font-size: 23px;font-weight: 300;margin-bottom: 20px;}
+.headerStyle1 .mjo span {width: 60px; display: block; margin: 0 auto; height: 1px; background: #fff; margin-top: 20px;}
+.articleView1 .tourInfo, .articleView2 .tourInfo, .articleView3 .tourInfo {padding: 50px 0; text-align: center; color: #222; font-size: 20px;}
+.articleView1 .tourInfo p, .articleView2 .tourInfo p, .articleView3 .tourInfo p {line-height: 40px;}
+.imgStyle1 {margin: 20px 0; display: inline-block; position: relative;}
+.imgStyle1 p, .imgStyle2 p, .imgStyle3 p, .imgStyle4 p {position: absolute; left: 0; bottom: 5px; background: url(/page/common/images/bg_black_transparent.png) repeat left top; padding: 10px 0 10px 10px; width: 100%; text-align: left; color: #fff; font-size: 16px; box-sizing: border-box;}
+.imgStyle2 li, .imgStyle4 > div {display: inline-block; position: relative;}
+.imgStyle2 li:first-child {margin-bottom: 5px;}
+.imgStyle2, .imgStyle3 {text-align: center; margin: 20px 0;}
+.imgStyle4 {text-align: center; margin: 20px 0; background: #f2f2f2;}
+.imgStyle3 ul {display: inline-block;}
+.imgStyle3 li {float: left; position: relative; margin-right: 15px;}
+.imgStyle3 li:last-child {margin:0;}
+.articleView2 .tourInfo .course h2 {float: left; background: url('/page/common/images/ico_course.png') no-repeat left center; padding-left: 40px; width: 130px; color: #222; font-size: 20px; line-height: 30px; margin-bottom: 15px; text-align: left; box-sizing: border-box;}
+.articleView2 .tourInfo .articleView2 .tourInfo .location p {float: left; font-size: 20px; text-align: left; line-height: 30px;}
+.articleView2 .tourInfo .tmap {background: url(/page/common/images/tmap_img.png) no-repeat top center; width: 132px; height: 42px; text-align: left;}
+.course p{float: none; font-size: 17px; text-align: left; line-height: 30px; overflow:hidden;}
+.articleView2 .tourInfo .location h2 {float: left; background: url('/page/common/images/ico_location.png') no-repeat left center; padding-left: 40px; width: 130px; color: #222; font-size: 20px; line-height: 30px; text-align: left; box-sizing: border-box; margin-bottom: 20px;}
+.articleView1 .tourInfo .subTitle, .articleView2 .tourInfo .subTitle, .articleView3 .tourInfo .subTitle {color: #000; font-size: 20px; padding: 10px 0; border-top: 2px solid #000; border-bottom: 1px solid #000; width: 300px; margin: 45px auto 35px auto;}
+.articleView2 .tourInfo p {text-align: left;}
+.articleView3 .tourInfo > p {text-align: left; margin: 20px 0;}
+.article-copyright {background: #f1f3f6; border: 1px solid #93a9d1; padding: 20px; text-align: left; margin-top: 50px; position: relative;}
+.article-copyright:before {content: ""; display: block; position: absolute; left: -1px; top: -1px; width: 20px; height: 20px; border: 2px solid #2a4d8e; border-right-style: none; border-bottom-style: none;}
+.article-copyright:after {content: ""; display: block; position: absolute; right: -1px; bottom: -1px; width: 20px; height: 20px; border: 2px solid #2a4d8e; border-left-style: none; border-top-style: none;}
+.article-copyright div {width: 100%; padding: 0 1%;}
+.article-copyright div p {float: left; padding-left: 30px; background: url(/page/common/images/ico_copy1.png) no-repeat left center; margin-right: 15px;}
+.article-copyright div > p:nth-child(2) {background: url(/page/common/images/ico_copy2.png) no-repeat left center;}
+.article-copyright div > p:nth-child(3) {background: url(/page/common/images/ico_copy3.png) no-repeat left center;}
+.article-copyright div > p:last-child {margin-right: 0;}
+.article-copyright > p {margin-top: 1%;  padding-top: 1%; border-top: 1px dashed #cbcfd5; line-height: 30px !important;}
+.popular {background: url(/page/common/images/bg_pattern2.jpg) repeat left top; padding: 10px; box-sizing: border-box;}
+.popular ul {background: #fff; padding: 15px 10px; text-align: left; font-size: 20px;}
+.popular li {float: left; width: 25%; line-height: 40px;}
+.subInfo {text-align: left; line-height: 40px; border: 1px solid #dbdbdb; padding: 20px; margin-bottom: 20px;}
+.subInfo h3 {font-weight: bold; float: left; width: 10%; font-size: 20px;}
+.subInfo p {width: 88%; float: left;}
+.subInfo a {color: #238aea;}
+.subTitle2 {font-size: 20px; position: relative; padding-top: 5px; text-align: left;}
+.subTitle2 span {position: absolute; left: 0; top: 0; width: 12px; height: 1px; background: #000;}
+.galleryList > .clear > div, .galleryList > .clear > article {float: left; margin-right: 22px;}
+.galleryList > .clear > div:nth-of-type(2n) {float: right; margin: 20px 0 0 0;}
+.galleryList3 > .clear > div, .galleryList3 > .clear > article {float: left; width: 49%; margin: 2% 0 0 0;}
+.galleryList3 > .clear > div:nth-child(2n), .galleryList3 > .clear > article:nth-child(2n) {float: right;}
+.galleryList3 > .clear > div:nth-child(-n+2), .galleryList3 > .clear > article:nth-child(-n+2) {margin-top: 0;}
+.galleryList3 > .clear > .headLine, .galleryList3 > .clear > .articleListLarge {height: auto; position: relative;}
+.galleryList3 > .clear > .headLine .binder {bottom: 5px;}
+.galleryList3 > .clear > div img, .galleryList3 > .clear > article a img {width: 100%; height: auto; vertical-align: middle;}
+.galleryList3 .articleListLarge > div {position: absolute; left: 0; bottom: 0; padding: 12px 10px; width: 100%; box-sizing: border-box; z-index: 2; font-size: 18px;}
+.galleryList3 .articleListLarge > div:after {content: ""; display: block; position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: #000; opacity: 0.7; z-index: -1;}
+.galleryList3 .articleListLarge > div a {color: #fff;}
+.galleryList article, .galleryList2 article {float: left; width: 234px; height: 264px; margin: 20px 21px 0 0;}
+.galleryList2 article:nth-of-type(4n) {margin-right: 0;}
+.galleryList2 article:nth-of-type(n+5) {margin-top: 20px;}
+.galleryList article:nth-of-type(1), .galleryList article:nth-of-type(9n) {margin-top: 0;}
+.galleryList article:nth-of-type(2), .galleryList article:nth-of-type(10n) {margin: 0;}
+.galleryList article:nth-of-type(4n) {margin-right: 0;}
+.galleryList article:nth-of-type(4) {margin: 20px 21px 0 0;}
+.galleryList article h1, .galleryList2 article h1 {font-size: 20px; font-weight: normal; line-height: 25px; margin: 15px 0 5px 0;}
+.galleryList2 article img {width: 100%; height: auto;}
+.galleryList article a, .galleryList2 article a {color: #222;}
+.galleryList article time, .galleryList2 article time {color: #666; font-size: 16px;}
+.boardViewHeader {font-size: 16px;margin-top: 15px;}
+.boardViewHeader h1 {font-size: 18px;color: #fff;background: #434343;padding: 10px 15px;}
+.boardViewHeader dl {color: #000; padding: 10px 0; border-bottom: 1px solid #dadada;}
+.boardViewHeader dt {float: left; font-weight: bold; padding-left: 15px;}
+.boardViewHeader dt span {font-weight: normal; margin: 0 5px;}
+.boardViewHeader dd {float: left;}
+.boardViewHeader dt:nth-of-type(2), .boardViewHeader dt:nth-of-type(3) {border-left: 1px solid #000; margin-left: 10px; padding-left: 10px;} 
+section.carousel {padding: 40px 0; border-bottom: 1px solid #dadada;}
+section.carousel .binder {position: relative;}
+section.carousel .carousel {margin: 0 auto; text-align: center;}
+section.carousel .carousel img {display: inline;width:100%;max-width:1000px;}
+section.carousel .nav {position: absolute; width: 122px; top: 15%; right: 100px;}
+section.carousel .prev {float: left; width: 58px; height:58px; background: #cdcecd url(/page/common/images/ico_carousel_prev.png) no-repeat center center;}
+section.carousel .next {float: right; width: 58px; height:58px; background: #cdcecd url(/page/common/images/ico_carousel_next.png) no-repeat center center;}
+section.carousel .pager {position: absolute; top: 27%; right: 100px; width: 122px;margin:0;padding:0;}
+section.carousel .pager .slick-current {position: relative;}
+section.carousel .pager .slick-current:after {content: "";display: block;position: absolute;left: 0;top: 0;width:100%;height:100%;border: 4px solid #fff;}
+.subTitle3 {position: relative;margin: 30px 0 20px;padding: 5px 0;font-size: 18px;}
+.subTitle3 span {width:18px; height: 1px; background: #000; position: absolute; left: 0; top: 0;}
+.subTitle3 span:last-child {top: 33px;}
+.boardContent .boardContent {font-size: 16px;line-height: 40px;padding-bottom: 20px;}
+.boardContent .boardContent ul{font-size:16px !important}
+.boardContent .boardContent ul span, .boardContent .boardContent ul p{font-size:16px !important}
+.boardContent dl {font-size: 20px; border-top: 1px solid #dadada; border-bottom: 1px solid #dadada; color: #222;}
+.boardContent dt {font-weight: bold; float: left; text-align: center; width: 13%; box-sizing: border-box; border-right: 1px solid #dadada; padding: 15px 0; margin-right: 2%;}
+.boardContent dd {font-weight: normal; width: 85%; box-sizing: border-box; padding: 15px 0;}
+.boardContent .attach a:hover {text-decoration: underline;}
+.btnList2 {margin: 20px 0; font-size: 20px;}
+.btnList2 a {float: right;text-align: center;width: 115px;border: 2px solid #000;padding: 7px 0;box-sizing: border-box;margin-right: 0px;font-size: 16px;}
+.prevNextWrap {border-top: 3px solid #000; font-size: 20px;}
+.prevNextWrap li:last-child {border-top: 1px solid #dadada; border-bottom: 1px solid #dadada;}
+.prevNextWrap li div {background: #f5f5f5;text-align: center;color: #666;float: left;margin-right: 3%;width: 15%;box-sizing: border-box;padding: 10px 0 7px;font-size:16px;color:#222;}
+.prevNextWrap li div:last-child {background: #fff;text-align: left;margin-right: 0;box-sizing: border-box;padding: 10px 0 7px;width: 82%;color: #a3a3a3;}
+.prevNextWrap li div a {color: #222;font-size: 16px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;max-width: 800px;display: inline-block;}
+.prList header > div.clear > div, .prApply header > div.clear > div {float: left;width: 72%;background: url(/page/common/images/bg_pattern2.jpg) repeat left top;padding: 10px;color: #222;font-size: 16px;box-sizing: border-box;}
+.prList header > div.clear > div > div, .prApply header > div.clear > div > div {background: #fff; box-sizing: border-box; border: 1px solid #fff; padding: 20px;}
+.headerBullet {background: url(/page/common/images/ico_pr_bullet.png) no-repeat left center;padding-left: 30px;margin-bottom: 20px;}
+.prList header{margin-top:15px;}
+.prList header > div.clear {height: 350px;}
+.prList header > div.clear > div > div p, .prApply header > div.clear > div > div p {/*background: url(/page/common/images/ico_pr.png) no-repeat left top; padding-left: 110px;*/ line-height: 30px;}
+.prList header > div.clear > div > div p:last-child, .prApply header > div.clear > div > div p:last-child {background: none; color: #238aea; padding: 0; margin-top: 35px;}
+.prList header > div.clear > div > div p:nth-of-type(2) {background: none; color: #238aea; padding: 0; margin-top: 35px;}
+.prList header > div.clear > div > div p:nth-of-type(3) {color: #d70c0c;}
+.prList header > div.clear > div:last-child, .prApply header > div.clear > div:last-child {float: right; width: 26%; height: 100%;}
+.prList header > div.clear > div:last-child div, .prApply header > div.clear > div:last-child div {background: #fff; padding: 20px; box-sizing: border-box; height: 100%;}
+.prList header > div.clear > div:last-child div p, .prApply header > div.clear > div:last-child div p  {background: none; padding: 0;}
+.prList header > div.clear > div:last-child div a, .prApply header > div.clear > div:last-child div a {width: 100%; text-align: center; color: #222; font-size: 16px; background: #f5f5f5; border: 2px solid #000; box-sizing: border-box; padding: 10px; display: block; margin-top: 10px;word-break: keep-all;}
+.checkList {margin: 30px 0;}
+.checkList li {display:inline-block !important;box-sizing: border-box; margin: 50px 16px 0 0;width:calc((100% - 63px) / 4);vertical-align:top;}
+.checkList li:nth-child(4n){margin-right:0;}
+
+.checkList li > div {position: relative; /*height: 330px;*/}
+.checkList li > div img{width:100%;}
+.checkList li > div div {position: absolute; left: 0; top: 0; background: url(/page/common/images/bg_black_transparent.png) repeat left top; width: 100%; height: 100% !important; box-sizing: border-box; text-align: center; display: none;}
+.checkList li > div:hover div {display: block; box-sizing: border-box;}
+.checkList li > div div input {width:0; opacity:0;}
+.checkList li > div div label {background: url(/page/common/images/ico_circle.png) no-repeat top center; color: #fff; font-size: 24px; cursor: pointer; font-weight: 400; width: 136px; height: 136px; position: absolute; left: 50%; top: 50%; margin: -68px 0 0 -68px; line-height: 136px;}
+.checkList li > div div label span {display: block; font-size: 16px; font-weight: 200; margin-top: -110px;}
+.checkList li h3 {padding: 10px 0; line-height: 30px; font-weight: normal; height: auto; box-sizing: border-box; overflow: hidden; text-align: center;font-size:18px;text-overflow:ellipsis;white-space:nowrap;}
+.checkList li h3 span {color: #222; font-size: 18px;}
+.checkList li > .clear {width: 100%; text-align: center; font-size: 16px; height: auto;}
+.checkList li > .clear a {float: left; width: 49.5%; box-sizing: border-box; background: #ebebeb; padding: 7px 0;}
+.checkList li > .clear a:last-child {float: right; width: 49.5%;}
+.btnSubmit {background: #d70c0c url(/page/common/images/ico_checked.jpg) no-repeat 53px center; font-size: 18px; color: #fff; width: 330px; text-align: center; margin: 0 auto; box-sizing: border-box; padding: 10px 0 10px 62px; display: block; margin-top: 45px;}
+.btnSubmit:focus {outline: 2px dashed #000 !important;}
+.prView > section {background: url(/page/common/images/bg_pattern2.jpg) repeat left top; padding: 10px; color: #222; font-size: 18px; margin-top: 20px;}
+.prView > section > div {background: #fff; padding: 20px;}
+.prView > section > div > div {float: left;}
+.prView > section:nth-of-type(1) a {float: right; border: 2px solid #000; background: #f5f5f5; padding: 10px 53px; text-align: center; width: 200px; font-size: 20px;}
+.prView > section:nth-of-type(2) form, .prView > section:nth-of-type(3) form {float: right; margin-top: 30px;}
+.prView > section:nth-of-type(2) form select, .prView > section:nth-of-type(3) form select {float: left; width: 166px; height: 49px; border: 1px solid #cfcfcf; margin-right: 10px; font-size: 20px; padding: 5px; box-sizing: border-box; -moz-appearance: none; -webkit-appearance: none; appearance: none; background: #fff url(/page/common/images/ico_select.png) no-repeat right top; background-size: auto 50px; border-right-style: none;}
+.prView > section:nth-of-type(2) form button, .prView > section:nth-of-type(3) form button {float: right; width: 150px; background: #31343d; text-align: center; font-size: 20px; color: #fff; padding: 10px 0;}
+.prView > section:nth-of-type(2) form button:focus, .prView > section:nth-of-type(3) form button:focus {outline: #ccc dotted 2px;}
+#privacy {padding: 20px;}
+#privacy article {overflow-y: auto;background: #ebebeb;color: #222;font-size: 15px;padding: 10px;height: 320px;margin-bottom: 10px;}
+#privacy p {margin: 30px 0; font-size: 20px;}
+#privacy .clear {width: 30%; text-align: center; font-size: 20px; margin: 0 auto;clear: both;margin-top:10px;}
+#privacy input {float: left;color: #fff;background: #000;outline: none;border-style: none;width: 49%;font-size: 16px;height: 42px;}
+#privacy input[type="checkbox"]{width: 15px !important;height: 15px !important;margin-top: 6px;}
+#privacy input + label{font-size:14px;margin-left:5px;display:inline;}
+
+@media (max-width:640px) {
+    .modal{width:90%}
+    #privacy input + label{font-size:13px;}
+}
+
+#privacy button {float: right;color: #000;background: #fff;border: 2px solid #000;width: 49%;font-size: 16px;height: 42px;}
+#privacy input:focus, #privacy button:focus {outline: 2px solid #a6c7ff;}
+.prApply table {border-top: 2px solid #000;margin: 40px 0 10px;font-size: 16px;width: 100%;}
+.prApply table caption{font-size:0;opacity:0;height:0;width:0;overflow:hidden;}
+.prApply th {border: 1px solid #dadada;border-left-style: none;background: #f5f5f5;color: #222;width: 20%;padding: 10px 0;font-weight: 500;}
+.prApply td {border: 1px solid #dadada; border-right-style: none; padding: 10px 0 10px 10px;}
+.prApply input {background: #f5f5f5; color: #222; border: 1px solid #eaeaea; padding: 5px; height: 32px; box-sizing: border-box;}
+.prApply td .phone {text-align: left;}
+.prApply td .phone input[type=text] {width: 15%;}
+.prApply .phone span {width: 2%; display: inline-block; text-align: center;}
+.prApply tr:nth-of-type(3) button {color: #fff;background: #434343;text-align: center;width: 110px;height: 32px;line-height: 29px;font-size: 16px;top: 5px;margin-right: 5px;vertical-align: -1px;}
+.prApply tr:nth-of-type(3) input {background: #f5f5f5; color: #222; border: 1px solid #eaeaea; width: 112px; padding: 5px; height: 32px; box-sizing: border-box;}
+.prApply tr:nth-of-type(3) input:nth-of-type(2), .prApply tr:nth-of-type(3) input:nth-of-type(3) {display: block; margin-top: 5px; width: 588px;}
+.prApply tr div {float: left; margin-right: 40px; text-align: center;}
+.prApply tr div h3 {font-weight: 300;margin-top: 5px;font-size: 14px;}
+.prApply tr div:last-child {margin-right: 0;}
+/*.prApply form .clear input[type=checkbox] {width: 0; opacity: 0;}*/
+.prApply form .clear input[type=checkbox] {background:none;position: relative;top: 10px;}
+/*.prApply form .clear label {font-size: 20px; background: url(/page/common/images/ico_check.png) no-repeat; background-position: 0 4px; cursor: pointer; padding-left: 35px;}*/
+.prApply form .clear label {font-size: 16px;background-position: 0 4px;cursor: pointer;padding-left: 8px;}
+.prApply form .clear input:checked + label {background-position: 0 -31px;}
+.prApply textarea {background: #f5f5f5;color: #222;border: 1px solid #eaeaea;padding: 5px;box-sizing: border-box;width: 100%;}
+.prApply .btns {width: 30%;margin: 30px auto 0;border-style: none !important;}
+.prApply .btns input {border-style: none;text-align: center;width: 49%;color: #fff;background: #000;font-size: 16px;margin: 0;line-height: 33px;box-sizing: border-box;height: 42px;}
+.prApply .btns a {float: right;background: #fff;text-align: center;color: #000;border: 1px solid #000;width: 49%;box-sizing: border-box;height: 42px;line-height: 42px;font-size: 16px;}
+table.list {margin-top: 10px;font-size: 16px;min-height: auto;line-height: 1.4;width:100%;}
+table.list th {border-top: 3px solid #000;background: #fff;padding: 15px 0;background: #f7f7f7;}
+table.list td {border-top: 1px solid #dadada; padding: 10px 0; text-align: center; background: #fff;}
+table.list td.notice {color: #238aea; font-weight: bold;}
+table.list td.title a {text-overflow: ellipsis;overflow: hidden;white-space: nowrap;display: inline-block;max-width: 610px;vertical-align: middle;}
+table.list td:first-child {padding: 15px 2%;}
+table.list td:nth-of-type(2) {text-align: left;}
+table.list tr:last-child td {border-bottom: 1px solid #dadada;}
+table.list .num {width: 10%;}
+table.list .title {width: 55%;}
+table.list .writer {width: 12%;}
+table.list .write-date {width: 12%;}
+table.list .attach {width: 5%;}
+table.list .views {width: 6%;}
+table.list .link {background: url(/page/common/images/ico_newwindow.png) no-repeat center center; width: 12px; height: 10px; margin: 0 4px; display: inline-block; position: relative; top: -5px;}
+table.list .new {background: url(/page/common/images/ico_new.png) no-repeat center center; width: 19px; height: 19px; margin: 0 4px; display: inline-block; position: relative; top: -5px;}
+table.list .lock {background: url(/page/common/images/ico_lock.png) no-repeat center center; width: 13px; height: 19px; margin: 0 4px; display: inline-block; position: relative; top: -5px;}
+table.list .comment {background: url(/page/common/images/ico_comment.png) no-repeat left center; width: 30px; padding-left: 25px; height: 18px; margin: 0 4px; color: #797a7c; display: inline-block; font-size: 16px;}
+table.list .attach {position: relative;}
+table.list .attach > button {background: url(/page/common/images/ico_folder.gif) no-repeat left center; width: 16px; height: 16px; display: inline-block; text-indent: -9999px;}
+table.list .attach > button:focus {outline: #ccc dotted 1px;}
+table.list .attach div {background: #f5f5f5; padding: 12px; font-size: 18px; text-align: left; box-shadow: 5px 5px 8px 0px rgba(209,209,209,0.75); position: absolute; left: -50px; top: 45px; width: 170px; z-index: 150; display: none;}
+table.list .attach li {line-height: 25px;}
+table.list .attach li a:hover {text-decoration: underline;}
+table.list .attach div button {background: url(/page/common/images/ico_attach_close.png) no-repeat top center; width: 20px; height: 19px; position: absolute; right: 10px; top: 10px; text-indent: -9999px;}
+table.list .attach div button:focus {outline: #ccc dotted 1px;}
+.pageNav .prev, .pageNav .next{display:inline-block;margin-right:10px;}
+table.list caption{font-size:0px;}
+.terms-agree table {margin-top: 40px; font-size: 20px;}
+.terms-agree th {border-top: 3px solid #000; background: #f5f5f5; padding: 15px 0;}
+.terms-agree td {border-top: 1px solid #dadada; padding: 10px 0; text-align: center;}
+.terms-agree tr:last-child td {border-bottom: 1px solid #dadada;}
+
+
+.boardBtn {text-align: right; font-size: 20px;}
+.boardBtn a {text-align: center;padding: 5px 0;width: 120px;border: 2px solid #000;display: inline-block;font-size: 16px;}
+.boardView header h2 {background: #434343; font-size: 20px; color: #fff; padding: 15px 15px 15px 20px; word-break:break-all;}
+.boardView header dl {padding: 15px 15px 15px 20px; font-size: 20px; color: #222;}
+.boardView header dt {font-weight: bold; float: left; margin-right: 3px;}
+.boardView header dt:nth-of-type(2), .boardView header dt:nth-of-type(3) {padding-left: 10px; border-left: 1px solid #000;}
+.boardView header dd {float: left; margin-right: 10px;}
+.boardView article {border-top: 1px solid #dadada; border-bottom: 1px solid #dadada; padding: 15px 20px; font-size: 20px; line-height: 26px; background:#fff; }
+.boardView .attach {border-bottom: 1px solid #dadada; font-size: 20px;}
+.boardView .attach h2 {float: left; font-size: 20px; border-right: 1px solid #dadada; padding: 15px 20px;}
+.boardView .attach p {float: left; font-size: 20px; padding: 15px 20px;}
+.boardView .attach p a:hover {text-decoration: underline;}
+.boardView .attach a {display:inline-block;}
+.boardView .boardMenu {padding: 15px 0;}
+.boardView .boardMenu ul {float: right; text-align: center; font-size: 20px;}
+.boardView .boardMenu li{float: left; margin-right: 10px;}
+.boardView .boardMenu li:last-child {margin-right: 0;}
+.boardView .boardMenu li a {display: inline-block; padding: 15px 0; width: 120px; border: 2px solid #000;}
+.boardView .boardMenu li:last-child a {color: #fff; width: 120px; border: 2px solid #000; background: #000;}
+.boardView .prevNextWrap li div {padding: 15px 0;}
+.boardView .comment {background: #cfd5e3; padding: 20px; margin-top: 30px;}
+.boardView .comment h2 {font-size: 20px; margin-bottom: 20px;}
+
+.boardView .comment textarea {resize: none; padding: 10px; float: left; width: 86%; white-space: normal;}
+.boardView .comment textarea {background-color:white;}
+.boardView .comment textarea:disabled {background-color:#ebebe4;}
+
+.boardView .comment input {width: 12%; float: right; background: #36527e; color: #fff; border-style: none; outline: none; height: 117px; vertical-align: middle; font-size: 20px;}
+.boardView .comment p {font-size: 14px; color: #6b7a93; margin-top: 10px; text-align: right; margin-right: 14%;}
+.boardView .reply {margin-top: 40px;}
+.boardWrite table {font-size: 20px; color: #222; border-top: 3px solid #000;}
+.boardWrite th {background: #f5f5f5; padding: 15px 0; width: 20%; border: 1px solid #dadada; border-left-style: none;}
+.boardWrite th span {font-weight: normal; font-size: 20px;}
+.boardWrite td {padding: 10px;border: 1px solid #dadada; border-right-style: none; background: #fff;}
+.boardWrite td textarea {white-space: pre; font-family: 'Noto Sans KR', sans-serif; width: 100%; border: 1px solid #ccc;}
+.boardWrite th h2 {font-size: 20px;}
+.boardWrite td input[type=text] {border: 1px solid #eaeaea; height: 30px; width: 80%;}
+.boardWrite td input[type=radio] {margin-right: 5px;}
+.boardWrite td > .clear  {float: left; margin-right: 15px; width: 100%; margin: 5px 0;}
+.boardWrite td .clear input {width: 0; opacity: 0;}
+.boardWrite td .clear label {float: left; background: #434343; color: #fff; width: 116px; text-align: center; cursor: pointer; margin-right: 20px; font-weight: 200;}
+.boardWrite td .clear p {float: left; position: relative;}
+.boardWrite .btns {width: 30%; margin: 25px auto 0; text-align: center; font-size: 20px;}
+.boardWrite .btns input {width: 48%; background: #000; color: #fff; float: left; border-style: none; font-size: 20px; text-align: center; height: 47px; box-sizing: border-box; cursor: pointer; line-height: 47px;}
+.boardWrite .btns a {width: 48%; background: #fff; color: #000; float: right; border: 2px solid #000; height: 47px; box-sizing: border-box; line-height: 47px;}
+.researchView header, .researchWrite header {background: url(/page/common/images/bg_pattern2.jpg) repeat left top; padding: 10px; font-size: 18px;}
+.researchView header .wrap, .researchWrite header .wrap {background: #fff; padding: 20px; /*background: #f5f5f5 url(/page/common/images/ico_research.png) no-repeat 20px 65px;*/ border: 2px solid #fff;}
+/* .researchView header .wrap .binder, .researchWrite header .wrap .binder {margin-left: 165px;} */
+.researchView header h2, .researchWrite header h2 {font-size: 24px;}
+.researchView header h3, .researchWrite header h3 {float: left; font-weight: normal; line-height: 30px; background: url(/page/common/images/ico_research_arrow.png) no-repeat left center; padding-left: 12px; margin-right: 5px;}
+.researchView header p, .researchWrite header p {float: left; line-height: 30px;}
+.researchView header h3.weirdo, .researchWrite header h3.weirdo {float: none;}
+.researchView header p.weirdo, .researchWrite header p.weirdo {float: none; padding-left: 10px;}
+.researchView .btns, .researchWrite .btns {width: 30%; margin: 25px auto 0; text-align: center; font-size: 20px;}
+.researchView .btns a, .researchWrite .btns input {width: 48%; background: #000; color: #fff; float: left; padding: 10px 0; height: 47px; box-sizing: border-box; font-size: 20px; outline: none; border-style: none;}
+.researchView .btns a:last-child, .researchWrite .btns a.last {background: #fff; color: #000; border: 2px solid #000; float: right; width: 48%;  padding: 10px 0; height: 47px; box-sizing: border-box;}
+.research {margin: 25px 0; font-size: 20px;}
+.research h4 {padding-top: 15px;}
+.research h4:first-child {border-top: 1px dashed #000;}
+.research .dash {margin-left: 35px; padding-top: 0;}
+.research h4 span, .research li.pop h6 span {background: #8b8f98; border-radius: 3px; text-align: center; width: 40px; display: inline-block; margin-right: 12px; color: #fff; font-weight: normal;}
+.research ul {margin: 20px 0; color: #222; border-bottom: 1px dashed #000; padding-bottom: 15px; position: relative;}
+.research li.clear, .research li.pop li {background: url(/page/common/images/ico_research_arrow.png) no-repeat left center; padding-left: 12px; margin: 10px 0; height: 28px;}
+.research li.pop li {display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;}
+.researchWrite .research li.clear {background: none; padding-left: 0; height: auto;}
+.research li:last-child {margin-bottom: 0;}
+.research li.pop {background: #f4f4f4; border: 10px solid #c9c9c9; padding: 20px 15px; width: 80%; position: absolute; left: 10%; bottom: -80%; display: none; list-style: none; z-index: 100;}
+.research li.pop h5 {background: url(/page/common/images/ico_research2.png) no-repeat left center; font-size: 24px; padding-left: 50px; line-height: 35px;}
+.research li.pop h6 {font-size: 20px; padding: 20px 0; border-bottom: 3px solid #000; font-weight: normal;}
+.research li.pop ul {border-bottom-style: none; margin-bottom: 0; padding-bottom: 0;}
+.research li.pop .close, .fancybox-overlay .pop .close {background: #000 url(/page/common/images/ico_pop_close2.png) no-repeat center center; padding: 5px; width: 35px; height: 35px; position: absolute; right: 20px; top: 15px;}
+.research li.clear p {float: left; width: 46%;}
+.research li.clear p button {background: #f5f5f5; border-radius: 3px; border: 1px solid #bbbbbb; font-size: 18px; margin-left: 5px;}
+.research li.clear span:nth-of-type(1) {float: left; width: 10%; display: block;}
+.research li.clear span:nth-of-type(2) {float: left; width: 4%; display: block; margin-right: 2%;}
+.research li.clear div.percent {float: left; width: 38%; height: 100%;}
+.research li.clear div.percent span {display: block; background: url(/page/common/images/bg_pattern3.jpg) repeat left top; height: 100%;}
+.research li.clear div.select.text {margin-top: 15px;}
+.research li.clear div.choice.text {float: left; width: 75%;}
+.research li.clear input[type=radio] {width: 0; opacity: 0;}
+.research li.clear input[type=radio] + label {float: left; background: url(/page/common/images/bg_radio.png) no-repeat; background-position: 0 5px; padding-left: 30px; margin-right: 10px; cursor: pointer;}
+.research li.clear input[type=radio]:checked + label { background-position: 0 -25px;}
+.research input[type=checkbox] {width: 0; opacity: 0;}
+.research input[type=checkbox] + label {float: left; font-size: 18px;  padding-left: 30px; background: url(/page/common/images/ico_check.png) no-repeat; background-position: 0 4px; background-size: 20px; cursor: pointer;}
+.research li.clear input[type=checkbox]:checked + label {background-position: 0 -24px;}
+.research li.clear input[type=text] {background: #f5f5f5; border: 1px solid #aeaeae; height: 32px; width: 100%;}
+.research li.clear select {background: #f5f5f5; border: 1px solid #aeaeae; height: 50px; width: 20%; font-size: 20px; box-sizing: border-box; border: 1px solid #cfcfcf; -moz-appearance: none; -webkit-appearance: none; appearance: none; background: #fff url(/page/common/images/ico_select.png) no-repeat right top; background-size: auto 50px; border-right-style: none;}
+.research li.clear textarea {white-space: normal; background: #f5f5f5; border: 1px solid #aeaeae; width: 100%;}
+.research li.clear textarea.weirdo, .research li.clear input[type="text"].weirdo {width: 84%;}
+.research .warn {background: #31343d url(/page/common/images/ico_warn.png) no-repeat 10px center; color: #fff; padding: 5px 0 5px 40px; border-radius: 3px;}
+.research .pick {background: #e8ecf5 url(/page/common/images/ico_research_arrow2.png) no-repeat 10px center; color: #222; padding: 5px 0 5px 25px; font-weight: bold; margin-top: 20px;}
+.register header, .findInfo header, .memberInfo header {background: url(/page/common/images/bg_pattern2.jpg) repeat left top; padding: 10px;}
+.register header div, .findInfo header div, .memberInfo header div {background: #f5f5f5; padding: 20px; border: 2px solid #fff; color: #222;}
+.register header h2, .findInfo header h2, .memberInfo header h2 {font-size: 24px;}
+.register header p, .findInfo header p, .memberInfo header p {font-size: 18px; margin-top: 20px; line-height: 30px;}
+.register header p.red {color: #d70c0c;}
+.register .agree {margin: 40px 0; border: 1px solid #cecece; border-top: 3px solid #000; padding: 40px 20px;background:#fff;}
+.register .headerBullet {background-position: left center;}
+.register .headerBullet span {color: #d70c0c;}
+.register .check h3 span {color: #d70c0c;}
+.register .check input {width: 0; opacity:0;}
+.register .check input[type="checkbox"] + label {background: url(/page/common/images/ico_agree_off.png) no-repeat right center; font-size: 24px; height: 60px; line-height: 60px; font-weight: bold; width: 100%; display: block;}
+ label.org {font-size: 24px; height: 60px; line-height: 60px; font-weight: bold; width: 100%; display: initial;}
+ input[type="checkbox"].org {width: auto; opacity: 1;}
+.agree input[type="checkbox"].org {width: 24px;height: 58px;vertical-align: bottom;}
+.register .check input[type="checkbox"]:checked + label {background: url(/page/common/images/ico_agree_on.png) no-repeat right center;}
+.register .check button.on {background: url(/page/common/images/ico_agree_on.png) no-repeat center center;}
+.register .agree article {background: #ebebeb; padding: 20px; overflow-y: auto; font-size: 20px; color: #222; line-height: 30px; height: 415px; margin-bottom: 20px;}
+.register .help {font-size: 20px; margin-bottom: 20px;}
+
+.terms-agree-input .red {color: #d70c0c;}
+.terms-agree-input .bold {font-weight: bold;}
+
+.agree .btns {width: 30%; margin: 25px auto 0; text-align: center; font-size: 20px;}
+.agree .btns input {width: 48%; background: #000; color: #fff; float: left; border-style: none; font-size: 20px; text-align: center; height: 48px; line-height: 48px; box-sizing: border-box;}
+.agree .btns a {width: 48%; background: #fff; color: #000; padding: 10px 0; float: right; border: 2px solid #000; height: 47px; box-sizing: border-box;}
+.register .info {border: 1px solid #cecece; border-top: 3px solid #000; padding: 30px 20px; font-size: 20px; line-height: 30px;}
+.register .info:nth-last-child(1) {margin-top: 25px;}
+.register .info a:hover {text-decoration: underline;}
+.register .btns {width: 40%; margin: 25px auto; text-align: center; font-size: 20px;}
+.register .btns a {float: left; width: 49%; background: #000; color: #fff; height: 48px; box-sizing: border-box; border: 3px solid #000; height: 48px; line-height: 42px; padding: 0;}
+.register .btns a:last-child {float: right; width: 49%; background: #fff; color: #000; border: 3px solid #000; height: 48px; line-height: 42px; padding: 0;}
+.registerForm table {border-top: 3px solid #000; color: #222;}
+.registerForm th {border: 1px solid #dadada; border-left-style: none; font-size: 20px; background: #f5f5f5; width: 18%;}
+.registerForm td {border: 1px solid #dadada; border-right-style: none; font-size: 18px; padding: 10px;}
+.registerForm td > div  {position: relative;}
+.registerForm td input[type=text], .registerForm td input[type=password], .registerForm td input[type=number] {background: #f5f5f5; border: 1px solid #eaeaea; outline: none; height: 32px; width: 40%; font-size: 18px; padding: 5px 10px; box-sizing: border-box;}
+.registerForm td .phone input[type=text] {width: 15%;}
+.registerForm .phone span {width: 2%; display: inline-block; text-align: center;}
+.registerForm td .help {margin-top: 10px;}
+.registerForm td .passed {position: absolute; left: 42%; top: 3px; color: #238aea;}
+.registerForm td .error {position: absolute; left: 42%; top: 3px; color: #d70c0c; height: auto;}
+.registerForm td .email input[type=text] {width: 30%;}
+.registerForm td .email select {width: 30%; height: 32px; box-sizing: border-box; background: #f5f5f5; border: 1px solid #eaeaea; /* outline: black; */ font-size: 18px;}
+.registerForm td .email input[type=checkbox] {width: 0; opacity: 0; margin:0;}
+.registerForm td .email label {margin-left: 13px; font-size: 18px;  padding-left: 30px; background: url(/page/common/images/ico_check.png) no-repeat; background-position: 0 4px; background-size: 20px; cursor: pointer;}
+.registerForm td .email input[type=checkbox]:checked + label {background-position: 0 -24px; background-size: 20px;}
+.registerForm td .email span {width: 4%; text-align: center; display: inline-block;}
+.registerForm td .address div {width: 26%;}
+.registerForm td .address div input {width: 50%;}
+.registerForm td .address div input[type='button'] {border: 0; width: 45%; background: #434343; text-align: center; color: #fff; height: 32px; display: inline-block; font-size: 18px; margin-right: 2%; position: relative; top: 3px;}
+.registerForm td .address div input[type='button']:focus {outline: #ccc dotted 2px;}
+.registerForm td .address > input {margin: 10px 0; display: block; width: 80%;}
+.registerForm td .address > input:last-child {margin: 0; display: block;}
+.registerForm td button {width: 20%; background: #000; text-align: center; color: #fff; height: 32px; display: inline-block; font-size: 18px; margin-left: 3%; position: relative; top: 2px;}
+.registerForm .btns {width: 30%; margin: 25px auto 0;}
+.registerForm .btns input {width: 48%; text-align: center; box-sizing: border-box; background: #000; border: 2px solid #000; color: #fff; float: left; height: 46px; vertical-align: middle; font-size: 20px;}
+.registerForm .btns a {width: 48%; text-align: center; box-sizing: border-box; border: 2px solid #000; float: right; height: 46px; vertical-align: middle; font-size: 20px; line-height: 46px}
+
+.memberInfo form {margin-top: 45px;}
+
+.findInfo section {border: 1px solid #cecece; border-top: 3px solid #000; padding: 30px 20px; margin-top: 45px; font-size: 20px; position: relative;background:#fff;}
+.findInfo .headerBullet {font-size: 24px;}
+.findInfo section p {margin: 5px 0  20px 27px; line-height: 30px;}
+.findInfo section p:nth-of-type(2) {margin-bottom: 0;}
+.findInfo section:nth-of-type(1) button {background: #000; color: #fff; text-align: center; padding: 25px 0; width: 194px; height: 74px; display: block; position: absolute; right: 55px; top: 50%; margin-top: -37px; box-sizing: border-box; font-size: 20px; outline: none; border-style: none;}
+.findInfo section:nth-of-type(2) .clear {width: 194px; height: 156px; position: absolute; right: 55px; top: 50%; margin-top: -78px;}
+.findInfo section:nth-of-type(2) .clear input[type=text] {width: 100%; background: #f5f5f5; border: 1px solid #aeaeae; height: 36px; font-size: 18px; box-sizing: border-box; padding: 10px;}
+.findInfo section:nth-of-type(2) .clear input[type=text]:nth-of-type(2) {border-top-style: none;}
+.findInfo section:nth-of-type(2) .clear button {background: #000; color: #fff; text-align: center; padding: 25px 0; width: 100%; height: 74px; display: inline-block; box-sizing: border-box; font-size: 20px; outline: none; border-style: none; margin-top: 10px;}
+#findId {background: url(/page/common/images/bg_findid.jpg) repeat left top; width: 350px; padding: 30px 0 20px; color: #222; text-align: center; display: none;background:#fff;border:1px solid #ddd;}
+#findId h1 {font-size: 24px;}
+#findId p {font-size: 20px; margin: 25px 0 40px;}
+#findId button {font-size: 20px; padding: 15px 0; box-sizing: border-box; background: #d70c0c; color: #fff; width: 130px; display: inline-block;}
+#resetPassword {padding: 30px 50px; width: 458px; text-align: center; font-size: 20px; color: #222; display: none;}
+#resetPassword h1 {font-size: 24px;}
+#resetPassword > p {line-height: 30px; margin: 30px 0;}
+#resetPassword .clear {text-align: left; position: relative; padding-bottom: 50px;}
+#resetPassword .clear label {width: 50%; float: left; line-height: 42px;}
+#resetPassword .clear input[type=password] {background: #ebebeb; border: 1px solid #d5d5d5; height: 42px; box-sizing: border-box; padding: 10px; width: 50%; float: right;}
+#resetPassword .clear p {color: #d70c0c; position: absolute; left: 0; bottom: 15px;}
+#resetPassword .btns {padding-bottom: 0;}
+#resetPassword .btns input {width: 48%; text-align: center; box-sizing: border-box; background: #000; border: 3px solid #000; color: #fff; float: left; height: 46px; vertical-align: middle; font-size: 20px;}
+#resetPassword .btns button {width: 48%; text-align: center; box-sizing: border-box; border: 3px solid #000; float: right; height: 46px; vertical-align: middle; font-size: 20px; padding: 10px 0;}
+.searchResult header {background: url(/page/common/images/bg_pattern2.jpg) repeat left top; padding: 10px;}
+.searchResult header form {background: #fff; padding: 30px;}
+.searchResult header form > div:nth-of-type(1) input[type=text] {float: left; border: 3px solid #000; box-sizing: border-box; height: 60px; padding: 18px 18px 18px 25px; background: #fff; font-size: 20px; outline: none; color: #222; width: 80%;}
+.searchResult header form > div:nth-of-type(1) label {float: left; background: #000 url(/page/common/images/ico_white_search.png) no-repeat center center; height: 60px; box-sizing: border-box; display: block; outline: none; width: 10%; text-indent: -9999px;}
+.searchResult header form > div:nth-of-type(1) label:focus {outline: #d70c0c solid 2px;}
+.searchResult header form > div:nth-of-type(1) div {float: right; font-size: 20px; line-height: 60px;}
+.searchResult header form > div:nth-of-type(1) input[type=checkbox] {border: 1px solid #bebebe; width: 20px; height: 20px; outline: none;  background: #fff; position: relative; top: 3px;}
+.searchResult header .clear {margin: 20px 0;}
+.searchResult header form > div:first-child {margin: 0;}
+.searchResult header .clear h2 {font-size: 18px; float: left;}
+.searchResult header .clear ul {float: left; font-size: 18px;}
+.searchResult header .clear li {float: left; padding: 0 10px; border-right: 1px solid #000;}
+.searchResult header .clear li:last-child {border-right-style: none;}
+.searchResult header form > div:nth-of-type(3) h2 {margin-right: 25px; line-height: 33px;}
+.searchResult header form > div:nth-of-type(3) li {border: 1px solid #bebebe; text-align: center; background: #fff; padding: 5px 20px; border-right-style: none;}
+.searchResult header form > div:nth-of-type(3) li:last-child {border-right: 1px solid #bebebe;}
+.searchResult header form > div:nth-of-type(3) li.on {border: 1px solid #000; background: #000;}
+.searchResult header form > div:nth-of-type(3) li.on a {color: #fff;}
+.searchResult header form .date {font-size: 18px; line-height: 32px;}
+.searchResult header form .date label {margin-right: 10px; font-weight: bold;}
+.searchResult header form .date input[type=text] {margin-right: 10px; background: #f5f5f5; border: 1px solid #eaeaea; outline: none; height: 32px; box-sizing: border-box; width: 126px;}
+/* .searchResult header form .date input[type=text].enabled {background: #ffffff;} */
+.searchResult header form .date button {background: url(/page/common/images/ico_calendar.png) no-repeat center center; width: 32px; height: 28px; position: relative; top: 8px; margin-right: 35px;}
+.searchResult header form .date button:nth-of-type(2) {margin-right: 10px;}
+.searchResult header form .date input[type=button] {outline: none; background: #000; color: #fff; text-align: center; border-style: none; height: 32px; width: 76px; font-size: 18px; -moz-appearance: none; -webkit-appearance: none; appearance: none;}
+.searchResult .result {margin: 30px 0;}
+.searchResult .result .headerBullet {font-size: 24px;}
+.searchResult .result li {float: left; width: 33%; font-size: 20px; text-align: center; border: 1px solid #bebebe; border-right-style: none; padding: 10px 0;}
+/* .searchResult .result li:nth-of-type(5) {width: 17%;} */
+.searchResult .result li:last-child {border-right: 1px solid #bebebe;}
+.searchResult .result li.on {background: #444;}
+.searchResult .result li.on a {color: #fff;}
+.searchResult .result li span {display: block;}
+.searchResult .listPage {border-top: 3px solid #000;}
+.searchResult .listPage > p, .resultList > p {padding: 10px; background: none; border-bottom: 1px solid #cecece; margin-bottom: 30px; font-weight: bold;}
+.searchResult .listPage article p {line-height: 30px; color: #000; float: left; margin-bottom: 20px; height: 60px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;}
+.resultList {font-size: 20px; color: #222; border-top: 3px solid #000;}
+.resultList article {border-bottom: 1px dashed #a5a5a5; padding: 25px 0;}
+.resultList article figure {float: left; margin: 0; width: 22%;}
+.resultList article figure img {width: 100%; height: auto;}
+.resultList article figure + div {float: right; width: 76%;}
+.resultList article figure + div .clear h3 {font-size: 20px; float: left;}
+.resultList article figure + div .clear .date {font-size: 20px; float: right; color: #666;}
+.resultList article:nth-of-type(1) {padding-top: 0;}
+/* .resultList article div > div.clear {margin-bottom: 20px;} */
+.resultList article .img {float: left;}
+.resultList article .img + div {float: right; width: 75%;}
+.resultList article h3 {float: left;}
+.resultList article date {float: right; color: #666;}
+.resultList article p {line-height: 30px; color: #000; float: left; margin-bottom: 20px; }
+.resultList .item p {height: 60px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;}
+.resultList article a:hover {text-decoration: underline;} 
+.resultList article li {float: left; color: #666;}
+.resultList article .location {font-weight: bold; margin-bottom: 20px;}
+.resultList article .keyword h3 {font-size: 20px; color: #666; font-weight: normal;  margin-right: 5px;}
+.resultList article .keyword ul {float: left;}
+.resultList article li span {padding: 0 5px;}
+.resultList .empty {border-style: none;}
+.resultList .empty p {float: none;}
+.resultList .empty p em {float: none; font-weight: bold; background: none;}
+.resultList article em, .listStyle article em {background: #fff150; font-style: normal;}
+.zzim header li {float: left; text-align: center; font-size: 20px; width: 50%; border: 1px solid #bebebe; border-right-style: none; padding: 10px 0;}
+.zzim header li:last-child {border-right: 1px solid #bebebe;}
+.zzim header li.on {background: #444;}
+.zzim header li.on a {color: #fff;}
+.zzim header li span {display: block;}
+.zzim .list {border-top: 3px solid #000; margin-top: 35px;}
+.zzim .list > p {font-weight: bold; padding: 15px; font-size: 20px;}
+.zzim .list .btns {margin-bottom: 35px;}
+.zzim .list .btns input[type=checkbox] {width: 0; opacity: 0;}
+.zzim .list .btns input[type=checkbox] + label {font-size: 18px;  padding-left: 30px; background: url(/page/common/images/ico_check.png) no-repeat; background-position: 0 4px; background-size: 20px; cursor: pointer;}
+.zzim .list .btns input[type=checkbox]:checked + label {background-position: 0 -24px;}
+.zzim .list .btns button {width: 150px; text-align: center; font-size: 20px; height: 48px; box-sizing: border-box; border: 2px solid #000; line-height: 46px;}
+.zzim .list .btns button:nth-of-type(1) {background: #000; color: #fff; margin-right: 5px;}
+.zzim .list .btns button:nth-of-type(1):focus {outline: #ccc dotted 2px;}
+.zzim .empty p {font-size: 20px;}
+.zzim .empty p:last-child {margin-top: 25px; line-height: 30px;}
+.zzim .empty p em {font-weight: bold; font-style: normal;}
+.headerFood {position: relative; height: 468px;}
+.headerFood .center {background: url(/page/common/images/bg_foodtitle.png) no-repeat top center; width: 320px; height: 312px; text-align: center; font-size: 38px; color: #fff; padding-top: 85px; background-size: 100%;}
+.headerFood .center span {display: block; font-size: 14px; letter-spacing: 4px; font-weight: 300; margin-bottom: 30px;}
+.headerFood > img {width: 100%; height: auto;}
+.titleStyle1 {font-size: 36px; margin-top: 20px; text-align: center; position: relative; padding-bottom: 20px;}
+.titleStyle1:after {content: ""; display: block; width: 60px; height: 1px; background: #000; position: absolute; left: 50%; bottom: 0; margin-left: -30px;}
+p.normal {margin-top: 25px; font-size: 20px; line-height: 30px;}
+.list-more {text-align: center; border-top: 1px solid #31343d; margin-top: 40px;}
+.list-more button {background: #31343d; color: #fff; width: 18%; padding: 15px 0; font-size: 20px; font-weight: 300;}
+.list-more button:focus {outline: #ccc dotted 2px;}
+.list-more button img {margin-right: 15px; vertical-align: middle;}
+.ebrochure {padding-top: 30px; margin-top: 30px; border-top: 3px solid #000;}
+.ebrochure li {float: left; width: 31%; margin: 30px 3.5% 0 0; height: 360px; position: relative;}
+.ebrochure li:nth-child(3n) {margin-right: 0;}
+.ebrochure li:nth-child(-n+3) {margin-top: 0;}
+.ebrochure li .img img {width: 100%; height: auto;}
+.ebrochure li h3 {margin-top: 25px; font-size: 20px;}
+.ebrochure li p {margin-top: 15px; font-size: 20px;}
+.ebrochure li > a {display: block; text-align: center; font-size: 20px; background: #ebebeb; width: 100%; height: 46px; line-height: 46px; font-weight: 300; position: absolute; left: 0; bottom: 0;}
+.error {background: url(/page/common/images/bg_error.jpg) no-repeat top fixed; height: 100%; position: relative; overflow: hidden;}
+.error > div {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 740px; position: relative; box-sizing: border-box;}
+.error div > div {position: relative; padding: 60px 0 50px; background: url(/page/common/images/img_error.png) no-repeat right 8px;}
+.error div > div:before {content: "" ; display: block; background: url(/page/common/images/bg_pattern2.jpg) repeat left top; position: absolute; left: 0; top: 0; height: 10px; width: 100%;}
+.error div > div:after {content: "" ; display: block; background: url(/page/common/images/bg_pattern2.jpg) repeat left top; position: absolute; left: 0; bottom: 0; height: 10px; width: 100%;}
+.error h1 {font-size: 46px; color: #1a4481; font-weight: normal;}
+.error p {font-size: 18px; line-height: 24px; margin-top: 30px;}
+.error a {font-size: 16px; border: 1px solid #4d5360; height: 40px; line-height: 40px; width: 235px; display: block; padding-left: 20px; margin-top: 50px; position: relative;}
+.error a span {background: #4d5360; height: 100%; width: 45px; line-height: 45px;text-align: center; display: inline-block; position: absolute; right: 0; top: 0;}
+.error h2 {text-align: center; margin-top: 40px;}
+.header-edu {background: url(/page/common/images/bg_pattern2.jpg) repeat left top; padding: 10px;}
+.header-edu > div {background: #f5f5f5; padding: 15px;}
+.header-edu h3 {font-size: 24px;}
+.header-edu p {font-size: 18px; margin-top: 20px; line-height: 30px;}
+.header-edu p strong {color: #d40c0c; font-weight: normal;}
+.header-edu ul {width: 80%; margin: 0 auto; font-size: 20px; margin-top: 25px;}
+.header-edu li {float: left; width: 49%; height: 50px; line-height: 50px; border: 2px solid #000; box-sizing: border-box; padding: 0 25px;}
+.header-edu li:nth-child(2) {float: right;}
+.header-edu li img {margin-left: 15px; position: relative; top: 4px; width: 20px; height: 25px;}
+
+.travel-list {margin-top: 60px;}
+.travel-list article {position: relative; height: 365px; padding: 20px; box-sizing: border-box; margin-top: 25px; text-shadow: 2px 2px 10px #000;overflow:hidden;}
+.travel-list article:first-child {margin-top: 0;}
+.travel-list div {position: relative; border: 3px solid #fff; width: 20%; color: #fff; box-sizing: border-box; padding: 10px 20px;}
+.travel-list h4 {font-size: 40px; position: relative; padding-bottom: 10px; font-weight: normal;}
+.travel-list h4:after {content: ""; display: block; position: absolute; left: 0; bottom: 0; width: 35px; height: 1px; background: #fff;}
+.travel-list ul {margin-top: 10px; font-size: 18px;}
+.travel-list div > a {position: absolute; right: -35px; bottom: -30px;}
+.travel-list p {color: #fff; font-size: 18px; margin-top: 60px; line-height: 26px;}
+.travel-list figure {position: absolute; left: 0; top: 0; width: 100%; height: 100%; z-index: -1;}
+.travel-list figure img {width: 100%; height: auto;}
+
+.tab-menu {margin-top: 20px;font-size: 16px;}
+.tab-menu li {width: 33.3%;float: left;padding: 10px;box-sizing: border-box;border: 1px solid #bebebe;margin-left: -1px;}
+.tab-menu li:nth-child(n+4) {margin-top: -1px;}
+.tab-menu li:nth-child(3n-1) {width: 33.4%;}
+.tab-menu li.on {background: #31343d; border: 1px solid #31343d;}
+.tab-menu li.on a {color: #fff;}
+.tab-menu + div {height: 468px;position: relative;margin-top: 30px;}
+.tab-menu + div h3 {position: absolute; width: 335px; height: 329px; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; font-size: 36px; color: #000; background: url(/page/common/images/bg_e_travel.png) no-repeat top center; padding-top: 90px; box-sizing: border-box;}
+.tab-menu + div h3 span {font-size: 24px; font-weight: normal; display: block;}
+.etravel h4 {font-size: 26px;padding-bottom: 17px;position: relative;text-align: center;margin-top: 35px;}
+.etravel h4:after {content: ""; display: block; position: absolute; left: 50%; bottom: 0; width: 60px; height: 1px; background: #000; margin-left: -30px;}
+.etravel h4 + p {margin-top: 22px;margin-bottom: 20px;}
+.etravel p {font-size: 16px;line-height: 26px;text-align: left;}
+.etravel .map-wrap {background: #f5f6fa;}
+.etravel .map-wrap > div {height: 498px;}
+
+.etravel .etc {padding-bottom: 60px;}
+.etravel .binder {margin-top: 40px;}
+.etravel article {margin-bottom: 30px;}
+.etravel article:last-child {margin-bottom: 0;}
+.etravel article figure {float: left; width: 28%;}
+.etravel article figure img {width: 100%; height: auto;}
+.etravel article > div {float: right; width: 70%;}
+.etravel article h5 {font-size: 20px;line-height: 32px;}
+.etravel article h5 span {background: url(/page/common/images/ico_ribbon.png) no-repeat top center; width: 26px; height: 32px; display: inline-block; text-align: center; color: #fff; font-weight: normal; font-size: 20px; margin-right: 10px; line-height: 20px; vertical-align: middle;}
+.etravel article p {font-size: 16px;margin-top: 10px;}
+.etravel article p.phone {background: url(/page/common/images/ico_etravel_phone.png) no-repeat left center; padding-left: 30px;}
+.etravel .etc {font-size: 16px;margin-top: 40px;}
+.etravel .etc div {float: left; width: 49%; border: 2px solid #ffc207; border-radius: 5px; position: relative; padding: 50px 20px 20px 20px; box-sizing: border-box;}
+.etravel .etc div:last-child {float: right;}
+.etravel .etc div img {position: absolute; left: 50%; top: -31px; margin-left: -31px;}
+.mapList li {background: #f1f1f1; border-top: 1px solid #b2b2b2; padding: 60px 20px 20px; float: left; width: 48%; height: 256px; position: relative; margin-top: 4%;}
+.mapList li:nth-child(2n) {float: right;}
+.mapList li:nth-child(-n+2) {margin-top: 0;}
+.mapList li h3 {font-size: 26px; line-height: 33px;}
+.mapList li h3 span {background: url(/page/common/images/ico_tourmap.png) no-repeat center 5px; color: #fff; font-size: 16px; text-align: center; width: 24px; height: 38px; box-sizing: border-box; margin-right: 5px; display: inline-block; position: relative; top: -5px;}
+.mapList li p {font-size: 20px; margin-top: 25px; color: #424242;}
+.mapList li p span {color: #d70c0c; margin: 0 5px;}
+.mapList li button {background: url(/page/common/images/ico_map_off.png) no-repeat top center; width: 120px; height: 42px; border-style: none; position: absolute; left: 20px; top: 15px;}
+.mapList li button.on {background: url(/page/common/images/ico_map_on.png) no-repeat top center;}
+.mapList li > img {position: absolute; right: 20px; top: 15px;}
+#citytour {padding: 0; background: #ececec;}
+#citytour .content {background: url(/page/common/images/bg_citytour.jpg) no-repeat bottom center;}
+#citytour .tour-wrap {width: 1347px; margin: 0 auto; position: relative; padding-bottom: 70px; z-index: 2;}
+#citytour .tour-wrap h3 {position: absolute; left: 185px; top: 0;}
+#citytour .tour-wrap h3 + p {font-size: 24px; font-style: italic; position: absolute; left: 185px; top: 80px;}
+#citytour .tour-wrap h3 + p span {color: #ba0a00; text-decoration: underline;}
+#citytour .content article {color: #4a4f4f; position: absolute;}
+#citytour .content article h4 {font-size: 50px;}
+#citytour .content article p {font-size: 20px; margin-top: 15px; line-height: 26px;}
+#citytour .content article a {display: block; width: 152px; height: 46px; box-sizing: border-box; padding-left: 20px; line-height: 46px; border: 1px solid #4a4f4f; color: #4a4f4f; font-size: 18px; position: relative; margin-top: 15px;}
+#citytour .content article a img {position: absolute; right: -30px; top: 12px;}
+#citytour .tour-wrap .chuncheon {top: 98px; right: 290px;}
+#citytour .tour-wrap .wonju {top: 290px; left: 169px;}
+#citytour .tour-wrap .wonju .ico {left: -200px; top: 0; position: absolute;}
+#citytour .tour-wrap .taebaek {top: 535px; right: 340px;}
+#citytour .tour-wrap .jungsun {top: 770px; left: 390px;}
+#citytour .tour-wrap .hwacheon {bottom: 580px; right: 400px;}
+#citytour .tour-wrap .yanggu {bottom: 435px; left: 200px;}
+#citytour .tour-wrap .samchuck {bottom: 150px; left: 600px;}
+#citytour .tour-wrap .samchuck .ico {position: absolute; left: -770px; bottom: -150px;}
+#citytour .citytour {display: none;}
+.center-info {text-align: left;}
+.center-info .headerBullet {float: left; width: 20%;}
+.center-info p {float: right; width: 80%;}
+.center-info p strong {display: block; position: relative; padding-left: 15px;}
+.center-info p strong:after {content: ""; display: block; position: absolute; left: 0; top: 50%; width: 5px; height: 5px; background: #2a4e8e; transform: translateY(-50%);}
+.center-info table {border-top: 3px solid #000; margin-bottom: 15px;}
+.center-info th {background: #f5f5f5; border: 1px solid #dadada; text-align: center; padding: 15px 0;}
+.center-info th:first-child, .center-info td:first-child {border-left-style: none;}
+.center-info th:last-child, .center-info td:last-child {border-right-style: none;}
+.center-info td {background: #fff; border: 1px solid #dadada; padding: 15px;}
+.hidden {display: none;}
+
+#agencies {padding: 20px 0 20px 20px; background: #3d414a; position: absolute; z-index: 100; right: 0; top: 0; width: 200%; box-sizing: border-box; display:none; font-size: 18px;}
+#agencies li {padding: 5px 0; float: left; width: 50%;}
+#agencies li:nth-of-type(-n+2) {padding-top: 0;}
+#agencies li:nth-last-child(-n+2) {padding-bottom: 0;}
+#agencies a {color: #b4b7be;}
+
+#pop-email {width: 415px; background: url(/page/common/images/bg_findid.jpg) repeat left top; padding: 30px 0; box-sizing: border-box; text-align: center;}
+#pop-email h2 {font-size: 24px; color: #000;}
+#pop-email p {font-size: 20px; width: 96%; margin: 25px auto 0;}
+#pop-email button {background: #d70c0c; width: 25%; padding: 10px 0; color: #fff; font-size: 20px; margin-top: 25px;}
+.headerFood .center {background: url(/page/common/images/bg_foodtitle.png) no-repeat top center; width: 320px; height: 312px; text-align: center; font-size: 38px; color: #fff; padding-top: 85px; background-size: 100%;}
+.headerFood .center span {display: block; font-size: 14px; letter-spacing: 4px; font-weight: 300; margin-bottom: 30px;}
+.styled {background: url(/page/common/images/bg_pattern2.jpg) repeat left top; padding: 10px; box-sizing: border-box; font-size: 18px;}
+.styled p {background: #f5f5f5; border: 1px solid #fff; padding: 20px;}
+.privacy .headerBullet {margin-top: 40px; font-size: 26px; background-position: left 8px;}
+.privacy p {font-size: 20px; padding-left: 5px; line-height: 30px; background:#fff;}
+.privacy li {font-size: 20px;}
+.privacy .headerBullet + p {margin-top: 25px;}
+.privacy ol {font-size: 20px;}
+.privacy ol li {line-height: 30px;}
+.privacy .margin {margin-top: 45px;}
+.privacy a {color: #174ea9;}
+.privacy .bullet {background: url(/page/common/images/ico_bullet.png) no-repeat 10px 10px; padding-left: 30px; color: #126aae; font-size: 22px; margin-top: 25px;}
+.privacy .depth1 {margin: 25px 0 0 30px;}
+.privacy .depth2 {margin: 25px 0 0 50px;}
+.privacy .arrow > li, .privacy .arrow2 {padding-left: 15px; background: url(/page/common/images/ico_privacy_arrow.png) no-repeat left 8px;}
+.privacy li > ul {margin-top: 25px;}
+.privacy .dash li, .privacy .dash2 {background: url(/page/common/images/ico_dash.png) no-repeat left 15px; padding-left: 20px;}
+.privacy .bullet + .arrow2, .privacy .process + .arrow2 {margin: 25px 0 0 30px; font-weight: normal;}
+.privacy .process {text-align: center; margin-top: 25px;}
+.privacy .dot {margin: 8px 0;}
+.privacy .dot li {padding-left: 15px; background: url(/page/common/images/ico_privacy_dot.png) no-repeat left 15px;}
+.privacy table {border-top: 3px solid #000; margin: 20px 0; font-size: 20px;}
+.privacy th {background: #f5f5f5; border: 1px solid #dadada; text-align: center; padding: 10px 0;}
+.privacy td {border: 1px solid #dadada; padding: 8px;}
+.privacy th:first-child, .privacy td:first-child {border-left-style: none;}
+.privacy th:last-child, .privacy td:last-child {border-right-style: none;}
+.headerBullet2 {background: url(/page/common/images/ico_pr_bullet.png) no-repeat left 8px; padding-left: 30px; font-size: 26px; margin-top: 35px;}
+.headerBullet3 {background: url(/page/common/images/ico_bullet2.png) no-repeat left 10px;padding-left: 20px;font-size: 22px;margin-top: 25px;color: #126aae;font-weight: 500;}
+.tab-menu-wrap {background: url(/page/common/images/bg_pattern2.jpg) repeat left top; margin: 20px 0 0 0; padding: 10px;}
+.tab-menu-wrap .tab-menu {font-size: 18px; background: #fff; font-weight: 300; padding: 20px 15px; margin-top: 0;}
+.tab-menu-wrap .tab-menu li {float: left; width: 50% !important; line-height: 34px; padding: 0; border-style: none; margin-left: 0;}
+.tab-menu-wrap .tab-menu li:nth-child(n+4) {margin-top: 0;}
+.tab-menu-wrap .tab-menu li p {display: inline; padding-bottom: 2px;}
+.tab-menu-wrap .tab-menu li.on p {border-bottom: 1px solid #000;}
+
+article.conversation {background: #f6f6f6;border: 1px solid #d9d9d9;padding: 15px;margin-top: 20px;font-size: 17px;}
+figure.box, figure.box2 {width: 100%; margin-top: 10px;}
+figure.box2 {width: 48%; margin-top: 10px;}
+figure.box img, figure.box2 img {width: 100%; height: auto;}
+p.normal {margin-top: 25px; font-size: 20px; line-height: 30px;}
+dl.arrowed {margin-top: 40px; font-size: 20px;}
+dl.normal {margin-top: 7px;font-size: 16px;}
+dl.freak {margin: 10px 0 30px;}
+.traffic-banner {margin: 40px 0 150px 0; position: relative; padding: 25px 0 0 30px; box-sizing: border-box;}
+.traffic-banner h5 {font-size: 36px; color: #fff; padding-bottom: 15px; text-shadow: 2px 2px 10px #000; position: relative; z-index: 3;}
+.traffic-banner h5:after {content: ""; display: block; width: 70%; height: 1px; background: #fff; opacity: 0.7; position: absolute; left: 0; bottom: 0;}
+.traffic-banner p {font-size: 20px; color: #fff; line-height: 30px; text-shadow: 2px 2px 10px #000; margin-top: 15px; position: relative; z-index: 3;}
+.traffic-banner p em {color: #ffd220; font-style: normal;}
+.traffic-banner a {width: 25%; display: block; margin: 30px auto; border: 3px solid #fff; padding: 10px 0; text-align: center; color: #fff; font-size: 24px; position: relative; z-index: 3;}
+.traffic-banner img {width: 100%; height: auto; position: absolute; left: 0; top: 0; z-index: 1;}
+dl.arrowed dt, figure.box h6 {background: url(/page/common/images/ico_arrowed.png) no-repeat left 10px; padding-left: 2%; font-size: 20px;}
+figure.box p {padding-left: 2%; font-size: 20px;}
+dl.arrowed dd {padding-left: 2%; margin-bottom: 1%;}
+dl.arrowed dd:nth-last-child(1) {margin-bottom: 0;}
+dl.normal dt, figure.box h6 {background: url(/page/common/images/ico_arrowed.png) no-repeat left 10px; padding-left: 2%; font-size: 20px;}
+dl.normal dd {padding-left: 2%; margin-bottom: 1%;}
+dl.normal dd span {font-weight: normal;color: #126aae;}
+dl.normal dd:nth-last-child(1) {margin-bottom: 0;}
+.acc {width: 0 !important; height: 0 !important; overflow: hidden; font-size: 0; line-height: 0; position: absolute;}
+.clear:after {content: ""; display: block; clear: both;}
+
+.g-recaptcha {margin-top: 30px;}
+
+.box-wrap figure {float: left; width: 49%; margin: 2% 0 0 0;}
+.box-wrap figure:nth-child(2n) {float: right;}
+.box-wrap figure:nth-child(-n+2) {margin-top: 0;}
+.ui-title {margin: 20px 0;}
+.ui-title2 {margin: 20px;}
+
+/*gangwon tour 20*/
+
+#section-1{position:relative;}
+#section-1 h3{position:absolute;width:240px;height: 52px;left:50%;margin-left:-120px;color:#fff;font-size: 24px;font-weight: 700;background-color:#4c8ea6;border-radius:30px;text-align:center;line-height: 53px;top:-30px;}
+#section-1 .update{position:absolute;top:18px;right:18px;font-size:14px;color:#000;letter-spacing:-1px;}
+#section-1 .detail_data{width:900px;margin: 60px auto 45px;padding-top: 65px;clear:both;letter-spacing:-1px;}
+#section-1 .detail_data dt{float:left;min-width:77px;font-weight:bold;color:#081e52}
+#section-1 .detail_data dd{overflow:hidden;}
+#section-1 .detail_data dt,#section-1 .detail_data dd{line-height:35px;font-size: 16px;color:#333;}
+#section-1 .detail_icon{margin-bottom: 50px;text-align:center;}
+#section-1 .detail_icon li{display:inline-block;width:154px;height:154px;border-radius:154px;background-color:#f7f7f7;vertical-align:top}
+#section-1 .detail_icon li a{display:block;font-size:17px;color:#191919;font-weight:bold}
+#section-1 .detail_icon li + li{margin-left:54px}
+#section-1 .detail_icon li a:before{display:block;width:42px;height:60px;margin:36px auto 4px;background:url(/page/common/images/sp_tour.png) no-repeat;content:''}
+#section-1 .detail_icon li:nth-child(1) a:before{background-position:0 -66px}
+#section-1 .detail_icon li:nth-child(2) a:before{width:68px;background-position:-87px -66px}
+#section-1 .detail_icon li:nth-child(3) a:before{width:50px;background-position:-197px -66px}
+#section-1 .detail_text{margin-bottom: 20px;font-size: 16px;line-height:35px;color:#333;text-align:center;}
+#section-1 .detail_text strong{font-weight:bold;font-size: 28px;color:#081e52;}
+#section-1 .detail_text2{margin-bottom:15px;font-size:20px;line-height:35px;color:#333;text-align:center}
+#section-1 .detail_text2 strong{font-weight:bold;font-size: 30px;color:#081e52;}
+#section-1 .detail_text2 span{font-size: 22px;font-weight: bold;color:red;}
+
+#section-2{position:relative;max-width:1000px;margin:0 auto;border-top:1px solid #abcad5}
+#section-2 .sub_tit_box{position:relative;margin-top:87px;text-align:center}
+#section-2 .sub_tit_box .sub_tit_min{display:inline-block;height:30px;margin-top:12px;padding:0 10px;line-height:30px;color:#fff;font-weight:bold;font-size:20px;letter-spacing:-1px;background-color:#00173d;vertical-align:top}
+#section-2 .sub_tit_box h3{display:inline-block;font-size: 30px;letter-spacing:-1px;color:#202020;vertical-align:top;}
+#section-2 .sub_tit_box h3 span{position:relative;display:inline-block;vertical-align:bottom;}
+#section-2 .sub_tit_box h3 span:before{position:absolute;top:-8px;left:50%;margin-left:-3px;width:6px;height:6px;border-radius:4px;background-color:#202020;content:''}
+#section-2 .sub_tit_box h3 strong{position:relative;font-size: 36px;letter-spacing:-1px;color:#285290;vertical-align:top;}
+#section-2 .sub_tit_box h3 strong:before{position:absolute;top:-46px;left:50%;margin-left:-20px;width:40px;height:44px;background:url(/page/common/images/sp_tour.png) no-repeat -207px 0;content:''}
+
+#section-2 .imgs ul {margin-top: 40px;margin-bottom: 96px}
+#section-2 .imgs li {float: left; width: 49%; margin: 0 2% 30px 0; box-sizing: border-box; cursor: pointer;}
+#section-2 .imgs li img {width: 100%; height: auto;}
+#section-2 .imgs li:nth-child(2n) {float: right; margin-right: 0;}
+#section-2 .imgs li:nth-last-child(-n+2) {margin-bottom: 0;}
+
+#section-6{position:relative;max-width:1000px;margin:0 auto;border-top:1px solid #abcad5}
+#section-6 h1{font-size:24px;font-weight:500;margin-bottom:10px;}
+
+@media (max-width: 640px){
+    #section-6 h1{margin-top:20px !important}
+}
+
+@media all and (max-width: 640px){
+
+    #top{height:660px;}
+    #section-1 .update{top:36px;}
+    #section-1 .detail_data{width:auto;padding-right:10px;padding-left:10px;}
+    #section-1 .detail_icon li{width:110px;height:110px;border-radius:110px}
+    #section-1 .detail_icon li + li{margin-left:4px}
+    #section-1 .detail_icon li a:before{margin:13px auto 4px;}
+    #section-1 .detail_text{padding-right:10px;padding-left:10px;}
+
+    #section-2 .sub_tit_box .sub_tit_num{top:48px;right:10px;}
+    #section-2 .photo_area{width:auto;padding:0 10px}
+    #section-2 .photo_area ul{width:100%;}
+    #section-2 .photo_area ul li:first-child{width:100%;height:auto;margin:0}
+    #section-2 .photo_area ul li{width:50%;height:auto;margin:0}
+
+    #section-3 .sub_card_list ul{padding:0 10px}
+    #section-3 .sub_card_list li{width:100%;margin-bottom:10px}
+    #section-3 .sub_card_list li + li{margin-left:0}
+
+    #section-4 .sub_card_list ul{padding:0 10px}
+    #section-4 .sub_card_list li{width:100%;margin-bottom:10px}
+    #section-4 .sub_card_list li + li{margin-left:0}
+
+    #section-5 .sub_card_list li .img_box{width:100%;height:auto;}
+    #section-5 .sub_card_list li .txt_box{width:100%;height:auto;padding:40px 20px 20px 20px;background:#f3f3f3}
+
+}
+
+#citytour .content {background: none;}
+#citytour .tour-wrap {display: none;}
+#citytour .citytour {display: block;}
+#citytour .citytour > div {position: relative; color: #000;}
+#citytour .citytour > div .box {position: absolute;}
+#citytour .citytour > div .box2 {text-align: right;}
+#citytour .citytour .tour-bg {width: 100%; height: auto; vertical-align: middle;}
+#citytour .citytour > div:first-child h3 {position: absolute; left: 20px; top: 5px;}
+#citytour .citytour > div:first-child h3 + p {font-size: 27px; font-style: italic; left: 50px; top: 105px; position: absolute;}
+#citytour .citytour > div:first-child h3 + p span {color: #ba0a00; text-decoration: underline;}
+#citytour .citytour .box h4 {font-size: 40px;}
+#citytour .citytour .box p {font-size: 18px; color: #4c5050;}
+#citytour .citytour .box a {width: 50px; height: 50px; display: block; position: absolute; right: -70px; bottom: 5px;}
+#citytour .citytour .box2 a {left: -70px;}
+#citytour .citytour .box a img {width: 100%; height: auto;}
+#citytour .citytour .chuncheon {left: 90px;}
+#citytour .citytour .wonju {right: 100px;}
+#citytour .citytour .taebaek {left: 90px; top: 10px;}
+#citytour .citytour .samchuck {right: 100px; top: 5px;}
+#citytour .citytour .jungsun {left: 90px;}
+#citytour .citytour .hwacheon {right: 100px; top: 10px;}
+#citytour .citytour .yanggu {left: 90px;}
+
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+
+    .btnList a {width: 28%;}
+
+
+    #terms-agree-info-popup .center {width: 95%;}
+    
+    .pageTitle {font-size: 50px;}
+    .contentWrap > .inner, .content .inner {width: 95%;}
+    .pageHeader {background-size: 100%;}
+    .map {width: 70%;}
+    .mapSelect {width: 30%;}
+    .mapSelect .binder {padding: 5px;}
+    .mapSelect .binder .clear {float: left; margin-right: 1%; width: 49%; box-sizing: border-box;}
+    .mapSelect .binder .clear:nth-child(2n) {margin-right: 0;}
+    .mapSelect label {font-size: 16px;}
+    .locationTitle {font-size: 14px; margin-right: 10px;}
+    .btnSetLocation {font-size: 14px;}
+    .listStyle > li {width: 100%; float: none;} 
+    .listStyle > li .img {width: 100%; height: 250px;}
+    .viewPage .header {box-sizing: border-box; margin-bottom: 30px;}
+    .viewPage .header .inner {height: auto; margin-top: -50px;}
+    .viewPage .header .inner .wrap {width: 100%; box-sizing: border-box; position: static;}
+    .viewPage .guide {padding-top: 0px;}
+    .viewPage .help .binder {float: none; width: 100%; margin-right: 0;}
+    .viewPage .help .binder:last-child {float: none;}
+    .viewPage .help .binder .clear {margin-bottom: 15px;}
+    .viewPage .help h2 {font-size: 20px; padding-left: 40px; line-height: 31px; box-sizing: border-box; margin-right: 1%; width: 17%; float: left;}
+    .viewPage .help .handicap h2 {width: auto;}
+    .viewPage .help p {float: left;}
+    .viewPage .review .clear button {font-size: 16px;}
+    .articleList .links {width: 32%; margin: 0;}
+    .articleList article, .articleList article:nth-of-type(2), .articleList article:nth-of-type(n+3):nth-of-type(4n+2) {margin: 2% 2% 0 0; width: 32%;}
+    .articleList article > a img {width: 100%; height: auto;}
+    .articleList article:nth-of-type(1) {width: 66%; margin: 0; float: right;}
+    .articleList article:nth-of-type(n+4):nth-of-type(3n+1) {margin-right: 0;}
+    .articleList2 article:nth-of-type(n+4):nth-of-type(3n+1) {margin: 2% 2% 0 0;}
+    .articleList2 article:nth-of-type(1) {width: 66%; float: left;}
+    .articleList2 article:nth-of-type(2) {float: right; margin: 0;}
+    .articleList2 article:nth-of-type(3) {margin: 2% 2% 0 0;}
+    .articleList2 article:nth-of-type(n+3):nth-of-type(3n+2) {margin-right: 0;}
+    /* .articleList article {margin: 20px 20px 0 0;}
+    .articleList article:nth-of-type(1) {margin: 0;}
+    .articleList article:nth-of-type(4) {margin: 20px 0 0 0;}
+    .articleList article:nth-of-type(2), .articleList article:nth-of-type(6) {float: left; margin: 20px 20px 0 0;}
+    .articleList article:nth-of-type(3n+1) {margin-right: 0;} */
+    .imgStyle1 {display: block;}
+    .imgStyle2 li {display: block;}
+    .imgStyle3 ul {width: 100%; display: block;}
+    .imgStyle3 li {width: 48%; margin-right: 2%; box-sizing: border-box;}
+    .imgStyle3 li:last-child {margin: 0;}
+    .imgStyle1 img, .imgStyle2 img, .imgStyle3 img {width: 100%; height: auto;}
+    .popular ul {font-size: 16px;}
+    .subInfo {text-align: left; line-height: 40px; border: 1px solid #dbdbdb; padding: 20px; margin-bottom: 20px;}
+    .subInfo h3 {font-weight: bold; float: left; width: 13%; font-size: 20px;}
+    .subInfo p {width: 85%; float: left;}
+    .subInfo a {color: #238aea;}
+    .galleryList > .clear > div {float: left; margin-right: 20px;}
+    .galleryList > .clear > div:nth-of-type(2n) {float: left; margin: 20px 20px 0 0;}
+    .galleryList article {float: left; width: 234px; height: 264px; margin: 20px 20px 0 0;}
+    .galleryList2 article {float: left; width: 23.5%; height: 264px; margin: 2% 2% 0 0;}
+    .galleryList article:nth-of-type(4n-3) {float: right; margin: 20px 0 0 0;}
+    .galleryList article:nth-of-type(1), .galleryList article:nth-of-type(9n) {float: right; margin: 0;}
+    .galleryList article:nth-of-type(2), .galleryList article:nth-of-type(10n) {margin: 20px 20px 0 0;}
+    .galleryList article:nth-of-type(4n) {margin-right: 0;}
+    .galleryList article:nth-of-type(4) {margin: 20px 0 0 0;}
+    .galleryList2 article h1 {font-size: 18px;}
+    table.list .num {width: 10%;}
+	table.list .title {width: 46%;}
+	table.list .writer {width: 14%;}
+	table.list .write-date {width: 10%;}
+	table.list .attach {width: 8%;}
+	table.list .views {width: 12%;}
+
+    section.carousel .nav {top: 15%; right: 5%;}
+    section.carousel .pager {position: absolute; top: 27%; right: 5%;} 
+    .prList header > div.clear {height: auto;}
+    .prList header > div.clear > div, .prApply header > div.clear > div {float: none; width: 100%; height: auto;}
+    .prList header > div.clear > div:last-child, .prApply header > div.clear > div:last-child {float: none; width: 100%; margin-top: 30px;}
+    .prList header > div.clear > div:last-child div, .prApply header > div.clear > div:last-child div {background: #fff; box-sizing: border-box; height: auto;}
+
+    .checkList li {width:calc((100% - 43px) / 3);}
+    .checkList li:nth-child(4n){margin-right:16px;}
+    .checkList li:nth-child(3n){margin-right:0px;}
+
+    .prView > section > div > div {float: none;}
+    .prView > section:nth-of-type(1) a {float: none; width: 350px; margin: 0 auto; font-size: 20px; display: block; margin-top: 30px;}
+    .prView > section:nth-of-type(2) form, .prView > section:nth-of-type(3) form {float: none; width: 48%; margin: 0 auto; margin-top: 30px;}
+    table.list {font-size: 16px;}
+    .boardBtn {font-size: 16px; margin-top: 20px;}
+    .boardView .comment input {font-size: 16px;}
+    .register .btns {font-size: 18px;}
+    .registerForm td .address div {width: 40%;}
+    .registerForm td .address div input[type='button'] {width: 45%; background: #434343; text-align: center; color: #fff; height: 32px; display: inline-block; font-size: 18px;}
+    .findInfo section:nth-of-type(1) button {position: static; margin: 20px auto 0;}
+    .findInfo section:nth-of-type(2) .clear {position: static; margin: 20px auto 0; width: 60%; height: auto;}
+    .findInfo section:nth-of-type(2) .clear div {float: left; width: 49%;}
+    .findInfo section:nth-of-type(2) .clear input[type=text] {height: 37px;}
+    .findInfo section:nth-of-type(2) .clear button {float: right; width: 49%; margin-top: 0;}
+    .searchResult header form > div:nth-of-type(1) input[type=text] { width: 80%;}
+    .resultList article .img {float: left; width: 23%;}
+    .resultList article .img img {width: 100%; height: auto;}
+    .research li.pop li {height: auto;}
+    .error {background: url(/page/common/images/bg_error.jpg) repeat-y top fixed;}
+    .header-edu ul {width: 55%;}
+    .header-edu li {float: none; width: 100%;}
+    .header-edu li:nth-child(2) {float: none; margin-top: 15px;}
+    .travel-list div {width: 26%;}
+    .travel-list p {margin-top: 50px;}
+    .travel-list figure img {object-fit: cover; width: 100%; height: 100%;}
+    .tab-menu li {padding: 2%;}
+    .course .prev {left: 0; margin-top: -15px;}
+    .course .next {right: 0; margin-top: -15px;}
+    .etravel article figure {float: left; width: 32%;}
+    .etravel article > div {float: right; width: 66%;}
+    .etravel .etc div {float: none; width: 100%;}
+    .etravel .etc div:last-child {float: none; margin-top: 40px;}
+   
+    .mapList li p {font-size: 16px;}
+    .privacy .process img {width: 100%; height: auto;}
+    .prevNextWrap li div a {max-width: 580px;}
+    .headerBullet2 {font-size: 22px;}
+    .traffic-banner a {margin: 10px auto;}
+    
+}
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+
+    .redBox, .blackBox {padding: 10px 2%; height: 43px;}
+	 .btnList {width: 100%;}
+    .btnList a {width: 100%;}
+    .fancybox-lock .fancybox-overlay {overflow-y: hidden !important;}
+   
+    #terms-agree-info-popup {}
+    #terms-agree-info-popup .center {padding: 2% 4% !important; width: 290px;}
+    /* #terms-agree-info-popup ul li {float: none;} */
+    #terms-agree-info-popup ul li:last-child {margin-left: 20px;}
+    
+    .contentWrap > .inner, .content .inner { margin-top: 10px;}
+    .pageHeader {background-size: 100%;}
+    .locationWrap {float: right; line-height: 38px;}
+    .locationTitle {font-size: 13px; margin: 4px 5px 0 0;}
+    .btnSetLocation {font-size: 13px; padding: 0 10px;}
+    .mapWrap > .inner {position: relative;}
+    .map {width: 100%; float: none; height: 270px;}
+    .mapSelect {width: 100%; float: none; position: static;}
+    .mapSelect > .clear {position: relative;}
+    .mapSelect .selectArea {float: left; width: 100%;}
+    .mapSelect .selectArea h2 {font-size: 16px; position: absolute; top: 0; width: 50%;}
+    .mapSelect form > div:nth-of-type(1) h2 {left: 0; border-right: 1px solid #fff;}
+    .mapSelect form > div:nth-of-type(2) h2 {left: 50%;}
+    .mapSelect form h2.only-one {width: 100% !important; left: 0 !important;}
+    .mapSelect .binder {padding: 60px 1% 1% 1%; height: 300px;} 
+    .mapSelect form h2.only-one + .binder {height: 300px;}
+    .mapSelect .binder .clear {width: 24.25%; margin-right: 1.5%;}
+    .mapSelect .binder .clear:nth-child(4n) {margin-right: 0;}
+    .mapSelect label {font-size: 16px;}
+    .mapSelect form button[type="button"] {font-size: 16px;}
+    .mapSelect form button[type="button"]:last-child {background: #d70c0c;}
+    .listPage > p {font-size: 16px; padding: 10px 0 10px 15px;}
+    .listPage > p span {font-size: 16px;}
+    .listStyle > li {width: 100%;  height: 230px; float: none;} 
+    .listStyle > li .img {width: 97%; height: 210px;}
+    .listStyle > li article {width: 46%; height: 140px; padding: 10px; bottom: 12px;}
+    .listStyle > li article h1 {font-size: 16px; margin-bottom: 10px; line-height: 20px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;}
+    .listStyle > li article h1 span {font-size: 13px; width: 20px; height: 29px; background-size: 100%; padding-top: 2px;}
+    .listStyle > li article p {font-size: 14px; margin-bottom: 5px;}
+    .listStyle > li article p {line-height: 20px; max-height: 60px;}
+    .listStyle > li article dl {font-size: 12px;}
+    .listStyle > li article dd {padding-left: 8px;}
+    .listStyle > li button {position: absolute; left: 1%; top: 5%; background-size: 80%;}
+    .listStyle > li button.on {background-size: 80%;}
+    .galleryList3 .articleListLarge > div p {text-overflow: ellipsis; overflow: hidden; white-space: nowrap; color: #fff;}
+    /* .viewPage .header .inner .wrap {width: 100%; box-sizing: border-box;} */
+    .viewPage .header {box-sizing: border-box; margin-bottom: 30px;}
+    .viewPage .header .inner {height: auto; margin-top: -50px;}
+    .viewPage .header .inner .wrap {width: 100%; box-sizing: border-box; position: static;}
+    .viewPage .guide {padding-top: 0px; margin-top: 25px;}
+    .viewPage .help .binder {float: none; width: 100%; margin-right: 0;}
+    .viewPage .help .binder:last-child {float: none;}
+    .viewPage .help .binder .clear {margin-bottom: 15px;}
+    .viewPage .help h2 {font-size: 20px; padding-left: 40px; line-height: 31px; box-sizing: border-box; margin-right: 1%; width: 19%; float: left;}
+    .viewPage .help .handicap h2 {width: auto;}
+    .viewPage .help p {float: left;}
+    .viewPage .review .binder ul {float:left; margin-bottom: 15px;}
+    .viewPage .review .binder select {float:left; margin-bottom: 15px;}
+    .viewPage .review table, .boardView .comments table {font-size: 12px;}
+    .viewPage .review table td, .boardView .comments table td {padding: 10px 0;}
+    .viewPage .review table td:last-child {width: 38%;}
+    .viewPage .review table td:last-child img {width: 10px; height: auto;}
+    .viewPage .review table td:nth-child(2), .viewPage .review table td:nth-child(3) {display: none;}
+    .viewPage .review table td:first-child p button, .boardView table td:first-child p button {width: 18px; height: 18px; top: -2px;}
+    .information form ul {width: 85%;}
+    .information form ul li {float: left; width: 33.3%; box-sizing: border-box; padding: 10px;}
+    .information form ul li:nth-child(n+3) {text-align: center;}
+    .information label {font-size: 14px; background-size: 20px; height: 20px; padding-left: 30px; background-position: 0 0px;}
+    .information form ul li:nth-child(n+3) label {padding-left: 0;}
+    .information input[type=radio]:checked + label {background-position: 0 -30px; background-size: 20px;}
+    .listStyle > li article:hover .detail a, .listStyle > li article.on .detail a {width: 54%; font-size: 13px;}
+
+    
+    .prList header > div.clear {height: auto;}
+    .articleList .links {padding: 20px 15px 10px; width: 49%; height: 300px; margin-right: 2%; background-size: cover;}
+    .articleList .links h1 {font-size: 18px; position: relative; padding-bottom: 20px; margin-bottom: 15px;}
+    .articleList .links h1 span {position: absolute; left: 0; bottom: 0; width: 20px; height: 1px; background: #fff;}
+    .articleList .links ul {font-size: 18px; line-height: 50px; color: #fff;}
+    .articleList article {margin: 2% 2% 0 0; width: 49%; height: 330px;}
+    .articleList article:nth-of-type(6), .articleList article:nth-of-type(4n+2) {margin: 2% 2% 0 0;}
+    .articleList article h1 {font-size: 15px; line-height: 20px; padding: 3px 0 0 30px;}
+    .articleList article p {font-size: 14px; line-height: 20px;}
+    .articleList article img {width: 100%; height: auto; object-fit: cover;}
+    .articleList article:nth-of-type(1) {width: 49%; height: 300px; float: right; margin: 0;}
+    .articleList article:nth-of-type(1) a {color: #222; font-size: 14px;}
+    .articleList article:nth-of-type(1) div {position: static; background: none; padding: 0; width: auto;}
+    .articleList article:nth-of-type(1) h1 {font-size: 15px; margin-bottom: 0; color: #222; padding: 3px 0 0 30px;}
+    .articleList article:nth-of-type(1) .recommend {background: url(/page/common/images/ico_recommend.png) no-repeat left center;}
+    .articleList article:nth-of-type(1) .theme {background: url(/page/common/images/ico_theme.png) no-repeat left center;}
+    .articleList article:nth-of-type(1) .story {background: url(/page/common/images/ico_story.png) no-repeat left center;}
+    .articleList article:nth-of-type(1) .olympic {background: url(/page/common/images/ico_olympic.png) no-repeat left center;}
+	.articleList article:nth-of-type(1) .rainbow {background: url(/page/common/images/ico_rainbowcity.png) no-repeat left center ;}
+    .articleList2 article:nth-of-type(n+3):nth-of-type(2n+2) {margin: 2% 2% 0 0;}
+    .articleList2 article:nth-of-type(3) {margin-top: 2%;}
+    .articleList article:nth-of-type(2n+1) {margin-right: 0; float: right;}
+    .articleList2 article:nth-of-type(1) {width: 100%; height: auto;}
+    .articleView2 .tourInfo .course {position: relative; margin-bottom: 15px;}
+    .articleView2 .tourInfo .course h2 {width: 130px; font-size: 16px;  float: none; position: absolute; left: 0; top: 0;}
+    .articleView2 .tourInfo .course p {float: none; font-size: 16px; text-align: left; line-height: 30px; padding-left: 110px;}
+    .articleView2 .tourInfo .location p {font-size: 16px; text-align: left;}
+    .articleView2 .tourInfo .location h2 {color: #222; font-size: 16px; line-height: 30px; margin-bottom: 20px; width: 110px;}
+    .imgStyle1, .imgStyle2 li {display: block;}
+    .imgStyle3 ul {width: 100%; display: block; text-align: center;}
+    .imgStyle3 li {width: 70%; margin: 0; box-sizing: border-box; float: none; display: inline-block;}
+    .imgStyle3 li:last-child {margin: 10px 0 0 0;}
+    .imgStyle3 li p {text-align: left;}
+    .imgStyle4 div {width: 70%;}
+    .imgStyle1 img, .imgStyle2 img, .imgStyle3 img, .imgStyle4 img {width: 100%; height: auto;}
+    .popular ul {font-size: 14px;}
+    .popular ul li {width: 50%;  line-height: 30px;}
+    .subInfo {text-align: left; line-height: 30px; border: 1px solid #dbdbdb; padding: 20px; margin-bottom: 20px;}
+    .subInfo h3 {font-weight: bold; float: left; width: 20%; font-size: 16px;}
+    .subInfo p {width: 75%; float: left; line-height: 30px !important; font-size: 16px;}
+    .subInfo a {color: #238aea;}
+    .galleryList .headLine {height: auto;}
+    .galleryList .headLine .binder {bottom: 5px;}
+    .galleryList > .clear > div {float: left; margin: 0; width: 100%;}
+    .galleryList > .clear > div a img {width: 100%; height: auto;}
+    .galleryList > .clear > div:nth-of-type(1n), .galleryList > .clear > div:nth-of-type(2n) {float: left; margin: 10px 0 0 0;}
+    .galleryList > .clear > div:nth-of-type(1) {float: left; margin: 0;}
+    .galleryList article, .galleryList2 article {float: left; width: 49%; height: 296px; margin: 10px 2% 0 0;}
+    .galleryList2 article {float: left; width: 49%; height: auto; margin: 10px 2% 0 0;}
+    .galleryList article h1 {font-size: 15px; line-height: 20px;}
+    .galleryList article time {font-size: 12px;}
+    .galleryList article a img {width: 100%; height: auto;}
+    .galleryList article:nth-of-type(1n) {margin-top: 10px;}
+    .galleryList article:nth-of-type(2n) {float: right; margin-right: 0;}
+    .galleryList2 article:nth-of-type(2n) {margin-right: 0;}
+    .galleryList2 article:nth-of-type(n+2) {margin-top : 10px;}
+    .boardViewHeader h1 {font-size: 15px; color: #fff; background: #434343; padding: 3%;}
+    .boardViewHeader dl {color: #000; padding: 3% 0; border-bottom: 1px solid #dadada; font-size: 12px;}
+    .boardViewHeader dt {float: left; font-weight: bold; padding-left: 3%;}
+    section.carousel .nav {width: 100%; top: 40%; right: 0;}
+    section.carousel .prev {float: left; width: 58px; height:58px;}
+    section.carousel .next {float: right; width: 58px; height:58px;}
+    section.carousel .carousel img {width: 100%; height: auto;}
+    .boardContent .boardContent {font-size: 16px; line-height: 30px;}
+    .boardContent dl {font-size: 14px; border-top: 1px solid #dadada; border-bottom: 1px solid #dadada; color: #222;}
+    .boardContent dt {font-weight: bold; float: left; text-align: center; width: 19%; box-sizing: border-box; border-right: 1px solid #dadada; padding: 15px 0; margin-right: 2%;}
+    .boardContent dd {font-weight: normal; width: 79%; box-sizing: border-box; padding: 15px 0;}
+    .btnList2 {font-size: 16px;margin:5px 0 15px;}
+    .prevNextWrap li div {background: #f5f5f5;text-align: center;color: #666;float: left;margin-right: 3%;width: 20%;box-sizing: border-box;padding: 2% 0;height: 42px;font-size:14px;color:#222;}
+    .prevNextWrap li div:last-child {background: #fff; text-align: left; margin-right: 0; box-sizing: border-box; width: 73%;}
+    .prevNextWrap li div a {color: #222;max-width: 540px;font-size: 14px;}
+    .prList header > div.clear > div, .prApply header > div.clear > div {float: none; width: 100%; font-size: 16px;}
+    .prList header > div.clear > div > div p:last-child, .prApply header > div.clear > div > div p:last-child {margin-top: 15px;}
+    .prList header > div.clear > div:last-child, .prApply header > div.clear > div:last-child {float: none; width: 100%; margin-top: 30px;}
+    .prList header > div.clear > div:last-child div, .prApply header > div.clear > div:last-child div {background: #fff; box-sizing: border-box; height: auto;}
+    .prList header > div.clear > div:last-child div a, .prApply header > div.clear > div:last-child div a {width: 70%; text-align: center; color: #222; font-size: 16px; background: #f5f5f5; border: 2px solid #000; box-sizing: border-box; padding: 10px; display: block; margin: 20px auto 0;}
+    
+    .checkList li {width:calc((100% - 21px) / 2);}
+    .checkList li:nth-child(3n){margin-right:16px;}
+    .checkList li:nth-child(2n){margin-right:0px;}
+
+    .btnList2 a{font-size:14px;padding:5px 0;width:95px;}
+    .subTitle3{margin:25px 0 15px;}
+    section.carousel{padding:30px 0;}
+
+    /*
+    .checkList li {float: left; margin: 20px 2% 0 0; width: 49%;}
+    .checkList li:nth-of-type(2n) {float: right; margin: 20px 0 0 0;}
+    .checkList li:nth-of-type(1) {margin: 0 2% 0 0;}
+    .checkList li:nth-of-type(2) {float: right; margin: 0;}
+    */
+
+    .checkList li h3 a, .checkList li > .clear {font-size: 16px;}
+    .checkList li > div {height: auto; box-sizing: border-box;}
+    .checkList li > div div {height: 100%; box-sizing: border-box;}
+    .checkList li > div img {width: 100%; height: auto;}
+    .prView > section > div > div {float: none; font-size: 14px;}
+    .prView > section > div > div .headerBullet {font-size: 20px; background-size: 20px;}
+    .prView > section:nth-of-type(1) a {float: none; width: 80%; margin: 0 auto; font-size: 14px; display: block; margin-top: 30px; padding: 10px 0;}
+    .prView > section:nth-of-type(2) form, .prView > section:nth-of-type(3) form {float: none; width: 70%; margin: 0 auto; margin-top: 30px;}
+    .prView > section:nth-of-type(2) form select, .prView > section:nth-of-type(3) form select {float: left; width: 49%; height: 43px; border: 1px solid #cfcfcf; font-size: 14px; margin-right: 2%; background-size: 20px;}
+    .prView > section:nth-of-type(2) form button, .prView > section:nth-of-type(3) form button {float: right; width: 49%; background: #31343d; text-align: center; font-size: 14px; color: #fff; padding: 10px 0; height: 43px;}
+    .prApply .headerBullet {font-size: 18px;}
+    .prApply table {margin-top: 30px; font-size: 14px;}
+    .prApply th {min-width: 80px; padding: 0;}
+    .prApply tr:nth-of-type(3) button {font-size: 14px; top: 3px;vertical-align: 0px;}
+    .prApply textarea, .prApply tr:nth-of-type(3) input:nth-of-type(2), .prApply tr:nth-of-type(3) input:nth-of-type(3) {width: 94%;}
+    .prApply tr div {float: none; margin: 0 0 10px 0;}
+    .prApply form .clear label {font-size: 14px;background-position: 0 4px; cursor: pointer; padding-left: 6px; background-size: auto 30px; }
+    .prApply form .clear input:checked + label {background-position: 0 -14px;}
+    .prApply .btns {width: 70%; margin: 20px auto 0;}
+    .prApply .btns input {font-size: 16px; padding: 0;}
+    .prApply .btns a {font-size: 16px;}
+    .pageNav {padding-top: 20px; border-top: 1px solid #dadada; width: 100% !important;}
+    .pageNav li {width: 49%; float: left; padding: 8px 0; text-align: center; font-size: 15px; background: #31343d;}
+    .pageNav li a {color: #fff;}
+    .pageNav li:last-child {float: right;}
+    .pageMore {width: 100% !important;}
+    .pageMore button {width: 50%; font-size: 14px;}
+    #privacy article {font-size: 14px;}
+    #privacy p {margin: 20px 0; font-size: 14px;}
+    #privacy .clear {width: 50%; font-size: 16px; margin: 0 auto;margin-top:10px;}
+    #privacy input {font-size: 14px;}
+    #privacy button {font-size: 14px;}
+    table.list {font-size: 14px;}
+    .boardBtn {font-size: 14px; margin-top: 20px;}
+    table.list th {display: none;}
+    table.list .writer, table.list .write-date, table.list .views {display: none;}
+    table.list .boardExtra {margin-top: 10px;}
+    table.list .boardExtra p {border-right: 1px solid #000; padding-right: 5px; margin-right: 5px; float: left;}
+    table.list .boardExtra p.status {margin: 0 0 0 5px; border-style: none;}
+    table.list .boardExtra date {float: left; margin-right: 5px;}
+    table.list td:nth-of-type(2) {text-align: left;}
+    table.list td.title a {max-width: 630px;}
+    .boardView header h2 {font-size: 16px;}
+    .boardView header dl {font-size: 14px;}
+    .boardView article {font-size: 16px; line-height: 22px;}
+    .boardView .attach {font-size: 16px;}
+    .boardView .attach h2 {font-size: 16px;}
+    .boardView .attach p {font-size: 14px;}
+    .boardView .boardMenu {padding: 15px 0;}
+    .boardView .boardMenu ul {text-align: center; font-size: 14px; width: 80%;}
+    .boardView .boardMenu li {margin-right: 2%; width: 23%;}
+    .boardView .boardMenu li:last-child {margin-right: 0;}
+    .boardView .boardMenu li:only-child {margin-right: 0; float: right;}
+    .boardView .boardMenu li a, .boardView .boardMenu li:last-child a {width: 100%;}
+    .boardView .comment textarea {float: left; width: 74%;}
+    .boardView .comment input {width: 24%; font-size: 14px; -moz-appearance: none; -webkit-appearance: none; appearance: none;}
+    .boardView .comment p {font-size: 10px; margin-right: 25%;}
+    .boardWrite table {font-size: 14px;}
+    .boardWrite th {padding: 15px 0; width: 25%;}
+    .boardWrite th span {font-weight: normal; font-size: 14px;}
+    .boardWrite td {padding: 10px; border: 1px solid #dadada; border-right-style: none;}
+    .boardWrite th h2 {font-size: 14px;}
+    .boardWrite td input[type=text] {border: 1px solid #eaeaea; height: 30px; width: 80%;}
+    .boardWrite td input[type=radio] {margin-right: 5px; position: relative; top: 4px;}
+    .boardWrite td > .clear  {float: left; margin-right: 15px; width: 100%; margin: 5px 0;}
+    .boardWrite td .clear p button {top: 0;}
+    .boardWrite .btns {width: 60%; font-size: 14px;}
+    .boardWrite .btns input {font-size: 14px;}
+    .boardWrite .btns a {font-size: 14px;}
+    .researchView header, .researchWrite header {font-size: 12px;}
+    .researchView header .wrap, .researchWrite header .wrap {background-size: 70px auto;}
+    /* .researchView header .wrap .binder, .researchWrite header .wrap .binder {margin-left: 70px;} */
+    .researchView header h2, .researchWrite header h2 {font-size: 16px; line-height: 25px;}
+    .researchView header h3, .researchWrite header h3 {font-size: 12px;}
+    .researchView .btns, .researchWrite .btns {width: 50%; font-size: 14px;}
+    .researchView .btns a, .researchWrite .btns a, .researchWrite .btns input {font-size: 14px; line-height: 27px;}
+    .research {font-size: 12px;}
+    .research .dash {margin-left: 15px;}
+    .research h4 span {width: 30px; padding: 3px; margin-right: 5px;}
+    .research ul {margin: 20px 0; color: #222; border-bottom: 1px dashed #000;}
+    .research li.clear {background: url(/page/common/images/ico_research_arrow.png) no-repeat left 4px; height: auto; list-style: none;}
+    .research li.pop h5 {font-size: 14px;}
+    .research li.pop h6 {font-size: 12px;}
+    .research li.pop .close {background: #000 url(/page/common/images/ico_pop_close2.png) no-repeat center center; padding: 5px; width: 35px; height: 35px; position: absolute; right: 20px; top: 15px;}
+    .research li.clear p {float: left; width: 100%; margin-bottom: 10px;}
+    .research li.clear p button {font-size: 12px;}
+    .research li.clear span:nth-of-type(1) {width: 20%;}
+    .research li.clear span:nth-of-type(2) {width: 15%;}
+    .research li.clear .percent {width: 63%; height: 18px; margin-top: -2px;}
+    .research li.clear input[type=radio] + label {background-position: 0 3px; padding-left: 20px; background-size: 14px;}
+    .research li.clear input[type=radio]:checked + label {background-position: 0 -18px;}
+    .research li.clear input[type=checkbox] + label {font-size: 12px; padding-left: 20px; background-position: 0 4px; background-size: 12px; cursor: pointer;}
+    .research li.clear input[type=checkbox]:checked + label {background-position: 0 -12px;}
+    .research li.clear select {height: 32px; font-size: 12px;  background: #fff url(/page/common/images/ico_select.png) no-repeat right top; background-size: auto 32px; border-right-style: none;}
+    .research .warn {background-size: 15px auto;}
+    .research .pick {background: #e8ecf5 url(/page/common/images/ico_research_arrow2.png) no-repeat 10px center; color: #222; padding: 5px 0 5px 25px; font-weight: bold; margin-top: 20px;}
+    .register header h2, .findInfo header h2, .memberInfo header h2 {font-size: 20px;}
+    .register header p, .findInfo header p, .memberInfo header p {font-size: 16px;}
+    .register .headerBullet {background-size: 18px; background-position: left 30px;}
+	.register .check input[type="checkbox"] + label {font-size: 16px; height: 30px; line-height: 30px; background-size: 18px;}
+	.register .check input[type="checkbox"]:checked + label {background-size: 18px;}
+    .register .agree article {padding: 10px; font-size: 14px;}
+    .register .help {font-size: 12px;}
+    .agree .btns {width: 60%;}
+    .agree .btns a {font-size: 14px;}
+    .agree .btns input {font-size: 14px; font-weight: normal;}
+    .register .info {font-size: 12px; line-height: 22px;}
+    .register .info .headerBullet {font-size: 16px; line-height: 30px;}
+    .register .btns {width: 72%; font-size: 14px;}
+    .register .btns a {border: 3px solid #000;}
+    .registerForm table {border-top: 3px solid #000; color: #222;}
+    .registerForm th {font-size: 14px; width: 28%;}
+    .registerForm td {font-size: 12px;}
+    .registerForm td > div  {position: relative;}
+    .registerForm td input[type=text], .registerForm td input[type=password], .registerForm td input[type=number] {width: 75%; font-size: 12px;}
+    .registerForm td .phone input[type=text] {width: 30%;}
+    .registerForm .phone span {width: 4%;}
+    .registerForm td .help {margin-top: 10px;}
+    .registerForm td .passed {position: static; margin-top: 5px;}
+    .registerForm td .error {position: static; margin-top: 5px;}
+    .registerForm td .email input[type=text] {width: 46%;}
+    .registerForm td .email select {width: 46%; font-size: 12px;}
+    .registerForm td .email label {font-size: 12px; padding-left: 20px; background-position: 0 4px; background-size: 12px; cursor: pointer;}
+    .registerForm td .email input[type=checkbox]:checked + label {background-position: 0 -24px;}
+    .registerForm td .email span {width: 6%;}
+    .registerForm td .email input[type=checkbox] {position: relative; top:4px;}
+    .registerForm td .address div {width: 70%;}
+    .registerForm td .address div input[type='button'] { font-size: 12px; position: static;}
+    .registerForm td .address > input {width: 100%;}
+    .registerForm .btns {width: 60%;}
+    .registerForm .btns input {font-size: 16px;}
+    .registerForm .btns a {font-size: 16px;}
+    
+    /*.memberInfoForm td {font-size: 12px;}
+    .memberInfoForm td label {font-size: 14px;}
+    .memberInfoForm td button {position: static; font-size: 12px; width: 20%;}*/
+    
+    .findInfo section {font-size: 14px; padding: 15px 10px;}
+    .findInfo section p {line-height: 22px;}
+    .findInfo section input[type=radio] {position: relative; top: 3px;}
+    .findInfo section:nth-of-type(1) button {position: static; margin: 20px auto 0; font-size: 16px;}
+    .findInfo section:nth-of-type(2) .binder {position: relative;}
+    .findInfo section:nth-of-type(2) input[type=radio] {position: absolute; left: 0; top: -3px;}
+    .findInfo section:nth-of-type(2) label {padding-left: 27px; display: block;}
+    .findInfo section:nth-of-type(2) .clear {position: static; margin: 20px auto 0; width: 80%; height: auto;}
+    .findInfo section:nth-of-type(2) .clear div {float: left; width: 49%;}
+    .findInfo section:nth-of-type(2) .clear input[type=text] {height: 37px; font-size: 16px;}
+    .findInfo section:nth-of-type(2) .clear button {float: right; width: 49%; margin-top: 0; font-size: 16px;}
+    #findId {width: 100%; padding: 20px;}
+    #findId h1 {font-size: 16px;}
+    #findId p {font-size: 12px; margin: 15px 0 20px;}
+    #findId button {font-size: 14px;}
+    #resetPassword {padding: 20px; width: 100%; font-size: 14px;}
+    #resetPassword h1 {font-size: 16px;}
+    #resetPassword > p {line-height: 24px; margin: 20px 0;}
+    #resetPassword .clear {text-align: left; position: relative; padding-bottom: 30px;}
+    #resetPassword .clear p {color: #d70c0c; position: absolute; left: 0; bottom: 6px;}
+    #resetPassword .btns {padding-bottom: 0;}
+    #resetPassword .btns input {font-size: 14px;}
+    #resetPassword .btns button {font-size: 14px;}
+    .searchResult header form {padding: 15px;}
+    .searchResult header form > div:nth-of-type(1) input[type=text] {font-size: 14px; width: 80%; padding: 2%; -moz-appearance: none; -webkit-appearance: none; appearance: none;}
+    .searchResult header form > div:nth-of-type(1) label {width: 15%; background-size: 70%;}
+    .searchResult header form > div:nth-of-type(1) div {font-size: 12px;}
+    .searchResult header form > div:nth-of-type(1) input[type=checkbox] {width: auto; height: auto;}
+    .searchResult header .clear {margin: 15px 0;}
+    .searchResult header form > div:first-child {margin: 0;}
+    .searchResult header .clear h2 {font-size: 12px;}
+    .searchResult header .clear ul {font-size: 12px;}
+    .searchResult header .clear li {float: left; padding: 0 5px;}
+    .searchResult header form > div:nth-of-type(3) h2 {margin-right: 15px;}
+    .searchResult header form > div:nth-of-type(3) li {padding: 5px 10px;}
+    .searchResult header form .date {font-size: 12px;}
+    .searchResult header form .date label {margin-right: 1%;}
+    .searchResult header form .date input[type=text] {margin-right: 1%; width: 20%;}
+    .searchResult header form .date button {width: 18px; height: 16px; position: relative; top: 4px; margin-right: 1%; background-size: 100%;}
+    .searchResult header form .date button:nth-of-type(2) {margin-right: 1%;}
+    .searchResult header form .date input[type=submit] {width: 12%; font-size: 12px;}
+    .searchResult .result {margin: 30px 0;}
+    .searchResult .result .headerBullet {font-size: 12px; line-height: 30px;}
+    .searchResult .result li {width: 50%; font-size: 14px; border: 1px solid #bebebe; margin-left: -1px;}
+    .searchResult .result li:nth-child(n+3) {margin-top: -1px;}
+    /* .searchResult .result li:nth-of-type(5) {width: 33.3%;}
+    .searchResult .result li:nth-of-type(3n-1) {width: 33.4%;}
+    .searchResult .result li:nth-last-child(-n+3) {border-top-style: none;}
+    .searchResult .result li:nth-of-type(3n) {border-right: 1px solid #bebebe;} */
+    .searchResult .result li.on {background: #444;}
+    .searchResult .result li.on a {color: #fff;}
+    .searchResult .result li span {display: block;}
+    .searchResult .listPage {border-top: 3px solid #000;}
+    .searchResult .listPage > p,.resultList > p {padding: 10px; background: none; border-bottom: 1px solid #cecece; margin-bottom: 30px; font-weight: bold;}
+    .resultList {font-size: 14px;}
+    .resultList article figure + div .clear h3, .resultList article figure + div .clear .date {font-size: 15px;}
+    .resultList article .img {width: 100%; text-align: center;}
+    .resultList article .img img {width: 100%; height: auto;}
+    .resultList article .img + div {width: 100%;}
+    .resultList article p {line-height: 22px;}
+    .resultList article .keyword h3 {font-size: 14px;}
+    .resultList .empty p:nth-of-type(2) {font-size: 11px;}
+    .zzim header li {font-size: 14px;}
+    .zzim .list > p {font-size: 14px;}
+    .zzim .list .btns button {font-size: 14px; width: 30%;}
+    .zzim .empty p {font-size: 14px;}
+    .zzim .empty p:last-child {margin-top: 15px;}
+    .pagination {display: none;}
+    .article-copyright > p {margin-top: 1%;  padding-top: 1%; border-top: 1px dashed #cbcfd5; line-height: 30px !important;}
+    .error {overflow: auto;}
+    .error > div {width: 96%; height: 80%;}
+    .error div > div {position: relative; padding: 50% 0 10% 10%; background-position: center 8px;}
+    .error div > div:before {content: "" ; display: block; background: url(/page/common/images/bg_pattern2.jpg) repeat left top; position: absolute; left: 0; top: 0; height: 10px; width: 100%;}
+    .error div > div:after {content: "" ; display: block; background: url(/page/common/images/bg_pattern2.jpg) repeat left top; position: absolute; left: 0; bottom: 0; height: 10px; width: 100%;}
+    .error h1 {font-size: 30px; color: #1a4481; font-weight: normal;}
+    .error p {font-size: 16px; line-height: 24px; margin-top: 20px;}
+    .error a {font-size: 14px; border: 1px solid #4d5360; height: 40px; line-height: 40px; width: 235px; display: block; padding-left: 20px; margin-top: 20px; position: relative;}
+    .error a span {background: #4d5360; height: 100%; width: 45px; line-height: 45px;text-align: center; display: inline-block; position: absolute; right: 0; top: 0;}
+    .error div > img {position: relative; right: 0; top: 8px; width: 98%; height: auto;}
+    .error h2 {text-align: center; margin-top: 15px;}
+    .error h2 img {width: auto; height: 25px;}
+    .header-edu > div {padding: 10px;}
+    .header-edu h3 {font-size: 18px;}
+    .header-edu p {font-size: 12px; line-height: 20px;}
+    .header-edu ul {width: 41%; font-size: 13px; padding: 0 2%;}
+    .header-edu li {float: none; width: 100%;}
+    .header-edu li:nth-child(2) {float: none; margin-top: 15px;}
+    .header-edu li img {margin-left: 1%;}
+    .travel-list {margin-top: 30px;}
+    .travel-list article {padding: 10px; height: auto; margin-top: 15px;}
+    .travel-list div {width: 42%; padding: 10px 2%;}
+    .travel-list h4 {font-size: 20px;}
+    .travel-list ul {font-size: 14px;}
+    .travel-list div a {width: 30px; height: 30px; right: -10px; bottom: -10px;}
+    .travel-list div a img {width: 100%; height: auto;}
+    .travel-list p {margin-top: 2%; font-size: 12px; line-height: 16px;}
+    .travel-list figure img {width: 100%; height: 100%; object-fit: cover; object-position: top center;}
+    .travel-list figure img:first-child {display: none;}
+    .tab-menu {margin-top: 20px; font-size: 14px;}
+    .tab-menu li {width: 50%; padding: 2%;}
+    .tab-menu li:nth-child(n+3) {margin-top: -1px;}
+    .tab-menu li:nth-child(3n-1) {width: 50%;}
+    .tab-menu + div {height: 300px; margin-top: 25px;}
+    .tab-menu + div h3 {background-size: 100%; width: 190px; height: 189px; font-size: 20px; padding-top: 50px;}
+    .tab-menu + div h3 span {font-size: 18px;}
+    .etravel h4 {font-size: 20px; margin-top: 30px;}
+    .etravel h4 + p {margin-top: 20px;}
+    .etravel p {font-size: 16px;}
+    .etravel .map-wrap > div {height: 350px;}
+    .course .wrap {background: url(/page/common/images/ico_foot.png) no-repeat left -40px; padding: 25px 0; background-size: 140px !important;}
+    .course h5 {font-size: 24px; margin-left: 150px; line-height: 20px;}
+    .course h5 span {font-size: 16px;}
+    .course .prev {position: absolute; width: 60px; height: auto; left: 0px;}
+    .course .prev img {width: 100%; height: auto;}
+    .course .next {position: absolute; width: 60px; height: auto; right: 0px;}
+    .course .next img {width: 100%; height: auto;}
+    .course li > span {font-size: 16px;}
+    .etravel .binder {margin-top: 20px;}
+    .etravel article {margin-bottom: 20px;}
+    .etravel article figure {float: none; width: 100%; text-align: center;}
+    .etravel article figure img {width: 60%; height: auto;}
+    .etravel article > div {float: none; width: 100%; text-align: center; margin-top: 15px;}
+    .etravel article h5 {font-size: 22px; text-align: left;}
+    .etravel article p {font-size: 16px;}
+    .etravel .etc {font-size: 14px; margin-top: 40px;}
+    .etravel .etc div {float: none; width: 100%; padding: 30px 10px 20px 10px;}
+    .etravel .etc div:last-child {float: none; margin-top: 40px;}
+    #citytour .content {background: none;}
+    #citytour .tour-wrap {display: none;}
+    #citytour .citytour {display: block;}
+    #citytour .citytour > div {position: relative; color: #000;}
+    #citytour .citytour > div .box {position: absolute; top: 20px;}
+    #citytour .citytour > div .box2 {text-align: right;}
+    #citytour .citytour .tour-bg {width: 100%; height: auto; vertical-align: middle;}
+    #citytour .citytour > div:first-child h3 {position: absolute; left: 20px; top: 5px; height: 30px;}
+    #citytour .citytour > div:first-child h3 img {height: 100%; width: auto;}
+    #citytour .citytour > div:first-child h3 + p {font-size: 15px; font-style: italic; left: 40px; top: 100px; position: absolute;}
+    #citytour .citytour > div:first-child h3 + p span {color: #ba0a00; text-decoration: underline;}
+    #citytour .citytour .box h4 {font-size: 16px;}
+    #citytour .citytour .box p {font-size: 12px; color: #4c5050; line-height: 13px;}
+    #citytour .citytour .box a {width: 30px; height: 30px; display: block; position: absolute; right: -40px; bottom: -5px;}
+    #citytour .citytour .box2 a {left: -40px;}
+    #citytour .citytour .box a img {width: 100%; height: auto;}
+    #citytour .citytour .chuncheon {left: 20px;}
+    #citytour .citytour .wonju {right: 30px;}
+    #citytour .citytour .taebaek {left: 20px; top: 10px;}
+    #citytour .citytour .samchuck {right: 30px; top: 5px;}
+    #citytour .citytour .jungsun {left: 20px;}
+    #citytour .citytour .hwacheon {right: 30px; top: 10px;}
+    #citytour .citytour .yanggu {left: 20px;}
+    .mapList li {float: none !important; width: 100%;}
+    .mapList li:nth-child(-n+2) {margin-top: 4%;} 
+    .mapList li p {font-size: 16px;}
+    .newsletter li {float: none; width: 100%; margin: 30px 0 0 0; height: auto; position: relative;}
+	.newsletter li:nth-child(3n) {margin-right: 0;}
+	.newsletter li:nth-child(-n+3) {margin-top: 30px;}
+    .center-info .headerBullet {font-size: 20px; float: none; width: 100%; margin: 15px 0;}
+    .center-info p {float: none; width: 100%; padding-left: 30px;}
+    .searchResult header form .date input[type=button] {width: 100%; margin-top: 15px;}
+    #pop-email {width: 100%; padding: 20px 0;}
+	#pop-email h2 {font-size: 20px; color: #000;}
+	#pop-email p {font-size: 16px;}
+	#pop-email button {font-size: 16px;}
+	.styled p {font-size: 16px;}
+	.privacy .headerBullet {font-size: 20px; background-position: left 5px;}
+    .privacy p, .privacy li, .privacy table {font-size: 14px;}
+    .privacy .bullet {font-size: 18px; background-position: 10px 5px;}
+    .privacy .process img {width: 100%; height: auto;}
+    .tab-menu-wrap .tab-menu {font-size: 15px;}
+    .tab-menu-wrap .tab-menu li {float: none; width: 100%; line-height: 28px;}
+    .traffic-banner h5 {font-size: 22px; padding-bottom: 2%;}
+	.traffic-banner p {font-size: 16px; line-height: 22px; margin-top: 2%;}
+	.traffic-banner a {font-size: 16px; margin: 1% auto;}
+	.headLine {float: none; width: 100%; height: auto;}
+	
+}
+/* Landscape phones and down */
+@media (max-width: 480px) {
+    .pc, .tablet {display: none;}
+    .mobile {display: block;}
+    .btnclose {width: 30px; height: 30px;}
+    .btnPrev span {width: 21px; height: 40px;}
+    .btnNext span {width: 21px; height: 40px;}
+
+    /*header.headerSearch form {float: none; font-size: 14px;}
+    header.headerSearch form select {width: 18%; height: 43px; font-size: 14px;  background: #fff url(/page/common/images/ico_select.png) no-repeat right top; background-size: auto 43px; border-right-style: none;}
+    header.headerSearch form .binder {float: left; width: 60%;}
+    header.headerSearch form .binder input {float: left; height: 43px; box-sizing: border-box; width: 61%; -moz-appearance: none; -webkit-appearance: none; appearance: none;}
+    header.headerSearch form .binder label {line-height: 43px; padding: 0 2%; height: 43px;}
+    header.headerSearch form .binder label:last-child {margin-right: 0;}
+    header.headerSearch form .binder a {height: 43px; line-height: 43px; display: block; text-align: center; padding: 0 10px;}*/
+    header.headerSearch form select {width: 100%; height: 43px; font-size: 14px;  background: #fff url(/page/common/images/ico_select.png) no-repeat right top; background-size: auto 43px; border-right-style: none; margin-bottom: 10px;}
+    header.headerSearch form .binder {float: none; width: 100%;}
+    header.headerSearch form .binder input {float: none; height: 43px; box-sizing: border-box; width: 100%; -moz-appearance: none; -webkit-appearance: none; appearance: none; margin-bottom: 10px;}
+    header.headerSearch form .binder label {line-height: 43px; padding: 0 2%; height: 43px; width: 100%;}
+    header.headerSearch form .binder label:last-child {margin-right: 0;}
+    header.headerSearch form .binder a {height: 43px; line-height: 43px; display: block; text-align: center; padding: 0 10px; width: 100%; float: none;}
+    .pageHeader h1 {font-size: 35px;}
+    .pageHeader p {font-size: 14px;}
+
+    .pageTitle {float: none; font-size: 32px; width: 100%;}
+    .contentWrap .contentHeader ul {float: none; margin-top: 15px; width: auto;} 
+    .contentWrap .contentHeader ul li {box-sizing: border-box; text-align: right;}
+    .contentWrap .contentHeader ul li:first-child {padding: 0;}
+    .contentWrap .contentHeader ul li img {width: 25px; height: auto;}
+    .contentWrap > .inner {width: 95%;}
+    .viewPage .header .binder {width: 100%; font-size: 16px;}
+    .viewPage .help, .viewPage section.information {padding-top: 20px;}
+    .viewPage .header h1 {font-size: 22px; margin-right: 1%;}
+    .viewPage .header ul {float: left; margin: 1% 0 0 1%;}
+    .viewPage .header ul li {margin-right: 10px;}
+    .viewPage .header ul li a {background-size: 100% 100%;}
+    .viewPage .header .binder p {line-height: 22px;}
+    .viewPage .header .binder dl {margin-top: 20px;}
+    .viewPage .title {font-size: 30px; margin-bottom: 20px;}
+    .viewPage .guide article {font-size: 16px;}
+    .viewPage .represent {margin-top: 20px;}
+    .viewPage .help h2 {font-size: 16px; padding-left: 40px; line-height: 31px; box-sizing: border-box; margin-right: 1%; width: 31%; float: left; letter-spacing: -1px;}
+    .viewPage .help .handicap h2 {width: 42%;}
+    .viewPage .help p {font-size: 16px; width: 66%;}
+    .viewPage .help .handicap p {width: 57%;}
+    .viewPage .review h1 {float: left; color: #000; font-size: 20px; margin-right: 12px;}
+    .viewPage .review .binder {padding: 0; margin: 0;}
+    .viewPage .review .binder ul {display: none;}
+    .viewPage .review .binder select {-moz-appearance: none; -webkit-appearance: none; appearance: none; float: left; height: 30px; background: #fff url(/page/common/images/ico_select.png) no-repeat right top; background-size: 15px; box-sizing: border-box; padding: 5px;}
+    .viewPage .review .pack {width: 78%;}
+    .viewPage .review textarea::-webkit-placeholder {font-size: 16px; color: #a6a9b0;}
+    .viewPage .review .pack p {font-size: 10px; letter-spacing: -1px; bottom: -14%;}
+    .viewPage .review .clear button {width: 20%; height: 95px; font-size: 14px;}
+    .viewPage .review table td:first-child p button, .boardView .comments table td:first-child p button, .boardWrite td .clear p button {right: -20px;}
+    .articleList .links {height: 240px;}
+    .articleList article, .articleList article:nth-of-type(1) {height: 240px;}
+    .headerStyle1 {height: 380px; background-size: cover !important; padding: 30% 0;}
+    .headerStyle1 h1 {width: 90%; height: 190px; margin: 0 auto; padding: 40px 0 0 0; font-size: 20px; background-size: 100%;}
+    .headerStyle1 h1 .mjo {font-size: 16px;}
+    .articleView1 .tourInfo p, .articleView2 .tourInfo p, .articleView3 .tourInfo p {font-size: 16px; line-height: 24px;}
+    .galleryList article {height: 210px;}
+    .galleryList3 > .clear > div, .galleryList3 > .clear > div:nth-child(2n), .galleryList3 > .clear > article, .galleryList3 > .clear > article:nth-child(2n) {float: none; width: 100%; margin: 2% 0 0 0;}
+    .galleryList3 > .clear > div:nth-child(-n+1), .galleryList3 > .clear > article:nth-child(-n+1) {margin-top: 0;}
+    .resultList article figure {float: none; margin: 2% 0; width: 100%; text-align: center;}
+    .resultList article figure img {width: auto; height: auto;}
+    .resultList article figure + div {float: none; width: 100%;}
+    .prevNextWrap li div {padding: 3% 0;}
+    .prevNextWrap li div a {max-width: 330px;}
+    .pageNav {padding-top: 20px; border-top: 1px solid #dadada; width: 100% !important;}
+    .pageNav li {width: 49%; float: left; padding: 8px 0; text-align: center; font-size: 15px; background: #31343d;}
+    .pageNav li a {color: #fff;}
+    .pageNav li:last-child {float: right;}
+    .list-more button {width: 30%; font-size: 16px; padding: 10px 0;}
+    .article-copyright div p {margin-top: 10px;}
+    .article-copyright div p:first-child {margin-top: 0;}
+    .error {overflow: hidden;}
+    .header-edu ul {width: 92%;}
+    #citytour .citytour > div .box {top: 0;}
+    #citytour .citytour > div:first-child h3 + p {top: 42px;}
+    .mapSelect .binder > div, .mapSelect .binder > div:nth-child(4n), .mapSelect .binder div:nth-child(3n) {width: 49% !important; margin-right: 2% !important;}
+    .mapSelect .binder div:nth-child(2n) {margin-right: 0 !important;}
+    table.list td:first-child {width: 15%;}
+   .btnList {width: 100%;}
+    .btnList a {width: 100%;}
+    table.list td.title a {max-width: 310px;}
+    .articleList .links ul {font-size: 15px; line-height: 30px;}
+    p.normal {font-size: 16px; line-height: 26px;}
+    dl.arrowed dt, dl.arrowed dd {font-size: 16px;}
+    .traffic-banner {height: 200px; padding-top: 20px;}
+	.traffic-banner img {width: 100%; height: 200px; object-fit: cover; object-position: top right;}    
+    dl.arrowed dt, figure.box h6 {font-size: 16px; padding-left: 3%;}
+	figure.box p {font-size: 16px;}
+}
+
+/* toggleForeign */
+.toggleForeign {display: inline-block; position: relative; text-align: center;}
+.toggleForeign-list {position: absolute; left: -1px; top: 60%; width: 125px;}
+.toggleForeign-list li {margin-bottom: 5px;}
+
+/* 콘텐츠 준비중 */
+.comingsoon {text-align: center; margin: auto 30px;}
+.comingsoon img {margin: 50px 0;}
+
+/* jQuery UI */
+.ui-datepicker-trigger {vertical-align: middle;}
+.searchResult .ui-datepicker-trigger {margin-right: 35px;}
+.searchResult .ui-datepicker-trigger:nth-of-type(2) {margin-right: 10px;}
+
+/*  */
+.renewal #login a {display:inline-block;}
+
+/* 검색결과 */
+.search .inner {width: 1200px; margin: 0 auto; box-sizing: border-box;}
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+	.search .inner {width: 100%;}
+}
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+	.search .inner {width: 100%;}
+}
+/* Landscape phones and down */
+@media (max-width: 480px) {
+	.search .inner {width: 100%;}
+}
+
+
+.fancybox-inner{width:350px !important;height:243px !important;box-shadow: 5px 5px 10px rgba(0,0,0,.2);}
+.fancybox-wrap{left:50% !important;top:50% !important;margin:-122px 0 0 -175px !important;}
+
+@media (max-width: 767px) {
+	.fancybox-inner{height:170px !important;}
+}
+
+
+.cb{clear:both}
+
+
+@media (max-width: 760px) {
+    .headerStyle1{height:340px;padding-top:65px;background-position:center center;padding:65px 0px;}
+    .headerStyle1 h1{font-size:20px;width:320px;height:200px;background-size:320px 200px;padding-top:65px;}
+}
