@@ -144,7 +144,7 @@ $(function() {
         accessibility: true,
         draggable: true,
         infinite: true,
-        slidesToShow: 1,
+        slidesToShow: 2,
         slidesToScroll: 1,
         pauseOnHover: false,
         autoplaySpeed: 4000,
@@ -157,12 +157,14 @@ $(function() {
                 swipeToSlide: true,
             }
         },
-         {
+         {  
             breakpoint: 9999,
-            variableWidth: false
-
+            settings: {
+                slidesToShow: 1
+            }
         }]
     });
+
 
     $('#visual .slick_wrap02 .control button').on('click', function(e) {
         e.preventDefault();
@@ -186,7 +188,7 @@ $(function() {
         dots: false,
         prevArrow: $('#notify .control01 .prev'),
         nextArrow: $('#notify .control01 .next'),
-        accessibility: true,
+        accessibility: false,
         draggable: true,
         infinite: true,
         slidesToShow: 3,
@@ -218,10 +220,10 @@ $(function() {
         dots: false,
         prevArrow: $('#notify .control02 .prev'),
         nextArrow: $('#notify .control02 .next'),
-        accessibility: true,
+        accessibility: false,
         draggable: true,
         infinite: true,
-        slidesToShow: 1,
+        slidesToShow: 2,
         slidesToScroll: 1,
         swipeToSlide: true,
         pauseOnHover: false,
@@ -235,10 +237,11 @@ $(function() {
                 swipeToSlide: true,
             }
         },
-         {
+         {  
             breakpoint: 9999,
-            variableWidth: false
-            
+            settings: {
+                slidesToShow: 1
+            }
         }]
     });
 
@@ -269,10 +272,10 @@ $(function() {
         dots: false,
         prevArrow: $('#notify .control03 .prev'),
         nextArrow: $('#notify .control03 .next'),
-        accessibility: true,
+        accessibility: false,
         draggable: true,
         infinite: true,
-        slidesToShow: 1,
+        slidesToShow: 2,
         slidesToScroll: 1,
         swipeToSlide: true,
         pauseOnHover: false,
@@ -286,10 +289,11 @@ $(function() {
                 swipeToSlide: true,
             }
         },
-         {
+         {  
             breakpoint: 9999,
-            variableWidth: false
-            
+            settings: {
+                slidesToShow: 1
+            }
         }]
     });
 
@@ -369,7 +373,7 @@ $(function() {
         dots: false,
         prevArrow: $('#activity .prev'),
         nextArrow: $('#activity .next'),
-        accessibility: true,
+        accessibility: false,
         draggable: true,
         infinite: true,
         slidesToShow: 2,
@@ -381,16 +385,15 @@ $(function() {
         responsive: [{
             breakpoint: 1021,
             settings: {
-                slidesToScroll: 1,
-                slidesToShow: 4,
                 variableWidth: true,
                 swipeToSlide: true,
             }
         },
-         {
+         {  
             breakpoint: 9999,
-            variableWidth: false
-            
+            settings: {
+                slidesToShow: 2
+            }
         }]
     });
 
@@ -407,5 +410,13 @@ $(function() {
         }
     });
 
-
+    $(window).on('resize', function () {
+        $('#activity .slick').slick('resize');
+        $('#blog .slick').slick('resize');
+        $('#notify .slick01').slick('resize');
+        $('#notify .slick02').slick('resize');
+        $('#notify .slick03').slick('resize');
+        $('#visual .slick_wrap02 .slick').slick('resize');
+        $('#visual .slick_wrap .slick').slick('resize');
+    });
 });
