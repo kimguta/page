@@ -5,7 +5,7 @@
 
 @media (max-width:1199px) {
   #sub{padding-top:60px;}
-  #sub .inner{padding:0 20px;}
+  #sub .inner{padding:0 20px;overflow:hidden;}
   #sub #content{padding-bottom:40px;}
 }
 
@@ -20,7 +20,7 @@
 #breadcrumb .home{display:block;float:left;height:45px;width:32px;background:url(/page/tour/images/common/sp_tour.png) -9px 2px no-repeat;background-size:520px 520px;overflow:hidden;text-indent:-9999px;transition:all .15s;}
 #breadcrumb .home:hover{transform:scale(1.05);}
 #breadcrumb .home:active{transform:scale(.95);}
-#breadcrumb .box{float:left;position:relative;margin-left:9px;min-width:125px;}
+#breadcrumb .box{float:left;position:relative;margin-left:9px;min-width:168px;}
 #breadcrumb .box:after{content:'';display:block;width:9px;height:16px;position:absolute;left:-9px;top:50%;margin-top:-9px;;background:url(/page/tour/images/common/sp_tour.png) -56px -12px no-repeat;background-size:520px 520px;}
 #breadcrumb .box .open{display:block;padding:0 45px 0 12px;height:45px;line-height:45px;position:relative;font-size:15px;font-weight:300;color:#000;transition:all .15s;}
 #breadcrumb .box .open:after{content:'';display:block;width:10px;height:8px;position:absolute;right:11px;top:50%;margin-top:-4px;background:url(/page/tour/images/common/sp_tour.png) -96px -16px no-repeat;background-size:520px 520px;transition:all .15s;}
@@ -50,7 +50,7 @@
 }
 
 
-.title_box{text-align:center;position:relative;padding:36px 75px 20px;border-bottom:1px solid #dadada;margin-bottom:40px;}
+.title_box{text-align:center;position:relative;padding:36px 75px 20px;border-bottom:1px solid #dadada;margin-bottom:40px;z-index:15;background:#fff;}
 .title_box h3{line-height:1.2;font-size:30px;font-weight:500;color:#000;}
 .title_box .btn_box{position:absolute;bottom:12px;right:0px;}
 .title_box .btn_box .print{display:block;float:left;background:url(/page/tour/images/common/sp_tour.png) -160px 0px no-repeat;background-size:520px 520px;transition:all .15s;width:35px;height:40px;overflow:hidden;text-indent:-9999px;}
@@ -111,9 +111,10 @@
 .skbtn.ty02{height:52px;line-height:50px;background:#ffba00;border:2px solid #410099;color:#000;font-weight:500;font-size:20px;transition:all .1s;padding:0 50px;}
 .skbtn.ty02:hover{background:#000;color:#ffba00;text-decoration:none;}
 
-.skbtn.ty03{height:52px;line-height:50px;border:2px solid #410099;color:#410099;font-weight:500;font-size:20px;transition:all .1s;padding:0 50px;}
+.skbtn.ty03{height:52px;line-height:50px;border:2px solid #410099;color:#410099;font-weight:500;font-size:20px;transition:all .1s;padding:0 50px;background:#fff;}
+.skbtn.ty03 span{position:relative;display:inline-block;}
 .skbtn.ty03:hover{text-decoration:none;color:#fff;}
-.skbtn.ty03:before{content:'';z-index:-1;position:absolute;bottom:0%;left:50%;background:#410099;width:410px;height:410px;margin-left:-200px;margin-bottom:-410px;transform-origin:50% 48%;border-radius:43%;transition-duration:1.5s;transition-property:margin-bottom;transition-timing-function:ease;}
+.skbtn.ty03:before{content:'';position:absolute;bottom:0%;left:50%;background:#410099;width:410px;height:410px;margin-left:-200px;margin-bottom:-410px;transform-origin:50% 48%;border-radius:43%;transition-duration:1.5s;transition-property:margin-bottom;transition-timing-function:ease;}
 .skbtn.ty03:hover:before{
   margin-bottom: -310px;
   animation: rotate 2000ms infinite linear;
@@ -194,7 +195,7 @@
 .smart_db .info .report{padding-top:11px;}
 .smart_db .info .report li{overflow:hidden;margin-top:7px;padding-left:88px;position:relative;}
 .smart_db .info.ty02 .report li{padding-left:105px}
-.smart_db .info .report li strong{display:block;position:absolute;top:2px;left:0px;padding-left:11px;color:#373636;font-size:15px;font-weight:500;}
+.smart_db .info .report li strong{display:block;position:absolute;text-outline: 1px;px;left:0px;padding-left:11px;color:#373636;font-size:15px;font-weight:500;}
 .smart_db .info .report li strong:after{content:'';display:block;width:3px;height:3px;background:#1f1f1f;position:absolute;top:9px;left:4px;border-radius:50%;}
 .smart_db .info .report li p{line-height:1.6;font-size:15px;font-weight:300;word-break:keep-all;}
 .smart_db .info .report li p a{color:#0065b0;text-decoration:none;}
@@ -225,7 +226,7 @@
 }
 
 
-@media (max-width:992px) {
+@media (max-width:991px) {
     .smart_db .info .lbox{float:none;width:100%;margin:0 0 30px;}
     .smart_db .info .rbox{float:none;width:100%;}
     .smart_db .info .icon{width:64px;height:64px;background:url(/page/tour/images/common/sp_tour.png) -203px -92px no-repeat;background-size:360px 360px;top:-10px;}
@@ -266,8 +267,319 @@
 .sort_tab a span{position:relative;display:inline-block;transition:all .1s;}
 .sort_tab a + a{margin-left:4px;}
 .sort_tab a:hover{text-decoration:none;}
-.sort_tab a:hover span{text-decoration:none;font-weight:400;transform:scale(1.05);}
+.sort_tab a:hover span{text-decoration:none;transform:scale(1.05);}
 .sort_tab a:active{transform:scale(0.95);}
 .sort_tab a.active{color:#fff;border:1px solid #043c55;transform:scale(1);pointer-events:none;}
 .sort_tab a.active:before{content:'';display:block;position:absolute;top:0px;left:0px;bottom:0px;right:0px;background:url(/page/tour/images/sub/bg_sort01.jpg) repeat 0 0;}
 
+.smart_list{padding-top:27px;}
+.smart_list li{float:left;border:1px solid #d6d6d6;width:calc((100% - 165.2px) / 4);margin-right:55px;}
+.smart_list li:nth-child(4n){margin-right:0;}
+.smart_list li:nth-child(n+5){margin-top:55px;}
+.smart_list .thumb{height:0;padding-top:65.5%;position:relative;background:#e5e5e5;overflow:hidden;}
+.smart_list .thumb .icon{display:block;width:66px;height:66px;background:url(/page/tour/images/common/sp_tour.png) -203px -91px no-repeat;background-size:360px 360px;position:absolute;top:8px;right:8px;overflow:hidden;text-indent:-9999px;}
+.smart_list.ty02 .thumb .icon{background-position-y:-174px;}
+.smart_list .thumb img{display:block;max-width:100%;max-height:100%;position:absolute;top:0;right:0;left:0;bottom:0;margin:auto;transition:all .2s;}
+.smart_list a:hover .thumb img{transform:scale(1.1);}
+.smart_list a:hover,
+.smart_list a:hover span,
+.smart_list a:hover div,
+.smart_list a:hover strong,
+.smart_list a:hover p{text-decoration:none;}
+.smart_list .text{padding:0 15px 7px;min-height:163px;position:relative;text-align:center;}
+.smart_list.ty02 .text{min-height:140px;}
+.smart_list .text .categoty{display:inline-block;height:23px;line-height:17px;border:2px solid #fe5858;background:#fff;padding:0 15px;font-size:13px;font-weight:500;color:#fe5858;box-shadow:2px 2px 0px 0px rgba(0,0,0,.15);margin:0px auto 0px;text-align:center;border-radius:12px;position:relative;top:-13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;transition:all .15s;}
+.smart_list.ty02 .text .categoty{border-color:#0065b0;color:#0065b0;}
+.smart_list .text .name{display:block;font-weight:500;font-size:16px;position:relative;margin:-5px 0 5px;}
+.smart_list .text .name span{display:inline-block;padding-bottom:5px;line-height:1.2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;position:relative;max-width:100%;}
+.smart_list .text .name span:after{content:'';display:block;width:100%;height:1px;background:#6f6f6f;position:absolute;bottom:0px;left:0px;}
+.smart_list .text p{text-align:left;font-size:14px;line-height:1.6;overflow:hidden;position:relative;max-height:3.2em;display:-webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;word-break:keep-all;padding-left:47px;font-weight:300;}
+.smart_list .text p span{display:block;font-weight:500;position:absolute;left:0px;top:0px;display:block;width:42px;}
+.smart_list .text p span:after{content:':';display:inline-block;position:absolute;top:3px;right:0px;font-size:12px;}
+.smart_list .text p + p{margin-top:1.5px;}
+.smart_list .text p:not(:first-of-type){white-space:nowrap;display:block;text-overflow:ellipsis;}
+
+.smart_list a:hover .categoty{color:#fff;background:#fe5858;}
+.smart_list.ty02 a:hover .categoty{color:#fff;background:#0065b0;}
+.smart_list a:hover .icon{animation: size01 400ms infinite linear alternate;}
+
+
+@keyframes size01 {
+  from { transform: scale(1); }
+  to { transform: scale(1.1); }
+}
+
+
+@media (max-width:1199px) {
+   .smart_list li{width:calc((100% - 90.2px) / 4);margin-right:30px;}
+   .smart_list li:nth-child(n+5){margin-top:30px;}
+   .smart_list .text{min-height:155px;}
+   .smart_list .text .name{font-size:15px;margin:-6px 0 3px;}
+   .smart_list.ty02 .text{min-height:135px;}
+
+   .smart_list .thumb .icon{width:54px;height:54px;background:url(/page/tour/images/common/sp_tour.png) -169px -76px no-repeat;background-size:300px 300px;}
+   .smart_list.ty02 .thumb .icon{background-position-y:-145px;}
+}
+
+
+
+@media (max-width:991px) {
+   .smart_list{padding-top:22px;}
+   .smart_list li{width:calc((100% - 60.2px) / 3);margin-right:30px;}
+   .smart_list li:nth-child(n+4){margin-top:30px;}
+   .smart_list li:nth-child(4n){margin-right:30px;}
+   .smart_list li:nth-child(3n){margin-right:0px;}
+   .smart_list .text{padding:0 12px 7px;}
+}
+
+
+@media (max-width:680px) {
+   .smart_list{padding-top:18px;}
+   .smart_list li{width:calc((100% - 15.2px) / 2);margin-right:15px;}
+   .smart_list li:nth-child(n+3){margin-top:15px;}
+   .smart_list li:nth-child(3n){margin-right:15px;}
+   .smart_list li:nth-child(2n){margin-right:0px;}
+   .smart_list .text p{font-size:13px;}
+   .smart_list .text{padding:0 10px 7px;min-height:146px;}
+   .smart_list.ty02 .text{min-height:126px;}
+
+   .smart_list .thumb .icon{width:48px;height:48px;background:url(/page/tour/images/common/sp_tour.png) -146px -66px no-repeat;background-size:260px 260px;top:5px;right:5px;}
+   .smart_list.ty02 .thumb .icon{background-position-y:-125px;}
+   .smart_list .text p span:after{top:1px;}
+
+}
+
+.titLv3 strong{font-weight:500;}
+.registration{position:relative;}
+.registration .imptBox{padding:18px 25px 28px 0px;}
+.registration .talk{margin:11px 0 0 43px;max-width:795px;position:relative;padding-bottom:22px;}
+.registration .talk p{background:#e2e2e2;line-height:1.5;padding:5px 12px;border-radius:10px;word-break:keep-all;border:1px solid #d2d2d2;position:relative;font-size:14px;display:inline-block;}
+.registration .talk p:nth-child(2n){background:#fff;position:absolute;right:0;bottom:0;}
+.registration .talk p:after{content:'';display:block;width:16px;height:13px;background:url(/page/tour/images/sub/icon_sub02.png) 0 0 no-repeat;background-size:cover;position:absolute;bottom:-13px;left:8px;}
+.registration .talk p:nth-child(2n):after{background:url(/page/tour/images/sub/icon_sub03.png) 0 0 no-repeat;left:auto;right:0;}
+.registration .imptBox .listLv{margin-left:43px;}
+.registration .btn_box{margin:25px 0px 0 25px;padding:27px 20px 0;border-top:1px solid #ccc;text-align:center;}
+.registration .btn_box a{display:inline-block;transition:all .15s;background:#fff;padding:18px 20px 14px 75px;position:relative;border:1px solid #d1d1d1;border-radius:7px;font-family: "GmarketSans";font-weight:500;color:#000;width:357px;box-shadow:2px 3px 2px 0px rgba(0,0,0,.15);}
+.registration .btn_box a + a{margin-left:18px;}
+.registration .btn_box a span{display:block;font-size:17px;line-height:1.2;text-align:center;}
+.registration .btn_box a strong{display:block;font-size:22px;line-height:1.2;margin-top:5px;text-align:center;font-weight:500;}
+.registration .btn_box a:after{content:'';display:block;background:url(/page/tour/images/common/sp_tour.png) -13px -207px no-repeat;background-size:420px 420px;width:40px;height:40px;position:absolute;top:11px;left:33px;}
+.registration .btn_box a:hover,
+.registration .btn_box a:hover span,
+.registration .btn_box a:hover strong{text-decoration:none;}
+.registration .btn_box a:hover{transform:scale(1.03);}
+.registration .btn_box a:active{transform:scale(.97);}
+.registration .box{position:relative;padding-bottom:50px;}
+.registration .box:before{content:'';background:url(/page/tour/images/sub/bg_sub01.png) 0 0 no-repeat;background-size:cover;position:absolute;top:-40px;right:0px;width:521px;height:362px;}
+.registration .box h4{font-size:30px;color:#7c00e4;line-height:1.5;font-family: "GmarketSans";font-weight:500;padding-top:15px;position:relative;word-break:keep-all;}
+.registration .box h4 span{display:block;color:#000;font-size:24px;font-weight:300;margin-bottom:5px;}
+.registration .box strong{font-size:24px;color:#0065b0;line-height:1.5;font-family: "GmarketSans2";font-weight:500;display:block;margin-top:6px;position:relative;word-break:keep-all;}
+.registration .box strong span{display:inline-block;padding:0 38px 32px 0;position:relative;}
+.registration .box strong span:after{content:'';background:url(/page/tour/images/sub/bg_bar01.png) 0 0 repeat;position:absolute;bottom:0px;left:0px;width:100%;height:8px;}
+.btn_group{margin-top:65px;}
+
+@media (max-width:1199px) {
+  .registration .imptBox{padding:16px 20px 25px 0px;}
+  .registration .btn_box{margin:22px 0 0 20px;padding:25px 20px 0;}
+  .registration .btn_box a{padding:15px 15px 11px 65px;position:relative;width:327px;}
+  .registration .btn_box a + a{margin-left:15px;}
+  .registration .btn_box a span{font-size:16px;}
+  .registration .btn_box a strong{font-size:20px;}
+  .registration .btn_box a:after{left:25px;transform:scale(.9);}
+
+  .registration .box{padding-bottom:40px;}
+  .registration .box:before{top:-30px;width:420px;height:292px;opacity:.8;}
+  .registration .box h4{font-size:28px;padding-top:12px;}
+  .registration .box h4 span{font-size:22px;}
+  .registration .box strong{font-size:22px;color:#0065b0;}
+  .registration .box strong span{padding:0 32px 30px 0;}
+  .registration .box strong span:after{height:8px;}
+
+  .btn_group{margin-top:50px;}
+
+}
+
+@media (max-width:991px) {
+
+  .registration .btn_box{margin:20px 0 0 20px;padding:20px 5px 0;}
+  .registration .btn_box a{padding:15px 15px 11px 45px;position:relative;width:300px;}
+  .registration .btn_box a + a{margin-left:15px;}
+  .registration .btn_box a span{font-size:15px;}
+  .registration .btn_box a strong{font-size:18px;}
+  .registration .btn_box a:after{left:15px;transform:scale(.9);top:8px}
+
+  .registration .box{padding-bottom:30px;}
+  .registration .box:before{top:-30px;width:320px;height:222px;opacity:.8;}
+  .registration .box h4{font-size:26px;padding-top:10px;}
+  .registration .box h4 span{font-size:20px;}
+  .registration .box strong{font-size:20px;color:#0065b0;}
+  .registration .box strong span{padding:0 28px 25px 0;}
+  .registration .box strong span:after{height:4px;}
+  
+  .btn_group{margin-top:40px;}
+
+}
+
+
+@media (max-width:760px) {
+
+  .registration .talk{padding-bottom:27px;}
+  .registration .talk p:nth-child(2n){bottom:10px;}
+  .registration .btn_box{margin:20px 0 0 20px;padding:20px 5px 0;}
+  .registration .btn_box a{padding:13px 15px 9px 45px;position:relative;width:100%;}
+  .registration .btn_box a + a{margin:15px 0 0px;}
+  .registration .btn_box a span{font-size:14px;}
+  .registration .btn_box a strong{font-size:17px;}
+  .registration .btn_box a:after{left:15px;transform:scale(.9);top:8px}
+  
+  .registration .box{padding-bottom:25px;}
+  .registration .box:before{top:-20px;width:200px;height:139px;opacity:.3;}
+  .registration .box h4{font-size:24px;padding-top:10px;line-height:1.3;}
+  .registration .box h4 span{font-size:18px;margin-bottom:12px;}
+  .registration .box strong{font-size:18px;color:#0065b0;line-height:1.3;margin-top:12px;}
+  .registration .box strong span{padding:0 20px 25px 0;}
+  .registration .box strong br{display:none;}
+  
+  .btn_group{margin-top:30px;}
+}
+
+
+/*철암역두선탄시설*/
+.coal_facility{position:relative;}
+.coal_facility .info{position:relative;background:#f6f6f6;padding:6.5px 20px 4px 68px;height:56px;line-height:1.5;color:#b0b0b0;font-weight:300;font-size:15px;border-radius:28px;max-width:438px;font-weight:300;}
+.coal_facility .info:after{content:'';display:block;width:56px;height:56px;background:url(/page/tour/images/common/sp_tour.png) -332px -52px no-repeat;background-size:520px 520px;position:absolute;top:0px;left:0px;}
+.coal_facility .map_box{background:url(/page/tour/images/sub/coal01.jpg) center center no-repeat;background-size:cover;padding:1px 65px 120px;margin:65px 0 35px;position:relative;}
+.coal_facility .map_box:before{content:'';display:block;background:url(/page/tour/images/sub/coal02.png) center center no-repeat;background-size:cover;position:absolute;top:-95px;right:88px;width:371px;height:437px;}
+.coal_facility .map_box h4{margin-top:-47px;color:#000;font-size:48px;font-weight:100;}
+.coal_facility .map_box h4 strong{font-weight:700;}
+.coal_facility .map_box p{line-height:1.8;color:#000;font-size:17px;font-weight:400;margin-top:38px;max-width:650px;word-break:keep-all;position:relative;}
+.coal_facility .map_box .btn_box{text-align:center;margin-top:155px;}
+
+.coal_facility .course_list{padding:33px 0 50px 10px;position:relative;}
+.coal_facility .course_list:before{content:'';display:block;background:url(/page/tour/images/sub/coal05.png) center center no-repeat;background-size:cover;position:absolute;bottom:15px;right:645px;width:357px;height:188px;}
+.coal_facility .course_list li{float:left;width:calc((100% - 360.2px) / 6);margin-right:60px;position:relative;}
+.coal_facility .course_list li > div{position:relative;}
+.coal_facility .course_list li:nth-child(n+5){margin-top:53px;}
+.coal_facility .course_list li:nth-child(5){clear:both;margin-left:calc( ( ( (100% - 360.2px) / 6) * 3 ) + 182px)}
+.coal_facility .course_list li:last-child{margin-right:0;}
+.coal_facility .course_list li:before{content:'';display:block;height:27px;background:#420199;position:absolute;top:50%;margin-top:-30.5px;right:-65px;width:70px;}
+.coal_facility .course_list li:nth-child(4):before{top:auto;bottom:-55px;left:50%;right:auto;margin-left:-13.5px;width:27px;height:105px;}
+.coal_facility .course_list li:after{content:'';display:block;width:15px;height:23px;background:url(/page/tour/images/sub/arrow02.png) 0 0 no-repeat;background-size:cover;top:50%;margin-top:-28.5px;right:-39px;position:absolute;}
+.coal_facility .course_list li:last-child:after{display:none;}
+.coal_facility .course_list li:nth-child(4):after{top:auto;margin-top:0;bottom:-22px;right:auto;left:50%;margin-left:-7.5px;transform:rotate(90deg);}
+
+.coal_facility .course_list li:nth-child(3) > div:before{content:'';display:block;background:url(/page/tour/images/sub/coal03.png) center center no-repeat;background-size:cover;position:absolute;top:0px;left:-45px;width:60px;height:51px;}
+.coal_facility .course_list li:last-child > div:before{content:'';display:block;background:url(/page/tour/images/sub/coal04.png) center center no-repeat;background-size:cover;position:absolute;top:20px;right:-65px;width:65px;height:37px;}
+
+.coal_facility .course_list .thumb{overflow:hidden;padding-top:96%;position:relative;border-radius:50%;border:3px solid #420199;z-index:5;background:#fafafa;}
+.coal_facility .course_list .thumb img{display:block;max-width:150%;max-height:150%;position:absolute;top:50%;left:50%;transform:translate(-50%, -50%);}
+.coal_facility .course_list li p{text-align:center;font-size:18px;color:#000;margin-top:12px;line-height:1.2;font-weight:400;}
+.coal_facility .course_list li:nth-child(4) p{margin-left:-115px;}
+
+
+.coal_facility .photo_list{position:relative;overflow:hidden;}
+.coal_facility .photo_list li{border:1px solid #d2d2d2;background:#f1f1f1;float:left;width:calc((100% - 30.2px) / 3);margin:15px 15px 0 0;position:relative;overflow:hidden;}
+.coal_facility .photo_list li:nth-child(3n){margin-right:0;}
+.coal_facility .photo_list li div{padding-top:66%;height:0;position:relative;}
+.coal_facility .photo_list li img{display:block;max-width:100%;max-height:100%;position:absolute;top:0;right:0;left:0;bottom:0;margin:auto;}
+
+
+@media (max-width:1199px) {
+  .coal_facility .info{padding:4.5px 15px 4px 64px;height:52px;font-size:14px;max-width:400px;}
+  .coal_facility .info:after{width:52px;height:52px;background:url(/page/tour/images/common/sp_tour.png) -306px -48px no-repeat;background-size:480px 480px;}
+
+  .coal_facility .map_box{padding:1px 50px 90px;margin:55px 0 30px;}
+  .coal_facility .map_box:before{top:-85px;right:40px;width:320px;height:377px;}
+  .coal_facility .map_box h4{margin-top:-43px;font-size:44px;}
+  .coal_facility .map_box p{font-size:16px;margin-top:33px;max-width:550px;}
+  .coal_facility .map_box p br{display:none;}
+  .coal_facility .map_box .btn_box{margin-top:135px;}
+
+  .coal_facility .course_list{padding:25px 0 35px 10px;}
+  .coal_facility .course_list:before{bottom:15px;right:auto;left:20px;width:320px;height:169px;}
+  .coal_facility .course_list li{float:left;width:calc((100% - 240.2px) / 6);margin-right:40px;position:relative;}
+  .coal_facility .course_list li:nth-child(n+5){margin-top:33px;}
+
+  .coal_facility .course_list li:before{height:20px;top:50%;margin-top:-30.5px;right:-65px;width:70px;}
+  .coal_facility .course_list li:after{content:'';display:block;width:12px;height:18px;background:url(/page/tour/images/sub/arrow02.png) 0 0 no-repeat;background-size:cover;top:50%;margin-top:-29.5px;right:-28px;position:absolute;}
+  .coal_facility .course_list li:nth-child(4):before{top:auto;bottom:-55px;left:50%;right:auto;margin-left:-9.5px;width:20px;height:105px;}
+  .coal_facility .course_list li:nth-child(4):after{bottom:-12px;margin-left:-5.5px;}
+  .coal_facility .course_list li p{margin-top:10px;font-size:16px;}
+  .coal_facility .course_list li:nth-child(4) p{margin-left:-105px;}
+
+  .coal_facility .course_list li:nth-child(3) > div:before{top:0px;left:-35px;width:50px;height:43px;}
+  .coal_facility .course_list li:last-child > div:before{top:20px;right:-55px;width:50px;height:28px;}
+}
+
+
+@media (max-width:991px) {
+  .coal_facility .info{padding:4.5px 15px 4px 64px;height:52px;font-size:14px;max-width:400px;}
+  .coal_facility .info:after{width:52px;height:52px;background:url(/page/tour/images/common/sp_tour.png) -306px -48px no-repeat;background-size:480px 480px;}
+
+  .coal_facility .map_box{padding:1px 30px 60px;margin:45px 0 25px;}
+  .coal_facility .map_box:before{top:-65px;right:20px;width:230px;height:271px;}
+  .coal_facility .map_box h4{margin-top:-39px;font-size:40px;}
+  .coal_facility .map_box p{font-size:15px;margin-top:30px;max-width:450px;}
+  .coal_facility .map_box .btn_box{margin-top:85px;}
+
+  .coal_facility .course_list{padding:25px 0 30px 10px;}
+  .coal_facility .course_list:before{bottom:15px;right:auto;left:0px;width:260px;height:137px;}
+
+  .coal_facility .course_list li{float:left;width:calc((100% - 200.2px) / 5);margin-right:40px;position:relative;}
+  .coal_facility .course_list li:nth-child(n+4){margin-top:33px;}
+
+  .coal_facility .course_list li:nth-child(4){clear:both;margin-left:calc( ( ( (100% - 200.2px) / 5) * 2 ) + 82px)}
+  .coal_facility .course_list li:nth-child(5){clear:both;margin-left:calc( ( ( (100% - 200.2px) / 5) * 2 ) + 82px)}
+
+  .coal_facility .course_list li:nth-child(3):before{top:auto;bottom:-55px;left:50%;right:auto;margin-left:-9.5px;width:20px;height:105px;}
+  .coal_facility .course_list li:nth-child(3):after{top:auto;margin-top:0;bottom:-12px;right:auto;left:50%;margin-left:-5.5px;transform:rotate(90deg);}
+  .coal_facility .course_list li:nth-child(3) p{margin-left:-100px} 
+  .coal_facility .course_list li:nth-child(4) p{margin-left:-100px} 
+}
+
+
+
+@media (max-width:760px) {
+  .coal_facility .info{padding:3.5px 15px 4px 52px;height:43px;font-size:13px;max-width:340px;line-height:1.4}
+  .coal_facility .info:after{width:43px;height:43px;background:url(/page/tour/images/common/sp_tour.png) -255px -40px no-repeat;background-size:400px 400px;}
+
+  .coal_facility .map_box{padding:1px 10px 45px 20px;margin:40px 0 25px;}
+  .coal_facility .map_box:before{display:none}
+  .coal_facility .map_box h4{margin-top:-31px;font-size:32px;}
+  .coal_facility .map_box p{font-size:15px;margin-top:25px;max-width:100%;text-shadow: -1px 0 rgba(255,255,255,.5), 0 1px rgba(255,255,255,.5), 1px 0 rgba(255,255,255,.5), 0 -1px rgba(255,255,255,.5);}
+  .coal_facility .map_box .btn_box{margin-top:50px;}
+
+  .coal_facility .course_list{padding:20px 0 25px 0px;}
+  .coal_facility .course_list:before{display:none;}
+
+  .coal_facility .course_list li{float:left;width:calc((100% - 90.2px) / 3);margin-right:30px;position:relative;}
+  .coal_facility .course_list li:nth-child(n+3){margin-top:15px;}
+
+  .coal_facility .course_list li:nth-child(3){clear:both;margin-left:calc( ( ( (100% - 90.2px) / 3) * 1 ) + 30px)}
+  .coal_facility .course_list li:nth-child(4){clear:both;margin-left:calc( ( ( (100% - 90.2px) / 3) * 1 ) + 30px)}
+  .coal_facility .course_list li:nth-child(5){clear:both;margin-left:calc( ( ( (100% - 90.2px) / 3) * 1 ) + 30px)}
+  .coal_facility .course_list li:nth-child(6){clear:both;margin-left:calc( ( ( (100% - 90.2px) / 3) * 1 ) + 30px)}
+
+  .coal_facility .course_list li:nth-child(2):before{top:auto;bottom:-55px;left:50%;right:auto;margin-left:-9.5px;width:20px;height:105px;}
+  .coal_facility .course_list li:nth-child(2):after{top:auto;margin-top:0;bottom:-3px;right:auto;left:50%;margin-left:-5.5px;transform:rotate(90deg);}
+  .coal_facility .course_list li:nth-child(3):before{top:auto;bottom:-55px;left:50%;right:auto;margin-left:-9.5px;width:20px;height:105px;}
+  .coal_facility .course_list li:nth-child(3):after{top:auto;margin-top:0;bottom:-3px;right:auto;left:50%;margin-left:-5.5px;transform:rotate(90deg);}
+  .coal_facility .course_list li:nth-child(4):before{top:auto;bottom:-55px;left:50%;right:auto;margin-left:-9.5px;width:20px;height:105px;}
+  .coal_facility .course_list li:nth-child(4):after{top:auto;margin-top:0;bottom:-3px;right:auto;left:50%;margin-left:-5.5px;transform:rotate(90deg);}
+  .coal_facility .course_list li:nth-child(5):before{top:auto;bottom:-55px;left:50%;right:auto;margin-left:-9.5px;width:20px;height:105px;}
+  .coal_facility .course_list li:nth-child(5):after{top:auto;margin-top:0;bottom:-3px;right:auto;left:50%;margin-left:-5.5px;transform:rotate(90deg);}
+
+  .coal_facility .course_list li:nth-child(2) p{margin-left:20px;text-align:left;position:relative;left:50%;min-width:90px;} 
+  .coal_facility .course_list li:nth-child(3) p{margin-left:20px;text-align:left;position:relative;left:50%;min-width:90px;} 
+  .coal_facility .course_list li:nth-child(4) p{margin-left:20px;text-align:left;position:relative;left:50%;min-width:90px;} 
+  .coal_facility .course_list li:nth-child(5) p{margin-left:20px;text-align:left;position:relative;left:50%;min-width:90px;} 
+  
+  .coal_facility .photo_list li{width:calc((100% - 15.2px) / 2);}
+  .coal_facility .photo_list li:nth-child(3n){margin-right:15px;}
+  .coal_facility .photo_list li:nth-child(2n){margin-right:0px;}
+  .coal_facility .course_list li:before{margin-top:-24.5px;}
+  .coal_facility .course_list li:after{right:-22px;margin-top:-24.5px;}
+
+  .coal_facility .course_list li:last-child > div:before{top:50%;right:-50px;width:50px;height:28px;margin-top:-48px;}
+  .coal_facility .course_list li:nth-child(3) > div:before{top:50%;margin-top:-10px;}
+}
