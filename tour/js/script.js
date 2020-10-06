@@ -159,4 +159,22 @@ $(function() {
 	});
 
 
+	$('#footer .open').on('click', function (e) {
+		e.preventDefault();
+		$(this).toggleClass('active');
+		$('#footer .view').slideToggle(300);
+	});
+
+	$('#footer .view a:last').on('focusout', function () {
+		$('#footer .open').removeClass('active');
+		$('#footer .view').slideUp(300);
+		$('#footer .open').focus();
+	});
+
+	$('#footer .family').on('mouseleave', function () {
+		$('#footer .open').removeClass('active');
+		$('#footer .view').slideUp(300);
+		$('#footer .open').focus();
+	});
+
 });
