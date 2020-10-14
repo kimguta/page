@@ -17,7 +17,7 @@ $(function() {
 		$(this).parent('h2').next('.depth_02').slideDown(300);
 		$('.depth_02 > li:first-child h3').addClass('active');
 		$('.depth_02 > li:first-child .depth_03').show();
-		$('.bg_pc').stop().animate({height:122},300);
+		$('.bg_pc').show().stop().animate({height:122},300);
 	});
 
 	$('#gnb_pc .depth_01 li:nth-child(4) h2 a').on('mouseenter focusin', function () {
