@@ -183,4 +183,12 @@ $(function() {
 		$('#footer .open').focus();
 	});
 
+
+	$('a[role="button"]').on('keypress', function (key) {
+		if (key.keyCode == 32) {
+			$(this).trigger('click');
+			return false
+		}
+	});
+
 });
