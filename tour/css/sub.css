@@ -1427,7 +1427,8 @@
 
 /*추천여행코스*/
 .recommend{position:relative;}
-.recommend .vbox{background:url(/page/tour/images/sub/recom01.png) center center no-repeat;background-size:cover;padding:103px 50px 50px;}
+.recommend .vbox{background:url(/page/tour/images/sub/recom01.png) center top no-repeat;background-size:cover;padding:103px 50px 50px;}
+.recommend.v2 .vbox{background-image:url(/page/tour/images/sub/recom02.png);padding-bottom:105px;}
 .recommend .vbox h4{font-size:22px;line-height:1.5;font-family: "GmarketSans";position:relative;word-break:keep-all;font-weight:500;text-align:center;position:relative;}
 .recommend .vbox h4 span{display:inline-block;position:relative;}
 .recommend .vbox h4 strong{font-size:40px;color:#7c00e4;font-weight:500;display:block;margin:0 auto;}
@@ -1440,12 +1441,57 @@ box-shadow:2px 2px 2px 0 rgba(0,0,0,.15);margin:20px 20px 20px 0;border:1px soli
 .recommend .sbox01 a:last-child{margin-right:0;}
 .recommend .sbox01 a:nth-child(4n){margin-right:0;}
 .recommend .sbox01 .item.v2 a:nth-child(n+5){margin-top:0;}
-.recommend .sbox01 a:hover{text-decoration:none;}
+.recommend .sbox01 a:hover{text-decoration:none;transform:scale(1.05);}
 .recommend .sbox01 a:active{transform:scale(.95);}
 .recommend .sbox01 a:after{content:'';display:block;background:url(/page/tour/images/common/sp_tour.png) -125px -86px no-repeat;background-size:520px 520px;position:absolute;left:15px;top:50%;transition:all .15s;width:29px;height:29px;margin-top:-14px;opacity:0;}
+.recommend .sbox01 a.active{pointer-events:none;}
 .recommend .sbox01 a.active:after{opacity:1;}
 .recommend .sbox01 .item{padding:5px 0;}
 .recommend .sbox01 .item + .item{border-top:1px solid #cfd8db;}
+
+.recommend .sbox02{text-align:center;padding-top:130px;}
+.recommend .sbox02 a{display:inline-block;position:relative;width:calc((100% - 61px) / 4);margin-right:16px;transition:all .15s;vertical-align:top;}
+.recommend .sbox02 a:active{transform:scale(.95);}
+.recommend .sbox02 a:last-child{margin-right:0;}
+.recommend .sbox02 a .thumb{position:relative;padding-top:87%;}
+.recommend .sbox02 a img{display:block;position:absolute;top:0;left:0;width:100%;transition:all .15s;}
+.recommend .sbox02 a span{display:block;width:80px;height:80px;border-radius:50%;line-height:82px;text-align:center;background:#c9c9c9;font-size:22px;font-weight:700;color:#fff;font-family: 'S-CoreDream';;font-weight:800;position:absolute;bottom:-22px;left:50%;margin-left:17px;transition:all .15s;}
+.recommend .sbox02 a.ty01.active span,
+.recommend .sbox02 a.ty01:hover span{background:#00aeff}
+.recommend .sbox02 a.ty02.active span,
+.recommend .sbox02 a.ty02:hover span{background:#fe5858}
+.recommend .sbox02 a.ty03.active span,
+.recommend .sbox02 a.ty03:hover span{background:#00c08c}
+.recommend .sbox02 a.ty04.active span,
+.recommend .sbox02 a.ty04:hover span{background:#ff8400}
+.recommend .sbox02 a.ty05.active span,
+.recommend .sbox02 a.ty05:hover span{background:#f96d06}
+.recommend .sbox02 a.ty06.active span,
+.recommend .sbox02 a.ty06:hover span{background:#24be06}
+.recommend .sbox02 a.ty07.active span,
+.recommend .sbox02 a.ty07:hover span{background:#6417cd}
+.recommend .sbox02 a.ty08.active span,
+.recommend .sbox02 a.ty08:hover span{background:#eb2c86}
+.recommend .sbox02 a.ty09.active span,
+.recommend .sbox02 a.ty09:hover span{background:#009fcd}
+
+.recommend .sbox02 a.active .gray,
+.recommend .sbox02 a:hover .gray{opacity:0;}
+.recommend .sbox02 a.active{pointer-events:none;}
+
+.recommend.v3 .vbox{background-image:url(/page/tour/images/sub/recom03.png);padding-bottom:150px;}
+.recommend.v3 .sbox02 a{width:calc((100% - 81px) / 5);}
+.recommend.v3 .sbox02 span{font-size:18px;}
+
+.recommend.v4 .vbox{background-image:url(/page/tour/images/sub/recom04.png);padding-bottom:0px;background-size:contain;}
+.recommend.v4 .vbox h4 span:after{left:-170px;}
+.recommend .hash{padding:15px 15px 65px;text-align:center;}
+.recommend .hash span{display:inline-block;vertical-align:top;padding:0 11px;border:1px solid #bebebe;background:#fff;border-radius:3px;height:32px;line-height:30px;margin:10px 6px 0 0;font-weight:300;color:#000;font-size:15px;}
+.recommend .hash a{display:inline-block;vertical-align:top;padding:0 15px;border:1px solid #b22b2b;background:#fe5858;border-radius:3px;height:32px;line-height:30px;margin:10px 0px 0 0;font-weight:300;color:#fff;font-size:15px;transition:all .1s;}
+.recommend .hash a:hover{transform:scale(1.05);text-decoration:none;}
+.recommend .hash a:active{transform:scale(.95);}
+
+
 
 @media (max-width:1199px) {
   .recommend .vbox{padding:90px 30px 20px;}
@@ -1455,6 +1501,16 @@ box-shadow:2px 2px 2px 0 rgba(0,0,0,.15);margin:20px 20px 20px 0;border:1px soli
   .recommend .sbox01{max-width:580px;margin-left:calc(100% - 580px);padding-top:55px;}
   .recommend .sbox01 a{height:62px;line-height:66px;font-size:20px;padding-left:10px;}
   .recommend .btn_box{margin-top:45px;}
+
+  .recommend.v2 .vbox{padding-bottom:90px;}
+  .recommend .sbox02{padding-top:110px;}
+  .recommend .sbox02 a span{font-size:20px;width:70px;height:70px;line-height:70px;;bottom:-19px;margin-left:13px;}
+
+  .recommend.v3 .vbox{padding-bottom:130px;}
+  .recommend.v3 .sbox02 span{font-size:17px;}
+
+  .recommend.v4 .vbox h4 span:after{left:-160px;}
+  .recommend .hash{padding:12px 15px 55px;}
 }
 
 @media (max-width:991px) {
@@ -1467,6 +1523,20 @@ box-shadow:2px 2px 2px 0 rgba(0,0,0,.15);margin:20px 20px 20px 0;border:1px soli
   .recommend .sbox01 .item.v2 a{width:calc((100% - 45.2px) / 4);}
   .recommend .btn_box{margin-top:35px;}
   .recommend .sbox01 a:after{background:url(/page/tour/images/common/sp_tour.png) -101px -69px no-repeat;background-size:420px 420px;left:13px;width:24px;height:24px;margin-top:-12px;}
+
+  .recommend.v2 .vbox{padding-bottom:70px;}
+  .recommend .sbox02{padding-top:80px;}
+  .recommend .sbox02 a{width:calc((100% - 46px) / 4);margin-right:11px;}
+  .recommend .sbox02 a span{font-size:18px;width:60px;height:60px;line-height:60px;;bottom:-17px;margin-left:11px;}
+
+  .recommend.v3 .vbox{padding-bottom:110px;}
+  .recommend.v3 .sbox02 a{width:calc((100% - 67px) / 5);margin-right:11px;}
+  .recommend.v3 .sbox02 span{font-size:16px;}
+
+  .recommend.v4 .vbox h4 span:after{left:-120px;}
+  .recommend .hash{padding:5px 15px 40px;}
+  .recommend .hash span{padding:0 8px;height:28px;line-height:26px;margin:8px 4px 0 0;font-size:14px;}
+  .recommend .hash a{padding:0 13px;height:28px;line-height:26px;margin:8px 0px 0 0;font-size:14px;}
 }
 
 @media (max-width:760px) {
@@ -1477,9 +1547,34 @@ box-shadow:2px 2px 2px 0 rgba(0,0,0,.15);margin:20px 20px 20px 0;border:1px soli
   .recommend .vbox h4 span{padding-left:60px;}
   .recommend .vbox h4 span:after{width:80px;height:71px;;margin-top:-44.5px;left:-33px;}
   .recommend .sbox01{max-width:540px;padding-top:25px;margin:0 auto;}
-  .recommend .sbox01 a{height:46px;line-height:48px;font-size:16px;padding-left:18px;width:calc((100% - 10.2px) / 2);margin:10px 10px 10px 0;}
+  .recommend .sbox01 a{height:48px;line-height:50px;font-size:16px;padding-left:18px;width:calc((100% - 10.2px) / 2);margin:10px 10px 10px 0;}
   .recommend .sbox01 .item.v2 a{width:calc((100% - 30.2px) / 4);}
   .recommend .btn_box{margin-top:25px;}
   .recommend .sbox01 a:after{background:url(/page/tour/images/common/sp_tour.png) -72px -49px no-repeat;background-size:300px 300px;left:10px;width:17px;height:17px;margin-top:-9px;}
+
+  .recommend.v2 .vbox{padding-bottom:25px;}
+  .recommend .sbox02{padding:40px 10px 0;max-width:450px;margin:0 auto;}
+  .recommend .sbox02 a{width:calc((100% - 16px) / 2);margin-right:11px;}
+  .recommend .sbox02 a:nth-child(2n){margin-right:0;}
+  .recommend .sbox02 a:nth-child(n+3){margin-top:30px;}
+  .recommend .sbox02 a span{font-size:15px;width:52px;height:52px;line-height:52px;;bottom:-15px;margin-left:10px;}
+
+  .recommend.v3 .vbox{padding-bottom:40px;}
+  .recommend.v3 .sbox02 a{width:calc((100% - 31px) / 3);margin-right:11px;}
+  .recommend.v3 .sbox02 a:nth-child(2n){margin-right:11px;}
+  .recommend.v3 .sbox02 a:nth-child(3n){margin-right:0px;}
+  .recommend.v3 .sbox02 a:nth-child(3){margin-top:0px;}
+  .recommend .sbox02 a:nth-child(n+3){margin-top:30px;}
+  .recommend.v3 .sbox02 span{font-size:13px;}
+
+  .recommend.v3 .vbox h4 span{padding-left:70px;}
+  .recommend.v3 .vbox h4 span:after{left:-15px;}
+
+  .recommend.v4 .vbox h4 span{padding-left:0;}
+  .recommend.v4 .vbox h4 span:after{left:0px;margin-top:-70px;transform: scale(.7);}
+  .recommend .hash{padding:5px 0px 25px;}
+  .recommend .hash span{padding:0 6px;height:26px;line-height:24px;margin:6px 2px 0 0;font-size:13px;}
+  .recommend .hash a{padding:0 10px;height:26px;line-height:24px;margin:6px 2px 0 0;font-size:13px;}
+
 
 }
