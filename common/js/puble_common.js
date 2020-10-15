@@ -508,6 +508,7 @@ function p_popLayer(opts){
 				}else if(opts.right){
 					$this.parents(opts.seTarget).find(opts.seLayer).css('right',0);
 				}
+				return false;
 			}
 		});
     }
