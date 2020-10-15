@@ -126,4 +126,10 @@ $(function() {
 		$(this).addClass('active');
 	});
 
+	$('.recommend .sbox02 a').on('click', function (e) {
+		e.preventDefault();
+		$(this).siblings('a').removeClass('active');
+		$(this).addClass('active');
+	});
+
 });
