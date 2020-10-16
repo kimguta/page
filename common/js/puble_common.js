@@ -656,7 +656,7 @@ function p_dataPicker(){
 	$datePicker.datepicker({
 	  showOn: "both",
       buttonImage: "/page/common/images/btn-calendar.png",
-      buttonImageOnly: true,
+      buttonImageOnly: false,
       buttonText: "",
       beforeShow: function(input, inst) {
 		  var bg = document.createElement('div');
