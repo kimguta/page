@@ -531,3 +531,46 @@ span.listLv:before,
   .rent .btn_box{margin-top:15px;text-align:center;}
   #sub .rent .contsLead .skbtn{margin:10px 0 10px 17px;padding:0 30px;}
 }
+
+/*버튼 검색 탭*/
+.btn_tab{padding:10px 15px;background:#f9f9f9;border:1px solid #dedede;position:relative;}
+.btn_tab input:focus::placeholder{color:transparent;}
+.btn_tab input::placeholder{color:#454545;font-size:14px;font-weight:300;}
+.btn_tab .btn_box{float:left;}
+.btn_tab .btn_box a{display:inline-block;height:34px;line-height:32px;width:84px;text-align:center;color:#fff;font-weight:300;transition:all .1s;font-size:15px;}
+.btn_tab .btn_box a + a{margin-left:2px;}
+.btn_tab .btn_box a.ty01{background:#59493f;}
+.btn_tab .btn_box a.ty02{background:#7a9959;}
+.btn_tab .btn_box a.ty03{background:#bd5505;}
+.btn_tab .btn_box a:hover{text-decoration:none;transform:scale(1.05);}
+.btn_tab .btn_box a:active{transform:scale(.95);}
+
+.btn_tab .period_box{float:right;}
+.btn_tab .data_start,
+.btn_tab .data_end{display:inline-block;vertical-align:top;position:relative;height:34px;background:#fff;border:1px solid #ddd;width:160px;padding-left:37px;}
+.btn_tab input[type="text"]{height:32px;color:#454545;font-size:14px;font-weight:300;width:100%;padding-left:5px;}
+.btn_tab input[type="submit"]{height:34px;margin-left:6px;color:#fff;background:#362e2b;font-size:14px;font-weight:300;width:60px;transition:all .1s;}
+.btn_tab input[type="submit"]:hover{transform:scale(1.05);}
+.btn_tab input[type="submit"]:active{transform:scale(.95);}
+.btn_tab .period_box em{padding:0 7px;color:#362e2b;}
+.btn_tab .ui-datepicker-trigger{background:url(/page/museum/images/common/sp_museum.png) -250px -805px no-repeat;background-size:520px 1069px;width:20px;height:20px;position:absolute;top:5px;left:14px;margin-left:0;}
+.btn_tab .ui-datepicker-trigger img{display:none;}
+
+@media (max-width:991px) {
+  .btn_tab .btn_box a{width:75px;}
+
+}
+
+@media (max-width:760px) {
+  .btn_tab .btn_box{float:none;margin-bottom:10px;}
+  .btn_tab .period_box{float:none;}
+  .btn_tab .data_start,
+  .btn_tab .data_end{width:calc((100% - 96px) / 2)}
+}
+
+@media (max-width:639px) {
+  .btn_tab .data_start{width:calc(100% - 65px);}
+  .btn_tab .data_end{width:calc(100% - 65px);margin-top:5px;}
+  .btn_tab .period_box em{display:none;}
+  .btn_tab input[type="submit"]{margin-left:0px;position:absolute;bottom:10px;right:15px;height:73px;}
+}
