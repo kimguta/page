@@ -654,7 +654,7 @@ function p_dataPicker(){
 	var bgClassName = 'ui-datepicker-bg';
 	
 	$datePicker.datepicker({
-	  showOn: "button",
+	  showOn: "both",
       buttonImage: "/page/common/images/btn-calendar.png",
       buttonImageOnly: true,
       buttonText: "",
