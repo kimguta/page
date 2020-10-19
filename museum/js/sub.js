@@ -21,4 +21,33 @@ $(function() {
 		}
 	});
 
+	$('.event .slick').slick({
+        autoplay: false,
+        arrows: true,
+        dots: false,
+        accessibility: true,
+        prevArrow: $('.event .prev'),
+        nextArrow: $('.event .next'),
+        draggable: true,
+        infinite: true,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+		swipeToSlide: true,
+        pauseOnHover: false,
+        speed: 1000,
+        responsive: [{
+            breakpoint: 761,
+            settings: {
+                slidesToScroll: 1,
+                variableWidth: true
+            }
+        },
+         {  
+            breakpoint: 992,
+            settings: {
+                slidesToShow: 3
+            }
+        }]
+    });
+
 });

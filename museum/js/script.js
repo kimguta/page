@@ -1,5 +1,6 @@
 $(function() {
-    
+
+
      var navOffset = $('#header').offset();
 	$(window).on('scroll', function () {
 	    if ($(document).scrollTop() > navOffset.top) {
