@@ -48,7 +48,14 @@ $(function() {
         slidesToShow: 1,
         slidesToScroll: 1,
         pauseOnHover: false,
-        speed: 1200
+        speed: 1000,
+		 responsive: [{
+            breakpoint: 992,
+            settings: {
+                adaptiveHeight: true
+            }
+        }]
+
     });
 
 	$('.calendar01 td.possible > a').on('click', function (e) {
