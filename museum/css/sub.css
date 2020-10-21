@@ -850,19 +850,19 @@ span.listLv:before,
 
 
 /*소장품*/
-#sub .boSrchArea .boSrch{width:730px}
-#sub .boSrch-selectBox{width:150px;}
-#sub .boSrch-iptTxt{width:200px;}
+#sub .boSrchArea.v2 .boSrch{width:730px}
+#sub .boSrchArea.v2 .boSrch-selectBox{width:150px;}
+#sub .boSrchArea.v2 .boSrch-iptTxt{width:200px;}
 
 @media (max-width:999px) {
-  #sub .boSrchArea .boSrch{width:100%}
-  #sub .boSrch-selectBox{width:135px;}
-  #sub .boSrch-iptTxt{width:calc(100% - 485px);}
+  #sub .boSrchArea.v2 .boSrchArea .boSrch{width:100%}
+  #sub .boSrchArea.v2 .boSrch-selectBox{width:135px;}
+  #sub .boSrchArea.v2 .boSrch-iptTxt{width:calc(100% - 485px);}
 }
 
 @media (max-width:760px) {
-  #sub .boSrch-selectBox{width:100%;margin-bottom:5px;}
-  #sub .boSrch-iptTxt{width:calc(100% - 65px);}
+  #sub .boSrchArea.v2 .boSrch-selectBox{width:100%;margin-bottom:5px;}
+  #sub .boSrchArea.v2 .boSrch-iptTxt{width:calc(100% - 65px);}
 }
 
 .collection_list{border-top:3px solid #7e6b5a;}
@@ -908,17 +908,18 @@ span.listLv:before,
 }
 
 @media (max-width:760px) {
-  .collection_list > li{padding:12px 12px 12px 0;}
-  .collection_list .thumb{width:100%;float:none;height:180px;}
+  .collection_list > li{padding:15px 0px 12px 0;float:left;width:calc((100% - 15.2px) / 2);margin-right:15px;}
+  .collection_list > li:nth-child(2n){margin-right:0;}
+  .collection_list .thumb{width:100%;float:none;height:0px;padding-top:62%;}
   .collection_list .text{padding-left:0px;width:100%;margin-top:5px;}
-  .collection_list .text .name{height:34px;line-height:34px;font-size:16px;}
+  .collection_list .text .name{height:32px;line-height:32px;font-size:15px;font-weight:500;}
   .collection_list .text ul{padding-top:10px;border-top:1px solid #f0f0f0;}
-  .collection_list .text ul li{padding-left:90px;font-size:14px;}
+  .collection_list .text ul li{padding-left:58px;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
   .collection_list .text ul li + li{margin-top:8px;}
   .collection_list .text .name{padding-right:0;}
-  .collection_list .text ul li strong{padding-left:14px;width:78px;}
-  .collection_list .text ul li strong:after{top:3px;}
-  .collection_list .text ul li strong:before{margin-top:-3px;}
+  .collection_list .text ul li strong{padding-left:0px;width:52px;}
+  .collection_list .text ul li strong:after{top:2px;}
+  .collection_list .text ul li strong:before{display:none;}
 
 }
 
