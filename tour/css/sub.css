@@ -1498,11 +1498,12 @@ box-shadow:2px 2px 2px 0 rgba(0,0,0,.15);margin:20px 20px 20px 0;border:1px soli
 
 .recommend .sbox02 a.active .gray,
 .recommend .sbox02 a:hover .gray{opacity:0;}
-.recommend .sbox02 a.active{pointer-events:none;}
 
 .recommend.v3 .vbox{background-image:url(/page/tour/images/sub/recom03.png);padding-bottom:150px;}
 .recommend.v3 .sbox02 a{width:calc((100% - 81px) / 5);}
 .recommend.v3 .sbox02 span{font-size:18px;}
+.recommend.v3 .sbox02 a.active{pointer-events:none;}
+.recommend.v1 .sbox02 a.active{pointer-events:none;}
 
 .recommend.v4 .vbox{background-image:url(/page/tour/images/sub/recom04.png);padding-bottom:0px;background-size:contain;}
 .recommend.v4 .vbox h4 span:after{left:-170px;}
@@ -1772,4 +1773,166 @@ box-shadow:2px 2px 2px 0 rgba(0,0,0,.15);margin:20px 20px 20px 0;border:1px soli
   .copyright_box{margin-top:20px;text-align:left;}
   .copyright_box img{margin-right:0px;width:auto;height:34px;display:block}
   .copyright_box span{font-size:14px;font-weight:400;margin-top:8px;}
+}
+
+/*통합검색*/
+#search{position:relative;}
+#search .condition{position:relative;}
+#search .search_box{text-align:center;padding:0 220px;margin-bottom:25px;white-space:nowrap;}
+#search .search_box .box01{width:140px;padding:0 15px;border:1px solid #b5b5b5;border-radius:25px;height:50px;display:inline-block;vertical-align:top;margin-right:12px;}
+#search .search_box .box02{width:calc(100% - 157px);height:50px;background:#f6f6f6;border:1px solid #b5b5b5;padding:0 50px 0 20px;position:relative;border-radius:25px;display:inline-block;vertical-align:top;}
+#search .search_box select{width:100%;border-radius:25px;font-size:18px;font-weight:100;color:#313131;height:48px;border:0;padding-top:1px;}
+#search .search_box .search_keyword{width:100%;height:48px;line-height:48px;font-size:16px;font-weight:300;background:transparent;padding-top:1px;}
+#search .search_box .submit{width:48px;height:48px;position:absolute;top:0;right:0;overflow:hidden;text-indent:-9999px;transition:all .1s;background:url(/page/tour/images/common/i_srch.png) center center no-repeat;background-size:25px 22px;}
+#search .search_box .submit:hover{transform:scale(1.05);}
+#search .search_box .submit:active{transform:scale(.95);}
+#search .popular{padding:1px 15px 30px;text-align:center;}
+#search .popular strong,
+#search .popular a{display:inline-block;vertical-align:top;height:28px;line-height:28px;margin-top:10px;}
+#search .popular strong{padding:0 13px;background:#7c00e4;color:#fff;border-radius:3px;font-size:15px;font-weight:300;box-shadow:0 0 0px 1px rgba(0,0,0,.1);margin-right:18px;}
+#search .popular a{margin-right:10px;color:#535353;font-size:15px;font-weight:300;min-width:150px;}
+#search .popular a:last-of-type{margin-right:0;}
+#search .popular a em{display:inline-block;vertical-align:top;height:28px;line-height:26px;width:28px;border-radius:3px;box-shadow:0 0 0px 1px rgba(0,0,0,.1);text-align:center;color:#313131;font-weight:500;font-size:14px;margin-right:5px;background:#ffd300;}
+#search .period{padding:20px 30px;border:1px solid #b5b5b5;position:relative;}
+#search .period .box01{}
+#search .period .box01 > div + div{margin-top:15px;white-space:nowrap;}
+#search .period .box01 strong,
+#search .period .box01 a{display:inline-block;vertical-align:top;height:28px;line-height:24px;}
+#search .period .box01 strong{margin-right:25px;font-weight:300;color:#434343;font-size:16px;line-height:26px;}
+#search .period .box01 a{text-align:center;border:1px solid #b5b5b5;border-radius:3px;color:#434343;font-size:14px;font-weight:300;transition:all .1s;width:151px;}
+#search .period .box01 a + a{margin-left:5px;}
+#search .period .box01 a:nth-of-type(1):nth-last-of-type(4),
+#search .period .box01 a:nth-of-type(2):nth-last-of-type(3),
+#search .period .box01 a:nth-of-type(3):nth-last-of-type(2),
+#search .period .box01 a:nth-of-type(4):nth-last-of-type(1){width:72px;}
+
+#search .period .box01 a:nth-of-type(1):nth-last-of-type(3),
+#search .period .box01 a:nth-of-type(2):nth-last-of-type(2),
+#search .period .box01 a:nth-of-type(3):nth-last-of-type(1){width:99px;}
+#search .period .box01 a.active{color:#fff;background:#6b6b6b;border-color:#313131;pointer-events:none;}
+#search .period .box01 a:hover{font-weight:500;}
+#search .period .box01 a:active{transform:scale(.95);}
+
+#search .period .box02{position:absolute;bottom:18px;right:30px;}
+#search .period .box02 > div{display:inline-block;vertical-align:top;}
+#search .period .box02 label{margin-right:7px;font-weight:300;color:#434343;font-size:16px;line-height:34px;height:36px;vertical-align:top;}
+#search .period .box02 .datePicker{height:34px;line-height:34px;padding:0 0 0 15px;border:1px solid #b5b5b5;vertical-align:top;font-size:14px;}
+#search .period .box02 .data_end{margin-left:26px;}
+#search .period .ui-datepicker-trigger{margin-left:5px;width:20px;height:22px;background-size:cover;vertical-align:middle;background:url(/page/tour/images/common/sp_tour.png) -243px -204px no-repeat;background-size:520px 520px;}
+#search .period .ui-datepicker-trigger img{display:none;}
+#search .period .submit{margin-left:10px;height:34px;line-height:36px;transition:all .1s;width:60px;color:#fff;text-align:center;font-weight:300;background:#303030;}
+#search .period .submit:hover{transform:scale(1.05);}
+#search .period .submit:active{transform:scale(.95);}
+
+@media (max-width:1199px) {
+  #search .search_box{padding:0 170px;margin-bottom:20px;}
+  #search .search_box .box01{width:120px;padding:0 10px;border-radius:23px;height:46px;margin-right:10px;}
+  #search .search_box .box02{width:calc(100% - 137px);height:46px;padding:0 46px 0 15px;position:relative;border-radius:23px;}
+  #search .search_box select{font-size:16px;height:44px;}
+  #search .search_box .search_keyword{height:44px;line-height:44px;font-size:15px;}
+  #search .search_box .submit{width:45px;height:45px;background-size:22px 19px;}
+
+  #search .popular{padding:1px 15px 25px;}
+  #search .popular strong,
+  #search .popular a{height:26px;line-height:24px;margin-top:10px;}
+  #search .popular strong{padding:0 10px;margin-right:15px;font-size:14px;}
+  #search .popular a{min-width:130px;font-size:14px;}
+  #search .popular a em{height:26px;line-height:24px;width:26px;font-size:14px;margin-right:5px}
+
+  #search .period{padding:15px 20px;}
+  #search .period .box01 > div + div{margin-top:12px;}
+  #search .period .box01 strong,
+  #search .period .box01 a{height:26px;line-height:22px;}
+  #search .period .box01 strong{margin-right:20px;font-size:15px;line-height:24px;}
+  #search .period .box01 a{width:120px;}
+  #search .period .box01 a + a{margin-left:5px;}
+  #search .period .box01 a:nth-of-type(1):nth-last-of-type(4),
+  #search .period .box01 a:nth-of-type(2):nth-last-of-type(3),
+  #search .period .box01 a:nth-of-type(3):nth-last-of-type(2),
+  #search .period .box01 a:nth-of-type(4):nth-last-of-type(1){width:56px;}
+
+  #search .period .box01 a:nth-of-type(1):nth-last-of-type(3),
+  #search .period .box01 a:nth-of-type(2):nth-last-of-type(2),
+  #search .period .box01 a:nth-of-type(3):nth-last-of-type(1){width:78px;}
+
+  #search .period .box02{bottom:13px;right:20px;}
+  #search .period .box02 label{font-size:15px;line-height:32px;height:34px;}
+  #search .period .box02 .datePicker{height:32px;line-height:32px;padding:0 0 0 10px;width:150px;}
+  #search .period .box02 .data_end{margin-left:20px;}
+  #search .period .submit{height:32px;line-height:32px;width:55px;font-size:14px;}
+}
+
+@media (max-width:991px) {
+  #search .search_box{padding:0 100px;margin-bottom:12px;}
+  #search .search_box .box01{width:110px;padding:0 10px;border-radius:21px;height:42px;margin-right:7px;}
+  #search .search_box .box02{width:calc(100% - 127px);height:42px;padding:0 42px 0 10px;border-radius:21px;}
+  #search .search_box select{font-size:15px;height:40px;}
+  #search .search_box .search_keyword{height:42px;line-height:42px;font-size:15px;}
+  #search .search_box .submit{width:40px;height:40px;background-size:22px 19px;}
+
+  #search .popular{padding:1px 10px 20px;}
+  #search .popular strong{padding:0 7px;margin-right:6px;}
+  #search .popular a{min-width:110px;;}
+  #search .popular a em{height:24px;line-height:22px;width:24px;font-size:14px;margin-top:1px;}
+
+  #search .period{padding:15px 20px;}
+  #search .period .box01 > div{display:inline-block;vertical-align:top;}
+  #search .period .box01 > div + div{margin:0px 0 0 35px;}
+  #search .period .box01 strong{margin-right:20px;font-size:15px;}
+  #search .period .box01 a{width:120px;}
+  #search .period .box01 a + a{margin-left:5px;}
+  #search .period .box01 a:nth-of-type(1):nth-last-of-type(4),
+  #search .period .box01 a:nth-of-type(2):nth-last-of-type(3),
+  #search .period .box01 a:nth-of-type(3):nth-last-of-type(2),
+  #search .period .box01 a:nth-of-type(4):nth-last-of-type(1){width:56px;}
+
+  #search .period .box01 a:nth-of-type(1):nth-last-of-type(3),
+  #search .period .box01 a:nth-of-type(2):nth-last-of-type(2),
+  #search .period .box01 a:nth-of-type(3):nth-last-of-type(1){width:78px;}
+
+  #search .period .box02{bottom:auto;right:auto;position:relative;margin-top:15px;}
+  #search .period .box02 label{font-size:15px;line-height:32px;height:34px;}
+  #search .period .box02 .datePicker{height:32px;line-height:32px;padding:0 0 0 10px;width:150px;}
+  #search .period .box02 .data_end{margin-left:20px;}
+  #search .period .submit{height:32px;line-height:34px;width:55px;font-size:14px;}
+}
+
+@media (max-width:760px) {
+  #search .search_box{padding:0 0px;margin-bottom:15px;}
+  #search .search_box .box01{width:80px;padding:0 2px;height:38px;margin-right:5px;}
+  #search .search_box .box02{width:calc(100% - 87px);height:38px;padding:0 38px 0 10px;}
+  #search .search_box select{font-size:13px;height:36px;}
+  #search .search_box .search_keyword{height:36px;line-height:36px;font-size:15px;padding-top:0;font-weight:400;}
+  #search .search_box .submit{width:34px;height:34px;background-size:18px 16px;}
+
+  #search .popular{padding:1px 0px 15px;text-align:left;}
+  #search .popular strong{padding:0 7px;margin-right:11px;font-size:13px;height:22px;line-height:22px;}
+  #search .popular a{min-width:85px;font-size:13px;}
+  #search .popular a em{height:20px;line-height:20px;width:20px;font-size:13px;margin-top:1px;}
+  #search .popular strong,
+  #search .popular a{margin-top:5px;}
+
+  #search .period{padding:12px 12px;}
+  #search .period .box01 > div{float:none;width:100%;}
+  #search .period .box01 > div + div{margin:7px 0 0 0px;}
+  #search .period .box01 strong,
+  #search .period .box01 a{height:26px;line-height:22px;}
+  #search .period .box01 strong{margin-right:17px;font-size:14px;}
+  #search .period .box01 a{width:calc((100% - 52px) / 2);}
+  #search .period .box01 a + a{margin-left:5px;}
+  #search .period .box01 a:nth-of-type(1):nth-last-of-type(4),
+  #search .period .box01 a:nth-of-type(2):nth-last-of-type(3),
+  #search .period .box01 a:nth-of-type(3):nth-last-of-type(2),
+  #search .period .box01 a:nth-of-type(4):nth-last-of-type(1){width:calc((100% - 66px) / 4);}
+
+  #search .period .box01 a:nth-of-type(1):nth-last-of-type(3),
+  #search .period .box01 a:nth-of-type(2):nth-last-of-type(2),
+  #search .period .box01 a:nth-of-type(3):nth-last-of-type(1){width:calc((100% - 60px) / 3);}
+
+  #search .period .box02{bottom:auto;right:auto;position:relative;margin-top:8px;}
+  #search .period .box02 > div{display:block;width:100%;}
+  #search .period .box02 label{font-size:14px;line-height:30px;height:32px;margin-right:6px;}
+  #search .period .box02 .datePicker{height:30px;line-height:30px;padding:0 0 0 10px;width:calc(100% - 71px);}
+  #search .period .box02 .data_end{margin:5px 0 0;}
+  #search .period .submit{height:30px;line-height:32px;width:100%;font-size:14px;margin:5px 0 0;}
 }
