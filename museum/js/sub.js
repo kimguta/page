@@ -21,13 +21,13 @@ $(function() {
 		}
 	});
 
-	$('.event slick_wrap .slick').slick({
+	$('.event .slick_wrap .slick').slick({
         autoplay: false,
         arrows: true,
         dots: false,
         accessibility: true,
-        prevArrow: $('.event slick_wrap .prev'),
-        nextArrow: $('.event slick_wrap .next'),
+        prevArrow: $('.event .slick_wrap .prev'),
+        nextArrow: $('.event .slick_wrap .next'),
         draggable: true,
         infinite: true,
         slidesToShow: 4,
@@ -69,7 +69,7 @@ $(function() {
 		swipeToSlide: true,
         pauseOnHover: false,
         speed: 1000,
-         responsive: [{
+        responsive: [{
             breakpoint: 761,
             settings: {
                 adaptiveHeight: true
