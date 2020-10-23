@@ -132,11 +132,39 @@ $(function() {
 		$(this).siblings('a').removeClass('active');
 		$(this).addClass('active');
 	});
-
-	$('.recommend .sbox02 a').on('click', function (e) {
+	
+	$('.recommend.v3 .sbox02 a').on('click', function (e) {
 		e.preventDefault();
 		$(this).siblings('a').removeClass('active');
 		$(this).addClass('active');
 	});
+
+	$('.recommend.v2 .sbox02 a').on('click', function (e) {
+		e.preventDefault();
+		$(this).toggleClass('active');
+	});
+
+	$('.high_place .slick').on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+       $('.high_place .head_text').fadeOut(300);
+    });
+
+	$('.high_place .slick').on('afterChange', function(event, slick, currentSlide, nextSlide) {
+       $('.high_place .head_text').fadeIn(300);
+    });
+
+	 $('.high_place .slick').slick({
+        autoplay: false,
+        arrows: true,
+        dots: false,
+        prevArrow: $('.high_place .prev'),
+        nextArrow: $('.high_place .next'),
+        accessibility: true,
+        draggable: true,
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        pauseOnHover: false,
+        speed: 1200
+    });
 
 });
