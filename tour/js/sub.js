@@ -49,7 +49,7 @@ $(function() {
         slidesToScroll: 1,
         pauseOnHover: false,
         speed: 1000,
-		 responsive: [{
+		responsive: [{
             breakpoint: 992,
             settings: {
                 adaptiveHeight: true
@@ -164,7 +164,13 @@ $(function() {
         slidesToShow: 1,
         slidesToScroll: 1,
         pauseOnHover: false,
-        speed: 1200
+        speed: 1200,
+		responsive: [{
+            breakpoint: 761,
+            settings: {
+                 speed: 900
+            }
+        }]
     });
 
 });
