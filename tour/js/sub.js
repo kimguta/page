@@ -184,4 +184,20 @@ $(function() {
 		$(this).parent('h5').next('.movie').show();
 	});
 
+	$('.cool_place .btn_box .night').on('click', function (e) {
+		e.preventDefault();
+		$('.cool_place .btn_box a').removeClass('active');
+		$(this).addClass('active');
+		$('.cool_place').removeClass('day');
+		$('.cool_place').addClass('night');
+	});
+
+	$('.cool_place .btn_box .day').on('click', function (e) {
+		e.preventDefault();
+		$('.cool_place .btn_box a').removeClass('active');
+		$(this).addClass('active');
+		$('.cool_place').removeClass('night');
+		$('.cool_place').addClass('day');
+	});
+
 });
