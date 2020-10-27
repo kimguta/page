@@ -2455,17 +2455,33 @@ box-shadow:2px 2px 2px 0 rgba(0,0,0,.15);margin:20px 20px 20px 0;border:1px soli
 /*태백시원한곳*/
 .cool_place{position:relative;margin:-40px 0 -60px;}
 .cool_place > div{position:relative;z-index:5;}
-.cool_place:after{content:'';display:block;top:0px;bottom:0px;width:760px;background:#0180aa;position:absolute;right:50%;margin-right:200px;}
+.cool_place:after{content:'';display:block;top:0px;bottom:0px;width:760px;background:#0180aa;position:absolute;right:50%;margin-right:200px;transition:all .2s;}
 .cool_place:before{content:'';display:block;top:0px;bottom:0px;left:400px;background:url(/page/tour/images/sub/bg-geomnyongso-gray.jpg) 50% 0 no-repeat;position:absolute;width:1170px;z-index:5;background-size:cover;}
+.cool_place.v2:after{background:#0083de;}
+.cool_place.v2.night:after{background:#001268;}
+.cool_place.v2:before{background-image:url(/page/tour/images/sub/bg-hwangji-pond-day.jpg);opacity:1;}
+.cool_place.v2.night:before{background-image:url(/page/tour/images/sub/bg-hwangji-pond-night.jpg);}
+
 .cool_place .group01{padding:60px 0 75px;}
-.cool_place .tbox{position:absolute;top:51px;color:#fff;left:0px;max-width:350px;text-shadow:1px 1px 3px rgba(0,0,0,.2);}
+.cool_place .tbox{position:absolute;top:51px;color:#fff;left:0px;max-width:350px;text-shadow:1px 1px 3px rgba(0,0,0,.3);}
 .cool_place .tbox h4{font-weight:300;font-size:35px;font-family: 'Noto Serif KR';line-height:1.4;letter-spacing:-2px;}
 .cool_place .tbox h4 strong{font-size:55px;font-weight:700;font-family:'Noto Sans KR', sans-serif;word-spacing:-4px;display:block;}
 .cool_place .tbox p{margin-top:17px;padding-top:25px;border-top:1px solid #fff;line-height:1.7;font-size:18px;font-weight:300;word-break:keep-all;}
 .cool_place .group01 .img_box{margin-left:400px;padding-left:135px;position:relative;}
-.cool_place .group01 .img_box img{display:block;width:100%;border:5px solid #fff;box-shadow:0px 0px 15px 0px rgba(0,0,0,.5);}
+.cool_place .group01 .img_box img{display:block;width:100%;border:5px solid #fff;box-shadow:3px 3px 5px 0px rgba(0,0,0,.4);}
+
+.cool_place .tbox .btn_box{padding-top:50px;text-shadow:none;}
+.cool_place .tbox .btn_box a{display:inline-block;vertical-align:top;box-shadow:3px 3px 5px 0px rgba(0,0,0,.2);text-align:center;line-height:1.4;color:#4b6069;font-weight:100;font-size:18px;padding:18px 0 13px;width:130px;background:#89a3af;transition:all .15s;background:linear-gradient(135deg, transparent 20px, #89a3af 0);}
+.cool_place.night .tbox .btn_box a{color:#445e6b;background:#89a3b0;background:linear-gradient(135deg, transparent 20px, #89a3b0 0);}
+.cool_place .tbox .btn_box a + a{margin-left:11px;}
+.cool_place .tbox .btn_box a.active{color:#0083de;background:#fff;font-weight:500;background:linear-gradient(135deg, transparent 20px, #fff 0);pointer-events:none;}
+.cool_place.night .tbox .btn_box a.active{color:#001268;}
+.cool_place .tbox .btn_box a:hover{text-decoration:none;transform:scale(1.05);}
+.cool_place .tbox .btn_box a:active{transform:scale(.95);}
+
 
 .cool_place .group02{position:relative;}
+.cool_place.v2 .group02{padding-bottom:217px;}
 .cool_place .group02 h5{position:absolute;top:0px;left:0px;}
 .cool_place .group02 > div{padding-left:220px;}
 .cool_place .group02 > div:nth-child(2) h5{top:62px;}
@@ -2537,6 +2553,13 @@ box-shadow:2px 2px 2px 0 rgba(0,0,0,.15);margin:20px 20px 20px 0;border:1px soli
   .cool_place .group03 .img_box img + img{margin-top:13px;width:90%}
   .cool_place .group03 .img_box .box01{padding-top:62px;}
 
+  .cool_place .tbox .btn_box{padding-top:20px;text-shadow:none;}
+  .cool_place .tbox .btn_box a{font-size:16px;padding:13px 0 10px;width:120px;}
+  .cool_place .tbox .btn_box a + a{margin-left:10px;}
+  .cool_place.v2 .group01{padding-bottom:65px;}
+
+  .cool_place.v2 .group02{padding-bottom:87px;}
+
 }
 
 @media (max-width:991px) {
@@ -2572,6 +2595,16 @@ box-shadow:2px 2px 2px 0 rgba(0,0,0,.15);margin:20px 20px 20px 0;border:1px soli
   .cool_place .group03 .img_box img{width:100%;}
   .cool_place .group03 .img_box img + img{margin-top:10px;width:90%}
   .cool_place .group03 .img_box .box01{padding-top:62px;}
+
+  .cool_place .tbox .btn_box{padding-top:15px;text-shadow:none;}
+  .cool_place .tbox .btn_box a + a{margin-left:10px;}
+  .cool_place.v2 .group01{padding-bottom:85px;}
+
+  .cool_place .tbox .btn_box a{font-size:14px;padding:7px 0 5px;width:105px;background:linear-gradient(135deg, transparent 10px, #89a3af 0);}
+  .cool_place.night .tbox .btn_box a{background:linear-gradient(135deg, transparent 10px, #89a3b0 0);}
+  .cool_place .tbox .btn_box a.active{background:linear-gradient(135deg, transparent 10px, #fff 0);pointer-events:none;}
+
+  .cool_place.v2 .group02{padding-bottom:67px;}
 
 }
 
@@ -2617,5 +2650,12 @@ box-shadow:2px 2px 2px 0 rgba(0,0,0,.15);margin:20px 20px 20px 0;border:1px soli
   .cool_place .group03 .img_box .box01{padding-top:52px;}
 
   .cool_place .group03 p span{padding:1px 3px 1px;background:rgba(0,0,0,.7);}
+
+  .cool_place .tbox .btn_box{padding:0;position:absolute;top:-25px;right:-10px;}
+  .cool_place .tbox .btn_box a + a{margin-left:3px;}
+  .cool_place.v2 .group01{padding-bottom:30px;}
+
+  .cool_place .tbox .btn_box a{font-size:10px;padding:4px 0 2px;width:56px;opacity:.9;}
+  .cool_place.v2 .group02{padding-bottom:57px;}
   
 }
