@@ -173,4 +173,15 @@ $(function() {
         }]
     });
 
+	$('.cool_place .group02 > div:first-child h5 a').addClass('active');
+	$('.cool_place .group02 > div:first-child .movie').show();
+
+	$('.cool_place h5 a').on('click', function (e) {
+		e.preventDefault();
+		$('.cool_place h5 a').removeClass('active');
+		$(this).addClass('active');
+		$('.cool_place .movie').hide();
+		$(this).parent('h5').next('.movie').show();
+	});
+
 });
