@@ -2662,18 +2662,55 @@ box-shadow:2px 2px 2px 0 rgba(0,0,0,.15);margin:20px 20px 20px 0;border:1px soli
 }
 
 /*태백 특별한곳 태백 8경*/
-.special_scene{position:relative}
-.special_scene > div:first-child{padding-top:17px;}
+.special_scene{position:relative;padding-top:1px;}
+.special_scene > div:first-child{margin-top:16px;}
 .special_scene > div{padding:0 0 35px 75px;position:relative;}
-.special_scene > div:before{content:'';display:block;width:455px;height:455px;border-radius:50%;background:#d9d2cc;position:absolute;top:0;left:0;margin-left:-252px;}
-.special_scene h4{font-family:'Noto Serif KR';font-weight:400;color:#000;font-size:48px;line-height:1.2;position:relative;padding:45px 0 0;word-spacing:-6px;}
-.special_scene h4 img{display:inline-block;vertical-align:middle;margin-right:15px;width:85px;}
-.special_scene p{font-weight:100;font-size:20px;color:#000;line-height:1.7;min-height:5.1em;margin-top:24px;position:relative;word-break:keep-all;}
-.special_scene .mini{font-size:14px;color:#000;font-weight:700;display:block;position:absolute;top:164px;left:-77px;line-height:1.1;transform:rotate(-90deg);width:170px;}
+.special_scene > div:before{content:'';display:block;width:455px;height:455px;border-radius:50%;background:#d9d2cc;position:absolute;top:0;left:0;margin-left:-252px;z-index:1;}
+.special_scene h4{font-family:'Noto Serif KR';font-weight:400;color:#000;font-size:48px;line-height:1.2;position:relative;padding:52px 0 0;word-spacing:-6px;z-index:5;}
+.special_scene h4 img{display:inline-block;vertical-align:middle;margin-right:10px;width:85px;}
+.special_scene p{font-weight:100;font-size:20px;color:#000;line-height:1.7;min-height:5.1em;margin-top:24px;position:relative;word-break:keep-all;z-index:5;}
+.special_scene .mini{font-size:14px;color:#000;font-weight:700;display:block;position:absolute;top:164px;left:-77px;line-height:1.1;transform:rotate(-90deg);width:170px;z-index:5;}
 .special_scene .mini em{font-weight:400;padding-right:3px;}
 .special_scene .mini:after{content:'';display:block;height:1px;width:250px;position:absolute;top:50%;left:-270px;background:#000;margin-top:-1px;}
-.special_scene .imgs{margin-top:27px;position:relative;}
+.special_scene .imgs{margin-top:27px;position:relative;z-index:5;}
 .special_scene .imgs img{display:block;}
 
+@media (max-width:1199px) {
+  .special_scene > div:first-child{margin-top:10px;}
+  .special_scene > div{padding:0 0 30px 60px;}
+  .special_scene > div:before{width:420px;height:420px;margin-left:-230px;}
+  .special_scene h4{font-size:40px;padding:45px 0 0;word-spacing:-5px;}
+  .special_scene h4 img{margin-right:8px;width:78px;}
+  .special_scene p{font-size:18px;margin-top:17px;}
+  .special_scene .imgs{margin:20px -25px 0 0;}
+  .special_scene .imgs img{width:100%;}
+}
 
 
+@media (max-width:991px) {
+  .special_scene > div:first-child{margin-top:5px;}
+  .special_scene > div{padding:0 0 25px 40px;}
+  .special_scene > div:before{width:380px;height:380px;margin-left:-220px;opacity:.8;}
+  .special_scene h4{font-size:36px;padding:35px 0 0;word-spacing:-4px;}
+  .special_scene h4 img{margin-right:8px;width:70px;}
+  .special_scene p{font-size:16px;margin-top:13px;}
+  .special_scene .imgs{margin:18px -100px 0 0;}
+
+  .special_scene .mini{font-size:13px;top:150px;left:-77px;width:160px;}
+  .special_scene .mini em{padding-right:2px;}
+  .special_scene .mini:after{width:180px;left:-200px;}
+}
+
+@media (max-width:760px) {
+  .special_scene > div:first-child{margin-top:0px;}
+  .special_scene > div{padding:0 0 20px 30px;}
+  .special_scene > div:before{width:260px;height:260px;margin-left:-148px;opacity:.7;}
+  .special_scene h4{font-size:25px;padding:25px 0 0;word-spacing:-3px;}
+  .special_scene h4 img{margin-right:5px;width:52px;}
+  .special_scene p{font-size:15px;margin-top:8px;}
+  .special_scene .imgs{margin:15px -70px 0 -130px;z-index:0;}
+
+  .special_scene .mini{font-size:11px;top:70px;left:-77px;width:150px;}
+  .special_scene .mini em{padding-right:2px;}
+  .special_scene .mini:after{width:110px;left:-130px;}
+}
