@@ -176,8 +176,15 @@ $(function() {
 	$('.cool_place .group02 > div:first-child h5 a').addClass('active');
 	$('.cool_place .group02 > div:first-child .movie').show();
 
+
+
 	$('.cool_place h5 a').on('click', function (e) {
 		e.preventDefault();
+		$('#if01')[0].contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
+		$('#if02')[0].contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
+		$('#if03')[0].contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
+		$('#if04')[0].contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
+		$('#if05')[0].contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
 		$('.cool_place h5 a').removeClass('active');
 		$(this).addClass('active');
 		$('.cool_place .movie').hide();
