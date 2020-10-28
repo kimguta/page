@@ -207,4 +207,34 @@ $(function() {
 		$('.cool_place').addClass('day');
 	});
 
+	$('.special_romance .bg_btn a').on('click', function (e) {
+		e.preventDefault();
+
+		$('.special_romance').toggleClass('v2');
+
+	});
+
+	 $('.special_romance .slick').slick({
+        autoplay: false,
+        arrows: true,
+        dots: false,
+		swipe:false,
+        prevArrow: $('.special_romance .prev'),
+        nextArrow: $('.special_romance .next'),
+        accessibility: true,
+        draggable: true,
+        infinite: false,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+		adaptiveHeight: true,
+        pauseOnHover: false,
+        speed: 1200,
+		responsive: [{
+            breakpoint: 761,
+            settings: {
+                 speed: 900
+            }
+        }]
+    });
+
 });
