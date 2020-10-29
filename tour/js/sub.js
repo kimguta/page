@@ -251,7 +251,7 @@ $(function() {
 			
 	});
 	
-	$('.special_emotion').on('click mouseover', function () {
+	$('.special_emotion').on('click', function () {
 		$('#audio')[0].play();	
 	});
 		
