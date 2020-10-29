@@ -237,4 +237,35 @@ $(function() {
         }]
     });
 
+	
+
+
+	$('.special_emotion .bg_btn a').on('click', function (e) {
+		e.preventDefault();
+		$('.special_emotion').toggleClass('v2');
+		 if ($('.special_emotion').hasClass('v2')) {
+            $('.special_emotion .bg_btn span').html('스위치를 눌러 낮감성으로!<br>태백 타임워프, 슝슝~');
+        } else {
+           $('.special_emotion .bg_btn span').html('스위치를 눌러 밤감성으로!<br>태백 타임워프, 슝슝~');
+        }
+		$("#audio")[0].play();	
+	});
+		
+
+	 $('.special_emotion .slick').slick({
+        autoplay: true,
+        arrows: false,
+        dots: false,
+        accessibility: true,
+        draggable: true,
+        infinite: true,
+		fade: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        pauseOnHover: false,
+        speed: 1500,
+		autoplaySpeed: 4700
+    });
+
+	
 });
