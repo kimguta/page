@@ -248,9 +248,12 @@ $(function() {
         } else {
            $('.special_emotion .bg_btn span').html('스위치를 눌러 밤감성으로!<br>태백 타임워프, 슝슝~');
         }	
+			
+	});
+	
+	$('.special_emotion').on('mouseover', function () {
 		$('#audio')[0].play();	
 	});
-
 		
 	 $('.special_emotion .slick').slick({
         autoplay: true,
