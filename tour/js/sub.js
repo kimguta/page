@@ -248,12 +248,9 @@ $(function() {
         } else {
            $('.special_emotion .bg_btn span').html('스위치를 눌러 밤감성으로!<br>태백 타임워프, 슝슝~');
         }	
-			
-	});
-	
-	$('.special_emotion').on('click', function () {
 		$('#audio')[0].play();	
 	});
+
 		
 	 $('.special_emotion .slick').slick({
         autoplay: true,
@@ -268,6 +265,35 @@ $(function() {
         pauseOnHover: false,
         speed: 1500,
 		autoplaySpeed: 4700
+	});
+
+	$('.always .slick').on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+		$('.always .info ul, .always .info .control').fadeOut(300);
+	 });
+ 
+	 $('.always .slick').on('afterChange', function(event, slick, currentSlide, nextSlide) {
+		$('.always .info ul, .always .info .control').fadeIn(300);
+	 });
+	
+	$('.always .slick').slick({
+        autoplay: false,
+        arrows: true,
+        dots: false,
+        prevArrow: $('.always .prev'),
+        nextArrow: $('.always .next'),
+        accessibility: true,
+        draggable: true,
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        pauseOnHover: false,
+        speed: 1200,
+		responsive: [{
+            breakpoint: 761,
+            settings: {
+                 speed: 1100
+            }
+        }]
     });
 	
 });
