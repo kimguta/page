@@ -276,7 +276,7 @@ $(function() {
 	 });
 	
 	$('.always .slick').slick({
-        autoplay: false,
+        autoplay: true,
         arrows: true,
         dots: false,
         prevArrow: $('.always .prev'),
@@ -287,7 +287,8 @@ $(function() {
         slidesToShow: 1,
         slidesToScroll: 1,
         pauseOnHover: false,
-        speed: 1200,
+		speed: 1200,
+		autoplaySpeed: 5000,
 		responsive: [{
             breakpoint: 761,
             settings: {
