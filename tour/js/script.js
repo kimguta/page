@@ -11,24 +11,50 @@ $(function() {
 
 
 	$('#gnb_pc .depth_01 h2 a').on('mouseenter focusin', function () {
-	    $('#gnb_pc .depth_01 h2').removeClass('active');
+		$('#gnb_pc .depth_01 h2').removeClass('active');
+		$('#gnb_pc .depth_02 h3').removeClass('active');
+		$('.depth_02').removeClass('active');
 		$('#gnb_pc .depth_02').hide();
+		$('#gnb_pc .depth_03').hide();
 	    $(this).parent('h2').addClass('active');
 		$(this).parent('h2').next('.depth_02').slideDown(300);
+		/*
 		$('.depth_02 > li:first-child h3').addClass('active');
 		$('.depth_02 > li:first-child .depth_03').show();
-		$('.bg_pc').show().stop().animate({height:122},300);
+		*/
+		$('.bg_pc').show().stop().animate({height:85},300);
 	});
 
 	$('#gnb_pc .depth_01 li:nth-child(4) h2 a').on('mouseenter focusin', function () {
-		$('.bg_pc').stop().animate({height:172},300);
+		$('.bg_pc').stop().animate({height:138},300);
 	});
+
+	$('#gnb_pc .depth_03').closest('li').addClass('has_depth');
 
 	$('#gnb_pc .depth_02 h3 a').on('mouseover focusin', function () {
 	    $('#gnb_pc .depth_02 h3').removeClass('active');
 		$('#gnb_pc .depth_03').hide();
-	    $(this).parent('h3').addClass('active');
+		$(this).parent('h3').addClass('active');
+		$('.depth_02').removeClass('active');
 		$(this).parent('h3').next('.depth_03').show();
+		$('.bg_pc').show().stop().animate({height:85},300);	
+	});
+
+	$('#gnb_pc .depth_02 .has_depth h3 a').on('mouseover focusin', function () {
+		$('.bg_pc').show().stop().animate({height:122},300);
+	});
+
+	$('#gnb_pc .depth_01 > li:nth-child(4) h3 a').on('mouseover focusin', function () {
+		$('.bg_pc').stop().animate({height:138},300);
+
+	});
+
+	$('#gnb_pc .depth_01 > li:nth-child(4) .has_depth h3 a').on('mouseover focusin', function () {
+		$('.bg_pc').stop().animate({height:181},300);
+	});
+
+	$('#gnb_pc .depth_02 > li:nth-child(3) h3 a').on('mouseover focusin', function () {
+		$(this).parents('.depth_02').addClass('active');
 	});
 
 
