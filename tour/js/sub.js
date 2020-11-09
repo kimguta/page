@@ -278,7 +278,9 @@ $(function() {
 	$('.always .slick').slick({
         autoplay: true,
         arrows: true,
-        dots: false,
+		dots: false,
+		prevArrow: $('.always .prev'),
+        nextArrow: $('.always .next'),
         accessibility: true,
         draggable: true,
         infinite: true,
