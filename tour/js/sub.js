@@ -279,8 +279,6 @@ $(function() {
         autoplay: true,
         arrows: true,
         dots: false,
-        prevArrow: $('.always .prev'),
-        nextArrow: $('.always .next'),
         accessibility: true,
         draggable: true,
         infinite: true,
@@ -293,6 +291,35 @@ $(function() {
             breakpoint: 761,
             settings: {
                  speed: 1100
+            }
+        }]
+	});
+
+	$('.latte .slick').on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+		$('.latte .slick_wrap .slick-arrow').fadeOut(300);
+	 });
+ 
+	 $('.latte .slick').on('afterChange', function(event, slick, currentSlide, nextSlide) {
+		$('.latte .slick_wrap .slick-arrow').fadeIn(300);
+	 });
+	
+	$('.latte .slick').slick({
+        autoplay: true,
+        arrows: true,
+		dots: false,
+		fade: true,
+        accessibility: true,
+        draggable: true,
+		infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        pauseOnHover: false,
+		speed: 1000,
+		autoplaySpeed: 5000,
+		responsive: [{
+            breakpoint: 761,
+            settings: {
+                 speed: 1000
             }
         }]
     });
