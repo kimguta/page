@@ -77,4 +77,23 @@ $(function() {
         }]
     });
 
+    $('.outcenter .otab a').on('click', function (e) {
+		e.preventDefault();
+		var idx = $(this).index();
+		var Position = $('.outbx > div').eq(idx).offset();
+
+		var windowWidth = $(window).width();
+		if (windowWidth < 481) {
+			var Val = 80
+		} else if (windowWidth > 480 && windowWidth < 1400) {
+			var Val = 80
+		} else {
+			var Val = 110
+		}
+		$('html, body').animate({
+			scrollTop : Position.top - Val
+		}, 300);
+
+	});
+
 });
