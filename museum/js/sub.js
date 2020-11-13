@@ -93,7 +93,14 @@ $(function() {
 		$('html, body').animate({
 			scrollTop : Position.top - Val
 		}, 300);
-
+    });
+    
+    $('.virtual .intro .skbtn').on('mouseover', function () {
+		$('.rotate360').addClass('active');
+    });
+    
+    $('.virtual .intro .skbtn').on('mouseout', function () {
+		$('.rotate360').removeClass('active');
 	});
 
 });
