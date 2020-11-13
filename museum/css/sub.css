@@ -2239,6 +2239,7 @@ span.listLv:before,
 .virtual .intro{position:relative;padding:150px 0 217px;text-align:center;}
 .virtual .intro:before{content:'';display:block;width:1920px;height:870px;background:url(/page/museum/images/sub/bg_virtual01.jpg) center center no-repeat;background-size:cover;position:absolute;top:0;left:50%;margin-left:-960px;}
 .virtual .intro .rotate360{width:111px;display:block;margin:0 auto;position:relative;}
+.virtual .intro .rotate360.active{animation: flip 1700ms infinite ease;}
 .virtual .intro .head{margin:25px auto 0;height:42px;line-height:40px;padding:0 30px;background:#ffae00;border-radius:21px;color:#362e2b;font-weight:300;font-size:20px;display:inline-block;position:relative;white-space:nowrap;}
 .virtual .intro .head strong{font-weight:700;}
 .virtual .intro h4{line-height:1.1;margin-top:19px;color:#ffae00;font-weight:700;font-size:72px;text-align:center;position:relative;white-space:nowrap;}
@@ -2255,9 +2256,10 @@ span.listLv:before,
 #sub .skbtn.ty04:hover:before{margin-bottom: -310px;animation: rotate 2000ms infinite linear;}
 
 
-
-
-
+@keyframes flip {
+  from {transform: rotateY(0deg);}
+  to {transform: rotateY(360deg);}
+}
 
 @media (max-width:1199px) {
   .virtual{margin:-30px 0 -40px;}
