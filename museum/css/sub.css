@@ -1995,6 +1995,7 @@ span.listLv:before,
 
 /*전시실 안내*/
 .gallery_room{position:relative;margin-top:-40px;}
+.gallery_room.v4{margin-top:0px;}
 .gallery_room .top_box{position:relative;padding-top:40px;margin-bottom:43px;}
 .gallery_room .top_box:before{content:'';display:block;width:1920px;background:#eee;position:absolute;top:0;bottom:0px;left:50%;margin-left:-960px;}
 .gallery_room .top_box .thumb{float:left;width:50%;box-shadow:3px 3px 9px 0 rgba(0,0,0,.25);position:relative;z-index:3;}
@@ -2179,7 +2180,6 @@ span.listLv:before,
 }
 
 @media (max-width:550px) {
-
   .outcenter .outbx{padding-top:23px;}
   .outcenter .outbx > div:before{display:none;}
   .outcenter .outbx > div + div{margin-top:15px;}
@@ -2191,4 +2191,48 @@ span.listLv:before,
   .outcenter .outbx > div .text h5 span{padding:0 3px 3px;font-size:19px;}
   .outcenter .outbx > div .text p{font-size:15px;}
   .outcenter .outbx > div .text p + p{margin-top:8px;}
+}
+
+/*편의시설*/
+.amenities{position:relative;overflow:hidden;}
+.amenities > div{float:left;margin:0 30px 30px 0;width:calc((100% - 60.2px) / 3);padding:20px 20px 15px;border:1px solid #e0e0e0;border-top:1px solid #222;overflow:hidden;}
+.amenities > div:nth-child(3n){margin-right:0;}
+.amenities .thumb{position:relative;}
+.amenities .thumb img{display:block;width:100%;}
+.amenities .text{margin-top:27px;}
+.amenities .text strong{display:block;text-align:center;z-index:2;line-height:1.1;font-weight:400;padding-bottom:13px;margin-bottom:9px;position:relative;}
+.amenities .text strong span{display:inline-block;color:#000;font-size:22px;padding:0 3px 4px 1px;position:relative;}
+.amenities .text strong span:before{content:'';display:block;z-index:-1;position:absolute;top:50%;bottom:0;left:0;right:0;background:#e5e1de;}
+.amenities .text strong:after{content:'';display:block;background:#000;height:2px;width:24px;position:absolute;bottom:0px;left:50%;margin-left:-12px;}
+.amenities .text p{line-height:1.4;min-height:3.9em;color:#7d7d7d;font-weight:300;text-align:center;word-break:keep-all;}
+
+@media (max-width:1199px) {
+  .amenities > div{margin:0 20px 20px 0;width:calc((100% - 40.2px) / 3);padding:15px 15px 10px;}
+  .amenities .text{margin-top:22px;}
+  .amenities .text strong{padding-bottom:11px;margin-bottom:7px;}
+  .amenities .text strong span{font-size:20px;padding:0 2px 3px 1px;}
+  .amenities .text p{font-size:15px;}
+}
+
+@media (max-width:991px) {
+  .amenities > div{margin:0 15px 15px 0;width:calc((100% - 15.2px) / 2);padding:15px 15px 10px;}
+  .amenities > div:nth-child(3n){margin-right:15px;}
+  .amenities > div:nth-child(2n){margin-right:0;}
+  .amenities .text{margin-top:17px;}
+  .amenities .text strong span{font-size:18px;padding:0 2px 3px 1px;}
+  .amenities .text p br{display:none;}
+}
+
+@media (max-width:760px) {
+  .amenities > div{padding:12px 12px 12px;}
+  .amenities .text{margin-top:12px;}
+  .amenities .text strong span{font-size:17px;}
+}
+
+@media (max-width:520px) {
+  .amenities > div{margin:0 0px 18px 0 !important;width:100%;}
+  .amenities .text{margin-top:10px;overflow:hidden;}
+  .amenities .text strong:after{height:1px;}
+  .amenities .text strong span{font-size:16px;}
+  .amenities .text p{min-height:auto;padding:0 20px;}
 }
