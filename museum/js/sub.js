@@ -101,6 +101,41 @@ $(function() {
     
     $('.virtual .intro .skbtn').on('mouseout', function () {
 		$('.rotate360').removeClass('active');
-	});
+    });
+    
+    $('.virtual .mtab a').on('click', function (e) {
+        e.preventDefault();
+        var Position = $('.virtual .infobx .point').offset();
+        var idx = $(this).index();
+        var windowWidth = $(window).width();
+		if (windowWidth < 481) {
+			var Val = 80
+        } else if (windowWidth > 480 && windowWidth < 992) {
+			var Val = 190
+		} else if (windowWidth > 991 && windowWidth < 1200) {
+			var Val = 230
+		} else {
+			var Val = 300
+        }
+        
+        $('iframe').each( function() {
+            $(this)[0].contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
+        });  
+
+        if ($(this).hasClass('active')) {
+            $(this).removeClass('active'); 
+            $('.virtual .mlist').hide();
+            $('.virtual .mlist .bx').hide();
+        }else{
+            $('.virtual .mtab a').removeClass('active');
+            $(this).addClass('active');
+            $('.virtual .mlist').show();
+            $('.virtual .mlist .bx').fadeOut(300);
+            $('.virtual .mlist .bx').eq(idx).fadeIn(300);
+            $('html, body').animate({
+                scrollTop : Position.top + Val
+            }, 300);
+        }
+    });
 
 });
