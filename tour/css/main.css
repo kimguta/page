@@ -1,2 +1,122 @@
 @charset "utf-8";
 
+#header{background:transparent;border-bottom-width:0px;}
+#header #gnb_pc nav{display:none;}
+#header.fixed{background:#fff;border-bottom-width:1px;}
+#header.fixed #gnb_pc nav{display:block;}
+#header h1 a{color:#fff;text-shadow:1px 1px 2px rgba(0,0,0,.35);position:relative;}
+#header h1:before{content:'';display:block;bottom:0px;top:0px;width:600px;right:-40px;background:#8b00ff;position:absolute;}
+#sitemap{top:0;height:100%;padding-top:60px;}
+#main{overflow:hidden;}
+#main .inner{max-width:1240px;padding:0 20px;}
+
+#footer{background:#000;}
+
+@media (max-width:1199px) {
+    #header{background:#8b00ff;}
+    #header.fixed{background:#8b00ff;border-bottom:0;}
+    #main{padding-top:60px;}
+    #main .inner{padding:0 20px;overflow:hidden;}
+  }
+  
+  @media (max-width:760px) {
+    #main .inner{padding:0 15px;}
+    #header h1:before{right:-25px;}
+  }
+
+
+  
+#visual{position:relative;}
+#visual .vtab{position:absolute;top:145px;right:115px;padding:120px 0;z-index:10;}
+#visual .vtab:before{content:'';display:block;width:2px;height:100px;background:#fff;position:absolute;top:0px;right:27px;}
+#visual .vtab:after{content:'';display:block;width:2px;height:100px;background:#fff;position:absolute;bottom:0px;right:27px;}
+#visual .vtab a{display:block;text-align:right;padding-right:73px;height:56px;line-height:60px;color:#fff;font-family:"GmarketSans";font-weight:500;font-size:18px;text-shadow:1px 1px 1px rgba(0,0,0,.5);position:relative;transition:all .15s;}
+#visual .vtab a:after{content:'';display:block;width:56px;height:56px;border-radius:50%;background:rgba(0,0,0,.7) url(/page/tour/images/main/sp_main.png) 8px -51px no-repeat;background-size:520px 356px;position:absolute;top:0px;right:0px;}
+#visual .vtab a:nth-child(2):after{background-position:-48px -48px;}
+#visual .vtab a:nth-child(3):after{background-position:-108px -48px;}
+#visual .vtab a strong{font-weight:700;font-size:24px;padding-left:2px;}
+#visual .vtab a + a{margin-top:15px;}
+#visual .vtab a.active{color:#8b00ff;pointer-events:none;}
+#visual .vtab a.active:after{background:#8b00ff url(/page/tour/images/main/sp_main.png) 8px 6px no-repeat;background-size:520px 356px;pointer-events:none;}
+#visual .vtab a.active:nth-child(2):after{background-position:-48px 8px;}
+#visual .vtab a.active:nth-child(3):after{background-position:-108px 8px;}
+#visual .vtab a:hover{transform:scale(1.13);}
+#visual .vtab a:active{transform:scale(1);}
+
+#visual .text{color:#fff;position:absolute;left:calc(100% - 1685px);top:43%;transform:translateY(-50%);text-shadow:1px 1px 1px rgba(0,0,0,1);z-index:10;z-index:10;}
+#visual .text h2{line-height:1.3;color:#fff;font-family:"GmarketSans";font-weight:500;font-size:48px;word-spacing:-3px;}
+#visual .text h2 strong{font-weight:700;display:block;}
+#visual .text p{margin-top:43px;line-height:1.6;font-size:16px;font-weight:300;max-width:600px;padding-right:10px;word-break:keep-all;}
+#visual .text p strong{display:block;font-weight:500;font-size:24px;line-height:1.1;position:relative;margin-bottom:16px;padding-bottom:20px;}
+#visual .text p strong:after{content:'';display:block;width:28px;height:2px;box-shadow:1px 1px 0px 0px rgba(0,0,0,.8);position:absolute;left:0;bottom:0;background:#fff;}
+
+#visual .text.active h2{animation:rise1 .5s .0s ease 1 both;}
+#visual .text.active p{animation:rise2 .5s .2s ease 1 both;}
+@keyframes rise1{ 
+    0%{transform:translateY(40%);}
+    100%{transform:translateY(0%);} 
+  }
+
+@keyframes rise2{ 
+    0%{transform:translateY(-40%);opacity:0;}
+    100%{transform:translateY(0%);opacity:1;} 
+}
+
+#visual .tgbox{margin-bottom:60px;position:relative;background:#000;}
+#visual .tgbox > div{display:none;}
+#visual .tgbox > div:first-child{display:block;}
+
+#visual .slick{position:relative;z-index:3;}
+#visual .slick .slide{position:relative;height:873px;overflow:hidden;}
+#visual .slick .slide img{position:absolute;top:50%;left:50%;width:1920px;height:907px;display:block;margin:-453.5px 0 0 -960px}
+
+#visual .tslick_bx{position:absolute;bottom:-60px;left:calc(100% - 985px);padding-left:130px;z-index:5;}
+
+#visual .tslick_bx .arrow{display:inline-block;vertical-align:top;width:42px;height:16px;background:url(/page/tour/images/main/sp_main.png) -179px -12px no-repeat;background-size:520px 356px;overflow:hidden;text-indent:-9999px;transition:all .15s;position:absolute;bottom:20px;left:0px;}
+#visual .tslick_bx .arrow.next{background-position-x:-220px;left:55px;}
+#visual .tslick_bx .arrow:hover{transform:scale(1.1);}
+#visual .tslick_bx .arrow:active{transform:scale(.9);}
+#visual .tslick .slide{position:relative;display:block;width:196px;height:140px;margin-right:16px;overflow:hidden;}
+#visual .tslick .slide img{position:absolute;top:0;left:50%;width:296px;height:140px;display:block;margin-left:-148px;}
+#visual .tslick .slide:after{border:1px solid #a0a0a0;content:'';display:block;position: absolute;top:0px;left:0px;right:0px;bottom:0px;transition:all .1s;}
+#visual .tslick .slide.slick-current{pointer-events:none;}
+#visual .tslick .slide.slick-current:after{border:3px solid #8900fc;}
+#visual .tslick .slide:not(.slick-active){pointer-events:none;}
+#visual .tslick .slide:focus{outline:0;}
+
+
+@media (max-width:1700px) {
+    #visual .text{left:50px;}
+    #visual .vtab{right:50px;}
+}
+
+
+
+
+@media (max-width:1199px) {
+    
+    #visual .tgbox{margin-bottom:40px;}
+    #visual .slick .slide{height:630px;}
+    #visual .slick .slide img{width:1400px;height:661px;margin:-330px 0 0 -700px}
+
+    #visual .vtab{right:20px;}
+    #visual .vtab{top:55px;right:20px;padding:80px 0;}
+    #visual .vtab:before{height:60px;right:24px;}
+    #visual .vtab:after{height:60px;right:24px;}
+    #visual .vtab a{padding-right:63px;height:50px;line-height:52px;font-size:16px;}
+    #visual .vtab a:after{transform:scale(.9);transform-origin:100% 0%;}
+    #visual .vtab a strong{font-size:20px;}
+    #visual .vtab a + a{margin-top:12px;}
+    #visual .vtab a:hover{transform:scale(1.1);}
+
+    #visual .text{left:40px;top:40%;}
+    #visual .text h2{font-size:40px;word-spacing:-3px;}
+    #visual .text p{margin-top:25px;font-size:15px;max-width:550px;}
+    #visual .text p strong{font-size:22px;margin-bottom:14px;padding-bottom:18px;}
+    #visual .text p strong:after{width:24px;height:2px;}
+
+    #visual .tslick_bx{bottom:-40px;left:calc(100% - 705px);padding-left:130px;}
+    #visual .tslick .slide{width:168px;height:120px;margin-right:13px;}
+    #visual .tslick .slide img{width:254px;height:120px;margin-left:-127px;}
+    #visual .tslick_bx .arrow{bottom:10px;}
+}
