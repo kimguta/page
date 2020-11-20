@@ -57,6 +57,7 @@ $(function() {
         asNavFor: '#visual .slick',
         infinite: true,
         slidesToShow: 4,
+        accessibility: false,
         slidesToScroll: 1,
         pauseOnHover: false,
         focusOnSelect: true,
