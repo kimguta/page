@@ -1,8 +1,9 @@
 $(function() {
-    
-     var navOffset = $('#header').offset();
+    /*
+	 var navOffset = $('#header').offset();
+	 */
 	$(window).on('scroll', function () {
-	    if ($(document).scrollTop() > navOffset.top) {
+	    if ($(document).scrollTop() > 10) {
 	        $('#header').addClass('fixed');
 	    } else {
 	        $('#header').removeClass('fixed');
