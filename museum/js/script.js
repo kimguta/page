@@ -185,4 +185,8 @@ $(function() {
 		}
 	});
 
+
+	$('.skinTb-data-resList').parents('#sub_container').addClass('reslist');
+	
+
 });
