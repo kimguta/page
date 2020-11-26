@@ -56,7 +56,7 @@ $(function() {
         slidesToScroll: 1,
         pauseOnHover: false,
         focusOnSelect: true,
-        speed: 1000,
+        speed: 800,
         swipeToSlide: true,
         autoplaySpeed: 5000,
 		responsive: [{
@@ -99,6 +99,53 @@ $(function() {
         $(this).addClass('active');
         $('.tgbox > div').hide();
         $('.tgbox > div').eq(idx).fadeIn(1000);
+    });
+
+    $('#story .slick').on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+        $('#story .tbox').fadeOut('300');
+     });
+
+    $('#story .slick').on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
+        var i = (currentSlide ? currentSlide : 0) + 1;
+        $('#story  .count').html('<em>' + i + '</em> / ' + slick.slideCount);
+        $('#story .tbox').fadeIn('300');
+    });
+
+    $('#story .slick').slick({
+        autoplay: false,
+        arrows: true,
+        dots: false,
+        draggable: true,
+        prevArrow: $('#story .prev'),
+        nextArrow: $('#story .next'),
+        infinite: true,
+        slidesToShow: 5,
+        accessibility: false,
+        slidesToScroll: 1,
+        pauseOnHover: false,
+        focusOnSelect: true,
+        variableWidth: true,
+        speed: 1000,
+        swipeToSlide: true,
+		responsive: [{
+            breakpoint: 761,
+            settings: {
+                speed: 800,
+                slidesToShow: 2,
+            }
+        },
+        {
+            breakpoint: 992,
+            settings: {
+                slidesToShow: 3,
+            }
+        },
+        {
+            breakpoint: 1400,
+            settings: {
+                slidesToShow: 4,
+            }
+        }]
     });
 
 });
