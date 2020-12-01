@@ -58,19 +58,6 @@ $(function() {
 
     });
 
-	$('.calendar01 td.possible > a').on('click', function (e) {
-		e.preventDefault();
-		if ($(this).parent().hasClass('active')) {
-			$(this).parent().removeClass('active');
-			$(this).parents('tr').next('.schedule').fadeOut(300);
-		} else{
-			$('.calendar01 td').removeClass('active');
-			$(this).parent().addClass('active');
-			$('.calendar01 .schedule').fadeOut(300);
-			$(this).parents('tr').next('.schedule').fadeIn(300);
-		}
-	});
-
 	$('.making_trip .open').on('click', function (e) {
 		e.preventDefault();
 		$(this).toggleClass('active');
@@ -209,9 +196,15 @@ $(function() {
 
 	$('.special_romance .bg_btn a').on('click', function (e) {
 		e.preventDefault();
-
 		$('.special_romance').toggleClass('v2');
+	});
 
+	$('.special_romance .control a').on('click', function (e) {
+		e.preventDefault();
+		var Position = $('.special_romance .slick').offset();
+		$('html, body').animate({
+			scrollTop : Position.top + 20
+		}, 500);
 	});
 
 	 $('.special_romance .slick').slick({
@@ -237,9 +230,7 @@ $(function() {
         }]
     });
 
-	
-
-
+		
 	$('.special_emotion .bg_btn a').on('click', function (e) {
 		e.preventDefault();
 		$('.special_emotion').toggleClass('v2');
@@ -249,6 +240,18 @@ $(function() {
            $('.special_emotion .bg_btn span').html('스위치를 눌러 밤감성으로!<br>태백 타임워프, 슝슝~');
         }	
 		$('#audio')[0].play();	
+	});
+
+	$('.special_emotion .bplay').on('click', function (e) {
+		 if ($(this).hasClass('active')) {
+			$(this).removeClass('active');
+			$(this).html('음악켜기');
+			$('#audio')[0].pause();	
+        } else {
+			$(this).addClass('active');
+			$(this).html('음악끄기');
+			$('#audio')[0].play();	
+        }		
 	});
 
 		
