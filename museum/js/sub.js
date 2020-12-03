@@ -13,7 +13,7 @@ $(function() {
 		if ($(this).parent().hasClass('active')) {
 			$(this).parent().removeClass('active');
 			$(this).parents('tr').next('.schedule').fadeOut(300);
-		} else{
+		} else {
 			$('.calendar01 td').removeClass('active');
 			$(this).parent().addClass('active');
 			$('.calendar01 .schedule').fadeOut(300);
@@ -136,6 +136,35 @@ $(function() {
                 scrollTop : Position.top + Val
             }, 300);
         }
+    });
+
+
+    $('.touring .infobx a').on('click', function (e) {
+        e.preventDefault();
+        var idx = $(this).index();
+        var Position = $('.touring .map').offset();
+        var windowWidth = $(window).width();
+		if (windowWidth < 1400) {
+			var Val = 60
+        } else {
+			var Val = 90
+        }
+
+        $('.touring .infobx a').removeClass('active'); 
+        $(this).addClass('active');
+        $('.pinbx .pin').removeClass('active'); 
+        $('.pinbx .pin').eq(idx - 1).addClass('active');
+        $('.lnkbx a').removeClass('active'); 
+        $('.lnkbx a').eq(idx - 1).addClass('active');
+
+        if ($(this).hasClass('all')) {
+            $('.lnkbx a').removeClass('active'); 
+            $('.pinbx .pin').addClass('active');  
+        }
+
+        $('html, body').animate({
+            scrollTop : Position.top - Val
+        }, 300);
     });
 
 });
