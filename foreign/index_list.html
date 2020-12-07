@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="utf-8">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+<title>산출물 리스트</title>
+<script src="/page/common/js/jquery-1.12.2.min.js"></script>
+<style type="text/css">
+html, body {padding:0; margin:0;}
+#indexWrap {max-width:100%;height:auto;padding:20px;box-sizing:border-box}
+.titleText {font-size:20px;font-weight:700;margin:0;padding:0;line-height:1.5;letter-spacing:-1px;word-spacing:-3px;color:#000;}
+.titleText img {width:25px;vertical-align:middle;display:inline-block;margin-right:4px;}
+.titleText+.ContentsTable {margin-top:10px}
+.ContentsTable {width:100%;max-width:700px;border-spacing:0;border-collapse:collapse;table-layout:fixed}
+.ContentsTable th,
+.ContentsTable td {height:30px;padding:0 10px;border:1px solid #d1d1d1;font-weight:400;font-size:12px;text-align:center;background-color:#fff}
+.ContentsTable th{background:#000;color:#fff}
+.ContentsTable tbody th{text-align:left}
+.ContentsTable th:first-child,
+.ContentsTable td:first-child {border-left:0}
+.ContentsTable th:last-child,
+.ContentsTable td:last-child {border-right:0}
+.ContentsTable a {color:#000}
+.ContentsTable tbody tr a{display:block;position:relative}
+.ContentsTable tbody tr a:hover:after{content:'';display:block;border:2px solid #000;position:absolute;top:-8px;left:-10px;right:-10px;bottom:-8px;}
+.ContentsTable tbody tr th{background-color:#f5f5f5;color:#000}
+
+@media (max-width:740px) {
+    .ContentsTable th{display:none;}
+	.ContentsTable thead th:nth-child(2){display:table-cell;}
+	.ContentsTable td{border-width:1px 0;}
+}
+
+</style>
+<script type="text/javascript">
+var Preview = {
+	init: function() {
+		$("body").prepend("<iframe id=\"preview\" src=\"about:blank\" marginwidth=\"0\" marginheight=\"0\" frameborder=\"0\"></iframe>");
+		$("#preview").css({
+			"display": "none",
+			"width": "1420",
+			"height": "970",
+			"position": "fixed",
+			"top": "-190px",
+			"left": "389px",
+			"box-shadow": "0px 0px 20px 2px rgba(0,0,0,.2)",
+			"transform": "scale(0.48)"
+		});
+
+		$("body").append("<iframe id=\"preview2\" src=\"about:blank\" marginwidth=\"0\" marginheight=\"0\" frameborder=\"0\"></iframe>");
+		$("#preview2").css({
+			"display": "none",
+			"width": "414",
+			"height": "736",
+			"position": "fixed",
+			"top": "-49px",
+			"left": "1415px",
+			"box-shadow": "0px 0px 20px 2px rgba(0,0,0,.2)",
+			"transform": "scale(0.7)"
+		});
+	},
+	handling: function() {
+		$("a[target=\"_blank\"]").hover(function() {
+			var url = $(this).attr("href");
+			$("#preview").attr("src", url).show();
+			$("#preview2").attr("src", url).show();
+		}, function() {
+			
+		});
+	},
+	execute: function() {
+		Preview.init();
+		Preview.handling();
+	}
+}
+$(document).ready(function() {
+	Preview.execute();
+});
+
+</script>
+</head>
+<body>
+<div id="indexWrap">
+	<h1 class="titleText">
+		 태백관광 외국어 작업내역
+	</h1>
+	<table class="ContentsTable">
+		<thead>
+			<tr>
+				<th scope="col">내용</th>
+				<th scope="col">파일명</th>
+			</tr>
+		</thead>
+		<tbody>
+
+			<tr>
+				<th scope="row">메인</th>
+				<td scope="row">
+					<a href="main.html"  target="_blank">main.html</a>
+				</td>
+			</tr>
+
+			<tr>
+				<th scope="row">서브</th>
+				<td scope="row">
+					<a href="sub.html"  target="_blank">sub.html</a>
+				</td>
+			</tr>
+
+		
+		</tbody>
+	</table>
+</div>
+</body>
+</html>
