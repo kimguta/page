@@ -76,6 +76,7 @@ $(function() {
 
     $('.ftext > div:first-child').show();
     $('.ftab a:first-child').addClass('active');
+    
 
     $('#festival .slick').on('afterChange', function(event, slick, currentSlide, nextSlide) {
         $('.ftext > div').fadeOut(300);
