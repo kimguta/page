@@ -17,14 +17,14 @@ $(function() {
 		$('#gnb_pc .depth_box').hide();
 		$('#header').addClass('active');
 	    $(this).parent('h2').addClass('active');
-		$(this).parent('h2').next('.depth_box').fadeIn(200);
+		$(this).parent('h2').next('.depth_box').stop().fadeIn(200);
 		$('.bg_pc').show().stop().animate({height:gheight},200);
 	});
 
 	$('#header').on('mouseleave', function () {
 		$('#header').removeClass('active');
 		$('#gnb_pc .depth_01 h2').removeClass('active');
-		$('#gnb_pc .depth_box').fadeOut(200);
+		$('#gnb_pc .depth_box').stop().fadeOut(200);
 		$('.bg_pc').stop().animate({height:0},200);
 	});
 
