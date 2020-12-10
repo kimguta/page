@@ -119,7 +119,7 @@ $(function() {
         prevArrow: $('#story .prev'),
         nextArrow: $('#story .next'),
         infinite: true,
-        slidesToShow: 5,
+        slidesToShow: 4,
         accessibility: false,
         slidesToScroll: 1,
         pauseOnHover: false,
@@ -143,7 +143,7 @@ $(function() {
         {
             breakpoint: 1400,
             settings: {
-                slidesToShow: 4,
+                slidesToShow: 3,
             }
         }]
     });

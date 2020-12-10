@@ -16,7 +16,7 @@ $(function() {
 	    $('#gnb_pc .depth_01 h2').removeClass('active');
 		$('#gnb_pc .depth_box').hide();
 	    $(this).parent('h2').addClass('active');
-		$(this).parent('h2').next('.depth_box').fadeIn(200);
+		$(this).parent('h2').next('.depth_box').stop().fadeIn(200);
 		$('.bg_pc').show().stop().animate({height:gheight});
 		$('.bg_mask').fadeIn(300);
 	});
