@@ -51,7 +51,7 @@ $(function() {
 	});
 
 	$('#gnb_pc .depth_01 > li:nth-child(4) .has_depth h3 a').on('mouseover focusin', function () {
-		$('.bg_pc').stop().animate({height:181},300);
+		$('.bg_pc').stop().animate({height:175},300);
 	});
 
 	$('#gnb_pc .depth_02 > li:nth-child(3) h3 a').on('mouseover focusin', function () {
