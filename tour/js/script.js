@@ -18,7 +18,7 @@ $(function() {
 		$('#gnb_pc .depth_02').hide();
 		$('#gnb_pc .depth_03').hide();
 	    $(this).parent('h2').addClass('active');
-		$(this).parent('h2').next('.depth_02').slideDown(300);
+		$(this).parent('h2').next('.depth_02').stop().slideDown(300);
 		/*
 		$('.depth_02 > li:first-child h3').addClass('active');
 		$('.depth_02 > li:first-child .depth_03').show();
