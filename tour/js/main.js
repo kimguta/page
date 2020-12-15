@@ -191,16 +191,16 @@ $(function() {
         $('.tgbox > div').hide();
         $('.tgbox > div').eq(idx).fadeIn('500');
         if(idx == 0) {
-            $('.tgbox > div:nth-child(1) .slick').slick('resize');
-            $('.tgbox > div:nth-child(1) .tslick').slick('resize');
+            $('.tgbox .bx1 .slick').slick('resize');
+            $('.tgbox .bx1 .tslick').slick('resize');
             /*
             $('.tgbox > div:nth-child(1) .slick').slick('slickPlay');
             $('.tgbox > div:nth-child(2) .slick').slick('slickPause');
             $('.tgbox > div:nth-child(3) .slick').slick('slickPause');
             */
         }else if(idx == 1){
-            $('.tgbox > div:nth-child(2) .slick').slick('resize');
-            $('.tgbox > div:nth-child(2) .tslick').slick('resize');
+            $('.tgbox .bx2 .slick').slick('resize');
+            $('.tgbox .bx2 .tslick').slick('resize');
             /*
             $('.tgbox > div:nth-child(2) .slick').slick('slickPlay');
             $('.tgbox > div:nth-child(1) .slick').slick('slickPause');
@@ -208,8 +208,8 @@ $(function() {
             */
         }
         else if(idx == 2){
-            $('.tgbox > div:nth-child(3) .slick').slick('resize');
-            $('.tgbox > div:nth-child(3) .tslick').slick('resize');
+            $('.tgbox .bx3 .slick').slick('resize');
+            $('.tgbox .bx3 .tslick').slick('resize');
             /*
             $('.tgbox > div:nth-child(3) .slick').slick('slickPlay');
             $('.tgbox > div:nth-child(1) .slick').slick('slickPause');
