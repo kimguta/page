@@ -189,7 +189,7 @@ $(function() {
         $('.vtab a').removeClass('active');
         $(this).addClass('active');
         $('.tgbox > div').hide();
-        $('.tgbox > div').eq(idx).fadeIn('500');
+        $('.tgbox > div').eq(idx).fadeIn('300');
         if(idx == 0) {
             $('.tgbox .bx1 .slick').slick('resize');
             $('.tgbox .bx1 .tslick').slick('resize');
