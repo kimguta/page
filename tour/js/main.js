@@ -25,9 +25,11 @@ $(function() {
  
      $('#visual .slick').on('afterChange', function(event, slick, currentSlide, nextSlide) {
         $(this).prev('.text').addClass('active').fadeIn('300');
+        $(this).prev('.text').children('p').hide();
+        $(this).prev('.text').children('p').eq(currentSlide).show();
      });
 
-    $('#visual .slick').slick({
+    $('#visual .bx1 .slick').slick({
         autoplay: false,
         arrows: false,
         dots: false,
@@ -37,7 +39,7 @@ $(function() {
         fade: true,
         slidesToShow: 1,
         slidesToScroll: 1,
-        asNavFor: '#visual .tslick',
+        asNavFor: '#visual .bx1 .tslick',
         pauseOnHover: false,
         speed: 1200,
 		responsive: [{
@@ -49,7 +51,7 @@ $(function() {
     });
 
 
-    $('#visual .tslick').slick({
+    $('#visual .bx1 .tslick').slick({
         autoplay: false,
         arrows: true,
         dots: false,
@@ -57,9 +59,8 @@ $(function() {
         prevArrow: '<a role="button" class="slick-prev prev arrow" href="#">이전</a>',
         nextArrow: '<a role="button" class="slick-next next arrow" href="#">다음</a>',
         variableWidth: true,
-        asNavFor: '#visual .slick',
+        asNavFor: '#visual .bx1 .slick',
         infinite: true,
-        slidesToShow: 4,
         accessibility: false,
         slidesToScroll: 1,
         pauseOnHover: false,
@@ -70,19 +71,116 @@ $(function() {
             breakpoint: 761,
             settings: {
                 speed: 900,
-                slidesToShow: 2
             }
         },
          {  
             breakpoint: 1200,
             settings: {
-                slidesToShow: 3
             }
         }]
     });
 
-    $('.tgbox > div:nth-child(2) .slick').slick('slickPause');
-    $('.tgbox > div:nth-child(3) .slick').slick('slickPause');
+    $('#visual .bx2 .slick').slick({
+        autoplay: false,
+        arrows: false,
+        dots: false,
+        accessibility: true,
+        draggable: true,
+        infinite: true,
+        fade: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        asNavFor: '#visual .bx2 .tslick',
+        pauseOnHover: false,
+        speed: 1200,
+		responsive: [{
+            breakpoint: 761,
+            settings: {
+                 speed: 900
+            }
+        }]
+    });
+
+
+    $('#visual .bx2 .tslick').slick({
+        autoplay: false,
+        arrows: true,
+        dots: false,
+        draggable: true,
+        prevArrow: '<a role="button" class="slick-prev prev arrow" href="#">이전</a>',
+        nextArrow: '<a role="button" class="slick-next next arrow" href="#">다음</a>',
+        variableWidth: true,
+        asNavFor: '#visual .bx2 .slick',
+        infinite: true,
+        accessibility: false,
+        slidesToScroll: 1,
+        pauseOnHover: false,
+        focusOnSelect: true,
+        swipeToSlide: true,
+        speed: 1200,
+		responsive: [{
+            breakpoint: 761,
+            settings: {
+                speed: 900,
+            }
+        },
+         {  
+            breakpoint: 1200,
+            settings: {
+            }
+        }]
+    });
+
+    $('#visual .bx3 .slick').slick({
+        autoplay: false,
+        arrows: false,
+        dots: false,
+        accessibility: true,
+        draggable: true,
+        infinite: true,
+        fade: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        asNavFor: '#visual .bx3 .tslick',
+        pauseOnHover: false,
+        speed: 1200,
+		responsive: [{
+            breakpoint: 761,
+            settings: {
+                 speed: 900
+            }
+        }]
+    });
+
+
+    $('#visual .bx3 .tslick').slick({
+        autoplay: false,
+        arrows: true,
+        dots: false,
+        draggable: true,
+        prevArrow: '<a role="button" class="slick-prev prev arrow" href="#">이전</a>',
+        nextArrow: '<a role="button" class="slick-next next arrow" href="#">다음</a>',
+        variableWidth: true,
+        asNavFor: '#visual .bx3 .slick',
+        infinite: true,
+        accessibility: false,
+        slidesToScroll: 1,
+        pauseOnHover: false,
+        focusOnSelect: true,
+        swipeToSlide: true,
+        speed: 1200,
+		responsive: [{
+            breakpoint: 761,
+            settings: {
+                speed: 900,
+            }
+        },
+         {  
+            breakpoint: 1200,
+            settings: {
+            }
+        }]
+    });
 
 
     $('.vtab a').on('click', function (e) {
@@ -94,9 +192,7 @@ $(function() {
         $('.tgbox > div').eq(idx).fadeIn('500');
         if(idx == 0) {
             $('.tgbox > div:nth-child(1) .slick').slick('resize');
-            $('.tgbox > div:nth-child(1) .slick').slick('refresh');
             $('.tgbox > div:nth-child(1) .tslick').slick('resize');
-            $('.tgbox > div:nth-child(1) .tslick').slick('refresh');
             /*
             $('.tgbox > div:nth-child(1) .slick').slick('slickPlay');
             $('.tgbox > div:nth-child(2) .slick').slick('slickPause');
@@ -104,20 +200,16 @@ $(function() {
             */
         }else if(idx == 1){
             $('.tgbox > div:nth-child(2) .slick').slick('resize');
-            $('.tgbox > div:nth-child(2) .slick').slick('refresh');
             $('.tgbox > div:nth-child(2) .tslick').slick('resize');
-            $('.tgbox > div:nth-child(2) .tslick').slick('refresh');
             /*
             $('.tgbox > div:nth-child(2) .slick').slick('slickPlay');
             $('.tgbox > div:nth-child(1) .slick').slick('slickPause');
             $('.tgbox > div:nth-child(3) .slick').slick('slickPause');
             */
         }
-        else{
+        else if(idx == 2){
             $('.tgbox > div:nth-child(3) .slick').slick('resize');
-            $('.tgbox > div:nth-child(3) .slick').slick('refresh');
             $('.tgbox > div:nth-child(3) .tslick').slick('resize');
-            $('.tgbox > div:nth-child(3) .tslick').slick('refresh');
             /*
             $('.tgbox > div:nth-child(3) .slick').slick('slickPlay');
             $('.tgbox > div:nth-child(1) .slick').slick('slickPause');
