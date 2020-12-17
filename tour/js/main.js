@@ -62,6 +62,7 @@ $(function() {
         asNavFor: '#visual .bx1 .slick',
         infinite: true,
         accessibility: false,
+        slidesToShow: 3,
         slidesToScroll: 1,
         pauseOnHover: false,
         focusOnSelect: true,
@@ -71,6 +72,7 @@ $(function() {
             breakpoint: 761,
             settings: {
                 speed: 900,
+                slidesToShow: 2
             }
         },
          {  
@@ -113,6 +115,7 @@ $(function() {
         asNavFor: '#visual .bx2 .slick',
         infinite: true,
         accessibility: false,
+        slidesToShow: 3,
         slidesToScroll: 1,
         pauseOnHover: false,
         focusOnSelect: true,
@@ -122,6 +125,7 @@ $(function() {
             breakpoint: 761,
             settings: {
                 speed: 900,
+                slidesToShow: 2
             }
         },
          {  
@@ -164,6 +168,7 @@ $(function() {
         asNavFor: '#visual .bx3 .slick',
         infinite: true,
         accessibility: false,
+        slidesToShow: 3,
         slidesToScroll: 1,
         pauseOnHover: false,
         focusOnSelect: true,
@@ -173,6 +178,7 @@ $(function() {
             breakpoint: 761,
             settings: {
                 speed: 900,
+                slidesToShow: 2
             }
         },
          {  
@@ -190,9 +196,13 @@ $(function() {
         $(this).addClass('active');
         $('.tgbox > div').hide();
         $('.tgbox > div').eq(idx).fadeIn('300');
+        $('#visual .text p').hide();
+        $('#visual .text p:first-of-type').show();
         if(idx == 0) {
             $('.tgbox .bx1 .slick').slick('resize');
             $('.tgbox .bx1 .tslick').slick('resize');
+            $('.tgbox .bx1 .slick').slick('slickGoTo', 0);
+            $('.tgbox .bx1 .tslick').slick('slickGoTo', 0);
             /*
             $('.tgbox > div:nth-child(1) .slick').slick('slickPlay');
             $('.tgbox > div:nth-child(2) .slick').slick('slickPause');
@@ -201,6 +211,8 @@ $(function() {
         }else if(idx == 1){
             $('.tgbox .bx2 .slick').slick('resize');
             $('.tgbox .bx2 .tslick').slick('resize');
+            $('.tgbox .bx2 .slick').slick('slickGoTo', 0);
+            $('.tgbox .bx2 .tslick').slick('slickGoTo', 0);
             /*
             $('.tgbox > div:nth-child(2) .slick').slick('slickPlay');
             $('.tgbox > div:nth-child(1) .slick').slick('slickPause');
@@ -210,6 +222,8 @@ $(function() {
         else if(idx == 2){
             $('.tgbox .bx3 .slick').slick('resize');
             $('.tgbox .bx3 .tslick').slick('resize');
+            $('.tgbox .bx3 .slick').slick('slickGoTo', 0);
+            $('.tgbox .bx3 .tslick').slick('slickGoTo', 0);
             /*
             $('.tgbox > div:nth-child(3) .slick').slick('slickPlay');
             $('.tgbox > div:nth-child(1) .slick').slick('slickPause');
