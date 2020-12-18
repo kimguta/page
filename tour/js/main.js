@@ -35,7 +35,7 @@ $(function() {
         dots: false,
         accessibility: true,
         draggable: true,
-        infinite: true,
+        infinite: false,
         fade: true,
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -60,9 +60,8 @@ $(function() {
         nextArrow: '<a role="button" class="slick-next next arrow" href="#">다음</a>',
         variableWidth: true,
         asNavFor: '#visual .bx1 .slick',
-        infinite: true,
+        infinite: false,
         accessibility: false,
-        slidesToShow: 3,
         slidesToScroll: 1,
         pauseOnHover: false,
         focusOnSelect: true,
@@ -72,7 +71,6 @@ $(function() {
             breakpoint: 761,
             settings: {
                 speed: 900,
-                slidesToShow: 2
             }
         },
          {  
@@ -88,7 +86,7 @@ $(function() {
         dots: false,
         accessibility: true,
         draggable: true,
-        infinite: true,
+        infinite: false,
         fade: true,
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -113,9 +111,8 @@ $(function() {
         nextArrow: '<a role="button" class="slick-next next arrow" href="#">다음</a>',
         variableWidth: true,
         asNavFor: '#visual .bx2 .slick',
-        infinite: true,
+        infinite: false,
         accessibility: false,
-        slidesToShow: 3,
         slidesToScroll: 1,
         pauseOnHover: false,
         focusOnSelect: true,
@@ -125,7 +122,6 @@ $(function() {
             breakpoint: 761,
             settings: {
                 speed: 900,
-                slidesToShow: 2
             }
         },
          {  
@@ -141,7 +137,7 @@ $(function() {
         dots: false,
         accessibility: true,
         draggable: true,
-        infinite: true,
+        infinite: false,
         fade: true,
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -166,9 +162,8 @@ $(function() {
         nextArrow: '<a role="button" class="slick-next next arrow" href="#">다음</a>',
         variableWidth: true,
         asNavFor: '#visual .bx3 .slick',
-        infinite: true,
+        infinite: false,
         accessibility: false,
-        slidesToShow: 3,
         slidesToScroll: 1,
         pauseOnHover: false,
         focusOnSelect: true,
@@ -178,7 +173,6 @@ $(function() {
             breakpoint: 761,
             settings: {
                 speed: 900,
-                slidesToShow: 2
             }
         },
          {  
