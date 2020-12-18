@@ -230,6 +230,9 @@ $(function() {
         }]
     });
 
+
+	$('.special_romance .control').append("<p>화살표를 클릭해주세요</p>")
+
 		
 	$('.special_emotion .bg_btn a').on('click', function (e) {
 		e.preventDefault();
