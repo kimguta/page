@@ -59,11 +59,19 @@ $(function() {
         $('.sbx > div .slick').slick('slickGoTo', 0);
         $('#service .prev').removeClass('active');
     });
-
+   
+    $('#service .slick').on('beforeChange', function(event, slick, currentSlide, nextSlide) {   
+        $('#service .prev').hide();
+        $('#service .next').hide();
+     });
 
     $('#service .slick').on('afterChange', function(event, slick, currentSlide, nextSlide) {   
+        $('#service .prev').show();
+        $('#service .next').show();
         if ($('#service .next').hasClass('slick-disabled')) {
             $('#service .prev').addClass('active'); 
+        }else{
+            $('#service .prev').removeClass('active'); 
         }
      });
 
