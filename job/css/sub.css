@@ -96,9 +96,9 @@
 
 #sub .pageTab >li{border-radius:10px;}
 #sub .pageTab >li.active {background:#0076be;border-color:#0076be;}
-#sub .titLv3:before{background:#0076be;}
+#sub .titLv3:before{background:#0076be;width:4px;height:4px;top:12px;}
 #sub .titLv2{padding-left:20px;}
-#sub .titLv2:before{position: absolute;display:block;content: '';top:50%;left:0px;background:#0076be;width:10px;height:10px;margin-top:-5px;}
+#sub .titLv2:before{position: absolute;display:block;content: '';top:11px;left:0px;width:12px;height:12px;box-sizing:border-box;border:4px solid #0076be;border-radius:50%;}
 #sub .skinTb:before{border-top:2px solid #2c53b0;}
 #sub .skinTb-th,
 #sub .skinTb >tr >th,
@@ -112,6 +112,11 @@
 #sub .skinIptTxt, 
 #sub .skinSelectBox{border-color:#2c53b0;border-radius:5px;}
 
+@media (max-width:1199px) {
+  #sub .titLv3:before{top:11px;}
+  #sub .titLv2:before{top:9px;}
+}
+
 @media screen and (min-width: 320px) and (max-width: 639px){
   #sub .pageTab > li {background:#0076be;border-radius:0;}
 }
@@ -119,62 +124,79 @@
 @media (max-width:760px) {
   #sub .titLv2:before {left:3px;}
   #sub .titLv2 span{font-size:13px;}
+  #sub .titLv2:before{top:8px;}
+  #sub .titLv2:before{top:8px;}
 }
 
+/*복지서비스*/
+.service{position:relative;}
+.service .infobx{background:#0076c0;padding:20px 30px;border-radius:15px;}
+.service .infobx p{color:#fff;line-height:1.5;position:relative;padding:10px 0 10px 64px;}
+.service .infobx p:before{content:'';display:inline-block;width:44px;height:45px;background:url(/page/job/images/sub/icon01.png) 0 0 no-repeat;background-size:cover;position:absolute;left:0;top:50%;margin-top:-22.5px}
 
+.slist01{padding-top:10px;}
+.slist01 .item{margin:27px 27px 0 0;float:left;width:calc((100% - 54.2px) / 3);display:block;border:1px solid #d3d3d3;}
+.slist01 .item:nth-child(3n){margin-right:0;}
+.slist01 .item .imgbx{overflow:hidden;position:relative;height:248px;background:#f8f8f8;}
+.slist01 .item .imgbx img{display:block;transition:all .1s;max-width:100%;max-height:100%;position:absolute;top:0;bottom:0;right:0;left:0;margin:auto;}
+.slist01 .item .text{padding:25px 20px 0;}
+.slist01 .item .text strong{line-height:1.2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:center;font-size:24px;font-weight:500;display:block;}
+.slist01 .item .text ul{padding:22px 0px 15px 0px;min-height:122px;}
+.slist01 .item .text li{color:#585858;font-size:16px;padding-left:22px;position:relative;line-height:1.4;font-weight:300;}
+.slist01 .item .text li:after{content:'';display:block;background:url(/page/job/images/main/icon01.png) 0 0 no-repeat;background-size:cover;width:15px;height:12px;position:absolute;top:7px;left:0;transform-origin:0% 0%;}
+.slist01 .item .text li + li{margin-top:4px;}
+.slist01 .item .text p{text-align:center;height:44px;line-height:42px;border-top:1px solid #eaeaea;color:#585858;font-size:16px;}
+.slist01 .item .text p:before{content:'';display:inline-block;background:url(/page/job/images/main/icon02.png) 0 0 no-repeat;background-size:cover;width:18px;height:18px;vertical-align:-2px;margin-right:6px;transform-origin:0% 0%;}
+.slist01 .item:hover .imgbx img{transform:scale(1.1);}
+.slist01 .item:hover,
+.slist01 .item:hover p,
+.slist01 .item:hover div,
+.slist01 .item:hover strong{text-decoration:none;}
+.slist01 .item:hover strong{font-weight:700;}
 
-/*
-
-
-
-
-.title_box{text-align:center;position:relative;padding:36px 75px 20px;border-bottom:1px solid #dadada;margin-bottom:40px;z-index:15;background:#fff;}
-.title_box h3{line-height:1.2;font-size:30px;font-weight:500;color:#000;}
-.title_box .btn_box{position:absolute;bottom:12px;right:0px;}
-.title_box .btn_box .print{display:block;float:left;background:url(/page/tour/images/common/sp_tour.png) -160px 0px no-repeat;background-size:520px 520px;transition:all .15s;width:35px;height:40px;overflow:hidden;text-indent:-9999px;}
-.title_box .btn_box .print:hover{transform:scale(1.05);}
-.title_box .btn_box .print:active{transform:scale(.95);}
-.title_box .btn_box .share{float:left}
-.title_box .btn_box .share .open{width:40px;height:40px;background:url(/page/tour/images/common/sp_tour.png) -122px 0px no-repeat;background-size:520px 520px;transition:all .15s;text-indent:-9999px;position:relative;overflow:hidden;text-indent:-9999px;display:block;}
-.title_box .btn_box .share .open:hover{transform:scale(1.05);}
-.title_box .btn_box .share .open:active{transform:scale(.95);}
-
-.title_box .btn_box .share ul{position:absolute;top:41px;left:0px;z-index:30;display:none;}
-.title_box .btn_box .share ul li + li{margin-top:2px;}
-.title_box .btn_box .share ul li a{display:block;overflow:hidden;text-indent:-9999px;width:38px;height:38px;background:url(/page/common/images/sp_dq.png) -1px -321px no-repeat;background-size:520px 1500px;}
-.title_box .btn_box .share ul li a.blog{background-position:-1px -321px;}
-.title_box .btn_box .share ul li a.facebook{background-position:-41px -321px;}
-.title_box .btn_box .share ul li a.twitter{background-position:-81px -321px;}
-.title_box .btn_box .share ul li a.cacao{background-position:-121px -321px;}
-.title_box .btn_box .share ul li a.insta{background-position:-161px -321px;}
-.title_box .btn_box .share ul li a.utube{background-position:-201px -321px;}
 
 @media (max-width:1199px) {
-    .title_box{padding:30px 40px 17px;margin-bottom:30px;}
-    .title_box h3{font-size:27px;}
-    .title_box .btn_box{bottom:10px;}
-    .title_box .btn_box .print{display:none;}
+  .service .infobx{padding:20px 20px;}
+  .service .infobx p{padding:8px 0 8px 61px;font-size:15px;}
 
-    .title_box .btn_box  .share ul{top:32px;}
-    .title_box .btn_box  .share .open{width:31px;height:31px;background:url(/page/tour/images/common/sp_tour.png) -124px -4px no-repeat;background-size:520px 520px;}
-    .title_box .btn_box  .share ul li a{width:30px;height:31px;background-size:400px 1154px;}
-    .title_box .btn_box  .share ul li a.blog{background-position:0px -247px;}
-    .title_box .btn_box  .share ul li a.facebook{background-position:-31px -247px;}
-    .title_box .btn_box  .share ul li a.twitter{background-position:-62px -247px;}
-    .title_box .btn_box  .share ul li a.cacao{background-position:-93px -247px;}
-    .title_box .btn_box  .share ul li a.insta{background-position:-124px -247px;}
-    .title_box .btn_box  .share ul li a.utube{background-position:-155px -247px;}  
+  .slist01 .item{margin:20px 20px 0 0;width:calc((100% - 40.2px) / 3);}
+  .slist01 .item .text{padding:20px 15px 0;}
+  .slist01 .item .text strong{font-size:22px}
+  .slist01 .item .text ul{padding:17px 0px 12px 0px;min-height:105px;}
+  .slist01 .item .text li{font-size:15px;padding-left:20px;}
+  .slist01 .item .text li:after{transform:scale(.9);top:6px;}
+  .slist01 .item .text p{height:40px;line-height:38px;font-size:15px;}
+  .slist01 .item .text p:before{transform:scale(.9);vertical-align:-3px;}
+
+  .slist01 .item .imgbx{height:203px;}
+
+}
+
+@media (max-width:991px) {
+  .slist01 .item{margin:15px 15px 0 0;width:calc((100% - 30.2px) / 3);}
+  .slist01 .item .text{padding:17px 15px 0;}
+  .slist01 .item .text strong{font-size:20px}
+  .slist01 .item .text ul{padding:12px 0px 10px 0px;min-height:98px;}
+
+  .slist01 .item .imgbx{height:150px;}
+
 }
 
 @media (max-width:760px) {
-    .title_box{padding:25px 30px 18px;margin-bottom:23px;}
-    .title_box h3{font-size:23px;}
-    .title_box .btn_box{bottom:10px;}
-}
+  .service .infobx{padding:10px 15px;}
+  .service .infobx p{padding:8px 0 8px 59px;font-size:14px;}
 
-.contsArea p{font-weight:300}
+  .slist01 .item{margin:10px 10px 0 0;width:calc((100% - 10.2px) / 2);}
+  .slist01 .item:nth-child(3n){margin-right:10px;}
+  .slist01 .item:nth-child(2n){margin-right:0;}
+  .slist01 .item .text{padding:15px 10px 0 10px;}
+  .slist01 .item .text strong{font-size:16px}
+  .slist01 .item .text ul{padding:10px 0px 8px 0px;min-height:85px;}
+  .slist01 .item .text li{font-size:13px;padding-left:16px;}
+  .slist01 .item .text li:after{transform:scale(.8);top:5px;}
+  .slist01 .item .text p{height:36px;line-height:34px;font-size:12px;}
+  .slist01 .item .text p:before{transform:scale(.8);vertical-align:-5px;margin-right:1px;}
 
-@media (max-width:1199px) {
-    .contsArea p{font-size:15px;}
+  .slist01 .item .imgbx{height:122px;}
+
 }
-*/
