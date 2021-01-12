@@ -344,6 +344,8 @@ $('.sroad .smap .trigger').on('click mouseenter',function(e){
     $(this).parent('div').addClass('active');
     $('.stab > a').removeClass('active');
     $('.stab > a').eq(idx).addClass('active');
+    $('.sroad .smap').removeAttr('class').addClass('smap');
+    $('.sroad .smap').addClass('ty' + idx);
 });
 
 $('.sroad .stab > a').on('click',function(e){
@@ -353,11 +355,13 @@ $('.sroad .stab > a').on('click',function(e){
     $('.sroad .smap > div').eq(idx).addClass('active');
     $('.stab > a').removeClass('active');
     $(this).addClass('active');
+    $('.sroad .smap').removeAttr('class').addClass('smap');
+    $('.sroad .smap').addClass('ty' + idx);
 });
-
 
 $('.sroad').on('mouseleave',function(e){
     e.preventDefault();
     $('.sroad .smap > div').removeClass('active');
-    $('.stab > a').removeClass('active');
+    $('.sroad .stab > a').removeClass('active');
+    $('.sroad .smap').removeAttr('class').addClass('smap');
 });
