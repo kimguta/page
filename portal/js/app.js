@@ -337,7 +337,7 @@ $('#contents').on('focusout', function(){
 $('.pager-link.active').prop('title', '현재 페이지');
 
 
-$('.sroad .smap .trigger').on('click mouseenter',function(e){
+$('.sroad .smap .trigger').on('mouseenter click',function(e){
     e.preventDefault();
     var idx = $(this).parent().index();
     $('.sroad .smap > div').removeClass('active');
@@ -346,17 +346,23 @@ $('.sroad .smap .trigger').on('click mouseenter',function(e){
     $('.stab > a').eq(idx).addClass('active');
     $('.sroad .smap').removeAttr('class').addClass('smap');
     $('.sroad .smap').addClass('ty' + idx);
+  
 });
+
 
 $('.sroad .stab > a').on('click',function(e){
     e.preventDefault();
     var idx = $(this).index();
+    var Offset = $('.sroad').offset();
     $('.sroad .smap > div').removeClass('active');
     $('.sroad .smap > div').eq(idx).addClass('active');
     $('.stab > a').removeClass('active');
     $(this).addClass('active');
     $('.sroad .smap').removeAttr('class').addClass('smap');
     $('.sroad .smap').addClass('ty' + idx);
+    $('html, body').animate({
+        scrollTop : Offset.top - 70
+    }); 
 });
 
 $('.sroad').on('mouseleave',function(e){
