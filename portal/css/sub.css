@@ -1128,7 +1128,7 @@ input[type=text], input[type=search], select {border: 1px solid #b5b5b5; height:
 .sroad .smap > div .spot{display:none;position:absolute;}
 .sroad .smap > div.active .spot{display:block;}
 
-.sroad .smap > div .spot:after{content:'';display:block;background:url(../imgs/road/sp_road.png) no-repeat -367px -44px;background-size:520px 555px;width:60px;height:72px;animation:spin 1500ms infinite ease alternate;position:relative;;left:50%;margin-left:-30px;z-index:5;}
+.sroad .smap > div .spot:after{content:'';display:block;background:url(../imgs/road/sp_road.png) no-repeat -367px -44px;background-size:520px 555px;width:60px;height:72px;animation:spin 1500ms infinite ease alternate;position:relative;;left:50%;margin-left:-30px;z-index:15;pointer-events:none;}
 .sroad .smap > div .spot:before{content:'';display:block;background:url(../imgs/road/sp_road.png) no-repeat -333px -49px;background-size:520px 555px;width:16px;height:20px;position:absolute;}
 
 .sroad .smap > div .txtbx{position:relative;padding:11px 30px 7px 40px;border-radius:0 35px 35px  0;background:#ff17a5;box-shadow:0px 0px 7px 0px rgba(0,0,0,.3);border:2px solid #fff;display:inline-block;z-index:5;}
@@ -1142,6 +1142,7 @@ input[type=text], input[type=search], select {border: 1px solid #b5b5b5; height:
 .sroad .smap > div .txtbx:before{content:'';display:block;border-left:4px dotted #000;position:absolute;left:50%;margin-left:-2px;}
 
 .sroad .smap > div.active .txtbx{animation:zindx .01s 1 both;}
+
 @keyframes zindx {
     0% {z-index:3;}
     100% {z-index:12;}
@@ -1228,7 +1229,7 @@ input[type=text], input[type=search], select {border: 1px solid #b5b5b5; height:
 
 
 @keyframes spin {
-  from { transform: rotateY(0deg); }
+  from { transform: rotateY(0deg);}
   from { transform: rotateY(360deg); }
 }
 
@@ -1424,7 +1425,7 @@ input[type=text], input[type=search], select {border: 1px solid #b5b5b5; height:
 
 .sroad_cont .route{padding:5px 50px 25px;font-size:0;font-family:sans-serif;text-align:center;}
 .sroad_cont .route p{display:inline-block;font-family:'Noto Sans KR', sans-serif;width:calc(100% / 9);font-size:16px;position:relative;vertical-align:top;padding-top:44px;}
-.sroad_cont .route p em{display:block;background:url(../imgs/road/sp_road.png) no-repeat -306px -970px;background-size:1040px 1109px;height:60px;width:38px;text-align:center;padding:4px 5px 0 0;color:#fff;font-size:21px;font-weight:700;margin:0 auto;position:relative;}
+.sroad_cont .route p em{display:block;background:url(../imgs/road/sp_road.png) no-repeat -202px -486px;background-size:520px 555px;height:60px;width:38px;text-align:center;padding:4px 5px 0 0;color:#fff;font-size:21px;font-weight:700;margin:0 auto;position:relative;}
 .sroad_cont .route p span{position:absolute;bottom:67px;width:100%;text-align:center;font-weight:300;left:0;padding-right:8px;}
 .sroad_cont .route p:before{content:'';display:block;position:absolute;left:1px;right:1px;bottom:28px;border:1px dashed #a9a9a9;}
 .sroad_cont .route p:first-child:after{content:'';display:block;width:12px;height:12px;border-radius:50%;background:#535353;position:absolute;bottom:23px;left:-17px;}
@@ -1438,3 +1439,78 @@ input[type=text], input[type=search], select {border: 1px solid #b5b5b5; height:
 @supports (-ms-ime-align:auto) {
     .sroad_cont .route p:before {left:0.5px;right:0.5px;}
 }
+
+.sroad_cont .infobx{margin-bottom:45px;height:430px;overflow:hidden;background:url(../imgs/road/1_topmain.jpg) no-repeat center center;background-size:cover;}
+.sroad_cont .infobx.r01{background-image:url(../imgs/road/1_topmain.jpg);}
+.sroad_cont .infobx.r02{background-image:url(../imgs/road/2_topmain.jpg);}
+.sroad_cont .infobx.r03{background-image:url(../imgs/road/3_topmain.jpg);}
+.sroad_cont .infobx.r04{background-image:url(../imgs/road/4_topmain.jpg);}
+.sroad_cont .infobx.r05{background-image:url(../imgs/road/5_topmain.jpg);}
+.sroad_cont .infobx.r06{background-image:url(../imgs/road/6_topmain.jpg);}
+.sroad_cont .infobx.r07{background-image:url(../imgs/road/7_topmain.jpg);}
+.sroad_cont .infobx.r08{background-image:url(../imgs/road/8_topmain.jpg);}
+.sroad_cont .infobx.r09{background-image:url(../imgs/road/9_topmain.jpg);}
+.sroad_cont .infobx.r10{background-image:url(../imgs/road/10_topmain.jpg);}
+.sroad_cont .infobx.r11{background-image:url(../imgs/road/11_topmain.jpg);}
+.sroad_cont .infobx.r12{background-image:url(../imgs/road/12_topmain.jpg);}
+
+.sroad_cont .infobx .lbx{float:left;width:365px;background:rgba(194,40,171,.85);padding:35px 22px 0;height:430px;}
+.sroad_cont .infobx .lbx h4{font-family:'GongGothic';font-weight:300;font-size:24px;color:#fff;text-align:center;line-height:1.4;}
+.sroad_cont .infobx .lbx h4 strong{font-weight:500;font-size:36px;}
+.sroad_cont .infobx .distance{display:block;margin:10px 52px 0;background:#fff;height:28px;line-height:28px;border-radius:14px;text-align:center;color:#591f90;font-size:14px;font-weight:500;}
+.sroad_cont .infobx .lbx > p{margin-top:20px;line-height:1.7;color:#fff;text-align:center;word-break:keep-all;font-size:14px;font-weight:300;padding:0 20px;}
+.sroad_cont .infobx .lbx h5{position:relative;padding-left:25px;margin-top:22px;}
+.sroad_cont .infobx .lbx h5:before{content:'';display:block;position:absolute;left:100px;right:0px;height:1px;top:50%;background:#fff;}
+.sroad_cont .infobx .lbx h5:after{content:'';display:block;background:url(../imgs/road/sp_road.png) no-repeat 0px -500px;background-size:520px 555px;height:40px;width:40px;left:0;top:50%;margin-top:-20px;position:absolute;}
+.sroad_cont .infobx .lbx h5 span{width:107px;height:32px;line-height:30px;border:1px solid #fff;background:#4d0b43;text-align:center;color:#fff;font-size:14px;position:relative;display:block;}
+.sroad_cont .infobx .amenities{margin-top:15px;overflow:hidden;border-radius:15px;position:relative;display:flex}
+.sroad_cont .infobx .amenities strong{position:relative;width:120px;background:#e7edff;text-align:center;color:#333;font-weight:300;font-size:14px;line-height:1.4;display:flex;align-items:center;justify-items:center;padding:13px 0 13px;}
+.sroad_cont .infobx .amenities strong em{display:block;font-weight:700;}
+.sroad_cont .infobx .amenities strong span{position:relative;width:100%;}
+.sroad_cont .infobx .amenities p{overflow:hidden;padding:13px 0 13px 20px;background:#fff;display:flex;flex-direction:column;width:calc(100% - 120px);justify-content:center;}
+.sroad_cont .infobx .amenities p span{display:block;font-size:13px;color:#4b1d7a;font-weight:300;line-height:1.7;position:relative;padding-left:13px;}
+.sroad_cont .infobx .amenities p span:after{content:'';width:7px;height:7px;border:2px solid #ba8bb9;border-width:2px 2px 0 0;transform:rotate(45deg);position:absolute;left:0;top:50%;margin-top:-4px;}
+
+.sroad_cont .infobx .rbx{float:left;width:calc(100% - 430px);height:430px;text-align:center;}
+.sroad_cont .infobx .rbx img{display:inline-block;position:relative;top:50%;margin-top:-178.5px;}
+
+.sroad_cont h5{position:relative;position:relative;line-height:1.2;color:#252525;font-size:24px;font-weight:700;padding:0 0 0 28px;margin-top:40px;}
+.sroad_cont h5 span{color:#7d1a6a}
+.sroad_cont h5:after{content:'';display:block;background:url(../imgs/road/icon01.png) no-repeat center center;background-size:23px 26px;width:23px;height:26px;position:absolute;top:50%;margin-top:-12px;left:0;}
+.sroad_cont .pointbx{overflow:hidden;margin-top:30px;}
+.sroad_cont .pointbx img{display:block;float:left;margin-right:17px;width:275px;}
+.sroad_cont .pointbx ul{overflow:hidden;margin-top:45px;padding:22px 54px;text-align:center;background:#f7f7f7;}
+.sroad_cont .pointbx ul li{width:calc(50% - 2px);vertical-align:top;display:inline-block;height:31px;line-height:31px;text-align:left;color:#000;font-size:14px;font-weight:300;padding-left:52px;white-space:nowrap;}
+.sroad_cont .pointbx ul li:before{content:'';display:inline-block;vertical-align:-3px;margin-right:5px;width:17px;height:17px;background:url(../imgs/road/sp_road.png) no-repeat -72px -492px;background-size:520px 555px;}
+.sroad_cont .pointbx ul li:nth-child(2n+1){border-right:1px dotted #9b9b9b;}
+.sroad_cont .pointbx ul li:nth-child(n+3){margin-top:1px}
+
+.sroad_cont #map{height:350px;overflow:hidden;margin-top:30px;}
+
+.sroad_cont .trabx{padding:1px 0 40px;margin-top:40px;z-index:3;position:relative;}
+.sroad_cont .trabx:before{content:'';display:block;position:absolute;top:0;bottom:0;left:50%;margin-left:-960px;background:#eee;z-index:-1;width:1920px;}
+.sroad_cont .trabx .imgbx{margin-top:20px;position:relative;}
+.sroad_cont .trabx .imgbx img{display:block;width:calc((100% - 70.2px) / 2);box-shadow:3px 3px 10px 0px rgba(0,0,0,0.15);float:left;position:relative;}
+.sroad_cont .trabx .imgbx img:nth-child(2n){margin-left:70px;}
+.sroad_cont .trabx.v2 .imgbx:before{content:'';display:block;background:url(../imgs/road/ier01.png) no-repeat 0 0;background-size:cover;width:578px;height:421px;position:absolute;top:-20px;right:0;}
+
+.sroad_cont .storybx{position:relative;padding:50px 0 0;height:279px;z-index:3;}
+.sroad_cont .storybx:before{content:'';display:block;width:1920px;height:279px;position:absolute;top:0;left:50%;z-index:-1;margin-left:-960px;background:url(../imgs/road/bg_story.jpg) no-repeat 0 0;background-size:cover;}
+.sroad_cont .storybx:after{content:'';display:block;width:302px;height:116px;position:absolute;top:45px;right:0;background:url(../imgs/road/icon03.png) no-repeat 0 0;background-size:cover;}
+.sroad_cont .storybx h4{font-weight:300;font-size:42px;line-height:1.1;color:#fff;text-shadow:2px 2px 5px rgba(0,0,0,.5);padding-left:50px;position:relative;z-index:3;}
+.sroad_cont .storybx h4 strong{color:#bad1ff;font-weight:700;padding-right:8px;}
+.sroad_cont .storybx h4:before{content:'';display:block;width:73px;height:56px;position:absolute;top:-18px;left:0;background:url(../imgs/road/icon02.png) no-repeat 0 0;background-size:cover;z-index:-1;}
+.sroad_cont .storybx > span{padding-left:55px;margin-top:12px;display:block;line-height:1.1;color:#fff;text-shadow:2px 2px 5px rgba(0,0,0,.5);font-size:26px;font-weight:400;}
+.sroad_cont .storybx p{margin-top:23px;background:#fff;height:120px;position:relative;}
+.sroad_cont .storybx p span{display:block;line-height:1.7;width:100%;padding:10px 50px 0;font-size:14px;font-weight:300;color:#000;position:absolute;top:50%;left:0;transform:translateY(-50%);}
+
+.sroad_cont .fbx{margin-top:90px;}
+.sroad_cont .fbx .lbx{float:left;width:66%;position:relative;}
+.sroad_cont .fbx .rbx{float:right;width:calc(34% - 25px);position:relative;}
+.sroad_cont .fbx img{display:block;width:100%;}
+
+.sroad_cont .fbx .tcbx{margin-bottom:45px;padding-right:45px;position:relative;}
+.sroad_cont .fbx .tcbx p{border-bottom:3px solid #626262;position:relative;padding:23px 0px 23px 36px;line-height:1.7;font-size:14px;font-weight:300;color:#000;margin-left:100px;}
+.sroad_cont .fbx .tcbx p:after{content:'';display:block;width:40px;height:40px;border:3px solid #dcdcdc;border-width:3px 3px 0 0;position:absolute;top:0;right:0;}
+.sroad_cont .fbx .tcbx h5{width:123px;height:123px;background:#fff;border-radius:50%;border:6px solid #c9c9c9;text-align:center;line-height:111px;font-size:18px;font-weight:700;color:#00436a;position:absolute;top:50%;margin-top:-62px;left:0;z-index:3;padding:0;}
+.sroad_cont .fbx .tcbx h5:after{content:'';display:block;background:url(../imgs/road/icon04.png) no-repeat center center;background-size:cover;width:36px;height:43px;position:absolute;top:4px;margin-top:0px;left:-10px;}
