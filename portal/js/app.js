@@ -339,6 +339,7 @@ $('.pager-link.active').prop('title', '현재 페이지');
 
 $('.sroad .smap .trigger').on('mouseenter click',function(e){
     e.preventDefault();
+    e.stopPropagation();
     var idx = $(this).parent().index();
     $('.sroad .smap > div').removeClass('active');
     $(this).parent('div').addClass('active');
@@ -350,8 +351,14 @@ $('.sroad .smap .trigger').on('mouseenter click',function(e){
 });
 
 
+$('.sroad .smap .spot').on('mouseenter click',function(e){
+    e.stopPropagation();
+});
+
+
 $('.sroad .stab > a').on('click',function(e){
     e.preventDefault();
+    e.stopPropagation();
     var idx = $(this).index();
     var Offset = $('.sroad').offset();
     $('.sroad .smap > div').removeClass('active');
@@ -365,9 +372,21 @@ $('.sroad .stab > a').on('click',function(e){
     }); 
 });
 
-$('.sroad').on('mouseleave',function(e){
+$('.sroad').on('mouseleave click',function(e){
     e.preventDefault();
     $('.sroad .smap > div').removeClass('active');
     $('.sroad .stab > a').removeClass('active');
     $('.sroad .smap').removeAttr('class').addClass('smap');
+});
+
+
+$('.sroad_cont .titbx .btn').on('click',function(e){
+    e.preventDefault();
+    $(this).toggleClass('active');
+    $(this).next('.list01').slideToggle(200);
+    if($(this).hasClass('active')) {
+        $(this).children('span').text('닫기');
+    }else{
+        $(this).children('span').text('열기');
+    }
 });
