@@ -332,36 +332,36 @@ $(function() {
         }]
 	});
 	
-	$('.qr_box a:first-child').on('click', function (e) {
-		e.preventDefault();
-		$('#audio02')[0].pause();
-		$(this).siblings('a').removeClass('active');
-		$('.qr_box a span').text('이야기 듣기');
-		if ($(this).hasClass('active')) {
+	$('.qlstbx .audiobx.s1 .stbtn').on('click', function (e) {
+		e.preventDefault();	
+		if ($(this).hasClass('active')) {	
 			$(this).removeClass('active');
-			$(this).children('#audio01')[0].pause();
+			$('#audio01')[0].pause();
 			$(this).find('span').text('이야기 듣기');
 
         } else {
+			$('#audio02')[0].pause();
+			$('.qlstbx .audiobx .stbtn').removeClass('active');
+			$('.qlstbx .audiobx .stbtn span').text('이야기 듣기');
 			$(this).addClass('active');
-			$(this).children('#audio01')[0].play();
+			$('#audio01')[0].play();
 			$(this).find('span').text('이야기 중...');
         }
 	});
 
-	$('.qr_box a:last-child').on('click', function (e) {
-		e.preventDefault();
-		$('#audio01')[0].pause();
-		$(this).siblings('a').removeClass('active');
-		$('.qr_box a span').text('이야기 듣기');
+	$('.qlstbx .audiobx.s2 .stbtn').on('click', function (e) {
+		e.preventDefault();		
 		if ($(this).hasClass('active')) {
 			$(this).removeClass('active');
-			$(this).children('#audio02')[0].pause();
+			$('#audio02')[0].pause();
 			$(this).find('span').text('이야기 듣기');
 
         } else {
+			$('#audio01')[0].pause();
+			$('.qlstbx .audiobx .stbtn').removeClass('active');
+			$('.qlstbx .audiobx .stbtn span').text('이야기 듣기');
 			$(this).addClass('active');
-			$(this).children('#audio02')[0].play();
+			$('#audio02')[0].play();
 			$(this).find('span').text('이야기 중...');
         }
 	});
