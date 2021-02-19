@@ -559,16 +559,25 @@
 .login > div + div{margin-left:-1px;}
 .login h4{line-height:1.1;color:#242424;font-size:24px;font-weight:500;margin-bottom:28px;}
 
-.login .id_box,
-.login .password_box{position:relative;height:40px;border:1px solid #d9d9d9;margin-bottom:10px;}
-.login input[type="text"],
-.login input[type="password"]{height:38px;line-height:38px;width:100%;color:#686767;font-size:14px;padding-left:40px;}
-.login input::placeholder{color:#686767;font-size:14px;}
-.login input:focus::placeholder{color:transparent;font-size:0;}
-.login input:focus::-ms-input-placeholder{color:transparent;font-size:0;} 
+.id_box,
+.num_box,
+.password_box{position:relative;height:40px;border:1px solid #d9d9d9;margin-bottom:10px;}
+.id_input,
+.num_input,
+.pass_input{height:38px;line-height:38px;width:100%;color:#686767;font-size:14px;padding-left:40px;}
+.id_input::placeholder,
+.num_input::placeholder,
+.pass_input::placeholder{color:#686767;font-size:14px;}
+.id_input:focus::placeholder,
+.num_input:focus::placeholder,
+.pass_input:focus::placeholder{color:transparent;font-size:0;}
+.id_input:focus::-ms-input-placeholder,
+.num_input:focus::-ms-input-placeholder,
+.pass_input:focus::-ms-input-placeholder{color:transparent;font-size:0;} 
 
-.login .id_box:after{content:'';display:block;background:url(/page/job/images/sub/icon_login01.png) 0 0 no-repeat;background-size:cover;width:40px;height:40px;top:0;left:0;position:absolute;}
-.login .password_box:after{content:'';display:block;background:url(/page/job/images/sub/icon_login02.png) 0 0 no-repeat;background-size:cover;width:40px;height:40px;top:0;left:0;position:absolute;}
+.id_box:after{content:'';display:block;background:url(/page/job/images/sub/icon_login01.png) 0 0 no-repeat;background-size:cover;width:40px;height:40px;top:0;left:0;position:absolute;}
+.num_box:after{content:'';display:block;background:url(/page/job/images/sub/icon_login05.png) 0 0 no-repeat;background-size:cover;width:40px;height:40px;top:0;left:0;position:absolute;}
+.password_box:after{content:'';display:block;background:url(/page/job/images/sub/icon_login02.png) 0 0 no-repeat;background-size:cover;width:40px;height:40px;top:0;left:0;position:absolute;}
 .login .btn_login{margin-top:13px;border-radius:5px;height:40px;line-height:40px;text-align:center;font-size:16px;display:block;width:100%;font-weight:500;transition:all .1s;background:#d3d3d3;color:#555;}
 .login .btn_login:hover{background:#043b72;color:#fff;}
 .login .btn_login:active{transform:scale(.98);}
@@ -595,6 +604,7 @@
 .log_info p + p{margin-top:5px;}
 .log_info p span{color:#b00d27;}
 .log_info.v2{margin-top:12px;}
+.log_info p strong{font-weight:500;}
 
 .login .join{text-align:center;position:relative;margin-top:-10px;}
 .login .join strong{display:block;line-height:1.1;color:#242424;font-size:24px;font-weight:500;margin-top:38px;}
@@ -611,10 +621,12 @@
   .login > div{min-height:380px;padding:40px 40px 0;border-top:3px solid #043b72;}
   .login h4{font-size:22px;margin-bottom:23px;}
 
-  .login .id_box,
-  .login .password_box{height:38px;margin-bottom:7px;}
-  .login input[type="text"],
-  .login input[type="password"]{height:36px;line-height:36px;padding-left:36px;}
+  .id_box,
+  .num_box,
+  .password_box{height:38px;margin-bottom:7px;}
+  .id_input,
+  .num_input,
+  .pass_input{height:36px;line-height:36px;padding-left:36px;}
 
   .login .btn_login{margin-top:10px;height:38px;line-height:38px;font-size:15px;}
   .login .member_box{margin-top:7px;}
@@ -622,8 +634,9 @@
   .login .sns_box{margin-top:7px;}
   .login .sns_box a{width:calc((100% - 10.1px) / 3);margin-right:5px;height:38px;line-height:36px;padding-left:35px;}
 
-  .login .id_box:after{width:36px;height:36px;}
-  .login .password_box:after{width:36px;height:36px;}
+  .id_box:after{width:36px;height:36px;}
+  .num_box:after{width:36px;height:36px;}
+  .password_box:after{width:36px;height:36px;}
 
   .log_info{margin:-28px 0 40px;padding:15px 15px 15px 25px;}
   .log_info p{font-size:15px;}
@@ -640,10 +653,12 @@
   .login > div{min-height:340px;padding:30px 20px 0;}
   .login h4{font-size:20px;margin-bottom:23px;}
 
-  .login .id_box,
-  .login .password_box{height:38px;margin-bottom:10px;}
-  .login input[type="text"],
-  .login input[type="password"]{height:36px;line-height:36px;padding-left:38px;}
+  .id_box,
+  .num_box,
+  .password_box{height:38px;margin-bottom:10px;}
+  .id_input,
+  .num_input,
+  .pass_input{height:36px;line-height:36px;padding-left:38px;}
 
   .login .sns_box a{padding-left:10px !important;font-size:13px;text-align:center;line-height:38px;}
   .login .sns_box a:after{transform:scale(.7);left:2px !important;top:15px !important;opacity:.3;}
@@ -662,10 +677,12 @@
   .login > div{min-height:auto;padding:20px 15px 20px;border-top:2px solid #043b72;margin-bottom:20px;float:none;width:100%;}
   .login h4{font-size:18px;margin-bottom:15px;}
 
-  .login .id_box,
-  .login .password_box{height:36px;margin-bottom:5px;}
-  .login input[type="text"],
-  .login input[type="password"]{height:34px;line-height:34px;padding-left:34px;}
+  .id_box,
+  .num_box,
+  .password_box{height:36px;margin-bottom:5px;}
+  .id_input,
+  .num_input,
+  .pass_input{height:34px;line-height:34px;padding-left:34px;}
 
   .login .btn_login{margin-top:5px;height:34px;line-height:34px;font-size:14px;margin-top:7px;}
   .login .member_box{margin-top:5px;}
@@ -673,8 +690,9 @@
   .login .sns_box{margin-top:5px;}
   .login .sns_box a{line-height:34px;height:34px;}
 
-  .login .id_box:after{width:34px;height:34px;}
-  .login .password_box:after{width:34px;height:34px;}
+  .id_box:after{width:34px;height:34px;}
+  .password_box:after{width:34px;height:34px;}
+  .num_box:after{width:34px;height:34px;}
 
   .log_info{margin:-20px 0 10px;padding:12px 12px 12px 20px;}
   .log_info p{font-size:14px;}
@@ -712,6 +730,7 @@
 .terms .chbx label{font-size:14px;font-weight:300;color:#555;}
 
 .memberbx{position:relative;border:1px solid #d3d3d3;border-top:4px solid #043b72;padding:80px 0 45px;}
+.memberbx.v3{padding:40px 0 35px;}
 .memberbx h4{text-align:center;line-height:1.1;color:#242424;font-weight:500;font-size:24px;}
 .memberbx p{margin-top:25px;line-height:1.6;text-align:center;color:#686767;font-size:16px;font-weight:300;}
 .memberbx p strong{color:#2653a8;font-weight:500;}
@@ -721,6 +740,24 @@
 .memberbx a:active{transform:scale(.98);}
 .memberbx.v2 p:after{background-position:38px -242px;}
 .titLv{font-size:24px;}
+
+.memberbx .bbx{margin-top:30px;text-align:center;}
+.memberbx .bbx a{display:inline-block;vertical-align:middle;margin:0;}
+.memberbx .bbx a + a{margin-left:20px;}
+.memberbx .resultid{display:block;margin:40px auto 0;max-width:620px;background:#f5f8fa;height:80px;line-height:80px;text-align:center;color:#686767;font-weight:300;font-size:16px;}
+.memberbx .resultid span{font-weight:500;color:#2c53b0;}
+
+.memberbx.v3 p:after{display:none;}
+.memberbx form{max-width:450px;margin:25px auto 20px;padding:0 15px;}
+.memberbx form input[type="password"]{display:block;height:40px;line-height:40px;padding-left:15px;font-size:14px;color:#686767;width:100%;border:1px solid #d9d9d9;}
+.memberbx form input[type="password"]:nth-of-type(n+2){margin-top:10px;}
+.memberbx form input[type="password"]::placeholder{font-size:14px;color:#686767;}
+.memberbx form input[type="password"]:focus::placeholder{color:transparent;font-size:0;}
+.memberbx form input[type="password"]:focus::-ms-input-placeholder{color:transparent;font-size:0;} 
+.memberbx form span{display:block;margin-top:5px;line-height:1.2;padding-left:15px;font-size:14px;color:#686767 !important;}
+.memberbx form .chpass{margin-top:20px;border-radius:5px;height:40px;line-height:40px;text-align:center;font-size:16px;display:block;width:100%;font-weight:500;transition:all .1s;background:#d3d3d3;color:#555;}
+.memberbx form .chpass:hover{background:#043b72;color:#fff;}
+.memberbx form .chpass:active{transform:scale(.98);}
 
 .inputbx .skinTb{margin:20px 0 60px;}
 .inputbx .infotxt{display:inline-block;padding:0 0 0 5px;color:#555;font-weight:400;}
@@ -755,6 +792,7 @@
   .terms .chbx{padding-left:30px;margin:13px 0 40px;}
 
   .memberbx{border-top:3px solid #043b72;padding:50px 0 35px;}
+  .memberbx.v3{padding:30px 0 25px;}
   .memberbx h4{font-size:22px;}
   .memberbx p{margin-top:20px;font-size:15px;}
   .memberbx p:after{transform:scale(.8);margin-top:15px;}
@@ -762,6 +800,15 @@
 
   .inputbx .skinTb{margin:15px 0 50px;}
   .inputbx .skinTb-wrapper .skinTb{margin-top:5px;}
+
+  .memberbx .bbx{margin-top:25px;}
+  .memberbx .bbx a + a{margin-left:15px;}
+  .memberbx .resultid{margin:30px auto 0;height:70px;line-height:70px;font-size:15px;}
+
+  .memberbx form{margin:22px auto 10px;}
+  .memberbx form input[type="password"]{height:38px;line-height:38px;}
+  .memberbx form input[type="password"]:nth-of-type(n+2){margin-top:7px;}
+  .memberbx form .chpass{margin-top:15px;height:38px;line-height:38px;font-size:15px;}
 
 }
 
@@ -783,6 +830,11 @@
   .memberbx a{margin:7px auto 0;}
 
   .inputbx .skinTb{margin:15px 0 40px;}
+
+  .memberbx form{margin:18px auto 5px;}
+  .memberbx form input[type="password"]{height:36px;line-height:36px;}
+  .memberbx form input[type="password"]:nth-of-type(n+2){margin-top:7px;}
+  .memberbx form .chpass{margin-top:15px;height:36px;line-height:36px;font-size:15px;}
 
 }
 
@@ -806,6 +858,7 @@
   #sub .terms .titLv2{margin-top:20px;}
 
   .memberbx{padding:35px 0 25px;border-top:2px solid #043b72;}
+  .memberbx.v3{padding:30px 0 20px;}
   .memberbx h4{font-size:18px;}
   .memberbx p{margin-top:15px;font-size:14px;}
   .memberbx p:after{transform:scale(.8);margin-top:5px;}
@@ -815,4 +868,73 @@
   .inputbx .skinTb-wrapper .skinTb{margin-top:3px;}
   .inputbx .txtbx input[type="radio"]{vertical-align:-2px;}
 
+  .memberbx .bbx{margin-top:20px;}
+  .memberbx .bbx a{width:145px;}
+  .memberbx .bbx a + a{margin-left:10px;}
+  .memberbx .resultid{margin:20px 15px 0;max-width:initial;height:60px;line-height:60px;font-size:15px;}
+
+  .memberbx form{margin:15px auto 0px;}
+  .memberbx form input[type="password"]{height:34px;line-height:34px;}
+  .memberbx form input[type="password"]:nth-of-type(n+2){margin-top:5px;}
+  .memberbx form .chpass{margin-top:15px;height:34px;line-height:34px;font-size:14px;}
+
+}
+
+
+/*아이디비밀번호찾기*/
+.findid{position:relative;}
+.findid > div{float:left;width:calc((100% - 10px) / 2);border:1px solid #d3d3d3;}
+.findid > div + div{margin-left:10px;}
+.findid > div h4{height:40px;line-height:38px;background:#236dc7;color:#fff;padding-left:90px;color:#fff;font-size:20px;font-weight:500;border-bottom:1px solid #d3d3d3;}
+.findid > div h4:before{content:'';display:inline-block;vertical-align:-8px;width:32px;height:32px;background:#fff url(/page/job/images/sub/sp_icon.png) -339px -4px no-repeat;background-size:520px 600px;border-radius:50%;margin-right:5px;}
+.findid > div.company h4:before{background-position:-373px -4px;}
+.findid > div > div{min-height:450px;padding:50px 90px 45px;}
+.findid h5{line-height:1.1;color:#242424;font-size:16px;font-weight:500;margin-bottom:15px;}
+.findid .btn01{margin:10px auto 0;border-radius:5px;height:82px;line-height:82px;text-align:center;font-size:16px;display:block;width:100%;font-weight:500;transition:all .1s;background:#d3d3d3;color:#555;}
+.findid .btn01:hover{background:#043b72;color:#fff;text-decoration:none !important;}
+.findid .btn01:active{transform:scale(.98);}
+.findid .btn01.v2{height:40px;line-height:40px;}
+.findid h5 + .btn01{margin-top:30px;}
+.findid .btn01 + h5{margin-top:60px;}
+
+
+
+
+
+@media (max-width:1199px) {
+  .findid > div h4{height:38px;line-height:36px;padding-left:60px;font-size:18px;}
+  .findid > div h4:before{transform:scale(.8);margin-right:3px;vertical-align:-9px;}
+
+  .findid > div > div{min-height:380px;padding:35px 30px 25px;}
+  .findid h5{font-size:15px;margin-bottom:12px;}
+  .findid .btn01{margin:7px auto 0;height:77px;line-height:77px;font-size:15px;}
+  .findid .btn01.v2{height:38px;line-height:38px;}
+  .findid h5 + .btn01{margin-top:20px;}
+  .findid .btn01 + h5{margin-top:40px;}
+}
+
+@media (max-width:991px) {
+
+  .findid > div > div{min-height:370px;padding:30px 20px 20px;}
+  .findid h5{font-size:15px;margin-bottom:12px;}
+  .findid .btn01{margin:7px auto 0;height:77px;line-height:77px;font-size:15px;}
+  .findid .btn01.v2{height:38px;line-height:38px;}
+  .findid h5 + .btn01{margin-top:20px;}
+  .findid .btn01 + h5{margin-top:40px;}
+
+}
+
+@media (max-width:760px) {
+  .findid > div{float:none;width:100%;}
+  .findid > div + div{margin:15px 0 0;}
+
+  .findid > div h4{height:36px;line-height:34px;padding-left:30px;font-size:16px;}
+  .findid > div h4:before{transform:scale(.7);margin-right:2px;vertical-align:-10px;}
+
+  .findid > div > div{min-height:auto;padding:23px 15px 20px;}
+  .findid h5{font-size:15px;margin-bottom:10px;}
+  .findid .btn01{margin:5px auto 0;height:52px;line-height:52px;font-size:14px;}
+  .findid .btn01.v2{height:36px;line-height:36px;}
+  .findid h5 + .btn01{margin-top:15px;}
+  .findid .btn01 + h5{margin-top:23px;}
 }
