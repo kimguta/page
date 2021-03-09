@@ -883,9 +883,5 @@ $(function(){
 		modal($(this));
 	});
 
-});
 
-$(window).on('load resize', function () {
-	p_pageTabAutoHeight();
-	p_ctrlHeight();
 });
