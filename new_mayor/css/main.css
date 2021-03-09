@@ -1,0 +1,251 @@
+@charset "utf-8";
+
+#main{padding-top:100px;}
+
+#visual{position:relative;}
+#visual .slick{position:relative;overflow:hidden;z-index:5;}
+#visual .slick .slide{height:836px;overflow:hidden;position:relative;}
+#visual .slick .slide img{height:836px;width:1920px;position:absolute;left:50%;top:50%;margin:-418px 0 0 -960px;display:block;transform:scale(1.08);transition:all 3s ease-in-out 0s;}
+#visual .slick .slide.slick-active img{transform:scale(1);transition:all 7s ease-in-out 0s;}
+#visual .slick .slide.reset-animation img {transform: scale(1.08);transition:all 0s ease-in-out 0s; }
+/*
+#visual .slick .slide.slick-active img{animation:size1 6.3s ease-out 1 both;}
+*/
+
+#visual .slick:after{content:'';display:block;height:836px;width:1920px;position:absolute;top:50%;left:50%;margin:-418px 0 0 -960px;background:url(/page/new_mayor/images/main/line01.png) 0 0 no-repeat;background-size:cover;z-index:2000;}
+#visual .titbx{position:absolute;top:27%;left:50%;margin-left:-637px;z-index:10;}
+#visual .titbx h2{padding-left:35px;position:relative;font-family:'ynsjg5';text-shadow:0px 0px 10px #fff;color:#32374e;font-size:50px;line-height:1.3;}
+#visual .titbx h2 span{font-size:26px;margin-top:20px;font-family:'ynsjg3';display:block;}
+#visual .titbx h2:after{content:'';display:block;position:absolute;top:6px;bottom:3px;width:10px;background:#32374e;left:0;}
+#visual .titbx h2 strong{font-weight:500;display:block;}
+#visual .titbx.active h2 span,
+#visual .titbx.active h2 strong{animation:down1 .5s ease-out 1 both;}
+
+#visual .titbx > div{margin-top:40px;padding-left:35px;}
+#visual .titbx > div a{display:inline-block;vertical-align:top;transition:all .1s;overflow:hidden;text-indent:-9999px;margin-right:5px;width:61px;height:61px;background:url(/page/new_mayor/images/common/sp_mayor.png) -52px -1px no-repeat;background-size:1000px 65px;transform-origin:0% 0%;}
+#visual .titbx > div a.next{background-position-x:-121px;}
+#visual .titbx > div a:hover{transform:scale(1.05);}
+#visual .titbx > div a:active{transform:scale(.95);}
+
+#visual .lnkbx{position:absolute;bottom:0;left:50%;margin-left:192px;overflow:hidden;z-index:10;}
+#visual .lnkbx a{display:block;width:130px;height:130px;padding:26px 0 0;background:#1c64c6;color:#fff;text-align:center;font-weight:400;font-size:18px;margin-left:130px;transition:all .1s;}
+#visual .lnkbx a:nth-child(2n){margin:0 130px 0 0;}
+#visual .lnkbx a:before{content:'';display:block;margin:0 auto 8px;width:50px;height:47px;background:url(/page/new_mayor/images/common/sp_mayor.png) -269px -9px no-repeat;background-size:1000px 65px;transition:all .25s;}
+#visual .lnkbx a.v2:before{background-position-x:-198px;}
+#visual .lnkbx a:hover:before{transform: rotateY(180deg);}
+#visual .lnkbx a:active{transform:scale(.95);}
+
+
+@keyframes size1{ 
+    0%{transform:scale(1.1);}
+    100%{transform:scale(1);} 
+}
+
+
+
+@keyframes down1{ 
+    0%{transform:translateY(-60%);}
+    100%{transform:translateY(0%);} 
+}
+
+@media (max-width:1305px) {
+    #visual .titbx{left:16px;margin-left:0px;}
+}
+
+@media (max-width:1199px) {
+    #main{padding-top:60px;}
+    #visual .slick:after{display:none;}
+    #visual .slick .slide{height:600px;}
+    #visual .slick .slide img{height:600px;width:1378px;margin:-300px 0 0 -689px;}
+
+    #visual .titbx{top:15%;}
+    #visual .titbx h2{padding-left:25px;font-size:40px;}
+    #visual .titbx h2 span{font-size:18px;margin-top:15px;}
+    #visual .titbx h2:after{width:7px;}
+    #visual .titbx > div{margin-top:25px;padding-left:20px;}
+    #visual .titbx > div a{margin-right:0px;transform:scale(.9)}
+    #visual .titbx > div a:hover{transform:scale(.95);}
+    #visual .titbx > div a:active{transform:scale(.85);}
+
+    #visual .lnkbx{left:auto;margin-left:0;right:0;}s
+    #visual .lnkbx a{width:100px;height:100px;padding:18px 0 0;font-size:15px;margin-left:100px;}
+    #visual .lnkbx a:nth-child(2n){margin:0 100px 0 0;}
+    #visual .lnkbx a:before{margin:0 auto 5px;}
+}
+
+@media (max-width:991px) {
+    #visual .slick .slide{height:470px;}
+    #visual .slick .slide img{height:520px;width:1194px;margin:-260px 0 0 -710px;}
+    #visual .titbx{top:47%;width:100%;left:20px;}
+    #visual .titbx h2{padding-left:20px;font-size:34px;}
+    #visual .titbx h2 span{font-size:16px;margin-top:11px;}
+    #visual .titbx > div{margin-top:13px;padding-left:20px;}
+    #visual .titbx > div a{margin-right:-5px;transform:scale(.7)}
+    #visual .titbx > div a:hover{transform:scale(.75);}
+    #visual .titbx > div a:active{transform:scale(.65);}
+    #visual .lnkbx{position:relative;right:auto;width:100%;left:auto;margin:0;}
+    #visual .lnkbx a{width:50%;height:70px;padding:0px 0 0;font-size:15px;margin-left:0px;float:right;line-height:70px}
+    #visual .lnkbx a:nth-child(2n){margin:0 0px 0 0;}
+    #visual .lnkbx a:before{margin:0 10px 0 0;transform:scale(.85);display:inline-block;vertical-align:-16px;}
+    #visual .lnkbx a:first-child{border-left:1px solid #4881d0;}
+}
+
+
+@media (max-width:760px) {
+    #visual .titbx{top:55%;text-align:center;width:100%;left:0;}
+    #visual .titbx h2{padding-left:0px;font-size:28px;}
+    #visual .titbx h2 span{font-size:15px;margin-top:11px;}
+    #visual .titbx h2:after{display:none;}
+    #visual .titbx > div{margin-top:13px;padding-left:10px;}
+    #visual .titbx > div a{margin-right:-10px;transform:scale(.7)}
+    #visual .titbx > div a:hover{transform:scale(.75);}
+    #visual .titbx > div a:active{transform:scale(.65);}
+}
+
+
+#pledge{position:relative;padding:55px 0;}
+#pledge h2{font-family:'ynsjg5';font-size:26px;color:#000;display:none;margin-bottom:15px;line-height:1.1;}
+#pledge .slick02{margin:0 -1000px 0 286px;z-index:3;position:relative;}
+#pledge .slick02 .slide{position:relative;margin-right:20px;transition:all .3s;}
+#pledge .slick02 .slide img{display:block;width:100%;}
+#pledge .slick02 .slide:after{content:'';display:block;position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(11,99,218,.8);transition:all .3s;}
+#pledge .slick02 .slide.slick-current:after{background:rgba(11,99,218,0)}
+
+#pledge .bx{position:absolute;top:55px;bottom:55px;left:0px;width:640px;background:#fff;box-shadow:3px 3px 18px 0px rgba(0,0,0,.35);z-index:5;padding:47px 10px 20px 100px;}
+#pledge .slick{position:relative;}
+#pledge .btn{position:absolute;right:-88px;bottom:40px;overflow:hidden;z-index:30;transform-origin:50% 100%;}
+#pledge .btn.v2{display:none;}
+#pledge .btn a{display:block;width:88px;float:left;overflow:hidden;text-indent:-9999px;height:36px;border:1px solid #bcbcbc;position:relative;}
+#pledge .btn a.next{background:#000;border-color:#000;}
+#pledge .btn a:hover{background:#000;border-color:#000;}
+#pledge .btn a.next:hover{border-color:#bcbcbc;background:#fff;border-width:1px 1px 1px 0;}
+#pledge .btn a:after{content:'';display:block;background:url(/page/new_mayor/images/common/sp_mayor.png) -350px -11px no-repeat;background-size:1000px 65px;width:28px;height:14px;position:absolute;top:50%;left:50%;margin:-7px 0 0 -14px;}
+#pledge .btn a:hover:after{background-position-y:-38px;}
+#pledge .btn a.next:after{background-position-x:-414px;}
+#pledge .btn a:active:after{transform:scale(.9);}
+#pledge .slick{position:relative;z-index:10;}
+#pledge .slick .slide{padding-bottom:3px;}
+#pledge .slick .slide h3{font-family:'ynsjg5';word-break:keep-all;line-height:1.2;color:#1c64c6;font-size:50px;margin-bottom:22px;position:relative;}
+#pledge .slick .slide p{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.8;color:#32374e;font-size:18px;font-weight:500;}
+#pledge .slick .slide p em{font-family:'ynsjg5';padding-right:2px;}
+#pledge .bx:after{content:'';display:block;width:0px;height:8px;background:#1c64c6;position:absolute;top:150px;left:-35px;z-index:10;transition:all .3s;transform-origin:50% 50%;}
+#pledge .bx.active:after{width:105px;}
+
+
+@media (max-width:1305px) {
+    #pledge{margin-left:20px;}
+}
+
+@media (max-width:1199px) {
+    #pledge{padding:40px 0;}
+    #pledge .slick02{margin:0 -670px 0 200px;}
+    #pledge .slick02 .slide{margin-right:15px;}
+
+    #pledge .bx{top:30px;bottom:30px;width:450px;padding:30px 10px 20px 30px;}
+    #pledge .btn{right:-88px;bottom:10px;transform:scale(.9);}
+    #pledge .slick .slide h3{font-size:35px;margin-bottom:15px;}
+    #pledge .slick .slide p{font-size:15px;line-height:1.7;}
+    #pledge .bx:after{display:none;}
+}
+
+@media (max-width:992px) {
+    #pledge{margin-left:0px;}
+    #pledge .slick02{margin:0 -420px 0 0px;}
+    #pledge .slick02 .slide{margin-right:15px;}
+    #pledge h2{display:block;}
+    #pledge .bx{top:auto;bottom:auto;width:400px;position:relative;padding:25px 10px 15px 25px;margin:-130px 10px 0;max-width:calc(100% - 20px);}
+    #pledge .btn{display:none;}
+    #pledge .btn.v2{display:block;top:-8px;right:10px;bottom:auto;}
+    #pledge .slick .slide h3{font-size:28px;margin-bottom:15px;}
+}
+
+@media (max-width:760px) {
+    #pledge .slick02{margin:0 -360px 0 0px;}
+    #pledge .slick02 .slide{margin-right:10px;}
+    #pledge h2{display:block;}
+    #pledge .bx{top:auto;bottom:auto;width:346px;position:relative;padding:22px 20px 15px 25px;margin:-35px 10px 0;max-width:calc(100% - 20px);}
+    #pledge .btn{display:none;}
+    #pledge .btn.v2{display:block;top:-8px;right:-8px;bottom:auto;transform:scale(.8);}
+    #pledge .btn a{width:75px;}
+    #pledge .slick .slide h3{font-size:24px;margin-bottom:11px;}
+    #pledge .slick .slide p{line-height:1.6;}
+}
+
+
+#news{position:relative;padding:74px 0 65px;background:#32374e;overflow:hidden;}
+#news:before{content:'';display:block;height:836px;width:1920px;position:absolute;top:50%;left:50%;margin:-418px 0 0 -960px;background:url(/page/new_mayor/images/main/line01.png) 0 0 no-repeat;background-size:cover;}
+#news:after{content:'';display:block;height:370px;width:225px;position:absolute;bottom:0;left:0;background:url(/page/new_mayor/images/main/icon01.png) 0 0 no-repeat;background-size:cover;}
+
+#news .titbx{position:absolute;top:0px;left:2px;}
+#news .titbx h2{color:#fff;font-family:'ynsjg5';font-size:50px;line-height:1;border-left:10px solid #fff;padding-left:20px;}
+#news .titbx span{display:block;line-height:1.3;color:#fff;padding:28px 0 0 30px;font-size:18px;font-weight:400;}
+#news .more{display:block;font-size:18px;font-weight:500;color:#fff;position:absolute;top:230px;left:30px;}
+#news .more:before{content:'';background:url(/page/new_mayor/images/common/sp_mayor.png) -539px -2px no-repeat;background-size:1000px 65px;margin-right:11px;vertical-align:-9px;width:32px;height:32px;display:inline-block;transition:all .2s;}
+#news .more:hover:before{transform:rotate(90deg);}
+#news .titbx .btn{display:none;position:absolute;top:5px;right:0px;height:16px;}
+#news .titbx .btn a{display:inline-block;vertical-align:top;overflow:hidden;text-indent:-9999px;width:10px;height:16px;background:url(/page/new_mayor/images/common/sp_mayor.png) -471px -10px no-repeat;background-size:1000px 65px;}
+#news .titbx .btn a.next{background-position-x:-508px;margin-left:24px;}
+#news .titbx .btn a:active{transform:scale(.9)}
+#news .titbx .btn:after{content:'';display:block;width:1px;height:14px;position:absolute;top:50%;margin-top:-7px;left:50%;background:#5b5f71;}
+
+#news .slick{padding-left:303px;margin-right:-20px;overflow:hidden;}
+#news .slide{margin-right:20px;padding:50px 0 0;transition:all .3s;}
+#news .slide.slick-current{padding:0 0 50px;}
+#news .slide.slick-current + .slide{padding:50px 0 0;}
+#news .slide.slick-current + .slide + .slide{padding:0 0 50px;}
+#news .slide > div{position:relative;}
+#news .slide > div:after{content:'';display:block;position:absolute;top:0;left:0;right:0;bottom:0;border:7px solid transparent;transition:all .2s;}
+#news .slide > div:hover:after{border-color:#9dabef;}
+#news .slide p{padding:15px 5px 0 5px;color:#a7b2e2;}
+#news .slide p strong{line-height:1.1;font-weight:400;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;display:block;transition:all .1s;transform-origin:0% 50%;}
+#news .slide p span{display:block;line-height:1.1;margin-top:7px;}
+#news .slide:hover p strong{letter-spacing:0px;}
+
+@media (max-width:1199px) {
+    #news{padding:55px 0 45px;}
+    #news:before,
+    #news:after{display:none;}
+
+    #news .titbx{left:20px;}
+    #news .titbx h2{font-size:38px;border-left:7px solid #fff;padding-left:17px;}
+    #news .titbx span{padding:22px 0 0 27px;font-size:15px;}
+    #news .more{font-size:16px;top:200px;left:33px;}
+    #news .more:before{transform:scale(.9);margin-right:7px;}
+
+    #news .slick{padding-left:270px;margin-right:-100px;}
+    #news .slide{margin-right:15px;padding:35px 0 0;}
+    #news .slide.slick-current{padding:0 0 35px;}
+    #news .slide.slick-current + .slide{padding:35px 0 0;}
+    #news .slide.slick-current + .slide + .slide{padding:0 0 35px;}
+    #news .slide > div{position:relative;}
+    #news .slide > div:after{border:5px solid transparent;}
+    #news .slide p{padding:15px 5px 0 5px;}
+    #news .slide p strong,
+    #news .slide p span{font-size:15px;}
+}
+
+@media (max-width:992px) {
+    #news{padding:50px 0 40px;}
+    #news .titbx{left:20px;}
+    #news .titbx h2{font-size:32px;border-left:7px solid #fff;padding-left:15px;}
+    #news .titbx span{padding:20px 0 0 25px;font-size:15px;}
+    #news .more{top:200px;}
+    #news .slick{padding-left:250px;}
+    #news .slide{margin-right:15px;padding:35px 0 0;}
+}
+
+
+@media (max-width:760px) {
+    #news{padding:33px 0 30px;}
+    #news .titbx{left:auto;top:auto;position:relative;margin-bottom:20px;}
+    #news .titbx h2{font-size:26px;border-left:0px solid #fff;padding-left:0px;}
+    #news .titbx span{display:none;}
+    #news .more{top:auto;left:auto;position:relative;text-align:right;font-size:15px;margin-top:25px;}
+    #news .more:before{transform:scale(.6);margin-right:3px;vertical-align:-10px;}
+    #news .slick{padding-left:0px;margin-right:-200px;}
+    #news .slide{margin-right:10px;padding:0px 0 0;}
+    #news .slide.slick-current{padding:0 0 0px;}
+    #news .slide.slick-current + .slide{padding:0px 0 0;}
+    #news .slide.slick-current + .slide + .slide{padding:0 0 0px;}
+    #news .titbx .btn{display:block;}
+}
