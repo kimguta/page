@@ -2,12 +2,14 @@ $(function() {
 
     $('#notify .slick').on('beforeChange', function(event, slick, currentSlide, nextSlide) {
         $('#notify .slide h3').fadeOut(300);
+        $('#notify .control').fadeOut(100);
     });
     
     $('#notify .slick').on('init reInit afterChange', function(event, slick, currentSlide, nextSlide) {
         var i = (currentSlide ? currentSlide : 0) + 1;
         $('#notify .count').html('<em>' + i + '</em> / ' + slick.slideCount);
         $('#notify .slide h3').fadeIn(300);
+        $('#notify .control').fadeIn(100);
     });
 
     $('#notify .slick').slick({
@@ -25,6 +27,25 @@ $(function() {
         pauseOnHover: false,
         autoplaySpeed: 5000,
         speed: 900,
+        responsive: [{
+            breakpoint: 640,
+            settings: {
+                slidesToShow: 1
+            }
+        },
+
+        {  
+            breakpoint: 770,
+            settings: {
+                slidesToShow: 2
+            }
+        },
+         {  
+            breakpoint: 9999,
+            settings: {
+                slidesToShow: 2
+            }
+        }]
     });
 
     $('#notify .bttn').on('click', function(e) {
@@ -125,7 +146,7 @@ $(function() {
         autoplaySpeed: 5000,
         speed: 700,
         responsive: [{
-            breakpoint: 641,
+            breakpoint: 640,
             settings: {
                 slidesToShow: 3
             }
