@@ -28,17 +28,17 @@ body{max-width:1200px !important;background:#fff;height:auto !important;}
 .global_list .m_list li.active a{font-size:15px;}
 
 main{position:relative;overflow:hidden;padding-top:64px;}
-main .inner{padding:0 15px;margin-top:20px;}
+main .inner{padding:0 13px;margin-top:20px;}
 main .slick img{display:block !important;width:100%;}
 
 main:before{content:'';display:block;background: url(../img/renewal/bgm_main01.png) center bottom no-repeat;width:100%;height:436px;background-size:cover;position:absolute;top:0px;left:0;}
 
 #notify{position:relative;}
-#notify .bx{overflow:hidden;box-shadow:2px 2px 10px 0px rgba(0,0,0,.15);border-radius:0px 20px 0px 20px;position:relative;max-width:620px;margin:0 auto;}
+#notify .bx{box-shadow:2px 2px 10px 0px rgba(0,0,0,.15);border-radius:0px 20px 0px 20px;position:relative;max-width:620px;margin:0 auto;overflow:hidden;}
 #notify .bx .control{position:absolute;bottom: 2px;left:0;right:0;height: 40px;text-align:right;padding-right: 10px;line-height: 38px;}
 #notify .bx .control a,
 #notify .bx .control p{display:inline-block;vertical-align:middle;}
-#notify .bx .slide{position:relative;}
+#notify .bx .slide{position:relative;transition:all .1s;}
 #notify .bx .slide:before{content:'';display:block;position:absolute;bottom:0;right:0;left:0;height: 40px;background:rgba(255,255,255,.6);}
 #notify .bx h3{position:absolute;bottom: 9px;left: 15px;color:#313131;font-weight: 500;font-size: 15px;padding-right: 145px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;width:100%;}
 #notify .bx .control a{display:inline-block;height: 24px;line-height: 24px;width: 24px;border-radius:50%;border:1px solid #666;overflow:hidden;text-indent:9999px;position:relative;transition:all .1s;}
@@ -247,6 +247,13 @@ main:before{content:'';display:block;background: url(../img/renewal/bgm_main01.p
     #info .snsbx{padding:25px;margin-top:20px}
     #info .titbx img{display:block;width:100%;max-width:386px;}
     #info .snsbx a{display:block;padding: 14px 0 14px 47px;}
+
+    #notify .bx{max-width:initial;box-shadow:none;margin-right:-140px;}
+    #notify .bx .slick{}
+    #notify .bx .slick .slide:not(.slick-current){transform:scale(.92);}
+    #notify .bx .slick .slide:not(.slick-current) h3{display:none !important;}
+    #notify .bx .slick .slide:not(.slick-current):before{display:none;}
+    #notify .bx .control{position:absolute;right:auto;left:50%;margin-left:-130px}
 }
 
 @media (min-width:992px) {
@@ -259,6 +266,7 @@ main:before{content:'';display:block;background: url(../img/renewal/bgm_main01.p
     #window .lnk{margin-top: 20px;}
     #window .lnk a{height: 48px;line-height: 46px;padding-left: 19px;font-size: 15px;}
     #window .lnk a:before{transform: scale(.9);margin-right: 8px;}
+    
 
     #info{margin:25px 0 45px;}
     #menu{margin-top:25px;}
