@@ -1,0 +1,218 @@
+/*
+ * Stellarnav.js 2.3.0
+ * Responsive, lightweight, multi-level dropdown menu.
+ * Copyright (c) 2018 Vinny Moreira - http://vinnymoreira.com
+ * Released under the MIT license
+*/
+
+#header .stellar_area{position:absolute;left:430px;right:50px;top:0;}
+#header .gnb_area .stellarnav .gnb_list > li:before{content:'';display:block;width:3px;height:3px;border-radius:4px;-webkit-border-radius:4px;background:#000;position:absolute;top:50%;left:-2px;margin-top:-2px;} 
+
+/* all nav */
+.stellarnav { position: relative; width: 100%;z-index:1000; line-height: normal; }
+.stellarnav ul { margin: 0; padding: 0; text-align: center; }
+.stellarnav li { list-style: none; display: block; margin: 0; padding: 0; position: relative; line-height: normal; }
+.stellarnav li a { padding:7px 10px 8px 18px; display: block; text-decoration: none; color: #000;  font-size: 18px; font-weight:300;box-sizing: border-box; -webkit-transition: all .3s ease-out; -moz-transition: all .3s ease-out; transition: all .3s ease-out;letter-spacing:-1px}
+
+/* main level */
+.stellarnav > ul > li { display: inline-block;}
+.stellarnav > ul > li > a { padding:29px 16px 29px; font-size: 20px; font-weight: 500;}
+.stellarnav > ul > li.active > a{color:#0c50b9;}
+.stellarnav > ul > li.active > a:after{content:'';position:absolute;bottom:14px;left:50%;width:13px;height:8px;margin-left:-7px;background:url(../../common/img/1depth_arrow.gif) no-repeat}
+
+/* first level dd */
+.stellarnav ul ul { top: auto; width:200px; position: absolute;z-index: 9900; text-align: left; display: none; background: #ddd;}
+.stellarnav li li { display: block; }
+.stellarnav ul ul > li > a{color:#0d3e89;}
+.stellarnav ul ul > li > a:hover{background-color:#0d3e89;color:#fff}
+.stellarnav ul.gnb_list > li > ul{padding-top:2px}
+
+/* second level dd */
+.stellarnav ul ul ul { top: 0; /* dd animtion - change to auto to remove */ left: 200px; }
+.stellarnav > ul > li:hover > ul > li:hover > ul { opacity: 1; visibility: visible; top: 0; }
+.stellarnav.light ul ul ul > li > a{background-color:#0d3e89;color:#fff}
+.stellarnav ul ul ul > li > a:hover{text-decoration: underline}
+
+/* .drop-left */
+.stellarnav > ul > li.drop-left > ul { right: 0; }
+.stellarnav li.drop-left ul ul { left: auto; right: 220px; }
+
+/* light theme */
+.stellarnav.light { background: rgba(255, 255, 255, 1); }
+.stellarnav.light ul ul { background: rgba(255, 255, 255, 1); }
+.stellarnav.light .menu-toggle, .stellarnav.light .call-btn-mobile, .stellarnav.light .location-btn-mobile, .stellarnav.light .close-menu { color: rgba(0, 0, 0, 1); }
+
+/* dark theme */
+.stellarnav.dark { background: rgba(0, 0, 0, 1); }
+.stellarnav.dark ul ul { background: rgba(0, 0, 0, 1); }
+.stellarnav.dark li a { color: #FFF; }
+.stellarnav.dark .menu-toggle, .stellarnav.dark .call-btn-mobile, .stellarnav.dark .location-btn-mobile, .stellarnav.dark .close-menu { color: rgba(255, 255, 255, 1); }
+/* sticky nav */
+.stellarnav.fixed { position: fixed; width: 100%; top: 0; left: 0; z-index: 9999; }
+
+/* only used when 'scrollbarFix' is set to true in the js. This fixes horizontal scrollbar caused by the dd menus that are very long.*/
+body.stellarnav-noscroll-x { overflow-x: hidden; }
+
+/* general styling */
+/*.stellarnav li.has-sub > a:after { content: '\f107'; font-family: 'FontAwesome'; margin-left: 10px; }*/
+.stellarnav li li.has-sub > a:after {position: absolute; top:11px;right:10px; content: '\f105'; font-family: 'FontAwesome'; margin-left: 10px; }
+.stellarnav li li li > a:before{display: inline-block;margin-right:3px;content: '-'; font-family: 'FontAwesome';}
+.stellarnav li.drop-left li.has-sub > a:after { float: left; content: '\f104'; font-family: 'FontAwesome'; margin-right: 10px; }
+.stellarnav.hide-arrows li.has-sub > a:after, .stellarnav.hide-arrows li li.has-sub > a:after, .stellarnav.hide-arrows li.drop-left li.has-sub > a:after { display: none; }
+.stellarnav .menu-toggle, .stellarnav .close-menu, .stellarnav .call-btn-mobile, .stellarnav .location-btn-mobile { display: none; text-transform: uppercase; text-decoration: none; }
+.stellarnav .dd-toggle { display: none; position: absolute; top: 0; right: 0; padding: 0; width: 48px; height: 48px; text-align: center; z-index: 9999; border: 0; }
+.stellarnav .dd-toggle i { position: absolute; margin: auto; top: 33%; left: 0; right: 0; -webkit-transition: transform .3s ease-out; -moz-transition: transform .3s ease-out; transition: transform .3s ease-out; }
+.stellarnav.mobile > ul > li > a.dd-toggle { padding: 0; }
+.stellarnav li.call-btn-mobile, .stellarnav li.location-btn-mobile { display: none; }
+.stellarnav li.open > a.dd-toggle i { -webkit-transform: rotate(135deg); -ms-transform: rotate(135deg); -o-transform: rotate(135deg); transform: rotate(135deg); }
+
+/* mobile nav */
+.stellarnav .menu-toggle, .stellarnav .call-btn-mobile, .stellarnav .location-btn-mobile, .stellarnav .close-menu { color: #777; padding: 15px; box-sizing: border-box; }
+.stellarnav .full { width: 100%; }
+.stellarnav .half { width: 50%; }
+.stellarnav .third { width: 33%; text-align: center; }
+.stellarnav .location-btn-mobile.third { text-align: center; }
+.stellarnav .location-btn-mobile.half { text-align: right; }
+.stellarnav.light .third, .stellarnav.light .half { border-left: 1px solid rgba(0, 0, 0, .15); }
+.stellarnav.light.left .third, .stellarnav.light.left .half { border-bottom: 1px solid rgba(0, 0, 0, .15); }
+.stellarnav.light.right .third, .stellarnav.light.right .half { border-bottom: 1px solid rgba(0, 0, 0, .15); }
+.stellarnav.light .third:first-child, .stellarnav.light .half:first-child { border-left: 0; }
+.stellarnav.dark .third, .stellarnav.dark .half { border-left: 1px solid rgba(255, 255, 255, .15); }
+.stellarnav.dark.left .third, .stellarnav.dark.left .half { border-bottom: 1px solid rgba(255, 255, 255, .15); }
+.stellarnav.dark.right .third, .stellarnav.dark.right .half { border-bottom: 1px solid rgba(255, 255, 255, .15); }
+.stellarnav.light.left .menu-toggle, .stellarnav.light.right .menu-toggle { border-bottom: 0; }
+.stellarnav.dark.left .menu-toggle, .stellarnav.dark.right .menu-toggle { border-bottom: 0; }
+.stellarnav.dark .third:first-child, .stellarnav.dark .half:first-child { border-left: 0; }
+.stellarnav.mobile { position: static; }
+.stellarnav.mobile.fixed { position: static; }
+.stellarnav.mobile ul { position: relative; display: none; }
+.stellarnav.mobile.active { padding-bottom: 0; }
+.stellarnav.mobile.active > ul { display: block; }
+.stellarnav.mobile ul { text-align: left; }
+.stellarnav.mobile > ul > li { display: block; }
+.stellarnav.mobile > ul > li > a { padding: 15px; }
+.stellarnav.mobile ul { background: rgba(221, 221, 221, 1); }
+.stellarnav.mobile ul ul { position: relative; opacity: 1;margin-left: 35px;visibility: visible; width: auto; display: none; -moz-transition: none; -webkit-transition: none; -o-transition: color 0 ease-in; transition: none; }
+.stellarnav.mobile ul > ul{margin-left: 35px;}
+.stellarnav.mobile ul ul ul { left: auto; top: auto; }
+.stellarnav.mobile li.drop-left ul ul { right: auto; }
+.stellarnav.mobile li a { border-bottom: 1px solid rgba(255, 255, 255, .15); }
+.stellarnav.mobile li.has-sub a { padding-right: 50px; }
+.stellarnav.mobile > ul { border-top: 1px solid rgba(255, 255, 255, .15); }
+.stellarnav.mobile.light li a { border-bottom: 1px solid rgba(0, 0, 0, .15); }
+.stellarnav.mobile.light > ul { border-top: 1px solid rgba(0, 0, 0, .15); }
+.stellarnav.mobile li a.dd-toggle { border: 0; }
+.stellarnav.mobile.light li a.dd-toggle { border: 0; }
+.stellarnav.mobile .menu-toggle, .stellarnav.mobile .dd-toggle, .stellarnav.mobile .close-menu, .stellarnav.mobile .call-btn-mobile, .stellarnav.mobile .location-btn-mobile { display: inline-block; }
+.stellarnav.mobile li.call-btn-mobile { border-right: 1px solid rgba(255, 255, 255, .1); box-sizing: border-box; }
+.stellarnav.mobile li.call-btn-mobile, .stellarnav.mobile li.location-btn-mobile { display: inline-block; width: 50%; text-transform: uppercase; text-align: center; }
+.stellarnav.mobile li.call-btn-mobile.full, .stellarnav.mobile li.location-btn-mobile.full { display: block; width: 100%; text-transform: uppercase; border-right: 0; text-align: left; }
+.stellarnav.mobile li.call-btn-mobile i, .stellarnav.mobile li.location-btn-mobile i { margin-right: 5px; }
+.stellarnav.mobile.light ul { background: rgba(255, 255, 255, 1); }
+.stellarnav.mobile.dark ul { background: rgba(0, 0, 0, 1); }
+.stellarnav.mobile.dark ul ul { background: rgba(255, 255, 255, .08); }
+.stellarnav.mobile.light li.call-btn-mobile { border-right: 1px solid rgba(0, 0, 0, .1); }
+.stellarnav.mobile.top { position: absolute; width: 100%; top: 0; left: 0; z-index: 9999; }
+.stellarnav.mobile li.has-sub > a:after, .stellarnav.mobile li li.has-sub > a:after, .stellarnav.mobile li.drop-left li.has-sub > a:after { display: none; }
+
+/* left and right positions */
+.stellarnav.mobile.right > ul, .stellarnav.mobile.left > ul { position: fixed; top: 0; bottom: 0; width: 100%; max-width: 280px; overflow-x: hidden; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+.stellarnav.mobile.right > ul { right: 0; }
+.stellarnav.mobile.right .close-menu, .stellarnav.mobile.left .close-menu { display: inline-block; text-align: right; }
+.stellarnav.mobile.left > ul { left: 0; }
+.stellarnav.mobile.right .location-btn-mobile.half, .stellarnav.mobile.right .call-btn-mobile.half, .stellarnav.mobile.right .close-menu.half { text-align: center; }
+.stellarnav.mobile.right .location-btn-mobile.third, .stellarnav.mobile.right .call-btn-mobile.third, .stellarnav.mobile.right .close-menu.third { text-align: center; }
+.stellarnav.mobile.left .location-btn-mobile.half, .stellarnav.mobile.left .call-btn-mobile.half, .stellarnav.mobile.left .close-menu.half { text-align: center; }
+.stellarnav.mobile.left .location-btn-mobile.third, .stellarnav.mobile.left .call-btn-mobile.third, .stellarnav.mobile.left .close-menu.third { text-align: center; }
+.stellarnav.mobile.left .menu-toggle.half, .stellarnav.mobile.left .menu-toggle.third, .stellarnav.mobile.right .menu-toggle.half, .stellarnav.mobile.right .menu-toggle.third { text-align: left; }
+.stellarnav.mobile.left .close-menu.third span, .stellarnav.mobile.right .close-menu.third span { display: none; }
+/* left and right positions */
+/* mega dd */
+
+.stellarnav.desktop li.mega li { display: inline-block; vertical-align: top; margin-left: -4px; }
+.stellarnav.desktop li.mega li li { display: block; margin-left: 0; }
+.stellarnav.desktop li.mega ul ul { width: auto; }
+.stellarnav.desktop > ul > li.mega { position: inherit; }
+.stellarnav.desktop > ul > li.mega > ul { width: 100%; }
+.stellarnav.desktop > ul > li.mega > ul li.has-sub ul { display: block; position: relative; left: auto; }
+.stellarnav.desktop > ul > li.mega > ul > li { padding-bottom: 15px; box-sizing: border-box; }
+.stellarnav.desktop li.mega li li a { padding: 5px 15px; }
+.stellarnav.desktop li.mega li.has-sub a:after { display: none; }
+.stellarnav.desktop > ul > li.mega > ul > li > a { color: yellow; }
+/* mega dd */
+
+/* Fallback for slow javascript load */
+@media only screen and (max-width : 768px) {
+	.stellarnav { overflow: hidden; display: block; }
+	.stellarnav ul { position: relative; display: none; }
+}
+
+.stellarnav.mobile .call-btn-mobile.third span, .stellarnav.mobile .location-btn-mobile.third span { display: none; }
+
+
+
+#header .gnb_area .stellarnav{margin-top:80px}
+#header .stellar_area{left:0;right:0;}
+#header .gnb_area .stellarnav .menu-toggle.menu-toggle{position:absolute;display:block;top:-70px;left: 10px;width:44px;height:44px;background:url(../img/stellar_btn_on.png) no-repeat;text-indent:-9999em;}
+#header .gnb_area .stellarnav.active .menu-toggle{top:-70px;background:url(../img/stellar_btn_on.png) no-repeat}
+#header .gnb_area .stellarnav .gnb_list > li:before{display:none;}
+#header .gnb_area .stellarnav.light{overflow:visible;position:relative;background:transparent}
+#header .gnb_area .stellarnav.mobile.light > ul{border-top:0;margin:25px 0 0;padding:10px}
+#header .gnb_area .stellarnav > ul > li{border:0;border-radius:10px;margin-bottom:10px}
+#header .gnb_area .stellarnav > ul > li:last-child{margin-bottom:10px}
+#header .gnb_area .stellarnav > ul > li > a{padding:6px 10px 7px;background-color:#3c5273;color:#fff;font-size:22px;font-weight:500;border:1px solid #627694;border-radius:6px}
+#header .gnb_area .stellarnav > ul > li > a:hover{color:#fff}
+#header .gnb_area .stellarnav > ul > li.open > a{background-color:#fff;color:#333}
+#header .gnb_area .stellarnav > ul li a.dd-toggle{border:0;margin:5px 10px 0 0}
+#header .gnb_area .stellarnav.mobile.light li a.dd-toggle{border:0;margin:12px 22px;padding:0;height:24px;width:24px;}
+#header .gnb_area .stellarnav.mobile.light li a.dd-toggle i{top:0;font-size: inherit}
+#header .gnb_area .stellarnav.mobile > ul > li > a .fa-plus:before{display: inline-block;width:24px;height:24px;background: url(../img/stellarnav_down.png) no-repeat;content:'';}
+#header .gnb_area .stellarnav.mobile > ul > li.open > a .fa-plus:before{display: inline-block;width:24px;height:24px;background: url(../img/stellarnav_up.png) no-repeat;content:'';}
+#header .gnb_area .stellarnav.mobile .dd-toggle i{font-size:32px;}
+#header .gnb_area .stellarnav li.open > a.dd-toggle i{-webkit-transform: rotate(360deg); -ms-transform: rotate(360deg); -o-transform: rotate(360deg); transform: rotate(360deg);}
+
+#header .gnb_area .stellarnav.mobile li.open > ul > li .fa-plus:before{display: inline-block;width:24px;height:24px;background: url(../img/stellarnav_down.png) no-repeat;content:'';}
+#header .gnb_area .stellarnav.mobile li.open > ul > li.open a.dd-toggle .fa-plus:before{display: inline-block;width:24px;height:24px;background: url(../img/stellarnav_up.png) no-repeat;content:'';}
+#header .gnb_area .stellarnav > ul > li > ul{margin:20px 10px;border:0}
+#header .gnb_area .stellarnav > ul > li > ul > li > a{padding: 0px 10px 4px 64px;border-bottom:0;color:#fff;font-size:18px}
+#header .gnb_area .stellarnav > ul > li > ul > li > a:before{content:'-';display:inline-block;margin-right:5px}
+#header .gnb_area .stellarnav > ul > li > ul > li > a.dd-toggle:before{display:none}
+#header .gnb_area .stellarnav > ul > li > ul > li > a:hover{color:#fff;background:none}
+#header .gnb_area .stellarnav > ul > li > ul > li.open > a{color:#fff}
+
+#header .gnb_area .stellarnav.mobile > ul > li > ul > li a.dd-toggle{border:0;margin:-6px 30px 0 0}
+#header .gnb_area .stellarnav.mobile.light > ul > li > ul > li > ul > li a{position:relative;margin:0 30px;padding:5px 0 5px 0;border-top:0;color:#fff;border-bottom:0;font-weight:300;background-color:transparent}
+#header .gnb_area .stellarnav.mobile.light > ul > li > ul > li > ul > li a:hover{text-decoration:none}
+#header .gnb_area .stellarnav > ul > li > ul > li > ul > li a:after{content:'';position:absolute;top:20px;left:-6px;display:block;width:2px;height:2px;background-color:#fff}
+#header .gnb_area .stellarnav > ul > li > ul > li > ul > li a:before{display:none}
+#header .gnb_area .stellarnav > ul > li > ul > li > ul > li > a:hover:before {display:none}
+#header .gnb_area .stellarnav > ul > li > ul > li > ul > li > a:hover{color:#fff;text-decoration:underline}
+#header .gnb_area .stellarnav > ul > li > ul > li > ul{border:0;margin-left:10px}
+
+#header .gnb_area .stellarnav > ul > li > ul > li > ul{display:none}
+#header .gnb_area .stellarnav.mobile > ul > li > ul > li a.dd-toggle{display:none}
+.stellarnav ul.gnb_list > li > ul{padding-top:0}
+#header .gnb_area .stellarnav.mobile.light > ul{position:fixed;width:100%;max-width:640px;background:#f9f9f9;margin:0 !important;padding:0;top:63px;bottom:0;right:inherit;overflow-y:auto;border-top:1px solid #c8c8c8}
+#header .gnb_area .stellarnav > ul > li{margin-top:-1px;margin-bottom:0;border-radius:0}
+#header .gnb_area .stellarnav > ul > li > a{border-radius:0;background:#efefef;line-height:35px;font-size:20px;color:#333;border:1px solid #b9bcc0;letter-spacing:-1px;border-width:1px 0}
+#header .gnb_area .stellarnav > ul > li > a:hover{color:#333}
+#header .gnb_area .stellarnav > ul > li.open > a{background:#3766b6;color:#fff;border-bottom:1px solid #18438d}
+#header .gnb_area .stellarnav > ul > li > ul{padding:18px 0 14px;margin:0;background:#5c76d5}
+#header .gnb_area .stellarnav .new_icon_02{display:inline-block;min-height:13px;padding:0 15px 0 0;background:url(../img/ico-newwindow-color.png) no-repeat right center;vertical-align:1px}
+
+#header .gnb_area .stellarnav .stellar_gnb_ico{display:inline-block;width:35px;height:35px;margin-right:12px;vertical-align:top}
+#header .gnb_area .stellarnav .stellar_gnb_ico.ico_yyc_opinfo{background:url(../img/ico_yyc_opinfo.png) no-repeat}
+#header .gnb_area .stellarnav li.open .stellar_gnb_ico.ico_yyc_opinfo{background:url(../img/ico_yyc_opinfo_on.png) no-repeat}
+#header .gnb_area .stellarnav .stellar_gnb_ico.ico_yyc_complain{background:url(../img/ico_yyc_complain.png) no-repeat}
+#header .gnb_area .stellarnav li.open .stellar_gnb_ico.ico_yyc_complain{background:url(../img/ico_yyc_complain_on.png) no-repeat}
+#header .gnb_area .stellarnav .stellar_gnb_ico.ico_yyc_com{background:url(../img/ico_yyc_com.png) no-repeat}
+#header .gnb_area .stellarnav li.open .stellar_gnb_ico.ico_yyc_com{background:url(../img/ico_yyc_com_on.png) no-repeat}
+#header .gnb_area .stellarnav .stellar_gnb_ico.ico_yyc_news{background:url(../img/ico_yyc_news.png) no-repeat}
+#header .gnb_area .stellarnav li.open .stellar_gnb_ico.ico_yyc_news{background:url(../img/ico_yyc_news_on.png) no-repeat}
+#header .gnb_area .stellarnav .stellar_gnb_ico.ico_yyc_partinfo{background:url(../img/ico_yyc_partinfo.png) no-repeat}
+#header .gnb_area .stellarnav li.open .stellar_gnb_ico.ico_yyc_partinfo{background:url(../img/ico_yyc_partinfo_on.png) no-repeat}
+#header .gnb_area .stellarnav .stellar_gnb_ico.ico_yyc_yyintro{background:url(../img/ico_yyc_yyintro.png) no-repeat}
+#header .gnb_area .stellarnav li.open .stellar_gnb_ico.ico_yyc_yyintro{background:url(../img/ico_yyc_yyintro_on.png) no-repeat}
+
+#header .gnb_area .stellarnav{display:none}
+#header .gnb_area .stellarnav.mobile{display:block}
