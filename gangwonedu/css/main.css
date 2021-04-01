@@ -5,9 +5,7 @@
 #visual{position:relative;}
 #visual .slick{position:relative;overflow:hidden;z-index:5;}
 #visual .slick .slide{height:780px;overflow:hidden;position:relative;}
-#visual .slick .slide img{height:780px;width:1920px;position:absolute;left:50%;top:50%;margin:-390px 0 0 -960px;display:block;transform:scale(1.08);transition:all 7s ease-in-out 0s;}
-#visual .slick .slide.slick-active img{transform:scale(1);transition:all 7s ease-in-out 0s;}
-#visual .slick .slide.reset-animation img {transform: scale(1.08);transition:all 0s ease-in-out 0s; }
+#visual .slick .slide img{height:780px;width:1920px;position:absolute;left:50%;top:50%;margin:-390px 0 0 -960px;display:block;}
 #visual .slick .slide .text{position:absolute;z-index:2;color:#fff;top:200px;left:50%;margin-left:-600px;}
 #visual .slick .slide .text h2{font-family:'Cafe24', sans-serif;line-height:1.4;font-size:36px;text-shadow:0px 0px 5px rgba(0,0,0,.3);}
 #visual .slick .slide .text h2 strong{display:block;font-size:48px;white-space:nowrap;}
@@ -27,7 +25,7 @@
 #visual .control .dots ul{line-height:1;}
 #visual .control .dots li{display:inline-block;vertical-align:top;line-height:1;}
 #visual .control .dots li + li{margin-left:6px;}
-#visual .control .dots a{display:block;width:15px;height:15px;background:#fff;border-radius:50%;transition:all .3s;overflow:hidden;text-indent:-9999px;box-shadow:2px 2px 5px 0px rgba(0,0,0,.3);}
+#visual .control .dots a{display:block;width:15px;height:15px;background:#fff;border-radius:50%;transition:all .3s;overflow:hidden;text-indent:-9999px;}
 #visual .control .dots a:hover{opacity:.8;}
 #visual .control .dots a:active{transform:scale(.9);}
 #visual .control .dots .slick-active a{background:transparent;width:80px;border:2px solid #fff;border-radius:8px;pointer-events:none;}
@@ -44,7 +42,7 @@
 #notify{position:absolute;width:450px;bottom:30px;right:50%;margin-right:-700px;z-index:20;}
 #notify .slick02{overflow:hidden;box-shadow:2px 2px 10px 0px rgba(0,0,0,.2);border-radius:30px 0 30px 0;}
 #notify .control02{height:36px;background:rgba(0,0,0,.6);border-radius:18px;padding:0 15px;position:absolute;right:0;top:-41px;}
-#notify .slide img{transition:all .3s;image-rendering:-webkit-optimize-contrast;}
+#notify .slide img{transition:all .3s;image-rendering:-webkit-optimize-contrast;border-radius:30px 0 30px 0;}
 #notify .slide:hover img{transform:scale(1.05);image-rendering:-webkit-optimize-contrast;}
 
 #notify .control02 a[role="button"]{width:10px;height:14px;vertical-align:middle;overflow:hidden;text-indent:-9999px;display:inline-block;position:relative;transition:all .1s;margin-top:5px;}
@@ -56,7 +54,7 @@
 #notify .control02 a.pause:before{content:'';display:block;width:2px;background:#fff;position:absolute;top:0;right:0;bottom:0;}
 #notify .control02 a.play:after{content:'';display:block;border-left:7px solid #fff;border-top:6px solid transparent;border-bottom:6px solid transparent;position:absolute;top: 1px;left:2px;}
 #notify .control02 a[role="button"]:active{transform:scale(.9);}
-#notify .count{display:inline-block;margin:1px 12px 0;vertical-align:middle;color:#d2d1d1;font-size:16px;line-height:1;}
+#notify .count{display:inline-block;margin:3px 12px 0;vertical-align:middle;color:#d2d1d1;font-size:16px;line-height:1;}
 #notify .count em{font-size:20px;font-weight:500;color:#fff;}
 
 
@@ -104,7 +102,7 @@
     #visual .slick .slide{height:600px;}
     #visual .slick .slide img{height:600px;width:1477px;margin:-320px 0 0 -735px;}
     #visual .slick .slide .text{top:100px;left:15px;}
-    #visual .slick .slide .text h2{font-size:22px;letter-spacing:0;text-shadow:0px 0px 3px rgba(0,0,0,.3);}
+    #visual .slick .slide .text h2{font-size:22px;text-shadow:0px 0px 3px rgba(0,0,0,.3);}
     #visual .slick .slide .text h2 strong{font-size:28px;}
     #visual .slick .slide .text p{font-size:14px;text-shadow:0px 0px 2px rgba(0,0,0,.3);}
 
@@ -117,6 +115,7 @@
     #notify .control02 a[role="button"] + a[role="button"]{margin-left:7px;}
     #visual .control .dots a{width:12px;height:12px;}
     #visual .control .dots{margin-right:12px;}
+    #notify .slide img{border-radius:30px 0 30px 0;}
 }
 
 
@@ -132,7 +131,6 @@
 #notice .slick{padding:0 235px 0 207px;height:60px;}
 #notice .slick .slide{height:60px;line-height:58px;position:relative;position:relative;padding-right:95px;}
 #notice .slick .slide strong{display:block;padding-left:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#333;position:relative;font-weight:400;transition:all .1s;}
-#notice .slick .slide:hover strong{font-weight:500;letter-spacing:0;}
 #notice .slick .slide strong:after{content:'';display:block;width:5px;height:5px;background:#4a60ff;border-radius:50%;position:absolute;top:50%;margin-top:-2px;left:0;}
 #notice .slick .slide span{display:block;position:absolute;right:0;top:0;color:#9a9a9a;font-weight:300;}
 #notice .control{position:absolute;right:20px;top:50%;margin-top:-15px}
@@ -142,9 +140,7 @@
 #notice .control a.pause{background-position-x:-105px;}
 #notice .control a.play{background-position-x:-185px;display:none;}
 #notice .control a.more{background-position-x:-344px;}
-#notice .control a:hover{transform:scale(1.08);image-rendering:-webkit-optimize-contrast;}
 #notice .control a.more:hover{transform:rotate(180deg);}
-#notice .control a:active{transform:scale(.98);}
 
 
 @media (max-width:1199px) {
@@ -195,14 +191,14 @@
 #service .mtit{position:absolute;left:20px;top:50%;transform:translateY(-50%);}
 #service .bx{margin-left:calc(100% - 810px);}
 #service .bx a{display:block;float:left;width:25%;text-align:center;transition:all .3s;}
-#service .bx a:hover{transform:translateY(-8px);}
-#service .bx a i{display:block;margin:0 auto 15px;width:130px;height:130px;background:#fff;border-radius:50%;box-shadow:0px 0px 23px 0px rgba(0,0,0,.05);position:relative;}
-#service .bx a i:after{content:'';display:block;background:url(/page/gangwonedu/images/common/sp_gangwonedu.png) -481px -161px no-repeat;background-size:800px 480px;width:78px;height:80px;transform-origin:50% 50%;position:absolute;top:50%;left:50%;margin:-40px 0 0 -39px;transition:all .3s;image-rendering:-webkit-optimize-contrast;}
+#service .bx a i{display:block;margin:0 auto 15px;width:130px;height:130px;background:#fff;border-radius:50%;box-shadow:0px 0px 23px 0px rgba(0,0,0,.05);position:relative;transition:all .3s;}
+#service .bx a i:after{content:'';display:block;background:url(/page/gangwonedu/images/common/sp_gangwonedu.png) -481px -161px no-repeat;background-size:800px 480px;width:78px;height:80px;transform-origin:50% 50%;position:absolute;top:50%;left:50%;margin:-40px 0 0 -38px;transition:all .3s;image-rendering:-webkit-optimize-contrast;}
 #service .bx a:hover i:after{transform:scale(1.1);image-rendering:-webkit-optimize-contrast;transition:all .3s;}
-#service .bx a i.v2:after{background-position-x:-562px;margin:-40px 0 0 -37px;}
-#service .bx a i.v3:after{background-position-x:-641px;margin:-41px 0 0 -42px;}
-#service .bx a i.v4:after{background-position-x:-722px;margin:-36px 0 0 -41px;}
-#service .bx a p{line-height:1.3;color:#111;font-size:18px;font-weight:700;text-align:center;}
+#service .bx a:hover i{transform:translateY(-8px);}
+#service .bx a i.v2:after{background-position-x:-562px;margin:-40px 0 0 -36px;}
+#service .bx a i.v3:after{background-position-x:-641px;margin:-41px 0 0 -43px;}
+#service .bx a i.v4:after{background-position-x:-722px;margin:-42px 0 0 -43px;}
+#service .bx a p{line-height:1.3;color:#111;font-size:18px;font-weight:500;text-align:center;}
 #service .bx a p span{display:block;font-size:16px;}
 
 @media (max-width:1199px) {
@@ -243,10 +239,10 @@
 #news .more{display:block;position:absolute;top:55px;right:20px;transition:all .2s;background:url(/page/gangwonedu/images/common/sp_gangwonedu.png) -424px -184px no-repeat;background-size:800px 480px;width:32px;height:32px;overflow:hidden;text-indent:-9999px;}
 #news .more:hover{transform:rotate(180deg);}
 #news .bx{white-space:nowrap;/*overflow-x:auto;-webkit-overflow-scrolling:touch;*/;padding:45px 0 20px;}
-#news .bx a{display:inline-block;transition:all .3s;vertical-align:top;margin-right:36px;width:270px;box-shadow:5px 5px 20px 0px rgba(0,0,0,.15);padding:45px 15px 45px 20px;background:#fff;border-radius:30px 0 30px 0;white-space:normal;line-height:1.4;word-break:keep-all;}
+#news .bx a{display:inline-block;transition:all .3s;vertical-align:top;margin-right:36px;width:270px;box-shadow:0px 5px 20px 0px rgba(0,0,0,.1);padding:45px 15px 45px 20px;background:#fff;border-radius:30px 0 30px 0;white-space:normal;line-height:1.4;word-break:keep-all;}
 #news .bx a:nth-of-type(2n){color:#fff;background:#152b94;}
 #news .bx strong{display:block;height:2.6em;font-size:20px;font-weight:700;color:#333;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
-#news .bx a:hover{transform:translateY(-8px);box-shadow:5px 5px 15px 0px rgba(0,0,0,.3)}
+#news .bx a:hover{transform:translateY(-15px);box-shadow:0px 5px 30px 0px rgba(0,0,0,.2)}
 #news .bx p{margin-top:27px;color:#333;line-height:1.4;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;height: 5.6em;}
 #news .bx a:nth-of-type(2n) strong,
 #news .bx a:nth-of-type(2n) p{color:#fff;}
@@ -279,13 +275,13 @@
 
 @media (max-width:760px) {
     #news{padding:30px 0 23px;}
-    #news:before{bottom:-183px;}
+    #news:before{bottom:-115px;}
     #news .bx{padding:25px 0 15px 15px;margin:0 -15px 0;}
     #news .more{transform:scale(.65);right:5px;}
-    #news .bx a{margin-right:20px;width:240px;padding:27px 15px 27px 20px;}
-    #news .bx p{margin-top:16px;font-size:14px;}
-    #news .bx span{margin-top:18px;font-size:14px;}
-    #news .bx strong{font-size:16px;line-height:1.4;height:2.8em}
+    #news .bx a{margin-right:20px;width:240px;padding:47px 15px 47px 20px;}
+    #news .bx p{margin-top:26px;font-size:15px;}
+    #news .bx span{margin-top:30px;font-size:14px;}
+    #news .bx strong{font-size:18px;line-height:1.4;height:2.8em}
 }
 
 #photo{position:relative;z-index:3;background:#f0f2fa;padding:50px 0 50px;}
@@ -293,9 +289,9 @@
 #photo .more{display:block;position:absolute;top:220px;left:20px;transition:all .2s;background:url(/page/gangwonedu/images/common/sp_gangwonedu.png) -424px -184px no-repeat;background-size:800px 480px;width:32px;height:32px;overflow:hidden;text-indent:-9999px;}
 #photo .more:hover{transform:rotate(180deg);}
 #photo .bx{white-space:nowrap;/*overflow-x:auto;-webkit-overflow-scrolling:touch;*/;padding:20px 0 20px 310px;}
-#photo .bx a{display:inline-block;transition:all .3s;vertical-align:top;margin-right:36px;width:270px;height:275px;;box-shadow:5px 5px 20px 0px rgba(0,0,0,.15);border-radius:30px 0 30px 0;overflow:hidden;position:relative;}
+#photo .bx a{display:inline-block;transition:all .3s;vertical-align:top;margin-right:36px;width:270px;height:275px;box-shadow:0px 5px 20px 0px rgba(0,0,0,.1);border-radius:30px 0 30px 0;overflow:hidden;position:relative;}
 #photo .bx a img{display:block;min-width:100%;min-height:100%;position:absolute;top:-100%;bottom:-100%;left:-100%;right:-100%;margin:auto;}
-#photo .bx a:hover{transform:translateY(-8px);box-shadow:5px 5px 15px 0px rgba(0,0,0,.3)}
+#photo .bx a:hover{transform:translateY(-15px);box-shadow:0px 5px 30px 0px rgba(0,0,0,.2)}
 
 @media (max-width:1199px) {
     #photo{padding:35px 0 30px;}
@@ -329,8 +325,9 @@
 #video .bx{padding:48px 0 0;}
 #video .bx a{display:block;float:left;border-radius:30px 0 30px 0;width:calc((100% - 39px) / 2);margin-right:39px;overflow:hidden;transition:all .3s;position:relative;}
 #video .bx a:last-child{margin-right:0;}
-#video .bx a:hover{transform:translateY(-8px);box-shadow:5px 5px 15px 0px rgba(0,0,0,.3)}
+
 #video .bx a img{display:block;width:100%;transition:all .3s;image-rendering:-webkit-optimize-contrast;}
+#video .bx a:hover img{transform:scale(1.1);}
 #video .bx a p{position:absolute;bottom:50px;left:40px;line-height:1.4;color:#fff;font-weight:700;font-size:20px;}
 #video .bx a:after{content:'';display:block;transition:all .3s;background:url(/page/gangwonedu/images/common/sp_gangwonedu.png) -10px -250px no-repeat;background-size:800px 480px;width:60px;height:60px;position:absolute;bottom:36px;right:36px;transform-origin:100% 100%;}
 #video .bx a:hover:after{transform:scale(.9);image-rendering:-webkit-optimize-contrast;}
@@ -346,6 +343,7 @@
     #video .bx a p{bottom:40px;left:30px;font-size:18px;}
     #video .bx a:after{bottom:26px;right:26px;transform:scale(.9);}
     #video .bx a:hover:after{transform:scale(1);}
+    #video .bx a:hover img{transform:none;}
 }
 
 @media (max-width:991px) {
@@ -381,8 +379,7 @@
 #shortcut h2{color:#fff;line-height:1.2;font-family:'Cafe24', sans-serif;font-size:37px;text-shadow:0px 0px 3px rgba(0,0,0,.3);font-weight:500;}
 #shortcut p{line-height:1.2;text-shadow:0px 0px 3px rgba(0,0,0,.3);color:#fff;font-size:15px;margin-top:5px;}
 #shortcut span{display:block;height:36px;line-height:34px;background:#fff;border-radius:18px;padding-left:20px;margin-top:15px;font-weight:700;width:180px;transition:all .2s;}
-#shortcut a:hover:before{transform:scale(1.1);}
-#shortcut span:after{content:'';display:inline-block;vertical-align:-3px;width:16px;height:19px;margin-left:9px;;background:url(/page/gangwonedu/images/common/sp_gangwonedu.png) -112px -271px no-repeat;background-size:800px 480px;}
+#shortcut span:after{content:'';display:inline-block;vertical-align:-4px;width:16px;height:19px;margin-left:7px;;background:url(/page/gangwonedu/images/common/sp_gangwonedu.png) -112px -271px no-repeat;background-size:800px 480px;}
 #shortcut a.pro span:after{background-position-x:-192px;}
 #shortcut a:hover span{background:#ddd;}
 
@@ -413,4 +410,10 @@
     #shortcut a:before{width:766px;height:160px;left:0px;right:auto;}
     #shortcut h2{font-size:28px;}
     #shortcut span{height:34px;line-height:34px;padding-left:15px;width:170px;font-size:15px;}
+}
+
+
+@media (max-width:420px) {
+    #shortcut a:before{left:-140px;}
+    #shortcut a.pro:before{left:-95px;}
 }
