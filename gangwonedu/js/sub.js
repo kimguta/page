@@ -36,9 +36,12 @@ $(function() {
 
 		if ($(this).parents('h6').hasClass('active')) {
 			$(this).parents('h6').removeClass('active');
+			$(this).parents('h6').next('div').slideUp(300);
 		} else{
 			$('.annual .bx h6').removeClass('active');
 			$(this).parents('h6').addClass('active');
+			$('.annual .bx > div').slideUp(300);
+			$(this).parents('h6').next('div').slideDown(300);
 		}
 	});
 
