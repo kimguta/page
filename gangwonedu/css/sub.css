@@ -578,7 +578,11 @@
 
 .onway{position:relative;}
 .onway #map{height:500px;border-radius:30px 0 30px 0;overflow:hidden;position:relative;margin-bottom:30px;display:block;}
-.onway #map img{display:block;}
+.onway #map img{display:block;transition:all .3s;opacity:1;}
+.onway #map:after{content:'';display:block;width:230px;height:230px;position:absolute;top:50%;left:50%;margin:-115px 0 0 -115px;background:url(/page/gangwonedu/images/sub/kakaomap.png) 0 0 no-repeat;background-size:cover;transition:all .3s;opacity:0;}
+.onway #map:hover img{opacity:.6;}
+.onway #map:hover:after{opacity:1;}
+
 .onway .listLv strong{font-weight:500;}
 .onway .bx{position:relative;margin-top:50px;}
 #sub .onway .bx .contsBtn{vertical-align:top;margin:-7px 0 0 18px;}
@@ -602,6 +606,7 @@
 @media (max-width:1199px) {
   .onway #map{height:340px;margin-bottom:25px;}
   .onway #map img{height:420px;}
+  .onway #map:after{transform:scale(.8);}
   .onway .bx{margin-top:40px;}
   .onway .bx > div{min-height:160px;padding:1px 0 0 230px;}
   .onway .bx > div + div{margin-top:15px;}
@@ -638,6 +643,7 @@
 @media (max-width:760px) {
   .onway #map{height:260px;margin:0 -15px 20px;}
   .onway #map img{height:260px;}
+  .onway #map:after{transform:scale(.5);}
   .onway .bx > div h5{width:100%;border:2px solid #4a61ff;margin-bottom:15px;padding:5px 0}
   .onway .bx > div h5 span{font-size:17px;}
   .onway .bx > div h5 span:before{width:29px;height:16px;margin-bottom:3px;}
