@@ -208,6 +208,7 @@ $(function() {
 
 	$('.control .next').on('click', function(e) {
 		e.preventDefault();
+		$('.page-container').addClass('scroll');
 		if ($('#page-back').hasClass('ps01')) {
 			$('#page-back').removeClass('ps01');
 			$('#page-back').addClass('ps02');
