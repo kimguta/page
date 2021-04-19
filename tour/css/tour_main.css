@@ -341,13 +341,14 @@
 
 
 video{width:100%;position:relative;pointer-events:none;}
-.poiner{position:absolute;top:40%;left:35%;font-weight:700;color:#fff !important;font-size:30px;z-index:10;transition:all .5s;background:transparent;border:0;text-shadow:2px 2px 5px rgba(0,0,0,.7);text-decoration:none;display:block;padding:20px;animation:fade1 22.3s .2s linear  1 both;}
-.poiner span{display:block;margin-top:10px;font-size:14px;font-weight:400;line-height:1.4;text-shadow:1px 1px 3px rgba(0,0,0,.5);padding-left:10px;opacity:0;transition:transform .5s;transform:translateY(-80%);}
+.poiner{position:absolute;top:44%;left:44%;font-weight:700;color:#fff !important;font-size:30px;z-index:10;transition:all .5s;background:transparent;border:0;text-shadow:2px 2px 5px rgba(0,0,0,.7);text-decoration:none;display:block;padding:20px;animation:fade1 22.3s .2s linear  1 both;}
+.poiner span{display:block;margin-top:10px;font-size:14px;font-weight:400;line-height:1.4;text-shadow:1px 1px 3px rgba(0,0,0,.5);padding-left:10px;opacity:0;transition:transform .5s;transform:translateY(-80%);text-decoration:none;}
 .poiner em{display:block;margin-top:5px;font-size:16px;font-weight:300;text-decoration:none !important;line-height:1.5;text-shadow:1px 1px 3px rgba(0,0,0,.8);padding-left:10px;opacity:0;transition:transform .5s .1s;transform:translateY(-70%);}
 .poiner.stop span,
 .poiner.stop em{opacity:1;transform:translateY(0);}
 
 .poiner:hover{transform:scale(1.1);text-decoration:none;}
+.poiner:hover span{text-decoration:none;}
 .poiner:active{transform:scale(1);}
 .poiner.stop{animation-play-state:paused !important;opacity:1 !important;}
 .dim{position:absolute;top:-50px;left:-50px;right:-50px;bottom:-50px;background:rgba(0,0,0,.5);z-index:3;display:none;}
@@ -371,10 +372,13 @@ video{width:100%;position:relative;pointer-events:none;}
 #page-back.ps05 .bx.p05{display:block;}
 
 .poiner.v1{animation:fade1 16.3s 9s linear  1 both;}
-.poiner.v2{top:30%;left:30%;animation:fade2 32.3s .2s linear 1 both;}
-.poiner.v3{top:40%;left:40%;animation:fade3 24.5s .2s linear  1 both;}
-.poiner.v4{top:45%;left:50%;animation:fade4 26.2s .2s linear both;}
-.poiner.v5{top:30%;left:35%;animation:fade5 10s .2s linear 1 both;}
+.poiner.v2{top:43%;left:45%;animation:fade2 32.3s .2s linear 1 both;}	
+.poiner.v3{top:44%;left:45%;animation:fade3 24.5s .2s linear  1 both;}
+.poiner.v4{top:44%;left:44%;animation:fade4 26.2s .2s linear both;}
+.poiner.v5{top:42%;left:45%;animation:fade5 10s .2s linear 1 both;}
+
+#page-back.ps02 .bx.p02{animation:fadeb 10.5s linear 1 both;}
+#page-back.ps02 .bx.p02.v2{animation:fadeb2 1s 10s linear 1 both;}
 
 .map{position:absolute;z-index:5;bottom:10px;right:20px;width:85px;height:127px;color:#fff;font-weight:500;font-size:18px;text-align:center;}
 .map > div{width:85px;height:127px;display:none;}
@@ -390,6 +394,16 @@ video{width:100%;position:relative;pointer-events:none;}
 @keyframes rise1{ 
 	0%{width:0%}
 	100%{width:100%;} 
+}
+
+@keyframes fadeb{ 
+	0%{visibility:visible;}
+	100%{visibility:hidden;} 
+}
+
+@keyframes fadeb2{ 
+	0%{visibility:hidden;}
+	100%{visibility:visible;} 
 }
 
 @keyframes fade1{ 
