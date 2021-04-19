@@ -154,6 +154,7 @@ $(function() {
 	
 	$('.poiner').on('mouseenter', function(e) {
 		$(this).addClass('stop');
+		$('#page-back .bx').addClass('stop');
 		$('.dim').fadeIn(200);
 		video[0].pause();
 		$('.test1').addClass('active');
@@ -162,6 +163,7 @@ $(function() {
 	
 	$('.poiner').on('mouseleave', function(e) {
 		$(this).removeClass('stop');
+		$('#page-back .bx').removeClass('stop');
 		$('.dim').fadeOut(200);
 		video[0].play();
 		$('.test1').removeClass('active');
@@ -286,6 +288,7 @@ $(function() {
 			video[0].play();
 			$(this).text('영상정지');
 			$('.poiner').removeClass('stop');
+			$('#page-back .bx').removeClass('stop');
 			$('.dim').fadeOut(200);
 		}
 		else {
@@ -293,6 +296,7 @@ $(function() {
 			video[0].pause();
 			$(this).text('영상재생');
 			$('.poiner').addClass('stop');
+			$('#page-back .bx').addClass('stop');
 			$('.dim').fadeIn(200);
 		}
 	});	
