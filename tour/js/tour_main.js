@@ -142,164 +142,149 @@ $( document ).ready( function() {
 $(function() {
 	var windowWidth = $(window).width();
 	$('.page-container').on('mousemove', function(e) {
-		var moveX = (($(window).width() / 2) - e.pageX) * 0.20;
-		var moveY = (($(window).height() / 2) - e.pageY) * 0.38;	
+		var moveX = (($(window).width() / 2) - e.pageX) * 0.15;
+		var moveY = (($(window).height() / 2) - e.pageY) * 0.25;	
 		if (windowWidth > 1199) {
 			$('#page-back').css('margin-left', moveX + 'px');
 			$('#page-back').css('margin-top', moveY + 'px');
 		}
 	});
+	
 
-	var video = $('#v01');
+	$('.sound').on('click', function(e) {
+		e.preventDefault();
+		$('#playerVideo1').YTPToggleVolume();
+		if ($(this).hasClass('active')) {
+			$(this).removeClass('active');
+			$(this).text('음원재생');
+		}
+		else {
+			$(this).addClass('active');
+			$(this).text('음원중지');
+		}
+	});
 	
 	$('.poiner').on('mouseenter', function(e) {
 		$(this).addClass('stop');
-		$('#page-back .bx').addClass('stop');
 		$('.dim').fadeIn(200);
-		video[0].pause();
+		$('#playerVideo1').YTPPause();
 		$('.test1').addClass('active');
 		$('.test1').text('영상재생');
 	});
 	
 	$('.poiner').on('mouseleave', function(e) {
 		$(this).removeClass('stop');
-		$('#page-back .bx').removeClass('stop');
 		$('.dim').fadeOut(200);
-		video[0].play();
+		$('#playerVideo1').YTPPlay();
 		$('.test1').removeClass('active');
 		$('.test1').text('영상정지');
 	});
 
-	video.on('timeupdate', function() {
+	$('.test1').on('click', function(e) {
+		e.preventDefault();
+		if ($(this).hasClass('active')) {
+			$('#playerVideo1').YTPPlay();
+		}
+		else {
+			$(this).addClass('active');
+			$('#playerVideo1').YTPPause();
+		}
+	});	
 
-		if (video[0].currentTime < 26) {
-			$('#page-back').removeClass('ps05');
+	myPlayer = $("#playerVideo1").YTPlayer();
+
+
+	myPlayer.on("YTPTime", function (e) {
+		var currentTime = e.time;
+		if (currentTime < 26) {
+			$('#page-back').removeClass('ps05 ps02');
 			$('#page-back').addClass('ps01');
-			$('.map > div').hide();
-			$('.map .m01').show();
+			$('.page-wp').removeClass('ps05 ps02');
+			$('.page-wp').addClass('ps01');
 		}
-		else if (video[0].currentTime > 26 && video[0].currentTime < 59) {
-			$('#page-back').removeClass('ps01');
+		else if (currentTime > 26 && currentTime < 59) {
+			$('#page-back').removeClass('ps01 ps03');
 			$('#page-back').addClass('ps02');
-			$('.map > div').hide();
-			$('.map .m02').show();
+			$('.page-wp').removeClass('ps01 ps03');
+			$('.page-wp').addClass('ps02');
 		}
-		else if (video[0].currentTime > 59 && video[0].currentTime < 84) {
-			$('#page-back').removeClass('ps02');
+		else if (currentTime > 59 && currentTime < 84) {
+			$('#page-back').removeClass('ps02 ps04');
 			$('#page-back').addClass('ps03');
-			$('.map > div').hide();
-			$('.map .m03').show();
+			$('.page-wp').removeClass('ps02 ps04');
+			$('.page-wp').addClass('ps03');
 		}
-		else if (video[0].currentTime > 84 && video[0].currentTime < 111) {
-			$('#page-back').removeClass('ps03');
+		else if (currentTime > 84 && currentTime < 111) {
+			$('#page-back').removeClass('ps03 ps05');
 			$('#page-back').addClass('ps04');
-			$('.map > div').hide();
-			$('.map .m04').show();
+			$('.page-wp').removeClass('ps03 ps05');
+			$('.page-wp').addClass('ps04');
 		}
-		else if (video[0].currentTime > 111) {
-			$('#page-back').removeClass('ps04');
+		else if (currentTime > 111) {
+			$('#page-back').removeClass('ps04 ps01');
 			$('#page-back').addClass('ps05');
-			$('.map > div').hide();
-			$('.map .m05').show();
+			$('.page-wp').removeClass('ps04 ps01');
+			$('.page-wp').addClass('ps05');
 		}
-
-		var Time = video[0].currentTime / video[0].duration * 100
-		$('.control em').css('width',Time + "%");
-		$('.timer').text(parseInt(video[0].currentTime));
+		var bTime = currentTime / 120 * 100
+		$('.control em').css('width',bTime + "%");
 	});
 
 	$('.control .next').on('click', function(e) {
 		e.preventDefault();
-		$('.page-container').addClass('scroll');
+		$('#page-back .bx').fadeOut(0);
+		$('#page-back .bx').delay(3000).fadeIn(300);
 		if ($('#page-back').hasClass('ps01')) {
-			$('#page-back').removeClass('ps01');
-			$('#page-back').addClass('ps02');
-			video[0].currentTime = 26
+			$('#playerVideo1').YTPSeekTo(26);
 		}
 		else if ($('#page-back').hasClass('ps02')) {
-			$('#page-back').removeClass('ps02');
-			$('#page-back').addClass('ps03');
-			video[0].currentTime = 59
+			$('#playerVideo1').YTPSeekTo(59);
 		}
 		else if ($('#page-back').hasClass('ps03')) {
-			$('#page-back').removeClass('ps03');
-			$('#page-back').addClass('ps04');
-			video[0].currentTime = 84
+			$('#playerVideo1').YTPSeekTo(84);
+			
 		}
 		else if ($('#page-back').hasClass('ps04')) {
-			$('#page-back').removeClass('ps04');
-			$('#page-back').addClass('ps05');
-			video[0].currentTime = 111
+			$('#playerVideo1').YTPSeekTo(111);
+			
 		}
 		else if ($('#page-back').hasClass('ps05')) {
-			$('#page-back').removeClass('ps05');
-			$('#page-back').addClass('ps01');
-			video[0].currentTime = 0
+			$('#playerVideo1').YTPSeekTo(0);
+			
 		}
 	});
 	
 	$('.control .prev').on('click', function(e) {
 		e.preventDefault();
 		if ($('#page-back').hasClass('ps05')) {
-			$('#page-back').removeClass('ps05');
-			$('#page-back').addClass('ps04');
-			video[0].currentTime = 84
+			$('#playerVideo1').YTPSeekTo(84);
 		}
 		else if ($('#page-back').hasClass('ps04')) {
-			$('#page-back').removeClass('ps04');
-			$('#page-back').addClass('ps03');
-			video[0].currentTime = 59
+			$('#playerVideo1').YTPSeekTo(59);
 		}
 		else if ($('#page-back').hasClass('ps03')) {
-			$('#page-back').removeClass('ps03');
-			$('#page-back').addClass('ps02');
-			video[0].currentTime = 26
+			$('#playerVideo1').YTPSeekTo(26);
 		}
 		else if ($('#page-back').hasClass('ps02')) {
-			$('#page-back').removeClass('ps02');
-			$('#page-back').addClass('ps01');
-			video[0].currentTime = 0
+			$('#playerVideo1').YTPSeekTo(0);
 		}
 		else if ($('#page-back').hasClass('ps01')) {
-			video[0].currentTime = 0
-			$('#page-back').removeClass('ps01',function(e){$('#page-back').addClass('ps01');});
+			$('#playerVideo1').YTPSeekTo(0);
 		}
 	});
 
-	$('.sound').on('click', function(e) {
-		e.preventDefault();
-		if ($(this).hasClass('active')) {
-			$(this).removeClass('active');
-			video[0].muted = true;
-			$(this).text('음원재생');
-		}
-		else {
-			$(this).addClass('active');
-			video[0].muted = false;
-			$(this).text('음원중지');
-		}
-	});		
+	myPlayer.on("YTPPlay", function(){
+		$('.poiner').removeClass('stop');
+		$('.dim').fadeOut(200);
+		$('.test1').removeClass('active').text('영상정지');
+	});
 
-	$('.test1').on('click', function(e) {
-		e.preventDefault();
-		video[0].pause();
-		if ($(this).hasClass('active')) {
-			$(this).removeClass('active');
-			video[0].play();
-			$(this).text('영상정지');
-			$('.poiner').removeClass('stop');
-			$('#page-back .bx').removeClass('stop');
-			$('.dim').fadeOut(200);
-		}
-		else {
-			$(this).addClass('active');
-			video[0].pause();
-			$(this).text('영상재생');
-			$('.poiner').addClass('stop');
-			$('#page-back .bx').addClass('stop');
-			$('.dim').fadeIn(200);
-		}
-	});	
+	myPlayer.on("YTPPause", function(){
+		$('.poiner').addClass('stop');
+		$('.dim').fadeIn(200);
+		$('.test1').addClass('active').text('영상재생');
+	});
+
 	
 });	
 
