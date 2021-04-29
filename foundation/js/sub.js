@@ -4,13 +4,10 @@ $(function() {
 		e.preventDefault();
 		if ($(this).hasClass('active')) {
 			$(this).removeClass('active');
-			$(this).next('ul').slideUp(200);
 			$(this).children('span').text('열기');
 		} else{
 			$('#breadcrumb .open').removeClass('active');
-			$('#breadcrumb .box ul').slideUp(200);
 			$(this).addClass('active');
-			$(this).next('ul').slideDown(200);
 			$('#breadcrumb .open span').text('열기');
 			$(this).children('span').text('닫기');
 		}
