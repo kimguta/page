@@ -31,6 +31,29 @@ $(function() {
 		$(this).addClass('scroll');
 	});
 
+
+	$(window).on('load resize', function () {
+		var windowWidth = $(this).width();
+		if (windowWidth > 1199) {
+			$('.cities .list01').swipe({
+				swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+					if( direction == "left" ){
+						$(this).scrollLeft(distance*8 + $(this).scrollLeft());
+					}
+					else if( direction == "right" ){
+						$(this).scrollLeft(-distance*8 + $(this).scrollLeft());
+					}
+				},
+				triggerOnTouchEnd: false,
+				allowPageScroll:"vertical",
+				threshold: 50,
+				excludedElements: "label, button, input, select, textarea, .slick, a",
+			});
+		}
+	});
+
+
+
 	/*
 	$('.cities .list01').on('wheel',function(e){
 		var wheelDelta = e.originalEvent.wheelDelta;
