@@ -31,7 +31,7 @@ $(function() {
 		$(this).addClass('scroll');
 	});
 
-
+	/*
 	$(window).on('load resize', function () {
 		var windowWidth = $(this).width();
 		if (windowWidth > 1199) {
@@ -52,7 +52,7 @@ $(function() {
 		}
 	});
 
-
+	*/
 
 	/*
 	$('.cities .list01').on('wheel',function(e){
