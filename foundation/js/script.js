@@ -101,8 +101,9 @@ $(function() {
 	});
 
 	$('#gnb_mobile').swipe({
-        swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
-            if( direction == "right" ){
+        swipeStatus:function(event, phase, direction, distance, duration, fingers, fingerData) {
+
+            if( direction == "right" &&  distance > 75){
 				$('#header').removeClass('active2');
                 $('.mask_mobile').hide();
 				$('#gnb_mobile').removeClass('active'); 
@@ -111,9 +112,13 @@ $(function() {
 			}
         },
 		allowPageScroll:"vertical",
-        threshold:30,
+        threshold:100,
 		excludedElements: "label, button, input, select, textarea, .slick"
     });
+
+
+
+
 
 	$('#gnb_mobile .depth_01 h2.active').next('.depth_02').show();
     $('#gnb_mobile .depth_02 h3.active').next('.depth_03').show();
