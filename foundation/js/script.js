@@ -103,7 +103,7 @@ $(function() {
 	$('#gnb_mobile').swipe({
         swipeStatus:function(event, phase, direction, distance, duration, fingers, fingerData) {
 			if( direction == "right"){	
-				if(distance > 75){
+				if(distance > 150){
 					$('#header').removeClass('active2');
 					$('.mask_mobile').hide();
 					$('#gnb_mobile').removeClass('active');
