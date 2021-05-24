@@ -102,17 +102,26 @@ $(function() {
 
 	$('#gnb_mobile').swipe({
         swipeStatus:function(event, phase, direction, distance, duration, fingers, fingerData) {
-
-            if( direction == "right" &&  distance > 75){
-				$('#header').removeClass('active2');
-                $('.mask_mobile').hide();
-				$('#gnb_mobile').removeClass('active'); 
-				$('body').removeClass('fixed');
-				$('#header .mopen').removeClass('active');
+			if( direction == "right"){	
+				if(distance > 75){
+					$('#header').removeClass('active2');
+					$('.mask_mobile').hide();
+					$('#gnb_mobile').removeClass('active');
+					$('#gnb_mobile').removeAttr('style');
+					$('body').removeClass('fixed');
+					$('#header .mopen').removeClass('active');
+				}else{
+					if (phase=="move"){
+						$('#gnb_mobile').css('right',-distance); 
+					}
+					if (phase=="end"){
+						$('#gnb_mobile').removeAttr('style');
+					}
+				}
 			}
         },
 		allowPageScroll:"vertical",
-        threshold:100,
+        threshold:0,
 		excludedElements: "label, button, input, select, textarea, .slick"
     });
 
