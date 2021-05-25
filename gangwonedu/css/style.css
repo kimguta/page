@@ -58,15 +58,13 @@ main{display:block;}
 #header h1 a{display:block;width:100%;height:100%;overflow:hidden;text-indent:-9999px;background:url(/page/gangwonedu/images/common/header_logo_off.png) 0 0 no-repeat;background-size:cover;}
 #header.fixed{box-shadow:0px 2px 7px 0px rgba(0,0,0,.1);background:rgba(255,255,255,1)}
 #header.active{background:rgba(255,255,255,1)}
-#header.active2{background:rgba(255,255,255,1)}
-#header.fixed h1 a,
-#header.active2 h1 a,
+#header.fixed h1 a{background-image:url(/page/gangwonedu/images/common/header_logo_on.png);}
 #header.active h1 a{background-image:url(/page/gangwonedu/images/common/header_logo_on.png);}
 
 #gnb_pc{padding:0 140px 0 270px;position:relative;z-index:10;}
 #gnb_pc .depth_01 > li{float:left;width:20%;position:relative;}
 #gnb_pc .depth_01 h2 a{display:block;height:80px;line-height:80px;text-align:center;color:#fff;font-weight:500;font-size:18px;transition:all .1s;}
-#gnb_pc .depth_01 h2.active a{color:#4552b0 !important;transform:scale(1.1);}
+#gnb_pc .depth_01 h2.active a{color:#4552b0 !important;}
 #gnb_pc .depth_02{position:absolute;top:80px;left:0px;width:100%;padding:0 5px;display:none;overflow:hidden;}
 #gnb_pc .depth_02 > li{margin-top:10px;}
 #gnb_pc .depth_02 h3 a{display:block;height:60px;padding:20px 0px 0px 15px;line-height:1.3;background:#fff;border-radius:10px;transition:all .1s;color:#333;font-size:16px;font-weight:500;position:relative;}
@@ -91,7 +89,6 @@ main{display:block;}
 #header .btn_box{position:absolute;top:50%;right:20px;margin-top:-15px;z-index:20;transform-origin:100% 50%;}
 #header .btn_box a{display:inline-block;height:30px;width:30px;vertical-align:top;background:url(/page/gangwonedu/images/common/sp_gangwonedu.png) -25px -26px no-repeat;background-size:800px 480px;transition:transform .1s;overflow:hidden;text-indent:-9999px;}
 #header .btn_box a + a{margin-left:18px;}
-#header .btn_box a:hover{transform:scale(1.1);image-rendering:-webkit-optimize-contrast;}
 #header .btn_box a:active{transform:scale(.95);}
 #header .btn_box a.sitemap,
 #header .btn_box a.mopen{background-position:-265px -26px;}
@@ -180,6 +177,8 @@ main{display:block;}
 #gnb_mobile h3.has_depth a:after{content:'';display:block;width:7px;height:7px;border:2px solid #333;border-width:2px 2px 0 0;transform:rotate(135deg);position:absolute;top:50%;margin-top:-4px;right:20px;transition:all .1s;}
 #gnb_mobile h3 a:before{content:'';display:block;z-index:-1;background:#171c3a;position:absolute;top:0;bottom:0;left:-15px;right:-15px;opacity:0;transition:all .15s;}
 #gnb_mobile h3 a[target=_blank]:after{position:absolute;top:50%;margin-top:-8px;right:20px;content:'';display:block;width:16px;height:19px;background:url(/page/gangwonedu/images/common/sp_gangwonedu.png) -192px -271px no-repeat;background-size:800px 480px;transform:scale(.85);}
+#gnb_mobile h3 a span br{display:none;}
+
 
 #gnb_mobile h3.active a{color:#fff;}
 #gnb_mobile h3.active a:after{transform:rotate(-45deg);border-color:#fff;}
@@ -191,11 +190,13 @@ main{display:block;}
 
 
 @media (max-width:1199px) {
+  #header.active2{background:rgba(255,255,255,1)}
+  #header.active2 h1 a{background-image:url(/page/gangwonedu/images/common/header_logo_on.png);}
   #header{height:60px;}
   #header .inner{height:60px;}
   #header.fixed{height:52px;}
   #header.fixed .inner{height:52px;}
-  #header h1{left:15px;width:190px;height:29px;margin-top:-14.5px;}
+  #header h1{left:15px;width:190px;height:31px;margin-top:-14.5px;}
   #header .btn_box{right:15px;transform:scale(.9);}
   #search{top:60px;}
   #header.fixed #search{top:52px;}
