@@ -125,6 +125,16 @@ $(function() {
         }]
     });
 
+
+    $('#lnkbx .tbx  > div a').on('click', function (e) {
+        e.preventDefault();  
+        var idx = $(this).index();
+        $('#lnkbx .tbx  > div a').removeClass('active');
+        $(this).addClass('active');
+        $('#lnkbx .lst > div').hide();
+        $('#lnkbx .lst > div').eq(idx).fadeIn('100');
+    });
+
 });
 
 

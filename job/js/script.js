@@ -14,7 +14,7 @@ $(function() {
 		$('#gnb_pc h2').removeClass('active');
 		$(this).parent('h2').addClass('active');
 		$('.sitemap').addClass('active');
-		$('#gnb_pc .depth_02').stop().slideDown(200);
+		$('#gnb_pc .depth_02').stop().slideDown(300);
 		$('.bg_pc').show().stop().animate({height:300},200);
 	});
 
@@ -27,7 +27,7 @@ $(function() {
 		$('#header').removeClass('active');
 		$('#gnb_pc h2').removeClass('active');
 		$('.bg_pc').stop().animate({height:0},200);
-		$('#gnb_pc .depth_02').stop().slideUp(200);
+		$('#gnb_pc .depth_02').stop().slideUp(100);
 		$('.sitemap').removeClass('active');
 	});	
 
