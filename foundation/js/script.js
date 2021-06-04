@@ -1,6 +1,5 @@
 $(function() {
     
-
     var navOffset = $('#header').offset();
 
 	$(window).on('scroll load', function () {
@@ -122,7 +121,7 @@ $(function() {
         },
 		allowPageScroll:"vertical",
         threshold:0,
-		excludedElements: "label, button, input, select, textarea, .slick"
+		excludedElements: "a, label, button, input, select, textarea, .slick"
     });
 
 
