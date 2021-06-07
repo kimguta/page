@@ -48,76 +48,88 @@ $(function() {
     });
 
 
-/*
-
-     $('#visual .slick').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
-        $('#visual .slick .text').fadeOut(300);
-    }); 
-
-    $('#visual .slick').on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
-        $('#visual .slick .text').fadeIn(300);
-    });
-
-    $('#visual .slick').slick({
-        autoplay: true,
-        arrows: true,
-        dots: true,
-        accessibility: true,
-        prevArrow: $('#visual .control .prev'),
-        nextArrow: $('#visual .control .next'),
-        appendDots: $('#visual .control .dots'),
-        draggable: true,
-        customPaging: function(slick,index) {
-            return '<a href="#" onclick="return false;">' + (index + 1) + '</a>';
-        },
-        infinite: true,
-        fade: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        pauseOnHover: false,
-        speed: 1000,
-        autoplaySpeed: 5500
-    });
-
-
-    $('#visual .control .bttn').on('click', function (e) {
+    $('.diagnosis .menu a').on('click', function (e) {
         e.preventDefault();
-        if ($(this).hasClass('pause')) {
-            $(this).hide();
-            $('#visual .control .play').css('display','inline-block');
-            $('#visual .slick').slick('slickPause');
-        } else if ($(this).hasClass('play')) {
-            $(this).hide();
-            $('#visual .control .pause').css('display','inline-block');
-            $('#visual .slick').slick('slickPlay');
-        }
+        var idx = $(this).index();
+        $('.diagnosis .menu a').removeClass('active');
+        $(this).addClass('active');
+        $('.diagnosis .bx > a').hide();
+        $('.diagnosis .bx > a').eq(idx).show();
     });
 
 
-
-    $('#business .slick').slick({
+    $('#support .slick').slick({
         autoplay: false,
         arrows: true,
         dots: false,
-        prevArrow: $('#business .prev'),
-        nextArrow: $('#business .next'),
         accessibility: false,
-        swipeToSlide: true,
+        prevArrow: $('#support .prev'),
+        nextArrow: $('#support .next'),
         draggable: true,
         infinite: true,
-        slidesToShow: 3,
+        swipeToSlide: true,
+        slidesToShow: 4,
         slidesToScroll: 1,
         pauseOnHover: false,
-        speed: 500,
+        speed: 800,
         responsive: [{
-            breakpoint: 721,
+            breakpoint: 600,
             settings: {
-                slidesToShow: 2,
+                slidesToShow: 2
+            }
+        },
+
+        {
+            breakpoint: 780,
+            settings: {
+                slidesToShow: 3
+            }
+        },
+
+         {  
+            breakpoint: 9999,
+            settings: {
+                slidesToShow: 4
             }
         }]
     });
 
-*/
+
+    $('#app .slick').slick({
+        autoplay: false,
+        arrows: true,
+        dots: false,
+        accessibility: false,
+        prevArrow: $('#app .prev'),
+        nextArrow: $('#app .next'),
+        draggable: true,
+        infinite: true,
+        swipeToSlide: true,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        pauseOnHover: false,
+        speed: 800,
+        responsive: [{
+            breakpoint: 600,
+            settings: {
+                slidesToShow: 2
+            }
+        },
+
+        {
+            breakpoint: 780,
+            settings: {
+                slidesToShow: 3
+            }
+        },
+
+         {  
+            breakpoint: 9999,
+            settings: {
+                slidesToShow: 4
+            }
+        }]
+    });
 
 });
 
