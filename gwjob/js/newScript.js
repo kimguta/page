@@ -18,14 +18,26 @@ $(function() {
 			}
 		});
 		
+	
 	$('#gnb_pc .depth_01 li').on('mouseover focusin', function () {
 		$('#header').addClass('active');
 		$('#gnb_pc h2').removeClass('active');
 		$(this).children('h2').addClass('active');
-		$('#gnb_pc .depth_02').stop().css('height',highestBox).slideDown(200);
-		$('.bg_pc').stop().css('height',highestBox).slideDown(200);
-		$('.mask_pc').fadeIn(300);
+		$('#gnb_pc .depth_02').stop().css('height',highestBox).show();
+		$('.bg_pc').stop().css('height',highestBox).show();
+		$('.mask_pc').stop().fadeIn(300);
 	});
+	
+		/*
+	$('#gnb_pc .depth_01 li').on('mouseover focusin', function () {
+		$('#header').addClass('active');
+		$('#gnb_pc h2').removeClass('active');
+		$(this).children('h2').addClass('active');
+		$('#gnb_pc .depth_02').show().stop().animate({height:highestBox},300);
+		$('.bg_pc').show().stop().animate({height:highestBox},200);
+		$('.mask_pc').stop().fadeIn(300);
+	});
+	*/
 
 	$('#gnb_pc .depth_01 li').on('mouseout', function () {
 		$(this).children('h2').removeClass('active');
@@ -34,25 +46,25 @@ $(function() {
 	$('#header').on('mouseleave', function () {
 		$('#header').removeClass('active');
 		$('#gnb_pc h2').removeClass('active');
-		$('.bg_pc').stop().delay(150).slideUp(200);
-		$('#gnb_pc .depth_02').stop().slideUp(200);
-		$('.mask_pc').fadeOut(300);
+		$('.bg_pc').stop().delay(150).slideUp(300);
+		$('#gnb_pc .depth_02').stop().slideUp(300);
+		$('.mask_pc').stop().fadeOut(300);
 	});	
 
 	$('#gnb_pc h2 a').on('focusin', function () {
 		$('#header').addClass('active');
 		$('#gnb_pc h2').removeClass('active');
 		$(this).parent().addClass('active');
-		$('#gnb_pc .depth_02').stop().css('height',highestBox).slideDown(200);
-		$('.bg_pc').stop().css('height',highestBox).slideDown(200);
+		$('#gnb_pc .depth_02').stop().css('height',highestBox).show();
+		$('.bg_pc').stop().css('height',highestBox).show();
 		$('.mask_pc').fadeIn(300);
 	});
 
 	$('#gnb_pc .depth_02 a:last').on('focusout', function () {
 		$('#header').removeClass('active');
 		$('#gnb_pc h2').removeClass('active');
-		$('.bg_pc').stop().delay(150).slideUp(200);
-		$('#gnb_pc .depth_02').stop().slideUp(200);
+		$('.bg_pc').stop().delay(150).slideUp(300);
+		$('#gnb_pc .depth_02').stop().slideUp(300);
 		$('.mask_pc').fadeOut(300);
 	});
 
