@@ -46,7 +46,7 @@ $(function() {
 	$('#header').on('mouseleave', function () {
 		$('#header').removeClass('active');
 		$('#gnb_pc h2').removeClass('active');
-		$('.bg_pc').stop().delay(150).slideUp(300);
+		$('.bg_pc').stop().delay(200).slideUp(300);
 		$('#gnb_pc .depth_02').stop().slideUp(300);
 		$('.mask_pc').stop().fadeOut(300);
 	});	
@@ -63,7 +63,7 @@ $(function() {
 	$('#gnb_pc .depth_02 a:last').on('focusout', function () {
 		$('#header').removeClass('active');
 		$('#gnb_pc h2').removeClass('active');
-		$('.bg_pc').stop().delay(150).slideUp(300);
+		$('.bg_pc').stop().delay(200).slideUp(300);
 		$('#gnb_pc .depth_02').stop().slideUp(300);
 		$('.mask_pc').fadeOut(300);
 	});
