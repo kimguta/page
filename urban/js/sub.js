@@ -1,16 +1,26 @@
 $(function() {
 
-    $('#breadcrumb .open').on('click', function (e) {
+    $('#breadcrumb .box .open').on('click', function (e) {
 		e.preventDefault();
 		if ($(this).hasClass('active')) {
 			$(this).removeClass('active');
 			$(this).children('span').text('열기');
+			$(this).next('ul').slideUp(200);
 		} else{
 			$('#breadcrumb .open').removeClass('active');
 			$(this).addClass('active');
 			$('#breadcrumb .open span').text('열기');
 			$(this).children('span').text('닫기');
+			$('#breadcrumb .box ul').slideUp(300);
+			$(this).next('ul').slideDown(200);
 		}
+	});
+
+	$('#svisual').on('mouseleave', function (e) {
+		e.preventDefault();
+		$(this).children('span').text('열기');
+		$('#breadcrumb .box ul').slideUp(300);
+		$('#breadcrumb .box .open').removeClass('active');
 	});
 
 	$('#breadcrumb .box ul li:last-child a').on('focusout', function () {
@@ -18,18 +28,17 @@ $(function() {
 	});
 	
 
-	 $('#content .share .open').on('click', function (e) {
+	 $('#breadcrumb .share .open').on('click', function (e) {
 		 e.preventDefault();
 		$(this).next().fadeToggle(100);
+		$(this).toggleClass('active');
 	});
 
-	$('#content .share ul a:last').on('focusout', function () {
-		$('#content .share .open').focus();
+	$('#breadcrumb .share ul a:last').on('focusout', function () {
+		$('#breadcrumb .share .open').focus();
 	});
 
-	$('.cities .list01').on('scroll', function (e) {
-		$(this).addClass('scroll');
-	});
+
 
 	/*
 	$(window).on('load resize', function () {

@@ -63,7 +63,9 @@ $(function() {
 		e.preventDefault();
 		$('#sitemap').fadeToggle(200);
 		$('#sitemap a:first').focus();
+		/*
 		$('body').addClass('fix01');
+		*/
 	});
 
 	$('#sitemap .close').on('click', function (e) {
