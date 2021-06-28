@@ -80,20 +80,18 @@ $(function() {
 	    $(this).toggleClass('active');
 		$('#gnb_mobile').toggleClass('active');
 		$('.mask_mobile').fadeToggle(200);
-		if ($(this).hasClass('active')) {
-			$('body').addClass('fixed');
-		} else{
-			$('body').removeClass('fixed');
-		}
+		$('body').addClass('fix02');
 	});
 
-	$('.mask_mobile').on('click', function (e) {
+
+
+	$('.mask_mobile, .mclose').on('click', function (e) {
 		e.preventDefault();
 		$('#header').removeClass('active2');
 		$('#gnb_mobile').removeClass('active');
 		$('#header .mopen').removeClass('active');
 		$('.mask_mobile').fadeOut(200);
-		$('body').removeClass('fixed');
+		$('body').removeClass('fix02');
 	});
 
 	$('#gnb_mobile').swipe({
@@ -104,7 +102,7 @@ $(function() {
 					$('.mask_mobile').hide();
 					$('#gnb_mobile').removeClass('active');
 					$('#gnb_mobile').removeAttr('style');
-					$('body').removeClass('fixed');
+					$('body').removeClass('fix02');
 					$('#header .mopen').removeClass('active');
 				}else{
 					if (phase=="move"){
