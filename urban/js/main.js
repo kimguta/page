@@ -7,18 +7,14 @@ $(function() {
     $('#visual .slick').on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
         $('#visual .tcbx h2').addClass('active');
         var i = (currentSlide ? currentSlide : 0) + 1;
-        if( i < 10 && slick.slideCount > 10){
-            $('#visual .control .count').html('<em>0' + i + '</em><span>/</span>' + slick.slideCount);
+        var s = slick.slideCount;
+        if( i < 10){
+            var i = '0'+ i;
         }
-        else if(i > 10 && slick.slideCount < 10){
-            $('#visual .control .count').html('<em>' + i + '</em><span>/</span>0' + slick.slideCount);
+        if(slick.slideCount < 10){
+            var s = '0'+ s;
         }
-        else if(i < 10 && slick.slideCount < 10){
-            $('#visual .control .count').html('<em>0' + i + '</em><span>/</span>0' + slick.slideCount);
-        }
-        else{
-            $('#visual .control .count').html('<em>' + i + '</em><span>/</span>' + slick.slideCount);
-        }
+        $('#visual .control .count').html('<em>' + i + '</em><span>/</span>' + s);
     });
 
     $('#visual .slick').slick({
