@@ -25,7 +25,7 @@ $(function() {
 		$(this).children('h2').addClass('active');
 		$('#gnb_pc .depth_02').stop().css('height',highestBox).show();
 		$('.bg_pc').stop().css('height',highestBox).show();
-		$('.mask_pc').stop().fadeIn(300);
+		$('.mask_pc').stop().show();
 	});
 	
 		/*
@@ -46,9 +46,9 @@ $(function() {
 	$('#header').on('mouseleave', function () {
 		$('#header').removeClass('active');
 		$('#gnb_pc h2').removeClass('active');
-		$('.bg_pc').stop().delay(200).slideUp(300);
-		$('#gnb_pc .depth_02').stop().slideUp(300);
-		$('.mask_pc').stop().fadeOut(300);
+		$('.bg_pc').stop().delay(100).hide();
+		$('#gnb_pc .depth_02').stop().hide();
+		$('.mask_pc').stop().hide();
 	});	
 
 	$('#gnb_pc h2 a').on('focusin', function () {
@@ -57,15 +57,15 @@ $(function() {
 		$(this).parent().addClass('active');
 		$('#gnb_pc .depth_02').stop().css('height',highestBox).show();
 		$('.bg_pc').stop().css('height',highestBox).show();
-		$('.mask_pc').fadeIn(300);
+		$('.mask_pc').show();
 	});
 
 	$('#gnb_pc .depth_02 a:last').on('focusout', function () {
 		$('#header').removeClass('active');
 		$('#gnb_pc h2').removeClass('active');
-		$('.bg_pc').stop().delay(200).slideUp(300);
-		$('#gnb_pc .depth_02').stop().slideUp(300);
-		$('.mask_pc').fadeOut(300);
+		$('.bg_pc').stop().delay(100).hide();
+		$('#gnb_pc .depth_02').stop().hide();
+		$('.mask_pc').hide();
 	});
 
 
@@ -118,7 +118,7 @@ $(function() {
 		$('body').removeClass('fixed');
 	});
 
-	$('#gnb_mobile').swipe({
+	/*$('#gnb_mobile').swipe({
         swipeStatus:function(event, phase, direction, distance, duration, fingers, fingerData) {
 			if( direction == "right"){	
 				if(distance > 150){
@@ -141,7 +141,7 @@ $(function() {
 		allowPageScroll:"vertical",
         threshold:0,
 		excludedElements: "a, label, button, input, select, textarea, .slick"
-    });
+    });*/
 
 
 
@@ -333,7 +333,7 @@ $('.edu.view .status button').on('click', function(e) {
 if (windowWidth >= 768) {
     $('.select-content').css('height', $('.selector').height());
 }
-$("input.date").datepicker({
+/*$("input.date").datepicker({
     dateFormat: 'yy-mm-dd', //Input Display Format 변경
     showOtherMonths: true, //빈 공간에 현재월의 앞뒤월의 날짜를 표시
     showMonthAfterYear: true, //년도 먼저 나오고, 뒤에 월 표시
@@ -347,7 +347,7 @@ $("input.date").datepicker({
     monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'], //달력의 월 부분 Tooltip 텍스트
     dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'], //달력의 요일 부분 텍스트
     dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일']
-});
+});*/
 
 /* 조직도 */
 $('.org h2 button').on('click', function(e) {
