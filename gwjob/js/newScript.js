@@ -143,10 +143,6 @@ $(function() {
 		excludedElements: "a, label, button, input, select, textarea, .slick"
     });*/
 
-
-
-
-
 	$('#gnb_mobile .depth_01 h2.active').next('.depth_02').show();
     $('#gnb_mobile .depth_02 h3.active').next('.depth_03').show();
 
@@ -277,15 +273,37 @@ $('.page-header h2 a').on('click', function(e) {
 
 $('.toggle-wrap .btn-toggle').on('click', function(e) {
     e.preventDefault();
-    $(this).parent().siblings().toggle();
-    $(this).parent().toggleClass('wrap');
-    if ($(this).parent().hasClass('wrap')) {
-        $(this).text('맞춤형 검색조건 닫기');
-        $('.jobs').show();
-    } else {
-        $(this).text('맞춤형 검색조건 열기');
-        $('.jobs').hide();
-    }
+    //$(this).parent().siblings().toggle();
+    //단계별로 오픈 :: 2021.07.19 :: HHS
+	var offset = $("#breadcrumb").offset();
+	$('html, body').animate({scrollTop : offset.top}, 200);
+	var currentStep = $(this).data("step");
+	if (currentStep == 0) {
+		//모두 닫기 -> 1단계 오픈
+		$(this).parent().siblings(":lt(6)").show();
+		$(this).parent().siblings(".options").show();
+		$(this).data("step", 1);
+		$(this).text('맞춤형 검색조건 상세');
+	} else if (currentStep == 1) {
+		//1단계 오픈 -> 모두 오픈
+		$(this).parent().siblings().show();
+		$(this).data("step", 2);
+		$(this).text('맞춤형 검색조건 닫기');
+	} else {
+		//2단계 오픈 -> 모두 닫기
+		//꼬일경우. 무조건 닫기
+		$(this).parent().siblings().hide();
+		$(this).data("step", 0);
+		$(this).text('맞춤형 검색조건 열기');
+	}
+	// $(this).parent().siblings()
+	// if ($(this).parent().hasClass('wrap')) {
+    //     $(this).text('맞춤형 검색조건 닫기');
+    //     $('.jobs').show();
+    // } else {
+    //     $(this).text('맞춤형 검색조건 열기');
+    //     $('.jobs').hide();
+    // }
 });
 
 $('.btn-share').on('click', function(e) {

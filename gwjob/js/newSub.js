@@ -57,6 +57,28 @@ $(function() {
         var activeTab = $(this).attr("rel");
         $("#" + activeTab).fadeIn();
     });
+	$('.flex_item').parents('.flex_item').addClass('flex-parent');
 
+	$(".mypage .popbx .setup").click(function(e) {
+		e.preventDefault();
+		$(this).parents('.flex_row').siblings('.flex_row').find('.pop').hide();
+		$(this).parents('.flex_row').siblings('.flex_row').find('.setup').removeClass('active').text('설정');
+        $(this).siblings('.pop').toggle();
+		if ($(this).hasClass('active')) {
+			$(this).removeClass('active');
+			$(this).text('설정');
+		} else {
+			$(this).addClass('active');
+			$(this).text('닫기');
+		}
+    });
+
+	$(".mypage .pop .close").on('click', function (e) {
+		e.preventDefault();
+		$(this).parents('.pop').hide();
+		$(".mypage .popbx .setup").removeClass('active');
+		$(".mypage .popbx .setup").text('설정');
+		$(".mypage .popbx .setup").focus();
+	});
 	
 });
