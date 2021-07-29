@@ -1,21 +1,5 @@
 $(function() {
 
-    $('#breadcrumb .box .open').on('click', function (e) {
-		e.preventDefault();
-		if ($(this).hasClass('active')) {
-			$(this).removeClass('active');
-			$(this).children('span').text('열기');
-			$(this).next('ul').slideUp(200);
-		} else{
-			$('#breadcrumb .open').removeClass('active');
-			$(this).addClass('active');
-			$('#breadcrumb .open span').text('열기');
-			$(this).children('span').text('닫기');
-			$('#breadcrumb .box ul').slideUp(300);
-			$(this).next('ul').slideDown(200);
-		}
-	});
-
 	$('#svisual').on('mouseleave', function (e) {
 		e.preventDefault();
 		$(this).children('span').text('열기');
@@ -26,54 +10,74 @@ $(function() {
 	$('#breadcrumb .box ul li:last-child a').on('focusout', function () {
 		$(this).parents('.box').children('.open').focus();
 	});
-	
-
-	 $('#breadcrumb .share .open').on('click', function (e) {
-		 e.preventDefault();
-		$(this).next().fadeToggle(100);
-		$(this).toggleClass('active');
-	});
 
 	$('#breadcrumb .share ul a:last').on('focusout', function () {
 		$('#breadcrumb .share .open').focus();
 	});
 
-
-
-	/*
-	$(window).on('load resize', function () {
-		var windowWidth = $(this).width();
-		if (windowWidth > 1199) {
-			$('.cities .list01').swipe({
-				swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
-					if( direction == "left" ){
-						$(this).scrollLeft(distance*8 + $(this).scrollLeft());
-					}
-					else if( direction == "right" ){
-						$(this).scrollLeft(-distance*8 + $(this).scrollLeft());
-					}
-				},
-				triggerOnTouchEnd: false,
-				allowPageScroll:"vertical",
-				threshold: 50,
-				excludedElements: "label, button, input, select, textarea, .slick, a",
-			});
-		}
+	$('.map-page-left .open').on('click', function (e) {
+		e.preventDefault();
+		if ($(this).parent('.map-page-left').hasClass('active')) {
+			$(this).parent('.map-page-left').removeClass('active');
+			$(this).text('열기');
+		} else{
+            $(this).parent('.map-page-left').addClass('active');
+			$(this).text('닫기');
+		} 
 	});
 
-	*/
+	$('.map-page-left').swipe({
+        swipeStatus:function(event, phase, direction, distance, duration, fingers, fingerData) {
+			if( direction == "left"){	
+				if(distance > 150){
+					$('.map-page-left').removeClass('active');
+					$('.map-page-left .open').removeClass('active');
+					$('.map-page-left .open').text('열기');
+					$('.map-page-left').removeAttr('style');
+				}else{
+					if (phase=="move"){
+						$('.map-page-left').css('left',-distance); 
+					}
+					if (phase=="end"){
+						$('.map-page-left').removeAttr('style');
+					}
+				}
+			}
+        },
+		allowPageScroll:"vertical",
+        threshold:0,
+		excludedElements: "a, label, button, input, select, textarea, .slick"
+    });
+	
 
-	/*
-	$('.cities .list01').on('wheel',function(e){
-		var wheelDelta = e.originalEvent.wheelDelta;
-		e.preventDefault(); 
-		if(wheelDelta > 0){
-			$(this).scrollLeft(-wheelDelta*3.5 + $(this).scrollLeft());
-		}else{
-			$(this).scrollLeft(-wheelDelta*3.5 + $(this).scrollLeft());
-		}
-
+	$('.map-page-left .all').on('click', function (e) {
+		e.preventDefault();
+		if ($(this).hasClass('active')) {
+			$(this).removeClass('active');
+			$(this).parents('.libx').find('input').prop('checked', false);
+		} else{
+            $(this).addClass('active');
+			$(this).parents('.libx').find('input').prop('checked', true);
+		} 
 	});
 
-	*/
+
+	$('.map_view .slick').slick({
+        autoplay: false,
+        arrows: true,
+        dots: true,
+        accessibility: true,
+        draggable: true,
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        pauseOnHover: false,
+        speed: 600
+    });
+
+	$('.map_view .year .open').on('click', function (e) {
+		$(this).toggleClass('active');
+		$(this).next('.ylist').slideToggle(200);
+	});
+
 });
