@@ -13,7 +13,7 @@ $('#btn-gnb').on('click', function (e) {
         $('#header').addClass('active');
     }
 });
-$('#header #gnb h2 a').on('mouseover  focusin', function () {
+$('#header #gnb h2 a').on('mouseover focusin', function () {
     if (device === 'pc') {
         $('#gnb h2').removeClass('active');
         $(this).parent().addClass('active');
@@ -301,19 +301,27 @@ $('.heal_slick.v3').slick({
     ]
 });
 
+$('.days li.active a').append("<span>선택됨</span>");
+
 $("#1day").click(function() {
 	$('.heal_slick.v1').slick('resize');
     $('.heal_slick.v1').slick('refresh');
+    $('.days li a span').text("");
+    $(this).append("<span>선택됨</span>");
 });
 
 $("#2day").click(function() {
 	$('.heal_slick.v2').slick('resize');
     $('.heal_slick.v2').slick('refresh');
+    $('.days li a span').text("");
+    $(this).append("<span>선택됨</span>");
 });
 
 $("#3day").click(function() {
 	$('.heal_slick.v3').slick('resize');
     $('.heal_slick.v3').slick('refresh');
+    $('.days li a span').text("");
+    $(this).append("<span>선택됨</span>");
 });
 
 $('#btn-gnb').on("click",function(){
@@ -389,4 +397,18 @@ $('.sroad_cont .titbx .btn').on('click',function(e){
     }else{
         $(this).children('span').text('열기');
     }
+});
+
+
+$('.sort_area .btn_right button.active').append("<span>선택됨</span>");
+
+
+$('.open_tour .map a').on('mouseover',function(e){
+
+    var idx = $(this).index();
+    $(this).parents('.map').removeAttr('class').addClass('map');  
+    $(this).parents('.map').addClass('m' + idx);
+    $('.open_tour .map a').removeClass('active');
+    $(this).addClass('active');
+    
 });
