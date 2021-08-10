@@ -399,6 +399,17 @@ $('.sroad_cont .titbx .btn').on('click',function(e){
     }
 });
 
+$('.open_cont .titbx .btn').on('click',function(e){
+    e.preventDefault();
+    $(this).toggleClass('active');
+    $(this).next('.list01').slideToggle(200);
+    if($(this).hasClass('active')) {
+        $(this).children('span').text('닫기');
+    }else{
+        $(this).children('span').text('열기');
+    }
+});
+
 
 $('.sort_area .btn_right button.active').append("<span>선택됨</span>");
 

@@ -28,6 +28,11 @@ $('#visual .slick').on('afterChange', function (event, slick, currentSlide, next
 //     $('#course header').fadeIn();
 // });
 
+$('#course .slick').on('init reInit afterChange', function(event, slick, currentSlide, nextSlide) {
+    $('#course .slick .slick-slide:not(.slick-active) a').attr('tabindex','-1');
+    $('#course .slick .slick-slide.slick-active a').attr('tabindex','0');
+ });
+
 $('#course .slick').slick({
     autoplay: false,
     arrows: true,
@@ -44,6 +49,14 @@ $('#course .slick').slick({
     autoplaySpeed: 4000,
     speed: 1500
 });
+
+$('#event .slick').on('init reInit afterChange', function(event, slick, currentSlide, nextSlide) {
+    $('#event .slick .slick-slide:not(.slick-active) a').attr('tabindex','-1');
+    $('#event .slick .slick-slide.slick-active a').attr('tabindex','0');
+ });
+
+
+
 $('#event .slick').slick({
     autoplay: false,
     arrows: true,
@@ -95,6 +108,8 @@ $('#visual .searchs > button').on('click', function (e) {
     $(this).addClass('active');
     $('#visual .searchs > div').hide();
     $(this).next('div').show();
+    $('.keyword-wrap a:first').focus();
+    
 });
 $('#visual .searchs > div .btn-close').on('click', function (e) {
     e.preventDefault();
@@ -153,3 +168,5 @@ $('#notify .control button').not('.prev, .next').on('click', function (e) {
 $('#course .next').on('focusout', function () {
     $('#course .slick-active a').focus();
 });
+
+$('.searchs').append('<a href="/tour/course/road" class="staroad">속초길자리</a>');
