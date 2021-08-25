@@ -18,7 +18,7 @@ $(function() {
 		$('#gnb_pc h2').removeClass('active');
 		$(this).children('h2').addClass('active');
 		$('#gnb_pc .depth_02').stop().fadeOut(50);
-		$(this).children('.depth_02').stop().fadeIn(50);
+		$(this).children('.depth_02').stop().show();
 		$('.bg_pc').show().stop().animate({height:385},300);
 		$('#gnb_pc .cycle').stop().animate({'left':offset}, 600,'easeOutCubic');
 		$('.mask_pc').show();
@@ -40,7 +40,7 @@ $(function() {
 	$('#header').on('mouseleave', function () {
 		$('#header').removeClass('active');
 		$('#gnb_pc h2').removeClass('active');
-		$('#gnb_pc .depth_02').stop().fadeOut(50);
+		$('#gnb_pc .depth_02').stop().hide();
 		$('.bg_pc').stop().animate({height:0},200);
 		$('.mask_pc').hide();
 	});	
@@ -49,7 +49,7 @@ $(function() {
 	$('#gnb_pc .depth_02 li:last-child a').on('focusout', function () {
 		$('#header').removeClass('active');
 		$('#gnb_pc h2').removeClass('active');
-		$('#gnb_pc .depth_02').stop().fadeOut(50);
+		$('#gnb_pc .depth_02').stop().hide();
 		$('.bg_pc').stop().animate({height:0},200);
 		$('.mask_pc').hide();
 	});
