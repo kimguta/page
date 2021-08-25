@@ -246,7 +246,7 @@ function p_ctrlHdr(){
 	
 }
 
-/* 페이지탭 높이 자동화 */
+/* 페이지탭 높이 자동화 
 function p_pageTabAutoHeight(){
 	var arrT = p_class('pageTab','ul');
 	if(!Boolean(arrT)){return;} 
@@ -329,6 +329,7 @@ function p_pageTabAutoHeight(){
 		p_ctrlHeight();
 	});
 }
+*/
 
 function p_customDaumMapApi(m){
 	if($('.root_daum_roughmap').length == 0){
@@ -806,7 +807,6 @@ $(function(){
 	// 플레이스 홀더 
 	p_placehold();
 
-	p_pageTabAutoHeight();
 
 	// 파일 컨트롤 
 	p_ctrlFiles();
@@ -847,6 +847,11 @@ $(function(){
 		return false;
 	});
 
+	$( window ).on( 'resize load', function( ) {
+		var tabH = $('.pageTab-sub').height() + 20;
+		$('.pageTab').css('padding-bottom',tabH);
+		$('.pageTab-sub').parents('.pageTab').addClass('has');
+	});
 
 	$('.pageTab-sub > li.active > a').on('click', function () {
 		$(this).parents('.pageTab-sub').toggleClass('on');
