@@ -86,7 +86,7 @@ $(function() {
 					$('#header .mopen').removeClass('active');
 				}else{
 					if (phase=="move"){
-						$('#gnb_mobile').css('right',-distance); 
+						$('#gnb_mobile').css('right',-distance).css('transition','none'); 
 					}
 					if (phase=="end"){
 						$('#gnb_mobile').removeAttr('style');
