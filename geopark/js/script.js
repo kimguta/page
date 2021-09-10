@@ -24,7 +24,9 @@ $(function() {
 		$('.mask_pc').show();
 	});
 
-	$('#header #gnb_pc h3 a').on('click', function (e) {
+	$('#gnb_pc .depth_03').prev('h3').addClass('has_depth');
+
+	$('#header #gnb_pc h3.has_depth a').on('click', function (e) {
 		e.preventDefault();
 		if ($(this).parent().hasClass('active')) {
 			$(this).parent().removeClass('active');
@@ -97,6 +99,7 @@ $(function() {
 		allowPageScroll:"vertical",
         threshold:0,
 		excludedElements: "a, label, button, input, select, textarea, .slick"
+
     });
 
 
