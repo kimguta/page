@@ -28,12 +28,12 @@ $(function() {
 
 	$('#header #gnb_pc h3 a').on('mouseenter focusin', function (e) {
 		$('#header #gnb_pc h3').removeClass('active');
-		$('#header #gnb_pc .depth_03').stop().slideUp(300);
+		$('#header #gnb_pc .depth_03').stop().slideUp(500);
 		/*
 		$(this).parents('li').siblings('li').find('.depth_03').stop().slideUp(250);
 		*/
 		$(this).parent().addClass('active');
-		$(this).parent().next('.depth_03').stop().slideDown(300);
+		$(this).parent().next('.depth_03').stop().slideDown(250);
 	});
 
 	$('#header').on('mouseleave', function () {
