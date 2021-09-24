@@ -31,9 +31,9 @@ $(function() {
 		/*
 		$('#header #gnb_pc .depth_03').slideUp(250);
 		*/
-		$(this).parents('li').siblings('li').find('.depth_03').stop().delay(150).slideUp(150);
+		$(this).parents('li').siblings('li').find('.depth_03').stop().delay(200).slideUp(200);
 		$(this).parent().addClass('active');
-		$(this).parent().next('.depth_03').stop().slideDown(150);
+		$(this).parent().next('.depth_03').stop().slideDown(200);
 	});
 
 	$('#header').on('mouseleave', function () {
