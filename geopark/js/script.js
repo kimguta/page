@@ -19,7 +19,7 @@ $(function() {
 		$(this).children('h2').addClass('active');
 		$('#gnb_pc .depth_02').stop().fadeOut(50);
 		$(this).children('.depth_02').stop().show();
-		$('.bg_pc').show().stop().animate({height:385},250);
+		$('.bg_pc').show().stop().animate({height:385},300);
 		$('#gnb_pc .cycle').stop().animate({'left':offset}, 600,'easeOutCubic');
 		$('.mask_pc').show();
 	});
@@ -28,19 +28,19 @@ $(function() {
 
 	$('#header #gnb_pc h3 a').on('mouseenter focusin', function (e) {
 		$('#header #gnb_pc h3').removeClass('active');
-		$('#header #gnb_pc .depth_03').stop().slideUp(250);
+		$('#header #gnb_pc .depth_03').stop().slideUp(300);
 		/*
 		$(this).parents('li').siblings('li').find('.depth_03').stop().slideUp(250);
 		*/
 		$(this).parent().addClass('active');
-		$(this).parent().next('.depth_03').stop().slideDown(250);
+		$(this).parent().next('.depth_03').stop().slideDown(300);
 	});
 
 	$('#header').on('mouseleave', function () {
 		$('#header').removeClass('active');
 		$('#gnb_pc h2').removeClass('active');
 		$('#gnb_pc .depth_02').stop().hide();
-		$('.bg_pc').stop().animate({height:0},250);
+		$('.bg_pc').stop().animate({height:0},300);
 		$('.mask_pc').hide();
 	});	
 	
@@ -49,7 +49,7 @@ $(function() {
 		$('#header').removeClass('active');
 		$('#gnb_pc h2').removeClass('active');
 		$('#gnb_pc .depth_02').stop().hide();
-		$('.bg_pc').stop().animate({height:0},250);
+		$('.bg_pc').stop().animate({height:0},300);
 		$('.mask_pc').hide();
 	});
 
