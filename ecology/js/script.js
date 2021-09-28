@@ -47,7 +47,7 @@ $(function() {
 		$('.bg_pc').show().css('height',highestBox);
 	});
 
-	$('#gnb_pc .depth_02 a:last').on('focusout', function () {
+	$('#gnb_pc a:last').on('focusout', function () {
 		$('#header').removeClass('active');
 		$('#gnb_pc h2').removeClass('active');
 		$('#gnb_pc .depth_02, .bg_pc, .mask_pc').hide();
