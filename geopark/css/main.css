@@ -1,6 +1,135 @@
 @charset "utf-8";
 
-#main{position:relative;background:#f3f6fa;color:#231f20;}
+#main{position:relative;color:#231f20;}
+#visual{position:relative;z-index:5;}
+#visual .slick{position:relative;z-index:3;position:relative;background:#000;}
+#visual .slide{overflow:hidden;height:858px;}
+#visual .slide img{display:block;width:1920px;height:858px;position:absolute;top:50%;left:50%;margin:-429px 0 0 -960px}
+
+#visual .title-bx{position:absolute;color:#fff;top:45%;z-index:5;left:50%;margin-left:-680px;font-family:'KoreanYNSJG4-R';}
+#visual .title-bx p{font-size:24px;line-height:1.2;position:relative;display:inline-block;animation:move2 .35s ease-in-out 1 both;}
+#visual .title-bx p:after{content:'';display:block;background:url(/page/geopark/images/common/sp_geopark.png) -227px -132px no-repeat;background-size:520px 520px;width:188px;height:90px;position:absolute;right:-203px;top:50%;margin-top:-52px;animation:move3 .35s .2s ease-in-out 1 both;}
+#visual .title-bx h2{line-height:1.2;font-size:72px;margin-top:28px;position:relative;animation:move4 .35s .25s ease-in-out 1 both;}
+#visual .title-bx h2:after{content:'';display:block;width:60px;height:2px;background:#fff;position:absolute;top:-14px;left:0px;animation:move5 .2s .35s ease-in-out 1 both;}
+
+#visual .link{display:block;width:174px;position:absolute;z-index:5;right:45px;bottom:200px;}
+#visual .link img{display:block;width:100%;image-rendering:-webkit-optimize-contrast;}
+#visual .link:hover{animation:move1 .3s ease-in-out infinite alternate;}
+
+#visual .control{position:relative;margin-top:28px}
+#visual .control a{width:40px;height:40px;vertical-align:top;overflow:hidden;text-indent:-9999px;display:inline-block;position:relative;transition:all .1s;background:url(/page/geopark/images/common/sp_geopark.png) -88px -120px no-repeat;background-size:520px 520px;}
+#visual .control a.next{background-position-x:-133px;}
+#visual .control a.pause{background-position-x:-0px;}
+#visual .control a.play{background-position-x:-44px;display:none;}
+#visual .control a:active{transform:scale(.95);}
+#visual .control:after{content:'';display:block;background:url(/page/geopark/images/common/bg02.png) 0 0 repeat;background-size:5px 5px;height:5px;position:absolute;right:0px;left:153px;top:50%;margin-top:-3.5px;}
+
+@keyframes move1{ 
+    0%{transform:translateY(0%)}
+    100%{transform:translateY(-10%)} 
+}
+
+@keyframes move2{ 
+    0%{transform:translateY(-70%)}
+    100%{transform:translateY(0%)} 
+}
+
+@keyframes move3{ 
+    0%{transform:translateY(-35%);opacity:0;}
+    100%{transform:translateY(0%);opacity:1;} 
+}
+
+@keyframes move4{ 
+    0%{transform:translateY(-40%);opacity:0;}
+    100%{transform:translateY(0%);opacity:1;} 
+}
+
+@keyframes move5{ 
+    0%{width:0px;}
+    100%{width:60px;} 
+}
+
+#intro{position:relative;margin-top:75px;z-index:10;background:url(/page/geopark/images/main/bg_intro.jpg) center center repeat;background-size:cover;}
+#intro .tab{border-top-right-radius:5px;padding:17px;background:#fff;position:absolute;top:-115px;left:-20px;}
+#intro .tab a{display:inline-block;vertical-align:top;height:78px;line-height:78px;color:#fff;font-size:20px;font-family:'KoreanYNSJG4-R';border-radius:5px;overflow:hidden;width:225px;background:url(/page/geopark/images/main/intro01.png) right center repeat;background-size:cover;text-align:center;}
+#intro .tab a + a{margin-left:14px;}
+#intro .tab a span{display:inline-block;transition:all .1s;}
+#intro .tab a:hover span{transform:scale(1.1);}
+#intro .tab a:active{transform:scale(.97);transform-origin:50% 50%;}
+
+#intro .tab a:nth-child(2){background-image:url(/page/geopark/images/main/intro02.png);}
+#intro .tab a:nth-child(3){background-image:url(/page/geopark/images/main/intro03.png);}
+#intro .tab a:nth-child(4){background-image:url(/page/geopark/images/main/intro04.png);}
+#intro .tab a:nth-child(5){background-image:url(/page/geopark/images/main/intro05.png);}
+
+#intro .tab a.active{background-image:url(/page/geopark/images/main/intro01_on.png);pointer-events:none;}
+#intro .tab a.active:nth-child(2){background-image:url(/page/geopark/images/main/intro02_on.png);}
+#intro .tab a.active:nth-child(3){background-image:url(/page/geopark/images/main/intro03_on.png);}
+#intro .tab a.active:nth-child(4){background-image:url(/page/geopark/images/main/intro04_on.png);}
+#intro .tab a.active:nth-child(5){background-image:url(/page/geopark/images/main/intro05_on.png);}
+
+#intro .slide{height:655px;position:relative;}
+#intro .slide img{position:relative;display:block;width:806px;top:50%;transform:translateY(-50%);image-rendering:-webkit-optimize-contrast;margin-left:-40px;opacity:0;}
+#intro .slide.slick-current img{animation:move5 .35s ease-in-out 1 both;}
+#intro .slide .text{position:absolute;right:-20px;top:65px;color:#fff;text-align:right;}
+#intro .slide .text h3{font-family:'KoreanYNSJG2-R';line-height:1.2;font-size:36px;word-spacing:-2px;position:relative;z-index:2;}
+#intro .slide .text h3 strong{font-family:'KoreanYNSJG3-R';}
+#intro .slide .text span{display:inline-block;font-family:'KoreanYNSJG4-R';text-align:right;line-height:1.2;font-size:36px;position:relative;margin-top:18px;z-index:2;}
+#intro .slide .text span:after{content:'';display:block;width:190px;height:1px;background:#fff;position:absolute;left:-200px;top:50%;}
+#intro .slide .text em{font-size:210px;font-family:"NanumSquareRound";font-weight:900;opacity:.07;position:absolute;display:block;right:-140px;top:-25px;z-index:1;line-height:1.1;opacity:0;}
+#intro .slide.slick-current .text em{animation:move6 1s .1s ease-in-out 1 both;}
+
+#intro .slide .link{position:absolute;bottom:0;right:0;padding-bottom:40px;z-index:3;height:410px;}
+#intro .slide .link h4{padding-top:70px;text-align:center;line-height:1.3;font-size:40px;color:#1b1b1b;font-family:'KoreanYNSJG2-R';position:relative;}
+#intro .slide .link h4 strong{font-family:'KoreanYNSJG4-R';display:inline-block;}
+#intro .slide .link h4:after{content:'';display:block;width:1px;height:44px;background:#313131;position:absolute;top:0;left:50%;}
+#intro .slide .link > div{margin-top:22px;} 
+#intro .slide .link > div a{display:inline-block;vertical-align:top;width:130px;height:130px;padding:10px;text-align:center;position:relative;;box-shadow:0px 0px 5px 2px rgba(0,0,0,.2);color:#2f2315;font-size:17px;font-family:'KoreanYNSJG3-R';transition:all .03s;z-index:2;}
+#intro .slide .link > div a + a{margin-left:35px;}
+#intro .slide .link > div a span{display:flex;width:100%;height:100%;justify-content:center;align-items:center;transition:all .03s;border:1px solid rgba(255,255,255,0);flex-direction:column;}
+#intro .slide .link > div a:nth-child(2n){margin-top:35px;}
+#intro .slide .link > div a:hover{color:#fff;box-shadow:none;}
+#intro .slide .link > div a:hover span{border-color:rgba(255,255,255,1);padding-top:10px;}
+#intro .slide .link > div a:hover span:after{content:'→';font-size:24px;font-weight:300;font-family:'Noto Sans KR', sans-serif;line-height:1.4;}
+#intro .slide .link > div a:after{content:'';display:block;z-index:-1;background:#ebebeb;position:absolute;width:100%;height:100%;bottom:0px;right:0px;}
+#intro .slide .link > div a:hover:after{background: #3F3693;background: linear-gradient(to bottom, #0ACACF 0%, #3f3693 100%);}
+#intro .slide .link > div a:before{content:'';display:block;z-index:-2;background:url(/page/geopark/images/common/bg01.png) 0 0 repeat;position:absolute;width:100%;height:100%;bottom:-10px;right:-10px;opacity:0;transition:all .03s;}
+#intro .slide .link > div a:hover:before{opacity:.8;}
+
+#intro .slick{position:relative;}
+#intro .slick .slick-list{overflow:visible !important;}
+#intro .slick:before{content:'';display:block;width:804px;height:410px;background:#fff;position:absolute;bottom:0;right:-280px;}
+#intro .slick:after{content:'';display:block;width:824px;height:475px;position:absolute;bottom:-45px;right:-280px;border:1px solid #c9c9c9;}
+
+@keyframes move5{ 
+    0%{transform:translateY(-50%) scale(.5);opacity:0;}
+    100%{transform:translateY(-50%) scale(1);opacity:1;} 
+}
+
+@keyframes move6{ 
+    0%{transform:scale(2.2);opacity:0;}
+    100%{transform:scale(1);opacity:.07;} 
+}
+
+
+/*
+@font-face {
+    font-family: 'KoreanYNSJG3-R';
+    font-style: normal;
+    src: url(fonts/ynsjg3.eot);
+    src: url(fonts/ynsjg3.eot?#iefix) format('embedded-opentype'),
+         url(fonts/ynsjg3.woff) format('woff'),
+         url(fonts/ynsjg3.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: 'KoreanYNSJG5-R';
+    font-style: normal;
+    src: url(fonts/ynsjg5.eot);
+    src: url(fonts/ynsjg5.eot?#iefix) format('embedded-opentype'),
+         url(fonts/ynsjg5.woff) format('woff'),
+         url(fonts/ynsjg5.ttf) format("truetype");
+}
 
 #visual{position:relative;padding:175px 0 27px;}
 #visual .slick{position:relative;overflow:hidden;z-index:5;width:calc(100% + 120px)}
@@ -66,11 +195,7 @@
     100%{transform:translate(0)} 
 }
 
-@media (max-width:1560px) {
-    #visual .bg01{width:415px;height:417px;}
-    #visual .bg02{width:700px;height:700px;bottom:-50px;right:-340px;}
-    #visual .bg03{width:280px;height:280px;bottom:60px;right:200px;}
-}
+
 
 @media (max-width:1199px) {
     #visual{padding:75px 0 25px;}
@@ -293,7 +418,7 @@
 /*
 #business .slide:hover .text .t01{color:#231f20;}
 #business .slide:hover .text strong{color:#ef7a00;}
-*/
+
 #business .slide:hover .text .t02{background:#ef7a00;color:#fff;border-color:#ef7a00}
 #business .slide:hover .text .t02:after{background-position-x:-516px;}
 
