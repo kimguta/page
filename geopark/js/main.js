@@ -33,7 +33,7 @@ $(function() {
         slidesToShow: 1,
         slidesToScroll: 1,
         pauseOnHover: false,
-        speed: 1500,
+        speed: 1000,
         autoplaySpeed: 5500
     });
 
