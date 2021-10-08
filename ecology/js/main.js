@@ -6,7 +6,7 @@ $(function() {
             duration: 1200,
             delay: 200,
             once: true,
-            offset: 200
+            offset: 50,
         });
      }, 200);
 
