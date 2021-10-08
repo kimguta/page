@@ -42,7 +42,7 @@ $(function() {
         slidesToScroll: 1,
         pauseOnHover: false,
         speed: 800,
-        autoplaySpeed: 7500
+        autoplaySpeed: 10000
     });
 
 
