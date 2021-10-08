@@ -1,6 +1,7 @@
 @charset "utf-8";
 
-#main{position:relative;background:#f3f6fa;color:#231f20;padding-top:80px;}
+html{scroll-behavior:smooth;}
+#main{position:relative;color:#231f20;padding-top:80px;font-family:"NanumSquare";}
 .fixed ~ #main{padding-top:60px;transition:all .5s;}
 
 #visual{position:relative;height:847px;}
@@ -72,7 +73,9 @@
 #visual .bg-bx > div a{position:absolute;color:#fff;left:0px;bottom:52px;z-index:50;display:block;}
 #visual .bg-bx > div a strong{display:inline-block;line-height:1.15em;height:1.1em;padding:0 5px 0 15px;font-family:'KoreanYNSJG4-R';font-weight:normal;font-size:30px;text-shadow:2px 2px 3px rgba(0,0,0,.5);border-left:5px solid #fff;transition:color .2s ease;z-index:2;position:relative;word-break:keep-all;}
 #visual .bg-bx > div a p{font-family:'KoreanYNSJG3-R';font-size:18px;line-height:1.5;margin-top:12px;padding-left:20px;word-break:keep-all;padding-right:5px;text-shadow:2px 2px 3px rgba(0,0,0,.5);}
+/*
 #visual .bg-bx > div.active a{pointer-events:none;}
+*/
 #visual .bg-bx > div.active a strong{border-color:#fff000;color:#000;text-shadow:none;}
 #visual .bg-bx > div a strong:before{content:'';display:block;position:absolute;left:0;width:0%;bottom:0;top:0;background:#fff000;transition:all .3s ease;z-index:-1;}
 #visual .bg-bx > div.active a strong:before{width:100%;}
@@ -133,8 +136,7 @@
     #visual{height:574px;}
     #visual:after{content:'';display:block;width:120px;;position:absolute;top:0;bottom:0;right:0;z-index:3;pointer-events:none;background: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,.5) 100%);}
     #visual .bg-bx > div{position:absolute;display:block;top:0;left:0 !important;right:0 !important;bottom:auto;height:20%;width:100% !important;}
-    #visual .bg-bx > div:after{height:1px;position:absolute;top:0;bottom:auto;width:100%;}
-
+    #visual .bg-bx > div:after{height:1px;position:absolute;top:0;bottom:auto;width:100%;background:rgba(255,255,255,.3)}
     #visual .bg-bx > div.item01{top:0%;}
     #visual .bg-bx > div.item02{top:20%;}
     #visual .bg-bx > div.item03{top:40%;}
@@ -144,7 +146,7 @@
     #visual .bg-bx > div .img-bx{top:0;bottom:auto !important;left:0;height:100%;}
 
     #visual .bg-bx > div .img-bx img{height:574px;left:50% !important;right:auto !important;}
-    #visual .bg-bx > div.item02 .img-bx img{top:0}
+    #visual .bg-bx > div.item02 .img-bx img{top:50%;margin-top:-287px}
     #visual .bg-bx > div.item03 .img-bx img{top:50%;margin-top:-287px}
     #visual .bg-bx > div.item04 .img-bx img{top:auto;bottom:50%;margin-bottom:-287px;}
     #visual .bg-bx > div.item05 .img-bx img{top:auto;bottom:0%;}
@@ -202,12 +204,12 @@
 
     #visual .link{width:85px;left:15px;bottom:20px;}
 
-    #visual .inner .item .map{left:-20px;;bottom:180px;width:calc(100% - 60px);max-width:400px;}
+    #visual .inner .item .map{left:-20px;;bottom:180px;width:calc(100% - 70px);max-width:400px;}
     #visual .inner .item .text{padding-top:60px;}
-    #visual .inner .item .text span{width:100px;height:32px;line-height:32px;font-size:12px;}
+    #visual .inner .item .text span{width:100px;height:32px;line-height:34px;font-size:12px;}
     #visual .inner .item h2{font-size:30px;margin-top:15px;}
     #visual .inner .item p{font-size:15px;margin-top:10px;line-height:1.5}
-    #visual .inner .item a{height:38px;line-height:36px;padding-left:10px;font-size:14px;width:125px;margin-top:20px;}
+    #visual .inner .item a{height:38px;line-height:36px;padding-left:10px;font-size:14px;width:115px;margin-top:20px;}
     #visual .inner .item a:after{right:10px;}
 
 }
@@ -242,501 +244,176 @@
     100%{top:-15px} 
 }
 
+#vr360{padding-bottom:184px;position:relative;background:url(/page/ecology/images/main/bg_vr.jpg) bottom right no-repeat;background-size:cover;}
+#vr360 h2{text-align:center;padding-top:55px;line-height:1.2;font-size:40px;font-weight:900;color:#000;position:relative;}
+#vr360 h2:after{content:'';display:block;width:1px;height:42px;background:#000;position:absolute;top:0;left:50%;}
+#vr360 .sub-title{display:block;line-height:1.1;text-align:center;font-size:22px;color:#000;margin-top:10px;}
+#vr360 .slick{margin-top:60px;position:relative;z-index:5;}
+#vr360 .slide{position:relative;padding-bottom:90px;}
+#vr360 .slide .img{width:805px;position:relative;}
+#vr360 .slide .img img{display:block;width:100%;}
+#vr360 .slide .img:after{content:'';display:block;background:url(/page/ecology/images/main/ico-360.png) 50% 50% no-repeat;background-size:cover;position:absolute;top:50%;left:50%;margin:-44px 0 0 -85px;width:170px;height:88px;image-rendering:-webkit-optimize-contrast;}
+#vr360 .slide .text{position:absolute;bottom:0;right:0px;border:12px solid transparent;border-image: url(/page/ecology/images/main/patten02.png) 12 repeat;padding:65px 50px 115px 105px;max-width:640px;}
+#vr360 .slide h3{line-height:1.1;color:#000;font-size:34px;font-family:'KoreanYNSJG2-R';}
+#vr360 .slide h3 strong{display:inline-block;font-size:50px;color:#268ed0;position:relative;}
+#vr360 .slide .text p{line-height:1.7;margin-top:22px;font-size:18px;font-weight:300;color:#000;word-break:keep-all;}
+#vr360 .slide .text a{font-size:0;color:transparent;display:block;width:47px;height:47px;border:1px solid #535353;position:absolute;bottom:30px;right:30px;transition:all .1s;}
+#vr360 .slide .text a:after{content:'';display:block;height:26px;width:1px;background:#535353;position:absolute;top:50%;left:50%;margin:-13px 0 0 -0.5px;transition:all .1s;}
+#vr360 .slide .text a:before{content:'';display:block;height:1px;width:26px;background:#535353;position:absolute;top:50%;left:50%;margin:-0.5px 0 0 -13px;transition:all .1s;}
+#vr360 .slide .text a:hover{background:#535353;}
+#vr360 .slide .text a:hover:before,
+#vr360 .slide .text a:hover:after{background:#fff;}
+#vr360 .slide h3 strong:after{content:'';display:block;background:url(/page/ecology/images/main/icon02.png) 50% 50% no-repeat;background-size:cover;width:103px;height:59px;position:absolute;right:-150px;top:-35px;}
+#vr360 .control{position:absolute;right:410px;bottom:370px;z-index:10;}
+#vr360 .control a{display:inline-block;vertical-align:top;font-size:0;color:transparent;width:56px;height:56px;border-radius:50%;border:1px solid #747474;transition:all .1s;}
+#vr360 .control a + a{margin-left:15px;}
+#vr360 .control a:hover{border-width:2px;}
+#vr360 .control a:active{border-width:4px;}
+#vr360 .control:after{content:'';display:block;background:url(/page/ecology/images/main/icon03.png) 50% 50% no-repeat;background-size:cover;width:77px;height:9px;position:absolute;top:50%;left:50%;margin:-4.5px 0 0 -38.5px;image-rendering:-webkit-optimize-contrast;}
+#vr360 .slide.slick-current .text{animation:movevr .7s .7s ease 1 both;}
 
-/*
-#visual{position:relative;padding:175px 0 27px;}
-#visual .slick{position:relative;overflow:hidden;z-index:5;width:calc(100% + 120px)}
-#visual .slick .slide{height:425px;overflow:hidden;position:relative;}
-#visual .slick .imbx{width:725px;height:425px;position:absolute;top:0;right:0;}
-#visual .slick .imbx:before{content:'';display:block;position:absolute;top:0;right:0;bottom:0;left:0;background:url(/page/ecology/images/main/object_01.png) 0 0 no-repeat;background-size:cover;}
-#visual .slick .slide:nth-child(2) .imbx:before{background-image:url(/page/ecology/images/main/object_02.png);}
-#visual .slick .slide:nth-child(3) .imbx:before{background-image:url(/page/ecology/images/main/object_03.png);}
-#visual .slick .imbx img{display:block;width:100%;position:relative;}
-#visual .slick .slick-current .imbx img{animation:sizeup .7s .2s ease 1 both;}
-#visual .slick .slide .text{position:absolute;z-index:2;color:#fff;top:90px;left:0;}
-#visual .slick .slide .text span{display:block;line-height:1.1;margin-bottom:12px;color:#231f20;font-size:18px;}
-#visual .slick .slide .text p{line-height:1.1;font-weight:400;font-size:30px;color:#231f20;}
-#visual .slick .slide .text p strong{font-weight:700;color:#ef7a00;font-size:50px;}
-#visual .slick .slide .text p em{display:block;font-size:60px;font-weight:700;margin-top:8px;}
-#visual .slick .slide.slick-current .text span{animation:up1 .7s .1s ease 1 both;} 
-#visual .slick .slide.slick-current .text p{animation:up1 1s .2s ease 1 both;} 
-
-#visual .control{position:absolute;z-index:5;bottom:2px;left:20px;transform-origin:0% 50%;}
-#visual .control .dots{display:inline-block;vertical-align:top;margin:5px 18px 0 0;}
-#visual .control .dots ul{line-height:1;}
-#visual .control .dots li{display:inline-block;vertical-align:top;line-height:1;}
-#visual .control .dots li + li{margin-left:6px;}
-#visual .control .dots a{display:block;width:10px;height:10px;background:#c0c7cb;border-radius:50%;transition:all .3s;overflow:hidden;text-indent:-9999px;}
-#visual .control .dots a:hover{opacity:.8;}
-#visual .control .dots a:active{transform:scale(.9);}
-#visual .control .dots .slick-active a{background:transparent;width:40px;border-radius:5px;pointer-events:none;background:#ff7f00;}
-#visual .control a[role="button"]{width:12px;height:20px;vertical-align:top;overflow:hidden;text-indent:-9999px;display:inline-block;position:relative;transition:all .1s;background:url(/page/ecology/images/common/sp_foundation.png)-35px -110px no-repeat;background-size:720px 480px;}
-#visual .control a[role="button"] + a[role="button"]{margin-left:10px;}
-#visual .control a.play{display:none;}
-#visual .control a.next{background-position-x:-275px;}
-#visual .control a.pause{background-position-x:-115px;}
-#visual .control a.play{background-position-x:-195px;}
-#visual .control a[role="button"]:active{transform:scale(.9);}
-
-#visual .bg01{position:absolute;display:block;width:715px;height:717px;background:url(/page/ecology/images/main/left_bg.png) 0 0 no-repeat;background-size:cover;bottom:85px;left:0;transform-origin:0% 0%;animation:move1 1s .3s ease 1 both;}
-#visual .bg02{position:absolute;display:block;width:1320px;height:1320px;background:url(/page/ecology/images/main/right_bg.png) 0 0 no-repeat;background-size:cover;bottom:-187px;right:-831px;transform-origin:100% 0%;animation:move2 1s .6s ease 1 both;}
-#visual .bg03{position:absolute;display:block;width:460px;height:460px;background:url(/page/ecology/images/main/circle.png) 0 0 no-repeat;background-size:cover;bottom:60px;right:339px;transform-origin:100% 50%;animation:sizeup 1s .9s ease 1 both;}
-
-
-@keyframes sizeup{ 
-    0%{transform:scale(.5);opacity:0;}
-    100%{transform:scale(1);opacity:1;} 
-}
-
-@keyframes up1{ 
-    0%{transform:translateY(40px);opacity:0;}
-    100%{transform:translateY(0);opacity:1;} 
-}
-
-@keyframes move1{ 
-    0%{transform:translate(-560px,-560px)}
-    100%{transform:translate(0)} 
-}
-
-@keyframes move2{ 
-    0%{transform:translate(520px,-520px)}
-    100%{transform:translate(0)} 
-}
-
-@keyframes move3{ 
-    0%{transform:translate(610px,-610px)}
-    100%{transform:translate(0)} 
-}
-
-@media (max-width:1560px) {
-    #visual .bg01{width:415px;height:417px;}
-    #visual .bg02{width:700px;height:700px;bottom:-50px;right:-340px;}
-    #visual .bg03{width:280px;height:280px;bottom:60px;right:200px;}
-}
-
-@media (max-width:1199px) {
-    #visual{padding:75px 0 25px;}
-    #visual .slick{width:calc(100% + 50px)}
-    #visual .slick .slide{height:370px;}
-    #visual .slick .imbx{width:630px;height:370px;}
-
-    #visual .slick .slide .text{top:80px;}
-    #visual .slick .slide .text span{font-size:16px;margin-bottom:10px;}
-    #visual .slick .slide .text p{font-size:24px;}
-    #visual .slick .slide .text p strong{font-size:42px;}
-    #visual .slick .slide .text p em{font-size:52px;margin-top:6px;}
-
-    #visual .bg01{width:315px;height:317px;}
-    #visual .bg02{width:600px;height:600px;bottom:-40px;right:-320px;}
-    #visual .bg03{width:240px;height:240px;bottom:60px;right:180px;} 
+@keyframes movevr{ 
+    0%{opacity:0;transform:translateY(50%);}
+    100%{opacity:1;transform:translateY(0%);} 
 }
 
 
-@media (max-width:991px) {
-    #visual{position:relative;padding:65px 0 25px;}
-    #visual .slick{width:calc(100% + 70px)}
-    #visual .slick .slide{height:317px;}
-    #visual .slick .imbx{width:540px;height:317px;}
-    #visual .slick .slide .text{top:80px;}
-    #visual .slick .slide .text span{font-size:15px;margin-bottom:10px;}
-    #visual .slick .slide .text p{font-size:20px;}
-    #visual .slick .slide .text p strong{font-size:36px;}
-    #visual .slick .slide .text p em{font-size:42px;margin-top:6px;}
+#gwbr{position:relative;margin-top:-90px;border-radius:300px;text-align:center;background:url(/page/ecology/images/main/bg_gwbr.jpg) center center repeat;background-size:cover;background-attachment:fixed;padding-bottom:33px;}
+#gwbr h2{text-align:center;padding-top:55px;line-height:1.2;font-size:40px;font-weight:900;color:#fff;position:relative;text-shadow:2px 2px 5px rgba(0,0,0,.9);z-index:2;}
+#gwbr h2:after{content:'';display:block;width:1px;height:42px;background:#fff;position:absolute;top:0;left:50%;box-shadow:0px 0px 1px 0px rgba(0,0,0,.5);}
+#gwbr h2:before{content:'';display:block;background:url(/page/ecology/images/main/bg_title01.png) 50% 50% no-repeat;background-size:cover;width:1200px;height:450px;position:absolute;top:0px;left:50%;margin-left:-600px;z-index:-1;}
+#gwbr .sub-title{display:block;line-height:1.1;text-align:center;font-size:22px;color:#fff;margin-top:10px;text-shadow:1px 1px 3px rgba(0,0,0,.9);z-index:3;position:relative;}
+#gwbr .bx{max-width:1360px;margin:33px auto 0;z-index:3;}
+#gwbr .bx p{display:inline-block;vertical-align:top;width:240px;max-width:23%;margin-right:80px;border-radius:35px;background:url(/page/ecology/images/main/patten03.png) 0 0 repeat;background-size:5px 5px;padding:17px 0 35px;}
+#gwbr .bx p:last-child{margin-right:0;}
+#gwbr .bx p strong{display:block;line-height:1.1;font-size:52px;color:#1fddff;font-weight:900;text-shadow:1px 1px 3px rgba(0,0,0,.7);}
+#gwbr .bx p span{display:block;line-height:1.1;font-size:20px;color:#fff;font-weight:700;text-shadow:1px 1px 3px rgba(0,0,0,.7);margin-top:7px;}
+#gwbr .bx p:before{content:'';display:block;background:url(/page/ecology/images/main/icon04.png) center center no-repeat;width:140px;height:140px;background-size:cover;margin:0 auto;}
+#gwbr .bx p:nth-child(2):before{background-image:url(/page/ecology/images/main/icon05.png);}
+#gwbr .bx p:nth-child(3):before{background-image:url(/page/ecology/images/main/icon06.png);}
+#gwbr .bx p:nth-child(4):before{background-image:url(/page/ecology/images/main/icon07.png);}
 
-    #visual .bg01{width:255px;height:257px;}
-    #visual .bg02{width:500px;height:500px;bottom:-40px;right:-280px;}
-    #visual .bg03{width:180px;height:180px;bottom:50px;right:130px;} 
+
+#gift{position:relative;padding-bottom:85px;}
+#gift h2{text-align:center;padding-top:55px;line-height:1.2;font-size:40px;font-weight:900;color:#000;position:relative;}
+#gift h2:after{content:'';display:block;width:1px;height:42px;background:#000;position:absolute;top:0;left:50%;}
+#gift .sub-title{display:block;line-height:1.1;text-align:center;font-size:22px;color:#000;margin-top:10px;}
+
+#gift .bx{margin-top:67px;}
+#gift .bx .tab{width:270px;background:url(/page/ecology/images/main/bg_gift01.jpg) left bottom repeat;background-size:cover;float:left;height:460px;border-top-right-radius:50px;padding-top:55px;}
+#gift .bx .tab a{display:block;height:70px;line-height:70px;padding-left:105px;color:#fff;font-size:26px;text-shadow:0px 0px 1px rgba(0,0,0,.5);transition:all .2s;position:relative;}
+#gift .bx .tab a:hover{transform:scale(1.1);}
+#gift .bx .tab a.active{font-size:36px;font-weight:900;text-shadow:3px 3px 5px rgba(0,0,0,.5);padding-left:127px;pointer-events:none;}
+#gift .bx .tab a:after{content:'';display:block;height:1px;width:0px;position:absolute;top:50%;left:0;background:rgba(255,255,255,.7);transition:all .2s .1s;}
+#gift .bx .tab a:before{content:'';display:block;height:0px;width:0px;position:absolute;top:50%;margin-top:-10px;left:93px;background:rgba(255,255,255,.7);border-radius:50%;transition:all .2s;}
+#gift .bx .tab a.active:after{width:75px;}
+#gift .bx .tab a.active:before{width:20px;height:20px;transition-delay:.2s;}
+
+#gift .view-bx{width:calc(100% - 270px);float:left;}
+#gift .view-bx > div{margin-right:-20px;padding-left:98px;white-space:nowrap;position:relative;display:none;}
+#gift .view-bx > div a{display:inline-block;vertical-align:top;width:216px;margin-left:calc((100% - 895px) / 3);text-align:center;}
+#gift .view-bx > div a:first-child{margin-left:0;}
+#gift .view-bx > div a:nth-child(2n){margin-top:50px;}
+#gift .view-bx > div a .img{border-radius:120px;position:relative;overflow:hidden;box-shadow:5px 5px 12px 2px rgb(0 0 0 / 15%);}
+#gift .view-bx > div a .img img{display:block;width:100%;}
+#gift .view-bx > div a .img:after{content:'';display:block;width:120px;height:74px;border-radius:37px;position:absolute;top:45%;left:50%;margin:-37px 0 0 -60px;background:rgba(0,0,0,.75) url(/page/ecology/images/main/icon08.png) center center no-repeat;background-size:34px 34px;opacity:0;transition:all .2s;}
+#gift .view-bx > div a:hover .img:after{opacity:1;top:50%}
+#gift .view-bx > div .item span{display:inline-block;margin-top:25px;position:relative;font-size:18px;font-weight:700;color:#000;padding:0 10px;line-height:1.1;z-index:1;}
+#gift .view-bx > div .item span:before{content:'';display:block;z-index:-1;height:16px;bottom:-8px;position:absolute;left:0;right:0;background:url(/page/ecology/images/main/patten04.png) center center repeat;border-radius:8px;}
+#gift .view-bx > div .more{font-size:0;color:transparent;display:block;width:47px;height:47px;border:1px solid #535353;position:absolute;top:-20px;right:0px;transition:all .1s;}
+#gift .view-bx > div .more:after{content:'';display:block;height:26px;width:1px;background:#535353;position:absolute;top:50%;left:50%;margin:-13px 0 0 -0.5px;transition:all .1s;}
+#gift .view-bx > div .more:before{content:'';display:block;height:1px;width:26px;background:#535353;position:absolute;top:50%;left:50%;margin:-0.5px 0 0 -13px;transition:all .1s;}
+#gift .view-bx > div .more:hover{background:#535353;}
+#gift .view-bx > div .more:hover:before,
+#gift .view-bx > div .more:hover:after{background:#fff;}
+
+#gift .view-bx > div a{animation:movegift .8s ease 1 both;}
+#gift .view-bx > div a:nth-child(2){animation-delay:.3s;}
+#gift .view-bx > div a:nth-child(3){animation-delay:.6s;}
+#gift .view-bx > div a:nth-child(4){animation-delay:.9s;}
+#gift .view-bx > div a:nth-child(5){animation-delay:1.2s;}
+
+@keyframes movegift{ 
+    0%{opacity:0;transform:translateY(25%);}
+    100%{opacity:1;transform:translateY(0%);} 
 }
 
 
+#method{position:relative;background:#f8f8f8 url(/page/ecology/images/main/bg_method.png) center left no-repeat;background-size:cover;padding-bottom:110px;}
+#method h2{text-align:center;padding-top:55px;line-height:1.2;font-size:40px;font-weight:900;color:#000;position:relative;}
+#method h2:after{content:'';display:block;width:1px;height:42px;background:#000;position:absolute;top:0;left:50%;}
+#method .sub-title{display:block;line-height:1.1;text-align:center;font-size:22px;color:#000;margin-top:10px;}
+#method .bx{padding-top:30px;}
+#method .bx a{display:block;background:#fff;width:calc((100% - 30.2px) / 2);margin:38px 30px 0 0;float:left;padding:27px 30px 10px 30px;transition:all .05s;z-index:1;}
+#method .bx a:before{content:'';display:block;background:#000;z-index:-1;position:absolute;top:0;height:0%;left:0;right:0;transition:all .6s;}
+#method .bx a:nth-child(2n){margin-right:0;}
+#method .bx strong{display:block;border-bottom:2px solid #000;font-size:24px;font-weight:700;color:#000;position:relative;height:56px;line-height:56px;}
+#method .bx strong em{font-size:28px;font-weight:900;}
+#method .bx p{margin-top:20px;line-height:1.5em;min-height:4.5em;font-size:18px;color:#000;word-break:keep-all;}
+#method .bx strong:after{content:'';display:block;width:54px;height:54px;position:absolute;bottom:8px;right:0;background:url(/page/ecology/images/main/icon09.png) center center no-repeat;background-size:cover;transition:all .15s;}
+#method .bx a:nth-child(2) strong:after{background-image:url(/page/ecology/images/main/icon10.png);}
+#method .bx a:nth-child(3) strong:after{background-image:url(/page/ecology/images/main/icon11.png);}
+#method .bx a:nth-child(4) strong:after{background-image:url(/page/ecology/images/main/icon12.png);}
 
-@media (max-width:760px) {
-    #visual{position:relative;padding:75px 0 35px;}
-    #visual .slick{width:calc(100% + 60px)}
-    #visual .slick .slide{height:350px;}
-    #visual .slick .imbx{width:400px;height:234px;top:100px;bottom:auto;right:20px;}
-    #visual .slick .imbx:before{display:none;}
-    #visual .slick .slide .text{top:13px;}
-    #visual .slick .slide .text span{font-size:14px;}
-    #visual .slick .slide .text p{font-size:15px;}
-    #visual .slick .slide .text p strong{font-size:26px;}
-    #visual .slick .slide .text p em{font-size:34px;}
+#method .bx a:hover:before{height:100%;opacity:.8;}
+#method .bx a:hover strong{color:#fff;border-color:#fff;}
+#method .bx a:hover p{color:#fff;}
+#method .bx a:hover strong:after{filter:invert(10) brightness(100);image-rendering:-webkit-optimize-contrast;}
 
-    #visual .bg01{display:none;}
-    #visual .bg02{display:none;}
-    #visual .bg03{width:300px;height:300px;bottom:35px;right:-45px;}
-    #visual .control{left:auto;right:30px;bottom:-15px;} 
+#news{position:relative;background:#f8f8f8;background:linear-gradient(to bottom, #f8f8f8 0%, #fff 100%);}
+#news:before{content:'';display:block;width:1087px;height:632px;position:absolute;bottom:0;right:0;background:url(/page/ecology/images/main/bg_news.png) right bottom no-repeat;background-size:cover;}
+
+#notify{position:relative;width:45%;z-index:1;padding:80px 45px 80px 0;color:#fff;float:left;}
+#notify:before{content:'';display:block;position:absolute;bottom:0;top:0;right:0;width:900px;background:#103043;border-top-right-radius:100px;z-index:-1;}
+#notify h2{padding-left:45px;font-weight:900;font-size:40px;line-height:1.1;position:relative;}
+#notify h2 em{font-size:32px;font-weight:700;} 
+#notify h2:after{content:'';display:block;height:1px;width:28px;background:#fff;position:absolute;top:50%;left:0;}
+#notify > p{line-height:1.4;margin-top:10px;padding-left:45px;word-break:keep-all;font-weight:300;font-size:20px;}
+#notify .more{display:block;position:absolute;right:45px;top:200px;font-size:18px;padding-right:18px;color:#fff;height:30px;line-height:32px;}
+#notify .more:after{content:'';display:block;width:8px;height:8px;border:1px solid #fff;border-width:1px 1px 0 0;transform:rotate(45deg);position:absolute;right:0;top:50%;margin-top:-4px;}
+#notify .bx{padding-top:20px;}
+#notify .bx a{display:block;margin-top:30px;transition:all .15s;position:relative;padding:20px 20px 20px 125px;border:1px solid #516977;color:#fff;}
+#notify .bx a .date{display:block;position:absolute;top:50%;transform:translateY(-50%);text-align:center;width:120px;font-size:18px;left:0;line-height:1.3;}
+#notify .bx a .date strong{display:block;margin-top:0px;font-size:28px;font-weight:900;}
+#notify .bx a p em{display:block;width:67px;height:25px;line-height:27px;color:#fff;font-weight:700;font-size:15px;background:#ff9500;text-align:center;}
+#notify .bx a:nth-child(2n) p em{background:#208d76}
+#notify .bx a:nth-child(3n) p em{background:#9b3aa9}
+#notify .bx a p strong{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:9px;font-size:18px;}
+#notify .bx a p span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px;font-size:16px;font-weight:300;}
+#notify .bx a:hover{background:#fff;color:#000;border-color:#000;}
+
+#sns{position:relative;margin-top:70px;padding:0 0 30px 45px;width:55%;float:left;}
+#sns .title-bx{position:absolute;top:5px;left:40px;z-index:10;}
+
+#sns h2{font-weight:700;font-size:32px;line-height:1.1;position:relative;}
+#sns h2 strong{font-size:40px;font-weight:900;color:#2d84bb;} 
+#sns h2:after{content:'';display:block;height:1px;width:28px;background:#000;position:absolute;top:50%;left:-45px;}
+#sns .title-bx p{line-height:1.4;margin-top:10px;word-break:keep-all;font-weight:300;font-size:20px;color:#000}
+#sns .title-bx > div{margin-top:18px;display:inline-block;padding:10px 25px;background:#e5e5e5;border-radius:25px;}
+#sns .title-bx > div a{display:inline-block;vertical-align:top;border-radius:5px;overflow:hidden;width:25px;}
+#sns .title-bx > div a + a{margin-left:13px}
+#sns .title-bx > div a img{display:block;width:100%;image-rendering:-webkit-optimize-contrast;}
+#sns .title-bx > div a:hover{transform:scale(1.1);}
+
+#sns .bx{position:relative;text-align:right;}
+#sns .bx a{display:inline-block;vertical-align:top;width:calc((100% - 30px) / 2);box-shadow:5px 5px 9px 0px rgba(0,0,0,.2);overflow:hidden;border-top-left-radius:45px;position:relative;margin-bottom:28px;}
+#sns .bx a:first-child{margin-right:26px;position:relative;top:220px;}
+#sns .bx a img{display:block;width:100%;transition:all .2s;image-rendering:-webkit-optimize-contrast;}
+#sns .bx a:hover img{transform:scale(1.1);}
+#sns .bx a .text{background:#1e1e1e;padding:14px 120px 11px 15px;color:#fff;position:relative;}
+#sns .bx a .text strong{display:block;line-height:1.5;word-break:keep-all;max-height:3em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:18px;text-align:left;font-weight:400;}
+#sns .bx a .text span{line-height:1.1;color:#d1d1d1;font-weight:300;position:absolute;right:15px;bottom:20px;}
+#sns .bx a .text:before{content:'';z-index:1;background:#fff;width:60px;height:60px;border-radius:50%;position:absolute;top:-30px;right:15px;}
+#sns .bx a .text:after{content:'';z-index:2;background:url() 0 0 no-repeat;background-size:cover;width:34px;height:34px;border-radius:7px;position:absolute;top:-17px;right:27px;image-rendering:-webkit-optimize-contrast;}
+#sns .bx a.insta .text:after{background-image:url(/page/ecology/images/main/icon13.png);}
+#sns .bx a.utube .text:after{background-image:url(/page/ecology/images/main/icon14.png);}
+#sns .bx a.facebook .text:after{background-image:url(/page/ecology/images/main/icon15.png);}
+#sns .bx a.blog .text:after{background-image:url(/page/ecology/images/main/icon16.png);}
+
+#sns .bx a:hover .text:after{animation:movesns .5s ease 1 both;}
+
+@keyframes movesns{ 
+    0%{transform:scale(1);}
+    50%{transform:scale(1.1);} 
+    100%{transform:scale(1);} 
 }
-
-
-#notify{position:relative;}
-#notify .bx01{float:left;width: calc(100% - 585px);margin-right:25px;}
-#notify .n01{position:relative;border-radius:15px;background:#fff;overflow:hidden;padding: 37px 28px 32px 120px;box-shadow:5px 5px 20px 0px rgba(0,0,0,.05);}
-#notify .n01 h2{position:absolute;top:0;left:0;color:#fff;line-height:1.2;font-weight:700;font-size:24px;padding:21px 48px 37px 21px;background:url(/page/ecology/images/main/notice.png) 100% 100% no-repeat;background-size:230px 230px;}
-#notify .n01 .more{display:block;width:24px;height:24px;background:url(/page/ecology/images/common/sp_foundation.png)-508px -108px no-repeat;background-size:720px 480px;transition:all .1s;position:absolute;right:30px;top:40px;overflow:hidden;text-indent:-9999px;}
-#notify .n01 .more:hover{transform:rotate(180deg);}
-#notify .n01 li{padding-left:15px;position:relative;}
-#notify .n01 li:after{content:'';display:block;width:5px;height:5px;border-radius:50%;background:#8e9091;position:absolute;top:50%;margin-top:-2px;left:0;}
-#notify .n01 li + li{margin-top: 14px;}
-#notify .n01 li a{white-space:nowrap;display:block;line-height:1.1;}
-#notify .n01 li a strong{display:inline-block;vertical-align:top;width:calc(100% - 90px);padding:0 10px 0 0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#231f20;font-weight:400;}
-#notify .n01 li a span{display:inline-block;vertical-align:top;color:#8e9091;font-weight:300;}
-#notify .n01 li a:hover strong,
-#notify .n01 li a:hover span{text-decoration:underline;}
-#notify .n01 li:first-child:after{display:none;}
-#notify .n01 li:first-child{padding-right:90px;margin-bottom:24px;}
-#notify .n01 li:first-child strong{display:block;font-weight:700;font-size:20px;width:100%;margin-bottom:7px;}
-
-#notify .n02{position:relative;margin-top:22px;box-shadow: 5px 5px 20px 0px rgba(0,0,0,.05);background:#fff;padding: 12px 75px 11px 130px;border-radius:22px;position:relative;white-space:nowrap;}
-#notify .n02 h2{position:absolute;top: 13px;line-height:1.1;left:28px;color:#231f20;font-weight:700;font-size:20px;}
-#notify .n02 h2 em{color:#ef7a00}
-#notify .n02 strong{display:inline-block;vertical-align:top;width:calc(100% - 90px);padding:0 10px 0 0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#231f20;font-weight:400;}
-#notify .n02 span{display:inline-block;vertical-align:top;color:#8e9091;font-weight:300;}
-#notify .n02 a:hover strong,
-#notify .n02 a:hover span{text-decoration:underline;}
-#notify .n02 .more{display:block;width:24px;height:24px;background:url(/page/ecology/images/common/sp_foundation.png)-508px -108px no-repeat;background-size:720px 480px;transition:all .1s;position:absolute;right:30px;top:50%;overflow:hidden;text-indent:-9999px;margin-top:-12px;}
-#notify .n02 .more:hover{transform:rotate(180deg);}
-
-#notify .bx02{float:left;width: 560px;position:relative;font-family:'Noto Sans KR';}
-#notify .slick{overflow:hidden;box-shadow:5px 5px 20px 0px rgba(0,0,0,.05);border-radius:20px 20px 20px 20px;-webkit-mask-image:-webkit-radial-gradient(white, black);}
-#notify .control{height:40px;border-radius:20px 0 20px 0;padding:0 13px;position:absolute;right:0;bottom:0;z-index:3;background:#fff;}
-#notify .control a[role="button"]{width:10px;height:14px;vertical-align:middle;overflow:hidden;text-indent:-9999px;display:inline-block;position:relative;transition:all .1s;margin-top:12px;background:url(/page/ecology/images/common/sp_foundation.png)-276px -33px no-repeat;background-size:720px 480px;}
-#notify .control a[role="button"] + a[role="button"]{margin-left:6px;}
-#notify .control a.play{display:none;}
-#notify .control a.next{background-position:-356px -33px;}
-#notify .control a.pause{background-position:-115px -113px;}
-#notify .control a.play{background-position:-195px -113px;}
-#notify .control a[role="button"]:active{transform:scale(.9);}
-#notify .count{display:inline-block;margin:9px 7px 0;vertical-align:middle;color:#8e9091;font-size:16px;line-height:1;font-weight:500;}
-#notify .count em{font-size:18px;color:#231f20;}
-
-
-@media (max-width:1199px) {
-    #notify .bx01{width: calc(100% - 495px);margin-right:20px;}
-    #notify .bx02{width: 475px;}
-
-    #notify .n01{padding:26px 20px 20px 90px;}
-    #notify .n01 h2{font-size:22px;padding:19px 38px 32px 17px;background-size:180px 180px;}
-    #notify .n01 .more{right:20px;top:30px;transform:scale(.9);}
-    #notify .n01 .more:hover{transform:rotate(180deg) scale(.9);}
-    #notify .n01 li{padding-left:12px;font-size:15px;}
-    #notify .n01 li:after{width:3px;height:3px;margin-top:-2px;}
-    #notify .n01 li + li{margin-top:12px;}
-    #notify .n01 li a strong{width:calc(100% - 80px);}
-    #notify .n01 li:first-child{padding-right:80px;margin-bottom:22px;}
-    #notify .n01 li:first-child strong{font-size:18px;margin-bottom:6px;}
-
-    #notify .n02{padding:9px 60px 9px 102px;font-size:15px;}
-    #notify .n02 h2{top:11px;;left:20px;font-size:18px;}
-    #notify .n02 strong{width:calc(100% - 80px);}
-    #notify .n02 .more{transform:scale(.9);right:15px;}
-    #notify .n01 .more:hover{transform:rotate(180deg) scale(.9);}
-}
-
-
-@media (max-width:991px) {
-    #notify .bx01{width:100%;margin-right:0px;float:none;}
-    #notify .bx02{width:100%;margin:22px auto 0;max-width: 470px;float:none;}
-}
-
-
-@media (max-width:760px) {
-    #notify .n01{padding:22px 20px 18px 20px;margin-top:34px;overflow:visible;}
-    #notify .n01 h2{font-size:22px;padding:0;background-size:100px 100px;color:#222;background:none;top:-35px;left:20px;}
-    #notify .n01 h2 br{display:none;}
-    #notify .n01 h2 em{color:#ef7a00;}
-    #notify .n01 .more{right:15px;top:24px;transform:scale(.8);top:-36px}
-    #notify .n01 .more:hover{transform:rotate(180deg) scale(.8);}
-    #notify .n01 li{padding-left:10px;font-size:14px;}
-    #notify .n01 li + li{margin-top:12px;}
-    #notify .n01 li a strong{width:calc(100% - 60px);}
-    #notify .n01 li a span{font-size:12px;margin-top:1px;}
-    #notify .n01 li:first-child{padding:0 0px 0 0px;margin-bottom:15px;}
-    #notify .n01 li:first-child strong{font-size:17px;margin-bottom:6px;padding-top:1px;line-height:1.2;}
-
-    #notify .n02{padding:9px 48px 8px 20px;font-size:14px;margin-top:55px;}
-    #notify .n02 h2{color:#222;font-size:22px;font-weight:700;top:-33px;}
-    #notify .n02 strong{width:calc(100% - 63px);}
-    #notify .n02 span{font-size:12px;margin-top:1px;}
-    #notify .n02 .more{transform:scale(.8);right:15px;}
-    #notify .n02 .more:hover{transform:rotate(180deg) scale(.8);}
-
-    #notify .control{height:36px;border-radius:20px 0 20px 0;}
-    #notify .count{font-size:14px;margin-top:7px;}
-    #notify .count em{font-size:16px;}
-    #notify .control a[role="button"]{margin-top:10px;}
-}
-
-#service{position:relative;padding:60px 30px 57px;}
-#service a{display:block;float:left;width:16.66666666666667%}
-#service a i{display:block;margin:0 auto 13px;width:120px;height:120px;background:#fff;border-radius:50%;box-shadow:0px 0px 23px 0px rgba(0,0,0,.05);position:relative;transition:all .3s;}
-#service a i:after{content:'';display:block;background:url(/page/ecology/images/common/sp_foundation.png)-7px -252px no-repeat;background-size:720px 480px;width:66px;height:56px;transform-origin:50% 50%;position:absolute;top:50%;left:50%;margin:-28px 0 0 -33px;transition:all .3s;image-rendering:-webkit-optimize-contrast;}
-#service a:hover i:after{transform:scale(1.1);image-rendering:-webkit-optimize-contrast;transition:all .3s;}
-#service a:hover i{transform:translateY(-8px);}
-#service a i.v2:after{background-position-x:-87px;}
-#service a i.v3:after{background-position-x:-167px;}
-#service a i.v4:after{background-position-x:-247px;}
-#service a i.v5:after{background-position-x:-327px;}
-#service a i.v6:after{background-position-x:-407px;}
-#service a p{line-height:1.3;font-size:18px;font-weight:500;text-align:center;}
-
-
-@media (max-width:1199px) {
-    #service{padding:45px 20px 42px;}
-    #service a i{margin:0 auto 11px;width:110px;height:110px;}
-    #service a i:after{transform:scale(.9);}
-    #service a:hover i:after{transform:scale(1);}
-    #service a p{font-size:16px;}
-}
-
-@media (max-width:991px) {
-    #service{padding:35px 0px 32px;}
-    #service a i{margin:0 auto 10px;width:100px;height:100px;}
-    #service a i:after{transform:scale(.8);}
-    #service a:hover i:after{transform:scale(.9);}
-    #service a p{font-size:15px;}
-}
-
-@media (max-width:760px) {
-    #service{padding:50px 0px 50px;margin:0 -15px;}
-    #service a{width:33.3333333333%}
-    #service a:nth-of-type(n+4){margin-top:15px;}
-    #service a i{margin:0 auto 9px;width:90px;height:90px;}
-    #service a i:after{transform:scale(.7);}
-    #service a:hover i:after{transform:scale(.8);}
-} 
-
-
-#business{position:relative;}
-#business .inner{padding-left:265px;}
-#business h2{position:absolute;top:100px;left:20px;color:#fff;font-size:20px;z-index:1;line-height:1.3}
-#business h2 em{font-size:26px;font-weight:700;}
-#business h2 strong{font-weight:700;font-size:50px;display:block;margin-top:-2px;}
-#business h2:before{content:'';display:block;z-index:-1;position:absolute;top:-85px;right:-45px;background:url(/page/ecology/images/main/bottom_bg.png) 100% 0% no-repeat;background-size:cover;width:877px;height:615px;}
-#business.aos-animate h2:before{animation:move4 1s .5s ease 1 both;}
-
-#business .more{display:block;width:24px;height:24px;background:url(/page/ecology/images/common/sp_foundation.png) -589px -108px no-repeat;background-size:720px 480px;transition:all .1s;position:absolute;left:20px;top:231px;overflow:hidden;text-indent:-9999px;z-index:3;}
-#business .more:hover{transform:rotate(180deg);}
-
-#business .swrap{padding:20px 0 27px 58px;z-index:2;position:relative;}
-#business .swrap:before{content:'';display:block;position:absolute;width:1160px;background:#ebeef2;border-radius:20px 0 0 20px;position:absolute;top:0;bottom:0;left:165px;}
-#business .swrap a[role="button"]{position:absolute;top:50%;left:5px;;margin-top:-16px;height:32px;width:16px;background:url(/page/ecology/images/common/sp_foundation.png) -352px -104px no-repeat;background-size:720px 480px;overflow:hidden;text-indent:-9999px;transform:scale(1.5);image-rendering:-webkit-optimize-contrast;}
-#business .swrap a[role="button"].next{background-position-x:-432px;right:-47px;left:auto;}
-#business .swrap a[role="button"]:active{transform:scale(1.3);}
-
-#business .slick-slider .slick-list{padding:40px 0px 30px;margin:0 -12px;}
-#business .slide{margin:0 12px;overflow:hidden;border-radius:20px;box-shadow:0px 5px 13px 0px rgba(0,0,0,.05);transition:all .3s;}
-#business .slide:hover{transform:translateY(-15px);box-shadow:0px 5px 13px 0px rgba(0,0,0,.2)}
-#business .slide .text{background:#fff;padding:23px 20px 23px;}
-#business .slide .text .t01{display:block;line-height:1.1;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;color:#8e9091;transition:all .1s;}
-#business .slide .text strong{display:block;line-height:1.1;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;color:#231f20;font-weight:700;font-size:22px;margin-top:6px;transition:all .1s;}
-#business .slide .text .t02{display:block;margin:17px 0 0 -22px;height:30px;line-height:26px;padding:0 0px 0 20px;border:2px solid #edd0b2;border-radius:0px 15px 15px 0;border-left:0;;color:#ef7a00;width:102px;transition:all .1s;}
-#business .slide .text .t02:after{content:'';display:inline-block;background:url(/page/ecology/images/common/sp_foundation.png) -596px -33px no-repeat;background-size:720px 480px;margin-left:10px;vertical-align:-1px;width:8px;height:14px;}
-
-#business .slide:hover .text .t01{color:#231f20;}
-#business .slide:hover .text strong{color:#ef7a00;}
-
-#business .slide:hover .text .t02{background:#ef7a00;color:#fff;border-color:#ef7a00}
-#business .slide:hover .text .t02:after{background-position-x:-516px;}
-
-@keyframes move4{ 
-    0%{transform:translate(-560px,560px)}
-    100%{transform:translate(0)} 
-}
-
-@media (max-width:1199px) {
-    #business .inner{padding-left:220px;}
-    #business h2{top:80px;font-size:18px;line-height:1.4;left:20px;}
-    #business h2 em{font-size:22px;}
-    #business h2 strong{font-size:40px;margin-top:-2px;}
-    #business h2:before{top:-65px;right:-35px;width:700px;height:491px;}
- 
-    #business .more{left:20px;top:200px;transform:scale(.9);}
-    #business .swrap{padding:10px 0 20px 30px;}
-    #business .swrap a[role="button"]{display:none !important;}
-
-    #business .slick{margin-right:-50px;}
-    #business .slick-slider .slick-list{padding:30px 0px 20px;margin:0 -10px;}
-    #business .slide{margin:0 10px;}
-
-    #business .slide .text{padding:20px 17px 20px;}
-    #business .slide .text .t01{font-size:15px;}
-    #business .slide .text strong{font-size:18px;margin-top:5px;}
-    #business .slide .text .t02{margin:13px 0 0 -17px;height:28px;line-height:24px;padding:0 0px 0 17px;border:2px solid #edd0b2;border-left:0;width:95px;font-size:15px;}
-    #business .slide .text .t02:after{transform:scale(.9);}
-
-}
-
-@media (max-width:991px) {
-    #business .inner{padding-left:170px;}
-    #business h2{top:70px;font-size:16px;}
-    #business h2 em{font-size:20px;}
-    #business h2 strong{font-size:32px;margin-top:-2px;}
-    #business h2:before{top:-55px;right:-30px;width:600px;height:421px;}
- 
-    #business .more{left:20px;top:180px;transform:scale(.9);}
-    #business .swrap{padding:5px 0 15px 30px;}
-    #business .swrap a[role="button"]{display:none !important;}
-
-    #business .slick{margin-right:-120px;}
-    #business .slick-slider .slick-list{padding:30px 0px 20px;margin:0 -10px;}
-    #business .slide{margin:0 10px;}
-
-    #business .slide .text{padding:17px 13px 17px;}
-    #business .slide .text .t01{font-size:14px;}
-    #business .slide .text strong{font-size:16px;margin-top:5px;}
-    #business .slide .text .t02{margin:10px 0 0 -13px;height:26px;line-height:22px;padding:0 0px 0 13px;width:90px;font-size:14px;}
-    #business .slide .text .t02:after{transform:scale(.8);margin-left:7px;vertical-align:-1px;}
-    #business .swrap:before{left:120px;}
-}
-
-@media (max-width:760px) {
-    #business .inner{padding:40px 0 0 0px;}
-    #business h2{top:-2px;left:0px;width:100%;text-align:center;}
-    #business h2 .mht{display:none;}
-
-    #business h2 strong{font-size:22px;margin-top:0px;color:#231f20;}
-    #business h2 strong span{color:#ef7a00}
-    #business h2:before{display:none;}
- 
-    #business .more{left:15px;top:140px;transform:scale(.8);background-position:-508px -108px;left:50%;margin-left:48px;top:0px;}
-    #business .swrap{padding:5px 0 15px 20px;}
-
-    #business .slick{margin-right:-70px;}
-    #business .slick-slider .slick-list{padding:30px 0px 20px;margin:0 -87x;}
-    #business .slide{margin:0 7px;box-shadow:0px 3px 8px 0px rgba(0,0,0,.1);}
-
-    #business .slide .text{padding:17px 13px 17px;}
-    #business .slide .text .t01{font-size:14px;}
-    #business .slide .text strong{font-size:16px;margin-top:5px;}
-    #business .slide .text .t02{margin:13px 0 0 -13px;height:26px;line-height:24px;padding:0 0px 0 13px;width:90px;font-size:14px;}
-    #business .slide .text .t02:after{transform:scale(.8);margin-left:7px;vertical-align:-1px;}
-    #business .swrap:before{left:70px;}
-
-    #business .slide:hover{transform:translateY(0);box-shadow:0px 5px 13px 0px rgba(0,0,0,.05);}
-} 
-
-#news{position:relative;margin-top:98px;}
-#news .book{float:left;position:relative;left:0px;width:264px;padding-bottom:90px;z-index:2;margin-right:42px;}
-#news .book:before{content:'';display:block; z-index:-1;width:640px;top:260px;bottom:0px;position:absolute;border-radius:0px 20px 0 0;background:#ebeef2;right:-22px;}
-#news.aos-animate .book:before{animation:move5 1s .9s ease 1 both;}
-#news .book h2{text-align:center;line-height:1.2;margin-bottom:20px;font-weight:700;font-size:30px;}
-#news .book h2 strong{color:#ef7a00;}
-#news .book .thumb{border-radius:20px;overflow:hidden;box-shadow:2px 2px 10px 0px rgba(0,0,0,.1);max-width:264px;}
-#news .book .thumb img{display:block;width:100%;}
-#news .book a{display:block;}
-#news .book p{margin-top:18px;padding-left:22px;position:relative;}
-#news .book p span{display:block;line-height:1.2;margin-bottom:3px;font-size:18px;}
-#news .book p strong{font-weight:700;font-size:23px;line-height:1.2;font-size:26px;}
-#news .book p:after{content:'';right:30px;top:50%;position:absolute;display:block;width:28px;height:22px;margin-top:-13px;background:url(/page/ecology/images/common/sp_foundation.png) -506px -189px no-repeat;background-size:720px 480px;}
-#news .book a:hover p:after{animation:move6 .3s 0s ease-in-out alternate infinite;}
-
-#news .sns{float:left;width:calc(100% - 306px)}
-#news .sns .titbx{position:relative;}
-#news .sns .titbx h2{line-height:1.2;margin-bottom:20px;font-weight:700;font-size:30px;}
-#news .sns .titbx h2 strong{color:#ef7a00;}
-#news .sns .titbx:before{content:'';display:block;height:1px;background:#d9e1e6;top:50%;position:absolute;left:130px;right:175px;}
-#news .sns .titbx > div{position:absolute;right:0;top:50%;margin-top:-15px;}
-#news .sns .titbx > div a{display:inline-block;vertical-align:top;width:31px;height:31px;background:url(/page/ecology/images/common/sp_foundation.png) -25px -185px no-repeat;background-size:720px 480px;overflow:hidden;text-indent:-9999px;}
-#news .sns .titbx > div a.s02{background-position-x:-185px;}
-#news .sns .titbx > div a.s03{background-position-x:-345px;}
-#news .sns .titbx > div a.s04{background:url(/page/gwjob/images/renew/common/sp_new.png) -500px -25px no-repeat;background-size:720px 400px;}
-#news .sns .titbx > div a + a{margin-left:6px;}
-
-#news .sns .sbx{overflow-x:auto;margin:20px -25px 0 0;white-space:nowrap;padding-bottom:10px;-webkit-overflow-scrolling:touch;}
-#news .sns .sbx a{display:inline-block;margin-right:20px;width:280px;white-space:normal;vertical-align:top;}
-#news .sns .sbx a .thumb{overflow:hidden;border-radius:20px;position:relative;height:280px;}
-#news .sns .sbx a .thumb img{display:block;width:100%;height:100%;position:relative;}
-#news .sns .sbx a .thumb i{position:absolute;bottom:10px;right:10px;display:block;width:50px;height:50px;background:url(/page/ecology/images/common/sp_foundation.png) -95px -175px no-repeat;background-size:720px 480px;transform-origin:100% 100%;overflow:hidden;text-indent:-9999px;z-index:2;}
-#news .sns .sbx a .thumb i.s02{background-position-x:-255px;}
-#news .sns .sbx a .thumb i.s03{background-position-x:-415px;}
-#news .sns .sbx a .thumb:after{content:'';display:block;position:absolute;top:0;right:0;left:0;bottom:0;background:linear-gradient(to bottom, transparent 0%, rgba(0,0,0,.3) 70%, rgba(0,0,0,.55) 100%);transition:all .2s;opacity:0;}
-#news .sns .sbx a:hover .thumb:after{opacity:1;}
-#news .sns .sbx a p{line-height:1.5;word-break:keep-all;margin-top:17px;height:7.5em;display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden;}
-#news .sns .sbx a span{display:block;margin-top:20px;line-height:1.2;color:#8e9091;font-size:14px;}
-#news .sns .sbx a:hover p,
-#news .sns .sbx a:hover span{text-decoration:underline;}
-
-@keyframes move5{ 
-    0%{transform:translate(-640px,0)}
-    100%{transform:translate(0)} 
-}
-
-@keyframes move6{ 
-    0%{margin-right:0px;}
-    100%{margin-right:-7px;} 
-}
-
-@media (max-width:1199px) {
-    #news{margin-top:55px;}
-    #news .book{left:0px;width:260px;padding-bottom:40px;margin-right:50px;}
-    #news .book:before{right:-25px;}
-    #news .book h2{margin-bottom:17px;font-size:26px;}
-    #news .book p{margin-top:15px;padding-left:40px;}
-    #news .book p span{font-size:15px;}
-    #news .book p strong{font-size:20px;}
-    #news .book p:after{right:40px;transform:scale(.9);transform-origin:100% 50%;}
-
-    #news .sns{width:calc(100% - 310px)}
-    #news .sns .titbx h2{margin-bottom:17px;font-size:26px;}
-    #news .sns .titbx:before{left:125px;right: 175px;}
-    #news .sns .titbx > div a + a{margin-left:5px;}
-
-    #news .sns .sbx{margin:0px -20px 0 0;}
-    #news .sns .sbx a{margin-right:20px;width:250px;}
-    #news .sns .sbx a .thumb{height:250px;}
-    #news .sns .sbx a .thumb i{transform:scale(.8);}
-    #news .sns .sbx a p{margin-top:15px;height:6em;-webkit-line-clamp:4;font-size:15px;}
-    #news .sns .sbx a span{margin-top:17px;font-size:13px;}
-}
-
-@media (max-width:991px) {
-    #news{margin-top:45px;}
-    #news .book{width:240px;padding-bottom:30px;margin-right:40px;}
-    #news .book:before{right:-20px;}
-    #news .book h2{font-size:22px;}
-    #news .book p{padding-left:40px;}
-    #news .book p span{font-size:14px;}
-    #news .book p strong{font-size:18px;}
-    #news .book p:after{right:35px;transform:scale(.75);}
-
-    #news .sns{width:calc(100% - 280px)}
-    #news .sns .titbx h2{font-size:22px;}
-    #news .sns .titbx:before{left:110px;right: 170px;}
-    #news .sns .titbx > div a + a{margin-left:3px;}
-
-    #news .sns .sbx a{margin-right:17px;width:220px;}
-    #news .sns .sbx a .thumb{height:220px;}
-    #news .sns .sbx a .thumb i{transform:scale(.8);}
-    #news .sns .sbx a span{margin-top:17px;font-size:13px;}
-}
-
-@media (max-width:760px) {
-    #news{margin-top:50px;}
-    #news .book{width:225px;padding-bottom:10px;margin:0 auto 0px;float:none;}
-    #news .book:before{right:-90px;top:200px;border-radius:0;}
-    #news .book h2{font-size:22px;margin-bottom:12px;}
-    #news .book p{padding:0 15px 0 0;text-align:center;}
-    #news .book p span{font-size:14px;}
-    #news .book p strong{font-size:18px;}
-    #news .book p:after{right:20px;transform:scale(.75);}
-
-    #news .sns{width:100%;float:none;margin:48px 0 42px;}
-    #news .sns .titbx h2{margin-bottom:15px;}
-    #news .sns .titbx:before{left:100px;right: 155px;}
-    #news .sns .titbx > div a + a{margin-left:1px;}
-
-    #news .sns .sbx{margin:0px -15px 0 -15px;padding-left:15px;}
-    #news .sns .sbx a{margin-right:11px;width:225px;}
-    #news .sns .sbx a .thumb {height:210px;}
-    #news .sns .sbx a .thumb i{transform:scale(.7);}
-    #news .sns .sbx a p{margin-top:13px;height:4.5em;-webkit-line-clamp:3;font-size:14px;}
-    #news .sns .sbx a span{margin-top:12px;font-size:13px;} 
-} 
-
-
-@media (max-width:390px) {
-    #news .sns .sbx a{width:210px;}
-}    
-
-*/
