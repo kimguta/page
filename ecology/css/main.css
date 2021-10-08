@@ -69,7 +69,6 @@ html{scroll-behavior:smooth;}
 }
 
 
-
 #visual .bg-bx > div a{position:absolute;color:#fff;left:0px;bottom:52px;z-index:50;display:block;}
 #visual .bg-bx > div a strong{display:inline-block;line-height:1.15em;height:1.1em;padding:0 5px 0 15px;font-family:'KoreanYNSJG4-R';font-weight:normal;font-size:30px;text-shadow:2px 2px 3px rgba(0,0,0,.5);border-left:5px solid #fff;transition:color .2s ease;z-index:2;position:relative;word-break:keep-all;}
 #visual .bg-bx > div a p{font-family:'KoreanYNSJG3-R';font-size:18px;line-height:1.5;margin-top:12px;padding-left:20px;word-break:keep-all;padding-right:5px;text-shadow:2px 2px 3px rgba(0,0,0,.5);}
@@ -250,13 +249,13 @@ html{scroll-behavior:smooth;}
 #vr360 .sub-title{display:block;line-height:1.1;text-align:center;font-size:22px;color:#000;margin-top:10px;}
 #vr360 .slick{margin-top:60px;position:relative;z-index:5;}
 #vr360 .slide{position:relative;padding-bottom:90px;}
-#vr360 .slide .img{width:805px;position:relative;}
-#vr360 .slide .img img{display:block;width:100%;}
-#vr360 .slide .img:after{content:'';display:block;background:url(/page/ecology/images/main/ico-360.png) 50% 50% no-repeat;background-size:cover;position:absolute;top:50%;left:50%;margin:-44px 0 0 -85px;width:170px;height:88px;image-rendering:-webkit-optimize-contrast;}
-#vr360 .slide .text{position:absolute;bottom:0;right:0px;border:12px solid transparent;border-image: url(/page/ecology/images/main/patten02.png) 12 repeat;padding:65px 50px 115px 105px;max-width:640px;}
+#vr360 .slide .img{width:805px;position:relative;overflow:hidden;z-index:2;}
+#vr360 .slide .img img{display:block;width:100%;image-rendering:-webkit-optimize-contrast;position:relative;}
+#vr360 .slide .img:after{content:'';z-index:1;display:block;background:url(/page/ecology/images/main/ico-360.png) 50% 50% no-repeat;background-size:cover;position:absolute;top:50%;left:50%;margin:-44px 0 0 -85px;width:170px;height:88px;image-rendering:-webkit-optimize-contrast;}
+#vr360 .slide .text{position:absolute;bottom:0;right:0px;border:12px solid transparent;border-image: url(/page/ecology/images/main/patten02.png) 12 repeat;padding:65px 50px 115px 105px;max-width:640px;z-index:3;}
 #vr360 .slide h3{line-height:1.1;color:#000;font-size:34px;font-family:'KoreanYNSJG2-R';}
 #vr360 .slide h3 strong{display:inline-block;font-size:50px;color:#268ed0;position:relative;}
-#vr360 .slide .text p{line-height:1.7;margin-top:22px;font-size:18px;font-weight:300;color:#000;word-break:keep-all;}
+#vr360 .slide .text p{line-height:1.7;margin-top:22px;font-size:18px;font-weight:300;color:#000;word-break:keep-all}
 #vr360 .slide .text a{font-size:0;color:transparent;display:block;width:47px;height:47px;border:1px solid #535353;position:absolute;bottom:30px;right:30px;transition:all .1s;}
 #vr360 .slide .text a:after{content:'';display:block;height:26px;width:1px;background:#535353;position:absolute;top:50%;left:50%;margin:-13px 0 0 -0.5px;transition:all .1s;}
 #vr360 .slide .text a:before{content:'';display:block;height:1px;width:26px;background:#535353;position:absolute;top:50%;left:50%;margin:-0.5px 0 0 -13px;transition:all .1s;}
@@ -277,8 +276,38 @@ html{scroll-behavior:smooth;}
     100%{opacity:1;transform:translateY(0%);} 
 }
 
+@media (max-width:1399px) {
+    #vr360{padding-bottom:100px;}
+    #vr360 h2{padding-top:45px;font-size:30px;}
+    #vr360 h2:after{height:32px;}
+    #vr360 .sub-title{font-size:18px;margin-top:8px;}
+    #vr360 .slick{margin-top:40px;}
+    #vr360 .slide{padding-bottom:35px;}
+    #vr360 .slide .img{width:550px;height:350px;min-width:55%;}
+    #vr360 .slide .img img{height:350px;left:50%;transform:translateX(-50%);width:auto;}
+    #vr360 .slide .img:after{transform:scale(.7);}
+    #vr360 .slide .text{border:8px solid transparent;border-image: url(/page/ecology/images/main/patten02.png) 8 repeat;padding:45px 20px 50px 55px;max-width:48%;}
+    #vr360 .slide h3{font-size:26px;}
+    #vr360 .slide h3 strong{font-size:38px;}
+    #vr360 .slide .text p{margin-top:15px;font-size:16px;}
+    #vr360 .slide .text a{transform:scale(.8);transform-origin:100% 100%;right:20px;bottom:20px;}
+    #vr360 .slide h3 strong:after{transform:scale(.8);transform-origin:0% 100%;right:-120px;}
+    #vr360 .control{right:300px;bottom:270px;transform:scale(.8);}  
+}
 
-#gwbr{position:relative;margin-top:-90px;border-radius:300px;text-align:center;background:url(/page/ecology/images/main/bg_gwbr.jpg) center center repeat;background-size:cover;background-attachment:fixed;padding-bottom:33px;}
+
+
+@media (max-width:991px) {
+   
+}
+
+
+@media (max-width:760px) {
+   
+}
+
+
+#gwbr{position:relative;margin-top:-90px;border-radius:300px;text-align:center;background:url(/page/ecology/images/main/bg_gwbr.jpg) center center repeat;background-size:cover;background-attachment:fixed;padding-bottom:33px;overflow:hidden;}
 #gwbr h2{text-align:center;padding-top:55px;line-height:1.2;font-size:40px;font-weight:900;color:#fff;position:relative;text-shadow:2px 2px 5px rgba(0,0,0,.9);z-index:2;}
 #gwbr h2:after{content:'';display:block;width:1px;height:42px;background:#fff;position:absolute;top:0;left:50%;box-shadow:0px 0px 1px 0px rgba(0,0,0,.5);}
 #gwbr h2:before{content:'';display:block;background:url(/page/ecology/images/main/bg_title01.png) 50% 50% no-repeat;background-size:cover;width:1200px;height:450px;position:absolute;top:0px;left:50%;margin-left:-600px;z-index:-1;}
