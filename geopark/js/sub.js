@@ -41,5 +41,15 @@ $(function() {
 	$('#breadcrumb .box ul li:last-child a').on('focusout', function () {
 		$(this).parents('.box').children('.open').focus();
 	});
+
+	$('.delicious .tab a').on('click', function (e) {
+		e.preventDefault();
+		$('.delicious .tab a').removeClass('active');
+		$(this).addClass('active');
+
+		var idx = $(this).index();
+		$('.delicious .view-bx > div').hide();
+		$('.delicious .view-bx > div').eq(idx).show();
+   });
 	
 });
