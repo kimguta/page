@@ -84,7 +84,7 @@
   #visual-bx .btn_box{transform:scale(.73);margin-top:3px;}
 }
 
-#sub .title-bx{position:relative;padding:40px 0 33px;margin-bottom:45px;border-bottom:2px solid #d5d5d5;}
+#sub .title-bx{position:relative;padding:40px 0 33px;margin-bottom:45px;border-bottom:2px solid #d5d5d5;z-index:30;}
 #sub .title-bx h3{font-family:'KoreanYNSJG5-R';font-size:2.6rem;color:#313131;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center;}
 
 @media (max-width:1399px) {
@@ -99,7 +99,7 @@
 
 
 @media (max-width:760px) {
-  #sub .title-bx{padding:25px 0 18px;margin-bottom:22px;}
+  #sub .title-bx{padding:22px 0 17px;margin-bottom:22px;}
   #sub .title-bx h3{font-size:2.4rem;}
 }
 
@@ -1090,5 +1090,205 @@ input[type="text"]:focus::placeholder{color:transparent}
 
 @media (max-width:400px) {
   .delicious .view-bx > div{margin-left:calc(100% - 350px);}
-  
+}
+
+
+/*360도 보기*/
+.vr360{position:relative;height:1050px;padding-bottom:30px;margin:-45px 0 -70px;z-index:2;}
+.vr360:before{content:'';display:block;width:1920px;position:absolute;top:0;bottom:0;margin-left:-960px;left:50%;z-index:-1;background:url(/page/geopark/images/sub/bg_vr360.jpg) 50% 100% no-repeat;background-size:cover;background-attachment:fixed;}
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+	.vr360:before{background-attachment:inherit}
+} 
+
+.vr360 h4{position:absolute;top:90px;left:50%;transform:translateX(-50%);font-family:'KoreanYNSJG5-R';font-size:57px;line-height:1.4;color:#060f83;white-space:nowrap;font-weight:normal;text-shadow:-1px -1px 3px rgba(255,255,255,.3), 1px -1px 3px rgba(255,255,255,.3), -1px 1px 3px #fff, 1px 1px 1px rgba(255,255,255,.3);z-index:10;}
+.vr360 h4 span{display:block;position:relative;color:#000;font-size:26px;font-weight:normal;font-family:'KoreanYNSJG4-R';padding-left:182px;}
+.vr360 h4 span em{position:absolute;display:block;color:#055cac;font-size:75px;font-family:'KoreanYNSJG5-R';left:0;top:50%;transform:translateY(-50%);}
+.vr360 h4 strong{display:block;font-weight:normal;margin-top:11px;}
+.vr360 h4 img{width:440px;display:block;image-rendering:-webkit-optimize-contrastt;margin:33px auto 0;}
+
+.vr360 .slick-wrap{position:absolute;top:60px;left:-40px;width:100%;max-width:700px;}
+.vr360 .slick-wrap:before{content:'';display:block;width:1080px;height:1080px;position:absolute;top:-190px;left:170px;z-index:-1;background:url(/page/geopark/images/sub/vr360_03.png) 50% 50% no-repeat;background-size:cover;}
+
+.vr360 .slick-wrap .slick-01{position:relative;z-index:30;}
+.vr360 .slick-wrap .slick-list{padding:55px 0px 55px 30px;}
+.vr360 .slick-01 .slide{display:block;height:150px;padding:0 0px 0px 100px;margin:50px 0 0;position:relative;transition:all .8s;}
+.vr360 .slick-01 .slide[aria-hidden="true"]{opacity:0;}
+
+.vr360 .slick-01 .img-bx{width:150px;position:relative;box-shadow:3px 3px 5px 3px rgba(0,0,0,.5);border-radius:50%;transition:all .2s;display:block;}
+.vr360 .slick-01 .img-bx em{display:block;position:absolute;transition:all .1s;background:url(/page/ecology/images/common/sp_ecology02.png) -7px -204px no-repeat;background-size:520px 835px;width:30px;height:32px;font-size:0;top:-15px;left:50%;margin-left:-15px;z-index:5;image-rendering:-webkit-optimize-contrastt;}
+.vr360 .slick-01 .img-bx em.ty02{background-position-x:-47px;}
+.vr360 .slick-01 .img-bx em.ty03{background-position-x:-87px;}
+.vr360 .slick-01 .img-bx img{display:block;width:100%;image-rendering:-webkit-optimize-contrastt;border-radius:50%;transition:all .2s;z-index:2;position:relative;}
+.vr360 .slick-01 .slide span{display:block;position:absolute;top:50%;left:270px;transform:translateY(-50%);white-space:nowrap;font-family:'KoreanYNSJG4-R';text-shadow:-1px -1px 3px rgba(255,255,255,.3), 1px -1px 3px rgba(255,255,255,.3), -1px 1px 3px #fff, 1px 1px 1px rgba(255,255,255,.3);color:#000;font-size:24px;transition:all .5s;}
+.vr360 .slick-01 .slide:hover{z-index:5;}
+.vr360 .slick-01 .slide:hover .img-bx{transform:scale(1.5);}
+.vr360 .slick-01 .slide:hover .img-bx img{border:5px solid #fff;}
+.vr360 .slick-01 .slide:hover .img-bx em{opacity:0;}
+.vr360 .slick-01 .slide:hover span{left:340px}
+
+.vr360 .slick-01 .slide .img-bx:after{content:'';display:block;z-index:1;position:absolute;top:1px;bottom:1px;left:1px;right:1px;background:#ff8a00;border-radius:50%;transition:all .2s;opacity:0;}
+.vr360 .slick-01 .slide .img-bx:before{content:'';display:block;z-index:1;position:absolute;top:1px;bottom:1px;left:1px;right:1px;background:#ff8a00;border-radius:50%;opacity:0;}
+.vr360 .slick-01 .slide:hover .img-bx:after{animation:round02 .5s .5s infinite alternate ease-out;}
+.vr360 .slick-01 .slide:hover .img-bx:before{animation:round01 .5s infinite alternate ease-out;}
+
+.vr360 .slick-01 .slick-current + .slide{padding-left:60px}
+.vr360 .slick-01 .slick-current + .slide span{left:230px;}
+.vr360 .slick-01 .slick-current + .slide:hover span{left:300px}
+
+.vr360 .slick-01 .slick-current + .slide + .slide{padding-left:120px;}
+.vr360 .slick-01 .slick-current + .slide + .slide span{left:290px;}
+.vr360 .slick-01 .slick-current + .slide + .slide:hover span{left:360px}
+
+.vr360 .slick-01 .slick-current + .slide + .slide + .slide{padding-left:230px;margin-top:15px;}
+.vr360 .slick-01 .slick-current + .slide + .slide + .slide span{left:400px;}
+.vr360 .slick-01 .slick-current + .slide + .slide + .slide:hover span{left:470px}
+
+.vr360 .slick-wrap .control{position:absolute;z-index:50;left:80px;bottom:0;text-align:center;}
+.vr360 .slick-wrap .control span{display:block;line-height:1.1;color:#fff;margin-top:20px;font-weight:300;text-shadow:0px 0px 3px rgba(0,0,0,.5);white-space:nowrap;}
+.vr360 .slick-wrap .control a{display:inline-block;text-align:center;width:54px;height:54px;vertical-align:top;background:url(/page/ecology/images/common/sp_ecology02.png) -14px -254px no-repeat;background-size:520px 835px;font-size:0;}
+.vr360 .slick-wrap .control a.next{margin-left:2px;background-position-x:-93px;}
+.vr360 .slick-wrap .control a.slick-disabled{opacity:.35;pointer-events:none;}
+.vr360 .slick-wrap .control a:active{transform:scale(.9);}
+
+@keyframes round01{ 
+  0%{opacity:0;top:0px;bottom:0px;left:0px;right:0px;}
+  100%{opacity:.4;top:-30px;bottom:-30px;left:-30px;right:-30px;}
+}
+
+@keyframes round02{ 
+  0%{opacity:0;top:0px;bottom:0px;left:0px;right:0px;}
+  100%{opacity:1;top:-10px;bottom:-10px;left:-10px;right:-10px;}
+}
+
+.vr360 .view-slide{position:absolute;top:0;bottom:0;left:-300px;right:-300px;z-index:30;background:rgba(0,0,0,.8);display:none;}
+.vr360 .view-slide .item{max-width:1090px;margin:90px auto 0;position:relative;animation:rise01 .4s .2s 1 both ease-out;display:none;}
+.vr360 .view-slide .item h5{font-family:'KoreanYNSJG4-R';text-align:center;color:#fff;font-size:48px;line-height:1.1;margin-bottom:17px;}
+.vr360 .view-slide .item .close{display:block;position:absolute;top:10px;right:100px;width:32px;height:32px;background:url(/page/ecology/images/common/sp_ecology02.png) -324px -243px no-repeat;background-size:520px 835px;font-size:0;z-index:3;}
+.vr360 .view-slide .item .slick{position:relative;padding:0 100px;}
+.vr360 .view-slide .item .slick .slick-arrow{width:78px;height:78px;display:block;position:absolute;left:0;top:50%;margin-top:-39px;font-size:0;background:url(/page/ecology/images/common/sp_ecology02.png) -161px -241px no-repeat;background-size:520px 835px;}
+.vr360 .view-slide .item .slick .slick-next{left:auto;right:0;background-position-x:-241px;}
+.vr360 .view-slide .item .slick .slick-arrow:active{transform:scale(.9);}
+
+@keyframes rise01{ 
+  0%{opacity:0;transform:translateY(-20%);}
+  100%{opacity:1;transform:translate(0%);}
+}
+
+.vr360 .map-wrap{width:866px;position:absolute;right:50px;top:200px;}
+.vr360 .map-wrap img{display:block;width:100%;position:relative;}
+.vr360 .map-wrap .btn-bx{position:absolute;top:0;left:0;right:0;bottom:0;z-index:3;}
+.vr360 .map-wrap a{display:block;color:#000;line-height:1.1;text-align:center;white-space:nowrap;font-family:'KoreanYNSJG4-R';font-size:15px;position:absolute;}
+.vr360 .map-wrap a:before{content:'';display:block;margin:0 auto 3px;width:55px;height:61px;background:url(/page/ecology/images/common/sp_ecology02.png) -135px -170px no-repeat;background-size:520px 835px;transition:all 0s ease-out;image-rendering:-webkit-optimize-contrastt;}
+.vr360 .map-wrap a.ty02:before{background-position-x:-214px;}
+.vr360 .map-wrap a.ty03:before{background-position-x:-295px;}
+.vr360 .map-wrap a:hover{text-decoration:none;}
+.vr360 .map-wrap a:hover:before{transform:rotateY(360deg);transition-duration:.7s;}
+
+.vr360 .map-wrap a.spot-01{left: 34px;top: 210px;}
+.vr360 .map-wrap a.spot-02{left: 81px;top: 246px;}
+.vr360 .map-wrap a.spot-03{left: 221px;top: 314px;}
+.vr360 .map-wrap a.spot-04{left: 367px;top: 229px;}
+.vr360 .map-wrap a.spot-05{left: 458px;top: 202px;}
+.vr360 .map-wrap a.spot-06{left: 547px;top: 188px;}
+.vr360 .map-wrap a.spot-07{left: 546px;top: 270px;}
+.vr360 .map-wrap a.spot-08{left: 622px;top: 419px;}
+.vr360 .map-wrap a.spot-09{left: 704px;top: -1px;color:#fff;}
+.vr360 .map-wrap a.spot-10{left: 780px;top: 136px;color:#fff;}
+
+.vr360 .view-video{position:absolute;top:0;bottom:0;left:-300px;right:-300px;z-index:30;background:rgba(0,0,0,.8);display:none;}
+.vr360 .view-video .item{max-width:900px;margin:90px auto 0;position:relative;animation:rise01 .4s .2s 1 both ease-out;display:none;}
+.vr360 .view-video .item h5{font-family:'KoreanYNSJG4-R';text-align:center;color:#fff;font-size:48px;line-height:1.1;margin-bottom:17px;}
+.vr360 .view-video .item .close{display:block;position:absolute;top:10px;right:0px;width:32px;height:32px;background:url(/page/ecology/images/common/sp_ecology02.png) -324px -243px no-repeat;background-size:520px 835px;font-size:0;z-index:3;}
+.vr360 .view-video .item .video{position:relative;padding-top:56.23%;}
+.vr360 .view-video .item .video iframe{position:absolute;z-index:1;top:0;left:0;width:100%;height:100%;}
+
+
+@media (max-width:1399px) {
+  .vr360{height:860px;padding-bottom:20px;margin:-30px 0 -45px;}
+  .vr360:before{width:1400px;margin-left:-700px;}
+
+  .vr360 h4{top:70px;left:50%;font-size:42px;}
+  .vr360 h4 span{font-size:22px;padding-left:162px;}
+  .vr360 h4 span em{font-size:65px;}
+  .vr360 h4 strong{margin-top:10px;}
+  .vr360 h4 img{width:340px;margin:23px auto 0;}
+
+  .vr360 .slick-wrap{transform:scale(.85);transform-origin:0% 0%;top:45px;left:-77px;width:100%;}
+
+  .vr360 .view-slide .item{margin:50px auto 0;max-width:980px;}
+  .vr360 .view-slide .item h5{font-size:40px;}
+  .vr360 .view-slide .item .close{transform:scale(.8);transform-origin:0% 50%;right:70px;}
+  .vr360 .view-slide .item .slick{padding:0 70px;}
+  .vr360 .view-slide .item .slick .slick-arrow{transform:scale(.6);left:-10px;}
+  .vr360 .view-slide .item .slick .slick-next{right:-10px;left:auto;}
+  .vr360 .view-slide .item .slick .slick-arrow:active{transform:scale(.55);}
+ 
+  .vr360 .map-wrap{right:0px;top:150px;transform:scale(.85);transform-origin:100% 0%;}
+  .vr360 .view-video .item{margin:50px auto 0;max-width:900px;}
+  .vr360 .view-video .item h5{font-size:40px;}
+  .vr360 .view-video .item .close{transform:scale(.8);transform-origin:0% 50%;right:0px;}
+}  
+
+@media (max-width:991px) {
+  .vr360{height:740px;padding-bottom:20px;margin:-25px 0 -45px;}
+  .vr360:before{width:1000px;margin-left:-500px;}
+
+  .vr360 h4{top:50px;font-size:36px;text-align:right;}
+  .vr360 h4 span{font-size:20px;padding-left:135px;text-align:left;}
+  .vr360 h4 span em{font-size:55px;}
+  .vr360 h4 img{width:280px;margin:23px auto 0;display:inline-block}
+
+  .vr360 .slick-wrap{transform:scale(.7);transform-origin:0% 0%;top:35px;left:-75px;}
+
+  .vr360 .view-slide{left:-20px;right:-20px;}
+  .vr360 .view-slide .item{margin:50px auto 0;}
+  .vr360 .view-slide .item h5{font-size:36px;}
+  .vr360 .view-slide .item .close{transform:scale(.7);right:50px;}
+  .vr360 .view-slide .item .slick{padding:0 60px;}
+  .vr360 .view-slide .item .slick .slick-arrow{transform:scale(.5);left:-10px;}
+  .vr360 .view-slide .item .slick .slick-next{right:-10px;left:auto;}
+  .vr360 .view-slide .item .slick .slick-arrow:active{transform:scale(.45);}
+ 
+  .vr360 .map-wrap{right:-25px;top:150px;transform:scale(.7);}
+
+  .vr360 .view-video{left:-20px;right:-20px;}
+  .vr360 .view-video .item{margin:50px auto 0;max-width:900px;padding:0 20px;}
+  .vr360 .view-video .item h5{font-size:36px;}
+  .vr360 .view-video .item .close{transform:scale(.7);right:10px;}
+} 
+
+
+@media (max-width:760px) {
+  .vr360{height: 790px;margin:-22px 0 -35px;}
+  .vr360:before{width:800px;margin-left:-400px;}
+
+  .vr360 h4{top: 385px;font-size: 27px;left: auto;right: -10px;transform: none;}
+  .vr360 h4 span{font-size:16px;padding-left: 0px;text-align: right;padding-top: 51px;}
+  .vr360 h4 span em{font-size: 40px;transform: none;top: 0;left: auto;right: 0;}
+  .vr360 h4 img{width: 220px;margin: 16px auto 0;display:inline-block;}
+
+  .vr360 .slick-wrap{transform:scale(.62);transform-origin:0% 0%;top: 240px;left:-60px;max-width:200%;width:200%;}
+  .vr360 .slick-wrap .control{left:auto;right:40px;bottom:60px;text-align:right;}
+
+  .vr360 .view-slide{left:-15px;right:-15px;}
+  .vr360 .view-slide .item{margin:40px auto 0;}
+  .vr360 .view-slide .item h5{font-size:26px;}
+  .vr360 .view-slide .item .close{transform:scale(.6);right:0px;}
+  .vr360 .view-slide .item .slick{padding:0 5px;}
+  .vr360 .view-slide .item .slick .slick-arrow{transform:scale(.4);left:auto;top:auto;margin-top:0;bottom:-70px;right:30px;}
+  .vr360 .view-slide .item .slick .slick-next{right:-10px;left:auto;}
+  .vr360 .view-slide .item .slick .slick-arrow:active{transform:scale(.35);}
+ 
+  .vr360 .map-wrap{right:-25px;top: 20px;transform:scale(.49);}
+  .vr360 .view-video{left:-15px;right:-15px;}
+  .vr360 .view-video .item{margin:40px auto 0;max-width:900px;padding:0 5px;}
+  .vr360 .view-video .item h5{font-size:26px;}
+  .vr360 .view-video .item .close{transform:scale(.6);right:10px;}
+  .vr360 .view-video .item .video{padding-top:100%;}
+} 
+
+@media (max-width:400px) {
+  .vr360 .map-wrap{transform:scale(.45);}
+  .vr360 .slick-wrap .control{right:25px;}
+
 }
