@@ -65,5 +65,13 @@ $(function() {
 			$(this).parents('.libx').find('input').prop('checked', true);
 		} 
 	});
-	
+	$('.event_tab .tab_list').on('click', function (e) {
+		e.preventDefault();
+		$(this).toggleClass('on');
+	})
+	$('.event_tab .tab_list li').on('click', function (e) {
+		e.preventDefault();
+		$(this).parent().find('.tab_item.active').attr('class','tab_item');
+		$(this).addClass('active');
+	})
 });
