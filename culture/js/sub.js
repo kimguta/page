@@ -96,4 +96,36 @@ $(function() {
 			$('.district_search .tab_list li:first-child').addClass('on');
 		}
 	}
+   $(".district_search .map_area .map_box a").on("click",function(){
+         var idx = $(".district_search .map_area .map_box a").index(this);
+		$(".district_search .map_area .map_box a").removeClass('active');
+		$(this).addClass('active');
+        $(".district_search .tab_list .tab_item.active").attr('class','tab_item'); 
+        $(".district_search .tab_list .tab_item").eq(idx+1).addClass('active'); 
+       return false;
+	});
+	$(".district_search .tab_list .tab_item").on("click",function(){
+		var idx = $(".district_search .tab_list .tab_item").index(this);
+		$(".district_search .tab_list .tab_item").removeClass('active');
+		$(this).addClass('active');
+		$(".district_search .map_area .map_box a.active").removeClass('active'); 
+		$(".district_search .map_area .map_box a").eq(idx-1).addClass('active'); 
+		return false;
+   });
+   $(".reference_area .tab_list .list_item").on("click",function(){
+		var idx = $(".reference_area .tab_list .list_item").index(this);
+		$(".reference_area .tab_list .list_item.active").removeClass('active');
+		$(this).addClass('active');
+		$(".reference_area .reference_list_box.active").removeClass('active'); 
+		$(".reference_area .reference_list_box").eq(idx).addClass('active'); 
+		return false;
+	});
+	$(".media_area .tab_list .list_item").on("click",function(){
+		var idx = $(".media_area .tab_list .list_item").index(this);
+		$(".media_area .tab_list .list_item.active").removeClass('active');
+		$(this).addClass('active');
+		$(".media_area .media_list_box.active").removeClass('active'); 
+		$(".media_area .media_list_box").eq(idx).addClass('active'); 
+		return false;
+	});
 });
