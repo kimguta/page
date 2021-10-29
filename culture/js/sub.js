@@ -65,13 +65,35 @@ $(function() {
 			$(this).parents('.libx').find('input').prop('checked', true);
 		} 
 	});
-	$('.event_tab .tab_list').on('click', function (e) {
+	$('.event_search .tab_list').on('click', function (e) {
 		e.preventDefault();
 		$(this).toggleClass('on');
 	})
-	$('.event_tab .tab_list li').on('click', function (e) {
+	$('.event_search .tab_list li').on('click', function (e) {
 		e.preventDefault();
+		$(this).parent().find('.tab_item.on').attr('class','tab_item');
 		$(this).parent().find('.tab_item.active').attr('class','tab_item');
 		$(this).addClass('active');
 	})
+
+	if($(window).width() < 760) { 
+		if($(".event_search .tab_list").hasClass("active") === false) {
+			$('.event_search .tab_list li:first-child').addClass('on');
+		}
+	}
+	$('.district_search .tab_list').on('click', function (e) {
+		e.preventDefault();
+		$(this).toggleClass('on');
+	})
+	$('.district_search .tab_list li').on('click', function (e) {
+		e.preventDefault();
+		$(this).parent().find('.tab_item.on').attr('class','tab_item');
+		$(this).parent().find('.tab_item.active').attr('class','tab_item');
+		$(this).addClass('active');
+	})
+	if($(window).width() < 760) { 
+		if($(".district_search .tab_list").hasClass("active") === false) {
+			$('.district_search .tab_list li:first-child').addClass('on');
+		}
+	}
 });
