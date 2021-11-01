@@ -137,7 +137,7 @@ $(function() {
 			}
 		});
 
-	}	
+	};	
 
 	$('#btn_top').on('click', function (e) {
 		e.preventDefault();
