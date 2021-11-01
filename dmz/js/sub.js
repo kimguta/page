@@ -61,7 +61,7 @@ $(function() {
         slidesToScroll: 1,
         pauseOnHover: false,
 		swipeToSlide: true,
-        speed: 600,
+        speed: 300,
 		variableWidth: true,
     });
 	
