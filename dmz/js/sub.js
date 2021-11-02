@@ -64,5 +64,20 @@ $(function() {
         speed: 300,
 		variableWidth: true,
     });
+
+	$('.archive-search .search-btn').on('click', function (e) {
+		e.preventDefault();
+		if ($(this).hasClass('active')) {
+			$(this).removeClass('active');
+			$(this).text('상세검색');
+			$('.archive-search .sort-bx').stop().slideUp(600, 'linear');
+
+		} else{
+			$(this).addClass('active');
+			$(this).text('키워드검색');
+			$('.archive-search .sort-bx').stop().slideDown(600, 'linear');
+		}
+	});
+
 	
 });
