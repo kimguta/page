@@ -129,7 +129,7 @@ $(function() {
 		responsive: [{
             breakpoint: 761,
             settings: {
-				slidesToShow: 3,
+				slidesToShow: 4,
             }
         }]
 	});
