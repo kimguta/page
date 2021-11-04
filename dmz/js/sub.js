@@ -226,7 +226,7 @@ $(function() {
 
 		var windowWidth = $(window).width();
 		if (windowWidth < 761) {
-			var Val2 = 7
+			var Val2 = 5
 		} else if (windowWidth > 480 && windowWidth < 1400) {
 			var Val2 = 10
 		} else {
