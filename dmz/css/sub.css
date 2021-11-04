@@ -653,21 +653,36 @@ span.listLv:before,
 .vr-map{position:fixed;z-index:200;top:50px;right:30px;}
 .vr-map .close{display:block;font-size:0;width:47px;height:47px;background: url(/page/dmz/images/sub/icon_map01.png) 0 0 no-repeat;background-size:cover;image-rendering: -webkit-optimize-contrast;transition:all .2s;position:absolute;right:-17px;top:-17px;}
 .vr-map .close.active{transform:rotate(45deg);}
-.vr-map .slick{padding:2px;background:#fff;width:366px;height:266px;overflow:hidden;transition:all .5s ease-out;}
-.vr-map .slick.active{height:0;width:0;}
+.vr-map .slick-bx{overflow:hidden;transition:all .5s ease-out;width:366px;height:266px;position:relative;}
+.vr-map .slick{padding:2px;background:#fff;width:100%;height:100%;}
+.vr-map .slick-bx.active{height:0;width:0;}
 .vr-map .slick .slide{position:relative;}
 .vr-map .slick .slide img{display:block;}
+.vr-map .pin{position:absolute;top:0;left:0;width:24px;height:24px;display:flex;align-items:center;justify-content:center;background:#ff9e21;font-size:0;transition:all .2s;border-radius:50%;}
+.vr-map .pin:after{content:'';background: url(/page/dmz/images/sub/pin01.png) 0 0 no-repeat;background-size:cover;image-rendering: -webkit-optimize-contrast;width:12px;height:14px;}
+.vr-map .pin.active{transform-origin:50% 100%;background:#ff553a;pointer-events:none;animation:map-move1 1s infinite ease-in;}
+.vr-map .pin:hover{background:#ff553a;filter:saturate(3);}
+.vr-map .control{z-index:10;position:absolute;bottom:15px;right:15px;height:20px;}
+.vr-map .control a{display:inline-block;font-size:0;width:24px;height:24px;background:#ff9e21;vertical-align:top;border-radius:50%;position:relative;}
+.vr-map .control a:hover{background:#ff553a;filter:saturate(3);}
+.vr-map .control a:after{content:'';display:block;width:6px;height:6px;border:2px solid #fff;border-width:2px 2px 0 0;transform:rotate(-135deg);position:absolute;top:50%;left:50%;margin:-4px 0 0 -3px;}
+.vr-map .control a.next:after{transform:rotate(45deg);margin:-4px 0 0 -5px;}
 
+
+@keyframes map-move1{ 
+  0%{transform:rotateY(180deg) scale(1.3);}
+  100%{transform:rotateY(0deg) scale(1.3);}
+}
 
 @media (max-width:1399px) {
 
   #viewer .infoHotspotTitle a{font-size:16px;height:32px;line-height:34px;padding:0 20px 0 30px;}
   #viewer .infoHotspotTitle a:after{transform:scale(.9);transform-origin:0% 50%;}
-
   .vr-navi .slide{width:130px;margin-right:7px;}
-
   .vr-navi .show-hide{right:10px;top:19px;}
   .vr-navi .show-hide:after{font-size:16px;;}
+
+  .vr-map{top:30px;right:20px;transform:scale(.85);transform-origin:100% 0%;}
 }
 
 
@@ -682,6 +697,8 @@ span.listLv:before,
   .vr-navi .slick{margin-top:10px;}
   .vr-navi .show-hide{top:16px;}
   .vr-navi .show-hide:after{font-size:13px;}
+
+  .vr-map{top:15px;right:15px;transform:scale(.75);}
 }
 
 /*아카이브*/
