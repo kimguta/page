@@ -181,4 +181,19 @@ $(function() {
 		}
 	});
 
+
+	$('.vr-map .slick').slick({
+		autoplay: false,
+		arrows: true,
+		dots: false,
+		prevArrow: $('.vr-map .prev'),
+        nextArrow: $('.vr-map .next'),
+		accessibility: true,
+		infinite: true,
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		pauseOnHover: false,
+		speed: 700,
+	});
+
 });
