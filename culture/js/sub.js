@@ -112,6 +112,10 @@ $(function() {
 		$(".district_search .map_area .map_box a").eq(idx-1).addClass('active'); 
 		return false;
    });
+   $(".district_search .tab_list .tab_item:first-child").on("click",function(){
+		$(".district_search .map_area .map_box a.active").removeClass('active'); 
+		return false;
+	});
    $(".reference_area .tab_list .list_item").on("click",function(){
 		var idx = $(".reference_area .tab_list .list_item").index(this);
 		$(".reference_area .tab_list .list_item.active").removeClass('active');
@@ -126,6 +130,11 @@ $(function() {
 		$(this).addClass('active');
 		$(".media_area .media_list_box.active").removeClass('active'); 
 		$(".media_area .media_list_box").eq(idx).addClass('active'); 
+		return false;
+	});
+	$(".result .total li").on("click",function(){
+		$(".result .total li.active").removeClass('active');
+		$(this).addClass('active');
 		return false;
 	});
 });
