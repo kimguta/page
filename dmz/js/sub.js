@@ -294,7 +294,6 @@ $(function() {
 	
 	$('.all-guide .btn-bx .out').on('click', function (e) {
 		e.preventDefault();
-		$('.all-guide .map .outside');
 		if ($(this).hasClass('active')) {
 			$(this).removeClass('active');
 			$('.all-guide .map img').css('display','block');
@@ -320,6 +319,47 @@ $(function() {
 		slidesToScroll: 1,
 		pauseOnHover: false,
 		speed: 700,
+	});
+
+
+	$('.calendar td a').on('click', function (e) {
+		e.preventDefault();
+		if ($(this).parent('td').hasClass('active')) {
+			$(this).parent('td').removeClass('active');
+		}
+		else{
+			$('.calendar td').removeClass('active');
+			$(this).parent('td').addClass('active');
+		}
+	});
+
+
+	$('.calendar-bx .sort-tab a').on('click', function (e) {
+		e.preventDefault();
+
+		if ($(this).hasClass('all')) {
+			$('.calendar td p').show();
+		}
+		else if ($(this).hasClass('ty01')){
+			$('.calendar td p').hide();
+			$('.calendar td p.ty01').show();
+		}
+		else if ($(this).hasClass('ty02')){
+			$('.calendar td p').hide();
+			$('.calendar td p.ty02').show();
+		}
+		else if ($(this).hasClass('ty03')){
+			$('.calendar td p').hide();
+			$('.calendar td p.ty03').show();
+		}
+		else if ($(this).hasClass('ty04')){
+			$('.calendar td p').hide();
+			$('.calendar td p.ty04').show();
+		}
+		else if ($(this).hasClass('ty05')){
+			$('.calendar td p').hide();
+			$('.calendar td p.ty05').show();
+		}
 	});
 
 });

@@ -1912,28 +1912,28 @@ p.rsvp.v2:after{background-image:url(/page/dmz/images/common/icon28.png);}
 
 @media (max-width:1399px) {
   .rental{padding-top:10px;}
-.rental .item{display:block;}
-.rental .slick{width:100%;margin:0 !important;}
+  .rental .item{display:block;}
+  .rental .slick{width:100%;margin:0 !important;}
 
-.rental .slick .slick-arrow{left:20px;transform:scale(.9);transform-origin:0% 50%;}
-.rental .slick .slick-arrow.next{right:20px;transform-origin:100% 50%;}
+  .rental .slick .slick-arrow{left:20px;transform:scale(.9);transform-origin:0% 50%;}
+  .rental .slick .slick-arrow.next{right:20px;transform-origin:100% 50%;}
 
-.rental .text{width:100%;padding:5px 0 30px 0px !important;display:block;}
-.rental h4{height:62px;line-height:60px;margin-bottom:25px;font-size:28px;}
-.rental dl dt{min-width:92px;font-size:16px;}
-.rental dl dt:after{top:10px;}
-.rental dl dd{padding-left:10px;font-size:16px;margin-bottom:5px;}
+  .rental .text{width:100%;padding:5px 0 30px 0px !important;display:block;}
+  .rental h4{height:62px;line-height:60px;margin-bottom:25px;font-size:28px;}
+  .rental dl dt{min-width:92px;font-size:16px;}
+  .rental dl dt:after{top:10px;}
+  .rental dl dd{padding-left:10px;font-size:16px;margin-bottom:5px;}
 }
 
 @media (max-width:991px) {
-.rental{padding-top:7px;}
-.rental .slick{width:auto;margin:0 -20px 0!important;}
+  .rental{padding-top:7px;}
+  .rental .slick{width:auto;margin:0 -20px 0!important;}
 
-.rental .text{padding:5px 0 25px 0px !important;}
-.rental h4{height:56px;line-height:54px;margin-bottom:20px;font-size:26px;}
-.rental dl dt{min-width:87px;font-size:15px;}
-.rental dl dt:after{top:9px;}
-.rental dl dd{padding-left:10px;font-size:15px;margin-bottom:5px;}
+  .rental .text{padding:5px 0 25px 0px !important;}
+  .rental h4{height:56px;line-height:54px;margin-bottom:20px;font-size:26px;}
+  .rental dl dt{min-width:87px;font-size:15px;}
+  .rental dl dt:after{top:9px;}
+  .rental dl dd{padding-left:10px;font-size:15px;margin-bottom:5px;}
 }
 
 
@@ -1948,7 +1948,50 @@ p.rsvp.v2:after{background-image:url(/page/dmz/images/common/icon28.png);}
   .rental dl dt{min-width:83px;font-size:14px;}
   .rental dl dt:after{top:8px;}
   .rental dl dd{padding-left:10px;font-size:14px;margin-bottom:5px;}
-  }
+}
+
+/*예약 캘린더*/
+.calendar-bx .calendar{width:100%;table-layout:fixed;margin-top:25px;}
+.calendar-bx .calendar th{padding:12px 0;color:#000;font-weight:500;font-size:18px;border-bottom:2px solid #000;}
+.calendar-bx .calendar th:first-child{color:#ff0c0c}
+.calendar-bx .calendar th:last-child{color:#003bc0}
+.calendar-bx .calendar td{height:140px;border:1px solid #dcdcdc;border-width:0px 1px 1px;position:relative;}
+.calendar-bx .calendar td span{display:block;line-height:1.1;margin-bottom:10px;}
+.calendar-bx .calendar td:first-child span{color:#ff0c0c}
+.calendar-bx .calendar td:last-child span{color:#003bc0}
+.calendar-bx .calendar td a{display:block;height:100%;padding:11px 5px 10px 16px;position:relative;transition:all .1s;}
+.calendar-bx .calendar td a:hover{text-decoration:none;background:#fafafa;}
+.calendar-bx .calendar td.active a{background:#f6f6f6;z-index:2;}
+.calendar-bx .calendar td a:before{content:'';display:block;position:absolute;top:-1px;bottom:-1px;left:-1px;right:-1px;opacity:0;border:1px solid #000;transition:all .1s;}
+.calendar-bx .calendar td.active a:before{opacity:1;}
+
+.calendar-bx .calendar p{position:relative;line-height:1.1;padding-left:18px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.calendar-bx .calendar p:after{content:'';display:block;height:13px;width:13px;border-radius:50%;position:absolute;top:50%;margin-top:-6.5px;left:0;background:#ff9a00;}
+.calendar-bx .calendar p + p{margin-top:6px;}
+.calendar-bx .calendar p.ty02:after{background:#0068b7}
+.calendar-bx .calendar p.ty03:after{background:#ec2828}
+.calendar-bx .calendar p.ty04:after{background:#009944}
+.calendar-bx .calendar p.ty05:after{background:#8957a1}
+
+.calendar-bx .sort-tab{margin-bottom:30px;}
+.calendar-bx .sort-tab a{display:inline-block;vertical-align:top;padding:0 30px;position:relative;height:46px;line-height:46px;font-weight:500;font-size:18px;}
+.calendar-bx .sort-tab a.all{background:#000;color:#fff;text-align:center;width:105px;}
+.calendar-bx .sort-tab a:hover{text-decoration:none;background:#f1f1f1;}
+.calendar-bx .sort-tab a.all:hover{background:#555}
+.calendar-bx .sort-tab a.active{pointer-events:none;}
+.calendar-bx .sort-tab a:before{content:'';display:inline-block;width:20px;height:20px;border-radius:50%;margin-right:5px;vertical-align:middle;background:#ff9a00;margin-top:-4px;}
+.calendar-bx .sort-tab a.ty02:before{background:#0068b7}
+.calendar-bx .sort-tab a.ty03:before{background:#ec2828}
+.calendar-bx .sort-tab a.ty04:before{background:#009944}
+.calendar-bx .sort-tab a.ty05:before{background:#8957a1}
+.calendar-bx .sort-tab a.all:before{display:none;}
+
+.calendar-bx .date-tab{position:relative;padding:17px 50px;text-align:center;}
+.calendar-bx .date-tab span{display:block;line-height:1.1;color:#000;font-size:40px;font-weight:900;}
+.calendar-bx .date-tab .btn{display:block;position:absolute;background: url(/page/dmz/images/common/icon32.png) center center no-repeat;width:13px;height:20px;background-size:cover;position:absolute;top:50%;margin-top:-10px;left:0;font-size:0;}
+.calendar-bx .date-tab .btn.next{right:0;left:auto;background-image:url(/page/dmz/images/common/icon33.png);}
+.calendar-bx .date-tab .btn:active{transform:scale(.9);}
+
 
 .titLv2 + .pgraph{margin-left:30px;}
 
