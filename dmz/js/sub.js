@@ -249,8 +249,7 @@ $(function() {
 
 	$('.question .ask').on('click', function (e) {
 		e.preventDefault();
-		
-
+	
 		if ($(this).hasClass('active')) {
 			$(this).next('.answer').hide();
 			$(this).removeClass('active');
@@ -290,6 +289,23 @@ $(function() {
 		slidesToScroll: 1,
 		pauseOnHover: false,
 		speed: 700,
+	});
+
+	
+	$('.all-guide .btn-bx .out').on('click', function (e) {
+		e.preventDefault();
+		$('.all-guide .map .outside');
+		if ($(this).hasClass('active')) {
+			$(this).removeClass('active');
+			$('.all-guide .map img').css('display','block');
+			$('.all-guide .map .outside').css('display','none');
+		}
+		else{
+			$(this).addClass('active');
+			$('.question .answer').hide();
+			$('.all-guide .map img').css('display','none');
+			$('.all-guide .map .outside').css('display','block');
+		}
 	});
 
 });
