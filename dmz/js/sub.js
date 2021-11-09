@@ -362,4 +362,14 @@ $(function() {
 		}
 	});
 
+
+	$('.per-exhibition .tab a').on('click', function (e) {
+		e.preventDefault();
+		var idx = $(this).index();
+		$('.per-exhibition .tab a').removeClass('active');
+		$(this).addClass('active');
+		$('.per-exhibition .view > div').hide();
+		$('.per-exhibition .view > div').eq(idx).show();
+	});
+
 });
