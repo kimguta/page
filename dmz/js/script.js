@@ -57,11 +57,12 @@ $(function() {
 	
 	$('#header .btn_sitemap').on('click', function (e) {
         e.preventDefault();
+
 		if ($(this).hasClass('active')) {
 			$(this).removeClass('active');
 			$('#sitemap').hide().removeClass('active');
 			$('.mask_mobile').hide();
-			$('#header').removeClass('active-m');
+			$('#header').removeClass('active-m');	
 		} else{
 			$(this).addClass('active');
 			$('#sitemap').show().addClass('active');
@@ -94,6 +95,71 @@ $(function() {
 		}
 	});
 
+	var css_test_idx = 20;
+
+	$('#header .btn_search').on('click', function (e) {
+        e.preventDefault();
+
+		
+		$('#search').css('z-index', css_test_idx);
+        css_test_idx++;
+
+		if ($(this).hasClass('active')) {
+			$(this).removeClass('active');
+			$('#search').hide();
+			$('#header').removeClass('active-s');
+		} else{
+			$('#search').show();
+			$(this).addClass('active');
+			$('#header').addClass('active-s');
+		}
+	});
+
+	$('#search .close').on('click', function (e) {
+        e.preventDefault();
+		$('#search').hide();
+		$('#header .btn_search').removeClass('active');
+		$('#header').removeClass('active-s');
+	});
+
+
+	$('#side_menu a.ty01').on('click', function (e) {
+        e.preventDefault();
+
+		$('#pro-video').css('z-index', css_test_idx);
+        css_test_idx++;
+
+		if ($(this).hasClass('active')) {
+			$(this).removeClass('active');
+			$('#pro-video').hide();
+			$('#header').removeClass('active-v');
+		} else{
+			$('#pro-video').show();
+			$(this).addClass('active');
+			$('#header').addClass('active-v');
+		}
+	});
+
+	$('#pro-video .close').on('click', function (e) {
+        e.preventDefault();
+		$('#pro-video').hide();
+		$('#side_menu a.ty01').removeClass('active');
+		$('#header').removeClass('active-v');
+	});
+
+
+	/*
+	$('#search').on('mouseover', function (e) {
+        e.preventDefault();
+		$('#search').fadeOut(100);
+		$('#header').removeClass('active-s');
+	});
+
+	$('#search .wrap').on('mouseover', function (e) {
+        e.stopPropagation();
+	});
+
+	*/
 	if($(window).width() < 1400) { 
 		$('#sitemap').swipe({
 			swipeStatus:function(event, phase, direction, distance, duration, fingers, fingerData) {
