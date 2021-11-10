@@ -372,4 +372,44 @@ $(function() {
 		$('.per-exhibition .view > div').eq(idx).show();
 	});
 
+	$('.per-exhibition .slick').on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
+        var i = (currentSlide ? currentSlide : 0) + 1;
+		if ($(window).width() > 1399) {
+			if ( i > 1) {
+				var i = Math.ceil(i / 4);
+			}
+			var count = Math.ceil(slick.slideCount / 4);
+		}
+		else{
+			var count = slick.slideCount
+		}
+        $('.per-exhibition .count').html('<em>' + i + '</em> / ' + count);
+    });
+
+
+	$('.per-exhibition .slick').slick({
+		autoplay: false,
+		arrows: true,
+		dots: false,
+		prevArrow: $('.per-exhibition .prev'),
+        nextArrow: $('.per-exhibition .next'),
+		accessibility: true,
+		infinite: true,
+		slidesToShow: 4,
+		slidesToScroll: 4,
+		pauseOnHover: false,
+		speed: 700,
+		responsive: [{
+            breakpoint: 1400,
+            settings: {
+                slidesToShow: 1,
+				slidesToScroll: 1,
+                variableWidth: true,
+                swipeToSlide: true,
+				speed: 350,
+				centerMode: true,
+            }
+        }]
+	});
+
 });
