@@ -412,4 +412,38 @@ $(function() {
         }]
 	});
 
+
+	$('.edu-view .slick').slick({
+		autoplay: false,
+		arrows: false,
+		dots: true,
+		accessibility: true,
+		infinite: true,
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		pauseOnHover: false,
+		speed: 500,
+	});
+
+
+	$('.edu-ex a').on('click', function (e) {
+		e.preventDefault();
+		var idx = $(this).index();
+		$('.edu-view').show();
+		$('.edu-view > div').eq(idx).show();
+		$('.edu-view .slick').slick('setPosition');
+		setTimeout(function(){
+			var Offset = $('#sub_container').offset();
+			$('html, body').animate({
+				scrollTop : Offset.top 
+			}, 300);
+		},10);
+	});
+
+
+	$('.edu-view .close').on('click', function (e) {
+		e.preventDefault();
+		$('.edu-view, .edu-view > div').hide();	
+	});
+
 });
