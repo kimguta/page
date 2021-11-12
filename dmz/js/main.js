@@ -3,8 +3,8 @@ $(function() {
     setTimeout(function() {
         AOS.init({
             easing: 'ease',
-            duration: 1200,
-            delay: 200,
+            duration: 900,
+            delay: 350,
             once: true,
             offset: 50,
         });
