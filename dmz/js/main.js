@@ -170,7 +170,7 @@ $(function() {
         swipeToSlide: true,
         variableWidth: true,
         responsive: [{
-            breakpoint: 1400,
+            breakpoint: 761,
             settings: {
                 slidesToShow: 1,
 				slidesToScroll: 1,
