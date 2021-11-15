@@ -259,6 +259,13 @@ $(function() {
         vertical: true,
         verticalSwiping:true,
         speed: 500,
+        responsive: [{
+            breakpoint: 761,
+            settings: {
+                verticalSwiping:false, 
+                
+            }
+        }]
     });
 
 
