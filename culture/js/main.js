@@ -23,5 +23,15 @@ $(function() {
         $(this).parents('.serach_link').find('.link_item').removeClass('active');
         $(this).addClass('active');
     });
+    $('#archive-bx .notice_area .slick').slick({
+        autoplay: true,
+        arrows: false,
+        dots: false,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        vertical:true,
+        verticalSwiping:true,
+
+    });
 });
 
