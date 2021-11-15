@@ -6,7 +6,8 @@ $(function() {
             duration: 900,
             delay: 350,
             once: true,
-            offset: 100,
+            offset: 50,
+            
         });
      }, 200);
 
@@ -90,47 +91,50 @@ $(function() {
     });
 
 
+    if ($(window).width() > 1399) {
 
-    $('#guide-news, #exhibit, #archive, #sns').on('wheel', function (e) {
-        e.preventDefault();
-        var Offset1 = $(this).prev('section').offset();
-        var Offset2 = $(this).next('section').offset();
+        
+        $('#guide-news, #exhibit, #archive, #sns').on('wheel', function (e) {
+            e.preventDefault();
+            var Offset1 = $(this).prev('section').offset();
+            var Offset2 = $(this).next('section').offset();
 
-        if (e.originalEvent.deltaY < 0) {
-            $('html, body').stop().animate({scrollTop : Offset1.top - 95}, 500);
-            
-        } 
-        else if (e.originalEvent.deltaY > 0) {
-            $('html, body').stop().animate({scrollTop : Offset2.top - 95}, 500);
-            
-        }
-    });
+            if (e.originalEvent.deltaY < 0) {
+                $('html, body').stop().animate({scrollTop : Offset1.top - 95}, 500);
+                
+            } 
+            else if (e.originalEvent.deltaY > 0) {
+                $('html, body').stop().animate({scrollTop : Offset2.top - 95}, 500);
+                
+            }
+        });
 
-    $('#visual').on('wheel', function (e) {
-        e.preventDefault();
-        var Offset1 = $(this).next('section').offset();
+        $('#visual').on('wheel', function (e) {
+            e.preventDefault();
+            var Offset1 = $(this).next('section').offset();
 
-        if (e.originalEvent.deltaY > 0) {
-            $('html, body').stop().animate({scrollTop : Offset1.top - 130}, 500);
-            
-        } 
-    });
+            if (e.originalEvent.deltaY > 0) {
+                $('html, body').stop().animate({scrollTop : Offset1.top - 130}, 500);
+                
+            } 
+        });
 
 
-    $('#tour').on('wheel', function (e) {
-        e.preventDefault();
-        var Offset1 = $(this).prev('section').offset();
-        if (e.originalEvent.deltaY < 0) {
-            $('html, body').stop().animate({scrollTop : Offset1.top - 95}, 500);
-            
-        }
-        else if (e.originalEvent.deltaY > 0) {
-            
-            $('html, body').stop().animate({scrollTop : $(document).height()}, 1000);
-            
-        } 
-    });
+        $('#tour').on('wheel', function (e) {
+            e.preventDefault();
+            var Offset1 = $(this).prev('section').offset();
+            if (e.originalEvent.deltaY < 0) {
+                $('html, body').stop().animate({scrollTop : Offset1.top - 95}, 500);
+                
+            }
+            else if (e.originalEvent.deltaY > 0) {
+                
+                $('html, body').stop().animate({scrollTop : $(document).height()}, 1000);
+                
+            } 
+        });
   
+    }
 
     $('#exhibit .slick').on('init reInit', function (event, slick, currentSlide, nextSlide) {
         $('#exhibit .slick-current').addClass('active');
@@ -183,6 +187,17 @@ $(function() {
         slidesToScroll: 3,
         pauseOnHover: false,
         speed: 900,
+        responsive: [{
+            breakpoint: 1400,
+            settings: {
+                slidesToShow: 1,
+				slidesToScroll: 1,
+                variableWidth: true,
+                swipeToSlide: true,
+				speed: 500,
+				centerMode: true,
+            }
+        }]
     });
 
 
@@ -199,6 +214,17 @@ $(function() {
         swipeToSlide: true,
         pauseOnHover: false,
         speed: 500,
+        responsive: [{
+            breakpoint: 1400,
+            settings: {
+                slidesToShow: 1,
+				slidesToScroll: 1,
+                variableWidth: true,
+                swipeToSlide: true,
+				speed: 500,
+				centerMode: true,
+            }
+        }]
     });
 
     $('#tour .slick').on('afterChange', function (event, slick, currentSlide, nextSlide) {
