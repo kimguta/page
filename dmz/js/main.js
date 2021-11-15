@@ -169,6 +169,17 @@ $(function() {
         centerMode: true,
         swipeToSlide: true,
         variableWidth: true,
+        responsive: [{
+            breakpoint: 1400,
+            settings: {
+                slidesToShow: 1,
+				slidesToScroll: 1,
+                variableWidth: true,
+                swipeToSlide: true,
+				speed: 500,
+				centerMode: true,
+            }
+        }]
     });
 
 
