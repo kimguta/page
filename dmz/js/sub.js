@@ -446,4 +446,38 @@ $(function() {
 		$('.edu-view, .edu-view > div').hide();	
 	});
 
+
+	$('.outdoor_exhibition .tab a').on('click', function (e) {
+		e.preventDefault();
+		$('.outdoor_exhibition .tab a').removeClass('active');
+		$(this).addClass('active');
+		$('.outdoor_exhibition .view').addClass('active');
+		/*
+		var windowWidth = $(window).width();
+		if (windowWidth > 1399) {
+			setTimeout(function(){
+				var Offset = $('.outdoor_exhibition .tab').position();
+				$('html, body').animate({
+					scrollTop : Offset.top + 600
+				}, 300);
+			},100);
+		} 
+		*/
+		var idx = $(this).index();
+		$('.outdoor_exhibition .view > div').hide();
+		$('.outdoor_exhibition .view > div').eq(idx).show();
+		var windowWidth = $(window).width();
+		if (windowWidth < 761) {
+			var Val2 = 5
+		} else if (windowWidth > 480 && windowWidth < 1400) {
+			var Val2 = 10
+		} else {
+			var Val2 = 20
+		}
+
+
+		var Offset2 = $(this).position().left + ($(this).width() / 2);
+		$('.outdoor_exhibition .tab i').stop().animate({'left':Offset2}, 600,'easeOutCubic');
+	});
+
 });
