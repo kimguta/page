@@ -487,4 +487,20 @@ $(function() {
 		$('.outdoor_exhibition .tab i').stop().animate({'left':Offset2}, 600,'easeOutCubic');
 	});
 
+
+	$('.sp_exhibition .slick').slick({
+		autoplay: false,
+		arrows: true,
+		dots: false,
+		prevArrow: '<a role="button" class="slick-prev prev arrow" href="#">이전</a>',
+        nextArrow: '<a role="button" class="slick-next next arrow" href="#">다음</a>',
+		accessibility: true,
+		infinite: true,
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		pauseOnHover: false,
+		speed: 700,
+		adaptiveHeight: true,
+	});
+
 });
