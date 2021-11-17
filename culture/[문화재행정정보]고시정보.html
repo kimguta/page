@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>고시정보 목록 | 강원도 문화재DB 아카이브 시스템 &gt; 문화재 행정정보 &gt; 고시정보</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+    <meta name="Author" content="강원도 문화재DB 아카이브 시스템">
+    <meta name="_csrf_parameter" content="_csrf">
+    <meta name="_csrf_header" content="X-XSRF-TOKEN">
+    <meta name="_csrf" content="1f23e8d0-b977-460a-aba4-adf635b9fddc">
+    <link rel="stylesheet" href="/page/common/css/fonts.css">
+    <link rel="stylesheet" href="/page/common/css/common.css">
+    <link rel="stylesheet" href="/page/common/css/common_style.css">
+    <link rel="stylesheet" href="/page/common/css/print.css" media="print">
+    <link rel="stylesheet" href="/page/common/css/jquery-ui.min.css">
+    <link rel="stylesheet" href="/page/common/css/jquery.bxslider.min.css">
+    <link rel="stylesheet" href="/page/culture/css/style.css">
+    <link rel="stylesheet" href="/page/culture/css/sub.css">
+    <!-- loading bar style - add by YJ.SON :: 2021-07-08 -->
+    <style>
+        .loader {
+            border: 10px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 10px solid #0e77e0;
+            border-bottom: 10px solid #0e77e0;
+            width: 50px;
+            height: 50px;
+            -webkit-animation: spin 2s linear infinite;
+            animation: spin 2s linear infinite;
+            top: 50%;
+            position: relative;
+            margin: auto;
+            z-index: 10000;
+        }
+
+        @-webkit-keyframes spin {
+            0% {
+                -webkit-transform: rotate(0deg);
+            }
+
+            100% {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loader-back {
+            display: block;
+            position: fixed;
+            top: 0;
+            background: #fff;
+            width: 100%;
+            height: 100%;
+            opacity: 0.8;
+            text-align: center;
+            vertical-align: middle;
+            z-index: 10000;
+        }
+    </style>
+    <script src="/page/common/js/jquery-1.12.2.min.js"></script>
+    <script src="/page/common/js/jquery.easing.1.3.min.js"></script>
+    <script src="/page/common/js/jquery-ui.min.js"></script>
+    <script src="/page/common/js/puble_common.js"></script>
+    <script src="/page/common/js/jquery.bxslider.js"></script>
+    <script src="/page/common/js/slick.min.js"></script>
+    <script src="/page/common/js/common.js"></script>
+    <script src="/page/common/js/foto.min.js"></script>
+    <script src="/page/common/js/jquery.touchSwipe.min.js"></script>
+    <script src="/page/culture/js/script.js"></script>
+    <script src="/page/culture/js/sub.js"></script>
+    <script>
+        // csrf token - add by YJ.SON :: 2021-05-16
+        var csrf_token = $("meta[name='_csrf']").attr("content");
+        var csrf_token_header = $("meta[name='_csrf_header']").attr("content");
+        $(document).ready(function () {
+            var pageUrl = '/gwchdb/administration/notification';
+            var pageTitle = '고시정보';
+            if ('/gwchdb/administration/notification') {
+                $.ajax({
+                    type: 'POST'
+                    , url: '/egf/insertPageHit'
+                    , data: {
+                        'pageUrl': pageUrl
+                        , 'pageTitle': pageTitle
+                    }
+                    , dataType: 'json'
+                    , beforeSend: function (xhr) {
+                        // add csrf token - add by YJ.SON :: 2021-05-16
+                        xhr.setRequestHeader(csrf_token_header, csrf_token);
+                    }
+                });
+            }
+        });
+
+        var initBody;
+        function beforePrint() {
+            initBody = document.body.innerHTML;
+            document.body.innerHTML = document.getElementById('content').outerHTML;
+        }
+
+        function afterPrint() {
+            document.body.innerHTML = initBody;
+        }
+
+        // print
+        function fnPrint() {
+            alert("크롬, 오페라 브라우저 사용 시 배경이 안나오는 경우, 인쇄창 컬러 항목 아래 +설정 더보기 > 배경 그래픽에 체크 후 다시 시도해주세요.");
+
+            var inbody = document.body.innerHTML; // 이전 body 영역 저장
+
+            window.onbeforeprint = beforePrint;
+            window.onafterprint = afterPrint;
+            window.print();
+        }
+
+        // sns 공유 (기능) - 2021-08-20 jylee
+        function fnShareSNS(sns) {
+            // 공유하는 페이지 <title> 태그 가져오기
+            var strTitle = document.title;
+            var strURL = window.location.href;
+
+            var snsArray = new Array();
+            // encodeURIComponent() : HTML 특수개체 문자 처리방식
+            snsArray['twitter'] = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(strTitle) + "&url=" + encodeURIComponent(strURL);
+            snsArray['facebook'] = "http://www.facebook.com/share.php?u=" + encodeURIComponent(strURL);
+            snsArray['kakao'] = "http://story.kakao.com/share?url=" + encodeURIComponent(strURL);
+            snsArray['naver'] = "http://share.naver.com/web/shareView.nhn?url=" + encodeURIComponent(strURL) + "&title=" + encodeURIComponent(strTitle);
+            // 새 창으로 snsArray 링크 열기
+            window.open(snsArray[sns], "SNS 공유하기 새창", "width=800, height=700, toolbar=no, menubar=no, scrollbars=no, resizable=yes");
+        }
+
+        // start loading bar - add by YJ.SON :: 2021-07-08
+        function fnStartLoading() {
+            $("body").append('<div class="loader-back"><div class="loader" id="div-main-loader"></div></div>');
+        }
+
+        // end loading bar - add by YJ.SON :: 2021-07-08
+        function fnEndLoading() {
+            $(".loader-back").remove();
+        }
+
+        // form validate with document element id
+        function fnFormValidate(_id) {
+            var error = false;
+            var forms = document.querySelectorAll("#" + _id);
+            $.each(forms[0], function (i, e) {
+                if ($(this).attr("required") !== undefined && $(this).attr("placeholder") !== undefined) {
+                    var value = $.trim($(this).val());
+                    var placeholder = $(this).attr("placeholder");
+
+                    // check field value
+                    if (value == "") {
+                        fnMessagePopup(placeholder);
+                        $(this).focus();
+                        error = true;
+                        return false;
+                    }
+
+                    // check for number
+                    if (value != "" && placeholder.indexOf("숫자") > 0) {
+                        if (!$.isNumeric($(this).val())) {
+                            fnMessagePopup("숫자만 가능합니다.");
+                            $(this).val("");
+                            $(this).focus();
+                            error = true;
+                            return false;
+                        }
+                    }
+                }
+            });
+
+            return error;
+        }
+    </script>
+</head>
+
+<body>
+    <div id="wrapper">
+        <ul class="skipnav">
+            <li><a href="#A-Gnb-focus">주메뉴 바로가기</a></li>
+            <li><a href="#A-Contents-focus">본문 바로가기</a></li>
+            <li><a href="#A-Ftr-focus">푸터 바로가기</a></li>
+        </ul>
+        <div class="page-wrap">
+            <header id="header" class="">
+                <h1>
+                    <a href="/gwchdb">
+                        <img src="/page/culture/images/common/logo01.png" alt="강원문화유산아카이브">
+                    </a>
+                </h1>
+                <div class="inner">
+                    <a href="#A-Gnb-focus" id="A-Gnb-focus" class="blind">주메뉴 시작</a>
+                    <div id="gnb_pc">
+                        <nav class="clearfix">
+                            <ul class="depth_01">
+                                <!-- one depth and block 재미있는 기획코너 -->
+                                <li>
+                                    <h2>
+                                        <a href="/gwchdb/map" target="_self">
+                                            <span>문화유산<em>MAP</em></span>
+                                        </a>
+                                    </h2>
+                                    <ul class="depth_02" style="display: none;">
+                                        <li>
+                                            <h3 class="culture-map-menu">
+                                                지도로 만나보는<br>
+                                                스마트한 강원도<br>
+                                                문화유산지도 !
+                                            </h3>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <!-- one depth and block 재미있는 기획코너 -->
+                                <li>
+                                    <h2>
+                                        <a href="/gwchdb/gwheritage" target="_self">
+                                            <span>강원도문화유산</span>
+                                        </a>
+                                    </h2>
+                                    <!-- two depth -->
+                                    <ul class="depth_02" style="display: none;">
+                                        <li>
+                                            <h3>
+                                                <a href="/gwchdb/gwheritage/type" target="_self"
+                                                    style="background: url('/page/portal/images/common/MNCH0003.jpg')no-repeat;"
+                                                    class="MNCH0003">
+                                                    <span>종목별 검색</span>
+                                                </a>
+                                            </h3>
+                                        </li>
+                                        <li>
+                                            <h3>
+                                                <a href="/gwchdb/gwheritage/area" target="_self"
+                                                    style="background: url('/page/portal/images/common/MNCH0004.jpg')no-repeat;"
+                                                    class="MNCH0004">
+                                                    <span>지역별 검색</span>
+                                                </a>
+                                            </h3>
+                                        </li>
+                                        <li>
+                                            <h3>
+                                                <a href="/gwchdb/gwheritage/detail" target="_self"
+                                                    style="background: url('/page/portal/images/common/MNCH0005.jpg')no-repeat;"
+                                                    class="MNCH0005">
+                                                    <span>조건검색</span>
+                                                </a>
+                                            </h3>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <!-- one depth and block 재미있는 기획코너 -->
+                                <li>
+                                    <h2>
+                                        <a href="/gwchdb/archive" target="_self">
+                                            <span>디지털 아카이브</span>
+                                        </a>
+                                    </h2>
+                                    <!-- two depth -->
+                                    <ul class="depth_02" style="display: none;">
+                                        <li>
+                                            <h3>
+                                                <a href="/gwchdb/archive/image" target="_self"
+                                                    style="background: url('/page/portal/images/common/MNCH0007.jpg')no-repeat;"
+                                                    class="MNCH0007">
+                                                    <span>이미지</span>
+                                                </a>
+                                            </h3>
+                                        </li>
+                                        <li>
+                                            <h3>
+                                                <a href="/gwchdb/archive/video" target="_self"
+                                                    style="background: url('/page/portal/images/common/MNCH0008.jpg')no-repeat;"
+                                                    class="MNCH0008">
+                                                    <span>동영상</span>
+                                                </a>
+                                            </h3>
+                                        </li>
+                                        <li>
+                                            <h3>
+                                                <a href="/gwchdb/archive/audio" target="_self"
+                                                    style="background: url('/page/portal/images/common/MNCH0009.jpg')no-repeat;"
+                                                    class="MNCH0009">
+                                                    <span>오디오</span>
+                                                </a>
+                                            </h3>
+                                        </li>
+                                        <li>
+                                            <h3>
+                                                <a href="/gwchdb/archive/book" target="_self"
+                                                    style="background: url('/page/portal/images/common/MNCH0010.jpg')no-repeat;"
+                                                    class="MNCH0010">
+                                                    <span>도서</span>
+                                                </a>
+                                            </h3>
+                                        </li>
+                                        <li>
+                                            <h3>
+                                                <a href="/gwchdb/archive/drawing" target="_self"
+                                                    style="background: url('/page/portal/images/common/MNCH0011.jpg')no-repeat;"
+                                                    class="MNCH0011">
+                                                    <span>도면</span>
+                                                </a>
+                                            </h3>
+                                        </li>
+                                        <li>
+                                            <h3>
+                                                <a href="/gwchdb/archive/3d" target="_self"
+                                                    style="background: url('/page/portal/images/common/MNCH0012.jpg')no-repeat;"
+                                                    class="MNCH0012">
+                                                    <span>3D</span>
+                                                </a>
+                                            </h3>
+                                        </li>
+
+                                    </ul>
+
+                                </li>
+                                <!-- one depth and block 재미있는 기획코너 -->
+                                <li>
+                                    <h2>
+                                        <a href="/gwchdb/administration" target="_self">
+                                            <span>문화재 행정정보</span>
+                                        </a>
+                                    </h2>
+                                    <!-- two depth -->
+                                    <ul class="depth_02" style="display: none;">
+                                        <li>
+                                            <h3>
+                                                <a href="/gwchdb/administration/legalinfo" target="_self"
+                                                    style="background: url('/page/portal/images/common/MNCH0014.jpg')no-repeat;"
+                                                    class="MNCH0014">
+                                                    <span>법규정보</span>
+                                                </a>
+                                            </h3>
+                                        </li>
+                                        <li>
+                                            <h3>
+                                                <a href="/gwchdb/administration/notification" target="_self"
+                                                    style="background: url('/page/portal/images/common/MNCH0015.jpg')no-repeat;"
+                                                    class="MNCH0015">
+                                                    <span>고시정보</span>
+                                                </a>
+                                            </h3>
+                                        </li>
+                                        <li>
+                                            <h3>
+                                                <a href="/gwchdb/administration/committee" target="_self"
+                                                    style="background: url('/page/portal/images/common/MNCH0016.jpg')no-repeat;"
+                                                    class="MNCH0016">
+                                                    <span>위원회</span>
+                                                </a>
+                                            </h3>
+                                        </li>
+                                        <li>
+                                            <h3>
+                                                <a href="/gwchdb/administration/recommend" target="_self"
+                                                    style="background: url('/page/portal/images/common/MNCH0017.jpg')no-repeat;"
+                                                    class="MNCH0017">
+                                                    <span>현상변경</span>
+                                                </a>
+                                            </h3>
+                                        </li>
+                                        <li>
+                                            <h3>
+                                                <a href="/gwchdb/administration/designation" target="_self"
+                                                    style="background: url('/page/portal/images/common/MNCH0018.jpg')no-repeat;"
+                                                    class="MNCH0018">
+                                                    <span>문화재 지정절차</span>
+                                                </a>
+                                            </h3>
+                                        </li>
+                                        <li>
+                                            <h3>
+                                                <a href="/gwchdb/administration/endowment" target="_self"
+                                                    style="background: url('/page/portal/images/common/MNCH0019.jpg')no-repeat;"
+                                                    class="MNCH0019">
+                                                    <span>문화재 기증/신고</span>
+                                                </a>
+                                            </h3>
+                                        </li>
+
+                                    </ul>
+
+                                </li>
+                                <!-- one depth and block 재미있는 기획코너 -->
+                                <!-- one depth and block 재미있는 기획코너 -->
+                                <li>
+                                    <h2>
+                                        <a href="/gwchdb/intro" target="_self">
+                                            <span>아카이브 소개</span>
+                                        </a>
+                                    </h2>
+                                    <!-- two depth -->
+                                    <ul class="depth_02" style="display: none;">
+                                        <li>
+                                            <h3>
+                                                <a href="/gwchdb/intro/introduce" target="_self"
+                                                    style="background: url('/page/portal/images/common/MNCH0031.jpg')no-repeat;"
+                                                    class="MNCH0031">
+                                                    <span>강원문화유산 아카이브란?</span>
+                                                </a>
+                                            </h3>
+                                        </li>
+                                        <li>
+                                            <h3>
+                                                <a href="/gwchdb/intro/news" target="_self"
+                                                    style="background: url('/page/portal/images/common/MNCH0032.jpg')no-repeat;"
+                                                    class="MNCH0032">
+                                                    <span>새소식</span>
+                                                </a>
+                                            </h3>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <span class="cycle"></span>
+                        </nav>
+                    </div>
+                    <div id="gnb_mobile">
+                        <h1 class="mobile">
+                            <img src="/page/culture/images/common/logo03.png" alt="강원문화유산아카이브">
+                        </h1>
+                        <nav class="clearfix">
+                            <ul class="depth_01">
+                                <!-- one depth and block 재미있는 기획코너 -->
+                                <li>
+                                    <h2>
+                                        <a href="/gwchdb/map" target="_self">
+                                            <span>문화유산MAP</span>
+                                        </a>
+                                    </h2>
+                                    <!-- two depth -->
+                                </li>
+
+                                <!-- one depth and block 재미있는 기획코너 -->
+                                <li>
+                                    <h2>
+                                        <a href="/gwchdb/gwheritage" target="_self">
+                                            <span>강원도문화유산</span>
+                                        </a>
+                                    </h2>
+                                    <!-- two depth -->
+                                    <ul class="depth_02">
+                                        <li>
+                                            <h3 class="">
+                                                <a href="/gwchdb/gwheritage/type" target="_self"
+                                                    style="background: url('/page/portal/images/common/MNCH0003.jpg')no-repeat;"
+                                                    class="MNCH0003">
+                                                    <span>종목별 검색</span>
+                                                </a>
+                                            </h3>
+                                        </li>
+                                        <li>
+                                            <h3 class="">
+                                                <a href="/gwchdb/gwheritage/area" target="_self"
+                                                    style="background: url('/page/portal/images/common/MNCH0004.jpg')no-repeat;"
+                                                    class="MNCH0004">
+                                                    <span>지역별 검색</span>
+                                                </a>
+                                            </h3>
+                                        </li>
+                                        <li>
+                                            <h3 class="">
+                                                <a href="/gwchdb/gwheritage/detail" target="_self"
+                                                    style="background: url('/page/portal/images/common/MNCH0005.jpg')no-repeat;"
+                                                    class="MNCH0005">
+                                                    <span>조건검색</span>
+                                                </a>
+                                            </h3>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <!-- one depth and block 재미있는 기획코너 -->
+                                <li>
+                                    <h2>
+                                        <a href="/gwchdb/archive" target="_self">
+                                            <span>디지털 아카이브</span>
+                                        </a>
+                                    </h2>
+                                    <!-- two depth -->
+                                    <ul class="depth_02">
+                                        <li>
+                                            <h3 class="">
+                                                <a href="/gwchdb/archive/image" target="_self"
+                                                    style="background: url('/page/portal/images/common/MNCH0007.jpg')no-repeat;"
+                                                    class="MNCH0007">
+                                                    <span>이미지</span>
+                                                </a>
+                                            </h3>
+                                        </li>
+                                        <li>
+                                            <h3 class="">
+                                                <a href="/gwchdb/archive/video" target="_self"
+                                                    style="background: url('/page/portal/images/common/MNCH0008.jpg')no-repeat;"
+                                                    class="MNCH0008">
+                                                    <span>동영상</span>
+                                                </a>
+                                            </h3>
+                                        </li>
+                                        <li>
+                                            <h3 class="">
+                                                <a href="/gwchdb/archive/audio" target="_self"
+                                                    style="background: url('/page/portal/images/common/MNCH0009.jpg')no-repeat;"
+                                                    class="MNCH0009">
+                                                    <span>오디오</span>
+                                                </a>
+                                            </h3>
+                                        </li>
+                                        <li>
+                                            <h3 class="">
+                                                <a href="/gwchdb/archive/book" target="_self"
+                                                    style="background: url('/page/portal/images/common/MNCH0010.jpg')no-repeat;"
+                                                    class="MNCH0010">
+                                                    <span>도서</span>
+                                                </a>
+                                            </h3>
+                                        </li>
+                                        <li>
+                                            <h3 class="">
+                                                <a href="/gwchdb/archive/drawing" target="_self"
+                                                    style="background: url('/page/portal/images/common/MNCH0011.jpg')no-repeat;"
+                                                    class="MNCH0011">
+                                                    <span>도면</span>
+                                                </a>
+                                            </h3>
+                                        </li>
+                                        <li>
+                                            <h3 class="">
+                                                <a href="/gwchdb/archive/3d" target="_self"
+                                                    style="background: url('/page/portal/images/common/MNCH0012.jpg')no-repeat;"
+                                                    class="MNCH0012">
+                                                    <span>3D</span>
+                                                </a>
+                                            </h3>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <!-- one depth and block 재미있는 기획코너 -->
+                                <li>
+                                    <h2>
+                                        <a href="/gwchdb/administration" target="_self">
+                                            <span>문화재 행정정보</span>
+                                        </a>
+                                    </h2>
+                                    <!-- two depth -->
+                                    <ul class="depth_02">
+                                        <li>
+                                            <h3 class="">
+                                                <a href="/gwchdb/administration/legalinfo" target="_self"
+                                                    style="background: url('/page/portal/images/common/MNCH0014.jpg')no-repeat;"
+                                                    class="MNCH0014">
+                                                    <span>법규정보</span>
+                                                </a>
+                                            </h3>
+                                        </li>
+                                        <li>
+                                            <h3 class="active">
+                                                <a href="/gwchdb/administration/notification" target="_self"
+                                                    style="background: url('/page/portal/images/common/MNCH0015.jpg')no-repeat;"
+                                                    class="MNCH0015">
+                                                    <span>고시정보</span>
+                                                </a>
+                                            </h3>
+                                        </li>
+                                        <li>
+                                            <h3 class="">
+                                                <a href="/gwchdb/administration/committee" target="_self"
+                                                    style="background: url('/page/portal/images/common/MNCH0016.jpg')no-repeat;"
+                                                    class="MNCH0016">
+                                                    <span>위원회</span>
+                                                </a>
+                                            </h3>
+                                        </li>
+                                        <li>
+                                            <h3 class="">
+                                                <a href="/gwchdb/administration/recommend" target="_self"
+                                                    style="background: url('/page/portal/images/common/MNCH0017.jpg')no-repeat;"
+                                                    class="MNCH0017">
+                                                    <span>현상변경</span>
+                                                </a>
+                                            </h3>
+                                        </li>
+                                        <li>
+                                            <h3 class="">
+                                                <a href="/gwchdb/administration/designation" target="_self"
+                                                    style="background: url('/page/portal/images/common/MNCH0018.jpg')no-repeat;"
+                                                    class="MNCH0018">
+                                                    <span>문화재 지정절차</span>
+                                                </a>
+                                            </h3>
+                                        </li>
+                                        <li>
+                                            <h3 class="">
+                                                <a href="/gwchdb/administration/endowment" target="_self"
+                                                    style="background: url('/page/portal/images/common/MNCH0019.jpg')no-repeat;"
+                                                    class="MNCH0019">
+                                                    <span>문화재 기증/신고</span>
+                                                </a>
+                                            </h3>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <!-- one depth and block 재미있는 기획코너 -->
+                                <!-- one depth and block 재미있는 기획코너 -->
+                                <li>
+                                    <h2>
+                                        <a href="/gwchdb/intro" target="_self">
+                                            <span>아카이브 소개</span>
+                                        </a>
+                                    </h2>
+                                    <!-- two depth -->
+                                    <ul class="depth_02">
+                                        <li>
+                                            <h3 class="">
+                                                <a href="/gwchdb/intro/introduce" target="_self"
+                                                    style="background: url('/page/portal/images/common/MNCH0031.jpg')no-repeat;"
+                                                    class="MNCH0031">
+                                                    <span>강원문화유산 아카이브란?</span>
+                                                </a>
+                                            </h3>
+                                        </li>
+                                        <li>
+                                            <h3 class="">
+                                                <a href="/gwchdb/intro/news" target="_self"
+                                                    style="background: url('/page/portal/images/common/MNCH0032.jpg')no-repeat;"
+                                                    class="MNCH0032">
+                                                    <span>새소식</span>
+                                                </a>
+                                            </h3>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                        <a href="#" class="close">✖</a>
+                    </div>
+                </div>
+                <div class="btn_box clearfix">
+                    <a href="#" class="btn_search">SEARCH</a>
+                    <a href="#" class="btn_sitemap" title="사이트맵">메뉴</a>
+                    <a href="#" role="button" class="mopen">메뉴</a>
+                </div>
+                <div class="bg_pc" style="display: none;"></div>
+                <div id="sitemap">
+                    <div class="bx">
+                        <h1>
+                            <a href="/gwchdb">
+                                <img src="/page/culture/images/common/logo01.png" alt="강원문화유산 아카이브">
+                            </a>
+                        </h1>
+                        <ul class="depth_01">
+                            <!-- one depth -->
+                            <li>
+                                <h2>
+                                    <a href="/gwchdb/map" target="_self">
+                                        <span>문화유산MAP</span>
+                                    </a>
+                                </h2>
+                                <ul class="depth_02">
+                                    <li>
+                                        <h3 class="culture-map-menu">
+                                            우리 지역, 강원도에는<br>
+                                            어떤 문화유산이 있을까요?<br>
+                                            지도로 만나보는 스마트한<br>
+                                            강원도 문화유산지도 !
+                                        </h3>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!-- one depth -->
+                            <li>
+                                <h2>
+                                    <a href="#">
+                                        <span>재미있는 기획코너</span>
+                                    </a>
+                                </h2>
+                                <!-- two depth -->
+                                <ul class="depth_02">
+                                    <li>
+                                        <h3>
+                                            <a href="/gwchdb/gwheritage/type" target="_self"
+                                                style="background: url('/page/portal/images/common/MNCH0003.jpg')no-repeat;"
+                                                class="MNCH0003">
+                                                <span>종목별 검색</span>
+                                            </a>
+                                        </h3>
+                                    </li>
+                                    <li>
+                                        <h3>
+                                            <a href="/gwchdb/gwheritage/area" target="_self"
+                                                style="background: url('/page/portal/images/common/MNCH0004.jpg')no-repeat;"
+                                                class="MNCH0004">
+                                                <span>지역별 검색</span>
+                                            </a>
+                                        </h3>
+                                    </li>
+                                    <li>
+                                        <h3>
+                                            <a href="/gwchdb/gwheritage/detail" target="_self"
+                                                style="background: url('/page/portal/images/common/MNCH0005.jpg')no-repeat;"
+                                                class="MNCH0005">
+                                                <span>조건검색</span>
+                                            </a>
+                                        </h3>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!-- one depth -->
+                            <li>
+                                <h2>
+                                    <a href="#">
+                                        <span>재미있는 기획코너</span>
+                                    </a>
+                                </h2>
+                                <!-- two depth -->
+                                <ul class="depth_02">
+                                    <li>
+                                        <h3>
+                                            <a href="/gwchdb/archive/image" target="_self"
+                                                style="background: url('/page/portal/images/common/MNCH0007.jpg')no-repeat;"
+                                                class="MNCH0007">
+                                                <span>이미지</span>
+                                            </a>
+                                        </h3>
+                                    </li>
+                                    <li>
+                                        <h3>
+                                            <a href="/gwchdb/archive/video" target="_self"
+                                                style="background: url('/page/portal/images/common/MNCH0008.jpg')no-repeat;"
+                                                class="MNCH0008">
+                                                <span>동영상</span>
+                                            </a>
+                                        </h3>
+                                    </li>
+                                    <li>
+                                        <h3>
+                                            <a href="/gwchdb/archive/audio" target="_self"
+                                                style="background: url('/page/portal/images/common/MNCH0009.jpg')no-repeat;"
+                                                class="MNCH0009">
+                                                <span>오디오</span>
+                                            </a>
+                                        </h3>
+                                    </li>
+                                    <li>
+                                        <h3>
+                                            <a href="/gwchdb/archive/book" target="_self"
+                                                style="background: url('/page/portal/images/common/MNCH0010.jpg')no-repeat;"
+                                                class="MNCH0010">
+                                                <span>도서</span>
+                                            </a>
+                                        </h3>
+                                    </li>
+                                    <li>
+                                        <h3>
+                                            <a href="/gwchdb/archive/drawing" target="_self"
+                                                style="background: url('/page/portal/images/common/MNCH0011.jpg')no-repeat;"
+                                                class="MNCH0011">
+                                                <span>도면</span>
+                                            </a>
+                                        </h3>
+                                    </li>
+                                    <li>
+                                        <h3>
+                                            <a href="/gwchdb/archive/3d" target="_self"
+                                                style="background: url('/page/portal/images/common/MNCH0012.jpg')no-repeat;"
+                                                class="MNCH0012">
+                                                <span>3D</span>
+                                            </a>
+                                        </h3>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!-- one depth -->
+                            <li>
+                                <h2>
+                                    <a href="#">
+                                        <span>재미있는 기획코너</span>
+                                    </a>
+                                </h2>
+                                <!-- two depth -->
+                                <ul class="depth_02">
+                                    <li>
+                                        <h3>
+                                            <a href="/gwchdb/administration/legalinfo" target="_self"
+                                                style="background: url('/page/portal/images/common/MNCH0014.jpg')no-repeat;"
+                                                class="MNCH0014">
+                                                <span>법규정보</span>
+                                            </a>
+                                        </h3>
+                                    </li>
+                                    <li>
+                                        <h3>
+                                            <a href="/gwchdb/administration/notification" target="_self"
+                                                style="background: url('/page/portal/images/common/MNCH0015.jpg')no-repeat;"
+                                                class="MNCH0015">
+                                                <span>고시정보</span>
+                                            </a>
+                                        </h3>
+                                    </li>
+                                    <li>
+                                        <h3>
+                                            <a href="/gwchdb/administration/committee" target="_self"
+                                                style="background: url('/page/portal/images/common/MNCH0016.jpg')no-repeat;"
+                                                class="MNCH0016">
+                                                <span>위원회</span>
+                                            </a>
+                                        </h3>
+                                    </li>
+                                    <li>
+                                        <h3>
+                                            <a href="/gwchdb/administration/recommend" target="_self"
+                                                style="background: url('/page/portal/images/common/MNCH0017.jpg')no-repeat;"
+                                                class="MNCH0017">
+                                                <span>현상변경</span>
+                                            </a>
+                                        </h3>
+                                    </li>
+                                    <li>
+                                        <h3>
+                                            <a href="/gwchdb/administration/designation" target="_self"
+                                                style="background: url('/page/portal/images/common/MNCH0018.jpg')no-repeat;"
+                                                class="MNCH0018">
+                                                <span>문화재 지정절차</span>
+                                            </a>
+                                        </h3>
+                                    </li>
+                                    <li>
+                                        <h3>
+                                            <a href="/gwchdb/administration/endowment" target="_self"
+                                                style="background: url('/page/portal/images/common/MNCH0019.jpg')no-repeat;"
+                                                class="MNCH0019">
+                                                <span>문화재 기증/신고</span>
+                                            </a>
+                                        </h3>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!-- one depth -->
+                            <li>
+                                <h2>
+                                    <a href="#">
+                                        <span>재미있는 기획코너</span>
+                                    </a>
+                                </h2>
+                                <!-- two depth -->
+                                <ul class="depth_02">
+                                    <li>
+                                        <h3>
+                                            <a href="/gwchdb/planheritage/intangible" target="_self"
+                                                style="background: url('/page/portal/images/common/MNCH0021.jpg')no-repeat;"
+                                                class="MNCH0021">
+                                                <span>무형문화재</span>
+                                            </a>
+                                        </h3>
+                                    </li>
+                                    <li>
+                                        <h3>
+                                            <a href="/gwchdb/planheritage/3dheritage" target="_self"
+                                                style="background: url('/page/portal/images/common/MNCH0022.jpg')no-repeat;"
+                                                class="MNCH0022">
+                                                <span>3D 강원문화유산</span>
+                                            </a>
+                                        </h3>
+                                    </li>
+                                    <li>
+                                        <h3>
+                                            <a href="/gwchdb/planheritage/vrheritage" target="_self"
+                                                style="background: url('/page/portal/images/common/MNCH0023.jpg')no-repeat;"
+                                                class="MNCH0023">
+                                                <span>VR로 즐기는 문화유산</span>
+                                            </a>
+                                        </h3>
+                                    </li>
+                                    <li>
+                                        <h3>
+                                            <a href="/gwchdb/planheritage/droneheritage" target="_self"
+                                                style="background: url('/page/portal/images/common/MNCH0024.jpg')no-repeat;"
+                                                class="MNCH0024">
+                                                <span>하늘에서 본 문화유산</span>
+                                            </a>
+                                        </h3>
+                                    </li>
+                                    <li>
+                                        <h3>
+                                            <a href="/gwchdb/planheritage/story" target="_self"
+                                                style="background: url('/page/portal/images/common/MNCH0025.jpg')no-repeat;"
+                                                class="MNCH0025">
+                                                <span>Strory of 강원문화유산</span>
+                                            </a>
+                                        </h3>
+
+                                        <ul class="depth_03">
+                                            <li>
+                                                <h4>
+                                                    <a href="/gwchdb/planheritage/story/castle" target="_self">
+                                                        <span>전쟁사와 강원의 성곽</span>
+                                                    </a>
+                                                </h4>
+                                            </li>
+                                            <li>
+                                                <h4>
+                                                    <a href="/gwchdb/planheritage/story/cloth" target="_self">
+                                                        <span>강원의 의복과 복식문화</span>
+                                                    </a>
+                                                </h4>
+                                            </li>
+                                            <li>
+                                                <h4>
+                                                    <a href="/gwchdb/planheritage/story/lifehistory" target="_self">
+                                                        <span>고문서를 통해 본 강원 생활사</span>
+                                                    </a>
+                                                </h4>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!-- one depth -->
+                            <li>
+                                <h2>
+                                    <a href="#">
+                                        <span>재미있는 기획코너</span>
+                                    </a>
+                                </h2>
+                                <!-- two depth -->
+                                <ul class="depth_02">
+                                    <li>
+                                        <h3>
+                                            <a href="/gwchdb/intro/introduce" target="_self"
+                                                style="background: url('/page/portal/images/common/MNCH0031.jpg')no-repeat;"
+                                                class="MNCH0031">
+                                                <span>강원문화유산 아카이브란?</span>
+                                            </a>
+                                        </h3>
+                                    </li>
+                                    <li>
+                                        <h3>
+                                            <a href="/gwchdb/intro/news" target="_self"
+                                                style="background: url('/page/portal/images/common/MNCH0032.jpg')no-repeat;"
+                                                class="MNCH0032">
+                                                <span>새소식</span>
+                                            </a>
+                                        </h3>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <a href="#" class="close" role="button">닫기</a>
+                </div>
+                <div class="mask_mobile"></div>
+            </header>
+            <main id="sub" class="">
+                <div id="visual-bx">
+                    <img src="/page/culture/images/sub/sub_view_01.jpg" alt="">
+                    <h2>고시정보</h2>
+                    <div class="menu-tab">
+                        <a href="/gwchdb" class="home">홈이동</a>
+                        <a href="/gwchdb/administration" target="">문화재 행정정보</a>
+                        <a href="/gwchdb/administration/notification" target="">고시정보</a>
+                    </div>
+                </div>
+                <div id="sub_container">
+                    <div class="inner clearfix">
+                        <div id="content">
+                            <div class="share-bx">
+                                <div class="share">
+                                    <a href="#" role="button" class="open">공유하기</a>
+                                    <div class="view">
+                                        <a href="javascript:fnShareSNS('facebook');" class="facebook i-sns">페이스북</a>
+                                        <a href="javascript:fnShareSNS('twitter');" class="twitter i-sns">트위터</a>
+                                        <a href="javascript:fnShareSNS('naver');" class="blog i-sns">블로그</a>
+                                        <a href="javascript:fnShareSNS('kakao');" class="kakao i-sns">카카오톡</a>
+                                    </div>
+                                </div>
+                                <a href="javascript:fnPrint();" class="print">
+                                    프린트를 출력합니다.
+                                </a>
+                            </div>
+                            <a href="#A-Contents-focus" id="A-Contents-focus" class="blind">본문 시작</a>
+                            <div class="contsArea skinContainer">
+                                <div class="boSrchArea">
+                                    <div class="boMeta">
+                                        <span class="boMeta-pt"> 총 </span>3건
+                                    </div>
+                                    <form name="mForm" method="post" class="boSrch"
+                                        action="/gwchdb/administration/notification">
+                                        <input type="hidden" name="_csrf" value="1f23e8d0-b977-460a-aba4-adf635b9fddc">
+                                        <input type="hidden" name="seq" value="0">
+                                        <input type="hidden" name="pageIndex" value="1">
+                                        <fieldset>
+                                            <legend class="hidden_txt">게시물 검색</legend>
+                                            <div class="txSrch">
+                                                <label for="part" class="hidden_txt">종목선택</label>
+                                                <select id="part" name="part" class="boSrch-selectBox skinSelectBox">
+                                                    <option value="">종목</option>
+                                                    <option value="PC01">국가유형문화재</option>
+                                                    <option value="PC02">국가무형문화재</option>
+                                                    <option value="PC03">시도유형문화재</option>
+                                                    <option value="PC04">시도무형문화재</option>
+                                                    <option value="PC05">문화재자료</option>
+                                                </select>
+
+                                                <label for="deptName" class="hidden_txt">소관기관</label>
+                                                <select id="deptName" name="deptName"
+                                                    class="boSrch-selectBox skinSelectBox">
+                                                    <option value="">소관기관</option>
+
+                                                    <option value="DC01">문화재청</option>
+
+                                                    <option value="DC02">강원도청</option>
+
+                                                    <option value="DC03">춘천시</option>
+
+                                                </select>
+
+                                                <label for="boSelect" class="hidden_txt"> 검색 옵션 선택</label>
+                                                <select id="boSelect" class="boSrch-selectBox skinSelectBox"
+                                                    name="searchCondition">
+                                                    <option value="TITLE">고시명</option>
+                                                    <option value="CH_NAME">문화재명</option>
+                                                    <option value="CH_NUMBER">지정번호</option>
+                                                    <option value="REVISION_DATE">재/개정일</option>
+                                                    <option value="CONTENT">내용</option>
+                                                </select>
+                                                <label for="boSearch" class="hidden_txt"> 검색 입력</label>
+                                                <input type="text" id="boSearch" name="searchKeyword" value=""
+                                                    class="boSrch-iptTxt skinIptTxt" placeholder="검색어를 입력해주세요.">
+                                                <input type="submit" value="검색" onclick="linkPage('1');"
+                                                    class="boSrch-btnBo skinBtnBo skinBtnBo-data-pos">
+                                            </div>
+                                        </fieldset>
+                                    </form>
+                                </div>
+                                <div>
+                                    <table
+                                        class="skinTb skinTb-data-resList skinTb-data-bgEven skinTb-data-research skinMb-medium skinTxa-center">
+                                        <caption class="hidden_txt">고시정보</caption>
+                                        <colgroup>
+                                            <col width="5%">
+                                            <col>
+                                            <col width="15%">
+                                            <col width="10%">
+                                        </colgroup>
+                                        <thead data-hidden="mob">
+                                            <tr>
+                                                <th scope="col" data-hidden="tablet">번호</th>
+                                                <th scope="col">고시명</th>
+                                                <th scope="col">소관기관</th>
+                                                <th scope="col">재/개정일</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            <tr>
+                                                <td data-hidden="tablet mob">3</td>
+                                                <td class="skinTb-sbj skinTxa-left">
+                                                    <a href="#nolink" onclick="fnView(3)">고시정보3-1 고시명</a>
+                                                </td>
+                                                <td class="skinTxa-center">
+                                                    문화재청
+                                                </td>
+                                                <td class="skinTxa-center">
+                                                    2021-11-05
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td data-hidden="tablet mob">2</td>
+                                                <td class="skinTb-sbj skinTxa-left">
+                                                    <a href="#nolink" onclick="fnView(2)">고시정보 2</a>
+                                                </td>
+                                                <td class="skinTxa-center">
+                                                    강원도청
+                                                </td>
+                                                <td class="skinTxa-center">
+                                                    2021-09-23
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td data-hidden="tablet mob">1</td>
+                                                <td class="skinTb-sbj skinTxa-left">
+                                                    <a href="#nolink" onclick="fnView(1)">고시정보 1 테스트 입니다.</a>
+                                                </td>
+                                                <td class="skinTxa-center">
+                                                    강원도청
+                                                </td>
+                                                <td class="skinTxa-center">
+                                                    2021-10-01
+                                                </td>
+                                            </tr>
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="pager">
+                                    <a href="?pageIndex=1" class="pager-link pager-link-data-first"
+                                        onclick="linkPage(1);return false; ">10페이지 앞으로 이동</a> <a href="?pageIndex=1"
+                                        class="pager-link pager-link-data-prev"
+                                        onclick="linkPage(1);return false; ">1페이지 앞으로 이동</a> <span
+                                        class="pager-num">1/1</span><a onclick="return false;"
+                                        class="pager-link active">1</a> <a href="?pageIndex=1"
+                                        onclick="linkPage(1);return false; "
+                                        class="pager-link pager-link-data-next">1페이지 뒤로 이동</a> <a href="?pageIndex=1"
+                                        onclick="linkPage(1);return false; "
+                                        class="pager-link pager-link-data-last">10페이지 뒤로 이동</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <footer id="footer" class="clearfix">
+                <a href="#A-Ftr-focus" id="A-Ftr-focus" class="blind">푸터 시작</a>
+                <div class="inner">
+                    <h1>
+                        <a href="/gwchdb">
+                            <img src="/page/culture/images/common/logo02.png" alt="강원문화유산 아카이브">
+                        </a>
+                    </h1>
+                    <div class="link clearfix">
+                        <a href="#">강원도문화재연구소</a>
+                        <a href="#">개인정보취급방침</a>
+                    </div>
+                    <div class="address">
+                        <p><span>소재지 : 24227 강원도 춘천시 우두하리길 33 (우두동 296-3), </span><span>대표전화 : 033-815-1700,
+                            </span><span>팩스 : 033-815-1707</span></p>
+                        <p class="copy"><span>COPYRIGHTS 2014 ⓒ GWMY.OR.KR.</span> <span>ALL RIGHT RESERVED</span></p>
+                    </div>
+
+                    <div class="family">
+                        <div>
+                            <a href="#" role="button" class="open">유관기관바로가기</a>
+                            <div class="view">
+
+                                <a href="https://www.cha.go.kr" target="_blank" title="새창이동">문화재청</a>
+
+                                <a href="https://www.provin.gangwon.kr" target="_blank" title="새창이동">강원도청</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <a href="#" id="btn_top" role="button" style="top: 882px; opacity: 0;">TOP</a>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $("form[name='mForm'] input[name='searchKeyword']").keypress(function (event) {
+                if (event.keyCode == 13) {
+                    fnSearch();
+                }
+            });
+        });
+
+        //페이징
+        function linkPage(pageNo) {
+            mForm.pageIndex.value = pageNo;
+            mForm.submit();
+        }
+
+        //읽기폼
+        function fnView(seq) {
+            mForm.seq.value = seq;
+            mForm.submit();
+        }
+    </script>
+</body>
+
+</html>
