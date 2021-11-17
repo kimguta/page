@@ -307,6 +307,13 @@ $(function() {
 		}
 	});
 
+
+	$('.all-guide .btn-bx .vr').on('click', function (e) {
+		e.preventDefault();
+		$(this).toggleClass('active');
+		$('.all-guide .pin-bx').toggle();
+	});
+
 	$('.rental .slick').slick({
 		autoplay: false,
 		arrows: true,
