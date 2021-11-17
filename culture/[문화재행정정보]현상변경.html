@@ -971,33 +971,36 @@
                                     <div class="boMeta">
                                         <span class="boMeta-pt"> 총 </span>2건
                                     </div>
-                                    <form name="mForm" method="post" class="boSrch"
-                                        action="/gwchdb/administration/recommend">
-                                        <input type="hidden" name="_csrf" value="1f23e8d0-b977-460a-aba4-adf635b9fddc">
-                                        <input type="hidden" name="seq" value="0">
-                                        <input type="hidden" name="pageIndex" value="1">
-                                        <fieldset>
+                                    <form name="mForm" method="post" class="boMultiSrch"
+                                    action="/gwchdb/administration/recommend">
+                                    <input type="hidden" name="_csrf" value="1f23e8d0-b977-460a-aba4-adf635b9fddc">
+                                    <input type="hidden" name="seq" value="0">
+                                    <input type="hidden" name="pageIndex" value="1">
+                                        <fieldset class="boMultiSrch-group">
                                             <legend class="hidden_txt">게시물 검색</legend>
-                                            <div class="txSrch">
-                                                <label for="part" class="hidden_txt">종목</label>
-                                                <select id="part" name="part" class="boSrch-selectBox skinSelectBox">
-                                                    <option value="">종목</option>
-                                                    <option value="PC01">국가유형문화재</option>
-                                                    <option value="PC02">국가무형문화재</option>
-                                                    <option value="PC03">시도유형문화재</option>
-                                                    <option value="PC04">시도무형문화재</option>
-                                                    <option value="PC05">문화재자료</option>
-                                                </select>
-                                                <label for="reviewResult" class="hidden_txt">심의결과</label>
-                                                <select id="reviewResult" name="reviewResult"
-                                                    class="boSrch-selectBox skinSelectBox">
-                                                    <option value="">심의결과</option>
-                                                    <option value="REJECTED">부결</option>
-                                                    <option value="APPROVED">가결</option>
-                                                    <option value="CONDITION">가결(조건부)</option>
-                                                    <option value="OTHERS">기타</option>
-                                                </select>
-                                                <label for="boSelect" class="hidden_txt"> 검색 옵션 선택</label>
+                                            <label for="part" class="hidden_txt">종목</label>
+                                            <select id="part" name="part" class="boSrch-selectBox skinSelectBox">
+                                                <option value="">종목</option>
+                                                <option value="PC01">국가유형문화재</option>
+                                                <option value="PC02">국가무형문화재</option>
+                                                <option value="PC03">시도유형문화재</option>
+                                                <option value="PC04">시도무형문화재</option>
+                                                <option value="PC05">문화재자료</option>
+                                            </select>
+                                        </fieldset>
+                                        <fieldset class="boMultiSrch-group">
+                                            <label for="reviewResult" class="hidden_txt">심의결과</label>
+                                            <select id="reviewResult" name="reviewResult"
+                                                class="boSrch-selectBox skinSelectBox">
+                                                <option value="">심의결과</option>
+                                                <option value="REJECTED">부결</option>
+                                                <option value="APPROVED">가결</option>
+                                                <option value="CONDITION">가결(조건부)</option>
+                                                <option value="OTHERS">기타</option>
+                                            </select>
+                                        </fieldset>
+                                        <fieldset class="boMultiSrch-group">
+                                            <label for="boSelect" class="hidden_txt"> 검색 옵션 선택</label>
                                                 <select id="boSelect" class="boSrch-selectBox skinSelectBox"
                                                     name="searchCondition">
                                                     <option value="TITLE">제목</option>
@@ -1005,12 +1008,11 @@
                                                     <option value="CH_NUMBER">지정번호</option>
                                                     <option value="CONTENT">사업내용</option>
                                                 </select>
-                                                <label for="boSearch" class="hidden_txt"> 검색 입력</label>
-                                                <input type="text" id="boSearch" name="searchKeyword" value=""
-                                                    class="boSrch-iptTxt skinIptTxt" placeholder="검색어를 입력해주세요.">
-                                                <input type="submit" value="검색" onclick="linkPage('1');"
-                                                    class="boSrch-btnBo skinBtnBo skinBtnBo-data-pos">
-                                            </div>
+                                            <label for="boSearch" class="hidden_txt"> 검색 입력</label>
+                                            <input type="text" id="boSearch" name="searchKeyword" value=""
+                                                class="boSrch-iptTxt skinIptTxt" placeholder="검색어를 입력해주세요.">
+                                            <input type="submit" value="검색" onclick="linkPage('1');"
+                                                class="boSrch-btnBo skinBtnBo skinBtnBo-data-pos">
                                         </fieldset>
                                     </form>
                                 </div>
@@ -1019,7 +1021,7 @@
                                         class="skinTb skinTb-data-resList skinTb-data-bgEven skinTb-data-research skinMb-medium skinTxa-center">
                                         <caption class="hidden_txt">현상변화</caption>
                                         <colgroup>
-                                            <col width="5%">
+                                            <col width="5%" data-hidden="tablet">
                                             <col width="10%">
                                             <col width="10%">
                                             <col width="10%">
