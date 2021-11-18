@@ -501,6 +501,7 @@ $(function() {
 		pauseOnHover: false,
 		speed: 700,
 		adaptiveHeight: true,
+		
 	});
 
 	$('.history .slick').on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
@@ -535,6 +536,12 @@ $(function() {
         verticalSwiping:true,
 		cssEase: 'linear',
 		autoplaySpeed: 8000,
+		responsive: [{
+            breakpoint: 760,
+            settings: {
+                speed: 350,
+            }
+        }]
 	});
 
 	
