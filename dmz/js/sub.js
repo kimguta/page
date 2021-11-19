@@ -553,5 +553,48 @@ $(function() {
 			$(this).slick('slickNext');
 		}
 	});
+	
+
+	setTimeout(function() {
+        AOS.init({
+            easing: 'ease',
+            duration: 1000,
+            delay: 350,
+            once: true,
+            offset: 50,
+            
+        });
+     }, 200);
+
+
+	 $('.dmz_state .tab a').on('click', function (e) {
+		e.preventDefault();
+		var idx = $(this).index();
+		$('.dmz_state .tab a').removeClass('active');
+		$(this).addClass('active');
+
+		$('.dmz_state .view > div').hide();
+		$('.dmz_state .view > div').eq(idx).show();
+
+	});
+
+
+	$('.dmz_ccl .tab a').on('click', function (e) {
+		e.preventDefault();
+		var idx = $(this).index();
+		$('.ccl-view').show();
+		$('.ccl-view > div').eq(idx).show();
+		setTimeout(function(){
+			var Offset = $('#sub_container').offset();
+			$('html, body').animate({
+				scrollTop : Offset.top 
+			}, 300);
+		},10);
+	});
+
+	$('.ccl-view .close').on('click', function (e) {
+		e.preventDefault();
+		$('.ccl-view, .ccl-view > div').hide();	
+	});
 
 });
