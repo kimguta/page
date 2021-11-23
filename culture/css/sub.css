@@ -819,9 +819,9 @@ span.listLv4:before,
 .search_detail_area .media_area .img_list.active,
 .search_detail_area .media_area .video_list.active{display:block;}
 .search_detail_area .media_area .list_area {font-size:0;white-space:nowrap;border-bottom:1px solid #eaeaea;}
-.search_detail_area .media_area .list_area .bx{display:inline-block;position:relative;vertical-align:top;width: calc((100% - 45px) / 4);margin: 0 15px 34px 0;}
+.search_detail_area .media_area .list_area .bx{display:inline-block;position:relative;overflow:hidden;vertical-align:top;width: calc((100% - 45px) / 4);height:240px;margin: 0 15px 34px 0;}
 .search_detail_area .media_area .img_list .list_area .bx:before{content:'';display:block;position:absolute;top:0;right:0;bottom:0;left:0;border:1px solid rgba(112, 5, 5, 0.3);}
-.search_detail_area .media_area .list_area .bx img{display: block;width: 100%;height: 100%;}
+.search_detail_area .media_area .list_area .bx img{display: block;width: 100%;object-fit:cover;position:relative;top:50%;left:50%;transform:translate(-50%,-50%);}
 .search_detail_area .media_area .no_result{display:none;text-align:center;margin-top:21px;margin-bottom:32px;}
 .search_detail_area .media_area .no_result.active{display:block;}
 .search_detail_area .media_area .more_box{width:174px;line-height:45px;margin:16px auto 32px;border-bottom:1px solid #adafb2;text-align:center;}
@@ -854,6 +854,7 @@ span.listLv4:before,
   .search_detail_area .boMultiSrch-group:nth-child(1) .boMultiSrch-selectBox{width:100%;}
   .search_detail_area .boMultiSrch-group:nth-child(2) .boMultiSrch-selectBox{width:calc((100% - 70px)/2);}
   .search_detail_area .boMultiSrch-group:nth-child(2) .boMultiSrch-iptTxt{width:calc((100% - 70px)/2);}
+  .search_detail_area .media_area .list_area .bx{width:260px;height:200px;}
 }
 @media (max-width:639px) {
   .search_detail_area .boMultiSrch-group:nth-child(1) .boMultiSrch-selectBox{width:100%;}
@@ -864,7 +865,7 @@ span.listLv4:before,
   .search_detail_area .media_area{margin-top:20px;}
   .search_detail_area .media_area .img_list .list_area,
   .search_detail_area .media_area .video_list .list_area{-webkit-overflow-scrolling:touch;overflow: hidden;overflow-x: auto;}
-  .search_detail_area .media_area .list_area .bx{width:200px;}
+  .search_detail_area .media_area .list_area .bx{width:200px;height:155px;}
 }
 
 @media (max-width:400px) {
