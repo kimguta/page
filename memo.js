@@ -1,5 +1,142 @@
 <script src="https://kit.fontawesome.com/708e424f8f.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous"></link>
+<div id="playerVideo1" class="mbYTPVideo inline_YTPlayer"
+						data-property="{videoURL:'sxAaomwryzU',containment:'#page-back', showControls:false, opacity:1, autoPlay:true, startAt:1061, stopAt:0, mute:true, vol:100, loop:true,optimizeDisplay: true, showYTLogo:false, stopMovieOnBlur: false, playOnlyIfVisible:false}">
+					</div>
+
+
+<script type="text/javascript">
+
+var css_test_idx = 10;
+	$('.btn-bx a').draggable({
+		containment : 'parent',
+		multiple: true,
+		stop : function(){
+            $(this).removeClass('active f01 f02 f03 f04 f05 f06 f07 f08 f09 f10 f11 f12 f13 f14 f15');
+			/*
+			var classes = ['f01', 'f02", "f03' , 'f04', 'f05', 'f06', 'f07', 'f08', 'f09', 'f10', 'f11', 'f12', 'f13', 'f14', 'f15'];
+			$(this).addClass(classes[~~(Math.random()*classes.length)]);
+			*/
+			var position = $(this).position().left;
+			var classes1 = ['f01', 'f06', 'f11'];
+			var classes2 = ['f02', 'f07', 'f12'];
+			var classes3 = ['f03', 'f08', 'f13'];
+			var classes4 = ['f04', 'f09', 'f14'];
+			var classes5 = ['f05', 'f10', 'f15'];
+			if (position < 768) {
+				$(this).addClass(classes1[~~(Math.random()*classes1.length)]);
+			}
+			else if (position > 767 && position < 1536) {
+				$(this).addClass(classes2[~~(Math.random()*classes2.length)]);
+			}
+			else if (position > 1535 && position < 2304) {
+				$(this).addClass(classes3[~~(Math.random()*classes3.length)]);
+			}
+			else if (position > 2303 && position < 3072) {
+				$(this).addClass(classes4[~~(Math.random()*classes4.length)]);
+			}
+			else if (position > 3071 && position < 3840) {
+				$(this).addClass(classes5[~~(Math.random()*classes5.length)]);
+			}
+        }
+	})
+	.css('cursor', 'move' )
+    .on('mouseenter', function(){
+        $(this).css('z-index', css_test_idx);
+        css_test_idx++;
+		$(this).addClass('active');
+		var x = event.clientX - 200;
+    	var y = event.clientY - 200;
+		$(this).css('left',x).css('top',y);
+    });
+	
+	
+	var test_order = 1;
+
+	$('.btn-bx a').on('click', function(e){
+		e.preventDefault();
+		var idx = $(this).index();
+		var position = $(this).position().left;
+		$('.pop-bx > div').eq(idx).fadeIn(300);
+		$('.pop-bx > div').eq(idx).css('order', test_order);
+		test_order++;
+		if (position > 1920) {
+			$('.pop-bx > div').eq(idx).addClass('right');
+		}
+    });
+
+	$('.pop-bx .close').on('click', function(e){
+		e.preventDefault();
+		var idx2 = $(this).parent('.bx').index();
+		$(this).parent('.bx').fadeOut(300, function(){
+			$(this).removeClass('right');
+		});
+		$('.btn-bx a').eq(idx2).removeClass('active').removeAttr('style');
+    });
+	
+	$('.pop-bx .flip').on('click', function(e){
+		e.preventDefault();
+		$(this).parent('.bx').find('.flip-card').addClass('active');
+		$(this).hide();
+		$(this).siblings('.flip2').show();
+    });
+
+	$('.pop-bx .flip2').on('click', function(e){
+		e.preventDefault();
+		$(this).parent('.bx').find('.flip-card').removeClass('active');
+		$(this).hide();
+		$(this).siblings('.flip').show();
+    });
+
+	$('.reset').on('click', function(e){
+		e.preventDefault();
+		$('.btn-bx a').removeAttr('style');
+		$('.pop-bx .bx').removeAttr('style');
+		$('.btn-bx a').removeClass('active f01 f02 f03 f04 f05 f06 f07 f08 f09 f10 f11 f12 f13 f14 f15');
+		$('.btn-bx a:nth-child(1)').addClass('f01');
+		$('.btn-bx a:nth-child(2)').addClass('f02');
+		$('.btn-bx a:nth-child(3)').addClass('f03');
+		$('.btn-bx a:nth-child(4)').addClass('f04');
+		$('.btn-bx a:nth-child(5)').addClass('f05');
+		$('.btn-bx a:nth-child(6)').addClass('f06');
+		$('.btn-bx a:nth-child(7)').addClass('f07');
+		$('.btn-bx a:nth-child(8)').addClass('f08');
+		$('.btn-bx a:nth-child(9)').addClass('f09');
+		$('.btn-bx a:nth-child(10)').addClass('f10');
+		$('.btn-bx a:nth-child(11)').addClass('f11');
+		$('.btn-bx a:nth-child(12)').addClass('f12');
+		$('.btn-bx a:nth-child(13)').addClass('f13');
+		$('.btn-bx a:nth-child(14)').addClass('f14');
+		$('.btn-bx a:nth-child(15)').addClass('f15');
+    });
+	
+
+</script>
+                    
+    fixed 스크롤 가능
+    transform: translateX(0px) translateY(0px) translateZ(0px);
+
+    $('.season > div a').on('click', function(e) {
+        e.preventDefault();
+        myPlayer.YTPPlay();
+        $('.season > div a').removeClass('active');
+        $(this).addClass('active');
+
+        var a = [
+            {class: "m01", seek: 0},
+            {class: "m02", seek: 121},
+            {class: "m03", seek: 308},
+            {class: "m04", seek: 494},
+            {class: "m05", seek: 790},
+            {class: "m06", seek: 1062}
+        ];
+
+        for (var i = 0; i< a.length; i++) {
+            if ($(this).hasClass(a[i].class)) {
+                myPlayer.YTPSeekTo(a[i].seek);
+            }
+        }
+    });
 
 
     $('#visual .slick').on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
@@ -637,6 +774,16 @@ $('.slick-wrap button').on('click', function (e) {
         slick.slick('slickPrev');
     } else if ($(this).hasClass('next')) {
         slick.slick('slickNext');
+    }
+});
+
+$('#exhibit .slick').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+    $('#exhibit .slide').removeClass('active');
+    if ((currentSlide > nextSlide && (nextSlide !== 0 || currentSlide === 1)) || (currentSlide === 0 && nextSlide === slick.slideCount - 1)) {
+        $('#exhibit .slick-current').prev('.slide').addClass('active');
+    }
+    else {
+        $('#exhibit .slick-current').next('.slide').addClass('active');
     }
 });
 $('.slick3 .slick').slick({
