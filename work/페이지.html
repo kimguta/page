@@ -465,7 +465,32 @@ var css_test_idx = 10;
 		containment : 'parent',
 		multiple: true,
 		stop : function(){
-            $(this).removeClass('active');
+            $(this).removeClass('active f01 f02 f03 f04 f05 f06 f07 f08 f09 f10 f11 f12 f13 f14 f15');
+			/*
+			var classes = ['f01', 'f02", "f03' , 'f04', 'f05', 'f06', 'f07', 'f08', 'f09', 'f10', 'f11', 'f12', 'f13', 'f14', 'f15'];
+			$(this).addClass(classes[~~(Math.random()*classes.length)]);
+			*/
+			var position = $(this).position().left;
+			var classes1 = ['f01', 'f06', 'f11'];
+			var classes2 = ['f02', 'f07', 'f12'];
+			var classes3 = ['f03', 'f08', 'f13'];
+			var classes4 = ['f04', 'f09', 'f14'];
+			var classes5 = ['f05', 'f10', 'f15'];
+			if (position < 768) {
+				$(this).addClass(classes1[~~(Math.random()*classes1.length)]);
+			}
+			else if (position > 767 && position < 1536) {
+				$(this).addClass(classes2[~~(Math.random()*classes2.length)]);
+			}
+			else if (position > 1535 && position < 2304) {
+				$(this).addClass(classes3[~~(Math.random()*classes3.length)]);
+			}
+			else if (position > 2303 && position < 3072) {
+				$(this).addClass(classes4[~~(Math.random()*classes4.length)]);
+			}
+			else if (position > 3071 && position < 3840) {
+				$(this).addClass(classes5[~~(Math.random()*classes5.length)]);
+			}
         }
 	})
 	.css('cursor', 'move' )
