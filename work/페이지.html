@@ -466,30 +466,39 @@ var css_test_idx = 10;
 		containment : 'parent',
 		multiple: true,
 		stop : function(){
-            $(this).removeClass('active f01 f02 f03 f04 f05 f06 f07 f08 f09 f10 f11 f12 f13 f14 f15');
+            $(this).removeClass('active f01 f02 f03 f04 f05 f06 f07 f08 f09 f10 f11 f12 f13 f14 f15 reverse alternate alternate-reverse normal');
 			/*
 			var classes = ['f01', 'f02", "f03' , 'f04', 'f05', 'f06', 'f07', 'f08', 'f09', 'f10', 'f11', 'f12', 'f13', 'f14', 'f15'];
 			$(this).addClass(classes[~~(Math.random()*classes.length)]);
 			*/
 			var position = $(this).position().left;
+			var position2 = $(this).position().top;
+			var move = ['reverse', 'alternate', 'alternate-reverse', 'normal'];
 			var classes1 = ['f01', 'f06', 'f11'];
 			var classes2 = ['f02', 'f07', 'f12'];
 			var classes3 = ['f03', 'f08', 'f13'];
 			var classes4 = ['f04', 'f09', 'f14'];
 			var classes5 = ['f05', 'f10', 'f15'];
-			if (position < 768) {
+			$(this).addClass(move[~~(Math.random()*move.length)]);
+			
+			if (position < 668) {
+				/*
+				if (position2 < 700) {$(this).addClass('f01');}	
+				else if (position2 > 699 && position2 < 1400) {$(this).addClass('f06');}	
+				else if (position2 > 1399) {$(this).addClass('f11');}
+				*/
 				$(this).addClass(classes1[~~(Math.random()*classes1.length)]);
 			}
-			else if (position > 767 && position < 1536) {
+			else if (position > 667 && position < 1436) {
 				$(this).addClass(classes2[~~(Math.random()*classes2.length)]);
 			}
-			else if (position > 1535 && position < 2304) {
+			else if (position > 1435 && position < 2204) {
 				$(this).addClass(classes3[~~(Math.random()*classes3.length)]);
 			}
-			else if (position > 2303 && position < 3072) {
+			else if (position > 2203 && position < 2972) {
 				$(this).addClass(classes4[~~(Math.random()*classes4.length)]);
 			}
-			else if (position > 3071 && position < 3840) {
+			else if (position > 2971 && position < 3840) {
 				$(this).addClass(classes5[~~(Math.random()*classes5.length)]);
 			}
         }
