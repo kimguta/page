@@ -221,6 +221,12 @@ body{color:#000; font-size:16px; line-height:1.6; font-family:'Apple SD Gothic N
 #kiosk .btn-bx a.f14{top:65%;left:64%;animation:ani14 94s 0s infinite alternate cubic-bezier(0.275, 0.650, 0.885, 0.370);}
 #kiosk .btn-bx a.f15{top:65%;left:85%;animation:ani15 93s 2s infinite  cubic-bezier(0.250, 0.250, 0.600, 0.010);}
 
+#kiosk .btn-bx a.reverse{animation-direction:reverse;}
+#kiosk .btn-bx a.alternate{animation-direction:alternate;}
+#kiosk .btn-bx a.alternate-reverse{animation-direction:alternate-reverse;}
+#kiosk .btn-bx a.normal{animation-direction:normal}
+
+
 #kiosk .tab-bx{position:absolute;bottom:0;left:0;right:0;height:316px;z-index:10000;background:url(/page/work/images/bg_tab.png) center center repeat;background-size:cover;text-align:center;}
 #kiosk .tab-bx a{display:inline-block;vertical-align:top;margin-top:-194px;width:384px;height:384px;}
 #kiosk .tab-bx a + a{margin-left:80px;}
@@ -397,10 +403,12 @@ body{color:#000; font-size:16px; line-height:1.6; font-family:'Apple SD Gothic N
 .flip-card-front, .flip-card-back{position:absolute;width:100%;height:100%;-webkit-backface-visibility:hidden;backface-visibility:hidden;display:flex;align-items:center;justify-content:center;}
 .flip-card-back {transform: rotateY(180deg);}
 
-
-
-#kiosk .reset{position:absolute;bottom:265px;left:0;width:50px;height:50px;background:red;font-size:0;z-index:10001;}
-#kiosk .reload{position:absolute;bottom:0px;left:0;width:50px;height:50px;background:blue;font-size:0;z-index:10001;}
+#kiosk .reset{position:absolute;bottom:215px;left:0;width:50px;height:50px;background:red;font-size:0;z-index:100001;display:none;opacity:.5;}
+#kiosk .reload{position:absolute;bottom:50px;left:0;width:50px;height:50px;background:blue;font-size:0;z-index:100001;display:none;opacity:.5;}
+#kiosk .control{position:absolute;bottom:132px;left:0;width:50px;height:50px;background:green;font-size:0;z-index:100001;display:block;opacity:.5;}
+#kiosk .control:active{animation:bugs .2s 1 both;}
+#kiosk .reset.active, 
+#kiosk .reload.active{display:block;}
 
 @keyframes bugs{
 	0%{pointer-events:none;}
