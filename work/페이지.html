@@ -558,10 +558,12 @@ var css_test_idx = 10;
 		$('.btn-bx a').removeAttr('style');
 		$('.pop-bx .bx').removeAttr('style');
 		$('.btn-bx a').removeClass('active f01 f02 f03 f04 f05 f06 f07 f08 f09 f10 f11 f12 f13 f14 f15');
-		var classes = ['f01', 'f02', 'f03' , 'f04', 'f05', 'f06', 'f07', 'f08', 'f09', 'f10', 'f11', 'f12', 'f13', 'f14', 'f15'];
-		for (var i = 0; i< classes.length; i++) {
-			$('.btn-bx a').eq(i).addClass(classes[i]);
-        };
+		setTimeout( function() {
+			var classes = ['f01', 'f02', 'f03' , 'f04', 'f05', 'f06', 'f07', 'f08', 'f09', 'f10', 'f11', 'f12', 'f13', 'f14', 'f15'];
+			for (var i = 0; i< classes.length; i++) {
+				$('.btn-bx a').eq(i).addClass(classes[i]);
+			};
+		}, 10);
     });
 
 
