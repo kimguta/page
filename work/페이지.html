@@ -558,21 +558,10 @@ var css_test_idx = 10;
 		$('.btn-bx a').removeAttr('style');
 		$('.pop-bx .bx').removeAttr('style');
 		$('.btn-bx a').removeClass('active f01 f02 f03 f04 f05 f06 f07 f08 f09 f10 f11 f12 f13 f14 f15');
-		$('.btn-bx a:nth-child(1)').addClass('f01');
-		$('.btn-bx a:nth-child(2)').addClass('f02');
-		$('.btn-bx a:nth-child(3)').addClass('f03');
-		$('.btn-bx a:nth-child(4)').addClass('f04');
-		$('.btn-bx a:nth-child(5)').addClass('f05');
-		$('.btn-bx a:nth-child(6)').addClass('f06');
-		$('.btn-bx a:nth-child(7)').addClass('f07');
-		$('.btn-bx a:nth-child(8)').addClass('f08');
-		$('.btn-bx a:nth-child(9)').addClass('f09');
-		$('.btn-bx a:nth-child(10)').addClass('f10');
-		$('.btn-bx a:nth-child(11)').addClass('f11');
-		$('.btn-bx a:nth-child(12)').addClass('f12');
-		$('.btn-bx a:nth-child(13)').addClass('f13');
-		$('.btn-bx a:nth-child(14)').addClass('f14');
-		$('.btn-bx a:nth-child(15)').addClass('f15');
+		var classes = ['f01', 'f02', 'f03' , 'f04', 'f05', 'f06', 'f07', 'f08', 'f09', 'f10', 'f11', 'f12', 'f13', 'f14', 'f15'];
+		for (var i = 0; i< classes.length; i++) {
+			$('.btn-bx a').eq(i).addClass(classes[i]);
+        };
     });
 
 
