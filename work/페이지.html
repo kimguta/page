@@ -454,7 +454,7 @@
 				</a>
 			</div>
 
-			<a href="#" class="reset">리셋</a>
+			<a href="#" class="reset"><i class="fas fa-random"></i></a>
 			<a href="#" class="reload" onclick="location.reload();">새로고침</a>
 			<a href="#" class="control" onclick="$('.reset, .reload').toggleClass('active');">콘트롤</a>
 		</div>
@@ -558,12 +558,19 @@ var css_test_idx = 10;
 		$('.btn-bx a').removeAttr('style');
 		$('.pop-bx .bx').removeAttr('style');
 		$('.btn-bx a').removeClass('active f01 f02 f03 f04 f05 f06 f07 f08 f09 f10 f11 f12 f13 f14 f15');
-		setTimeout( function() {
-			var classes = ['f01', 'f02', 'f03' , 'f04', 'f05', 'f06', 'f07', 'f08', 'f09', 'f10', 'f11', 'f12', 'f13', 'f14', 'f15'];
-			for (var i = 0; i< classes.length; i++) {
-				$('.btn-bx a').eq(i).addClass(classes[i]);
-			};
-		}, 10);
+		function RandomArr(d) {
+			for(var c = d.length - 1; c > 0; c--)
+			{
+				var b = Math.floor(Math.random() * (c + 1));
+				var a = d[c]; d[c] = d[b]; d[b] = a;
+			}
+			return d
+		}
+		var classes = ['f01', 'f02', 'f03' , 'f04', 'f05', 'f06', 'f07', 'f08', 'f09', 'f10', 'f11', 'f12', 'f13', 'f14', 'f15'];
+		var classes = RandomArr(classes);
+		for (var i = 0; i< classes.length; i++) {
+			$('.btn-bx a').eq(i).addClass(classes[i]);
+		};
     });
 
 
