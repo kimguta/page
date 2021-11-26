@@ -5,6 +5,34 @@
 					</div>
 
 
+function close(element){
+    element.fadeOut(1000);
+}
+
+$('.pop-bx .close').on('click', function(e){
+    e.preventDefault();
+    close($(this));
+});
+
+$('.reset').on('click', function(e){
+    e.preventDefault();
+    $('.btn-bx a').removeAttr('style');
+    $('.pop-bx .bx').removeAttr('style');
+    $('.btn-bx a').removeClass('active f01 f02 f03 f04 f05 f06 f07 f08 f09 f10 f11 f12 f13 f14 f15');
+    function RandomArr(d) {
+        for(var c = d.length - 1; c > 0; c--)
+        {
+            var b = Math.floor(Math.random() * (c + 1));
+            var a = d[c]; d[c] = d[b]; d[b] = a;
+        }
+        return d
+    }
+    var classes = ['f01', 'f02', 'f03' , 'f04', 'f05', 'f06', 'f07', 'f08', 'f09', 'f10', 'f11', 'f12', 'f13', 'f14', 'f15'];
+    var classes = RandomArr(classes);
+    for (var i = 0; i< classes.length; i++) {
+        $('.btn-bx a').eq(i).addClass(classes[i]);
+    };
+});
 
 $('.btn-bx a').draggable({
     containment : 'parent',
