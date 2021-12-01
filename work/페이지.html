@@ -2,6 +2,7 @@
 <html lang="ko">
 <head>
 	<title>프로젝트명</title>
+	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
 	<script src="/page/work/js/jquery-1.12.2.min.js"></script>
 	<link rel="stylesheet" href="/page/work/css/kiosk.css" />
 </head>
@@ -443,7 +444,7 @@
 		// Place element where the finger is
 		event.target.style.left = touch.pageX + 'px';
 		event.target.style.top = touch.pageY + 'px';
-
+		event.preventDefault();
 	}, false);
 
 
@@ -456,7 +457,6 @@
 
 		$(this).addClass('active');
 		$(this).removeClass('f01 f02 f03 f04 f05 f06 f07 f08 f09 f10 f11 f12 f13 f14 f15 reverse alternate alternate-reverse normal');
-
 	}, false);
 
 	obj.addEventListener('touchend', function(event) {
