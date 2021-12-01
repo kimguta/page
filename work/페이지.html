@@ -4,12 +4,7 @@
 	<title>프로젝트명</title>
 	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
 	<script src="/page/work/js/jquery-1.12.2.min.js"></script>
-	<script src="/page/work/js/jquery-ui.min.js"></script>
-	<script src="/page/work/js/jquery.ui.touch.js"></script>
-	<script src="/page/work/js/jquery-ui.drag-multiple.min.js"></script>
 	<link rel="stylesheet" href="/page/work/css/kiosk.css" />
-
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
 </head>
 
 
@@ -18,56 +13,22 @@
 		<div id="kiosk">
 			<div class="btn-bx">
 
-				<a class="f01" id="fbx">
-					<img src="/page/work/images/01.png" alt="대체텍스트" style="display:block;pointer-events:none;">
-				</a>
+				<img src="/page/work/images/01.png" alt="대체텍스트" class="draggable f01">
+				<img src="/page/work/images/02.png" alt="대체텍스트" class="draggable f02">
+				<img src="/page/work/images/03.png" alt="대체텍스트" class="draggable f03">
+				<img src="/page/work/images/04.png" alt="대체텍스트" class="draggable f04">
+				<img src="/page/work/images/05.png" alt="대체텍스트" class="draggable f05">
+				<img src="/page/work/images/06.png" alt="대체텍스트" class="draggable f06">
+				<img src="/page/work/images/07.png" alt="대체텍스트" class="draggable f07">
+				<img src="/page/work/images/08.png" alt="대체텍스트" class="draggable f08">
+				<img src="/page/work/images/09.png" alt="대체텍스트" class="draggable f09">
+				<img src="/page/work/images/10.png" alt="대체텍스트" class="draggable f10">
+				<img src="/page/work/images/11.png" alt="대체텍스트" class="draggable f11">
+				<img src="/page/work/images/12.png" alt="대체텍스트" class="draggable f12">
+				<img src="/page/work/images/13.png" alt="대체텍스트" class="draggable f13">
+				<img src="/page/work/images/14.png" alt="대체텍스트" class="draggable f14">
+				<img src="/page/work/images/15.png" alt="대체텍스트" class="draggable f15">
 
- 
-				<a class="f02" id="fbx2">
-					<img src="/page/work/images/02.png" alt="대체텍스트" style="display:block;pointer-events:none;">
-				</a>
-
-				<div id="status">Thanks for the fish</div>
-
-				<a href="#" class="f03">
-					<img src="/page/work/images/03.png" alt="대체텍스트">
-				</a>
-				<a href="#" class="f04">
-					<img src="/page/work/images/04.png" alt="대체텍스트">
-				</a>
-				<a href="#" class="f05">
-					<img src="/page/work/images/05.png" alt="대체텍스트">
-				</a>
-				<a href="#" class="f06">
-					<img src="/page/work/images/06.png" alt="대체텍스트">
-				</a>
-				<a href="#" class="f07">
-					<img src="/page/work/images/07.png" alt="대체텍스트">
-				</a>
-				<a href="#" class="f08">
-					<img src="/page/work/images/08.png" alt="대체텍스트">
-				</a>
-				<a href="#" class="f09">
-					<img src="/page/work/images/09.png" alt="대체텍스트">
-				</a>
-				<a href="#" class="f10">
-					<img src="/page/work/images/10.png" alt="대체텍스트">
-				</a>
-				<a href="#" class="f11">
-					<img src="/page/work/images/11.png" alt="대체텍스트">
-				</a>
-				<a href="#" class="f12">
-					<img src="/page/work/images/12.png" alt="대체텍스트">
-				</a>
-				<a href="#" class="f13">
-					<img src="/page/work/images/13.png" alt="대체텍스트">
-				</a>
-				<a href="#" class="f14">
-					<img src="/page/work/images/14.png" alt="대체텍스트">
-				</a>
-				<a href="#" class="f15">
-					<img src="/page/work/images/15.png" alt="대체텍스트">
-				</a>
 			</div>
 
 			<div class="pop-bx clearfix">
@@ -471,129 +432,75 @@
 </body>
 <script type="text/javascript">
 
+	
+	var nodeList = $('.draggable');
+	
+	for(var i=0;i<nodeList.length;i++) {
+	var obj = nodeList[i];
 
-var myBlock = document.getElementById('fbx');
-var statusBar = document.getElementById('status');
+	obj.addEventListener('touchmove', function(event) {
+		var touch = event.targetTouches[0];
+		
+		// Place element where the finger is
+		event.target.style.left = touch.pageX + 'px';
+		event.target.style.top = touch.pageY + 'px';
 
-// create a simple instance on our object
-var mc = new Hammer(myBlock);
-
-// add a "PAN" recognizer to it (all directions)
-mc.add( new Hammer.Pan({ direction: Hammer.DIRECTION_ALL, threshold: 0 }) );
-
-
-// tie in the handler that will be called
-mc.on("pan", handleDrag);
-
-// poor choice here, but to keep it simple
-// setting up a few vars to keep track of things.
-// at issue is these values need to be encapsulated
-// in some scope other than global.
-var lastPosX = 0;
-var lastPosY = 0;
-var isDragging = false;
-function handleDrag(ev) {
-  
-  // for convience, let's get a reference to our object
-  var elem = ev.target;
-  
-  // DRAG STARTED
-  // here, let's snag the current position
-  // and keep track of the fact that we're dragging
-  if ( ! isDragging ) {
-    isDragging = true;
-    lastPosX = elem.offsetLeft;
-    lastPosY = elem.offsetTop;
-    
-    
-  }
-  
-  // we simply need to determine where the x,y of this
-  // object is relative to where it's "last" known position is
-  // NOTE: 
-  //    deltaX and deltaY are cumulative
-  // Thus we need to always calculate 'real x and y' relative
-  // to the "lastPosX/Y"
-  var posX = ev.deltaX + lastPosX;
-  var posY = ev.deltaY + lastPosY;
-  
-  // move our element to that position
-  elem.style.left = posX + "px";
-  elem.style.top = posY + "px";
-  
-  // DRAG ENDED
-  // this is where we simply forget we are dragging
-  if (ev.isFinal) {
-    isDragging = false;
-
-	elem.classList.add("mystyle");
-  }
-}
+	}, false);
 
 
+	obj.addEventListener('touchstart', function(event) {
+		var touch = event.targetTouches[0];
+		
+		// Place element where the finger is
+		event.target.style.left = touch.pageX + 'px';
+		event.target.style.top = touch.pageY + 'px';
+
+		$(this).addClass('active');
+		$(this).removeClass('f01 f02 f03 f04 f05 f06 f07 f08 f09 f10 f11 f12 f13 f14 f15 reverse alternate alternate-reverse normal');
+
+	}, false);
+
+	obj.addEventListener('touchend', function(event) {
+		var touch = event.targetTouches[0];
+	
+		$(this).removeClass('active');
+
+		var position = $(this).position().left;
+		var position2 = $(this).position().top;
+		var move = ['reverse', 'alternate', 'alternate-reverse', 'normal'];
+		var classes1 = ['f01', 'f06', 'f11'];
+		var classes2 = ['f02', 'f07', 'f12'];
+		var classes3 = ['f03', 'f08', 'f13'];
+		var classes4 = ['f04', 'f09', 'f14'];
+		var classes5 = ['f05', 'f10', 'f15'];
+		$(this).addClass(move[~~(Math.random()*move.length)]);
+		
+		if (position < 668) {
+			$(this).addClass(classes1[~~(Math.random()*classes1.length)]);
+		}
+		else if (position > 667 && position < 1436) {
+			$(this).addClass(classes2[~~(Math.random()*classes2.length)]);
+		}
+		else if (position > 1435 && position < 2204) {
+			$(this).addClass(classes3[~~(Math.random()*classes3.length)]);
+		}
+		else if (position > 2203 && position < 2972) {
+			$(this).addClass(classes4[~~(Math.random()*classes4.length)]);
+		}
+		else if (position > 2971 && position < 3840) {
+			$(this).addClass(classes5[~~(Math.random()*classes5.length)]);
+		}
+
+	}, false);
 
 
-var myBlock2 = document.getElementById('fbx2');
+	}
 
-// create a simple instance on our object
-var mc2 = new Hammer(myBlock2);
+	var css_test_idx = 10;
+	var test_order = 1;
+		
 
-// add a "PAN" recognizer to it (all directions)
-mc2.add( new Hammer.Pan({ direction: Hammer.DIRECTION_ALL, threshold: 0 }) );
-
-
-// tie in the handler that will be called
-mc2.on("pan", handleDrag);
-
-// poor choice here, but to keep it simple
-// setting up a few vars to keep track of things.
-// at issue is these values need to be encapsulated
-// in some scope other than global.
-var lastPosX = 0;
-var lastPosY = 0;
-var isDragging = false;
-function handleDrag(ev) {
-  
-  // for convience, let's get a reference to our object
-  var elem = ev.target;
-  
-  // DRAG STARTED
-  // here, let's snag the current position
-  // and keep track of the fact that we're dragging
-  if ( ! isDragging ) {
-    isDragging = true;
-    lastPosX = elem.offsetLeft;
-    lastPosY = elem.offsetTop;
-    
-    
-  }
-  
-  // we simply need to determine where the x,y of this
-  // object is relative to where it's "last" known position is
-  // NOTE: 
-  //    deltaX and deltaY are cumulative
-  // Thus we need to always calculate 'real x and y' relative
-  // to the "lastPosX/Y"
-  var posX = ev.deltaX + lastPosX;
-  var posY = ev.deltaY + lastPosY;
-  
-  // move our element to that position
-  elem.style.left = posX + "px";
-  elem.style.top = posY + "px";
-  
-  // DRAG ENDED
-  // this is where we simply forget we are dragging
-  if (ev.isFinal) {
-    isDragging = false;
-  }
-}
-
-
-
-
-/*
-
-$('.btn-bx a').on('click', function(e){
+	$('.btn-bx img').on('click', function(e){
 		e.preventDefault();
 		var idx = $(this).index();
 		var position = $(this).position().left;
@@ -603,8 +510,8 @@ $('.btn-bx a').on('click', function(e){
 		if (position > 1920) {
 			$('.pop-bx > div').eq(idx).addClass('right');
 		}
-    });
-
+	});
+	
 
 	$('.pop-bx .close').on('click', function(e){
 		e.preventDefault();
@@ -613,7 +520,7 @@ $('.btn-bx a').on('click', function(e){
 			$(this).removeClass('right');
 		});
 		$('.btn-bx a').eq(idx2).removeClass('active').removeAttr('style');
-    });
+	});
 
 
 	$('.pop-bx .flip').on('click', function(e){
@@ -621,14 +528,14 @@ $('.btn-bx a').on('click', function(e){
 		$(this).parent('.bx').find('.flip-card').addClass('active');
 		$(this).hide();
 		$(this).siblings('.flip2').show();
-    });
+	});
 
 	$('.pop-bx .flip2').on('click', function(e){
 		e.preventDefault();
 		$(this).parent('.bx').find('.flip-card').removeClass('active');
 		$(this).hide();
 		$(this).siblings('.flip').show();
-    });
+	});
 
 	$('.reset').on('click', function(e){
 		e.preventDefault();
@@ -648,10 +555,9 @@ $('.btn-bx a').on('click', function(e){
 		for (var i = 0; i< classes.length; i++) {
 			$('.btn-bx a').eq(i).addClass(classes[i]);
 		};
-    });
-
-*/
-
+	});
+	
+	
 </script>
 
 </html>
