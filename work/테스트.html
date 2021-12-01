@@ -47,7 +47,22 @@
   <script>
 
 	var css_test_idx = 10;
-    $('.dragon').dragon(
+    $('#dragon-basic').dragon(
+		{
+		'dragStart': function () {
+			$(this).addClass('aa');
+		}
+		,'drag': function () {
+			$(this).css('z-index', css_test_idx);
+			css_test_idx++;
+		}
+		,'dragEnd': function () {
+			
+		}
+	});
+
+
+	$('#dragon-basic2').dragon(
 		{
 		'dragStart': function () {
 			$(this).addClass('aa');
