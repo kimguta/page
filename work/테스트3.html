@@ -1,64 +1,48 @@
+<div class="draggable" id="d1" ></div>
+<div class="draggable" id="d2" ></div>
+<div class="draggable" id="d3" ></div>
 
-<!doctype html>
-<html>
-<head>
-<meta charset='utf-8'>
-<meta name='viewport' content='width=device-width'>
+
+
 <style>
-body {
-background: whitesmoke
-}
-#square {
-position: absolute;
-left: 50%;
-top: 50%;
-margin: -100px 0 0 -100px;
-width: 200px;
-height: 200px;
-color: deeppink;
-font: 700 32px sans-serif;
-text-align: center;
-line-height: 200px;
-border: 1px solid deeppink;
-background: #222;
-box-shadow: 0 0 10px black
-}
-#square2 {
-position: absolute;
-left: 40%;
-top: 40%;
-margin: -100px 0 0 -100px;
-width: 200px;
-height: 200px;
-color: deeppink;
-font: 700 32px sans-serif;
-text-align: center;
-line-height: 200px;
-border: 1px solid deeppink;
-background: #222;
-box-shadow: 0 0 10px black
-}
+   .draggable {width:50px;height:50px;position:absolute}
+  #d1 {background-color:#f00;}
+  #d2 {background-color:#0f0;left: 100px;}
+  #d3 {background-color:#00f;left: 200px;}
 </style>
-<script src="/page/work/js/jquery-1.12.2.min.js"></script> 
-<script src='/page/work/js/jquery.touch.js'></script> 
-<title>Demo for jquery.touch.js</title>
-</head>
-
-<body>
-<div id="menu">
-
-
-<div id="square">Finger me!</div>
-<div id="square2">Finger me!</div>
-
-
-</div>
 
 <script>
-        $('#square').touch();
-        $('#square2').touch();
-</script>
-    
+  
+  var nodeList = document.getElementsByClassName('draggable');
+ 
+  for(var i=0;i<nodeList.length;i++) {
+    var obj = nodeList[i];
+    obj.addEventListener('touchmove', function(event) {
+      var touch = event.targetTouches[0];
+      
+      // Place element where the finger is
+      event.target.style.left = touch.pageX + 'px';
+      event.target.style.top = touch.pageY + 'px';
+      event.preventDefault();
+    }, false);
+ 
 
-</body>
-</html>
+  obj.addEventListener('touchstart', function(event) {
+      var touch = event.targetTouches[0];
+      
+      // Place element where the finger is
+      event.target.style.left = touch.pageX + 'px';
+      event.target.style.top = touch.pageY + 'px';
+      event.preventDefault();
+    }, false);
+  }
+
+var i = 0;
+var original = document.getElementById('duplicater');
+
+function duplicate() {
+    var clone = original.cloneNode(true); // "deep" clone
+    clone.id = "duplicetor" + ++i; // there can only be one element with an ID
+    original.parentNode.appendChild(clone);
+}
+</script>
