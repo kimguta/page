@@ -457,6 +457,7 @@
 
 		$(this).addClass('active');
 		$(this).css('z-index', css_test_idx);
+		css_test_idx++;
 		$(this).removeClass('f01 f02 f03 f04 f05 f06 f07 f08 f09 f10 f11 f12 f13 f14 f15 reverse alternate alternate-reverse normal');
 	}, false);
 
@@ -498,7 +499,11 @@
 
 	
 	var test_order = 1;
+	
+	$('#kiosk').on('mouseenter', function(e){
+		e.preventDefault();
 		
+	});
 
 	$('.btn-bx img').on('click', function(e){
 		e.preventDefault();
