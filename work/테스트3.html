@@ -1,19 +1,23 @@
+
+
+<script src="/page/work/js/jquery-1.12.2.min.js"></script>
+
 <div class="draggable" id="d1" ></div>
 <div class="draggable" id="d2" ></div>
 <div class="draggable" id="d3" ></div>
 
-
+<p>하하하</p>
 
 <style>
-   .draggable {width:50px;height:50px;position:absolute}
+   .draggable {width:200px;height:200px;position:absolute}
   #d1 {background-color:#f00;}
-  #d2 {background-color:#0f0;left: 100px;}
-  #d3 {background-color:#00f;left: 200px;}
+  #d2 {background-color:#0f0;left: 300px;}
+  #d3 {background-color:#00f;left: 600px;}
 </style>
 
 <script>
   
-  var nodeList = document.getElementsByClassName('draggable');
+  var nodeList = $('.draggable');
  
   for(var i=0;i<nodeList.length;i++) {
     var obj = nodeList[i];
@@ -23,7 +27,7 @@
       // Place element where the finger is
       event.target.style.left = touch.pageX + 'px';
       event.target.style.top = touch.pageY + 'px';
-      event.preventDefault();
+
     }, false);
  
 
@@ -33,16 +37,19 @@
       // Place element where the finger is
       event.target.style.left = touch.pageX + 'px';
       event.target.style.top = touch.pageY + 'px';
-      event.preventDefault();
+  
     }, false);
+
+    obj.addEventListener('touchend', function(event) {
+      var touch = event.targetTouches[0];
+      
+
+      $(this).addClass('right');
+     
+    
+    }, false);
+
   }
 
-var i = 0;
-var original = document.getElementById('duplicater');
 
-function duplicate() {
-    var clone = original.cloneNode(true); // "deep" clone
-    clone.id = "duplicetor" + ++i; // there can only be one element with an ID
-    original.parentNode.appendChild(clone);
-}
 </script>
