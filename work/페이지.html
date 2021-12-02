@@ -442,6 +442,7 @@
 		var touch = event.targetTouches[0];
 
 		$(this).removeClass('throw-start');
+		$(this).addClass('active');
 		
 		// Place element where the finger is
 		event.target.style.left = touch.pageX - 200 + 'px';
@@ -472,8 +473,11 @@
 		var touch = event.targetTouches[0];
 
 	
-		$(this).removeClass('active');
 		$(this).addClass('throw-end');
+		
+		setTimeout(function(event) {
+			$('.draggable').removeClass('active');
+		}, 1000);
 		
 		var position = $(this).position().left;
 		var position2 = $(this).position().top;
