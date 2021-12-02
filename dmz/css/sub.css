@@ -463,26 +463,68 @@ span.listLv:before,
   .listLv >dt:before {top: 15px;}
 }
 
+/*검색박스*/
+input[type="search"]:focus::placeholder,
+input[type="text"]:focus::placeholder{color:transparent}
+
+#search-box{position:relative;padding:38px 30px;max-width:800px;margin:0 auto;}
+#search-box:before{content:'';display:block;width:1920px;position:absolute;left:50%;margin-left:-960px;top:0;bottom:0;background:#f4f4f4;}
+#search-box .bx{float:left;position:relative;background:#fff;border:1px solid #b5b5b5;padding:0 20px;}
+#search-box .bx-1{width:153px;margin-right:15px;}
+#search-box .bx-2{width:calc(100% - 168px);padding-right:55px;}
+#search-box select{display:block;width:100%;line-height:54px;height:54px;background:transparent;font-size:16px;color:#707070;}
+#search-box input[type="search"]{line-height:54px;height:54px;background:transparent;display:block;width:100%;font-size:16px;color:#000;}
+#search-box input[type="search"]::placeholder{font-size:16px;color:#000;}
+#search-box input[type="submit"]{display:block;width:50px;height:50px;position:absolute;top:2px;right:2px;background:url(/page/dmz/images/common/sp_dmz.png) -194px -75px no-repeat;background-size: 520px 559px;font-size:0;color:transparent;image-rendering:-webkit-optimize-contrast;}
+#search-box input[type="submit"]:active{transform:scale(.95);}
+
+@media (max-width:1399px) {
+  #search-box{padding:30px 100px;}
+  #search-box .bx{padding:0 15px;}
+  #search-box .bx-1{width:150px}
+  #search-box .bx-2{width:calc(100% - 165px);padding-right:40px;}
+  #search-box select{line-height:42px;height:42px;font-size:14px;}
+  #search-box input[type="search"]{line-height:42px;height:42px;font-size:14px;}
+  #search-box input[type="search"]::placeholder{font-size:14px;}
+  #search-box input[type="submit"]{transform:scale(.85);transform-origin:100% 0%;top:0px;}
+}
+
+@media (max-width:992px) {
+  #search-box{padding:25px 35px;}
+}
+
+@media (max-width:760px) {
+  #search-box{padding:20px 0px;}
+  #search-box .bx{padding:0 10px;}
+  #search-box .bx-1{width:90px;margin-right:7px;}
+  #search-box .bx-2{width:calc(100% - 97px);padding-right:36px;}
+  #search-box select{line-height:36px;height:36px;font-size:13px;}
+  #search-box input[type="search"]{line-height:36px;height:36px;}
+  #search-box input[type="submit"]{transform:scale(.8);top:-2px;}
+}
+
+
 
 /*통합검색*/
-#total-search{position:relative;padding-bottom:50px;}
+
+#total-search{position:relative;padding-bottom:50px;margin-top:100px;}
 #total-search .popular{padding:35px 0 32px;text-align:center;}
 #total-search .popular strong{display:inline-block;vertical-align:top;padding-right:15px;height:20px;line-height:20px;color:#454545;font-weight:300;position:relative;}
 #total-search .popular strong:after{content:'';display:block;width:2px;height:14px;background:#b8b8b8;position:absolute;top:50%;margin-top:-7px;right:0;}
 #total-search .popular a{display:inline-block;vertical-align:top;height:20px;line-height:20px;margin-left:13px;color:#454545;font-weight:300;}
-#total-search .popular a em{display:inline-block;vertical-align:top;height:20px;width:20px;line-height:20px;background:#7b7b7b;color:#fff;font-weight:400;border:1px solid #515151;transition:all .1s;text-align:center;margin-right:5px;}
+#total-search .popular a em{display:inline-block;vertical-align:top;height:20px;width:20px;line-height:16px;background:#7b7b7b;color:#fff;font-weight:400;border:1px solid #515151;transition:all .1s;text-align:center;margin-right:5px;}
 #total-search .popular a:hover{text-decoration:none;}
-#total-search .popular a:hover em{background:#1f8371;}
+#total-search .popular a:hover em{background:#fdb016;}
 
-#total-search .period{position:relative;background:#f7f7f7;border:1px solid #b5b5b5;border-radius:25px;padding:30px 45px;}
+#total-search .period{position:relative;background:#f7f7f7;border:1px solid #b5b5b5;padding:30px 45px;}
 #total-search .period .bx-1{float:left;}
 #total-search .period .bx-1 > div{display:inline-block;vertical-align:top;}
 #total-search .period .bx-2{float:right;}
 #total-search .period strong{display:inline-block;vertical-align:top;height:34px;line-height:36px;color:#454545;font-size:18px;font-weight:500;padding-right:2px;}
 #total-search .period .bx-1 div:nth-of-type(n+2) strong{margin-left:40px;}
-#total-search .period a{display:inline-block;vertical-align:top;margin-left:5px;width:77px;height:34px;line-height:34px;text-align:center;background:#fff;border:1px solid #1f8371;border-radius:5px;color:#1f8371;transition:all .05s;font-size:14px;font-weight:400;}
-#total-search .period a:hover{background:#1f8371;color:#fff;text-decoration:none;}
-#total-search .period a.active{background:#1f8371;color:#fff;text-decoration:none;}
+#total-search .period a{display:inline-block;vertical-align:top;margin-left:5px;width:77px;height:34px;line-height:30px;text-align:center;background:#fff;border:1px solid #fdb016;color:#fdb016;transition:all .05s;font-size:14px;font-weight:400;}
+#total-search .period a:hover{background:#fdb016;color:#fff;text-decoration:none;}
+#total-search .period a.active{background:#fdb016;color:#fff;text-decoration:none;}
 #total-search .period .bx:nth-child(2n) > div{display:inline-block;vertical-align:top;}
 #total-search .period label{display:inline-block;vertical-align:top;height:34px;line-height:36px;color:#454545;font-size:18px;font-weight:500;padding-right:2px;}
 #total-search .period input[type="text"]{height:34px;line-height:34px;padding-left:15px;margin-left:6px;border:1px solid #b1b1b1;width:130px;}
@@ -494,49 +536,64 @@ span.listLv:before,
 #total-search .result{position:relative;}
 #total-search .result h4 br{display:none;}
 #total-search .result h4{text-align:center;padding:35px 0 35px;font-weight:400;color:#454545;font-size:22px;}
-#total-search .result h4 span{color:#1f8371;font-weight:900;}
-#total-search .result h4 strong{font-weight:700;color:#fa830f;text-decoration:underline;}
-#total-search .total{position:relative;background:#f7f7f7;border:1px solid #b5b5b5;border-radius:25px;padding:13px 45px 25px;}
+#total-search .result h4 span{color:#000;font-weight:700;}
+#total-search .result h4 strong{font-weight:500;color:#fdb016;text-decoration:underline;}
+#total-search .total{position:relative;background:#f7f7f7;border:1px solid #b5b5b5;padding:13px 45px 25px;}
 #total-search .total li{margin:17px 0px 0 0;padding-left:16px;position:relative;display:inline-block;width:calc((100% - 15px) / 5)}
-#total-search .total li a{display:block;height:25px;line-height:25px;color:#313131;font-weight:500;transition:all .1s;}
-#total-search .total li.active a{font-weight:900;}
+#total-search .total li a{display:block;height:25px;line-height:25px;color:#313131;font-weight:400;transition:all .1s;}
+#total-search .total li.active a{font-weight:700;}
 #total-search .total li:after{content:'';display:block;width:8px;height:8px;border:1px dotted #313131;border-width:0px 0px 1px 1px;position:absolute;top:5px;left:0px;}
 
-#total-search .result h4.none{text-align:left;padding-bottom:5px;color:#1f8371;font-weight:700;font-size:18px;padding-left:20px;}
+#total-search .result h4.none{text-align:left;padding-bottom:5px;color:#fdb016;font-weight:500;font-size:18px;padding-left:20px;}
 #total-search .no_result{margin:5px 0 36px;padding-left:20px;}
-#total-search .no_result li{line-height:1.4;color:#707070;font-weight:500;padding-left:12px;position:relative;}
+#total-search .no_result li{line-height:1.4;color:#707070;font-weight:400;padding-left:12px;position:relative;}
 #total-search .no_result li:after{content:'-';display:block;position:absolute;top:1px;left:0px;}
 #total-search .no_result li + li{margin-top:5px;}
 
 #total-search .item{margin-top:60px;position:relative;}
-#total-search .item h5{height:44px;line-height:44px;padding-left:20px;background:#f7f7f7;border:1px solid #b5b5b5;border-radius:22px;font-size:18px;color:#313131;font-weight:700;margin-bottom:5px;}
+#total-search .item h5{height:44px;line-height:42px;padding-left:20px;background:#f7f7f7;border:1px solid #b5b5b5;font-size:18px;color:#313131;font-weight:700;margin-bottom:5px;}
 #total-search .item li a{display:block;border-bottom:1px dashed #979797;padding:23px 20px;}
 #total-search .item li a:hover{text-decoration:none;}
-#total-search .item li a strong{display:block;color:#1f8371;font-size:18px;margin-bottom:7px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:all .1s;}
-#total-search .item li a:hover strong{font-weight:900;}
+#total-search .item li a strong{display:block;color:#fdb016;font-size:18px;margin-bottom:7px;font-weight:400;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:all .1s;}
+#total-search .item li a:hover strong{font-weight:500;}
 #total-search .item li a p{line-height:1.6;margin-bottom:5px;max-height:3.2em;word-break:keep-all;color:#707070;font-size:16px;font-weight:400;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
-#total-search .item li a span{display:block;color:#02987e;font-weight:400;}
+#total-search .item li a span{display:block;color:#999;font-weight:400;}
 #total-search .item li a span em{margin-left:10px;padding-left:12px;position:relative;}
 #total-search .item li a span em:after{content:'';display:block;height:12px;width:1px;position:absolute;top:50%;margin-top:-6px;left:0px;background:#02987e;}
-#total-search .item .more{position:absolute;color:#454545;top:11px;right:20px;}
+#total-search .item .more{position:absolute;color:#454545;top:10px;right:20px;}
 #total-search .item .more:hover{text-decoration:none;font-weight:700;}
 #total-search .highlight{background:#fff93b;}
 
-#total-search .ga-list{padding-top:25px;border-bottom:0;margin-bottom:-17px;}
-#total-search .ga-list .bx{margin-bottom:17px;}
-#total-search .menu{padding:18px 20px 27px;border-bottom:1px dashed #979797;}
-#total-search .menu a{display:block;margin-top:7px;font-weight:500;color:#434343;}
+#total-search .ga-list{padding-top:30px;border-bottom:0;display:flex;}
+#total-search .ga-list a{flex:1;}
+#total-search .ga-list a:hover{text-decoration:none;}
+#total-search .ga-list a + a{margin-left:20px;}
+#total-search .ga-list .text{padding:18px 0 0px;}
+#total-search .ga-list .text strong{display:block;color:#000;line-height:1.1;font-size:18px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;padding-bottom:5px;}
+#total-search .ga-list .text span{display:block;white-space:nowrap;margin-top:9px;line-height:1.1}
+#total-search .ga-list .text span em{display:inline-block;padding-right:13px;margin-right:12px;position:relative;}
+#total-search .ga-list .text span em:after{content:'';display:block;width:1px;height:12px;background:#c9c9c9;position:absolute;right:0;top:50%;margin-top:-6px;}
+
+#total-search .ga-list .img{width:100%;position:relative;height:220px;overflow:hidden;border:1px solid #ccc;background:#fafafa;}
+
+#total-search .ga-list .img img{display:block;transition:all .2s;max-width:100%;max-height:100%;margin:auto;position:absolute;top:-100%;left:-100%;right:-100%;bottom:-100%;}
+#total-search .ga-list a:hover img{filter:grayscale(1);}
+#total-search .ga-list a:hover{text-decoration:none;}
+#total-search .ga-list a:hover strong{color:#fdb11d;}
+
+#total-search .menu{padding:18px 20px 27px 0px;border-bottom:1px dashed #979797;}
+#total-search .menu a{display:block;margin-top:7px;font-weight:300;color:#434343;}
 
 
 @media (max-width:1399px) {
-  #total-search{padding-bottom:35px;}
+  #total-search{padding-bottom:35px;margin-top:60px;}
   #total-search .popular{padding:30px 0 23px;}
   #total-search .popular strong{font-size:15px;padding-right:15px;height:18px;line-height:18px;}
   #total-search .popular strong:after{width:1px;height:12px;margin-top:-6px;}
   #total-search .popular a{margin-left:13px;font-size:15px;height:18px;line-height:18px;}
-  #total-search .popular a em{width:18px;height:18px;line-height:18px;font-size:13px;}
+  #total-search .popular a em{width:18px;height:18px;line-height: 15px;font-size:13px;}
 
-  #total-search .period{border-radius:20px;padding:20px 35px;}
+  #total-search .period{padding:20px 35px;}
   #total-search .period .bx-1{float:none;}
   #total-search .period .bx-2{float:right;margin-top:15px;}
   #total-search .period strong{height:30px;line-height:32px;font-size:16px;}
@@ -551,28 +608,37 @@ span.listLv:before,
 
   #total-search .result h4{padding:30px 0 30px;font-size:20px;}
 
-  #total-search .total{border-radius:20px;padding:8px 35px 20px;}
+  #total-search .total{padding:8px 35px 20px;}
   #total-search .total li{margin:15px 0px 0 0;}
   #total-search .total li a{font-size:15px;}
   #total-search .total li:after{width:6px;height:6px;top:5px;}
 
   #total-search .result h4.none{font-size:16px;padding-left:15px;}
-  #total-search .no_result{margin:5px 0 30px;padding-left:15px;}
+  #total-search .no_result{margin:5px 0 -10px;padding-left:15px;}
   #total-search .no_result li{font-size:15px;}
 
   #total-search .item{margin-top:50px;}
-  #total-search .item h5{height:40px;line-height:40px;padding-left:15px;font-size:16px;}
+  #total-search .item h5{height:40px;line-height:38px;padding-left:15px;font-size:16px;}
   #total-search .item li a{padding:20px 15px;}
   #total-search .item li a strong{font-size:15px;margin-bottom:5px;}
   #total-search .item li a p{font-size:14px;margin-bottom:3px;}
   #total-search .item li a span{font-size:13px;}
   #total-search .item li a span em{margin-left:8px;padding-left:10px;}
   #total-search .item li a span em:after{height:10px;margin-top:-5px;}
-  #total-search .item .more{top:10px;right:15px;font-size:14px;}
+  #total-search .item .more{top:9px;right:15px;font-size:14px;}
 
-  #total-search .ga-list{padding-top:20px;}
   #total-search .menu{padding:13px 15px 22px;}
   #total-search .menu a{margin-top:5px;font-size:15px;}
+
+  #total-search .ga-list{padding-top:20px;}
+  #total-search .ga-list a + a{margin-left:13px;}
+  #total-search .ga-list .text{padding:15px 0 0px;}
+  #total-search .ga-list .text strong{font-size:16px;padding-bottom:5px;}
+  #total-search .ga-list .text span{margin-top:6px;font-size:14px;}
+  #total-search .ga-list .text span em{padding-right:10px;margin-right:9px;}
+  #total-search .ga-list .text span em:after{height:10px;margin-top:-5px;}
+
+  #total-search .ga-list .img{height:200px;}
   
 }
 
@@ -584,15 +650,15 @@ span.listLv:before,
   #total-search .popular strong:after{display:none;}
   #total-search .popular a{margin-left:0px;font-size:14px;height:18px;line-height:18px;width:30%;}
 
-  #total-search .period{border-radius:15px;padding:15px;}
+  #total-search .period{padding:15px;}
   #total-search .period .bx-1 > div{display:block;}
   #total-search .period .bx-1 div:nth-of-type(n+2){margin-top:5px;}
   #total-search .period .bx-1 div:nth-of-type(n+2) strong{margin-left:0;}
   #total-search .period .bx-2{float:none;margin-top:7px;}
   #total-search .period strong{height:26px;line-height:28px;font-size:14px;width:40px;}
-  #total-search .period a{margin-left:5px;width:60px;height:26px;line-height:25px;font-size:12px;}
+  #total-search .period a{margin-left:5px;width:60px;height:26px;line-height:23px;font-size:12px;}
   #total-search .period label{height:26px;line-height:28px;font-size:14px;width:40px;}
-  #total-search .period input[type="text"]{height:26px;line-height:26px;padding-left:10px;margin-left:5px;width:calc(100% - 100px);font-size:14px;}
+  #total-search .period input[type="text"]{height:26px;line-height:26px;padding-left:10px;margin-left:5px;width: calc(100% - 80px);font-size:14px;}
   #total-search .ui-datepicker-trigger{margin:1px 0 0 1px;}
   #total-search .period .bx:nth-child(2n) > div{display:block;margin-bottom:2px;}
   #total-search .period .data_end{padding-left:0px;}
@@ -602,28 +668,38 @@ span.listLv:before,
   #total-search .result h4{padding:27px 0 25px;font-size:16px;}
   #total-search .result h4 br{display:block;}
 
-  #total-search .total{border-radius:15px;padding:8px 15px 10px;}
+  #total-search .total{padding:8px 15px 10px;}
   #total-search .total li{margin:7px 0px 0 0;width: calc((100% - 5px) / 2);}
   #total-search .total li a{font-size:14px;}
 
 
   #total-search .result h4.none{padding-left:5px;}
-  #total-search .no_result{margin:5px 0 25px;padding-left:0px;}
+  #total-search .no_result{margin:5px 0 -5px;padding-left:0px;}
   #total-search .no_result li{font-size:14px;}
 
   #total-search .item{margin-top:35px;}
-  #total-search .item h5{height:36px;line-height:36px;padding-left:15px;font-size:15px;}
+  #total-search .item h5{height:36px;line-height: 34px;padding-left:15px;font-size:15px;}
   #total-search .item li a{padding:15px 10px;}
   #total-search .item li a strong{font-size:15px;margin-bottom:5px;}
   #total-search .item li a p{font-size:14px;margin-bottom:3px;}
   #total-search .item li a span{font-size:13px;}
   #total-search .item li a span em{margin-left:8px;padding-left:10px;}
   #total-search .item li a span em:after{height:10px;margin-top:-5px;}
-  #total-search .item .more{top:8px;}
+  #total-search .item .more{top: 7px;}
 
-  #total-search .ga-list{padding-top:15px;}
+ 
   #total-search .menu{padding:10px 0px 17px 10px;}
   #total-search .menu a{margin-top:3px;font-size:14px;}
+
+  #total-search .ga-list{padding:15px 0 15px;margin:0 -15px -15px;padding-left:15px;overflow-x:auto;overflow-x:auto;scroll-behavior: smooth;-webkit-overflow-scrolling:touch;}
+  #total-search .ga-list a{flex-grow:0;flex-basis:180px;flex-shrink:0;margin-right:10px;}
+  #total-search .ga-list a + a{margin-left:0px;}
+  #total-search .ga-list .text{padding:12px 0 0px;}
+  #total-search .ga-list .text strong{font-size:15px;padding-bottom:3px;}
+  #total-search .ga-list .text span{margin-top:5px;font-size:13px;}
+  #total-search .ga-list .text span em{padding-right:9px;margin-right:8px;}
+  #total-search .ga-list .text span em:after{height:8px;margin-top:-4px;}
+  #total-search .ga-list .img{height:130px;}
 }
 
 #sub input:focus::placeholder{color:transparent}
