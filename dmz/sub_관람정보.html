@@ -1087,7 +1087,7 @@
 						</div>
 					</div>
 				</div>	
-			
+
 			</main>
 
 			<footer id="footer" class="clearfix">
@@ -1119,6 +1119,128 @@
 				</div>
 			</footer>
 			<a href="#" id="btn_top" role="button">TOP</a>	
+
+
+			<!--[d] 모달창-->
+			<div class="ui-modal">
+				<div class="bx">
+					<form>
+						<h2>비밀번호확인</h2>
+						<span>설명글 설명글 들어갑니다.(생략가능)</span>
+						<div class="ui-flex">
+							<label for="password" class="blind">비밀번호</label>
+							<input type="password" id="password">
+							<input type="submit" value="확인">
+						</div>
+						<div class="ui-flex">
+							<select>
+								<option>전체</option>
+								<option>전체</option>
+								<option>전체</option>
+								<option>전체</option>
+								<option>전체</option>
+							</select>
+							<input type="submit" value="확인">
+						</div>
+						<div class="ui-flex">
+							<select>
+								<option>전체</option>
+								<option>전체</option>
+								<option>전체</option>
+								<option>전체</option>
+								<option>전체</option>
+							</select>
+							<label for="password" class="blind">비밀번호</label>
+							<input type="password" id="password">
+						</div>
+						<div class="ui-flex">
+							<div>
+								<input type="checkbox" id="ch01">
+								<label for="ch01">춘천 춘천 춘천</label>
+							</div>
+							<div>
+								<input type="checkbox" id="ch02">
+								<label for="ch02">원주 원주 원주</label>
+							</div>
+							<div>
+								<input type="checkbox" id="ch03">
+								<label for="ch03">강릉 강릉</label>
+							</div>
+							<div>
+								<input type="checkbox" id="ch04">
+								<label for="ch04">속초 속초 속초</label>
+							</div>
+						</div>
+						<div class="ui-flex">
+							<label for="text" class="blind">텍스트</label>
+							<input type="text" id="text">
+						</div>
+						<div class="ui-flex">
+							<div>
+								<input type="radio" id="male" name="gender">
+								<label for="male">남성</label>
+								<input type="radio" id="female" name="gender">
+								<label for="female">여성</label>
+							</div>
+						</div>
+						<div class="ui-flex">
+							<input type="submit" value="확인">
+						</div>
+					</form>
+					<a href="#" class="close">닫기</a>
+				</div>
+			</div>
+			<style>
+				.ui-modal{position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.8);z-index:20;display:flex;justify-content:center;align-items:center;}
+				.ui-modal .bx{background:#fff;border-radius:10px;padding:20px 20px 20px;box-shadow:3px 3px 10px 0px rgba(0,0,0,.3);max-width:300px;width:90%;display:flex;align-items:center;min-height:130px;position:relative;}
+				.ui-modal h2{font-weight:500;font-size:18px;line-height:1.4;margin-bottom:13px;text-align:center;}
+				.ui-modal h2 + span{margin:-10px 0 12px;font-size:13px;display:block;text-align:center;color:#aaa;font-weight:300;}
+				.ui-modal select{height:32px;line-height:32px;border:1px solid #bbb;padding-left:10px;flex:3;}
+				.ui-modal input[type="password"],
+				.ui-modal input[type="text"]{height:32px;line-height:32px;border:1px solid #bbb;padding-left:15px;flex:3;}
+				.ui-modal .ui-flex + .ui-flex{margin-top:5px;}
+				.ui-modal .ui-flex{display:flex;width:100%;flex-wrap:wrap;}
+				.ui-modal form{width:100%;}
+				.ui-modal input[type="submit"]{flex:1;height:32px;line-height:32px;text-align:center;background:#111;font-size:14px;color:#fff;}
+				.ui-modal input[type="password"] + input[type="submit"],
+				.ui-modal input[type="text"] + input[type="submit"],
+				.ui-modal select + input[type="submit"]{margin-left:5px}
+				.ui-modal select ~ input[type="password"],
+				.ui-modal select ~ input[type="text"]{margin-left:5px;flex-basis:60%;flex-grow:0;width:100%}
+				.ui-modal .ui-flex > div{padding:3px 0;flex:1;flex-basis:50%;white-space:nowrap;height:30px;line-height:27px;}
+				.ui-modal .ui-flex > div label{font-size:14px;font-weight:400;overflow:hidden;max-width:calc(100% - 30px);text-overflow:ellipsis;white-space:nowrap;}
+				.ui-modal .ui-flex > div label + input[type="radio"]{margin-left:10px;}
+				.ui-modal .ui-flex > div input[type="radio"],
+				.ui-modal .ui-flex > div input[type="checkbox"]{margin:7px 1px 0 0;vertical-align:top;}
+				.ui-modal .close{display:block;position:absolute;top:-38px;right:0px;border-radius:50%;background:#fff;display:block;font-size:0;width:30px;height:30px;display:flex;align-items:center;justify-content:center;padding-bottom:1px;}
+				.ui-modal .close:after{content:'✖';font-size:20px;}
+
+				@media (max-width:1399px) {
+					.ui-modal .bx{padding:15px 15px 15px;max-width:280px;min-height:120px;}
+					.ui-modal h2{font-size:16px;margin-bottom:11px;}
+					.ui-modal h2 + span{margin:-8px 0 10px;font-size:12px;}
+					.ui-modal select{height:30px;line-height:30px;padding-left:5px;}
+					.ui-modal input[type="password"],
+					.ui-modal input[type="text"]{height:30px;line-height:30px;padding-left:10px;}
+					.ui-modal .ui-flex + .ui-flex{margin-top:5px;}
+					.ui-modal input[type="submit"]{height:30px;line-height:30px;font-size:12px;}
+					.ui-modal input[type="password"] + input[type="submit"],
+					.ui-modal input[type="text"] + input[type="submit"],
+					.ui-modal select + input[type="submit"]{margin-left:5px}
+					.ui-modal select ~ input[type="password"],
+					.ui-modal select ~ input[type="text"]{margin-left:5px;}
+					.ui-modal .ui-flex > div{padding:3px 0;flex:1;flex-basis:50%;white-space:nowrap;height:30px;line-height:27px;}
+					.ui-modal .ui-flex > div label{font-size:13px;}
+					.ui-modal .ui-flex > div label + input[type="radio"]{margin-left:10px;}
+					.ui-modal .ui-flex > div input[type="radio"],
+					.ui-modal .ui-flex > div input[type="checkbox"]{margin:8px 1px 0 0;}
+					.ui-modal .close{transform:scale(.8);top:-35px;transform-origin:100% 50%;}
+				}
+				
+			</style>
+
+
+
 		</div>
 
 	</div>
