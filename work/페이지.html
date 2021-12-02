@@ -441,8 +441,7 @@
 	obj.addEventListener('touchmove', function(event) {
 		var touch = event.targetTouches[0];
 
-		$(this).addClass('throw');
-		$(this).removeClass('throw-end');
+		$(this).removeClass('throw-start');
 		
 		// Place element where the finger is
 		event.target.style.left = touch.pageX - 200 + 'px';
@@ -463,6 +462,9 @@
 		$(this).css('z-index', css_test_idx);
 		css_test_idx++;
 		$(this).removeClass('f01 f02 f03 f04 f05 f06 f07 f08 f09 f10 f11 f12 f13 f14 f15 reverse alternate alternate-reverse normal');
+
+		$(this).addClass('throw-start');
+		$(this).removeClass('throw-end');
 		
 	}, false);
 
@@ -471,7 +473,6 @@
 
 	
 		$(this).removeClass('active');
-		$(this).removeClass('throw');
 		$(this).addClass('throw-end');
 		
 		var position = $(this).position().left;
