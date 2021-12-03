@@ -578,16 +578,15 @@ $(function() {
 	});
 	
 
-	// setTimeout(function() {
-    //     AOS.init({
-    //         easing: 'ease',
-    //         duration: 1000,
-    //         delay: 350,
-    //         once: true,
-    //         offset: 50,
-    //
-    //     });
-    //  }, 200);
+ setTimeout(function() {
+	AOS.init({
+		easing: 'ease',
+		duration: 1000,
+		delay: 350,
+		once: true,
+		offset: 50,
+    });
+  }, 200);
 
 
 	 $('.dmz_state .tab a').on('click', function (e) {
