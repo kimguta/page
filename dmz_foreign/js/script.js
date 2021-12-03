@@ -54,6 +54,13 @@ $(function() {
 		$('#header .lang .btn').removeClass('active').focus();
 	});
 
+	$('#header .btn_box .lang > div').on('mouseleave', function (e) {
+        e.preventDefault();
+		$(this).parent().find('.btn.active').removeClass('active');
+	});
+
+
+
 	$('#header .btn_sitemap').on('click', function (e) {
         e.preventDefault();
 
