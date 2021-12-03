@@ -484,13 +484,13 @@
 		/*
 		var move = ['reverse', 'alternate', 'alternate-reverse', 'normal'];
 		$(this).addClass(move[~~(Math.random()*move.length)]);
-		*/
+		
 		var classes1 = ['f01', 'f06', 'f11'];
 		var classes2 = ['f02', 'f07', 'f12'];
 		var classes3 = ['f03', 'f08', 'f13'];
 		var classes4 = ['f04', 'f09', 'f14'];
 		var classes5 = ['f05', 'f10', 'f15'];
-		
+
 		if (position < -150) {
 			$(this).addClass(classes2[~~(Math.random()*classes2.length)]);
 			$(this).css('left','20%');
@@ -515,6 +515,17 @@
 			$(this).css('left','70%');
 		}
 
+		*/
+
+		var classes = ['f01', 'f02', 'f03', 'f04', 'f05', 'f06', 'f07', 'f08', 'f09', 'f10', 'f11', 'f12', 'f13', 'f14', 'f15'];
+		$(this).addClass(classes[~~(Math.random()*classes.length)]);
+		
+		if (position < -150) {
+			$(this).css('left','20%');
+		}
+		else if (position > 3589) {
+			$(this).css('left','70%');
+		}
 		if (position2 < -150) {
 			$(this).css('top','20%');
 		}
