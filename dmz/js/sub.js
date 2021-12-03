@@ -433,9 +433,11 @@ $(function() {
 		pauseOnHover: false,
 		speed: 500,
 		responsive: [{
-            breakpoint: 1400,
+            breakpoint: 761,
             settings: {
-				speed: 350,
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				centerMode: true,
             }
         }]
 	});
