@@ -420,6 +420,27 @@ $(function() {
 	});
 
 
+	$('.per-exhibition .slick02').slick({
+		autoplay: false,
+		arrows: true,
+		dots: false,
+		prevArrow: '<a role="button" class="slick-prev prev arrow" href="#">이전</a>',
+        nextArrow: '<a role="button" class="slick-next next arrow" href="#">다음</a>',
+		accessibility: true,
+		infinite: true,
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		pauseOnHover: false,
+		speed: 500,
+		responsive: [{
+            breakpoint: 1400,
+            settings: {
+				speed: 350,
+            }
+        }]
+	});
+
+
 	$('.edu-view .slick').slick({
 		autoplay: false,
 		arrows: false,
@@ -555,16 +576,16 @@ $(function() {
 	});
 	
 
-	setTimeout(function() {
-        AOS.init({
-            easing: 'ease',
-            duration: 1000,
-            delay: 350,
-            once: true,
-            offset: 50,
-            
-        });
-     }, 200);
+	// setTimeout(function() {
+    //     AOS.init({
+    //         easing: 'ease',
+    //         duration: 1000,
+    //         delay: 350,
+    //         once: true,
+    //         offset: 50,
+    //
+    //     });
+    //  }, 200);
 
 
 	 $('.dmz_state .tab a').on('click', function (e) {
