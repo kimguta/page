@@ -31,7 +31,7 @@ $(function() {
 	$('#header').on('mouseleave', function () {
 		$('#header').removeClass('active');
 		$('#gnb_pc h2').removeClass('active');
-		$('#gnb_pc .depth_02').stop().fadeOut(200);
+		$('#gnb_pc .depth_02').stop().hide();
 		$('.mask_pc').hide();
 	});	
 	
