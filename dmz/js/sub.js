@@ -224,6 +224,16 @@ $(function() {
 			$('.video-popbx').addClass('ty03');
 		}
 
+		if ($('.video_promotion').hasClass('v2')) {
+			$('.video-popbx').removeClass('ty01 ty02 ty03');
+			if (idx < 5) {
+				$('.video-popbx').addClass('ty01');
+			}
+			else {
+				$('.video-popbx').addClass('ty02');
+			}
+		} 
+
 		var windowWidth = $(window).width();
 		if (windowWidth < 761) {
 			var Val2 = 5
