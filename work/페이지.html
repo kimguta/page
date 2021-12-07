@@ -547,10 +547,12 @@
 	$('.btn-bx img').on('click', function(e){
 		e.preventDefault();
 		var idx = $(this).index();
-		var position = $(this).position().left;
+		var position = e.pageX;;
 		$('.pop-bx > div').eq(idx).fadeIn(300);
+		/*
 		$('.pop-bx > div').eq(idx).css('order', test_order);
 		test_order++;
+		*/
 		if (position > 1920) {
 			$('.pop-bx > div').eq(idx).addClass('right');
 		}
