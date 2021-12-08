@@ -617,7 +617,7 @@ $(function() {
 		$('.ccl-view').show();
 		$('.ccl-view > div').eq(idx).show();
 		setTimeout(function(){
-			var Offset = $('#sub_container').offset();
+			var Offset = $('.contsArea').offset();
 			$('html, body').animate({
 				scrollTop : Offset.top 
 			}, 300);
