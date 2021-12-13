@@ -431,10 +431,10 @@ main{display:block;}
 #footer h1{position:absolute;top:53px;left:-45px;}
 #footer h1 a{display:block;width:110px;}
 #footer h1 a img{display:block;width:100%;image-rendering: -webkit-optimize-contrast;}
-#footer .address p{line-height:1.4;color:#c9caca;font-size:15px;font-weight:300;word-break:break-all;word-wrap:break-word;}
+#footer .address p{line-height:1.4;color:#c9caca;font-size:15px;font-weight:300;word-break:keep-all;word-wrap:break-word;}
 #footer .address p a{color:#c9caca}
 #footer .address p + p{margin-top:4px;}
-#footer .address p span{display:inline-block;position:relative;}
+#footer .address p span{display:inline-block;position:relative;word-break:keep-all;word-wrap:break-word;}
 #footer .address p span+span{padding-left:16px;}
 #footer .address p span+span:before{content: '';display: block;background: #8a8a8b;height: 13px;width: 2px; position: absolute;left: 6px;top: 50%;margin-top:-6px;}
 #footer .address p em{display:inline-block;padding:0 3px;}
@@ -450,6 +450,11 @@ main{display:block;}
 #footer .link .family .view{position:absolute;width:100%;bottom:41px;background:#fff;border:1px solid #1b1b1b;padding:5px 0;visibility:hidden;}
 #footer .link .family .view a{display:block;height:32px;line-height:32px;padding-left:25px;font-size:15px;color:#000;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 #footer .link .family .active + .view{visibility:visible;animation:fa01 .3s 1 both ease-out;}
+
+[lang=zh] #footer .address p{word-break:break-all;}
+[lang=ja] #footer .address p{word-break:break-all;}
+[lang=zh] #footer .address p span{word-break:break-all;}
+[lang=ja] #footer .address p span{word-break:break-all;}
 
 @keyframes fa01{
   0%{transform:translateY(25%);opacity:0;}

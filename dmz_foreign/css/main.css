@@ -5,6 +5,7 @@
 .fixed ~ #main{transition:all .5s;padding-top:60px;}
 #main .inner{max-width:1280px;padding:0 20px;}
 
+
 @media (max-width:760px) {
     #main .inner{padding:0 15px;}
 }
@@ -194,7 +195,7 @@
 
 
 #guide-news .subguide{margin-left:38%}
-#guide-news .subguide p{position:relative;margin-top:52px;font-size:2.0rem;line-height:2.8rem;color:#1f1e19;text-align:center;}
+#guide-news .subguide p{position:relative;margin-top:52px;font-size:2.0rem;line-height:2.8rem;color:#1f1e19;text-align:center;word-break:keep-all;word-wrap:break-word;}
 #guide-news .subguide p:before{content:'';display:block;position:absolute;top:6px;left:50%;margin-left:-316px;width:44px;height:44px;background:url(/page/dmz_foreign/images/main/ico_untact_guide.png) no-repeat;}
 #guide-news .subguide .list{position:relative;margin-top:57px;font-size:0;white-space:nowrap;z-index:10;}
 #guide-news .subguide .list a{display:inline-block;vertical-align:top;position:relative;width:calc((100% - 60px) /3);height:auto;max-width:370px;max-height:370px;padding:0 60px;}
@@ -216,6 +217,8 @@
 [lang=zh] #guide-news .subguide .list a:hover:before{border-color:rgba(180, 66, 242, 0.8);}
 [lang=ja] #guide-news .subguide .list a:hover:before{border-color:rgba(14, 119, 224, 0.8);}
 
+[lang=zh] #guide-news .subguide p{word-break:break-all;}
+[lang=ja] #guide-news .subguide p{word-break:break-all;}
 @media (max-width:1600px) {
     #guide-news h3{margin-left:60px;}
     #guide-news .guide .bx p{padding-left:60px;padding-right:120px;}
@@ -274,7 +277,7 @@
     #guide-news .guide .bx > .time strong{padding-top:0px;}
     #guide-news .guide .bx > .time strong:before{display:none;}
     #guide-news .guide .closed_info{position:relative;height:auto;padding:20px 35px 20px;left:0;right:0;}
-    #guide-news .guide .bx p{padding:0 20px 20px 20px;font-size:14px;border-radius:20px 0px 0 0;word-break:break-all;}
+    #guide-news .guide .bx p{padding:0 20px 20px 20px;font-size:14px;border-radius:20px 0px 0 0;}
     #guide-news .guide .bx p:after{right:18px;top:-8px;transform:scale(.6);}
 
     #guide-news .subguide{margin-left:0;}
@@ -580,9 +583,9 @@
 #tour .slide .img-bx{white-space:nowrap;margin-top:30px}
 #tour .slide .img-bx img{display:inline-block;vertical-align:top;width:calc((100% - 15px) / 2);border-radius:25px;}
 #tour .slide .img-bx img + img{margin-left:15px;}
-#tour .slide p{line-height:1.5;word-break:break-all;word-wrap:break-word;color:#000;margin-top:18px;max-width:566px;min-height:72px;}
+#tour .slide p{line-height:1.5;word-break:keep-all;word-wrap:break-word;color:#000;margin-top:18px;max-width:566px;min-height:72px;}
 #tour .slide .info{display:flex;margin-top:18px;border-radius:10px;max-width:556px;height:77px;background: linear-gradient(to right, #FFA700 0%, #ff9600 100%);color:#fff;padding-left:20px;flex-direction:column;justify-content:center;}
-#tour .slide .info span{font-size:16px;font-weight:300;padding-left:62px;position:relative;color:#fff;}
+#tour .slide .info span{font-size:16px;font-weight:300;padding-left:62px;position:relative;color:#fff;word-break:keep-all;word-wrap:break-word;}
 #tour .slide .info span + span{margin-top:4px;}
 #tour .slide .info span:before{content:'';display:block;width:1px;height:14px;background:#fff;position:absolute;top:50%;margin-top:-7px;left:38px;}
 #tour .slide .info span:after{content:'';background:url(/page/dmz_foreign/images/common/sp_dmz.png) -49px -921px no-repeat;background-size: 520px 991px;height:22px;width:21px;position:absolute;left:0;top:2px;;image-rendering:-webkit-optimize-contrast;}
@@ -632,6 +635,11 @@
 [lang=ja] #tour .slide .info{background: linear-gradient(to right, #0e77e0 0%, #0c5daf 100%);}
 [lang=ja] #tour .map-bx .tab a.active i:after{background:#0e77e0;}
 [lang=ja] #tour .slide h4{height:180px;}
+
+[lang=zh] #tour .slide .info span{word-break:break-all;}
+[lang=ja] #tour .slide .info span{word-break:break-all;}
+[lang=zh] #tour .slide p{word-break:break-all;}
+[lang=ja] #tour .slide p{word-break:break-all;}
 @keyframes btn-move1{
     0%{transform:translateY(-10%);}
     100%{transform:translateY(10%);}
