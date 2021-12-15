@@ -642,7 +642,7 @@ span.listLv4:before,
 .district_search_area .tab_area{position:absolute;top:0;right:0;width:51%;background:#fff;border:1px solid #d8d8d8;padding:12px 13px 10px 13px;-webkit-border-radius:10px;border-radius:10px;overflow:hidden;}
 .district_search_area .tab_area .tab_list{display:flex;flex-flow:row wrap;height:306px;font-size:0;}
 .district_search_area .tab_area .tab_item{display:flex;width:calc(100% / 4);}
-.district_search_area .tab_area .tab_item a{display:block;position:relative;width:100%;min-width:95px;height:48px;line-height:48px;margin:7px 6px 6px 7px;padding:0 32px 0 17px;background:#ececec;font-size:16px;color:#5c5c5c;;-webkit-border-radius:8px;border-radius:8px;text-decoration:none;}
+.district_search_area .tab_area .tab_item a{display:block;position:relative;width:100%;min-width:130px;height:48px;line-height:48px;margin:7px 6px 6px 7px;padding:0 32px 0 17px;background:#ececec;font-size:16px;color:#5c5c5c;;-webkit-border-radius:8px;border-radius:8px;text-decoration:none;}
 .district_search_area .tab_area .tab_item a:after{content:'';display:block;position:absolute;top:50%;right:20px;width:12px;height:1px;background:#cacaca;}
 .district_search_area .tab_area .tab_item a:hover,
 .district_search_area .tab_area .tab_item.active a {background:#0d5ed7;color:#fff;}
@@ -652,12 +652,18 @@ span.listLv4:before,
 @media screen and (max-width: 1400px){
   .district_search_area .tab_area{width:45%;}
 }
-
+@media screen and (max-width: 1300px){
+  .district_search_area .tab_area .tab_item{display:flex;width:calc(100% / 3);}
+  .district_search_area .tab_area .tab_list{height: 427px;}
+}
 @media screen and (max-width: 1200px){
   .district_search_area .tab_area{width:35%;}
   .district_search_area .tab_area .tab_list {height:385px;}
-  .district_search_area .tab_area .tab_item{display:flex;width:calc(100% / 3);}
-  .district_search_area .tab_area .tab_item a{height:42px;line-height:42px;font-size:15px;}
+
+  .district_search_area .tab_area .tab_item a{height:42px;line-height:42px;font-size:13px;min-width:98px;padding:0 22px 0 10px;}
+  .district_search_area .tab_area .tab_item a:after{right:8px;}
+  .district_search_area .tab_area .tab_item.active a:after,
+  .district_search_area .tab_area .tab_item a:hover:after{right:8px;}
 }
 
 @media screen and (max-width: 1000px){
