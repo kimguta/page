@@ -105,7 +105,10 @@ $(function() {
 	$('#gnb_mobile .depth_01 h2.active').next('.depth_02').show();
     $('#gnb_mobile .depth_02 h3.active').next('.depth_03').show();
 
-	$('#gnb_mobile h2 a').on('click', function (e) {
+
+	$('#gnb_mobile .depth_02').prev('h2').addClass('has_depth');
+
+	$('#gnb_mobile h2.has_depth a').on('click', function (e) {
         e.preventDefault();
 		if ($(this).parent().hasClass('active')) {
 			$(this).parent().removeClass('active');
