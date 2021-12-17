@@ -9,7 +9,7 @@
 html, body{position:relative; width:100%;}
 body{color:#222; font-size:16px; line-height:1.6; font-family:'Apple SD Gothic Neo', 'Noto Sans KR', 'Noto Sans SC','Noto Sans JP', sans-serif; word-break:break-all;letter-spacing:-0.6px;}
 main{display:block;}
-.page-wrap{background:#f6f6f6;height:100vh;position:relative;}
+.page-wrap{background:#f1f1f1;height:100vh;position:relative;min-height:660px;}
 
 
 .slick-slider .slick-list{display:block; overflow-x:hidden; overflow-y:hidden; position:relative}
@@ -44,12 +44,20 @@ header .inner{height:60px;}
 header h1{position:absolute;width:80px;position:absolute;top:10px;left:15px;}
 header h1 a{display:block;}
 header h1 a img{display:block;width:100%;image-rendering:-webkit-optimize-contrast;}
-header .btn-bx{position:absolute;top:0;right:0;overflow:hidden;}
-header .btn-bx a{display:block;width:60px;height:60px;float:left;font-size:0;color:transparent;position:relative;}
-header .btn-bx a.vr{border-left:1px solid #dcdcdc;}
-header .btn-bx a.qr{background:#fdb11d;}
-header .btn-bx a:after{content:'';display:block;width:48px;height:48px;position:absolute;top:50%;left:50%;margin:-23px 0 0 -23px;background:url(/page/untact/images/sp_untact.png) -58px 0px no-repeat;background-size:520px 679px;image-rendering:-webkit-optimize-contrast;}
-header .btn-bx a.qr:after{background-position:-113px 2px;}
+header .btn-bx{position:absolute;top:0;right:0;}
+header .btn-bx > a{display:block;width:60px;height:60px;float:left;font-size:0;color:transparent;position:relative;}
+header .btn-bx > a.vr{border-left:1px solid #dcdcdc;}
+header .btn-bx > a.qr{background:#fdb11d;}
+header .btn-bx > a:after{content:'';display:block;width:48px;height:48px;position:absolute;top:50%;left:50%;margin:-23px 0 0 -23px;background:url(/page/untact/images/sp_untact.png) -58px 0px no-repeat;background-size:520px 679px;image-rendering:-webkit-optimize-contrast;}
+header .btn-bx > a.qr:after{background-position:-113px 2px;}
+
+header .btn-bx > a.lang:after{background:url(/page/untact/images/KOR.png) 50% 50% no-repeat;width:36px;height:41px;background-size:cover;margin:-18px 0 0 -14px;}
+
+header .btn-bx div{position:absolute;top:59px;left:60px;border:1px solid #000;padding:5px 0;transition:all .3s;background:#fff;z-index:10;display:none;}
+header .btn-bx div a{display:block;height:30px;line-height:30px;text-align:left;font-size:13px;padding-left:10px;display:block;width:60px;}
+header .btn-bx div a:before{content:'';display:inline-block;vertical-align:middle;margin-right:5px;margin-top:-3px;width:17px;height:17px;image-rendering:-webkit-optimize-contrast;background:url(/page/untact/images/EN.png) 50% 50% no-repeat;background-size:cover;}
+header .btn-bx div a.v2:before{background-image:url(/page/untact/images/JP.png);}
+header .btn-bx div a.v3:before{background-image:url(/page/untact/images/CH.png);}
 
 footer{position:fixed;z-index:10;;bottom:0;width:100%;left:0;height:58px;background:#ffa800;border-radius:20px 20px 0 0;}
 footer .inner{height:58px;}
@@ -60,7 +68,6 @@ footer a.arrow.next:after{content:'';display:inline-block;width:44px;height:44px
 footer a.arrow:active:before,
 footer a.arrow:active:after{transform:scale(.9);}
 footer .back{margin:0 auto;height:58px;line-height:58px;font-weight:500;font-size:18px;color:#000;text-align:center;width:130px;display:block;}
-
 
 #list{position:relative;margin:0 auto 38px;overflow-y:auto;height:calc(100vh - 118px);padding-top:22px;}
 #list a{display:block;overflow:hidden;padding:10px;border-radius:10px;;box-shadow:1px 1px 3px 0px rgba(0,0,0,.12);border:1px solid #e5e5e5;background:#fff;margin-bottom:10px;}
@@ -85,13 +92,13 @@ footer .back{margin:0 auto;height:58px;line-height:58px;font-weight:500;font-siz
 #content audio{margin-top:0px;width:100%;background:#f1f3f4;}
 
 #qr{position:relative;height:100vh;max-width:1230px;margin:0 auto;min-height:660px;overflow:hidden;}
-#qr h2{position:absolute;top:0;left:0;right:0;padding:23px 0 22px;background:#fff;z-index:3;}
-#qr h2 img{display:block;margin:0 auto;width:260px;image-rendering:-webkit-optimize-contrast;}
-#qr .qr-bx{position:absolute;height:2460px;width:1230px;background:url(/page/untact/images/qr_bg.png) center center no-repeat;background-size:cover;z-index:2;position:absolute;left:50%;margin:-920px 0 0 -615px;top:50%;image-rendering:-webkit-optimize-contrast;}
+#qr h2{padding:10px 0 15px;background:#fff;z-index:3;height:235px;}
+#qr h2 img{display:block;margin:0 auto;width:390px;max-width:100%;image-rendering:-webkit-optimize-contrast;}
+#qr .qr-bx{}
 
-#qr h1{position:absolute;width:80px;position:absolute;bottom:25px;left:50%;margin-left:-40px;z-index:3;}
-#qr h1 a{display:block;}
+#qr h1{height:50px;z-index:3;margin:0 auto;padding:5px 0;background:#fff;}
+#qr h1 a{display:block;width:80px;margin:0 auto;}
 #qr h1 a img{display:block;width:100%;image-rendering:-webkit-optimize-contrast;}
-#qr p{color:#fff;line-height:1.7;font-weight:300;font-size:14px;position:absolute;bottom:87px;left:15px;right:15px;text-align:center;padding-bottom:17px;border-bottom:1px solid #fff;z-index:3;color:#fff;}
+#qr p{color:#000;line-height:1.7;font-weight:300;font-size:14px;text-align:center;padding-bottom:10px;z-index:3;position:relative;background:#fff}
 
 
