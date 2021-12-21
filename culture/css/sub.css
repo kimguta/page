@@ -30,7 +30,7 @@
 
 
 #visual-bx{height:324px;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;padding-top:90px;border-bottom:2px solid #fafbfb;}
-#visual-bx img{display:block;position:absolute;top:0;left:50%;width:1920px;margin-left:-960px;}
+#visual-bx img{display:block;position:absolute;top:0;left:50%;width:100%;transform:translateX(-50%);}
 #visual-bx h2{position:relative;font-weight:700;font-size:40px;line-height:1.2;color:#000;font-family:'GmarketSans', sans-serif;}
 #visual-bx .menu-tab{position:relative;padding-top:15px;margin-top:15px;}
 #visual-bx .menu-tab:after{content:'';display:block;width:22px;height:1px;background:#000;position:absolute;top:0;left:50%;margin-left:-11px;}
@@ -83,9 +83,12 @@
 .vr-navi .show-hide:after{content:'▲';font-size:18px;transition:all .1s;display:block;text-shadow:1px 1px 2px rgba(0,0,0,.5);}
 .vr-navi .show-hide.active:after{transform:rotate(180deg);}
 
+@media (max-width:1920px) {
+  #visual-bx img{width:1920px;}
+}
 @media (max-width:1399px) {
   #visual-bx{height:235px;padding-top:70px;}
-  #visual-bx img{width:1400px;margin-left:-700px;}
+  #visual-bx img{width:1400px;}
   #visual-bx h2{font-size:32px;}
   #visual-bx .menu-tab{padding-top:12px;margin-top:12px;}
   #visual-bx .menu-tab:after{width:16px;margin-left:-8px;}
@@ -111,7 +114,7 @@
 
 @media (max-width:760px) {
   #visual-bx{height:201px;padding-top:75px;}
-  #visual-bx img{width:1200px;margin-left:-600px;}
+  #visual-bx img{width:1200px;}
   #visual-bx h2{font-size:26px;}
   #visual-bx .menu-tab{padding-top:8px;margin-top:8px;}
   #visual-bx .menu-tab a{font-size:13px;margin-right:18px;}
