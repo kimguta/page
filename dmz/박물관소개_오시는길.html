@@ -818,19 +818,18 @@
 										<dd>
 											<h6 class="titLv3">주소</h6>
 											<p class="text">
-												<a href="#" class="add_copy" id="btn_copy">강원도 고성군 현내면 통일전망대로 369 DMZ 박물관</a>
+												<a href="#" class="add_copy">강원도 고성군 현내면 통일전망대로 369 DMZ 박물관</a>
 												<script> 
-													document.getElementById("btn_copy").onclick = function(){ 
-														const valOfDIV = document.getElementById("btn_copy").innerText;
-														const textArea = document.createElement('textarea');
-														document.body.appendChild(textArea);
-														textArea.value = valOfDIV;
-														textArea.select();
+													$('.add_copy').on('click', function(e) {
+														e.preventDefault();
+														var text = $(this).html();
+														$(this).after('<input type="text" id="clip">');
+														$('#clip').val(text);	
+														$('#clip').select();
 														document.execCommand('copy');
-														document.body.removeChild(textArea);
+														$('#clip').remove();
 														alert('복사되었습니다.');
-														return false;
-													}	
+													});
 												</script>
 							
 											</p>
