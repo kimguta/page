@@ -3,6 +3,53 @@
 <div id="playerVideo1" class="mbYTPVideo inline_YTPlayer"
 						data-property="{videoURL:'sxAaomwryzU',containment:'#page-back', showControls:false, opacity:1, autoPlay:true, startAt:1061, stopAt:0, mute:true, vol:100, loop:true,optimizeDisplay: true, showYTLogo:false, stopMovieOnBlur: false, playOnlyIfVisible:false}">
 					</div>
+/*
+		var move = ['reverse', 'alternate', 'alternate-reverse', 'normal'];
+		$(this).addClass(move[~~(Math.random()*move.length)]);
+		
+		var classes1 = ['f01', 'f06', 'f11'];
+		var classes2 = ['f02', 'f07', 'f12'];
+		var classes3 = ['f03', 'f08', 'f13'];
+		var classes4 = ['f04', 'f09', 'f14'];
+		var classes5 = ['f05', 'f10', 'f15'];
+
+		if (position < -150) {
+			$(this).addClass(classes2[~~(Math.random()*classes2.length)]);
+			$(this).css('left','20%');
+		}
+		else if (position > -149 && position < 668) {
+			$(this).addClass(classes1[~~(Math.random()*classes1.length)]);
+		}
+		else if (position > 667 && position < 1436) {
+			$(this).addClass(classes2[~~(Math.random()*classes2.length)]);
+		}
+		else if (position > 1435 && position < 2204) {
+			$(this).addClass(classes3[~~(Math.random()*classes3.length)]);
+		}
+		else if (position > 2203 && position < 2972) {
+			$(this).addClass(classes4[~~(Math.random()*classes4.length)]);
+		}
+		else if (position > 2971 && position < 3590) {
+			$(this).addClass(classes5[~~(Math.random()*classes5.length)]);
+		}
+		else if (position > 3589) {
+			$(this).addClass(classes4[~~(Math.random()*classes4.length)]);
+			$(this).css('left','70%');
+		}
+
+		*/
+
+
+function addClass(obj) { 
+    $(obj).addClass("selected"); 
+} 
+     
+
+
+<a href="javascript:addClass(this);">TEST1</a>
+ <a href="javascript:;" onclick="addClass(this);">TEST2</a>
+
+
 
 
 function close(element){
