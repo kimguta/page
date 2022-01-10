@@ -33,7 +33,7 @@ $(function() {
 	*/
 
 
-	function pcMode(str){
+	function pcMode(){
 		var highestBox = 0;
 		$('.depth_02').each(function(){
 			if($(this).height() > highestBox){
