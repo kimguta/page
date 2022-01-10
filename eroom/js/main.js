@@ -10,6 +10,26 @@ $(function() {
         });
      }, 200);
 
+  
+
+
+     $('#visual .slick').slick({
+        autoplay: true,
+        arrows: false,
+        dots: true,
+        accessibility: true,
+        customPaging: function(slick,index) {
+            return '<a href="#" onclick="return false;" role="button">' + index + '</a>';
+        },
+        infinite: true,
+        fade: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        pauseOnHover: false,
+        speed: 800,
+        autoplaySpeed: 8000
+    });
+
 
     $('#visual .bg-bx > div a').on('mouseenter', function (e) {
         e.preventDefault();
