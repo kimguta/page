@@ -11,8 +11,6 @@ $(function() {
      }, 200);
 
   
-
-
      $('#visual .slick').slick({
         autoplay: true,
         arrows: false,
@@ -27,52 +25,77 @@ $(function() {
         slidesToScroll: 1,
         pauseOnHover: false,
         speed: 800,
-        autoplaySpeed: 8000
+        autoplaySpeed: 6000
     });
 
 
-    $('#visual .bg-bx > div a').on('mouseenter', function (e) {
+
+    $('#web .slick').slick({
+        autoplay: false,
+        arrows: true,
+        dots: false,
+        prevArrow: $('#web .prev'),
+        nextArrow: $('#web .next'),
+        accessibility: true,
+        infinite: true,
+        fade: false,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        pauseOnHover: false,
+        variableWidth: true,
+        swipeToSlide :true,
+        speed: 600,
+    });
+
+    $('#gallery .control .bttn').on('click', function (e) {
         e.preventDefault();
-        if ($(this).parent('div').hasClass('active') === false) {
-            $('#visual .bg-bx div').removeClass('bg');
-            $('#visual .bg-bx div.active').addClass('bg').delay(100).removeClass('active');
-            $(this).parent('div').addClass('active');
-
-            var idx = $(this).parent('div').index();
-
-            $('#visual .inner .item').hide();
-            $('#visual .inner .item').eq(idx).fadeIn(1000); 
-        }   
+        if ($(this).hasClass('pause')) {
+            $(this).hide();
+            $('#gallery .control .play').css('display','inline-block');
+            $('#gallery .slick').slick('slickPause');
+        } else if ($(this).hasClass('play')) {
+            $(this).hide();
+            $('#gallery .control .pause').css('display','inline-block');
+            $('#gallery .slick').slick('slickPlay');
+        }
     });
 
-    $('#vr360 .slick').slick({
+    $('#gallery .slick').slick({
         autoplay: true,
         arrows: true,
         dots: false,
-        prevArrow: $('#vr360 .prev'),
-        nextArrow: $('#vr360 .next'),
+        prevArrow: $('#gallery .prev'),
+        nextArrow: $('#gallery .next'),
         accessibility: true,
         infinite: true,
-        fade: true,
-        slidesToShow: 1,
+        fade: false,
+        slidesToShow: 4,
         slidesToScroll: 1,
         pauseOnHover: false,
-        speed: 800,
-        autoplaySpeed: 10000
+        swipeToSlide :true,
+        speed: 500,
+        autoplaySpeed: 5000,
+        responsive: [{
+            breakpoint: 761,
+            settings: {
+				slidesToShow: 3,
+                variableWidth: true,
+                centerMode: true,
+            }
+        }]
     });
 
+    let timer = null;
+	$(window).on('resize', function () {
+		clearTimeout(timer);
+		timer = setTimeout(function () {
+			$('#visual .slick').slick('refresh');
+            $('#web .slick').slick('refresh');
+            $('#gallery .slick').slick('refresh');
+		}, 150);
+	});
 
-    $('#gift .tab a').on('click', function (e) {
-        e.preventDefault();
-        $('#gift .tab a').removeClass('active');
-        $(this).addClass('active');
-
-        var idx = $(this).index();
-        $('#gift .view-bx > div').hide();
-        $('#gift .view-bx > div').eq(idx).show();
-
-    });
-
- 
+    $("#header").prepend('<a href="#" class="logo-bx"><img src="/page/eroom/images/common/logo01.png" alt="강원도평생교육정보망 이룸"></a>');
+    
 });
 
