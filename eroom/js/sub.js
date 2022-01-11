@@ -1,4 +1,4 @@
-$(function() {
+$(document).on('ready ajaxComplete', function(){
 
 	$('#breadcrumb .open').on('click', function (e) {
 		e.preventDefault();

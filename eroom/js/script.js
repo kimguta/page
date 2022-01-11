@@ -1,4 +1,4 @@
-$(function() {
+$(document).on('ready ajaxComplete', function(){
     
 	$(window).on('scroll load', function () {
 	    if ($(document).scrollTop() > 80) {

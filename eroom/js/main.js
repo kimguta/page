@@ -1,4 +1,4 @@
-$(function() {
+$(document).on('ready ajaxComplete', function(){
 
     setTimeout(function() {
         AOS.init({
