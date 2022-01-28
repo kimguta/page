@@ -3,6 +3,17 @@
 <div id="playerVideo1" class="mbYTPVideo inline_YTPlayer"
 						data-property="{videoURL:'sxAaomwryzU',containment:'#page-back', showControls:false, opacity:1, autoPlay:true, startAt:1061, stopAt:0, mute:true, vol:100, loop:true,optimizeDisplay: true, showYTLogo:false, stopMovieOnBlur: false, playOnlyIfVisible:false}">
 					</div>
+
+
+$('.slider').slick({
+  dots:true,
+  prevArrow: '<a class="slick-prev" href="#"><i data-icon="ei-arrow-left" data-size="m"></i></a>',
+  nextArrow: '<a class="slick-next" href="#"><i data-icon="ei-arrow-right" data-size="m"></i></a>',
+  customPaging: function(slick,index) {
+                    var targetImage = slick.$slides.eq(index).find('img').attr('src');
+                    return '<img src=" ' + targetImage + ' "/>';
+                }
+});
 /*
 		var move = ['reverse', 'alternate', 'alternate-reverse', 'normal'];
 		$(this).addClass(move[~~(Math.random()*move.length)]);
