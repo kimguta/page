@@ -101,6 +101,15 @@ $(function() {
         e.preventDefault();
     });
 
+    $('#work .slick02').on('wheel', function (e) {
+        e.preventDefault();
+        if (e.originalEvent.deltaY < 0) {
+            $(this).slick('slickPrev');
+        } else {
+            $(this).slick('slickNext');
+        }
+    });
+
     $('#story .slick').slick({
         autoplay: false,
         arrows: true,
