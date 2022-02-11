@@ -2,6 +2,17 @@
 
 $(function() {
 
+    setTimeout(function() {
+        AOS.init({
+            easing: 'ease',
+            duration: 900,
+            delay: 350,
+            once: true,
+            offset: 50,
+            
+        });
+     }, 200);
+
     $('#visual .text-bx > div').eq(0).show();
 
     $('#visual .slick').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
