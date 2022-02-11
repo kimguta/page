@@ -1,0 +1,72 @@
+/* Progress Tracker */
+.progress-tracker {
+  position: fixed;
+  top: 50%;
+  right: 50px;
+  margin-left: 68px;
+  z-index: 25;
+}
+.progress-tracker.hide {
+  display:block !important;
+  opacity:.5;
+}
+.progress-tracker.hide ul li .pt-description,
+.progress-tracker.hide.active ul li .pt-description,
+.progress-tracker.hide.constant ul li.active .pt-description {
+  display: none;
+}
+.progress-tracker ul li {
+  width: 13px;
+  height: 13px;
+  position: relative;
+  background-color: #cdcdcd;
+  margin-bottom: 25px;
+  list-style-type: none;
+  border-radius: 50%;
+  transition: all .2s;
+}
+.progress-tracker ul li a {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.progress-tracker ul li .pt-description {
+  display: none;
+  position: absolute;
+  top: -2px;
+  right: 25px;
+  padding: 3px 8px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  background-color: #e9ebea;
+  white-space:nowrap;
+}
+.progress-tracker ul li.active {
+  background-color: #d62e2e;
+  height: 40px;
+  border-radius: 20px;
+}
+.company .progress-tracker ul li:nth-child(2).active {
+  background-color: #fff;
+  border-color: #fff;
+}
+/*
+.progress-tracker.constant ul li.active .pt-description {
+  display: block;
+}
+*/
+
+
+@media (max-width:1399px) {
+  .progress-tracker{transform:scale(.7);right:20px;transform-origin:100% 50%;}
+  .progress-tracker ul li{margin-bottom:20px;}
+}
+
+@media (max-width:760px) {
+  .progress-tracker{transform:scale(.6) translateX(-50%);right:auto;left:50%;top:auto;bottom:20px;margin:0 !important;transform-origin:0% 100%;}
+  .progress-tracker ul{white-space:nowrap;}
+  .progress-tracker ul li{display:inline-block;vertical-align:middle;margin:0 0 0 13px;background:rgba(214,46,46,.35);}
+  .progress-tracker ul li.active {height:17px;width:17px;}
+  
+}

@@ -1,5 +1,16 @@
 $(function() {
 
+	setTimeout(function() {
+        AOS.init({
+            easing: 'ease',
+            duration: 900,
+            delay: 350,
+            once: true,
+            offset: 50,
+            
+        });
+     }, 200);
+
 	$('#breadcrumb .open').on('click', function (e) {
 		e.preventDefault();
 		if ($(this).hasClass('active')) {
@@ -485,6 +496,14 @@ $(function() {
 	$('.ccl-view .close').on('click', function (e) {
 		e.preventDefault();
 		$('.ccl-view, .ccl-view > div').hide();	
+	});
+
+	$('body').progressTracker({
+		linking : true,
+		tooltip : "constant",
+		negativeTolerance : 0,
+		positiveTolerance : 0,
+		displayWhenActive : true,
 	});
 
 });
