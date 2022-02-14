@@ -506,4 +506,22 @@ $(function() {
 		displayWhenActive : true,
 	});
 
+
+	$('.company .btn-bx a').on('click', function (e) {
+		e.preventDefault();
+		var idx = $(this).index();
+		$('.company .btn-bx a').removeClass('active');
+		$(this).addClass('active');	
+		if(idx == '0') {
+			$('.company .btn-bx').removeClass('page2');
+			$('.company .btn-bx').addClass('page1');
+		} else{
+			$('.company .btn-bx').removeClass('page1');
+			$('.company .btn-bx').addClass('page2');
+		}
+
+		$('.year-bx > div').hide();
+		$('.year-bx > div').eq(idx).show();
+	});
+
 });
