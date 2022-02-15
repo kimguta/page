@@ -524,4 +524,37 @@ $(function() {
 		$('.year-bx > div').eq(idx).show();
 	});
 
+	$('.company .slick').on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+		$('.company .slick h6').addClass('active');
+	});
+
+	$('.company .slick').on('init reInit afterChange', function(event, slick, currentSlide, nextSlide) {
+		$('.company .slick h6').removeClass('active');
+	});
+
+	$('.company .slick').slick({
+		autoplay: false,
+		arrows: true,
+		dots: false,
+		prevArrow: '<a role="button" class="slick-prev prev arrow" href="#">이전</a>',
+        nextArrow: '<a role="button" class="slick-next next arrow" href="#">다음</a>',
+		accessibility: true,
+		infinite: true,
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		adaptiveHeight: true,
+		pauseOnHover: false,
+		speed: 800,
+	});
+
+
+	$('.company .tab a').on('click', function (e) {
+		e.preventDefault();
+		var idx = $(this).index();
+		$('.company .tab a').removeClass('active');
+		$(this).addClass('active');	
+		$('.company .map-bx > div').hide();
+		$('.company .map-bx > div').eq(idx).show();
+	});
+
 });
