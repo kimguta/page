@@ -11,16 +11,18 @@ $(document).on('ready ajaxComplete', function(){
 
 	$(window).on('load resize', function (e) {
 	    if ($(document).width() > 1199) {
-		    	e.preventDefault();
+		    	
 			$('#header').removeClass('mobile-mode');
 			$('#header').addClass('pc-mode');
 			pcMode();
+		    	e.preventDefault();
 	
 		} else {
-			e.preventDefault();
+			
 			$('#header').removeClass('pc-mode');
 			$('#header').addClass('mobile-mode');
-			mobileMode();	
+			mobileMode();
+			e.preventDefault();
 		}
 	});
 
