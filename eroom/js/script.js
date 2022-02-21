@@ -17,9 +17,11 @@ $(document).on('ready ajaxComplete', function(){
 		    	return false;
 	
 		} else {
+			/*
 			$('#header').removeClass('pc-mode');
 			$('#header').addClass('mobile-mode');
 			mobileMode();
+			*/
 			return false;
 		}
 	});
