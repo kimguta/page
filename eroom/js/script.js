@@ -34,9 +34,7 @@ function pcMode(st){
 			$('.cycle').stop().animate({'left':offset}, 600,'easeOutCubic');	
 		});
 	} else if(st == 'n'){
-		$('#gnb .depth_01 li').on('mouseover focusin', function () {
-			$('h2').hide();	
-		});
+		return;
 	
 	}
 
