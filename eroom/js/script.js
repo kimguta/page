@@ -22,7 +22,7 @@ $(document).on('ready ajaxComplete', function(){
 			$('#header').addClass('mobile-mode');
 			mobileMode();
 			*/
-			return;
+			return false;
 		}
 	});
 
