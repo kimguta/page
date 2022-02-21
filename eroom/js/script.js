@@ -1,16 +1,32 @@
 
 
 
-$(window).on('load resize', function () {
+$(window).on('load', function () {
+    if ($(document).width() > 1199) {
+		$('#header').addClass('pc-mode');
+		pcMode();
+		 } 
+	else {
+		$('#header').addClass('mobile-mode');
+		mobileMode();
+	}
+});
+
+
+$(window).on('resize', function () {
     if ($(document).width() > 1199) {
 		$('#header').removeClass('mobile-mode');
 		$('#header').addClass('pc-mode');
 		pcMode();
+	    	return false;
+	    	mobileMode();
 		 } 
 	else {
 		$('#header').removeClass('pc-mode');
 		$('#header').addClass('mobile-mode');
 		mobileMode();
+		return false;
+		pcMode();
 	}
 });
 
