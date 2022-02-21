@@ -12,23 +12,28 @@ $(window).on('load', function () {
 	}
 });
 
-
-$(window).on('resize', function () {
-    if ($(document).width() > 1199) {
-		$('#header').removeClass('mobile-mode');
-		$('#header').addClass('pc-mode');
-		pcMode();
-	    	return false;
-	    	mobileMode();
-		 } 
-	else {
-		$('#header').removeClass('pc-mode');
-		$('#header').addClass('mobile-mode');
-		mobileMode();
-		return false;
-		pcMode();
-	}
-});
+let ww = $(window).width();
+let timer = null;
+let sec = 300;
+  $(window).on('resize', function () {
+    clearTimeout(timer);
+    timer = setTimeout(function () {
+      ww = $(window).width();
+      if (ww > 1199) {
+        $('#header').removeClass('mobile-mode');
+	$('#header').addClass('pc-mode');
+	pcMode();
+	return false;
+	mobileMode();
+      } else {
+        $('#header').removeClass('pc-mode');
+	$('#header').addClass('mobile-mode');
+	mobileMode();
+	return false;
+	pcMode();
+      }
+    }, sec);
+  });
 
 function pcMode(){
 	var highestBox = 0;
