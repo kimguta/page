@@ -5,12 +5,12 @@ $(window).on('load resize', function () {
     if ($(document).width() > 1199) {
 	    	$('#header').removeClass('mobile-mode');
 		$('#header').addClass('pc-mode');
-		pcMode(y);
+		pcMode('y');
 		 } 
 	else {
 		$('#header').removeClass('pc-mode');
 		$('#header').addClass('mobile-mode');
-		pcMode(n);
+		pcMode('n');
 		mobileMode();
 	}
 });
