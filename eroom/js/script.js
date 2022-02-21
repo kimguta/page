@@ -11,14 +11,12 @@ $(document).on('ready ajaxComplete', function(){
 
 	$(window).on('load resize', function () {
 	    if ($(document).width() > 1199) {
-		    	return false;
 			$('#header').removeClass('mobile-mode');
 			$('#header').addClass('pc-mode');
 			pcMode();
 		    	return false;
 	
 		} else {
-			return false;
 			$('#header').removeClass('pc-mode');
 			$('#header').addClass('mobile-mode');
 			mobileMode();
