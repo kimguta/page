@@ -1,58 +1,44 @@
 
 
 
-$(window).on('load', function () {
+$(window).on('load resize', function () {
     if ($(document).width() > 1199) {
+	    	$('#header').removeClass('mobile-mode');
 		$('#header').addClass('pc-mode');
-		pcMode();
+		pcMode(y);
 		 } 
 	else {
+		$('#header').removeClass('pc-mode');
 		$('#header').addClass('mobile-mode');
+		pcMode(n);
 		mobileMode();
 	}
 });
 
-let ww = $(window).width();
-let timer = null;
-let sec = 300;
-  $(window).on('resize', function () {
-    clearTimeout(timer);
-    timer = setTimeout(function () {
-      ww = $(window).width();
-      if (ww > 1199) {
-        $('#header').removeClass('mobile-mode');
-	$('#header').addClass('pc-mode');
-	pcMode();
-	return false;
-	mobileMode();
-      } else {
-        $('#header').removeClass('pc-mode');
-	$('#header').addClass('mobile-mode');
-	mobileMode();
-	return false;
-	pcMode();
-      }
-    }, sec);
-  });
-
-function pcMode(){
+function pcMode(st){
 	var highestBox = 0;
 	$('.depth_02').each(function(){
 		if($(this).height() > highestBox){
 			highestBox = $(this).height() + 60;
 		}
 	});
-
-	$('#gnb .depth_01 li').on('mouseover focusin', function () {
-		$('#header').addClass('active');
-		$('h2').removeClass('active');
-		$(this).children('h2').addClass('active');
-		$('.depth_02').stop().show();
-		$('.bg_pc').show().css('height',highestBox);
-		$('.mask').stop().show();
-		var offset = $(this).position().left + ($(this).width() / 2 - 55);
-		$('.cycle').stop().animate({'left':offset}, 600,'easeOutCubic');	
-	});
+	if (st == 'y') {
+		$('#gnb .depth_01 li').on('mouseover focusin', function () {
+			$('#header').addClass('active');
+			$('h2').removeClass('active');
+			$(this).children('h2').addClass('active');
+			$('.depth_02').stop().show();
+			$('.bg_pc').show().css('height',highestBox);
+			$('.mask').stop().show();
+			var offset = $(this).position().left + ($(this).width() / 2 - 55);
+			$('.cycle').stop().animate({'left':offset}, 600,'easeOutCubic');	
+		});
+	} else if(st == 'n'){
+		$('#gnb .depth_01 li').on('mouseover focusin', function () {
+			$('h2').hide();	
+		});
+	
+	}
 
 	$('#gnb').on('mouseleave', function () {
 		$('#header').removeClass('active');
