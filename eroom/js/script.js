@@ -34,7 +34,7 @@ function pcMode(st){
 			$('.cycle').stop().animate({'left':offset}, 600,'easeOutCubic');	
 		});
 	} else if(st == 'n'){
-		return;
+		$('#gnb .depth_01 li').stop();
 	
 	}
 
