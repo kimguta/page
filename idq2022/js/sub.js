@@ -547,14 +547,15 @@ $(function() {
 		speed: 800,
 	});
 
+	$('.company .map-bx > div:first-child').addClass('active');
 
 	$('.company .tab a').on('click', function (e) {
 		e.preventDefault();
 		var idx = $(this).index();
 		$('.company .tab a').removeClass('active');
 		$(this).addClass('active');	
-		$('.company .map-bx > div').hide();
-		$('.company .map-bx > div').eq(idx).show();
+		$('.company .map-bx > div').removeClass('active');
+		$('.company .map-bx > div').eq(idx).addClass('active');
 	});
 
 });
