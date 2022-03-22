@@ -43,9 +43,6 @@ $(function() {
                 $('#fp-nav li a').removeClass('active');
                 $('#fp-nav li a').eq(Index+1).addClass('active');
             }
-    
-          
-
         });	
 
         $('#section3').on('wheel', function (e) {
