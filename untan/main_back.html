@@ -23,23 +23,45 @@
 	<script src="/page/common/js/jquery.touchSwipe.min.js"></script>
 
 	<link rel="stylesheet" href="/page/untan/css/aos.css" />
+	<link rel="stylesheet" href="/page/untan/css/jquery.fullPage.css" />
 	<link rel="stylesheet" href="/page/untan/css/style.css" />
 	<link rel="stylesheet" href="/page/untan/css/main.css" />
 
 	<script src="/page/untan/js/aos.js"></script>
 	<script src="/page/untan/js/script.js"></script>
+	<script src="/page/untan/js/jquery.fullPage.js"></script>
 	<script src="/page/untan/js/main.js"></script>
 
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#main').fullpage({
+				navigation: true,
+				verticalCentered: false,
+				autoScrolling: true,
+				navigationPosition: 'right',
+				responsiveWidth: 1600,
+				responsiveSlides: true,
+				slidesNavigation: true,
+				scrollingSpeed: 700,
+				scrollBar: true,
+				fitToSection: false,
+				bigSectionsDestination: 'top',
+				slidesNavPosition: 'top',
+				afterLoad: function(anchorLink, index){
+					if(index == 2 || index == 4){
+						$('#fp-nav').addClass('active');
+					}
+					else{
+						$('#fp-nav').removeClass('active');	
+					}
+				}
+			});	
+		});
+	</script>
 </head>
 
 <body>
 <div id="wrapper">
-
-	<ul class="skipnav">
-		<li><a href="#A-Gnb-focus">주메뉴 바로가기</a></li>
-		<li><a href="#A-Contents-focus">본문 바로가기</a></li>
-		<li><a href="#A-Ftr-focus">푸터 바로가기</a></li>
-	</ul>
 
 	<div class="page-wrap">
 		<header id="header">
@@ -49,7 +71,6 @@
 						<img src="/page/untan/images/common/logo.png" alt="운탄고도">
 					</a>
 				</h1>
-				<a href="#A-Gnb-focus" id="A-Gnb-focus" class="blind">주메뉴 시작</a>   
 				<div id="gnb_pc">
 					<nav>
 						<ul class="depth_01">
@@ -446,9 +467,8 @@
 			</div>	
 		</header>
 
-		<a href="#A-Contents-focus" id="A-Contents-focus" class="blind">본문 시작</a>
-		<main id="main">	
-			<div class="section" id="section0">	
+		<main id="main">
+			<div class="section fp-auto-height-responsive" id="section0">	
 				<div class="tit-bx">
 					<h2><img src="/page/untan/images/main/maintext.png" alt="운탄고도1330, 강원을 걷다"></h2>
 					<p>구름이 양탄자처럼 펼쳐진 고원의 길<br>
@@ -525,7 +545,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="section" id="section1">
+			<div class="section fp-auto-height-responsive" id="section1">
 				<h2 class="blind">코스보기</h2>
 				<div class="inner">
 					<div class="control clearfix">
@@ -708,7 +728,7 @@
 					<div class="dots"></div>
 				</div>
 			</div>
-			<div class="section" id="section2">
+			<div class="section fp-auto-height-responsive" id="section2">
 				<div class="inner clearfix">
 					<div class="tit-bx" data-aos="fade-up">
 						<em>MEDIA</em>
@@ -770,7 +790,7 @@
 					</a>
 				</div>
 			</div>
-			<div class="section last" id="section3">
+			<div class="section fp-auto-height-responsive" id="section3">
 				<div class="inner clearfix">
 					<div class="tit-bx" data-aos="fade-up">
 						<em>TOUR</em>
@@ -834,7 +854,6 @@
 		</main>	
 		
 		<footer id="footer">
-			<a href="#A-Ftr-focus" id="A-Ftr-focus" class="blind">푸터 시작</a>
 			<div class="inner">
 				<h1>
 					<a href="#">
@@ -868,15 +887,6 @@
 		<a href="#" id="btn_top" role="button">TOP</a>	
 	</div>
 
-</div>
-
-<div id="fp-nav" class="right">
-	<ul>
-		<li><a href="#"><span></span></a></li>
-		<li><a href="#"><span></span></a></li>
-		<li><a href="#"><span></span></a></li>
-		<li><a href="#"><span></span></a></li>
-	</ul>
 </div>
 
 </body>
