@@ -10,12 +10,16 @@ $(function() {
         offset: 50,   
     });
 
+
      $(window).on('resize', function() {
-        clearTimeout(window.resizedFinished);
-        window.resizedFinished = setTimeout(function(){
-            document.location.reload();    
-        }, 1000);
+        if ($(window).width() > 1023) {
+            clearTimeout(window.resizedFinished);
+            window.resizedFinished = setTimeout(function(){
+                document.location.reload();    
+            }, 1000);
+        }
     });
+
 
      $('#fp-nav li:first-child a').addClass('active');
 	 $('html, body').stop().animate({scrollTop : 0}, 200);
