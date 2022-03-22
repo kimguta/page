@@ -16,9 +16,7 @@ $(function() {
      $(window).on('resize', function() {
         clearTimeout(window.resizedFinished);
         window.resizedFinished = setTimeout(function(){
-            document.location.reload();
-            responsive();
-        
+            document.location.reload();    
         }, 100);
     });
 
