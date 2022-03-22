@@ -72,15 +72,6 @@ $(function() {
         var Index2 = $(this).index();
         var Offset = $('#main .section').eq(Index2).offset();
         $('html, body').stop().animate({scrollTop : Offset.top}, 600, 'easeOutQuad');
-        $('#fp-nav li a').removeClass('active');
-        $(this).children('a').addClass('active');
-        if(Index2 == 1 || Index2 == 3){
-            $('#fp-nav').addClass('active');
-        }
-        else{
-            $('#fp-nav').removeClass('active');	
-        }
-
     });
 
     $('#section0 .slick').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
