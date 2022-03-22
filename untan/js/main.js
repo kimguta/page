@@ -17,7 +17,7 @@ $(function() {
         clearTimeout(window.resizedFinished);
         window.resizedFinished = setTimeout(function(){
             document.location.reload();    
-        }, 100);
+        }, 1000);
     });
 
      $('#fp-nav li:first-child a').addClass('active');
