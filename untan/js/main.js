@@ -2,16 +2,13 @@
 
 $(function() {
 
-    setTimeout(function() {
-        AOS.init({
-            easing: 'ease',
-            duration: 900,
-            delay: 300,
-            once: true,
-            offset: 50,
-            
-        });
-     }, 200);
+    AOS.init({
+        easing: 'ease',
+        duration: 900,
+        delay: 300,
+        once: true,
+        offset: 50,   
+    });
 
      $(window).on('resize', function() {
         clearTimeout(window.resizedFinished);
