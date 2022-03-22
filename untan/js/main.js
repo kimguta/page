@@ -10,7 +10,6 @@ $(function() {
         offset: 50,   
     });
 
-
      $(window).on('resize', function() {
         if ($(window).width() > 1023) {
             clearTimeout(window.resizedFinished);
@@ -22,42 +21,26 @@ $(function() {
 
 
      $('#fp-nav li:first-child a').addClass('active');
+     $('#main > div:last-child').addClass('last');
 	 $('html, body').stop().animate({scrollTop : 0}, 200);
 
     if ($(window).width() > 1023) {
 
-        $('#section0, #section1, #section2').on('wheel', function (e) {
+        $('.section').on('wheel', function (e) {
             e.preventDefault();
             var Offset1 = $(this).prev('.section').offset();
             var Offset2 = $(this).next('.section').offset();
-            var Index = $(this).index();
             if (e.originalEvent.deltaY < 0) {
-                $('html, body').stop().animate({scrollTop : Offset1.top}, 600, 'easeOutQuad');
-                $('#fp-nav li a').removeClass('active');
-                $('#fp-nav li a').eq(Index-1).addClass('active');
-                
+                $('html, body').stop().animate({scrollTop : Offset1.top}, 600, 'easeOutQuad');   
             } 
             else if (e.originalEvent.deltaY > 0) {
-                $('html, body').stop().animate({scrollTop : Offset2.top}, 600, 'easeOutQuad');
-                $('#fp-nav li a').removeClass('active');
-                $('#fp-nav li a').eq(Index+1).addClass('active');
+                if ($(this).hasClass('last')) {
+                    $('html, body').stop().animate({scrollTop : $(document).height()}, 600, 'easeOutQuad');	
+                } else  {
+                    $('html, body').stop().animate({scrollTop : Offset2.top}, 600, 'easeOutQuad');
+                }
             }
         });	
-
-        $('#section3').on('wheel', function (e) {
-            e.preventDefault();
-            var Offset1 = $(this).prev('.section').offset();
-            var Index = $(this).index();
-            if (e.originalEvent.deltaY < 0) {
-                $('html, body').stop().animate({scrollTop : Offset1.top}, 600, 'easeOutQuad');
-                $('#fp-nav').removeClass('active');	
-                $('#fp-nav li a').removeClass('active');
-                $('#fp-nav li a').eq(Index-1).addClass('active');
-            }
-            else if (e.originalEvent.deltaY > 0) {
-                $('html, body').stop().animate({scrollTop : $(document).height()}, 600, 'easeOutQuad');		
-            } 
-        });
 
         $(window).on('scroll', function () {
             
