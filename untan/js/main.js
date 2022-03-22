@@ -70,19 +70,19 @@ $(function() {
             var Offset3 = $('#section2').offset();
             var Offset4 = $('#section3').offset();
             $('#fp-nav li a').removeClass('active');
-            if ($(document).scrollTop() < Offset2.top - 150) {
+            if ($(document).scrollTop() < Offset2.top - 200) {
                 $('#fp-nav').removeClass('active');
                 $('#fp-nav li a').eq(0).addClass('active');
             }
-            else if ($(document).scrollTop() > Offset2.top - 150 && $(document).scrollTop() < Offset3.top - 150) {
+            else if ($(document).scrollTop() > Offset2.top - 200 && $(document).scrollTop() < Offset3.top - 200) {
                 $('#fp-nav').addClass('active');
                 $('#fp-nav li a').eq(1).addClass('active');
             }
-            else if ($(document).scrollTop() > Offset3.top - 150 && $(document).scrollTop() < Offset4.top - 150) {
+            else if ($(document).scrollTop() > Offset3.top - 200 && $(document).scrollTop() < Offset4.top - 200) {
                 $('#fp-nav').removeClass('active');
                 $('#fp-nav li a').eq(2).addClass('active');
             }
-            else if ($(document).scrollTop() > Offset4.top - 150) {
+            else if ($(document).scrollTop() > Offset4.top - 200) {
                 $('#fp-nav').addClass('active');
                 $('#fp-nav li a').eq(3).addClass('active');
             }
