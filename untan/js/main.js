@@ -29,7 +29,7 @@ $(function() {
             var Offset1 = $(this).prev('.section').offset();
             var Offset2 = $(this).next('.section').offset();
             if (e.originalEvent.deltaY < 0) {
-                $('html, body').stop().animate({scrollTop : Offset1.top}, 600, 'easeOutQuad');   
+                $('html, body').stop().animate({scrollTop : Offset1.top}, 600, 'easeOutQuad');  
             } 
             else if (e.originalEvent.deltaY > 0) {
                 if ($(this).hasClass('last')) {
