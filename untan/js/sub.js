@@ -1,31 +1,43 @@
 $(function() {
 
-	$('#breadcrumb .open').on('click', function (e) {
+
+
+
+
+	$('.course-all .tab a').on('click', function (e) {
 		e.preventDefault();
-		if ($(this).hasClass('active')) {
-			$(this).removeClass('active');
-			$(this).children('span').text('열기');
-			$('#breadcrumb .box ul').slideUp(300);
-		} else{
-			$('#breadcrumb .open').removeClass('active');
-			$(this).addClass('active');
-			$('#breadcrumb .open span').text('열기');
-			$(this).children('span').text('닫기');
-			$('#breadcrumb .box ul').slideUp(300);
-			$(this).next('ul').slideDown(300);
-		}
+		var idx = $(this).index();
+		$('.course-all .tab a').removeClass('active');
+		$(this).addClass('active');
+		$('.course-all .img-bx img').removeClass('active');
+		$('.course-all .img-bx img').eq(idx).addClass('active');
+		$('.course-all .slick').slick('slickGoTo', idx);
 	});
 
-	$('#breadcrumb').on('mouseleave', function (e) {
-		e.preventDefault();
-		$('#breadcrumb .open span').text('열기');
-		$('#breadcrumb .box ul').slideUp(300);
-		$('#breadcrumb .box .open').removeClass('active');
+	$('.course-all .slick').on('afterChange', function(event, slick, currentSlide, nextSlide) {
+		$('.course-all .img-bx img, .course-all .tab a').removeClass('active');
+		$('.course-all .img-bx img').eq(currentSlide).addClass('active');
+		$('.course-all .tab a').eq(currentSlide).addClass('active');
 	});
 
-	$('#breadcrumb .box ul li:last-child a').on('focusout', function () {
-		$(this).parents('.box').children('.open').focus();
-	}); 
+
+	$('.course-all .slick').slick({
+        autoplay: false,
+        arrows: false,
+        dots: false,
+        accessibility: true,
+        infinite: true,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        pauseOnHover: false,
+		variableWidth: true,
+        speed: 700,
+		swipeToSlide: true,
+    });
+
+
+
+
 	/*
 	$('#visual-bx .slick').on('beforeChange', function(event, slick, currentSlide, nextSlide) {
 		$('#visual-bx .title-bx').fadeOut(300);
