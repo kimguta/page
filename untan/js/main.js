@@ -29,13 +29,13 @@ $(function() {
             var Offset1 = $(this).prev('.section').offset();
             var Offset2 = $(this).next('.section').offset();
             if (e.originalEvent.deltaY < 0) {
-                $('html, body').stop().animate({scrollTop : Offset1.top}, 600, 'easeOutQuad');  
+                $('html, body').stop().animate({scrollTop : Offset1.top}, 700, 'easeInOutQuad');  
             } 
             else if (e.originalEvent.deltaY > 0) {
                 if ($(this).hasClass('last')) {
-                    $('html, body').stop().animate({scrollTop : $(document).height()}, 600, 'easeOutQuad');	
+                    $('html, body').stop().animate({scrollTop : $(document).height()}, 700, 'easeInOutQuad');	
                 } else  {
-                    $('html, body').stop().animate({scrollTop : Offset2.top}, 600, 'easeOutQuad');
+                    $('html, body').stop().animate({scrollTop : Offset2.top}, 700, 'easeInOutQuad');
                 }
             }
         });	
