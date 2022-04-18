@@ -27,7 +27,7 @@ $(function() {
         e.preventDefault();
         $(this).find('.link_item').removeClass('active');
     });
-    $('#archive-bx .notice_area .slick').slick({
+    $('.notice_area .slick').slick({
         autoplay: true,
         arrows: false,
         dots: false,
@@ -37,5 +37,19 @@ $(function() {
         verticalSwiping:true,
 
     });
+
+    $('.archive_tab_wrap .archive_tab li:first-child a').addClass('active');
+
+    $('.archive_tab_wrap .tab_item a').on('mouseover', function (e){
+        e.preventDefault();
+        $('.archive_tab_wrap .tab_item a').removeClass('active');
+        $(this).addClass('active');
+    });
+
+    $('.archive_tab_wrap .tab_item a').on('mouseout', function (e){
+        e.preventDefault();
+        $(this).removeClass('active');
+    });
+
 });
 
