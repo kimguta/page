@@ -542,7 +542,8 @@ span.listLv:before,
 
 
 /*코스상세*/
-.course-conts{position:relative;margin-bottom:-75px;}
+.course-conts{position:relative;}
+.course-conts.v2{margin-bottom:0px;margin-bottom:-75px;}
 .course-conts .visual{position:relative;height:600px;overflow:hidden;width:1920px;left:50%;margin-left:-960px;padding-top:70px;}
 .course-conts .visual.fixed{position:fixed;top:0;z-index:-1;}
 .course-conts .visual img{position:absolute;width:1920px;top:0;left:50%;margin:0px 0 0 -960px;z-index:2;}
@@ -644,7 +645,7 @@ span.listLv:before,
 
 
 @media (max-width:1399px) {
-  .course-conts{margin-bottom:-45px;}
+  .course-conts.v2{margin-bottom:-45px;}
   .course-conts .visual{height:380px;width:1400px;margin-left:-700px;padding-top:40px;}
   .course-conts .visual img{width:1400px;margin:0px 0 0 -700px;}
   .course-conts .visual h4{position:relative;z-index:3;text-align:center;color:#fff;}
@@ -761,7 +762,7 @@ span.listLv:before,
 
 
 @media (max-width:760px) {
-  .course-conts{margin:20px 0 -35px;}
+  .course-conts.v2{margin:20px 0 -35px;}
   .course-conts .visual{height:270px;width:800px;margin-left:-400px;padding-top:30px;}
   .course-conts .visual img{width:900px;margin:0px 0 0 -450px;}
   .course-conts .visual h4 strong{font-size:90px;}
@@ -1282,4 +1283,125 @@ span.listLv:before,
   .join-bx .name-bx .cu{margin-top:12px;}
   .join-bx .name-bx input{height:32px;width:115px;padding-left:10px;margin-right:0px;}
   
+}
+
+/*명예의 전당*/
+.hall-fame{position:relative;padding-top:50px;}
+.hall-fame .victory{display:block;width:200px;margin:0 auto;image-rendering:-webkit-optimize-contrast;position:relative;z-index:3;}
+.hall-fame h4{text-align:center;font-weight:700;color:#000;font-size:36px;line-height:1.3;margin-top:13px;position:relative;z-index:3;}
+
+.hall-fame .fame-list{position:relative;z-index:2;margin-top:90px;padding:50px 0 55px;}
+.hall-fame .fame-list:before{content:'';z-index:-1;background:#f5f5f5;position:absolute;top:0;bottom:0;left:-300px;right:-300px;}
+.hall-fame .fame-list:after{content:'';z-index:-2;background:url(/page/untan/images/sub/subbg_05.png) no-repeat center top;position:absolute;width:1400px;top:-140px;left:50%;right:0px;height:145px;margin-left:-700px}
+
+.hall-fame .fame-bx{padding-top:25px;}
+.hall-fame .fame-bx a{display:block;float:left;width:calc((100% - 120px) / 4);margin:0 40px 40px 0;background:#fff;box-shadow:0px 0px 15px 0px rgba(0,0,0,.1);transition:all .3s;overflow:hidden;}
+.hall-fame .fame-bx a:nth-child(4n){margin-right:0;}
+.hall-fame .fame-bx a:hover{transform:translateY(-20px);text-decoration:none;}
+.hall-fame .fame-bx a .thumb{position:relative;height:320px;}
+.hall-fame .fame-bx a .thumb img{height:100%;width:100%;object-fit:cover;}
+.hall-fame .fame-bx strong{display:block;line-height:1.2;padding:17px 10px 10px;position:relative;text-align:center;color:#111;font-size:24px;font-weight:700;z-index:3;white-space:nowrap;text-overflow:ellipsis;}
+.hall-fame .fame-bx strong:before{content:'';display:block;z-index:-1;image-rendering: -webkit-optimize-contrast;background:url(/page/untan/images/sub/honor.png) no-repeat center center;background-size:cover;width:49px;height:70px;position:absolute;top:-30px;right:30px;}
+.hall-fame .fame-bx span{display:block;line-height:1.2;padding:0px 10px 25px;position:relative;text-align:center;color:#333;font-size:14px;font-weight:400;}
+.hall-fame .pager{margin-top:0;}
+
+.modal-fame{position:absolute;display:block;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.6);z-index:3000;align-items:center;justify-content:center;display:none;}
+.modal-fame .mf-wrap{position:absolute;top:0;left:0;right:0;bottom:0;align-items:center;justify-content:center;display:flex;padding:50px 20px;}
+.modal-fame .bx{width:100%;max-width:1400px;background:#fff;padding:65px 80px 80px;position:relative;animation:pop01 .3s 1 both ease-in-out;}
+.modal-fame .bx .close{display:block;position:absolute;top:45px;right:80px;background:url(/page/untan/images/common/sp_untan.png) -24px -24px no-repeat;background-size:960px 240px;width:30px;height:33px;font-size:0;}
+.modal-fame .tit{display:flex;align-items:flex-end;}
+.modal-fame .tit h1{position:relative;padding-left:40px;color:#111;font-weight:700;font-size:36px;line-height:1.2;margin-right:20px;}
+.modal-fame .tit h1:after{content:'';display:block;;image-rendering: -webkit-optimize-contrast;background:url(/page/untan/images/sub/honor.png) no-repeat center center;background-size:cover;width:29px;height:42px;position:absolute;top:50%;left:0;margin-top:-21px;}
+.modal-fame .tit span{font-weight:300;color:#333;}
+.modal-fame .tit span em{display:inline-block;padding-right:8px;margin-right:4px;position:relative;color:#999;}
+.modal-fame .tit span em:after{content:'';display:block;width:1px;height:14px;background:#999;position:absolute;right:0;top:50%;margin-top:-6px;}
+.modal-fame .bx p{margin-top:20px;line-height:1.5;word-break:keep-all;font-weight:300;color:#333;}
+.modal-fame .img-bx{position:relative;margin-top:55px;height:675px;}
+.modal-fame .img-bx:after{content:'';display:block;background:url(/page/untan/images/main/sticker.png) 0 0 no-repeat;width:160px;height:50px;position:absolute;top:-25px;right:50px}
+.modal-fame .img-bx img{display:block;width:100%;height:100%;object-fit:cover;}
+
+@keyframes pop01{ 
+  0%{transform:translateX(-50%);opacity:.5;}
+  100%{transform:translateX(0%);opacity:1;}
+}
+
+
+@media (max-width:1399px) {
+  .hall-fame{padding-top:35px;}
+  .hall-fame .victory{width:160px;}
+  .hall-fame h4{font-size:30px;margin-top:11px;}
+  .hall-fame .fame-list{margin-top:70px;padding:30px 0 35px;}
+  .hall-fame .fame-list:after{width:1200px;top:-124px;height:124px;margin-left:-600px}
+  .hall-fame .fame-bx{padding-top:20px;}
+  .hall-fame .fame-bx a{width:calc((100% - 60px) / 4);margin:0 20px 25px 0;}
+  .hall-fame .fame-bx a:hover{transform:translateY(0px);}
+  .hall-fame .fame-bx a .thumb{height:240px;}
+  .hall-fame .fame-bx strong{padding:15px 10px 8px;font-size:20px;}
+  .hall-fame .fame-bx strong:before{right:15px;transform:scale(.65);transform-origin:100% 50%;}
+  .hall-fame .fame-bx span{padding:0px 10px 17px;font-size:13px;}
+
+  .modal-fame .mf-wrap{padding:30px 20px;}
+  .modal-fame .bx{padding:35px 40px 40px;}
+  .modal-fame .bx .close{top:25px;right:40px;}
+  .modal-fame .tit h1{font-size:30px;margin-right:15px;padding-left:33px;}
+  .modal-fame .tit h1:after{transform:scale(.8);transform-origin:0% 50%;}
+  .modal-fame .tit span{font-size:14px;}
+  .modal-fame .tit span em:after{width:1px;height:12px;margin-top:-7px;}
+  .modal-fame .bx p{margin-top:15px;color:#333;font-size:15px;}
+  .modal-fame .img-bx{margin-top:40px;height:545px;}
+  .modal-fame .img-bx:after{right:30px;transform:scale(.8);transform-origin:100% 50%;}
+}
+
+@media (max-width:991px) {
+  .hall-fame{padding-top:32px;}
+  .hall-fame .victory{width:130px;}
+  .hall-fame h4{font-size:26px;margin-top:10px;}
+  .hall-fame .fame-list{margin-top:60px;padding:20px 0 25px;}
+  .hall-fame .fame-list:after{width:1000px;top:-103px;height:103px;margin-left:-500px}
+  .hall-fame .fame-bx{padding-top:10px;}
+  .hall-fame .fame-bx a{width:calc((100% - 40px) / 3);margin:0 20px 25px 0;}
+  .hall-fame .fame-bx a:nth-child(4n){margin-right:20px;}
+  .hall-fame .fame-bx a:nth-child(3n){margin-right:0px;}
+  .hall-fame .fame-bx a .thumb{height:210px;}
+  .hall-fame .fame-bx strong{padding:15px 10px 8px;font-size:18px;}
+  .hall-fame .fame-bx strong:before{right:10px;transform:scale(.6);}
+  .hall-fame .fame-bx span{padding:0px 10px 15px;}
+
+  .modal-fame .mf-wrap{padding:30px 20px;}
+  .modal-fame .bx{padding:35px 40px 40px;}
+  .modal-fame .bx .close{top:25px;right:40px;}
+  .modal-fame .tit h1{font-size:30px;margin-right:15px;padding-left:33px;}
+  .modal-fame .tit h1:after{transform:scale(.8);transform-origin:0% 50%;}
+  .modal-fame .tit span{font-size:14px;}
+  .modal-fame .tit span em:after{width:1px;height:12px;margin-top:-7px;}
+  .modal-fame .bx p{margin-top:15px;color:#333;font-size:15px;}
+  .modal-fame .img-bx{margin-top:40px;height:545px;}
+  .modal-fame .img-bx:after{right:30px;transform:scale(.8);transform-origin:100% 50%;}
+
+  .hall-fame .pager{padding-top:10px;}
+}
+
+
+
+
+
+#sub .boSrchArea{border:0;padding:0;}
+#sub .boMeta-pt:before{display:none;}
+#sub .boSrchArea .boMeta{font-weight:700;color:#005151}
+#sub .boSrchArea .boMeta-pt{font-weight:400;color:#111;}
+#sub .boSrchArea .skinBtnBo{height:3.4rem;width:24px !important;background:url(/page/untan/images/common/icon02.png) no-repeat center center;background-size:20px 20px;}
+#sub .skinSelectBox{border-radius:18px !important;}
+#sub .boSrch-iptTxt {border-radius:18px !important;}
+@media screen and (min-width: 800px){	
+  #sub .boSrchArea .boSrch {max-width:565px;}
+}
+
+@media screen and (min-width: 640px){
+	#sub .skinSelectBox{border-radius:18px !important;}
+  #sub .boSrch-selectBox, .grSrch-selectBox, .boSrch-label, .boSrch-iptTxt{margin-right:10px;}
+  #sub .boSrch-iptTxt {width: calc(100% - 22% - 45px);}
+}
+
+@media screen and (max-width: 639px){
+	#sub .boSrch-iptTxt {width: calc(100% - 35px);margin-right:5px;}
 }
