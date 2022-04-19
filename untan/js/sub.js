@@ -1,5 +1,13 @@
 $(function() {
 
+	AOS.init({
+        easing: 'ease',
+        duration: 900,
+        delay: 300,
+        once: true,
+        offset: 50,   
+    });
+
 	$('.course-all .tab a').on('click', function (e) {
 		e.preventDefault();
 		var idx = $(this).index();
