@@ -83,6 +83,16 @@ $(function() {
         speed: 700,
     });
 
-	
+	$('.untan-qna .qa-bx a').on('click', function (e) {
+		e.preventDefault();	
+		if ($(this).hasClass('active')) {
+ 
+            $(this).removeClass('active');
+        }
+		else{
+			$('.untan-qna .qa-bx a').removeClass('active');
+			$(this).addClass('active');
+		}
+	});	
 
 });
