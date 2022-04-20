@@ -2,7 +2,7 @@ $(function() {
 
 	AOS.init({
         easing: 'ease',
-        duration: 900,
+        duration: 700,
         delay: 300,
         once: true,
         offset: 50,   
@@ -86,7 +86,7 @@ $(function() {
 	$('.untan-qna .qa-bx a').on('click', function (e) {
 		e.preventDefault();	
 		if ($(this).hasClass('active')) {
- 
+
             $(this).removeClass('active');
         }
 		else{

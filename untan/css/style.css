@@ -67,8 +67,10 @@ main{display:block;}
 #gnb_pc .depth_02 h3:nth-child(9) a{animation-delay:.33s;}
 #gnb_pc .depth_02 h3:nth-child(10) a{animation-delay:.36s;}
 
-#gnb_pc .depth_02{position:absolute;top:80px;left:50%;transform:translateX(-50%);display:none;min-width:150px;}
-#gnb_pc .depth_01 h2.active .depth02{z-index:2;}
+#gnb_pc .depth_02{position:absolute;top:60px;left:50%;transform:translateX(0%);min-width:150px;background:#005151;padding:20px 0;transition:all 0.4s ease;opacity:0;pointer-events:none;}
+#gnb_pc h2.active + .depth_02{z-index:2;opacity:1;transform:translateX(-50%);pointer-events:initial;}
+
+
 
 #header .btn_box{position:absolute;right:20px;top:50%;margin-top:-16.5px;}
 #header .btn_box a{height:33px;width:33px;display:inline-block;vertical-align:top;transition:all .15s;background:url(/page/untan/images/common/sp_untan.png) 0 -24px no-repeat;background-size:960px 240px;font-size:0;image-rendering:-webkit-optimize-contrast;margin-left:25px;}
@@ -78,7 +80,6 @@ main{display:block;}
 #header .btn_box a.login.active{background-position-x:-265px;}
 #header .btn_box a.eng{background:none;font-size:18px;width:auto;line-height:33px;}
 #header .btn_box a.menu{background-position-x:-102px;width:37px;display:none;}
-#header .btn_box a:hover{transform:scale(1.1);}
 
 #gnb_mobile{display:none;position:fixed;background:#fff;right:-335px;height:100vh;top:0;z-index:100;width:335px;padding:30px 0 0 0px;transition:all .35s ease-in-out;}
 #gnb_mobile.active{right:0;box-shadow:0px -7px 12px 0px rgba(0,0,0,.3);}
@@ -129,11 +130,12 @@ main{display:block;}
 #footer .link p{color:#666;font-weight:400;margin-top:22px;font-size:14px;}
 
 #footer .family{position:absolute;top:-15px;right:20px;width:270px;}
-#footer .family .open{display:block;height:45px;line-height:45px;padding-left:20px;border-bottom:1px solid #111;}
+#footer .family .open{display:block;height:45px;line-height:45px;padding-left:20px;border-bottom:1px solid #111;background:#e0e0e0;z-index:2;position:relative;}
 #footer .family .open:after{content:'';display:block;position:absolute;top:50%;right:20px;width:14px;height:8px;transition:all .2s;margin-top:-4px;background:url(/page/untan/images/common/sp_untan.png) -513px -36px no-repeat;background-size:960px 240px;}
 #footer .family .open.active:after{transform:rotate(180deg);}
 
-#footer .family .view{position:absolute;bottom:45px;width:100%;left:0;background:#333;padding:10px 0;display:none;}
+#footer .family .view{position:absolute;bottom:45px;width:100%;left:0;background:#333;padding:10px 0;pointer-events:none;opacity:0;transition:all .4s ease;transform:translateY(45px);}
+#footer .family .open.active + .view{opacity:1;pointer-events:initial;transform:translateY(0px);}
 #footer .family .view a{display:block;color:#fff;font-size:14px;height:32px;line-height:32px;padding:0 10px 0 20px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 
 
@@ -163,7 +165,7 @@ main{display:block;}
 }
 
 
-#btn_top{position:absolute;top:790px;left:50%;margin-left:750px;display:block;z-index:1101;transition:opacity .1s;opacity:0;background:#333;width:60px;height:60px;font-size:15px;display:block;color:#fff;border-radius:50%;line-height:60px;text-align:center;}
+#btn_top{position:absolute;display:none !important;top:790px;left:50%;margin-left:750px;display:block;z-index:1101;transition:opacity .1s;opacity:0;background:#333;width:60px;height:60px;font-size:15px;display:block;color:#fff;border-radius:50%;line-height:60px;text-align:center;}
 
 
 @media (max-width:1699px) {

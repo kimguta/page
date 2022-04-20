@@ -2,7 +2,7 @@ $(function() {
 
     AOS.init({
         easing: 'ease',
-        duration: 900,
+        duration: 700,
         delay: 300,
         once: true,
         offset: 50,   
@@ -33,7 +33,7 @@ $(function() {
             } 
             else if (e.originalEvent.deltaY > 0) {
                 if ($(this).hasClass('last')) {
-                    $('html, body').stop().animate({scrollTop : $(document).height()}, 700, 'easeInOutQuad');	
+                    $('html, body').stop().animate({scrollTop : $(document).height()}, 1200, 'easeInOutQuad');	
                 } else  {
                     $('html, body').stop().animate({scrollTop : Offset2.top}, 700, 'easeInOutQuad');
                 }
@@ -60,7 +60,7 @@ $(function() {
                 $('#fp-nav li a').eq(2).addClass('active');
             }
             else if ($(document).scrollTop() > Offset4.top - 200) {
-                $('#fp-nav').addClass('active');
+                $('#fp-nav').removeClass('active');
                 $('#fp-nav li a').eq(3).addClass('active');
             }
         });
@@ -113,7 +113,7 @@ $(function() {
             return '<a href="#" onclick="return false;" role="button">' + (index + 1) + '</a>';
         },
         accessibility: true,
-        infinite: false,
+        infinite: true,
         slidesToScroll: 1,
         variableWidth: true,
         pauseOnHover: false,
@@ -128,7 +128,7 @@ $(function() {
         prevArrow: $('#section3  .prev'),
         nextArrow: $('#section3  .next'),
         accessibility: true,
-        infinite: false,
+        infinite: true,
         slidesToScroll: 1,
         variableWidth: true,
         pauseOnHover: false,
