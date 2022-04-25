@@ -1,0 +1,186 @@
+@charset "utf-8";
+
+/* 레이아웃 공통 */
+html, body{position:relative; width:100%;}
+body{color:#707070; font-size:16px; line-height:1.6; font-family:'NanumSquareRound', 'Noto Sans KR', sans-serif; word-break:break-all;letter-spacing:-0.6px;}
+main{display:block;}
+.confirmIframe body{overflow:hidden;}
+#progressScroll{display:none;}
+.page-wrap{overflow:hidden;}
+
+/* 본문바로가기 */
+.skipnav{position:absolute;z-index:2999;top:-100px;width:100%;padding:0;list-style:none;font-size:14px;}
+.skipnav li{position:relative;top:0;left:0;width:100%}
+.skipnav li a{display:block;position:absolute;top:0;width:100%;padding:15px 0;background:#000;color:#fff;text-align:center;text-decoration:none}
+.skipnav li a:focus,.skipnav li a:active{top:100px}
+
+/* slick 플러그인 */
+.slick-slider .slick-list{display:block; overflow-x:hidden; overflow-y:hidden; position:relative}
+.slick-slider .slick-list.dragging{cursor:pointer}
+.slick-slider .slick-list .slick-track{display:block; position:relative; top:0; left:0}
+.slick-slider .slick-list .slick-track:before, .slick-slider .slick-list .slick-track:after{display:table; content:''}
+.slick-slider .slick-list .slick-track:after{clear:both}
+.slick-slider .slick-list.slick-loading .slick-track{visibility:hidden}
+.slick-slider .slick-list .slick-track .slick-slide{display:none; float:left}
+.slick-slider[dir='rtl'] .slick-list .slick-track .slick-slide{float:right}
+.slick-slider .slick-list .slick-track .slick-slide img{display:block;width:100%;}
+.slick-slider .slick-list .slick-track .slick-slide.slick-loading img{display:none}
+.slick-slider.slick-initialized .slick-list .slick-track .slick-slide{display:block}
+.slick-slider .slick-list .slick-track.slick-loading .slick-slide{visibility:hidden}
+.slick-slider .slick-arrow.slick-hidden{display:none}
+
+/* 공통 */
+.inner{max-width:1240px;position:relative;margin:0 auto;padding:0 20px;}
+
+@media (max-width:760px) {
+ .inner{padding:0 15px;}
+}
+
+#header{position:fixed;z-index:2000;top:0;border-radius:0 0 45px 45px;left:50px;right:50px;padding-left:230px;transition:all .3s;}
+#header:before{content:'';display:block;position:absolute;left:0;right:0;bottom:0;top:0;background:#fff;border-radius:0 0 45px 45px;box-shadow:0px 0px 10px 0px rgba(0,0,0,.3);}
+#header h1{position:absolute;width:197px;bottom:17px;left:65px;z-index:20;transition:all .25s;}
+#header h1 a,
+#header h1 img{display:block;width:100%;image-rendering:-webkit-optimize-contrast;transition:all .25s;}
+#header nav{display:flex;align-items:center;justify-content:center;position:relative;}
+#header nav .disabled{width:248px;margin-left:50px;}
+#header nav .disabled img{display:block;width:100%;image-rendering:-webkit-optimize-contrast;transition:all .2s;}
+#header nav .disabled:hover img{animation:jump1 .4s alternate infinite ease-in;}
+#header .depth_01{display:flex;}
+#header .depth_01 li{position:relative;}
+#header h2 a{display:block;padding:0 43px;height:105px;line-height:103px;font-family:'KoreanYNSJG';color:#313131;font-size:19px;font-weight:400;transition:all .2s;}
+#header h2.active a{color:#01419a}
+#header h2 a span{display:inline-block;padding:0 3px 5px;line-height:1.1;position:relative;}
+#header h2 a span:after{content:'';display:block;bottom:0;height:1px;background:#01419a;position:absolute;transition:all .2s;left:50%;right:50%;}
+#header h2.active a span:after{left:0;right:0;}
+
+#header .sitemap{position:absolute;right:40px;image-rendering:-webkit-optimize-contrast;display:block;transition:all .2s;top:50%;background:url(/page/sports/images/common/sp_sports.png) -6px -7px no-repeat;background-size:520px 520px;width:28px;height:25px;margin-top:-15px;font-size:0;}
+#header .sitemap:hover{transform:scale(1.1);}
+#header .bg_pc{position:absolute;top:65px;z-index:-1;height:435px;background:url(/page/sports/images/common/gnb_on_bg.jpg) center bottom no-repeat;background-size:cover;display:block;left:0;right:0;border-radius:0 0 45px 45px;display:none;}
+#header .bg_pc:after{content:'';animation:jump2 .7s .4s 1 both ease-out;display:block;width:411px;height:304px;image-rendering:-webkit-optimize-contrast;background:url(/page/sports/images/common/gnb_mascot.png) center center no-repeat;background-size:cover;position:absolute;bottom:38px;left:45px;}
+#mask{position:fixed;z-index:1000;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.4);display:none;animation:mask1 .35s 1 both ease;}
+
+#header .depth_02{position:absolute;top:120px;left:0px;width:100%;overflow:hidden;transition:top .3s;display:none;}
+#header .depth_02 > li{margin:10px 10px 0 0;padding:0px;display:block;animation:gnb1 .3s .1s 1 both ease;}
+#header .depth_02 > li:nth-child(2){animation-delay:.15s;}
+#header .depth_02 > li:nth-child(3){animation-delay:.2s;}
+#header .depth_02 > li:nth-child(4){animation-delay:.25s;}
+#header .depth_02 > li:nth-child(5){animation-delay:.3s;}
+#header .depth_02 > li:nth-child(6){animation-delay:.35s;}
+#header .depth_02 > li:nth-child(7){animation-delay:.4s;}
+#header .depth_02 > li:nth-child(8){animation-delay:.45s;}
+#header .depth_02 > li:nth-child(9){transition-delay:.5s;}
+#header .depth_02 h3 a{display:flex;height:36px;background:#fff;border-radius:5px;transition:all .05s;color:#393939;font-size:15px;position:relative;border:1px solid #d9d9d9;word-break:keep-all;align-items:center;justify-content:center;padding:0 20px;}
+#header .depth_02 h3.has_depth a:after{content:'';display:block;background:url(/page/sports/images/common/sp_sports.png) 0px -67px no-repeat;background-size:260px 260px;position:absolute;top:50%;margin-top:-6px;width:11px;height:11px;right:10px;image-rendering: -webkit-optimize-contrast;}
+#header .depth_02 h3 a:hover{background:#01419a;color:#fff;font-weight:700;border-color:#01419a}
+#header .depth_02 h3.active a{background:#01419a;color:#fff;font-weight:700;border-color:#01419a}
+#header .depth_02 h3 a:hover:after{background-position:-12px -79px;}
+#header .depth_02 h3.active a:after{background-position:-12px -79px;}
+
+#header .depth_03{margin: 6px 10px -3px 15px;border-left:1px solid #dcdcdc;display:none;}
+#header .depth_03 h4 a{height: 24px;line-height: 26px;padding-left:10px;font-size:14px;color:#30333a;position:relative;display:block;}
+#header .depth_03 h4 a:after{content:'';display:block;width:1px;background:#384c9c;position:absolute;left:-1px;top:0;height:auto;transition:all .2s;height:0;}
+#header .depth_03 h4 a:hover{color:#384c9c;font-weight:700;}
+#header .depth_03 h4 a:hover:after{height:100%;}
+
+@keyframes mask1{ 
+  0%{opacity:0;}
+  100%{opacity:1;} 
+}
+
+@keyframes gnb1{ 
+  0%{opacity:0;transform:translateY(-100%);}
+  100%{opacity:1;transform:translateY(0%);} 
+}
+
+@keyframes jump1{ 
+  0%{transform:translateY(-5px);}
+  100%{transform:translateY(5px);} 
+}
+
+@keyframes jump2{ 
+  0%{transform:translateY(0px);} 
+  50%{transform:translateY(-35px);}
+  100%{transform:translateY(0px);} 
+}
+
+.mobile-on{display:none;position:absolute;right:20px;z-index:20;image-rendering:-webkit-optimize-contrast;top:50%;background:url(/page/sports/images/common/sp_sports.png) -6px -7px no-repeat;background-size:520px 520px;width:28px;height:25px;margin-top:-15px;font-size:0;}
+.mobile-on.active{background-position:-49px -9px;width:22px;height:22px;}
+
+#header.fixed h2 a{height:64px;line-height:62px;font-size:16px;}
+#header.fixed nav .disabled{width:168px;margin-left:50px;}
+#header.fixed h1{bottom:5px;left:65px;width:138px}
+#header.fixed .bg_pc{top:25px;}
+#header.fixed .depth_02{top:80px;}
+
+@media (max-width:1620px) {
+  #header{left:10px;right:10px;padding-left:180px;}
+  #header h1{left:20px;width:138px;bottom:25px;}
+  #header nav .disabled{width:208px;margin-left:30px;}
+  #header h2 a{padding:0 20px;font-size:16px;}
+  #header.fixed h1{left:30px;}
+}
+
+@media (max-width:1199px) {
+  #header{border-radius:0 0 30px 30px;padding-left:0px;height:75px;}
+  #header:before{border-radius:0 0 30px 30px;box-shadow:0px 0px 10px 0px rgba(0,0,0,.3);z-index:10;}
+  #header .bg_pc{display:none !important;}
+  #header .sitemap{display:none;}
+  .mobile-on{display:block;}
+  #header h1{bottom:10px;}
+  #header.fixed{top:-80px;}
+  #header nav{position:absolute;transition:all .5s ease;display:block;right:0;width:100%;max-width:400px;top:calc(-1 * (100vh - 70px));background:url(/page/sports/images/common/gnb_on_bg.jpg) left -400px top no-repeat;background-size:cover;height:calc(100vh - 70px);padding-bottom:30px;border-radius:0 0 30px 30px;overflow-y:auto;}
+  #header .depth_01{display:block;padding:30px 30px 0;}
+  #header nav .disabled{display:block;width:248px !important;margin:30px auto 0 !important;}
+  #header h2 a{height:62px;line-height:70px;padding:0 20px;font-size:18px;border-bottom:1px solid #cfc8c8;position:relative;}
+  #header h2 a:after{content:'';display:block;background:url(/page/sports/images/common/sp_sports.png) 0px -135px no-repeat;background-size:520px 520px;position:absolute;width:20px;height:20px;right:0px;image-rendering: -webkit-optimize-contrast;bottom:15px;}
+  #header h2.active a:after{background-position-x:-25px;}
+  #header .depth_02{position:relative;top:0 !important;}
+  #header .depth_02 > li{margin-right:0;}
+  #header.fixed nav{top:calc(-1 * (100vh - 70px))}
+  #header nav.active{top:50px;}
+}
+
+
+#footer{position:relative;background:#2c3039;padding-bottom:35px}
+#footer .banner{background:#fff;box-shadow:0px -5px 7px 0px rgba(0,0,0,.08);}
+#footer .banner .inner{display:flex;}
+#footer .banner a{flex:1;position:relative;display:flex;align-items:center;justify-content:center;height:62px;}
+#footer .banner a img{image-rendering:-webkit-optimize-contrast;}
+#footer .banner a:not(:first-child):after{content:'';display:block;width:1px;height:22px;background:#b2b2b2;position:absolute;left:0;top:50%;margin-top:-11px;}
+#footer .add-bx{position:relative;padding-top:25px;display:flex;align-items:center;justify-content:center;}
+#footer .add-bx .logo-bx{width:211px;margin-right:45px;}
+#footer .add-bx .logo-bx img{display:block;width:100%;image-rendering:-webkit-optimize-contrast;}
+#footer .link{margin-bottom:5px;}
+#footer .link a{display:inline-block;margin-right:40px;vertical-align:top;line-height:1.3;position:relative;color:#ebebeb;}
+#footer .link a + a:after{content:'';display:block;width:2px;height:2px;background:#ebebeb;position:absolute;top:50%;margin-top:-2px;left:-20px;}
+#footer .address{color:#ebebeb;line-height:1.4;opacity:.6;}
+
+@media (max-width:1199px) {
+  #footer{padding-bottom:20px}
+  #footer .banner .inner{padding:0;overflow-x:auto;}
+  #footer .banner a{height:50px;flex-basis:160px;flex-shrink:0;}
+  #footer .banner a img{height:27px}
+
+  #footer .add-bx{position:relative;padding-top:25px;display:block;padding-bottom:75px;}
+  #footer .add-bx .logo-bx{width:100%;display:block;position:absolute;bottom:0px;text-align:center;}
+  #footer .add-bx .logo-bx img{width:160px;margin:0 auto;}
+  #footer .link{margin-bottom:5px;text-align:center;font-size:14px;}
+  #footer .link a{margin-right:30px;}
+  #footer .link a + a:after{left:-15px;}
+  #footer .address{color:#ebebeb;line-height:1.4;opacity:.6;text-align:center;font-size:14px;margin-top:10px;}
+  #footer .address span{display:block;}
+  #footer .address em{display:none;}
+  #footer .address p + p{margin-top:2px;}
+}
+
+#btn_top{position:absolute;top:750px;left:50%;margin-left:680px;display:block;z-index:1101;transition:opacity .1s;opacity:0;background:url(/page/sports/images/common/icon03.png) 50% 50% no-repeat;background-size:cover;width:63px;height:63px;font-size:0;image-rendering:-webkit-optimize-contrast;}
+#btn_top:hover{transform:scale(1.03);}
+#btn_top:active{transform:scale(.97);}
+
+@media (max-width:1699px) {
+  #btn_top{position:fixed;left:auto;margin-left:0;right:20px;bottom:20px !important;top:auto !important;width:50px;height:50px;}
+}
+
+@media (max-width:760px) {
+  #btn_top{right:15px;bottom:15px !important;width:40px;height:40px;}
+}
