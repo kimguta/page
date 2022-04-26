@@ -1,4 +1,4 @@
-$(document).on('ready ajaxComplete', function(){
+$(function() {
 
     setTimeout(function() {
         AOS.init({
@@ -10,43 +10,70 @@ $(document).on('ready ajaxComplete', function(){
         });
      }, 200);
 
+     $('#visual .slick').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+        $('#visual .text, #visual .inner .day .character').removeClass('active');
+    });
+
+     $('#visual .slick').on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
+        $('#visual .text, #visual .inner .day .character').addClass('active');
+    });
+
   
      $('#visual .slick').slick({
         autoplay: true,
-        arrows: false,
-        dots: true,
+        arrows: true,
+        dots: false,
         accessibility: true,
-        customPaging: function(slick,index) {
-            return '<a href="#" onclick="return false;" role="button">' + index + '</a>';
-        },
+        prevArrow: '<a class="slick-prev" href="#">이전</a>',
+        nextArrow: '<a class="slick-next" href="#">다음</a>',
         infinite: true,
         fade: true,
         slidesToShow: 1,
         slidesToScroll: 1,
         pauseOnHover: false,
-        speed: 800,
-        autoplaySpeed: 6000
+        speed: 1200,
+        autoplaySpeed: 8000
     });
 
 
+    var cnt0 = 0;
+    var cntend = $("#visual .d-num").text();
+    counterFn();
 
-    $('#web .slick').slick({
+    function counterFn() {
+        id0 = setInterval(count0Fn, 100);
+        function count0Fn() {
+            cnt0++;
+            if (cnt0 > cntend) {
+            clearInterval(id0);
+            } else {
+            $("#visual .d-num").text(cnt0);
+            }
+        }
+    };
+
+
+
+    $('#event .slick').slick({
         autoplay: false,
         arrows: true,
         dots: false,
-        prevArrow: $('#web .prev'),
-        nextArrow: $('#web .next'),
+        prevArrow: '<a class="slick-prev" href="#">이전</a>',
+        nextArrow: '<a class="slick-next" href="#">다음</a>',
         accessibility: true,
         infinite: true,
         fade: false,
-        slidesToShow: 3,
+        slidesToShow: 7,
         slidesToScroll: 1,
         pauseOnHover: false,
-        variableWidth: true,
         swipeToSlide :true,
         speed: 600,
     });
 
+
+
+
+    
     $('#gallery .control .bttn').on('click', function (e) {
         e.preventDefault();
         if ($(this).hasClass('pause')) {
@@ -95,7 +122,6 @@ $(document).on('ready ajaxComplete', function(){
 		}, 150);
 	});
 
-    $("#header").prepend('<a href="#" class="logo-bx"><img src="/page/eroom/images/common/logo01.png" alt="강원도평생교육정보망 이룸"></a>');
     
 });
 

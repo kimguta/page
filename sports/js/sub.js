@@ -1,4 +1,4 @@
-$(document).on('ready ajaxComplete', function(){
+$(function() {
 
 	$('#breadcrumb .bx .open').on('click', function (e) {
 		e.preventDefault();
