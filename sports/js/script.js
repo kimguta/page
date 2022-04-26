@@ -122,12 +122,15 @@ $(document).on('ready ajaxComplete', function(){
 
 });
 
-
+var Wwidth = $(window).outerWidth();
 
 $(window).on('resize', function() {
 	clearTimeout(window.resizedFinished);
 	window.resizedFinished = setTimeout(function(){
-	document.location.reload();	
-	responsive();
+	var Wwidth2 = $(window).outerWidth();
+	if ( Wwidth !=  Wwidth2 ){
+		document.location.reload();	
+		responsive();
+	}
 	}, 500);
 });
