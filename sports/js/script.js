@@ -11,13 +11,6 @@ $(document).on('ready ajaxComplete', function(){
 	    }
 	});
 
-	$(window).on('resize', function() {
-		clearTimeout(window.resizedFinished);
-		window.resizedFinished = setTimeout(function(){
-			document.location.reload();	
-		}, 500);
-	});
-	
 	function responsive() {
 		var ww = $(window).width();
 		if(ww > 1199){ 
@@ -30,6 +23,12 @@ $(document).on('ready ajaxComplete', function(){
 	}
 
 	responsive();
+
+	$(window).on('resize', function() {
+		document.location.reload();
+		responsive();	
+	});
+	
 
 	$('#header .depth_03').prev('h3').addClass('has_depth');
 
