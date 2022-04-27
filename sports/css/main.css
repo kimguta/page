@@ -32,7 +32,7 @@
 
 #visual .inner .day{width:435px;height:271px;background:url(/page/sports/images/main/d_day_bg.png) center bottom no-repeat;background-size:cover;position:absolute;right:-30px;bottom:145px;padding-top:80px;font-family:'KoreanYNSJG';padding-right:15px;}
 #visual .inner .day .character{display:block;position:absolute;width:227px;top:-150px;left:50%;margin-left:-120px;}
-#visual .inner .day .character.active{animation:jump1 1.2s .1s 1 both ease-in-out;}
+#visual .inner .day .character.active{animation:jump01 1.2s .1s 1 both ease-in-out;}
 #visual .inner .day strong{display:block;text-align:center;margin:0 auto;max-width:240px;color:#fff;font-weight:500;font-size:60px;text-shadow:0px 0px 7px rgba(0,0,0,.65);line-height:1.1;}
 #visual .inner .day p{line-height:1.2;color:#feea93;font-size:20px;font-style:italic;font-weight:300;text-align:center;max-width:240px;margin:23px auto 0;padding-top:17px;border-top:1px dashed #fff;}
 
@@ -41,13 +41,19 @@
     100%{transform:translateY(0%);opacity:1;} 
 }
 
-@keyframes jump1{ 
+@keyframes jump01{ 
     0%{margin-top:0px}
     25%{margin-top:-20px}
     50%{margin-top:0px}
     75%{margin-top:-20px}
     100%{margin-top:0px}
 }
+
+@media (max-width:1199px) {
+    
+  }
+
+
 
 
 
@@ -89,8 +95,9 @@
 #news .list02 div::-webkit-scrollbar-thumb{background:#016370;border-radius:4px;}
 #news .list02 div::-webkit-scrollbar-track {background:#e0e0e0;border-radius:4px;}
 
-#news .list02 div a{display:flex;height:46px;border-radius:23px;align-items:center;justify-content:space-between;color:#535353;font-weight:400;}
+#news .list02 div a{display:flex;height:46px;border-radius:23px;align-items:center;justify-content:space-between;color:#535353;font-weight:400;transition:all .1s;}
 #news .list02 div a:nth-child(2n){background:#e6f2f2;}
+#news .list02 div a:hover{background:#016370;color:#fff;}
 #news .list02 div a strong,
 #news .list02 div a em,
 #news .list02 div a span{flex:1;text-align:center;}
@@ -100,4 +107,77 @@
 #news .more:after{content:'';display:block;background: url(/page/sports/images/common/sp_sports.png) -213px -93px no-repeat;background-size:520px 520px;width:14px;height:14px;transition:all .2s;}
 #news .more:hover:after{transform:rotate(90deg);}
 #news .more:active{transform:scale(.9);}
+
+#promotion{position:relative;margin-top:-225px;z-index:3;}
+#promotion .inner{padding:55px 20px 75px;z-index:2;display:flex;align-items:center;}
+#promotion .inner:before{content:'';display:block;position:absolute;top:0;bottom:0;left:-135px;right:-160px;background:#fff;z-index:-1;}
+#promotion h2{font-family:'KoreanYNSJG';line-height:1.2;padding:3px 0 0 40px;color:#313131;font-size:30px;font-weight:500;}
+
+#promotion .bx01{flex-basis:50%;padding:0 10px 35px 0;z-index:1;position:relative;}
+#promotion .bx01:before{content:'';display:block;position:absolute;top:20px;bottom:0;left:-70px;right:-320px;background:url(/page/sports/images/main/bg_promotion01.jpg) center center no-repeat;background-size:cover;z-index:-1;}
+#promotion .bx01 > div{margin-top:30px;}
+#promotion .bx01 div a{display:block;float:left;width:calc((100% - 30.2px) / 2);background:#fff;border-radius:15px;box-shadow:3px 3px 10px 0px rgba(0,0,0,.15);overflow:hidden;}
+#promotion .bx01 div a + a{margin-left:30px;}
+#promotion .bx01 div a .thumb{height:182px;overflow:hidden;}
+#promotion .bx01 div a .thumb img{display:block;width:100%;height:100%;object-fit:cover;transition:all .3s;}
+#promotion .bx01 div a:hover .thumb img{transform:scale(1.1);}
+#promotion .bx01 div a p{height:76px;line-height:76px;text-align:center;padding:0 15px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#535353;font-size:18px;}
+#promotion .bx01 .more{display:block;margin:30px auto 0;color:#fff;position:relative;font-family:'KoreanYNSJG';font-weight:500;font-size:18px;z-index:1;width:100px;text-align:center;line-height:1.2;text-shadow:0px 0px 2px rgba(0,0,0,.15);}
+#promotion .bx01 .more:after{content:'';display:inline-block;vertical-align:middle;background:url(/page/sports/images/common/sp_sports.png) -173px -93px no-repeat;background-size:520px 520px;width:14px;height:14px;margin-left:10px;}
+#promotion .bx01 .more:before{content:'';display:block;z-index:-1;height:11px;position:absolute;bottom:-2px;left:0;right:0;border-radius:6px;background:#3887ba;transition:all .2s;}
+#promotion .bx01 .more:hover:before{left:-10px;right:-10px}
+
+#promotion .bx02{flex-basis:50%;padding-left:20px;position:relative;z-index:2;margin-top:-40px;}
+#promotion .bx02 a{display:block;overflow:hidden;border-radius:20px;box-shadow:3px 3px 10px 0px rgba(0,0,0,.35);}
+#promotion .bx02 a img{display:block;width:100%;}
+#promotion .bx02 .character{display:block;position:absolute;bottom:-25px;right:-125px;image-rendering:-webkit-optimize-contrast;animation:jump03 1s 1 both alternate linear;pointer-events:none;}
+#promotion .bx02 a:hover + .character{animation:jump02 1s 1 both alternate linear;}
+
+@keyframes jump02{ 
+    0%{transform:translate(-15%,-3%);}
+    25%{transform:translate(-30%,0%);}
+    50%{transform:translate(-45%,-3%);}
+    75%{transform:translate(-60%,0%);}
+    100%{transform:translate(-75%,-3%);}
+}
+
+@keyframes jump03{ 
+    0%{transform:translate(-75%,-3%);}
+    25%{transform:translate(-60%,0%);}
+    50%{transform:translate(-45%,-3%);}
+    75%{transform:translate(-30%,0%);}
+    100%{transform:translate(-15%,-3%);}
+}
+
+#tour{position:relative;padding-bottom:65px;background: url(/page/sports/images/main/main_bg_02.png) center bottom no-repeat;background-size:1920px 515px;}
+#tour .inner{padding:0px 20px;z-index:2;display:flex;align-items:center;}
+
+#tour .bx01{z-index:1;position:relative;flex:1;padding:70px 30px 0 0;}
+#tour .bx01 h2{position:relative;font-family:'KoreanYNSJG';line-height:1.4;color:#252525;font-size:48px;font-weight:500;}
+#tour .bx01 h2 span{display:block;font-weight:300;font-size:18px;font-weight:300;}
+#tour .bx01 h2:before{content:'';display:block;position:absolute;right:0;bottom:10px;background: url(/page/sports/images/main/tour_icon01.png) center center no-repeat;background-size:cover;width:189px;height:131px;}
+#tour .bx01 div{margin-top:40px;}
+#tour .bx01 div a{display:flex;max-width:280px;height:60px;align-items:center;box-shadow:3px 3px 9px 0px rgba(0,0,0,.15);padding-left:30px;transition:all .1s;overflow:hidden;background:#fff;border-radius:20px;color:#636363;font-size:18px;font-weight:300;font-family:'KoreanYNSJG';position:relative;}
+#tour .bx01 div a + a{margin-top:10px;}
+#tour .bx01 div a:after{content:'';width:60px;display:flex;position:absolute;top:0;bottom:0;right:0;background: url(/page/sports/images/common/sp_sports.png) -190px -71px no-repeat;background-size:520px 520px;transition:background-color .1s;}
+#tour .bx01 div a:hover:after{background-color:#13646c;background-position-x:-151px;}
+#tour .bx01 div a:hover{background-color:#00a3b4;color:#fff;}
+#tour .bx01 div a:before{content:'';display:block;height:23px;width:20px;background: url(/page/sports/images/common/sp_sports.png) -11px -245px no-repeat;background-size:520px 520px;margin-right:12px;}
+#tour .bx01 div a.v2:before{background-position-x:-50px;}
+#tour .bx01 div a.v3:before{background-position-x:-90px;}
+#tour .bx01 div a.v4:before{background-position-x:-130px;}
+#tour .bx01 div a:hover:before{background-position-y:-205px;}
+
+
+
+#tour .bx02{position:relative;width:63%;}
+#tour .bx02 .slick{overflow:hidden;border-radius:45px;box-shadow:5px 5px 15px 0px rgba(0,0,0,.15);position:relative;-webkit-mask-image:-webkit-radial-gradient(white, black);}
+#tour .bx02 .slick .slick-arrow{position:absolute;left:20px;top:50%;background: url(/page/sports/images/common/sp_sports.png) -370px -84px no-repeat;background-size:520px 520px;width:20px;height:32px;margin-top:-16px;z-index:3;font-size:0;}
+#tour .bx02 .slick .slick-arrow.slick-next{left:auto;right:20px;background-position-x:-410px;}
+#tour .bx02 .slick .slick-arrow:focus{transform:scale(.9);}
+
+
+
+
+
 
