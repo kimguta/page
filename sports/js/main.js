@@ -64,6 +64,12 @@ $(function() {
         pauseOnHover: false,
         swipeToSlide :true,
         speed: 600,
+        responsive: [{
+            breakpoint: 1200,
+            settings: {
+                variableWidth: true,
+            }
+        }]
     });
 
     $('#tour .slick').slick({
@@ -81,5 +87,10 @@ $(function() {
         swipeToSlide :true,
         speed: 700,
     });  
+});
+
+
+$(window).on('resize', function () {
+    $('#event .slick').slick('resize');		
 });
 
