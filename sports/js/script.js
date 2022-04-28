@@ -92,6 +92,7 @@ $(function() {
 			$(this).toggleClass('active');
 			$('#header nav').toggleClass('active');
 			$('#header').toggleClass('active');
+			$('#mask').toggle();
 		});	
 
 	};
