@@ -243,24 +243,24 @@
 .directions .tit-bx h4{display:flex;background:#fff;flex-basis:65%;border-radius:55px 65px 0 55px;align-items:center;justify-content:center;}
 .directions .tit-bx h4 strong{font-family:'KoreanYNSJG';font-weight:500;font-size:30px;color:#e8658f;padding-right:30px;}
 .directions .tit-bx h4 strong em{color:#4578e5;}
-.directions .tit-bx h4 span{color:#313131;font-size:18px;}
+.directions .tit-bx h4 span{color:#313131;font-size:18px;word-break:keep-all;}
 
 .directions .tit-bx a{display:flex;flex:1;color:#fff;align-items:center;padding-left:45px;position:relative;font-family:'KoreanYNSJG';font-weight:400;font-size:20px;}
 .directions .tit-bx a:after{content:' ⇀';font-size:35px;margin-left:30px;font-family:Arial, Helvetica, sans-serif;font-weight:300;}
 .directions .tit-bx a:hover{text-decoration:none;}
-.directions .tit-bx a .character{content:'';display:block;z-index:2;position:absolute;bottom:-58px;right:-83px;width:260px;}
+.directions .tit-bx a .character{content:'';display:block;z-index:2;position:absolute;bottom:-58px;right:-83px;width:260px;image-rendering: -webkit-optimize-contrast}
 .directions .tit-bx a:hover .character{animation:sjump04 .35s 1 both linear;}
 
 .directions .wrap-bx{position:relative;z-index:1;}
 .directions .wrap-bx:before{content:'';display:block;position:absolute;left:-400px;right:-400px;top:-95px;bottom:150px;background:#f3f4f6;z-index:-1;}
-.directions .info{display:flex;height:105px;align-items:center;padding-left:60px;}
+.directions .info{display:flex;height:105px;align-items:center;padding-left:60px;position:relative;z-index:3;}
 .directions .info h5{font-family:'KoreanYNSJG';color:#434343;font-size:30px;font-weight:400;padding-right:105px;position:relative;}
 .directions .info h5 em{color:#4578e5;}
 .directions .info h5:after{content:'';display:block;width:46px;height:2px;background:#9b9b9c;right:33px;top:50%;margin-top:-1px;position:absolute;}
 .directions .info .add-bx{display:flex;align-items:center;margin-right:35px;}
 .directions .info .add-bx span{font-size:18px;color:#434343;white-space: nowrap;}
 .directions .info .add-bx a{width:55px;margin:-3px 0 0 5px;}
-.directions .info .add-bx a img{display:block;width:100%;}
+.directions .info .add-bx a img{display:block;width:100%;image-rendering: -webkit-optimize-contrast;}
 .directions .info .tel-bx{font-size:18px;color:#434343;white-space: nowrap;}
 .directions .info .tel-bx a{text-decoration:underline;}
 
@@ -277,4 +277,90 @@
   0%{transform:translateY(0%);}
   50%{transform:translateY(-10%);}
   100%{transform:translateY(0%);}
+}
+
+
+@media (max-width:1199px) {
+  .directions .root_daum_roughmap{width:100%;height:450px;}
+  .directions .root_daum_roughmap .wrap_map{height:450px !important;}
+  .directions .root_daum_roughmap .map_border{display:none;}
+
+  .directions .tit-bx{height:80px;margin-bottom:5px;}
+  .directions .tit-bx h4{border-radius:55px 55px 0 55px;align-items:flex-start;flex-direction:column;padding-left:40px;}
+  .directions .tit-bx h4 strong{font-size:26px;padding-right:0px;}
+  .directions .tit-bx h4 span{font-size:16px;}
+
+  .directions .tit-bx a{padding-left:35px;font-size:18px;}
+  .directions .tit-bx a:after{font-size:30px;margin-left:20px;}
+  .directions .tit-bx a .character{bottom:-48px;right:-25px;width:220px;}
+
+  .directions .wrap-bx:before{top:-45px;bottom:100px;}
+  .directions .info{display:flex;height:auto;align-items:flex-start;padding:20px 0 20px 40px;justify-content:center;flex-direction:column;}
+  .directions .info h5{font-size:24px;padding-right:0px;}
+  .directions .info h5:after{display:none;}
+  .directions .info .add-bx{display:flex;align-items:center;margin:5px 0px 0;}
+  .directions .info .add-bx span{font-size:16px;}
+  .directions .info .add-bx a{width:50px;margin:-2px 0 0 5px;}
+  .directions .info .tel-bx{font-size:16px;margin-top:5px;}
+
+  .directions .map-bx{left:0;margin-left:0px;padding-top:10px;width:auto;}
+  .directions .map-bx:before{left:-10px;border-radius:157px 25px 25px 25px;right:10px;bottom:10px;}
+  .directions .map-bx:after{display:none;}
+  .directions .map-bx .bx{border-radius:150px 25px 25px 25px;}
+  .directions .wrap-bx + .wrap-bx{margin-top:55px;}
+}
+
+@media (max-width:991px) {
+  .directions .root_daum_roughmap{height:380px;}
+  .directions .root_daum_roughmap .wrap_map{height:380px !important;}
+
+  .directions .tit-bx{height:76px;margin-bottom:5px;}
+  .directions .tit-bx h4{padding-left:30px;}
+  .directions .tit-bx h4 strong{font-size:24px;padding-right:0px;}
+  .directions .tit-bx h4 span{font-size:15px;}
+
+  .directions .tit-bx a{padding-left:25px;font-size:16px;}
+  .directions .tit-bx a:after{font-size:26px;margin-left:15px;}
+  .directions .tit-bx a .character{bottom:-35px;right:-25px;width:160px;}
+
+  .directions .info{padding:15px 0 15px 30px;}
+  .directions .info h5{font-size:22px;}
+  .directions .info h5:after{display:none;}
+  .directions .info .add-bx{margin:3px 0px 0;}
+  .directions .info .add-bx span{font-size:15px;}
+  .directions .info .add-bx a{width:50px;margin:-2px 0 0 5px;}
+  .directions .info .tel-bx{font-size:15px;margin-top:3px;}
+
+  .directions .map-bx:before{border-radius:127px 20px 20px 20px;}
+  .directions .map-bx .bx{border-radius:120px 20px 20px 20px;}
+  .directions .wrap-bx + .wrap-bx{margin-top:45px;}
+}
+
+
+@media (max-width:760px) {
+  .directions .root_daum_roughmap{height:340px;}
+  .directions .root_daum_roughmap .wrap_map{height:340px !important;}
+
+  .directions .tit-bx{height:85px;margin-bottom:10px;}
+  .directions .tit-bx h4{padding-left:25px;flex-basis:70%;}
+  .directions .tit-bx h4 strong{font-size:20px;padding-right:0px;}
+  .directions .tit-bx h4 span{font-size:13px;line-height:1.3;}
+
+  .directions .tit-bx a{padding-left:15px;font-size:14px;}
+  .directions .tit-bx a:after{font-size:22px;margin-left:10px;}
+  .directions .tit-bx a .character{bottom:-40px;right:-25px;width:105px;}
+
+  .directions .wrap-bx:before{top:-45px;bottom:60px;}
+  .directions .info{padding:15px 0 15px 20px;}
+  .directions .info h5{font-size:20px;}
+  .directions .info h5:after{display:none;}
+  .directions .info .add-bx{margin:3px 0px 0;}
+  .directions .info .add-bx span{font-size:14px;}
+  .directions .info .add-bx a{width:50px;margin:-2px 0 0 5px;}
+  .directions .info .tel-bx{font-size:14px;margin-top:3px;}
+
+  .directions .map-bx{left:0;margin-left:0px;padding-top:10px;;margin:0 -5px;}
+  .directions .map-bx:before{left:-10px;border-radius:77px 10px 10px 10px;right:10px;bottom:10px;}
+  .directions .map-bx .bx{border-radius:70px 10px 10px 10px;}
+  .directions .wrap-bx + .wrap-bx{margin-top:35px;}
 }
