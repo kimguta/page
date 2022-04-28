@@ -1,5 +1,6 @@
+var startCountDown = 0;
+var endCountDown = Math.abs(moment().diff(moment("2022-06-10"), "days"));
 $(function() {
-
     setTimeout(function() {
         AOS.init({
             easing: 'ease',
@@ -34,21 +35,9 @@ $(function() {
         autoplaySpeed: 8000
     });
 
-    var cnt0 = 0;
-    var cntend = $("#visual .d-num").text();
-    counterFn();
-
-    function counterFn() {
-        id0 = setInterval(count0Fn, 100);
-        function count0Fn() {
-            cnt0++;
-            if (cnt0 > cntend) {
-            clearInterval(id0);
-            } else {
-            $("#visual .d-num").text(cnt0);
-            }
-        }
-    };
+     if(endCountDown > 0) {
+         fnCountDownDisplay(startCountDown, endCountDown);
+     }
 
     $('#event .slick').slick({
         autoplay: false,
@@ -89,8 +78,20 @@ $(function() {
     });  
 });
 
-
 $(window).on('resize', function () {
     $('#event .slick').slick('resize');		
 });
 
+var countDownInterval;
+function fnCountDownDisplay() {
+    countDownInterval = setInterval(fnCountDown, 100);
+};
+
+function fnCountDown() {
+    startCountDown++;
+    if (startCountDown > endCountDown) {
+        clearInterval(countDownInterval);
+    } else {
+        $("#visual .d-num").text(startCountDown);
+    }
+}
