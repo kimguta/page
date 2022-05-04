@@ -39,21 +39,9 @@
     <div class="slick-wrap"></div>
 
     <script>
-        const slick01 = {
-            autoplay: true,
-            arrows: false,
-            dots: true,
-            customPaging: function(slick,index) {
-                return '<a href="#" onclick="return false;" role="button" class="v' + (index + 1) + '"><em></em><span></span></a>';
-            },
-            accessibility: true,
-            infinite: true,
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            pauseOnHover: false,
-            speed: 500,
-            autoplaySpeed: 8000
-        };
+        $(function() {     
+            $('.slick').slick(slick01);
+        });  
     </script>    
  
 </body>
@@ -110,7 +98,23 @@
     */
     }
     new App(document.querySelector('.slick-wrap'));
-    $('.slick').slick(slick01);
+    
+
+    const slick01 = {
+        autoplay: true,
+        arrows: false,
+        dots: true,
+        customPaging: function(slick,index) {
+            return '<a href="#" onclick="return false;" role="button" class="v' + (index + 1) + '"><em></em><span></span></a>';
+        },
+        accessibility: true,
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        pauseOnHover: false,
+        speed: 500,
+        autoplaySpeed: 8000
+    };
 
 
 </script>
