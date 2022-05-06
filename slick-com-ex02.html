@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
   <meta charset="utf-8">
   <title>slick example</title>
@@ -36,13 +36,47 @@
 <body>
 
 
-    <div class="slick-wrap"></div>
+    <div class="slick-wrap slick01"></div>
 
     <script>
-        $(function() {     
-            $('.slick').slick(slick01);
-        });  
+        const slick01 = {
+            autoplay: true,
+            arrows: false,
+            dots: true,
+            customPaging: function(slick,index) {
+                return '<a href="#" onclick="return false;" role="button" class="v' + (index + 1) + '"><em></em><span></span></a>';
+            },
+            accessibility: true,
+            infinite: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            pauseOnHover: false,
+            speed: 500,
+            autoplaySpeed: 8000
+        }; 
     </script>    
+
+
+    <div class="slick-wrap slick02"></div>
+
+    <script>
+        const slick02 = {
+            autoplay: true,
+            arrows: false,
+            dots: true,
+            customPaging: function(slick,index) {
+                return '<a href="#" onclick="return false;" role="button" class="v' + (index + 1) + '"><em></em><span></span></a>';
+            },
+            accessibility: true,
+            infinite: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            fade: true,
+            pauseOnHover: false,
+            speed: 500,
+            autoplaySpeed: 8000
+        }; 
+    </script>
  
 </body>
 
@@ -50,73 +84,67 @@
     class Component {
     $target;
     $state;
-    constructor ($target) { 
-        this.$target = $target;
-        this.setup();
-        this.render();
-    }
-    setup () {};
-    template () { return ''; }
-    render () {
-        this.$target.innerHTML = this.template();
-        this.setEvent();
-    }
-    setEvent () {}
-    setState (newState) {
-        this.$state = { ...this.$state, ...newState };
-        this.render();
-    }
+        constructor ($target) { 
+            this.$target = $target;
+            this.setup();
+            this.render();
+        }
+        setup () {};
+        template () { return ''; }
+        render () {
+            this.$target.innerHTML = this.template();
+            this.setEvent();
+        }
+        setEvent () {}
+        setState (newState) {
+            this.$state = { ...this.$state, ...newState };
+            this.render();
+        }
     }
 
     class App extends Component {
-    /*    
-    setup () {
-        this.$state = { items: ['<img src="https://via.placeholder.com/1200x800.jpg" alt="">', '<img src="https://via.placeholder.com/2400x1600.jpg" alt="">'] };
+        setup () {
+            this.$state = { items: [
+                {img: '<img src="https://via.placeholder.com/1200x800.jpg" alt="">', title: '<strong>1번 슬라이드</strong>'},
+                {img: '<img src="https://via.placeholder.com/2400x1600.jpg" alt="">', title: '<strong>2번 슬라이드</strong>'}
+            ] };
+        }
+        template () {
+            const { items } = this.$state;
+            return `
+                <div class="slick">
+                ${items.map(item => `<a href="#">${item.img} ${item.title}</a>`).join('')}
+                </div>
+            `
+        }
     }
-    */
-    setup () {
-        this.$state = { items: [
-            {img: '<img src="https://via.placeholder.com/1200x800.jpg" alt="">', title: '<strong>1번 슬라이드</strong>'},
-            {img: '<img src="https://via.placeholder.com/2400x1600.jpg" alt="">', title: '<strong>2번 슬라이드</strong>'}
-        ] };
-    }
-    template () {
-        const { items } = this.$state;
-        return `
-            <div class="slick">
-            ${items.map(item => `<a href="#">${item.img} ${item.title}</a>`).join('')}
-            </div>
-        `
-    }
-    /*
-    setEvent () {
-        this.$target.querySelector('button').addEventListener('click', () => {
-        const { items } = this.$state;
-        this.setState({ items: [ ...items, `item${items.length + 1}` ] });
-        }); 
-    }
-    */
-    }
-    new App(document.querySelector('.slick-wrap'));
-    
 
-    const slick01 = {
-        autoplay: true,
-        arrows: false,
-        dots: true,
-        customPaging: function(slick,index) {
-            return '<a href="#" onclick="return false;" role="button" class="v' + (index + 1) + '"><em></em><span></span></a>';
-        },
-        accessibility: true,
-        infinite: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        pauseOnHover: false,
-        speed: 500,
-        autoplaySpeed: 8000
-    };
+    class App2 extends Component {
+        setup () {
+            this.$state = { items: [
+                {img: '<img src="https://via.placeholder.com/1200x800.jpg" alt="">', title: '<strong>1번 슬라이드</strong>'},
+                {img: '<img src="https://via.placeholder.com/2400x1600.jpg" alt="">', title: '<strong>2번 슬라이드</strong>'},
+                {img: '<img src="https://via.placeholder.com/2400x1600.jpg" alt="">', title: '<strong>3번 슬라이드</strong>'}
+            ] };
+        }
+        template () {
+            const { items } = this.$state;
+            return `
+                <div class="slick">
+                ${items.map(item => `<a href="#">${item.img} ${item.title}</a>`).join('')}
+                </div>
+            `
+        }
+    }
 
 
+    new App(document.querySelector('.slick01'));
+    new App2(document.querySelector('.slick02'));
+
+    $('.slick01 .slick').slick(slick01);    
+    $('.slick02 .slick').slick(slick02);  
+
+     
 </script>
 
 </script>
