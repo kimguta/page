@@ -22,28 +22,33 @@
     .slick-slider .slick-list .slick-track.slick-loading .slick-slide{visibility:hidden}
     .slick-slider .slick-arrow.slick-hidden{display:none}
 
-    .slick-wrap{max-width:700px;margin:50px auto 0;}
+    .slick{max-width:700px;margin:50px auto 0;}
     .slick-dots{display:block;margin-top:30px;text-align:center;padding:0;}
 
     .slick-dots li{display:inline-block;vertical-align:top;}
     .slick-dots li + li{margin-left:10px;}
     .slick-dots li a{display:block;width:10px;height:10px;border-radius:50%;border:2px solid #000;}
     .slick-dots .slick-active a{background:#000;}
-    .slick-wrap strong{display:block;margin-top:20px;text-align:center;text-decoration:none;color:#000;}
-    .slick-wrap .slick-slide{text-decoration:none;padding-bottom:15px;}
-    .slick-wrap .slick-list{border:1px solid #000}
+    .slick strong{display:block;margin-top:20px;text-align:center;text-decoration:none;color:#000;}
+    .slick .slick-slide{text-decoration:none;padding-bottom:15px;}
+    .slick .slick-list{border:1px solid #000}
   </style>
 </head>
 <body>
 
 
-    <div class="slick-wrap slick01"></div>
-    <div class="slick-wrap slick02"></div>
+    <div class="slick slick01"></div>
+
+    <div class="slick slick01"></div>
+
+    <div class="slick slick02"></div>
 
  
 </body>
 
 <script>
+
+    // Component 구현    
     class Component {
     $target;
     $state;
@@ -65,6 +70,8 @@
         }
     }
 
+
+    // Component 분할  
     class Slick extends Component {
         setup () {
             this.$state = { items: [
@@ -107,7 +114,7 @@
     new Slick(document.querySelector('.slick01'));
 
 
-
+    // Component 분할  
     class Slick2 extends Component {
         setup () {
             this.$state = { items: [
