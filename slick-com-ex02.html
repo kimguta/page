@@ -24,6 +24,7 @@
 
     .slick-wrap{max-width:700px;margin:50px auto 0;}
     .slick-dots{display:block;margin-top:30px;text-align:center;padding:0;}
+
     .slick-dots li{display:inline-block;vertical-align:top;}
     .slick-dots li + li{margin-left:10px;}
     .slick-dots li a{display:block;width:10px;height:10px;border-radius:50%;border:2px solid #000;}
@@ -37,46 +38,8 @@
 
 
     <div class="slick-wrap slick01"></div>
-
-    <script>
-        const slick01 = {
-            autoplay: true,
-            arrows: false,
-            dots: true,
-            customPaging: function(slick,index) {
-                return '<a href="#" onclick="return false;" role="button" class="v' + (index + 1) + '"><em></em><span></span></a>';
-            },
-            accessibility: true,
-            infinite: true,
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            pauseOnHover: false,
-            speed: 500,
-            autoplaySpeed: 8000
-        }; 
-    </script>    
-
-
     <div class="slick-wrap slick02"></div>
 
-    <script>
-        const slick02 = {
-            autoplay: true,
-            arrows: false,
-            dots: true,
-            customPaging: function(slick,index) {
-                return '<a href="#" onclick="return false;" role="button" class="v' + (index + 1) + '"><em></em><span></span></a>';
-            },
-            accessibility: true,
-            infinite: true,
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            fade: true,
-            pauseOnHover: false,
-            speed: 500,
-            autoplaySpeed: 8000
-        }; 
-    </script>
  
 </body>
 
@@ -102,47 +65,95 @@
         }
     }
 
-    class App extends Component {
+    class Slick extends Component {
         setup () {
             this.$state = { items: [
-                {img: '<img src="https://via.placeholder.com/1200x800.jpg" alt="">', title: '<strong>1번 슬라이드</strong>'},
-                {img: '<img src="https://via.placeholder.com/2400x1600.jpg" alt="">', title: '<strong>2번 슬라이드</strong>'}
+                {
+                    img: '<img src="https://via.placeholder.com/1200x800.jpg" alt="">', 
+                    title: '<strong>1번 슬라이드</strong>'
+                },
+                {
+                    img: '<img src="https://via.placeholder.com/2400x1600.jpg" alt="">', 
+                    title: '<strong>2번 슬라이드</strong>'
+                }
             ] };
         }
         template () {
             const { items } = this.$state;
             return `
-                <div class="slick">
                 ${items.map(item => `<a href="#">${item.img} ${item.title}</a>`).join('')}
-                </div>
             `
         }
+        setEvent () {
+            $('.slick01').slick(
+                {
+                    autoplay: true,
+                    arrows: false,
+                    dots: true,
+                    customPaging: function(slick,index) {
+                        return '<a href="#" onclick="return false;" role="button" class="v' + (index + 1) + '"><em></em><span></span></a>';
+                    },
+                    accessibility: true,
+                    infinite: true,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    pauseOnHover: false,
+                    speed: 500,
+                    autoplaySpeed: 8000
+                }
+            );  
+        }
     }
+    new Slick(document.querySelector('.slick01'));
 
-    class App2 extends Component {
+
+
+    class Slick2 extends Component {
         setup () {
             this.$state = { items: [
-                {img: '<img src="https://via.placeholder.com/1200x800.jpg" alt="">', title: '<strong>1번 슬라이드</strong>'},
-                {img: '<img src="https://via.placeholder.com/2400x1600.jpg" alt="">', title: '<strong>2번 슬라이드</strong>'},
-                {img: '<img src="https://via.placeholder.com/2400x1600.jpg" alt="">', title: '<strong>3번 슬라이드</strong>'}
+                {
+                    img: '<img src="https://via.placeholder.com/1200x800.jpg" alt="">', 
+                    title: '<strong>1번 슬라이드</strong>'
+                },
+                {
+                    img: '<img src="https://via.placeholder.com/2400x1600.jpg" alt="">', 
+                    title: '<strong>2번 슬라이드</strong>'
+                },
+                {
+                    img: '<img src="https://via.placeholder.com/2400x1600.jpg" alt="">', 
+                    title: ''
+                }
             ] };
         }
         template () {
             const { items } = this.$state;
             return `
-                <div class="slick">
                 ${items.map(item => `<a href="#">${item.img} ${item.title}</a>`).join('')}
-                </div>
             `
         }
-    }
+        setEvent () {
+            $('.slick02').slick(
+                {
+                    autoplay: true,
+                    arrows: false,
+                    dots: true,
+                    customPaging: function(slick,index) {
+                        return '<a href="#" onclick="return false;" role="button" class="v' + (index + 1) + '"><em></em><span></span></a>';
+                    },
+                    accessibility: true,
+                    infinite: true,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    fade: true,
+                    pauseOnHover: false,
+                    speed: 500,
+                    autoplaySpeed: 8000
+                }
+            );  
+        }
+    } 
+    new Slick2(document.querySelector('.slick02'));
 
-
-    new App(document.querySelector('.slick01'));
-    new App2(document.querySelector('.slick02'));
-
-    $('.slick01 .slick').slick(slick01);    
-    $('.slick02 .slick').slick(slick02);  
 
      
 </script>
