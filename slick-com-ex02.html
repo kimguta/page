@@ -46,11 +46,13 @@
 
 <script>
 
+
     // Component 구현    
     class Component {
     $target;
     $state;
         constructor ($target) { 
+            
             this.$target = $target;
             this.setup();
             this.render();
@@ -74,19 +76,23 @@
         setup () {
             this.$state = { items: [
                 {
-                    img: '<img src="https://via.placeholder.com/1200x800.jpg" alt="">', 
-                    title: '<strong>1번 슬라이드</strong>'
+                    img: 'https://via.placeholder.com/1200x800.jpg', 
+                    title: '1번 슬라이드'
                 },
                 {
-                    img: '<img src="https://via.placeholder.com/2400x1600.jpg" alt="">', 
-                    title: '<strong>2번 슬라이드</strong>'
+                    img: 'https://via.placeholder.com/2400x1600.jpg', 
+                    title: '2번 슬라이드'
                 }
             ] };
         }
         template () {
             const { items } = this.$state;
             return `
-                ${items.map(item => `<a href="#">${item.img} ${item.title}</a>`).join('')}
+                ${items.map(item => `
+                    <a href="#">
+                        <img src="${item.img}" alt=""> 
+                        <strong>${item.title}</strong>
+                    </a>`).join('')}
             `
         }
         setEvent () {
