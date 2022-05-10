@@ -6,6 +6,7 @@
   <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
+
   <style>
     /* slick 플러그인 */
     .slick-slider .slick-list{display:block; overflow-x:hidden; overflow-y:hidden; position:relative}
@@ -22,48 +23,47 @@
     .slick-slider .slick-list .slick-track.slick-loading .slick-slide{visibility:hidden}
     .slick-slider .slick-arrow.slick-hidden{display:none}
 
-    .slick{max-width:700px;margin:50px auto 0;}
-    .slick-dots{display:block;margin-top:30px;text-align:center;padding:0;}
+    .inner{max-width:740px;position:relative;margin:0 auto;padding:0 20px 50px;}
 
+    .slick{margin:50px auto 0;}
+    .slick-dots{display:block;margin-top:30px;text-align:center;padding:0;}
     .slick-dots li{display:inline-block;vertical-align:top;}
     .slick-dots li + li{margin-left:10px;}
-    .slick-dots li a{display:block;width:10px;height:10px;border-radius:50%;border:2px solid #000;}
+    .slick-dots li a{display:block;width:8px;height:8px;border-radius:50%;border:1px solid #000;}
     .slick-dots .slick-active a{background:#000;}
     .slick strong{display:block;margin-top:20px;text-align:center;text-decoration:none;color:#000;}
     .slick .slick-slide{text-decoration:none;padding-bottom:15px;}
     .slick .slick-list{border:1px solid #000}
+
+
   </style>
 </head>
 <body>
 
+    <div class="inner">
+        <slick-wrap-01></slick-wrap-01>
+        <slick-wrap-02></slick-wrap-02>  
+    </div> 
 
-    <div class="slick slick01"></div>
-
-    <div class="slick slick02"></div>
-
- 
 </body>
 
-<script>
 
+
+<script>
 
     // Component 구현    
     class Component {
     $target;
     $state;
         constructor ($target) { 
-            
             this.$target = $target;
             this.setup();
             this.render();
         }
-        setup () {};
-        template () { return ''; }
         render () {
             this.$target.innerHTML = this.template();
             this.setEvent();
         }
-        setEvent () {}
     }
 
 
@@ -78,21 +78,23 @@
                 {
                     img: 'https://via.placeholder.com/2400x1600.jpg', 
                     title: '2번 슬라이드'
+                },
+                {
+                    img: 'https://via.placeholder.com/2400x1600.jpg', 
+                    title: ''
                 }
             ] };
         }
         template () {
             const { items } = this.$state;
             return `
-                ${items.map(item => `
-                    <a href="#">
-                        <img src="${item.img}" alt=""> 
-                        <strong>${item.title}</strong>
-                    </a>`).join('')}
+                <div class="slick slick-ty01">
+                    ${items.map(item => `<a href="#"><img src="${item.img}" alt="">  <strong>${item.title}</strong></a>`).join('')}
+                </div>    
             `
         }
         setEvent () {
-            $('.slick01').slick(
+            $('.slick-ty01').slick(
                 {
                     autoplay: true,
                     arrows: false,
@@ -111,7 +113,7 @@
             );  
         }
     }
-    new Slick(document.querySelector('.slick01'));
+    new Slick(document.querySelector('slick-wrap-01'));
 
 
      // slick Component - 2 
@@ -119,7 +121,7 @@
         setup () {
             this.$state = { items: [
                 {
-                    img: '<img src="https://via.placeholder.com/1200x800.jpg" alt="">', 
+                    img: '<img src="https://via.placeholder.com/2400x1600.jpg" alt="">',
                     title: '<strong>1번 슬라이드</strong>'
                 },
                 {
@@ -135,11 +137,13 @@
         template () {
             const { items } = this.$state;
             return `
-                ${items.map(item => `<a href="#">${item.img} ${item.title}</a>`).join('')}
+                <div class="slick slick-ty02">
+                    ${items.map(item => `<a href="#">${item.img} ${item.title}</a>`).join('')}
+                </div>    
             `
         }
         setEvent () {
-            $('.slick02').slick(
+            $('.slick-ty02').slick(
                 {
                     autoplay: true,
                     arrows: false,
@@ -159,7 +163,7 @@
             );  
         }
     } 
-    new Slick2(document.querySelector('.slick02'));
+    new Slick2(document.querySelector('slick-wrap-02'));
 
 
      
