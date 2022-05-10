@@ -1,113 +1,52 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
   <meta charset="utf-8">
-  <title>slick example</title>
-  <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-
-
-  <style>
-    /* slick 플러그인 */
-    .slick-slider .slick-list{display:block; overflow-x:hidden; overflow-y:hidden; position:relative}
-    .slick-slider .slick-list.dragging{cursor:pointer}
-    .slick-slider .slick-list .slick-track{display:block; position:relative; top:0; left:0}
-    .slick-slider .slick-list .slick-track:before, .slick-slider .slick-list .slick-track:after{display:table; content:''}
-    .slick-slider .slick-list .slick-track:after{clear:both}
-    .slick-slider .slick-list.slick-loading .slick-track{visibility:hidden}
-    .slick-slider .slick-list .slick-track .slick-slide{display:none; float:left}
-    .slick-slider[dir='rtl'] .slick-list .slick-track .slick-slide{float:right}
-    .slick-slider .slick-list .slick-track .slick-slide img{display:block;width:100%;}
-    .slick-slider .slick-list .slick-track .slick-slide.slick-loading img{display:none}
-    .slick-slider.slick-initialized .slick-list .slick-track .slick-slide{display:block}
-    .slick-slider .slick-list .slick-track.slick-loading .slick-slide{visibility:hidden}
-    .slick-slider .slick-arrow.slick-hidden{display:none}
-
-    .slick{max-width:700px;margin:50px auto 0;}
-    .slick-dots{display:block;margin-top:30px;text-align:center;padding:0;}
-
-    .slick-dots li{display:inline-block;vertical-align:top;}
-    .slick-dots li + li{margin-left:10px;}
-    .slick-dots li a{display:block;width:10px;height:10px;border-radius:50%;border:2px solid #000;}
-    .slick-dots .slick-active a{background:#000;}
-    .slick strong{display:block;margin-top:20px;text-align:center;text-decoration:none;color:#000;}
-    .slick .slick-slide{text-decoration:none;padding-bottom:15px;}
-    .slick .slick-list{border:1px solid #000}
-  </style>
-
+  <title>shadow example</title>
 </head>
 <body>
 
-    <slick-bx></slick-bx>
-    <slick-bx></slick-bx>
-    
+
+  <test-bx></test-bx>
+
+ 
 </body>
 
-
-
 <script>
+  const css = `
+  <style>
+     .inner{max-width:700px;margin:30px auto 0}
+     .inner a{display:block;}
+     .inner a img{display:block;width:100%;} 
+    </style>
+  `;
 
+  const template = document.createElement("template");
+  template.innerHTML += `
+      ${css}
+      <div class="inner">
+        <a href="#">
+          <img src="https://via.placeholder.com/1200x800.jpg">
+          <p>테스트</p>
+        </a>
+      </div>  
+  `;
 
-
-class Slick extends HTMLElement {
+  class MyFirstCustomElement extends HTMLElement {
+    
     constructor() {
-        super();
-        this.setup();
-        this.render();
+      super();
+      this.attachShadow({ mode: "open" });
+      this.render();
     }
-    render () {
-        this.innerHTML = this.template();
-        this.setEvent();
-    }
-    setup () {
-        this.$state = { items: [
-            {
-                img: 'https://via.placeholder.com/1200x800.jpg', 
-                title: '1번 슬라이드'
-            },
-            {
-                img: 'https://via.placeholder.com/2400x1600.jpg', 
-                title: '2번 슬라이드'
-            }
-        ] };
-    }
+    
+    render() {
+      this.shadowRoot.appendChild(template.content.cloneNode(true));
+    }  
+  };
 
-    template () {
-        const { items } = this.$state;
-        return `
-            <div class="slick">
-            ${items.map(item => `
-                <a href="#">
-                    <img src="${item.img}" alt=""> 
-                    <strong>${item.title}</strong>
-                </a>`).join('')}
-            </div>    
-        `
-    }
-}
+  customElements.define("test-bx", MyFirstCustomElement);
 
-customElements.define("slick-bx", Slick);
-
-$('.slick').slick(
-    {
-        autoplay: true,
-        arrows: false,
-        dots: true,
-        customPaging: function(slick,index) {
-            return '<a href="#" onclick="return false;" role="button" class="v' + (index + 1) + '"><em></em><span></span></a>';
-        },
-        accessibility: true,
-        infinite: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        pauseOnHover: false,
-        speed: 500,
-        autoplaySpeed: 8000
-    }
-);
-
-     
-</script>
 
 </script>
 </html>
