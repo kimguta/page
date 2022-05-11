@@ -20,6 +20,7 @@ $(function() {
 
      $('#fp-nav li:first-child a').addClass('active');
      $('#main > div:last-child').addClass('last');
+     $('#main > div:first-child').addClass('first');
 	 $('html, body').stop().animate({scrollTop : 0}, 200);
 
     if ($(window).width() > 1023) {
@@ -29,7 +30,11 @@ $(function() {
             var Offset1 = $(this).prev('.section').offset();
             var Offset2 = $(this).next('.section').offset();
             if (e.originalEvent.deltaY < 0) {
-                $('html, body').stop().animate({scrollTop : Offset1.top}, 700, 'easeInOutQuad');  
+                if ($(this).hasClass('first')) {
+                    $('html, body').stop().animate({scrollTop : 0}, 300, 'easeInOutQuad');	
+                } else{
+                    $('html, body').stop().animate({scrollTop : Offset1.top}, 700, 'easeInOutQuad');  
+                }
             } 
             else if (e.originalEvent.deltaY > 0) {
                 if ($(this).hasClass('last')) {
