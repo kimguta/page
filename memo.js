@@ -6,6 +6,22 @@
 
 	responsive();
 
+
+var Wwidth = $(window).outerWidth();
+var Height = $(window).outerHeight();
+
+$(window).on('resize orientationchange', function() {
+	clearTimeout(window.resizedFinished);
+	window.resizedFinished = setTimeout(function(){
+	var Wwidth2 = $(window).outerWidth();
+	var Height2 = $(window).outerHeight();
+	if ( Wwidth != Wwidth2 && Height == Height2){
+		document.location.reload();	
+		responsive();
+	}
+	}, 500);
+});
+
 /*
 	$(window).on('resize', function() {
 		document.location.reload();
