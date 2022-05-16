@@ -4,9 +4,18 @@
 						data-property="{videoURL:'sxAaomwryzU',containment:'#page-back', showControls:false, opacity:1, autoPlay:true, startAt:1061, stopAt:0, mute:true, vol:100, loop:true,optimizeDisplay: true, showYTLogo:false, stopMovieOnBlur: false, playOnlyIfVisible:false}">
 					</div>
 
-	responsive();
+$(window).on('load resize', function() {
+		responsive();
+	});
 
+var nType = $('#header').attr('data-mode');
 
+	$(window).on('resize', function() {
+		var nType2 = $('#header').attr('data-mode');
+		if (nType != nType2){
+			document.location.reload();	
+		}
+	});
 
 var nType = $('#header').attr('data-mode');
 	$(window).on('resize', function() {
