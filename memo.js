@@ -7,6 +7,93 @@
 	responsive();
 
 
+	var pcMode = function(){
+		$('#header').removeClass('mobile-mode');
+		$('#header').addClass('pc-mode');
+		$('#header h3 a').on('mouseover focusin', function () {
+			$('#header h3').removeClass('active');
+			$(this).parent('h3').addClass('active');
+			$('.depth_03').stop().slideUp(300);
+			$(this).parent('h3').next('.depth_03').stop().slideDown(300);
+			
+		});
+		$('#header .depth_01 li').on('mouseover focusin', function () {
+			$('#header').addClass('active');
+			$('h2').removeClass('active');
+			$(this).children('h2').addClass('active');
+			$('.depth_02').stop().show();
+			$('.bg_pc').stop().slideDown(350);
+			$('#mask').show();
+		});
+
+		$('#header').on('mouseleave', function () {
+			$('#header').removeClass('active');
+			$('h2').removeClass('active');
+			$('.depth_02, .bg_pc, #mask').stop().hide();
+		});	
+
+		$('#header a:last').on('focusout', function () {
+			$('#header').removeClass('active');
+			$('h2').removeClass('active');
+			$('.depth_02, .bg_pc, #mask').stop().hide();
+		});
+		
+	};
+
+	var mobileMode = function(){
+		$('#header').removeClass('pc-mode');
+		$('#header').addClass('mobile-mode');
+
+		$('#header h2.has_depth a').on('click', function (e) {
+			e.preventDefault();
+			if ($(this).parent().hasClass('active')) {
+				$(this).parent('h2').removeClass('active');
+				$('.depth_02, .depth_03').stop().slideUp(300);
+			} else{
+				$('#header h2').removeClass('active');
+				$(this).parent('h2').addClass('active');
+				$('.depth_02').stop().slideUp(300);
+				$(this).parent('h2').next('.depth_02').stop().slideDown(300);
+				
+			}
+		});	
+
+		$('#header h3.has_depth a').on('click', function (e) {
+			e.preventDefault();
+			if ($(this).parent().hasClass('active')) {
+				$(this).parent('h3').removeClass('active');
+			} else{
+				$('#header h3').removeClass('active');
+				$(this).parent('h3').addClass('active');
+				$('.depth_03').stop().slideUp(300);
+				$(this).parent('h3').next('.depth_03').stop().slideDown(300);
+				
+			}
+		});	
+
+		$('#header .mobile-on').on('click', function (e) {
+			e.preventDefault();
+			$(this).toggleClass('active');
+			$('#header nav').toggleClass('active');
+			$('#header').toggleClass('active');
+			$('#mask').toggle();
+		});	
+
+	};
+	
+
+
+	$(window).on('resize load', function() {
+		if($(window).width() > 1199){ 
+			pcMode();
+			clearInterval(mobileMode);
+		}
+		else if($(window).width() < 1200){
+			mobileMode();
+			clearInterval(pcMode);
+		}	
+	});	
+
 var Wwidth = $(window).outerWidth();
 var Height = $(window).outerHeight();
 
