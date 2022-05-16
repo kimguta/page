@@ -134,7 +134,7 @@ $(window).on('resize', function() {
 	window.resizedFinished = setTimeout(function(){
 	var Wwidth2 = $(window).outerWidth();
 	var Height2 = $(window).outerHeight();
-	if ( Wwidth - Wwidth2 > 550 || Wwidth2 - Wwidth > 550){
+	if ( (Wwidth > 1199 && Wwidth2 < 1200) || (Wwidth < 1200 && Wwidth2 > 1199) ){
 		document.location.reload();	
 	}
 	}, 500);
