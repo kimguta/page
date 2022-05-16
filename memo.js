@@ -4,28 +4,22 @@
 						data-property="{videoURL:'sxAaomwryzU',containment:'#page-back', showControls:false, opacity:1, autoPlay:true, startAt:1061, stopAt:0, mute:true, vol:100, loop:true,optimizeDisplay: true, showYTLogo:false, stopMovieOnBlur: false, playOnlyIfVisible:false}">
 					</div>
 
-$(window).on('load resize', function() {
-		responsive();
-	});
-
-var nType = $('#header').attr('data-mode');
-
-	$(window).on('resize', function() {
-		var nType2 = $('#header').attr('data-mode');
-		if (nType != nType2){
-			document.location.reload();	
-		}
-	});
-
 var nType = $('#header').attr('data-mode');
 	$(window).on('resize', function() {
-		responsive();
-		var nType2 = $('#header').attr('data-mode');
-		if (nType != nType2){
-			document.location.reload();	
+		if($(window).width() > 1199){ 
+			pcMode();
 		}
+		else{
+			mobileMode();
+		}
+		clearTimeout(window.resizedFinished);
+			window.resizedFinished = setTimeout(function(){
+			var nType2 = $('#header').attr('data-mode');
+			if (nType != nType2){
+				document.location.reload();	
+			}
+		}, 500);
 	});
-
 
 	var pcMode = function(){
 		$('#header').removeClass('mobile-mode');
