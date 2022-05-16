@@ -4,6 +4,22 @@
 						data-property="{videoURL:'sxAaomwryzU',containment:'#page-back', showControls:false, opacity:1, autoPlay:true, startAt:1061, stopAt:0, mute:true, vol:100, loop:true,optimizeDisplay: true, showYTLogo:false, stopMovieOnBlur: false, playOnlyIfVisible:false}">
 					</div>
 
+
+var Wwidth = $(window).outerWidth();
+var Height = $(window).outerHeight();
+
+$(window).on('resize', function() {
+	clearTimeout(window.resizedFinished);
+	window.resizedFinished = setTimeout(function(){
+	var Wwidth2 = $(window).outerWidth();
+	var Height2 = $(window).outerHeight();
+	if ( (Wwidth > 1199 && Wwidth2 < 1200) || (Wwidth < 1200 && Wwidth2 > 1199) ){
+		document.location.reload();	
+	}
+	}, 500);
+});
+
+
 var nType = $('#header').attr('data-mode');
 	$(window).on('resize', function() {
 		if($(window).width() > 1199){ 
