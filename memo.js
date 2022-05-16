@@ -7,6 +7,17 @@
 	responsive();
 
 
+
+var nType = $('#header').attr('data-mode');
+	$(window).on('resize', function() {
+		responsive();
+		var nType2 = $('#header').attr('data-mode');
+		if (nType != nType2){
+			document.location.reload();	
+		}
+	});
+
+
 	var pcMode = function(){
 		$('#header').removeClass('mobile-mode');
 		$('#header').addClass('pc-mode');
