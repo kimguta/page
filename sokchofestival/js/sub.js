@@ -33,7 +33,7 @@ function mobileMode(){
 	$('#header .menu').on('click', function (e) {
 		e.preventDefault();
 		$(this).toggleClass('active');
-		$('#header nav').toggleClass('active');
+		$('#header nav, #header').toggleClass('active');
 	});
 };
 
