@@ -8,19 +8,20 @@
 #header h1 a img{display:block;width:100%;}
 #header nav{margin-top:160px;}
 #header nav a{display:block;margin-bottom:12px;font-size:26px;color:#fff;transition:all .2s;font-family:"GmarketSans";text-align:center;font-weight:500;height:60px;line-height:60px;width:295px;background:url(/page/sokchofestival/images/main/sp_menu.png) 0px -2px no-repeat;background-size:295px 329px;}
-#header nav a:hover{color:#9f4fff;}
+#header nav a:hover{color:#000;}
 #header nav a:nth-of-type(2){background-position-y: -69px;}
 #header nav a:nth-of-type(3){background-position-y: -136px;}
 #header nav a:nth-of-type(4){background-position-y: -203px;}
 #header nav a:nth-of-type(5){background-position-y: -268px;}
 
-#main .img-bx{position:relative;transition:all .2s;}
-#main .img-bx img{display:block;position:relative;width:1920px;left:50%;margin-left:-960px;image-rendering: -webkit-optimize-contrast;}
+#main .img-bx{position:relative;transition:all .2s;width:1920px;left:50%;margin-left:-960px;}
+#main .img-bx img{display:block;position:relative;image-rendering: -webkit-optimize-contrast;width:100%}
+#main .img-bx:after{content:'';display:block;width: 670px;height: 889px;position:absolute;left: -20px;bottom: 137px;background:url(/page/sokchofestival/images/main/flower.png) no-repeat center center /cover;transform-origin:50% 90%;animation:move1 10s infinite alternate linear;}
 
-#main .info-bx{position:absolute;left:20px;bottom:25px;}
+#main .info-bx{position:absolute;left:20px;bottom:25px;z-index:10;}
 #main .info-bx > div{margin-top:25px;white-space:nowrap;}
-#main .info-bx strong{display:inline-block;vertical-align:top;position:relative;color:#fff;font-size:14px;padding-right:12px;margin-right:9px;margin-top:5px;}
-#main .info-bx strong:after{content:'';display:block;width:1px;height:12px;background:rgba(255,255,255,.3);position:absolute;right:0;top:50%;margin-top:-6px;}
+#main .info-bx strong{display:inline-block;vertical-align:top;position:relative;color:#000;font-size:14px;padding-right:12px;margin-right:9px;margin-top:5px;}
+#main .info-bx strong:after{content:'';display:block;width:1px;height:12px;background:rgba(0,0,0,.3);position:absolute;right:0;top:50%;margin-top:-6px;}
 #main .info-bx a{display:inline-block;vertical-align:top;margin-right:35px;}
 #main .info-bx a img{display:block;image-rendering: -webkit-optimize-contrast;transition:all .2s;}
 #main .info-bx a:hover img{transform:scale(.95);}
@@ -28,11 +29,18 @@
 #header .menu{position:absolute;right:15px;top:20px;width:26px;height:26px;background:url(/page/sokchofestival/images/common/open02.png) repeat center center /cover;display:block;font-size:0;display:none;}
 #header .menu.active{background-image:url(/page/sokchofestival/images/common/close.png);}
 
+@keyframes move1{ 
+    0%{transform:rotate(-1.5deg) translateX(-20px);}
+    25%{transform:rotate(0deg) translateX(0px);} 
+    50%{transform:rotate(1.5deg) translateX(20px);} 
+    100%{transform:rotate(0deg) translateX(0px);} 
+  }
+
 
 @media (max-width:1199px) {
     #header h1{position:absolute;top:20px;left:20px;transform:scale(.9);transform-origin:0% 0%;}
     #header nav{margin-top:70px;transform:scale(.75);transform-origin:100% 0%;}
-    #main .img-bx img{width:1400px;margin-left:-700px;}
+    #main .img-bx{width:1400px;margin-left:-700px;}
     #main .info-bx{left:20px;bottom:15px;}
     #main .info-bx > div{margin-top:15px;}
     #main .info-bx strong{display:inline-block;vertical-align:top;position:relative;color:#fff;font-size:14px;padding-right:12px;margin-right:9px;margin-top:5px;}
@@ -40,6 +48,7 @@
     #main .info-bx a{display:inline-block;vertical-align:top;margin-right:0px;}
     #main .info-bx a img{transform:scale(.85);transform-origin:0% 50%;}
     #main .info-bx a:hover img{transform:scale(.85);}
+    #main .img-bx:after{width: 461px;height: 640px;left: 40px;bottom: 100px;}
 }
 
 
@@ -52,7 +61,7 @@
     #header nav a:nth-of-type(4){transition-delay:.4s;}
     #header nav a:nth-of-type(5){transition-delay:.5s;}
     #header nav a:nth-of-type(6){transition-delay:.6s;}
-    #main .img-bx img{width:1100px;margin-left:-480px;}
+    #main .img-bx{width:1100px;margin-left:-480px;}
     #main .info-bx{left:0px;bottom:8px;white-space:nowrap;overflow-x:auto;padding-left:15px;width:100%;padding-bottom:15px;scroll-behavior: smooth;-webkit-overflow-scrolling:touch;}
     #main .info-bx > div{margin-top:0px;display:inline-block;vertical-align:top;}
     #main .info-bx strong{font-size:13px;padding-right:10px;margin-right:7px;margin-top:5px;}
@@ -66,6 +75,8 @@
 
     #header.active ~ #main .img-bx{filter:blur(1px) brightness(.3)}
     #header.active h1 img{filter:brightness(2);}
+
+    #main .img-bx:after{width: 340px;height: 440px;left: 102px;bottom: 79px;opacity: .5;}
 }
 
 
