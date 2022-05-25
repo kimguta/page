@@ -16,7 +16,7 @@
 
 #main .img-bx{position:relative;transition:all .2s;width:1920px;left:50%;margin-left:-960px;}
 #main .img-bx img{display:block;position:relative;image-rendering: -webkit-optimize-contrast;width:100%}
-#main .img-bx:after{content:'';display:block;width: 670px;height: 889px;position:absolute;left: -20px;bottom: 137px;background:url(/page/sokchofestival/images/main/flower.png) no-repeat center center /cover;transform-origin:50% 90%;animation:move1 10s infinite alternate linear;}
+#main .img-bx:after{content:'';display:block;width: 670px;height: 889px;position:absolute;left: -20px;bottom: 137px;background:url(/page/sokchofestival/images/main/flower.png) no-repeat center center /cover;transform-origin:50% 90%;animation:move1 20s infinite alternate linear;}
 
 #main .info-bx{position:absolute;left:20px;bottom:25px;z-index:10;}
 #main .info-bx > div{margin-top:25px;white-space:nowrap;}
@@ -30,10 +30,14 @@
 #header .menu.active{background-image:url(/page/sokchofestival/images/common/close.png);}
 
 @keyframes move1{ 
-    0%{transform:rotate(-1.5deg) translateX(-20px);}
-    25%{transform:rotate(0deg) translateX(0px);} 
-    50%{transform:rotate(1.5deg) translateX(20px);} 
-    100%{transform:rotate(0deg) translateX(0px);} 
+    0%{transform:rotate(-1.2deg) translateX(-16px);}
+    15%{transform:rotate(0deg) translateX(0px);}
+    30%{transform:rotate(1.3deg) translateX(13px);}
+    45%{transform:rotate(0deg) translateX(0px);}
+    60%{transform:rotate(-1deg) translateX(-13px);}
+    75%{transform:rotate(-1.5deg) translateX(-17px);}
+    90%{transform:rotate(0deg) translateX(3px);}
+    100%{transform:rotate(-1.1deg) translateX(-13px);}
   }
 
 
@@ -73,7 +77,8 @@
     #header nav.active{filter: brightness(1.2);}
     #header nav.active a{opacity:1;transform:translateX(0%);visibility:visible;}
 
-    #header.active ~ #main .img-bx{filter:blur(1px) brightness(.3)}
+    #header.active ~ #main .img-bx img{filter:blur(1px) brightness(.3)}
+    #header.active ~ #main .img-bx:after{filter:blur(1px) brightness(.3);}
     #header.active h1 img{filter:brightness(2);}
 
     #main .img-bx:after{width: 340px;height: 440px;left: 150px;bottom: 83px;opacity: .5;}
