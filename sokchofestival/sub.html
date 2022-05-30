@@ -8,7 +8,7 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
 	<link rel="stylesheet" href="/page/common/css/fonts.css" />
-	<link rel="stylesheet" href="/page/common/css/common1.css" />
+	<link rel="stylesheet" href="/page/common/css/common.css" />
 	<link rel="stylesheet" href="/page/common/css/common_style.css" />
 	<link rel="stylesheet" href="/page/common/css/print.css" media="print" />
 	<link rel="stylesheet" href="/page/common/css/jquery-ui.min.css" />
@@ -16,7 +16,7 @@
 
 	<script src="/page/common/js/jquery-1.12.2.min.js"></script>
 	<script src="/page/common/js/jquery-ui.min.js"></script>
-	<script src="/page/common/js/puble_common1.js"></script>
+	<script src="/page/common/js/puble_common.js"></script>
 	<script src="/page/common/js/jquery.bxslider.js"></script>
 	<script src="/page/common/js/slick.min.js"></script>
 	<script src="/page/common/js/common.js"></script>
@@ -30,19 +30,7 @@
 	<script src="/page/sokchofestival/js/script.js"></script>
 	<script src="/page/sokchofestival/js/sub.js"></script>
 
-	<script>
-		$(function(){	
-			p_sldr({
-				seTarget: '.boGalleryView',
-				seView:'.boGalleryView-view',
-				controls: false,
-				auto: false,
-				seBtnPrev: '.boGalleryView-btnPrev',
-				seBtnNext: '.boGalleryView-btnNext'
-			});
-			
-		});
-	</script>
+	
 
 </head>
 
@@ -533,7 +521,6 @@
 												<button type="button" class="boGalleryView-btnNext">이미지 다음보기</button>
 												<ul class="boGalleryView-view">
 													<li><img src="https://via.placeholder.com/1000x500.jpg" alt="" class="boGalleryView-imgNo"/></li>
-													<li><img src="https://via.placeholder.com/1000x500.jpg" alt="" class="boGalleryView-imgNo"/></li>
 												</ul>
 											</div>	
 											
@@ -703,24 +690,24 @@
 						</div>
 					</div>
 					<div class="footer_address clearfix">
-						<div class="inner clearfix">
-							<div class="footer_logo_tit">
-								<a href="#">
-									<img src="/page/sokchofestival/images/common/footer_logo01.jpg" alt="속초문화재단 Sokcho Cultural Foundation">
-								</a>
-							</div>
-							<address>
-								<p>주소: [24821]강원도 속초시 번영로 155 속초문화예술회관 별관 2층 속초문화재단</p>
-								<p>전화: 033-636-0664 / 팩스: 033-636-0665 / 이메일: sokchocf@sokchocf.or.kr</p>
-								<p>COPYRIGHT(C) Sokcho Cultural Foundation. All rights reserved.</p>
-							</address>
-							<div class="footer_logo_sub">
-								<a href="#">
-									<img src="/page/sokchofestival/images/common/footer_logo02.jpg" alt="속초시">
-								</a>
-							</div>
+					<div class="inner clearfix">
+						<div class="footer_logo_tit">
+							<a href="#">
+								<img src="/page/sokchofestival/images/common/footer_logo01.jpg" alt="속초문화재단 Sokcho Cultural Foundation">
+							</a>
+						</div>
+						<address>
+							<p>주소: [24821]강원도 속초시 번영로 155 속초문화예술회관 별관 2층 속초문화관광재단</p>
+							<p>전화: 033-636-0670 / 팩스: 033-636-0665 / 이메일: sokchocf@sokchocf.or.kr</p>
+							<p>COPYRIGHT(C) Sokcho Cultural Foundation. All rights reserved.</p>
+						</address>
+						<div class="footer_logo_sub">
+							<a href="#">
+								<img src="/page/sokchofestival/images/common/footer_logo02.jpg" alt="속초시">
+							</a>
 						</div>
 					</div>
+				</div>
 					<!-- //footer_address -->
 				</div>
 				<!-- //footer -->
@@ -728,6 +715,377 @@
 
 		</div>
 
+		<script>
+			function EzView() {
+				
+				// 상태값 
+				this.STATUS_WAIT = '0';
+				this.STATUS_PDFCONVERTING = '2';
+				this.STATUS_IMAGECONVERTING = '3';
+				this.STATUS_COMPLETE = '4'; 
+				this.STATUS_ERROR = '-1';
+				
+				this.refreshTime= 3000; // 변환 체크 시간 3초 
+				this.call = true; // 변환여부 체크 
+				this.instance = ""; //인스턴스명
+				this.url; // 파일 다운로드 주소
+				this.fileDate; // 파일 생성 날짜 (선택사항: yyyyMMddHHmmss 형식)
+				this.progressUrl = '/ezview/progress.do';
+				this.viewpageUrl = 'http://viewer.jeongseon.go.kr/ezview/ezview.do'; // 미리보기 페이지 주소 
+				this.outObj; // 결과 출력 엘리먼트
+				this.formObj; // 내부 요청용 폼 엘리먼드
+				
+				this.toggleUI = 0; // 진행상태 UI반전
+			
+				// 페이지 미리보기 	
+				this.view = function(fileDate) {
+					
+					fileDate = fileDate || '';
+					
+					var url = this.viewpageUrl + "?url=" + encodeURIComponent(this.url) + "&fileDate=" + fileDate;
+					var width = 1100;
+					var height = 880;
+					var left = (screen.availWidth / 2) - (width / 2);
+					if (left < 0) left = 0;
+					var top = (screen.availHeight / 2) - (height / 2);
+					if (top < 0) top = 0;
+					
+					var popup = jf_popupWindowEx(
+							url, // url
+							'미리보기', // name
+							width, height, left, top, // width, height, left, top
+							'yes', 'yes' // isResizable, isScrollable
+					);
+				}
+				
+				// 이벤트 처리
+				this.viewProc = function(responseXML) {
+					
+					var xml = responseXML.getElementsByTagName("result");
+			
+					// 접속 에러 
+					if (xml[0] == null) {
+						this.error(404);
+						return;
+					}
+					
+					var defaultStyle = 'margin-left: 5px;'
+						+ 'display: inline-block;'
+						+ 'width: 81px;'
+						+ 'height: 24px;'
+						+ 'border: 3px solid #c1c1c1;'
+						+ 'border-radius: 10px/50%;'
+						+ 'line-height: 18px;'
+						+ 'vertical-align: middle;'
+						+ 'padding-left: 3px;';
+					var style;
+					
+					var result = xml[0].childNodes[0].nodeValue;
+					
+					//console.log("result = " + result);
+					
+					if (result == '4') {
+						var fileSeq = this.instance.replace('ezview_', '');
+						var url = this.url;
+						$.ajax({
+							//async: false,
+							cache: false,
+							type: "post",
+							url: '/egf/bp/ezview/insertAction',
+							data: {
+								  'url' : url
+								, 'fileSeq' : fileSeq
+							},
+							dataType: "json",
+							success: function(data, textStatus, jqXHR) {
+							},
+							error: function(jqXHR, textStatus, errorThrown) {
+							}
+						});
+					}
+					
+					var out;
+					switch (result) {
+						case this.STATUS_WAIT:
+							style = defaultStyle + 'background: 95% 50% no-repeat url(/page/common/images/ico-ezview-download.png);color:#197b30;'; 
+							out = "<span style='" + style + "'>다운로드중</span>";
+							break;
+						case this.STATUS_PDFCONVERTING:
+						case this.STATUS_IMAGECONVERTING:
+							if (this.toggleUI == 0) {
+								this.toggleUI = 1;
+								style = defaultStyle + 'background: 95% 50% no-repeat url(/page/common/images/ico-ezview-change.png);color:#0054a6;';
+								out = "<span style='" + style + "'>변환중</span>";
+							} else {
+								this.toggleUI = 0;
+								style = defaultStyle + 'background: 95% 50% no-repeat url(/page/common/images/ico-ezview-change-b.png);color:#0054a6;font-weight:bold;';
+								out = "<span style='" + style + "'>변환중</span>";
+							}
+							break;
+						case this.STATUS_COMPLETE:
+							style = defaultStyle + 'background: 95% 50% no-repeat url(/page/common/images/ico-preview.gif);color:#000;';
+							out = "<a href=\"#\" onclick=\"";
+							if (this.fileDate == null)
+								out += this.instance + ".view();"; 
+							else
+								out += this.instance + ".view('" + this.fileDate + "');";
+							out += "return false;\" onkeypress=''"
+								+ "style='" + style + "'>미리보기</a></span>";
+							
+							this.call = false;
+							break;
+						case this.STATUS_ERROR:
+							style = defaultStyle + 'background: 95% 50% no-repeat url(/page/common/images/ico-ezview-error.png);color:#ed1c24;';
+							out = "<span style='" + style + "'>변환오류</span>";
+							this.call = false;
+							break;
+					}
+					
+					if (this.outObj != null && result == this.STATUS_COMPLETE)
+						this.outObj.innerHTML = out;
+				}
+				
+				this.error = function(status) {
+					var defaultStyle = 'margin-left: 5px;'
+						+ 'display: inline-block;'
+						+ 'width: 81px;'
+						+ 'height: 24px;'
+						+ 'border: 3px solid #c1c1c1;'
+						+ 'border-radius: 10px/50%;'
+						+ 'line-height: 18px;'
+						+ 'vertical-align: middle;'
+						+ 'padding-left: 3px;';
+					var style = defaultStyle + 'background: 95% 50% no-repeat url(/page/common/images/ico-convert-error.png);color:#ed1c24;';
+					var out = "<span style='" + style + "'>" + status + "</span>";
+					//this.outObj.innerHTML = out;
+					this.call = false;
+				}
+				
+				this.refresh = function() {
+					
+					if (this.call) {
+						
+						var param = "url=" + encodeURIComponent(this.url) + "&fileDate=" + this.fileDate;  
+						var result = jf_xmlHttpPostUserError(this.progressUrl,
+								param, // submitParameter
+								this.instance + ".viewProc", // resultFunction
+								this.instance + ".error", // errFunction
+								true // isXML
+						);
+				
+						if (result == -1) {
+							//alert("접속 에러");
+							console.log("접속 에러");
+							this.call = false;
+						} else {
+							setTimeout(this.instance + ".refresh()", this.refreshTime);
+						}
+						
+					}
+					
+				}
+			}
+			
+			
+			function jf_xmlHttpPostUserError(actionUrl,
+					submitParameter,
+					resultFunction, 
+					errFunction,
+					isXML) {
+				
+				var xmlHttpRequest = false;
+			
+				if (window.ActiveXObject) {
+					xmlHttpRequest = new ActiveXObject('Microsoft.XMLHTTP');
+				} else {
+					xmlHttpRequest = new XMLHttpRequest();
+					xmlHttpRequest.overrideMimeType('text/xml');
+				}
+			
+				xmlHttpRequest.open('POST', actionUrl, true);
+				xmlHttpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+			
+				xmlHttpRequest.onreadystatechange = function() {
+					
+					if (xmlHttpRequest.readyState == 4) {
+						
+						switch (xmlHttpRequest.status) {
+							case 200: // 사용자 이벤트 처리 함수 지정
+								if (isXML) {
+									eval(resultFunction + '(xmlHttpRequest.responseXML);');
+								} else{
+									eval(resultFunction + '(xmlHttpRequest.responseText);');
+								}
+							break;
+			
+							default:
+								eval(errFunction + '(xmlHttpRequest.status);');
+								break;
+						}
+					}
+				}
+				xmlHttpRequest.send(submitParameter);
+			}
+			
+			function jf_popupWindowEx(url, name, width, height, left, top, isResizable, isScrollable, useStatus) {
+				var optArray = new Array();
+				var idx = 0;
+				if (width) optArray[idx++] = "width=" + width;
+				if (height) optArray[idx++] = "height=" + height;
+				if (left) optArray[idx++] = "left=" + left;
+				if (top) optArray[idx++] = "top=" + top;
+				if (isResizable) optArray[idx++] = "resizable=" + isResizable;
+				if (isScrollable) optArray[idx++] = "scrollbars=" + isScrollable;
+				if (useStatus) optArray[idx++] = "status=" + useStatus;
+			
+				var opts = "";
+				for (idx = 0; idx < optArray.length; idx++) {
+					if (idx > 0)
+						opts += ",";
+					opts += optArray[idx];
+				}
+			
+				return window.open(url, name, opts);
+			}
+			
+			function jf_popupWindowCenter(url, name, width, height, isResizable, isScrollable, useStatus) {
+				var x = (screen.availWidth / 2) - (width / 2);
+				if (x < 0) x = 0;
+				var y = (screen.availHeight / 2) - (height / 2);
+				if (y < 0) y = 0;
+				return jf_popupWindowEx(url, name, width, height, x, y, isResizable, isScrollable, useStatus);
+			}
+			</script>
+
+		<script src="/page/common/js/jquery.bxslider.js"></script>
+		<script src='https://www.google.com/recaptcha/api.js'></script>
+		<script>
+
+			//삭제플래그
+			function fncDeleteFlag() {
+				var f = document.confirmForm;
+				
+				f.action = "/egf/bp/board/article/actionDelete";
+				if (confirm("정말 지우겠습니까?")) {
+					f.submit();
+				}
+			}
+		
+			// 코멘트 등록
+			function fncWriteCommentProc() {
+				
+				var varForm = document.boardArticle;
+				
+				
+				if (!recaptchaCheck()) {
+					return;
+				}
+				
+				if (!varForm.name.value) {
+					alert('“작성자”를 입력해주세요.');
+					varForm.name.focus();
+					return;
+				}
+				
+			
+				if (!$('#comment_pass').val()) {
+					alert('“비밀번호”를 입력해주세요.');
+					$('#comment_pass').focus();
+					return;
+				}
+				
+				if(!$('#comment_pass').val().match(/^(?=.*\d)(?=.*[a-zA-Z])(?=.*[!,@,#,$,%,^,&,*,?,_,~,+,-]).{6,10}$/)) {
+					alert("영문, 숫자, 특수 문자 1자 이상 혼합하여 6~10자 이내로 등록해주세요.");
+					$('#comment_pass').focus();
+					return;
+				}
+				
+				if (!varForm.comment_content.value) {
+					alert('“내용”을 입력해주세요.');
+					varForm.comment_content.focus();
+					return;
+				}
+				
+				varForm.parentSeq.value = 0;
+				varForm.password.value = $('#comment_pass').val();
+				varForm.content.value = $("#comment_content").val();
+				varForm.action = "/egf/bp/board/comment/actionWrite";
+				if (confirm("댓글을 등록하시겠습니까?")) {
+					varForm.submit();
+				}
+			}
+			
+			// 코멘트 삭제
+			function fncDeleteCommentProc(commentSeq, index) {
+				
+				var varForm = document.boardArticle;
+				var $commentForm = $('.id-comment').eq(index);
+				var $pass = $commentForm.find(':input[name="pass"]');
+				
+				if (!$pass.val()) {
+					alert('비밀번호를 입력해주세요.');
+					$pass.focus();
+					return;
+				}
+				
+				varForm.password.value = $pass.val();
+				varForm.commentSeq.value = commentSeq;
+				varForm.action = "/egf/bp/board/comment/actionDelete";
+				if (confirm("등록한 댓글을 삭제합니다.\n정말 삭제하시겠습니까?")) {
+					varForm.submit();
+				}
+			}
+			
+			// 댓글 폼(reply)
+			function fncReplyForm(articleSeq) {
+				var varForm = document.replayForm;
+		
+				varForm.mode.value = "reply";
+		
+				varForm.action = "/dpcf/pr/photo/festival_photos?articleSeq=" + articleSeq;
+				varForm.submit();
+			}
+			
+			function goPage(url) {
+				var f = document.pageForm;
+				f.action = url;
+				f.submit();
+			}
+			
+			var maxCount = 500;
+			function textCounter() {
+				var $content = $('#comment_content');
+				if ($content.val().length > maxCount) {
+					alert('500자 이내로 등록해 주세요');
+					$content.val($content.val().substring(0, maxCount));
+				}
+				$('#comment_content_count').text('(' + $content.val().length + ' / ' + maxCount + ')')
+			}
+			
+			// 캡챠 체크
+			function recaptchaCheck() {
+				if (typeof(grecaptcha) != 'undefined') { 
+					if(grecaptcha.getResponse() == "") { 
+						alert("자동입력방지를 인증해주세요.");
+						return false; 
+					} 
+				} 
+				return true;
+			}
+			
+			$(function(){
+				
+				p_sldr({
+					seTarget:  '.boGalleryView',
+					seView: '.boGalleryView-view',
+					controls: false,
+					auto: false,
+					seBtnPrev: '.boGalleryView-btnPrev',
+					seBtnNext: '.boGalleryView-btnNext'
+				});
+				
+			});	
+		</script>
 	</div>
 
 </body>
