@@ -55,14 +55,6 @@ $(function() {
     });
 
 
-    $('#together .slick').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
-        $('#together .slick-slide strong, #together .slick-slide span').removeClass('active');
-    });
-
-     $('#together .slick').on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
-        $('#together .slick-slide strong, #together .slick-slide span').addClass('active');
-    });
-
     $('#together .slick').slick({
         autoplay: true,
         arrows: true,
@@ -75,7 +67,15 @@ $(function() {
         slidesToScroll: 1,
         pauseOnHover: false,
         speed: 700,
-        autoplaySpeed: 8000
+        autoplaySpeed: 8000,
+        responsive: [{
+            breakpoint: 1399,
+            settings: {
+                centerMode: true,
+                variableWidth: true,
+                swipeToSlide: true
+            }
+        }]
     });
 
     $('#together .control .bttn').on('click', function (e) {

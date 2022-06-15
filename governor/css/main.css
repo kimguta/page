@@ -7,7 +7,7 @@
 #visual .slick img{transform:scale(1.1);transition-delay:1s;image-rendering:-webkit-optimize-contrast;transform-origin:30% 30%;display:block;}
 #visual .slick .slick-zoom img{transform:scale(1);transition:all 13s linear;filter:brightness(1);}
 #visual .inner{height:938px;z-index:20;}
-#visual .inner .man{display:block;position:absolute;bottom:0;left:0;filter:brightness(.8) blur(.5px);transition-duration:1s;}
+#visual .inner .man{display:block;position:absolute;bottom:0;left:0;filter:brightness(.8) blur(.5px);transition-duration:1s;image-rendering:-webkit-optimize-contrast;}
 #visual .inner .man.active{filter:brightness(1) blur(0px);transition:all 5s;}
 #visual .inner .text-bx{font-family:'KoreanYNSJG';color:#fff;text-shadow:0px 0px 7px rgba(0,0,0,.7);position:relative;height:100%;z-index:10;display:flex;justify-content:center;flex-direction:column;padding-left:550px;}
 #visual .inner .text-bx h2{line-height:1.4;font-weight:500;transition:all .2s .5s;}
@@ -21,7 +21,7 @@
 #visual .inner .text-bx h2.active strong{animation:text1 .55s .6s both ease-in-out;}
 #visual .inner .text-bx h2.active i{animation:text1 .55s .9s both ease-in-out;}
 
-#visual .control{margin-top:90px;}
+#visual .control{margin-top:90px;white-space:nowrap;}
 #visual .control .count{display:inline-block;vertical-align:middle;margin-right:25px;font-family:'KoreanYNSJG';font-weight:200;font-size:20px;}
 #visual .control .count strong{font-weight:500;}
 #visual .control .count span{padding:0 10px;}
@@ -41,43 +41,74 @@
     100%{transform:translateY(0%);opacity:1;} 
 }
 
-@media (max-width:1199px) {
+@media (max-width:1399px) {
     #visual .slick{width:1400px;margin-left:-700px;}
+    #visual{height:683px;}
+    #visual .inner{height:683px;}
+    #visual .inner .man{width:410px;left:-10px;}
+    #visual .inner .text-bx{padding-left:320px;}
+    #visual .inner .text-bx h2 strong{font-size:54px;letter-spacing:-3px;}
+    #visual .inner .text-bx h2 span{font-size:40px;letter-spacing:-2px;}
+    #visual .inner .text-bx h2 i{font-size:22px;margin-top:10px;}
+    #visual .control{margin-top:50px;transform:scale(.9);transform-origin:0% 0%;}
+    #visual .sns-bx{bottom:25px;right:25px;transform:scale(.9);transform-origin:100% 100%;}
+    #visual .sns-bx:before{height:75px;top:-85px;}
  
 }
 
 @media (max-width:991px) {
-    #visual .slick{width:1200px;margin-left:-600px;}
-
+    #visual .slick{width:1300px;margin-left:-650px;}
+    #visual{height:635px;}
+    #visual .inner{height:635px;}
+    #visual .inner .man{width:370px;left:-35px;}
+    #visual .inner .text-bx{padding-left:240px;}
+    #visual .inner .text-bx h2 strong{font-size:48px;letter-spacing:-2px;}
+    #visual .inner .text-bx h2 span{font-size:30px;letter-spacing:-2px;}
+    #visual .inner .text-bx h2 i{font-size:20px;margin-top:5px;}
+    #visual .control{margin-top:40px;transform:scale(.8);}
+    #visual .sns-bx{bottom:20px;right:20px;transform:scale(.8);}
+    #visual .sns-bx:before{height:55px;top:-65px;}
 }
 
 @media (max-width:760px) {
-    #visual .slick{width:1200px;margin-left:-600px;}
-  
+    #visual .inner .man{width:305px;left:-10px;bottom:-30px}
+    #visual .inner .text-bx{padding-left:0px;justify-content:flex-start;padding-top:105px;}
+    #visual .inner .text-bx h2 strong{font-size:39px;margin-top:3px;}
+    #visual .inner .text-bx h2 span{font-size:20px;letter-spacing:-1px;}
+    #visual .inner .text-bx h2 i{font-size:15px;margin-top:5px;}
+    #visual .control{margin-top:0px;transform:scale(.8);width:100%;text-align:right;position:absolute;right:-15px;top:250px;transform-origin:100% 100%;}
+    #visual .sns-bx{bottom:15px;right:15px;transform:scale(.75);}
+    #visual .sns-bx:before{height:35px;top:-45px;}
+}
+
+@media (max-width:390px) {
+    #visual .inner .text-bx h2 strong{font-size:35px;}
 }
 
 
 #together{position:relative;padding:165px 0;z-index:10;}
 #together:before{content:'';display:block;z-index:-1;top:0;bottom:0;left:0;right:0;background:url(/page/governor/images/main/main_bg.jpg) no-repeat center center /cover;position:absolute;}
-#together .flex-bx{display:flex;align-items:flex-start;}
-#together .tit-bx{position:relative;padding-right:30px;}
+#together .flex-bx{display:flex;align-items:flex-start;justify-content: space-between;}
+#together .tit-bx{position:relative;display: flex;flex-direction: column;}
 #together .tit-bx h2{color:#1b1b1b;font-weight:300;font-size:52px;line-height:1.4;white-space:nowrap;font-family:'KoreanYNSJG';position:relative;padding-bottom:53px;}
 #together .tit-bx h2 span{display:block;font-size:22px;}
 #together .tit-bx h2 strong{color:#e61e2b;font-weight:500;}
 #together .tit-bx h2:after{content:'';display:block;width:2px;height:44px;background:#000;position:absolute;bottom:0;left:7px;}
 #together .tit-bx p{line-height:1.4;margin-top:20px;word-break:keep-all;color:#434343;font-size:18px;font-weight:400;}
-#together .noti{margin-top:65px;white-space:nowrap;}
+#together .noti{margin-top:65px;white-space:nowrap;text-align: right;}
 #together .noti a{display:inline-block;vertical-align:top;position:relative;width:270px;height:200px;overflow:hidden;transition:all .3s;}
 #together .noti a:before{content:'';display:block;position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.7);z-index:1;}
 #together .noti a > img{display:block;width:100%;height:100%;object-fit:cover;}
 #together .noti a:hover{border-top-left-radius:50px;}
-#together .noti a + a{margin-left:25px;margin-top:55px;}
+#together .noti a + a{margin-left:23px;margin-top:55px;}
 #together .noti a span{display:flex;position:absolute;top:0;left:0;right:0;bottom:0;z-index:3;justify-content:center;align-items:center;color:#fff;font-weight:200;font-size:30px;}
 #together .noti a span em{font-weight:500;padding-left:5px;}
 #together .noti a.photo span img{width:24px;image-rendering:-webkit-optimize-contrast;margin:-45px 0 0 3px}
 #together .noti a.video span img{width:61px;image-rendering:-webkit-optimize-contrast;}
+#together .noti a span img{transition:all .3s;}
+#together .noti a:hover span img{transform:scale(1.1);}
 
-#together .news-bx{position:relative;padding:40px 0 40px;background:#009c7c;border-top-right-radius:50px;width:369px;flex-shrink:0;}
+#together .news-bx{position:relative;padding:40px 0 40px;background:#009c7c;border-top-right-radius:50px;max-width:369px;flex-shrink:0;}
 #together .news-bx h3{line-height:1.1;padding-left:40px;color:#fff;font-size:24px;font-weight:300;}
 #together .news-bx h3 strong{font-weight:500;}
 #together .news-bx .control{position:absolute;top:37px;right:40px;}
@@ -88,14 +119,143 @@
 #together .news-bx .control a.bttn img{width:24px;}
 #together .news-bx .control a.play{display:none;}
 #together .news-bx .slick{margin-top:27px;}
+#together .news-bx .slick img{max-width:285px;margin:0 auto;}
 #together .news-bx .slick-slide{padding:0 42px;}
 #together .news-bx .slick strong{display:block;text-align:center;line-height:1.3;margin-top:18px;font-size:24px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#fff;}
 #together .news-bx .slick span{display:block;text-align:center;line-height:1.3;margin-top:8px;font-size:16px;font-weight:300;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#fff;}
 #together .news-bx .slick-slide img{transition:none;}
 #together .news-bx .slick-slide:hover img{filter:brightness(1.1);transition:all .5s;}
-
 #together .news-bx .slick strong,
 #together .news-bx .slick span{opacity:0;transition:all .5s;}
-
 #together .news-bx .slick .slick-current strong,
 #together .news-bx .slick .slick-current span{opacity:1;transition:all .5s .5s;}
+
+#together .calendar-bx{background:#06684f;border-bottom-right-radius:50px;max-width:369px;font-family:'KoreanYNSJG';}
+#together .calendar-bx h3{text-align:center;background:#004d39;color:#fff;padding: 33px 0 24px;font-weight:500;}
+#together .calendar-bx h3 span{display:inline-block;padding:7px 15px;border:1px solid #fff;border-width:1px 0;font-size:16px;margin-bottom:18px;line-height:1.1;}
+#together .calendar-bx h3 strong{display:block;font-size:36px;line-height:1.1;font-weight:400;}
+#together .calendar-bx .bx{padding: 13px 30px 40px;}
+#together .calendar-bx table{table-layout:fixed;width:100%;color:#fff;text-align:center;font-size: 14px;margin-bottom:3px;}
+#together .calendar-bx table td{padding: 9px 0;font-weight:200;}
+#together .calendar-bx table th{padding:10px 0;font-weight:400;border-bottom:1px solid #fff;}
+#together .calendar-bx table td span{display:inline-block;border:1px solid #fff;border-radius:50%;padding:6px 5px 5px;line-height:1.1;text-align:center;}
+#together .calendar-bx table td a{display:inline-block;color:#fff;border-radius:50%;padding:6px 5px 5px;line-height:1.1;background:#003a3e;text-align:center;}
+#together .calendar-bx .bx p{border-top:1px solid #004f39;padding: 15px 0;line-height:1.1;color:#fff;font-weight:300;}
+#together .calendar-bx .bx p span{display:inline-block;vertical-align:top;}
+#together .calendar-bx .bx p span + span{margin-left:20px;}
+#together .calendar-bx .bx p span:before{content:'';display:inline-block;vertical-align:middle;margin-right:7px;width:26px;height:26px;border-radius:50%;background:#003a3e;box-sizing:border-box;border:1px solid #003a3e;}
+#together .calendar-bx .bx p span.today:before{background:transparent;border-color:#fff;}
+#together .calendar-bx .more{display:block;text-align:center;border-radius:5px;border:1px solid #fff;font-weight:300;height: 54px;line-height: 51px;transition:all .25s;color:#fff;margin-top:5px;}
+#together .calendar-bx .more:hover{background:#fff;color:#004f39}
+
+
+
+@media (max-width:1399px) {
+    #together{padding:65px 0;}
+    #together .flex-bx{display:flex;align-items:flex-start;justify-content: space-between;flex-wrap:wrap;}
+    #together .tit-bx{flex-direction: column;width:100%;margin-bottom:30px;padding-bottom:80px;}
+    #together .tit-bx h2{font-size:44px;padding-bottom:45px;}
+    #together .tit-bx h2 span{font-size:18px;}
+    #together .tit-bx h2:after{height:36px;left:7px;}
+    #together .tit-bx p{margin-top:15px;font-size:16px;}
+    #together .noti{margin-top:0px;position:absolute;bottom:0;right:0;}
+    #together .noti a + a{margin-left:15px;margin-top:35px;}
+    #together .noti a span{font-size:22px;}
+    #together .noti a span em{padding-left:3px;}
+    #together .noti a.photo span img{width:20px;margin:-35px 0 0 3px}
+    #together .noti a.video span img{width:48px;}
+
+    #together .news-bx{padding:30px 0 30px;border-top-right-radius:35px;max-width:initial;width:calc(100% - 370px);margin-left:-20px;}
+    #together .news-bx h3{font-size:22px;padding-left:20px;}
+    #together .news-bx .control{top:30px;right:20px;}
+    #together .news-bx .slick{margin-top:30px;}
+    #together .news-bx .slick-slide{padding:0 5px;width:265px;margin:0 10px;}
+    #together .news-bx .slick strong{margin-top:15px;font-size:20px;}
+    #together .news-bx .slick span{margin-top:8px;font-size:15px;}
+    #together .news-bx .slick strong,
+    #together .news-bx .slick span{opacity:1;}
+
+    #together .calendar-bx{border-bottom-right-radius:35px;}
+    #together .calendar-bx h3{padding:18px 0 16px;}
+    #together .calendar-bx h3 span{padding:6px 12px;font-size:14px;vertical-align:top;margin:3px 10px 0 0;}
+    #together .calendar-bx h3 strong{display:inline-block;font-size:30px;vertical-align:top}
+    #together .calendar-bx .bx{padding: 11px 20px 20px;}
+    #together .calendar-bx table{font-size:13px;}
+    #together .calendar-bx table th{padding:8px 0;}
+    #together .calendar-bx .bx p{padding: 13px 0;font-size:14px;}
+    #together .calendar-bx .bx p span + span{margin-left:15px;}
+    #together .calendar-bx .bx p span:before{width:22px;height:22px;}
+    #together .calendar-bx .more{height:46px;line-height:44px;margin-top:3px;font-size:14px;}
+ 
+}
+
+@media (max-width:991px) {
+    #together{padding:50px 0;}
+    #together .flex-bx{display:flex;align-items:flex-start;justify-content: space-between;flex-wrap:wrap;}
+    #together .tit-bx{margin-bottom:25px;padding-bottom:65px;}
+    #together .tit-bx h2{font-size:34px;padding-bottom:40px;}
+    #together .tit-bx h2 span{font-size:15px;}
+    #together .tit-bx h2:after{height:32px;left:5px;}
+    #together .tit-bx p{margin-top:13px;font-size:15px;}
+    #together .noti{right:0px;}
+    #together .noti a{width:225px;height:170px;overflow:hidden;transition:all .3s;}
+    #together .noti a + a{margin-left:10px;margin-top:25px;}
+    #together .noti a span{font-size:20px;}
+    #together .noti a span em{padding-left:2px;}
+ 
+
+    #together .news-bx{padding:23px 0 23px;border-top-right-radius:35px;max-width:initial;width:calc(100% - 350px);margin-left:-20px;}
+    #together .news-bx h3{font-size:22px;}
+    #together .news-bx .control{top:20px;right:20px;}
+    #together .news-bx .slick{margin-top:30px;}
+    #together .news-bx .slick-slide{padding:0 5px;width:255px;margin:0 10px;}
+    #together .news-bx .slick strong{margin-top:13px;font-size:20px;}
+    #together .news-bx .slick span{margin-top:7px;font-size:15px;}
+    
+    #together .calendar-bx{border-bottom-right-radius:35px;max-width:349px;}
+    #together .calendar-bx h3{padding:16px 0 14px;}
+    #together .calendar-bx h3 span{padding:6px 12px;font-size:14px;vertical-align:top;margin:2px 10px 0 0;}
+    #together .calendar-bx h3 strong{display:inline-block;font-size:28px;vertical-align:top}
+    #together .calendar-bx .bx{padding: 8px 20px 20px;}
+    #together .calendar-bx table{font-size:12px;}
+    #together .calendar-bx table th{padding:7px 0;}
+    #together .calendar-bx .bx p{padding: 11px 0;font-size:13px;}
+    #together .calendar-bx .bx p span + span{margin-left:15px;}
+    #together .calendar-bx .bx p span:before{width:18px;height:18px;margin-right:5px;}
+    #together .calendar-bx .more{height:44px;line-height:42px;margin-top:3px;font-size:14px;}
+}
+
+@media (max-width:760px) {
+    #together{padding:35px 0 35px;}
+    #together .flex-bx{display:block;}
+    #together .tit-bx{margin-bottom:25px;padding-bottom:0px;display:block;}
+    #together .tit-bx h2{font-size:28px;padding-bottom:10px;}
+    #together .tit-bx h2 span{font-size:14px;}
+    #together .tit-bx h2:after{height:7px;left:5px;width:1px;}
+    #together .tit-bx p{margin-top:5px;font-size:13px;}
+    #together .noti{right:auto;position:relative;text-align:center;margin:15px -10px 0;}
+    #together .noti a{width:calc((100% - 5px) / 2);height:140px;max-width:230px;}
+    #together .noti a + a{margin-left:3px;margin-top:25px;}
+    #together .noti a span{font-size:16px;}
+ 
+    #together .news-bx{padding:20px 0 20px;border-top-right-radius:25px;width:calc(100% + 15px);margin-left:-15px;margin-bottom:25px;}
+    #together .news-bx h3{font-size:20px;padding-left:15px;}
+    #together .news-bx .control{top:15px;right:15px;}
+    #together .news-bx .slick{margin-top:25px;}
+    #together .news-bx .slick-slide{padding:0px;width:215px;margin:0 7px;transform:scale(.9);transition:all .3s;}
+    #together .news-bx .slick-slide.slick-current{transform:scale(1);}
+    #together .news-bx .slick strong{margin-top:10px;font-size:16px;}
+    #together .news-bx .slick span{margin-top:5px;font-size:13px;}
+    
+    #together .calendar-bx{border-bottom-right-radius:25px;max-width:initial;}
+    #together .calendar-bx h3{padding:14px 0 13px;}
+    #together .calendar-bx h3 span{padding:5px 10px;font-size:13px;margin:1px 10px 0 0;}
+    #together .calendar-bx h3 strong{display:inline-block;font-size:22px;}
+    #together .calendar-bx .bx{padding: 8px 20px 20px;}
+    #together .calendar-bx table{font-size:11px;}
+    #together .calendar-bx table th{padding:6px 0;font-size:12px;}
+    #together .calendar-bx .bx p{padding: 11px 0;font-size:12px;}
+    #together .calendar-bx .bx p span + span{margin-left:11px;}
+    #together .calendar-bx .bx p span:before{width:16px;height:16px;margin-right:5px;}
+    #together .calendar-bx .more{height:40px;line-height:38px;margin-top:3px;}
+}
