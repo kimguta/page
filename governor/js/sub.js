@@ -28,18 +28,18 @@ $(function() {
 	});
 
 
-	$('#breadcrumb .share .open').on('click', function (e) {
+	$('#title-bx .share .open').on('click', function (e) {
 		e.preventDefault();
 	   $(this).next('.view').fadeToggle(100);
    });
 
-   $('#breadcrumb .share .close').on('click', function (e) {
+   $('#title-bx .share .close').on('click', function (e) {
 	   e.preventDefault();
 	  $(this).parents('.view').fadeToggle(100);
   });
 
-   $('#breadcrumb .share .view a:last').on('focusout', function () {
-	   $('#breadcrumb .share .open').focus();
+   $('#title-bx .share .view a:last').on('focusout', function () {
+	   $('#title-bx .share .open').focus();
 	   $('.view').fadeOut(100);
    });
 	
