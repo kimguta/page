@@ -56,31 +56,48 @@ $(function() {
 		}
 	});
 
-	$('.course-conts .view-bx .slick').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
-		$('.course-conts .view-bx .title').fadeOut(50);
-    });
-
-    $('.course-conts .view-bx .slick').on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
-		$('.course-conts .view-bx .slick-slide').removeClass('active');
-		$('.course-conts .view-bx .slick-current').addClass('active');
-		$('.course-conts .view-bx .title').fadeIn(300);
-        var i = (currentSlide ? currentSlide : 0) + 1;
-        $('.course-conts .view-bx .count').html( '<em>'+i+'</em>' + '<span></span>' + slick.slideCount);
-    });
 
 	$('.course-conts .view-bx .slick').slick({
         autoplay: false,
         arrows: true,
         dots: false,
-        prevArrow: $('.course-conts .view-bx  .prev'),
-        nextArrow: $('.course-conts .view-bx  .next'),
+		prevArrow: '<a class="slick-prev" role="button" href="#"><img src="/page/untan/images/sub/arrow_w02.png" alt="이전"></a>',
+        nextArrow: '<a class="slick-next" role="button" href="#"><img src="/page/untan/images/sub/arrow_w.png" alt="다음"></a>',
         accessibility: true,
         infinite: true,
 		slidesToShow: 3,
         slidesToScroll: 1,
-        variableWidth: true,
         pauseOnHover: false,
+		swipeToSlide: true,
         speed: 700,
+		responsive: [{
+            breakpoint: 1399,
+            settings: {
+                variableWidth: true
+            }
+        }]
+    });
+
+
+	$('.course-conts .tour-bx .slick').slick({
+        autoplay: false,
+        arrows: true,
+        dots: false,
+		prevArrow: '<a class="slick-prev" role="button" href="#"><img src="/page/untan/images/sub/arrow02.png" alt="이전"></a>',
+        nextArrow: '<a class="slick-next" role="button" href="#"><img src="/page/untan/images/sub/arrow.png" alt="다음"></a>',
+        accessibility: true,
+        infinite: true,
+		slidesToShow: 4,
+        slidesToScroll: 1,
+        pauseOnHover: false,
+		swipeToSlide: true,
+        speed: 700,
+		responsive: [{
+            breakpoint: 1399,
+            settings: {
+                variableWidth: true
+            }
+        }]
     });
 
 	$('.untan-qna .qa-bx a').on('click', function (e) {
