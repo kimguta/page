@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<title>프로젝트명</title>
+	<meta name="Keywords" content="" />
+	<meta name="Description" content="" />
+	<meta name="Author" content="" />
+	<meta name="format-detection" content="telephone=no" /> 
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+	<link rel="stylesheet" href="/page/common/css/fonts.css" />
+	<link rel="stylesheet" href="/page/common/css/common.css" />
+	<link rel="stylesheet" href="/page/common/css/jquery-ui.min.css" />
+
+	<script src="/page/common/js/jquery-3.6.0.min.js"></script>
+	<script src="/page/common/js/jquery-ui.min.js"></script>
+	<script src="/page/common/js/puble_common.js"></script>
+	<script src="/page/common/js/slick.min.js"></script>
+	<script src="/page/common/js/common.js"></script>
+
+	<link rel="stylesheet" href="/page/basic/css/style.css" />
+	<link rel="stylesheet" href="/page/basic/css/sub.css" />
+	<script src="/page/basic/js/script.js"></script>
+	<script src="/page/basic/js/sub.js"></script>
+
+	<script>
+		// [d] 인클루드 용 스크립트 개발시 제거
+		function includeHTML() {
+		  var z, i, elmnt, file, xhttp;
+		  z = document.getElementsByTagName("*");
+		  for (i = 0; i < z.length; i++) {
+			elmnt = z[i];
+			file = elmnt.getAttribute("include-html");
+			if (file) {
+			  xhttp = new XMLHttpRequest();
+			  xhttp.onreadystatechange = function() {
+				if (this.readyState == 4) {
+				  if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+				  if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+				  elmnt.removeAttribute("include-html");
+				  includeHTML();
+				}
+			  }      
+			  xhttp.open("GET", file, true);
+			  xhttp.send();
+			  return;
+			}
+		  }
+		};	
+	</script>
+</head>
+
+
+<body>
+	<div id="wrapper" class="page-wrap">
+
+		<ul class="skipnav"> 
+			<li><a href="#A-Gnb-focus">주메뉴 바로가기</a></li>
+			<li><a href="#A-Contents-focus">본문 바로가기</a></li>
+			<li><a href="#A-Ftr-focus">푸터 바로가기</a></li>
+		</ul>
+
+		<header id="header" include-html="/page/basic/include/header.html"></header>
+
+		<main id="sub">
+			<div id="sub-visual" include-html="/page/basic/include/sub-visual.html"></div>
+			<div id="content" class="inner">
+				<ul class="pageTab">
+					<li class="active">
+					<a href="/#" class="pageTab-tab">
+						MENU
+					</a>
+					</li>
+					<li class="">
+					<a href="/#" class="pageTab-tab">
+						MENU
+					</a>
+					</li>
+					<li class="">
+					<a href="/#" class="pageTab-tab">
+						MENU
+					</a>
+					</li>
+					<li class="">
+					<a href="/#" class="pageTab-tab">
+						MENU
+					</a>
+					</li>
+				</ul>
+				<a href="#A-Contents-focus" id="A-Contents-focus" class="blind">본문 시작</a>
+				<div class="contsArea skinContainer">
+
+					<!-- 콘텐츠 입력 -->
+					<div class="ui" include-html="/page/basic/content/ui.html"></div>
+					<!--// 콘텐츠 입력 -->
+
+				</div>			
+			</div>
+		</main>
+
+		<footer id="footer" class="clearfix" include-html="/page/basic/include/footer.html"></footer>
+	</div>	
+</body>
+
+</html>
+
+<script>
+	// [d] 인클루드 용 스크립트 개발시 제거
+	includeHTML();
+</script>
+
+<script>
+$(window).on('load', function() {
+	$('.boGalleryView .boGalleryView-view').slick({
+		autoplay: false,
+		arrows: true,
+		accessibility: false,
+		dots:true,
+		prevArrow: $('.boGalleryView .boGalleryView-btnPrev'),
+		nextArrow: $('.boGalleryView .boGalleryView-btnNext'),
+		draggable: true,
+		infinite: true,
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		pauseOnHover: false,
+		speed: 1000,
+	});
+});
+</script>
+
