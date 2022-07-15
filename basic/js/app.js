@@ -150,7 +150,7 @@ ObjDoc.on({
 			
 		}
 	}
-}, '#header.mobile-mode h2.has_depth a')
+}, '#header.mobile-mode h2.has-depth a')
 .on({
 	'click': function(e) { 
 		e.preventDefault();
@@ -186,4 +186,10 @@ ObjDoc.on({
 	}
 }, '#footer .family');
 
+$(window).on('load', function() {
+	$('#header .depth-03').prev('h3').addClass('has-depth');
+	$('#header .depth-02').prev('h2').addClass('has-depth');
+	$('#header nav').append('<span class="bg_pc"></span>');
+	$('#header').after('<span id="mask"></span>');
+});
 
