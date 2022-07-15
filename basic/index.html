@@ -25,33 +25,6 @@
 	<script src="/page/basic/js/app.js"></script>
 	<script src="/page/basic/js/index.js"></script>
 	<script src="/page/basic/js/aos.js"></script>
-	
-	<!--[d] 인클루드 용 스크립트 개발시 제거-->
-	<script>
-		function includeHTML() {
-		  var z, i, elmnt, file, xhttp;
-		  z = document.getElementsByTagName("*");
-		  for (i = 0; i < z.length; i++) {
-			elmnt = z[i];
-			file = elmnt.getAttribute("include-html");
-			if (file) {
-			  xhttp = new XMLHttpRequest();
-			  xhttp.onreadystatechange = function() {
-				if (this.readyState == 4) {
-				  if (this.status == 200) {elmnt.innerHTML = this.responseText;}
-				  if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
-				  elmnt.removeAttribute("include-html");
-				  includeHTML();
-				}
-			  }      
-			  xhttp.open("GET", file, true);
-			  xhttp.send();
-			  return;
-			}
-		  }
-		};	
-	</script>
-	
 </head>
 
 <body>
@@ -149,7 +122,15 @@
 
 </html>
 
-<!--[d] 인클루드 용 스크립트 개발시 제거-->
+
+
+
+
+
+
+
+
+<!--[d] 인클루드, 디자인 확인 용 개발 시 제거-->
 <div class="puble-index">
 	<a href="#" class="close" onclick="$('.puble-index').remove();return false;">✕</a>
 	<a href="/page/basic/sub.html" target="_blank" class="btn">서브페이지확인</a>
@@ -166,6 +147,29 @@
 </style>
 
 <script>
+	//인쿠르드 함수	
+	function includeHTML() {
+		var z, i, elmnt, file, xhttp;
+		z = document.getElementsByTagName("*");
+		for (i = 0; i < z.length; i++) {
+		elmnt = z[i];
+		file = elmnt.getAttribute("include-html");
+		if (file) {
+			xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+			if (this.readyState == 4) {
+				if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+				if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+				elmnt.removeAttribute("include-html");
+				includeHTML();
+			}
+			}      
+			xhttp.open("GET", file, true);
+			xhttp.send();
+			return;
+		}
+		}
+	};	
 	includeHTML();
 </script>
-
+<!--//[d] 인클루드, 디자인 확인 용 개발 시 제거-->
