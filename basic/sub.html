@@ -18,13 +18,14 @@
 	<script src="/page/common/js/slick.min.js"></script>
 	<script src="/page/common/js/common.js"></script>
 
-	<link rel="stylesheet" href="/page/basic/css/style.css" />
+	<link rel="stylesheet" href="/page/basic/css/app.css" />
 	<link rel="stylesheet" href="/page/basic/css/sub.css" />
-	<script src="/page/basic/js/script.js"></script>
+
+	<script src="/page/basic/js/app.js"></script>
 	<script src="/page/basic/js/sub.js"></script>
 
+	<!--[d] 인클루드 용 스크립트 개발시 제거-->
 	<script>
-		// [d] 인클루드 용 스크립트 개발시 제거
 		function includeHTML() {
 		  var z, i, elmnt, file, xhttp;
 		  z = document.getElementsByTagName("*");
@@ -46,7 +47,7 @@
 			  return;
 			}
 		  }
-		};	
+		};
 	</script>
 </head>
 
@@ -88,12 +89,8 @@
 					</li>
 				</ul>
 				<a href="#A-Contents-focus" id="A-Contents-focus" class="blind">본문 시작</a>
-				<div class="contsArea skinContainer">
-
-					<!-- 콘텐츠 입력 -->
-					<div class="ui" include-html="/page/basic/content/ui.html"></div>
-					<!--// 콘텐츠 입력 -->
-
+				<div class="contsArea skinContainer"  include-html="/page/basic/content/ui.html">
+					<!--콘텐츠 입력 -->
 				</div>			
 			</div>
 		</main>
@@ -104,13 +101,43 @@
 
 </html>
 
-<script>
-	// [d] 인클루드 용 스크립트 개발시 제거
-	includeHTML();
-</script>
 
-<script>
-$(window).on('load', function() {
+
+
+
+
+
+
+
+
+
+<!--[d] 인클루드 용 스크립트 개발시 제거-->
+<div class="puble-index">
+	<a href="#" class="close" onclick="$('.puble-index').remove();return false;">✕</a>
+	<a href="#" class="btn sub">퍼블콘텐츠확인</a>
+	<!--[d] 퍼블 작업시 콘텐츠 주소 추가-->
+	<div class="view">
+		<a href="/page/basic/content/ui.html">ui 모음</a>
+		<a href="/page/basic/content/콘텐츠1.html">콘텐츠1</a>
+	</div>
+</div>
+<style>
+.puble-index{position:fixed;z-index:500;right:0;bottom:0;display:flex;flex-direction:column;align-items:flex-start;}
+.puble-index .btn{background:#111;border:1px solid #fff;border-width:1px 0px 0px 1px;display:block;text-align:center;font-size:13px;line-height:1.3;padding:0px 10px;color:#fff;height:40px;line-height:40px;position:relative;z-index:2;}
+.puble-index .view{position:absolute;bottom:0px;width:360px;max-height:500px;right:0;overflow:auto;background:#fafafa;border:1px solid #111;padding:10px 0;display:none;}
+.puble-index .view a{display:flex;padding:5px 10px;font-size:13px;}
+.puble-index .close{display:flex;background:#111;color:#fff;justify-content:center;align-items:center;width:22px;height:22px;border:1px solid #fff;margin-bottom:-1px;font-size:13px;}
+
+@media (max-width:1199px) {
+	.puble-index .btn{font-size:12px;padding:0px 5px;color:#fff;height:30px;line-height:30px;}
+	.puble-index .view{width:360px;}
+	.puble-index .view a{display:flex;padding:5px 10px;font-size:12px;}
+	.puble-index .close{width:16px;height:16px;margin-bottom:-1px;font-size:10px;}
+}
+</style>
+<script>	
+includeHTML();
+setTimeout( function(){
 	$('.boGalleryView .boGalleryView-view').slick({
 		autoplay: false,
 		arrows: true,
@@ -125,6 +152,55 @@ $(window).on('load', function() {
 		pauseOnHover: false,
 		speed: 1000,
 	});
+}, 500);
+
+$('.puble-index .sub').on('click', function(e){
+	e.preventDefault();
+	$('.puble-index .view').toggle()
+});
+
+$('.puble-index .view a').on('click', function(e){
+	e.preventDefault();
+	var contUrl = $(this).attr('href');
+	$('.contsArea').attr('include-html', contUrl);
+	includeHTML();
+	//서브 콘텐츠테스트 스크립트
+	setTimeout( function(){
+		var TestOption = {
+			autoplay: false,
+			arrows: true,
+			accessibility: false,
+			dots: false,
+			draggable: true,
+			infinite: true,
+			slidesToShow: 1,
+			swipeToSlide: true,
+			slidesToScroll: 1,
+			pauseOnHover: false,
+			speed: 500,
+		};
+		initSlick($('.test-slick .slick'), TestOption);
+		$('.boGalleryView .boGalleryView-view').slick({
+			autoplay: false,
+			arrows: true,
+			accessibility: false,
+			dots:true,
+			prevArrow: $('.boGalleryView .boGalleryView-btnPrev'),
+			nextArrow: $('.boGalleryView .boGalleryView-btnNext'),
+			draggable: true,
+			infinite: true,
+			slidesToShow: 1,
+			slidesToScroll: 1,
+			pauseOnHover: false,
+			speed: 1000,
+		});
+	}, 100);
+});
+
+$(document).on('click', '.content1 .btn-test', function(e){
+	e.preventDefault();
+	alert('안녕하세요 디큐입니다!!')
 });
 </script>
+<!--//[d] 인클루드 용 스크립트 개발시 제거-->
 

@@ -52,4 +52,7 @@ ObjDoc.on({
 
 $(window).on('load', function() {
 	//로드 후 스크립트 (ex - slick)
+
 });
+
+
