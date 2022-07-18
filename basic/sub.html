@@ -144,7 +144,7 @@ includeHTML();
 function contentScript(){
 	setTimeout( function(){
 		var TestOption = {
-			autoplay: false,
+			autoplay: false,	
 			arrows: true,
 			accessibility: false,
 			dots: false,
@@ -176,11 +176,17 @@ function contentScript(){
 		$('.content1 .btn-test').on('click', function(e){
 			e.preventDefault();
 			alert('안녕하세요 디큐입니다!!')
-		});
-	}, 200);
+		});	
+	}, 300);
 }
 
 contentScript();
+
+$(window).on({
+	'load': function(e) { 
+		contentScript();
+	}
+});
 
 $(document).on({
 	'click': function(e) { 
