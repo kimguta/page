@@ -1,3 +1,6 @@
+
+git clone https://github.com/kimguta/trendpoll.git trendpoll
+
 <script src="https://kit.fontawesome.com/708e424f8f.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous"></link>
 <div id="playerVideo1" class="mbYTPVideo inline_YTPlayer"
