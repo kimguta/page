@@ -1,0 +1,93 @@
+<ons-page id="map">
+  <ons-splitter>
+    <ons-splitter-side id="menu" side="right" width="200px" collapse swipeable>
+      <ons-page>
+        <ons-list>
+          <ons-list-item onclick="fn.load('all.html')" tappable>
+            전국
+          </ons-list-item>
+          <ons-list-item onclick="fn.load('seoul.html')" tappable>
+            서울
+          </ons-list-item>
+          <ons-list-item onclick="fn.load('gangwon.html')" tappable>
+            강원
+          </ons-list-item>
+        </ons-list>
+      </ons-page>
+    </ons-splitter-side>
+    <ons-splitter-content id="content" page="all.html"></ons-splitter-content>
+  </ons-splitter>
+  
+  <template id="all.html">
+    <ons-page>
+      <ons-toolbar>
+        <div class="left">
+          <ons-toolbar-button onclick="fn.open()">
+            <ons-icon icon="md-menu"></ons-icon>
+          </ons-toolbar-button>
+        </div>
+        <div class="center">
+          Main
+        </div>
+      </ons-toolbar>
+      <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
+        Swipe right to open the menu!
+      </p>
+    </ons-page>
+  </template>
+  
+  <template id="seoul.html">
+    <ons-page>
+      <ons-toolbar>
+        <div class="left">
+          <ons-toolbar-button onclick="fn.open()">
+            <ons-icon icon="md-menu"></ons-icon>
+          </ons-toolbar-button>
+        </div>
+        <div class="center">
+          Settings
+        </div>
+      </ons-toolbar>
+    </ons-page>
+  </template>
+  
+  <template id="gangwon.html">
+    <ons-page>
+      <ons-toolbar>
+        <div class="left">
+          <ons-toolbar-button onclick="fn.open()">
+            <ons-icon icon="md-menu"></ons-icon>
+          </ons-toolbar-button>
+        </div>
+        <div class="center">
+          About
+        </div>
+      </ons-toolbar>
+    </ons-page>
+  </template>
+
+  <script>
+    window.fn = {};
+  
+    window.fn.open = function() {
+      var menu = document.getElementById('menu');
+      menu.open();
+    };
+  
+    window.fn.load = function(page) {
+      var content = document.getElementById('content');
+      var menu = document.getElementById('menu');
+      content.load(page)
+        .then(menu.close.bind(menu));
+    };
+
+</script>
+
+<style>
+  #wrapper #map .list,
+  #wrapper #map .page__background{background:transparent;}
+</style>
+
+</ons-page>
+
+

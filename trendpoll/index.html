@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="css/onsenui.min.css">
+  <link rel="stylesheet" href="css/onsen-css-components.min.css">
+  <script src="js/onsenui.min.js"></script>
+  <script src="https://unpkg.com/jquery/dist/jquery.min.js"></script>
+
+  <script>
+    // document.addEventListener('postchange', function (event) {
+    //   console.log('postchange event', event);
+    // });
+    // function changeTab() {
+    //   document.getElementById('tabbar').setActiveTab(1);
+    // }
+    // function changeButton() {
+    //   document.getElementById('segment').setActiveButton(1);
+    // }
+    // function logIndexes() {
+    //   console.log('active button index', document.getElementById('segment').getActiveButtonIndex());
+    //   console.log('active tab index', document.getElementById('tabbar').getActiveTabIndex());
+    // }
+  </script>
+</head>
+
+<body>
+
+<div id="wrapper">
+  <ons-navigator id="myNavigator" page="tabbar.html">
+  </ons-navigator>
+
+  <template id="tabbar.html">
+    <ons-page>
+      <ons-toolbar>
+        <div class="left mode-btn">
+          <ons-segment id="segment" tabbar-id="tabbar">
+            <button><ons-icon icon="fa-list"></ons-icon></button>
+            <button><ons-icon icon="fa-map"></ons-icon></button>
+          </ons-segment>
+        </div>
+      </ons-toolbar>
+
+      <ons-tabbar id="tabbar" swipeable>
+        <ons-tab page="component/list.html">1</ons-tab>
+        <ons-tab page="component/map.html">2</ons-tab>
+      </ons-tabbar>
+    </ons-page>
+  </template>
+</div>
+
+
+</body>
+</html>
+
+<style>
+  ::-webkit-scrollbar{display:none !important;}
+  .toolbar,
+  #wrapper .toolbar__title{line-height:0;height:0;background:none;}
+  #wrapper .page__content,
+  #wrapper .page__background{background:#fff;}
+  #wrapper .mode-btn{position:fixed;left:15px;top:15px;z-index:100;}
+  #wrapper .mode-btn .ons-icon{font-size:20px;}
+  #wrapper .mode-btn .segment__item{margin-right:5px;}
+  #wrapper .mode-btn .segment__button{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;border-width:1px;background:#fff;}
+  #wrapper :checked+.segment__button{background:#c782c7;}
+  #wrapper .toolbar+.page__background+.page__content{top:0;}
+  #wrapper #content-item .page__content,
+  #wrapper #content-item .page__background{background:#fff;}
+</style>
+
+<script>
+
+</script>
