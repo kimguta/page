@@ -888,5 +888,19 @@ $(function(){
 		modal($(this));
 	});
 
-
+	$('.boGalleryView .boGalleryView-view').slick({
+		autoplay: false,
+		arrows: true,
+		accessibility: false,
+		dots:true,
+		prevArrow: $('.boGalleryView .boGalleryView-btnPrev'),
+		nextArrow: $('.boGalleryView .boGalleryView-btnNext'),
+		draggable: true,
+		infinite: true,
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		pauseOnHover: false,
+		speed: 600,
+		adaptiveHeight: true,
+	});
 });
