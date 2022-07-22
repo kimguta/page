@@ -115,7 +115,7 @@
 
 <script>
 //인쿠르드 함수	
-function includeHTML() {
+function includeHTML(callback) {
 	var z, i, elmnt, file, xhttp;
 	z = document.getElementsByTagName("*");
 	for (i = 0; i < z.length; i++) {
@@ -134,6 +134,7 @@ function includeHTML() {
 		xhttp.open("GET", file, true);
 		xhttp.send();
 		return;
+		callback();
 	}
 	}
 };
@@ -158,6 +159,11 @@ function contentScript(){
 		};
 		initSlick($('.test-slick .slick'), TestOption);
 
+		$('.content1 .btn-test').on('click', function(e){
+			e.preventDefault();
+			alert('안녕하세요 디큐입니다!!')
+		});		
+
 		$('.boGalleryView .boGalleryView-view').slick({
 			autoplay: false,
 			arrows: true,
@@ -173,15 +179,8 @@ function contentScript(){
 			speed: 600,
 			adaptiveHeight: true,
 		});
-
-		$('.content1 .btn-test').on('click', function(e){
-			e.preventDefault();
-			alert('안녕하세요 디큐입니다!!')
-		});	
-	}, 300);
+	}, 200);	
 }
-
-contentScript();
 
 $(window).on({
 	'load': function(e) { 
@@ -211,6 +210,7 @@ $(document).on({
 		contentScript();
 	}
 }, '.puble-index .view a');
+
 
 </script>
 <!--//[d] 인클루드, 디자인 확인 용 개발 시 제거-->
