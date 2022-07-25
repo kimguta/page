@@ -7,7 +7,7 @@
   <li><a href="untan/index_list.html" target="_blank">운탄고도길</a></li>
   <li><a href="sports/index_list.html" target="_blank">고성 강원도민체전</a></li>
   <li><a href="dmz/index_list.html" target="_blank">dmz 박물관</a></li>
-  <li><a href="work/index_list.html" target="_blank">dmz 박물관 키오스크</a></li>
+  <li><a href="work/index_list.html" target="_blank">dmz 박물관 키오스크(해상도 : 3840 x 2160)</a></li>
   <li><a href="ecology/index_list.html" target="_blank">생물권보전지역</a></li>
   <li><a href="geopark/index_list.html" target="_blank">강원평화지역 지질공원</a></li>
   <li><a href="gwjob/index_list.html" target="_blank">강원일자리 정보망</a></li>
