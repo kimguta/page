@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<title>프로젝트명</title>
+	<meta name="Keywords" content="" />
+	<meta name="Description" content="" />
+	<meta name="Author" content="" />
+	<meta charset="utf-8" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+	<link rel="stylesheet" href="/page/common/css/fonts.css" />
+	<link rel="stylesheet" href="/page/common/css/common.css" />
+	<link rel="stylesheet" href="/page/common/css/jquery-ui.min.css" />
+
+	<script src="/page/common/js/jquery-3.6.0.min.js"></script>
+	<script src="/page/common/js/jquery-ui.min.js"></script>
+	<script src="/page/common/js/puble_common.js"></script>
+	<script src="/page/common/js/slick.min.js"></script>
+	<script src="/page/common/js/common.js"></script>
+
+	<link rel="stylesheet" href="/page/basic/css/app.css" />
+	<link rel="stylesheet" href="/page/basic/css/index.css" />
+	<link rel="stylesheet" href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css" />
+
+	<script src="/page/basic/js/app.js"></script>
+	<script src="/page/basic/js/index.js"></script>
+</head>
+
+<body>
+	<div id="wrapper" class="page-wrap">
+		<img src="images/main.jpg" alt="홈페이지" class="background-img">
+		<div class="intro">
+			<div class="slick">
+				<div>
+					<img src="images/mountain_bg.png" alt="임시이미지">
+					<div class="illu">
+						<img src="images/mountain_illustbg.png" alt="임시이미지" class="bg">
+						<img src="images/mountain_illust1.png" alt="임시이미지" class="people v1">
+						<img src="images/mountain_illust2.png" alt="임시이미지" class="people v2">
+					</div>	
+				</div>
+				<div>
+					<img src="images/ocean_bg.png" alt="임시이미지">
+					<div class="illu">
+						<img src="images/ocean_illustbg.png" alt="임시이미지">
+						<img src="images/ocean_illust1.png" alt="임시이미지" class="people v3">
+						<img src="images/ocean_illust2.png" alt="임시이미지" class="people v4">
+					</div>
+				</div>
+			</div>
+			<div class="text-bx">
+				<div class="title">
+					<span>YANG</span>
+					<span>YANG</span>
+				</div>
+				<div class="btn-bx">
+					<img src="images/logo.png" alt="양양군 일하는 군수실" class="logo" class="bg">
+					<a href="#">
+						<img src="images/ctrbtn.png" alt="닫기">
+					</a>
+				</div>
+			</div>	
+		</div>
+	</div>
+
+</body>
+
+</html>
+
+
+
+
+<style>
+
+	.intro{margin:0 auto;min-width:1400px;position:absolute;background:#fff;left:0;right:0;top:0;height:100vh;z-index:10;}
+	.intro .slick{z-index:3;position:relative;}
+	.intro .slick .slick-slide > img{height:100vh;}
+	.intro.remove{animation:introend .5s .15s 1 both ease-in-out;}
+	.intro .background-img{display:block;width:100%;image-rendering: -webkit-optimize-contrast;}
+	.intro .text-bx{font-family: 'Spoqa Han Sans', 'Sans-serif';position:absolute;top:280px;right:0px;z-index:10;}
+	.intro .text-bx .btn-bx{width:825px;border-bottom:1px solid #b1bbbd;position:relative;padding-bottom:10px;}
+	.intro .text-bx .btn-bx img{display:block;image-rendering: -webkit-optimize-contrast;}
+	.intro .text-bx .btn-bx .logo{animation:text3 .5s 1.5s 1 both ease-out;}
+	.intro .text-bx .btn-bx a{display:block;position:absolute;right:95px;bottom:-33px;image-rendering: -webkit-optimize-contrast;transition:all .2s;}
+	.intro .text-bx .btn-bx a:active{transform:scale(.95);}
+
+
+	.intro .illu{position:absolute;bottom:0;right:0;transform:translateX(-100%);transition:transform .6s linear;}
+	.intro .illu.active{transform:translateX(0);transition-duration:.8s;}
+	.intro .illu .people{position:absolute;width:auto !important;image-rendering: -webkit-optimize-contrast;}
+	.intro .illu .people.v1{left:150px;bottom:30px;}
+	.intro .illu .people.v2{left:305px;bottom:15px;}
+	.intro .illu .people.v3{left:50px;bottom:30px;}
+	.intro .illu .people.v4{left:420px;bottom:78px;}
+
+	.intro .illu.active .people.v1{animation:people1 2.8s 1.6s 1 both linear;}
+	.intro .illu.active .people.v2{animation:people2 3.2s 1.2s 1 both linear;}
+	.intro .illu.active .people.v3{animation:people3 2.8s 1.4s 1 both linear;}
+	.intro .illu.active .people.v4{animation:people4 3s 1.2s 1 both linear;}
+
+	.intro .title{font-size:260px;font-weight:700;letter-spacing:-3px;line-height:1.1;mix-blend-mode:hard-light;position:absolute;bottom:-250px;left:-810px;}
+	.intro .title span{display:inline-block;vertical-align:top;color:#c5002a;mix-blend-mode:hard-light;opacity:.92;animation:text1 .5s .5s 1 both ease-out;}
+	.intro .title span + span{margin:110px 0 0 -35px;color:#000;animation:text2 .5s 1s 1 both ease-out;}
+
+
+	@keyframes introend{ 
+		0%{opacity:1;}
+		98%{opacity:0;} 
+		100%{opacity:0;display:none;} 
+	}
+
+	@keyframes text1{ 
+		0%{opacity:0;transform:translateY(-80%);}
+		100%{opacity:1;transform:translateY(0%);} 
+	}
+
+	@keyframes text2{ 
+		0%{opacity:0;transform:translateY(80%);}
+		100%{opacity:1;transform:translateY(0%);} 
+	}
+
+	@keyframes text3{ 
+		0%{opacity:0;transform:translateX(50%);}
+		100%{opacity:1;transform:translateX(0%);} 
+	}
+
+	@keyframes people1{ 
+		0%{transform:translate(-100%, -25%) scale(.85);opacity:0;}
+		20%{transform:translate(-80%, -19%) scale(.88);opacity:1;}
+		40%{transform:translate(-60%, -16%) scale(.92);}
+		60%{transform:translate(-40%, -10%) scale(.95);}
+		80%{transform:translate(-20%, -4%) scale(.98);}
+		100%{transform:translate(0%, 0%) scale(1);} 
+	}
+
+	@keyframes people2{ 
+		0%{transform:translate(-100%, -26%) scale(.85);opacity:0;}
+		20%{transform:translate(-80%, -18%) scale(.88);opacity:1;}
+		40%{transform:translate(-60%, -15%) scale(.92);}
+		60%{transform:translate(-40%, -11%) scale(.95);}
+		80%{transform:translate(-20%, -6%) scale(.98);}
+		100%{transform:translate(0%, 0%) scale(1);} 
+	}
+
+	@keyframes people3{ 
+		0%{transform:translate(-50%, -20%) scale(.7);opacity:0;}
+		20%{transform:translate(-40%, -15%) scale(.75);opacity:1;}
+		40%{transform:translate(-30%, -13%) scale(.8);}
+		60%{transform:translate(-20%, -8%) scale(.85);}
+		80%{transform:translate(-10%, -4%) scale(.95);}
+		100%{transform:translate(0%, 0%) scale(1);} 
+	}
+
+	@keyframes people4{ 
+		0%{transform:translate(0%, 0%) scale(1);opacity:0;}
+		20%{transform:translate(18%, 12%) scale(.97);opacity:1;}
+		40%{transform:translate(29%, 18%) scale(.93);}
+		60%{transform:translate(38%, 28%) scale(.88);}
+		80%{transform:translate(48%, 33%) scale(.80);}
+		100%{transform:translate(62%, 38%) scale(.75);} 
+	}
+
+</style>
+
+<script>
+	$('.intro .btn-bx a').on('click', function(e){
+		e.preventDefault();
+		$('.intro').addClass('remove');
+	});
+
+	$('.intro .slick').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+		$('.illu').removeClass('active');
+	});
+	$('.intro .slick').on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
+		$('.slick-current .illu').addClass('active');
+		if(currentSlide == 1){
+			$('.intro .slick').slick('slickPause');
+			setTimeout(function(){
+				$('.intro').addClass('remove');
+			}, 5000);
+		}
+	});
+
+	var IntroOption = {
+        autoplay: true,
+        arrows: false,
+        accessibility: false,
+        dots: false,
+		swipe: false,
+        draggable: true,
+        infinite: false,
+		fade: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        pauseOnHover: false,
+        speed: 2000,
+        autoplaySpeed: 5000,
+    };
+
+    initSlick($('.intro .slick'), IntroOption);  
+</script>
