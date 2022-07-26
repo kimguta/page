@@ -1,4 +1,45 @@
 
+<div  style="width:15%; position: relative;">
+	<canvas id="usersChart" width="1" height="1"></canvas>
+	<div class="chart-background"></div>
+		<span class="chart-unique-value" style="display:block;position:absolute;z-index:3;left:50%;top:50%;transform:translate(-50%,-50%);">
+				<span class="js-count">
+				85
+				</span>
+				<span class="cuv-percent">%</span>
+		</span>
+	</div>
+</div>
+
+
+<script>
+window.onload = function() {
+    new Chart(document.getElementById('usersChart'), {
+        type   : 'doughnut',
+        data   : {
+            datasets: [
+                {
+                    data           : [85, 15],
+                    backgroundColor: [
+                        '#e77099',
+                        'transparent',
+                    ],
+					hoverOffset:  0,
+                    borderWidth    : 0
+                }]
+        },
+        options: {
+            cutoutPercentage: 70,
+			responsive: true,
+			tooltips: {enabled: false},
+        	hover: {mode: null},
+        },
+    });
+};
+</script>
+
+
+
 git clone https://github.com/kimguta/trendpoll.git trendpoll
 
 <script src="https://kit.fontawesome.com/708e424f8f.js" crossorigin="anonymous"></script>
