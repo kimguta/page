@@ -1,0 +1,137 @@
+@charset "UTF-8";
+
+/* reset */
+button, input, optgroup, select, textarea {font: inherit;}
+
+#sub_view{/*padding-top: 110px;*/}
+#sub_view .view{overflow: hidden; position: relative; height: 260px;}
+#sub_view .view img{display: block; position: absolute; top: 0; left: 50%; transform: translateX(-50%); height: 100%;}
+#sub_view .view .tit_text_box{position: relative; padding-top: 75px; line-height: 1;}
+#sub_view .view .tit_text_box h2{font-family: "NanumSquare", sans-serif;margin-bottom: 17px; font-size: 32px; color: #000; font-weight: 700;}
+#sub_view .view .tit_text_box h2 span{display: inline-block; font-weight: 400;}
+#sub_view .view .tit_text_box p{line-height: 30px; font-size: 17px;}
+
+.location{position: relative; border-bottom: 1px solid #e3e3e3; height: 203px; background: url(../images/sub/bg.png)no-repeat top 66px center;}
+.location .container{position: relative;}
+.location::after{display: block; content: ""; position: absolute; left: 0; top:0; z-index: -1; width: 100%; height: 66px; background:#195dae;}
+.location.v2:after {background: #009174;}
+.location.v3:after {background: #ff9600;}
+.location.v4:after {background: #662d91;}
+.location.v5:after {background: #fe7773;}
+
+/*
+.location.nav01::after{display: block; content: ""; position: absolute; left: 0; top:0; z-index: -1; width: 100%; height: 66px; background:#195dae; }
+.location.nav02::after{display: block; content: ""; position: absolute; left: 0; top:0; z-index: -1; width: 100%; height: 66px; background:#009174; }
+.location.nav03::after{display: block; content: ""; position: absolute; left: 0; top:0; z-index: -1; width: 100%; height: 66px; background:#fabe0f; }
+.location.nav04::after{display: block; content: ""; position: absolute; left: 0; top:0; z-index: -1; width: 100%; height: 66px; background:#8903fa; }
+.location.nav05::after{display: block; content: ""; position: absolute; left: 0; top:0; z-index: -1; width: 100%; height: 66px; background:#fe7773; }
+*/
+.location .container > h2{clear: both; padding: 50px 0 43px 0; font-size: 32px; color: #000; line-height: 1; text-align: center; font-weight: 700;}
+.location ul{float: left; /*border-left: 2px solid rgba(255,255,255,.2);*/}
+.location .container > ul > li{position: relative; display: inline-block; float: left; padding-left: 22px; width: 238px; /*border-right: 2px solid rgba(255,255,255,.2);*/}
+.location .container > ul > li:first-child{width: 64px; padding: 0; text-align: center; border-right: 2px solid rgba(255,255,255,.2); border-left: 2px solid rgba(255,255,255,.2);}
+.location .container > ul > li:first-child a{display: block; height: 66px; background: url(../images/sub/home.png)no-repeat center;}
+.location .container > ul > li:first-child a::after{display: none;}
+.location .container > ul > li > h2{border-right: 2px solid rgba(255,255,255,.2);}
+.location .container > ul > li > h2.active + ul{display: block;}
+.location .container > ul > li > h2 > a{position: relative; display: block; font-size: 16px; color: #fff; font-weight: 300; line-height: 66px;}
+.location .container > ul > li > h2 > a:hover{text-decoration: underline;}
+.location .container > ul > li > h2 > a::after{display: block; content: ""; position: absolute; top:32px; right: 20px; width: 9px; height: 5px; background: url(../images/sub/location_icon.png)no-repeat;}
+.location .container > ul > li ul{display: none; position: absolute; width: 100%; top: 66px; left: -1px; z-index: 999; background: #fff; border: 1px solid #ddd;}
+.location .container > ul > li ul li:not(:last-child){border-bottom: 1px solid #ddd;}
+.location .container > ul > li ul li a{display: block; padding-left: 22px; color: #454545; line-height: 66px;}
+.location .container > ul > li ul li a:hover{background: #f8f8f8;}
+
+#btn_box{position: absolute; top:0; right:0; height: 66px; border-right: 2px solid rgba(255,255,255,.2); font-size: 0}
+#btn_box button{width: 58px; height: 100%; display: inline-block; border-left: 2px solid rgba(255,255,255,.2);}
+#btn_box button.print{background: url(../images/sub/print.png)no-repeat center;}
+#btn_box button.share{background: url(../images/sub/share.png)no-repeat center;}
+#btn_box button.share + ul {background: url(../images/sub/bg_sns.png) no-repeat top center; width: 58px; height: 142px; text-align: center; padding-top: 24px; position: absolute; left: 0; bottom: -150px; z-index: 999; display: none;}
+#btn_box button.share + ul li:not(:first-child) {margin-top: 26px;}
+
+@media (max-width: 1024px) {
+
+    .location .container{position: static;}
+    #sub_view{/*padding-top: 66px;*/}
+    #sub_view .view{display: none;}
+    .location{height: 170px; padding: 120px 10px 35px 10px; background: url(../images/sub/bg_m.png)no-repeat bottom center; line-height: 1;}
+    .location::after{display: none;}
+    .location .container > ul{float: none; border: none;}
+    .location .container > ul > li:first-child{width: auto;}
+    .location .container > ul > li{/*float: none;*/ margin-right: 15px; width: auto; padding: 0; border: none;}
+    .location .container > ul > li:first-child > a{width: 18px; height: 16px; background: url(../images/sub/home02.png)no-repeat center;}
+    .location .container > ul > li > h2 > a{font-size: 16px!important; color: #454545!important;}
+    .location .container > h2{clear: both; padding: 0; position: absolute; top: 40px; left: 50%; transform: translateX(-50%);}
+    #btn_box{height: auto; position: absolute; top: auto; bottom: 24px; right: 20%; border: none;}
+    #btn_box button{border: none;}
+    #btn_box button.print{display: none;}
+    #btn_box button.share{width: 29px; height: 29px; background: url(../images/sub/share02.png)no-repeat center;}
+    .location .container ul li::after{display: block; content: ""; position: absolute; top:3px; right: -12px; width: 5px; height: 9px; background: url(../images/sub/arrow.png)no-repeat;}
+    .location .container ul li:last-child::after{display: none;}
+    .location .container > ul > li > h2 > a{line-height: 1;}
+
+    #btn_box button.share + ul li::after{display: none;}
+    #btn_box button.share + ul{left: -12px;}
+
+}
+
+@media (max-width: 576px) {
+
+    #btn_box{right:10px;}
+    .location ul{left:10px; transform: none;}
+    .location ul li{}
+
+}
+
+/* 공공일자리 */
+section.craw.list table {width:100%;}
+
+/* 기업일반 */
+main.company_all input[type=submit] {background-color:#4d5360;}
+@media screen and (min-width: 800px){
+}
+@media screen and (min-width: 640px){
+	main.company_all .boSrchArea .boSrch.v2 .boSrch-iptTxt {
+		width: calc(100% - 24% - 110px);
+	}
+}
+
+/* 인재정보조회 */
+.list3 article figure img {width:100%;height:auto;}
+.list3 article figure {float: left; width: 90px; text-align: center;}
+.list3 article figure a{position:relative;}
+/* Landscape tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .list3 article figure, .list3 .list > ul li:nth-child(2) {width: 190px;}
+    .list3 article figure a {float: left; width: 90px;}
+}
+/* Large desktops and laptops */
+@media (min-width: 1200px) {
+	.list3 article figure, .list3 .list > ul li:nth-child(2) {width: 190px;}
+	.list3 article figure a {float: left; width: 90px;}
+}
+
+/* 프로그램 예약 */
+@media (max-width: 1024px) {
+	.program.view .content.inner figure img {width:100%;}
+}
+
+/* 프로그램 이벤트 */
+.program.event.view article figure img {width:100%;}
+/* .kiosk .program.event.list .search1 {height:57px;} */
+.kiosk .program.event.list .gallery2 {position:relative;}
+.kiosk .program.event.list .gallery2 .header legend {position: absolute;left:10px;top:30%;}
+.kiosk .program.event.list .gallery2 .header legend em {color: #0676cc;}
+
+/* 교육훈련과정 */
+.kiosk .hrd.api.list .boMeta {float:left;width:30%;padding-top:13px;}
+.kiosk .hrd.api.list .gallery2 .header {padding-left:27px;}
+
+/* 채용정보조회,전국공채속보 */
+/* .list3.style1 .list > ul li:nth-child(1) {width: 50px;} */
+.kiosk .jobpeople.list .list3.style1 .list > ul li:nth-child(1) {width: 180px;}
+.kiosk .jobpeople.list .list3.style1 .list > ul li:nth-child(2) {width: calc(100% - 550px);}
+.kiosk .jobpeople.list .list3.style1 .list > ul li:nth-child(3) {width: 140px; margin: 0;}
+.kiosk .jobpeople.list .list3.style1 .list > ul li:nth-child(4) {width: 140px; float: right;}
+
+
