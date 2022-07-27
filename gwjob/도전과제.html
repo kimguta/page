@@ -1369,6 +1369,10 @@
                                                 <span class="js-text">도전과제 <b>달성율</b></span>
                                                 <span class="js-count"><em>75</em>%</span>
                                             </span>
+                                            <span class="chart-unique-value clear">
+                                                <span class="js-text">도전과제 <strong>503번째</strong> 달성자입니다.</b></span>
+                                                <a href="#">수령정보확인</a>
+                                            </span>
                                         </div>
                                     </div>
                                     <p class="info">월별 도전과제는 해당월 1일 00시 00분 01초 부터 해당월 말일 24시 정각까지 진행됩니다.</p>
@@ -2269,10 +2273,18 @@
                                             hover: {mode: null},
                                         },
                                     });
+                                    if(chartData == 100){
+                                        $('.chart-unique-value').hide();
+                                        $('.chart-unique-value.clear').show();
+                                    }
+                                    else{
+                                        $('.chart-unique-value').show();
+                                        $('.chart-unique-value.clear').hide(); 
+                                    }
                                 };
                                 
                                 //[d]달성률값 넣어주세요
-                                var arry = ['75', '55', '15', '35']; 
+                                var arry = ['75', '100', '15', '35']; 
                                 $('.callenge-bx .slick').on('init reInit beforeChange', function (event, slick, currentSlide, nextSlide) {
                                     $('.chart-bx .js-count em').text(arry[nextSlide]);
                                     chartDrop();
@@ -2283,7 +2295,7 @@
                                     accessibility: true,
                                     draggable: true,
                                     fade: true,
-                                    infinite: true,
+                                    infinite: false,
                                     asNavFor: '.table-bx',
                                     slidesToShow: 1,
                                     slidesToScroll: 1,
@@ -2296,7 +2308,7 @@
                                     dots: false,
                                     accessibility: true,
                                     draggable: true,
-                                    infinite: true,
+                                    infinite: false,
                                     fade: true,
                                     asNavFor: '.callenge-bx .slick',
                                     slidesToShow: 1,
@@ -2305,7 +2317,8 @@
                                     adaptiveHeight: true,
                                 });
 
-                                $('.callenge-bx .slick').slick('slickGoTo', 1);
+                                //슬릭 로딩시 페이지 이동
+                                // $('.callenge-bx .slick').slick('slickGoTo', 1);
 
 
 
