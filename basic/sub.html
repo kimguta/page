@@ -87,7 +87,7 @@
 <!--[d] 인클루드, 디자인 확인 용 개발 시 제거-->
 <div class="puble-index">
 	<a href="#" class="close" onclick="$('.puble-index').remove();return false;">✕</a>
-	<a href="#" class="btn sub upload">콘텐츠목록열기</a>
+	<a href="#" class="btn sub upload"></a>
 	<div class="view">
 		<strong>퍼블 콘텐츠 목록</strong>
 		<!--콘텐츠 주소 영역 퍼블된 파일 링크-->	
@@ -190,12 +190,14 @@ $(window).on({
 
 function textChange(){
 	var text = $('.puble-index .btn').text();
-	if(text == '콘텐츠리스트열기'){
+	if(text == '콘텐츠목록열기'){
 		$('.puble-index .btn').text('콘텐츠목록닫기');
 	}else{
 		$('.puble-index .btn').text('콘텐츠목록열기');
 	}
 }; 
+
+textChange();
 
 $(document).on({
 	'click': function(e) { 
@@ -215,7 +217,6 @@ $(document).on({
 		textChange();
 	}
 }, '.puble-index .view a');
-
 
 </script>
 <!--//[d] 인클루드, 디자인 확인 용 개발 시 제거-->
