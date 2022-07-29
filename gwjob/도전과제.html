@@ -1367,7 +1367,7 @@
                                             <canvas id="usersChart" width="1" height="1"></canvas>
                                             <span class="chart-unique-value">
                                                 <span class="js-text">도전과제 <b>달성율</b></span>
-                                                <span class="js-count"><em>75</em>%</span>
+                                                <span class="js-count"><em></em>%</span>
                                             </span>
                                             <span class="chart-unique-value clear">
                                                 <span class="js-text">도전과제 <strong>503번째</strong> 달성자입니다.</b></span>
@@ -2228,6 +2228,7 @@
                                     }
                                     });
 
+                                    
                                     function chartDrop() {
                                     var chartData = $('.chart-bx .js-count em').text();
                                     var chartEmpty = 100 - chartData;    
@@ -2282,13 +2283,16 @@
                                         $('.chart-unique-value.clear').hide(); 
                                     }
                                 };
-                                
+
                                 //[d]달성률값 넣어주세요
-                                var arry = ['75', '100', '15', '35']; 
+                                var arry = ['72', '100', '15', '35']; 
+                                $('.chart-bx .js-count em').text(arry[0]);
                                 $('.callenge-bx .slick').on('init reInit beforeChange', function (event, slick, currentSlide, nextSlide) {
                                     $('.chart-bx .js-count em').text(arry[nextSlide]);
                                     chartDrop();
                                 });
+                                
+                                
                                 $('.callenge-bx .slick').slick({
                                     arrows: true,
                                     dots: false,
@@ -2319,7 +2323,7 @@
 
                                 //슬릭 로딩시 페이지 이동
                                 // $('.callenge-bx .slick').slick('slickGoTo', 1);
-
+                                
 
 
                                 </script>
