@@ -16,7 +16,7 @@ $(window).on('load', function() {
         // 이미지 dots
         customPaging: function(slick,index) {
             var targetImage = slick.$slides.eq(index).find('img').attr('src');
-            return '<a href="#" role="button" onclick="return false;"><img src=" ' + targetImage + ' "/></a>';
+            return '<a href="#" role="button" onclick="return false;"><img src=" ' + targetImage + ' "></a>';
         },
         draggable: true,
         infinite: true,
