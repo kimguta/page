@@ -1,3 +1,4 @@
+<script src="https://kit.fontawesome.com/708e424f8f.js" crossorigin="anonymous"></script>
 
 <div  style="width:15%; position: relative;">
 	<canvas id="usersChart" width="1" height="1"></canvas>
