@@ -1,6 +1,4 @@
-
-
-$(window).on('load', function() {
+$(function() {
     var VisualOption = {
         autoplay: true,
         arrows: true,

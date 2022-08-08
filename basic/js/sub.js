@@ -1,4 +1,5 @@
 
+//서브공통 스크립트
 var ObjDoc = $(document);		
 
 ObjDoc.on({
@@ -50,11 +51,46 @@ ObjDoc.on({
 }, '#title-bx .share .view a:last');
 
 
-$(window).on('load', function() {
-	//로드 후 스크립트 (ex - slick)
+//콘텐츠 스크립트
+function contentScript(){
+	var TestOption = {
+		autoplay: false,	
+		arrows: true,
+		accessibility: false,
+		dots: false,
+		draggable: true,
+		infinite: true,
+		slidesToShow: 1,
+		swipeToSlide: true,
+		slidesToScroll: 1,
+		pauseOnHover: false,
+		speed: 500,
+	};
+	initSlick($('.test-slick .slick'), TestOption);
 
-	
+	$('.content1 .btn-test').on('click', function(e){
+		e.preventDefault();
+		alert('안녕하세요 디큐입니다!!')
+	});		
 
+	$('.boGalleryView .boGalleryView-view').slick({
+		autoplay: false,
+		arrows: true,
+		accessibility: false,
+		dots:true,
+		prevArrow: $('.boGalleryView .boGalleryView-btnPrev'),
+		nextArrow: $('.boGalleryView .boGalleryView-btnNext'),
+		draggable: true,
+		infinite: true,
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		pauseOnHover: false,
+		speed: 600,
+		adaptiveHeight: true,
+	});
+};
+
+$(function() {
+	contentScript();
 });
-
 
