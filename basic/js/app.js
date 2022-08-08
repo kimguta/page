@@ -52,8 +52,6 @@ ObjWin.on({
 	'resize load': function() { 
 		$('#header .depth-03').prev('h3').addClass('has-depth');
 		$('#header .depth-02').prev('h2').addClass('has-depth');
-		$('#header nav').append('<span class="bg_pc"></span>');
-		$('#header').after('<span id="mask"></span>');
 		if(ObjWin.width() > 1399){ 
 			$('#header').removeClass('mobile-mode');
 			$('#header').addClass('pc-mode');
@@ -95,6 +93,8 @@ ObjWin.on({
 .on({	
 
 	'load': function() { 
+		$('#header nav').append('<span class="bg_pc"></span>');
+		$('#header').after('<span id="mask"></span>');
 		$('a[role="button"]').on('keypress', function (key) {
 			if (key.keyCode == 32) {
 				$(this).trigger('click');
