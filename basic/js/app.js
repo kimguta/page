@@ -69,14 +69,6 @@ ObjWin.on({
 				$('.depth-02, .depth-03, #mask').stop().hide();
 			}
 		}, 300);
-	
-		var highestBox = 0;
-			$('#header .depth-02').each(function(){
-				if($(this).height() > highestBox){
-				highestBox = $(this).height() + 15;
-			}
-		});
-		$('.bg_pc').css('height',highestBox);
 	}
 })
 .on({
@@ -100,7 +92,14 @@ ObjWin.on({
 				$(this).trigger('click');
 				return false
 			}
-		});	
+		});		
+		var highestBox = 0;
+			$('#header .depth-02').each(function(){
+				if($(this).height() > highestBox){
+				highestBox = $(this).height() + 15;
+			}
+		});
+		$('.bg_pc').css('height',highestBox);
 	}
 });
 
