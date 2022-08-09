@@ -50,7 +50,6 @@ ObjWin.on({
 })
 .on({
 	'resize load': function() { 
-		$('#header .depth-03').prev('h3').addClass('has-depth');
 		$('#header .depth-02').prev('h2').addClass('has-depth');
 		if(ObjWin.width() > 1399){ 
 			$('#header').removeClass('mobile-mode');
@@ -61,14 +60,15 @@ ObjWin.on({
 			$('#header').addClass('mobile-mode');
 			$('.mobile-mode .active + .depth-02').show();
 		}
-	
-		clearTimeout(window.resizedFinished);
-		window.resizedFinished = setTimeout(function(){
-			var Wwidth2 = ObjWin.outerWidth();
-			if ( (Wwidth > 1399 && Wwidth2 < 1400) || (Wwidth < 1400 && Wwidth2 > 1399) ){
-				$('.depth-02, .depth-03, #mask').stop().hide();
-			}
-		}, 300);
+	}
+})
+.on({
+	'resize': function() { 
+		var Wwidth2 = $(window).outerWidth();
+		if (Wwidth2 > 1399){
+			$('#header h2').removeClass('active');
+			$('.depth-02, .bg_pc').stop().hide();
+		}
 	}
 })
 .on({
