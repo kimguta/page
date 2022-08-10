@@ -37,7 +37,7 @@ function initSlick(target, options) {
 $(function() {
 	var ObjWin = $(window);
 	var ObjDoc = $(document);	
-	var Wwidth = ObjWin.outerWidth();
+	// var Wwidth = ObjWin.outerWidth();
 	var currentPosition = parseInt($("#btn-side").css("top"));
 
 	ObjWin.on({
