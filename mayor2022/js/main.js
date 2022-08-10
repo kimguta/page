@@ -3,8 +3,11 @@ $(function() {
     //인트로
     $('.intro .btn-bx a').on('click', function(e){
 		e.preventDefault();
-		$('.intro').addClass('remove').remove();
+		$('.intro').addClass('remove');
 		$('#visual').addClass('active');
+		setTimeout(function(){
+			$('.intro').remove();
+		}, 1000);
 	});
 
 	$('.intro .slick').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
@@ -15,9 +18,12 @@ $(function() {
 		if(currentSlide == 1){
 			$('.intro .slick').slick('slickPause');
 			setTimeout(function(){
-				$('.intro').addClass('remove').remove();
+				$('.intro').addClass('remove');
 				$('#visual').addClass('active');
 			}, 5000);
+			setTimeout(function(){
+				$('.intro').remove();
+			}, 6000);
 		}
 	});
 	$('.intro .slick').slick({
