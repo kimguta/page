@@ -1,53 +1,21 @@
-<script src="https://kit.fontawesome.com/708e424f8f.js" crossorigin="anonymous"></script>
-
-<div  style="width:15%; position: relative;">
-	<canvas id="usersChart" width="1" height="1"></canvas>
-	<div class="chart-background"></div>
-		<span class="chart-unique-value" style="display:block;position:absolute;z-index:3;left:50%;top:50%;transform:translate(-50%,-50%);">
-				<span class="js-count">
-				85
-				</span>
-				<span class="cuv-percent">%</span>
-		</span>
-	</div>
-</div>
-
+height:100vh;height: calc(var(--vh, 1vh) * 100);
 
 <script>
-window.onload = function() {
-    new Chart(document.getElementById('usersChart'), {
-        type   : 'doughnut',
-        data   : {
-            datasets: [
-                {
-                    data           : [85, 15],
-                    backgroundColor: [
-                        '#e77099',
-                        'transparent',
-                    ],
-					hoverOffset:  0,
-                    borderWidth    : 0
-                }]
-        },
-        options: {
-            cutoutPercentage: 70,
-			responsive: true,
-			tooltips: {enabled: false},
-        	hover: {mode: null},
-        },
+
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
+
+    window.addEventListener("resize", () => {
+    console.log("resize");
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
     });
-};
+
 </script>
 
 
 
-git clone https://github.com/kimguta/trendpoll.git trendpoll
 
-<script src="https://kit.fontawesome.com/708e424f8f.js" crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous"></link>
-<div id="playerVideo1" class="mbYTPVideo inline_YTPlayer"
-						data-property="{videoURL:'sxAaomwryzU',containment:'#page-back', showControls:false, opacity:1, autoPlay:true, startAt:1061, stopAt:0, mute:true, vol:100, loop:true,optimizeDisplay: true, showYTLogo:false, stopMovieOnBlur: false, playOnlyIfVisible:false}">
-					</div>
 
 	/*
 	ObjGnb.on('mouseover focusin', '#header.pc-mode .depth_01 li', function () {
