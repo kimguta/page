@@ -36,7 +36,7 @@ function initSlick(target, options) {
 
 var ObjWin = $(window);
 var ObjDoc = $(document);	
-// var Wwidth = ObjWin.outerWidth();
+var Wwidth = ObjWin.outerWidth();
 
 ObjWin.on({
 	'scroll load': function() { 
@@ -64,7 +64,7 @@ ObjWin.on({
 .on({
 	'resize': function() { 
 		var Wwidth2 = $(window).outerWidth();
-		if (Wwidth2 > 1399){
+		if (Wwidth2 > 1399 && Wwidth < 1400){
 			$('#header h2').removeClass('active');
 			$('.depth-02, .bg_pc').stop().hide();
 		}

@@ -29,7 +29,7 @@ ObjWin.on({
 .on({
 	'resize': function() { 
 		var Wwidth2 = $(window).outerWidth();
-		if (Wwidth2 > 1399){
+		if (Wwidth2 > 1399 && Wwidth < 1400){
 			$('#header h2').removeClass('active');
 			$('.depth-02, .bg_pc').stop().hide();
 		}
