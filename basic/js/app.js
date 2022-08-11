@@ -37,7 +37,6 @@ function initSlick(target, options) {
 var ObjWin = $(window);
 var ObjDoc = $(document);	
 // var Wwidth = ObjWin.outerWidth();
-var currentPosition = parseInt($("#btn-side").css("top"));
 
 ObjWin.on({
 	'scroll load': function() { 
@@ -70,17 +69,6 @@ ObjWin.on({
 			$('.depth-02, .bg_pc').stop().hide();
 		}
 	}
-})
-.on({
-	'scroll': function() { 
-		var posY = ObjWin.scrollTop();
-		$("#btn-side").stop().animate({"top":posY+currentPosition+"px"},500);
-		if ( posY > 100 ){
-			$("#btn_top").addClass('active');
-		} else if(posY < 100) {
-			$("#btn_top").removeClass('active');
-		};
-	}	
 })
 .on({	
 	'load': function() { 
@@ -152,6 +140,19 @@ ObjDoc.on({
 }, '#btn_top');
 
 $(function() {
+	var currentPosition = parseInt($("#btn-side").css("top"));
+	ObjWin.on({
+		'scroll': function() { 
+			var posY = ObjWin.scrollTop();
+			$("#btn-side").stop().animate({"top":posY+currentPosition+"px"},500);
+			if ( posY > 100 ){
+				$("#btn_top").addClass('active');
+			} else if(posY < 100) {
+				$("#btn_top").removeClass('active');
+			};
+		}	
+	})
+
 	let vh = window.innerHeight * 0.01;
 	document.documentElement.style.setProperty("--vh", `${vh}px`);
 
