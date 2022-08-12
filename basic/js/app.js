@@ -18,6 +18,7 @@ function initSlick(target, options) {
 			var allSlide = '0' + allSlide
 		}
 		target.parent().find('.count').html( nowSlide + '<span>-</span>' + '<strong>'+ allSlide + '<strong>');
+		
 	});
 	target.slick(options);
 	ControlBtn.on('click', function (e) {
@@ -33,6 +34,16 @@ function initSlick(target, options) {
 	    }
 	});
 };
+
+// dots 커스텀 함수
+function imgPaging(slick,index){
+    var targetImage = slick.$slides.eq(index).find('img').attr('src');
+    return '<a href="#" role="button" onclick="return false;"><img src=" ' + targetImage + ' "></a>';
+}
+
+function imgNumber(slick,index){
+    return '<a href="#" role="button" onclick="return false;">' + (index + 1) + '</a>';
+}
 
 var ObjWin = $(window);
 var ObjDoc = $(document);	
@@ -137,7 +148,11 @@ ObjDoc.on({
 		e.preventDefault();
 		$('html, body').animate({scrollTop: 0}, 400);
 	}
-}, '#btn_top');
+}, '#btn_top')
+.on('click', '.family .open', function(e){
+	e.preventDefault();
+	$(this).toggleClass('active');
+});
 
 $(function() {
 	var currentPosition = parseInt($("#btn-side").css("top"));
