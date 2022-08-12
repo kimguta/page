@@ -59,5 +59,5 @@ $(function() {
         pauseOnHover: false,
         speed: 500,
 	});
-
+	$('.bg-visual').after('<img src="/page/mayor2022/images/main/visual1_2.jpg" alt="양양시내" class="bg-visual v2">');
 });
