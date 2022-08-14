@@ -137,17 +137,15 @@
 		includeLayout();
 		textChange();
 		$.ajax({
-        type: "GET",
-		dataType:"text",
-        url: "/page/basic/content/",
-		async: false,
-        success: function (data) {
-			var dataArr = data.split("\n");
-			for (var i = 0; i < dataArr.length; i++) {
-				$('.view').append('<p><a href="/page/basic/content/'+dataArr[i]+'">'+ dataArr[i] +'</a><button class="copy-html">HTML복사</button></p>');
-			}	
-        },
-      });	
+			url: "/page/basic/content/",
+			dataType:"text",
+			success: function (data) {
+				var dataArr = data.split("\n");
+				for (var i = 0; i < dataArr.length; i++) {
+					$('.puble-index .view').append('<p><a href="/page/basic/content/'+dataArr[i]+'">'+ dataArr[i] +'</a><button class="copy-html">HTML복사</button></p>');
+				}	
+			},
+      	});	
 	});
 
 	function includeLayout(){
