@@ -41,7 +41,6 @@ $(function() {
         autoplaySpeed: 5000,
 	});
 
-
 	$('#promise .slick').on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
 		$('#promise .count').html((currentSlide ? currentSlide : 0) + 1 + '<span> - </span>' + '<em>'+ slick.slideCount + '<em>');
 	});
@@ -59,5 +58,5 @@ $(function() {
         pauseOnHover: false,
         speed: 500,
 	});
-
+	$('.bg-visual').after('<img src="/page/mayor2022/images/main/visual1_2.jpg" alt="양양시내" class="bg-visual v2">');
 });

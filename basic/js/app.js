@@ -18,6 +18,7 @@ function initSlick(target, options) {
 			var allSlide = '0' + allSlide
 		}
 		target.parent().find('.count').html( nowSlide + '<span>-</span>' + '<strong>'+ allSlide + '<strong>');
+		
 	});
 	target.slick(options);
 	ControlBtn.on('click', function (e) {
@@ -34,10 +35,19 @@ function initSlick(target, options) {
 	});
 };
 
+// dots 커스텀 함수
+function imgPaging(slick,index){
+    var targetImage = slick.$slides.eq(index).find('img').attr('src');
+    return '<a href="#" role="button" onclick="return false;"><img src=" ' + targetImage + ' "></a>';
+}
+
+function imgNumber(slick,index){
+    return '<a href="#" role="button" onclick="return false;">' + (index + 1) + '</a>';
+}
+
 var ObjWin = $(window);
 var ObjDoc = $(document);	
-// var Wwidth = ObjWin.outerWidth();
-var currentPosition = parseInt($("#btn-side").css("top"));
+var Wwidth = ObjWin.outerWidth();
 
 ObjWin.on({
 	'scroll load': function() { 
@@ -65,22 +75,11 @@ ObjWin.on({
 .on({
 	'resize': function() { 
 		var Wwidth2 = $(window).outerWidth();
-		if (Wwidth2 > 1399){
+		if (Wwidth2 > 1399 && Wwidth < 1400){
 			$('#header h2').removeClass('active');
 			$('.depth-02, .bg_pc').stop().hide();
 		}
 	}
-})
-.on({
-	'scroll': function() { 
-		var posY = ObjWin.scrollTop();
-		$("#btn-side").stop().animate({"top":posY+currentPosition+"px"},500);
-		if ( posY > 100 ){
-			$("#btn_top").addClass('active');
-		} else if(posY < 100) {
-			$("#btn_top").removeClass('active');
-		};
-	}	
 })
 .on({	
 	'load': function() { 
@@ -149,9 +148,26 @@ ObjDoc.on({
 		e.preventDefault();
 		$('html, body').animate({scrollTop: 0}, 400);
 	}
-}, '#btn_top');
+}, '#btn_top')
+.on('click', '.family .open', function(e){
+	e.preventDefault();
+	$(this).toggleClass('active');
+});
 
 $(function() {
+	var currentPosition = parseInt($("#btn-side").css("top"));
+	ObjWin.on({
+		'scroll': function() { 
+			var posY = ObjWin.scrollTop();
+			$("#btn-side").stop().animate({"top":posY+currentPosition+"px"},500);
+			if ( posY > 100 ){
+				$("#btn_top").addClass('active');
+			} else if(posY < 100) {
+				$("#btn_top").removeClass('active');
+			};
+		}	
+	})
+
 	let vh = window.innerHeight * 0.01;
 	document.documentElement.style.setProperty("--vh", `${vh}px`);
 
