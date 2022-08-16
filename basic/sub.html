@@ -106,8 +106,6 @@
 			퍼블 콘텐츠 목록
 			<button onclick="$('.puble-index .view').hide();textChange();return false;">✕</button>
 		</strong>
-		<!--content 폴더에서 자동 리스트 완성 (깃허브 올릴 때  수동입력)-->
-		<!-- <p><a href="/page/basic/content/파일명">파일명</a> <button class="copy-html">HTML복사</button></p> -->
 	</div>
 </div>
 
@@ -139,15 +137,21 @@
 	$(function(){
 		includeLayout();
 		textChange();
-		
+		var pageUrl = $(location).attr('href');
 		$.ajax({	
 			url: "/page/basic/content/",
 			dataType:"text",
 			success: function (data) {
-				var dataArr = data.split("\n");
-				for (var i = 0; i < dataArr.length; i++) {
-					$('.puble-index .view').append('<p><a href="/page/basic/content/'+dataArr[i]+'">'+ dataArr[i] +'</a><button class="copy-html">HTML복사</button></p>');
-				}	
+				if (pageUrl.match("github")){
+					//깃허브 올릴 때  수동입력
+					$('.puble-index .view').append('<p><a href="/page/basic/content/ui.html">ui.html</a><button class="copy-html">HTML복사</button></p><p><a href="/page/basic/content/콘텐츠1.html">콘텐츠1.html</a><button class="copy-html">HTML복사</button></p><p><a href="/page/basic/content/"></a><button class="copy-html">HTML복사</button></p>');
+				}
+				else{
+					var dataArr = data.split("\n");
+					for (var i = 0; i < dataArr.length; i++) {
+						$('.puble-index .view').append('<p><a href="/page/basic/content/'+dataArr[i]+'">'+ dataArr[i] +'</a><button class="copy-html">HTML복사</button></p>');
+					}
+				}
 			},
       	});
 	});
