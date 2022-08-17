@@ -12,6 +12,7 @@ $(function() {
         $('#visual .slick-current').addClass('slick-zoom');
     });
 
+ 
     $('#visual .slick').on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
         var i = (currentSlide ? currentSlide : 0) + 1;
         var i2 = slick.slideCount
@@ -53,6 +54,12 @@ $(function() {
             $('#visual .slick').slick('slickPlay');
         }
     });
+
+    var lengthSlick = $('#visual .slick-slide').length;
+
+    if(lengthSlick == 1){
+        $('#visual .control').hide();
+    }
 
 
     $('#together .slick').slick({
