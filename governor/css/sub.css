@@ -34,7 +34,7 @@
 #visual-bx{position:relative;height:328px;z-index:10}
 #visual-bx img.bg-img{display:block;position:relative;width:1920px;left:50%;margin-left:-960px;image-rendering:-webkit-optimize-contrast;}
 #visual-bx img.bg-txt{position:absolute;top:50%;left:50%;image-rendering:-webkit-optimize-contrast;margin:-75px 0 0 -293.5px}
-#breadcrumb{position:absolute;z-index:50;right:0;bottom:-1px;background:#fff;}
+#breadcrumb{position:absolute;z-index:50;right:0;bottom: -2px;background:#fff;}
 #breadcrumb .bx{position:relative;z-index:5;}
 #breadcrumb .bx .home{display: flex;width:90px;height:85px;align-items:center;justify-content:center;font-size:0;position: relative;top:0;left:0px;z-index:15;float: left;}
 #breadcrumb .bx .home:after{content:'';background:url(/page/governor/images/sub/home_but.png) no-repeat center center /cover;width:24px;height:21px;image-rendering:-webkit-optimize-contrast;z-index:10;}
@@ -50,6 +50,7 @@
 #breadcrumb .bx .box ul a:hover{color:#df3128;}
 
 #title-bx{font-size:30px;color:#000;font-weight: 700;line-height:1.2;padding:70px 0 10px;text-align:center;margin-bottom:50px;}
+#title-bx h3{font-weight:700;}
 #title-bx .btn_box{z-index:10;margin-top:20px;}
 #title-bx .btn_box .share{display:inline-block;vertical-align:top;position:relative;}
 #title-bx .btn_box .share .open{display:block;width:40px;height:40px;font-size:0;transition:all .1s;background:url(/page/governor/images/common/sp_sports.png) -4px -46px no-repeat;background-size:520px 520px;}
@@ -92,11 +93,11 @@
 }
 
 @media (max-width:760px) {
-  #visual-bx{height:222px;}
-  #visual-bx img.bg-img{width:1300px;margin-left:-550px;}
-  #visual-bx img.bg-txt{margin:-50px 0 0 -175.5px;width:351px;}
-  #title-bx{font-size:22px;padding:35px 0 0px;margin-bottom:12px;}
-  #title-bx .btn_box{transform:scale(.8);margin-top:12px;}
+  #visual-bx{height: 210px;}
+  #visual-bx img.bg-img{width: 1236px;margin-left: -619px;}
+  #visual-bx img.bg-txt{margin: -56px 0 0 -175.5px;width: 341px;}
+  #title-bx{font-size: 23px;padding:35px 0 0px;margin-bottom: 15px;}
+  #title-bx .btn_box{transform: scale(.85);margin-top: 14px;}
 
   #breadcrumb .bx{display:flex;}
   #breadcrumb .bx .home{width:45px;height:45px;}
@@ -210,61 +211,81 @@ span.listLv:before,
 
 
 
-.greeting_area{position:relative;overflow:hidden}
-.greeting_area .img_box{position:absolute;top: 27px;right:0px;width:43%;}
+.greeting_area{position:relative;overflow:hidden;padding-bottom: 20px;}
+.greeting_area .img_box{position:absolute;top: 5px;right:0px;width:43%;padding: 35px 20px 20px;border: 1px solid #d7d7d7;box-sizing: border-box;text-align: center;max-width: 536px;}
 .greeting_area .img_box img{width:100%;max-width:100% !important;}
-
 .greeting_area .img_box .mobile_mayor{display:none;} 
 .greeting_area .title{background:none !important;font-size:30px !important;font-weight:300;color:#000;line-height:1.2;letter-spacing:-1px;padding-left:0px !important;}
-.greeting_area .text_box{margin-top:28px;width:55%;; word-break: keep-all;}
-.greeting_area .text_box .tit_txt{font-weight: 600;line-height: 1.3;color: #1c64c6;font-size: 34px;padding: 0 0 20px;display: block;}
+.greeting_area .text_box{width: 54%;word-break: keep-all;}
+.greeting_area .text_box .tit_txt{font-weight: 600;line-height: 1.3;color: #1c64c6;font-size: 34px;padding: 0 0 20px;display: block;word-break:keep-all;}
 .greeting_area .text_box p{font-weight:300;color:#000;line-height:1.6;letter-spacing:-1px;}
 .greeting_area .text_box p + p{margin-top:28px;}
 
-.sns-bx{padding-top:15px;text-align:center;}
+.sns-bx{padding-top:15px;text-align:center;white-space:nowrap;}
 .sns-bx a{display:inline-block;width:35px;}
 .sns-bx a img{image-rendering: -webkit-optimize-contrast;display:block;width:100%;transition:all .25s;}
 .sns-bx a:hover img{filter:grayscale(1);}
 .sns-bx a + a{margin-left:10px;}
 
+@media (max-width: 1399px){
+	.sns-bx{padding-top:12px;}
+  .sns-bx a{width:32px;}
+  .sns-bx a + a{margin-left:5px;}
+  .greeting_area .text_box .tit_txt{font-size:28px;padding-bottom: 10px;}
+  .greeting_area .text_box p{font-size:15px;}
 
-@media screen and (max-width: 639px){
-	.greeting_area .img_box{position:relative;top:inherit;right:inherit;margin-bottom:25px;width:100%;}
+}
+
+@media (max-width: 760px){
+	.greeting_area .img_box{position:relative;top:inherit;right:inherit;margin:0 auto 25px;width:100%;max-width: 450px;padding:25px 15px 13px;}
 	.greeting_area .img_box .mobile_mayor{display:block;} 
 	.greeting_area .img_box .pc_mayor{display:none;}
 	.greeting_area .text_box{width:100%}
-
+  .sns-bx{padding-top:13px;}
+  .sns-bx a{width:30px;}
+  .sns-bx a + a{margin-left:5px;}
+  .greeting_area .text_box .tit_txt{font-size:22px;padding-bottom:0px;}
+  .greeting_area .text_box p{font-size:14px;}
 }
 
 /*6.30 도지사 변경*/
-.kim-sign{border-bottom:1px solid #b2b2b2;margin-bottom:10px;}
-.kim-sign img{display:block;max-width:100%;image-rendering:-webkit-optimize-contrast;}
+.kim-sign{margin-bottom: 30px;margin-left:80px;}
+.kim-sign img{display:block;max-width:100%;border-bottom: 1px solid #b2b2b2;image-rendering: -webkit-optimize-contrast;}
 
-@media screen and (max-width: 639px){
-	.kim-sign{margin:0px 0 25px;}
+@media (max-width: 1399px){
+	.kim-sign{width:600px;margin-bottom: 25px;margin-left:0px;}
 }
 
-.new-profile{position:relative;padding-bottom:240px;}
-.new-profile .goverkim{position:absolute;right:-50px;bottom:35px;}
+@media (max-width: 991px){
+	.kim-sign{width:550px;}
+}
+
+@media (max-width: 760px){
+	.kim-sign{margin:0px 0 20px;width:500px}
+  .kim-sign img{border:0}
+}
+
+.new-profile{position:relative;padding-bottom: 140px;padding-left:80px;}
+.new-profile .goverkim{position:absolute;right:-50px;bottom: -70px;}
 .new-profile .bx{position:relative;display:flex;align-items:flex-start;}
 .new-profile .bx + .bx{margin-top:35px;}
 .new-profile .bx h5{position:relative;margin-right:105px;width:129px;}
 .new-profile .bx h5:before{content:'';display:block;height:1px;width:85px;background:#455db3;position:absolute;top:50%;right:-85px}
 .new-profile .bx h5 img{width:100%;image-rendering:-webkit-optimize-contrast;position:relative;}
 .new-profile .bx div{padding-top:55px;}
-.new-profile .bx div p{line-height:1.3;font-weight:300;color:#4a505c;}
+.new-profile .bx div p{line-height:1.3;font-weight: 400;color:#4a505c;}
 .new-profile .bx div p + p{margin-top:8px;}
-.new-profile .bx div p strong{font-weight:500;display:inline-block;padding-right:8px;}
+.new-profile .bx div p strong{font-weight: 700;display:inline-block;padding-right:8px;}
 .new-profile .bx div p strong:before{content:'';display:inline-block;width:5px;height:5px;border-radius:50%;background:#4a505c;vertical-align:middle;margin:-1px 4px 0 0;}
 
 
-@media (max-width: 1024px){
-	.new-profile{padding-bottom:200px;}
-	.new-profile .goverkim{right:-80px;bottom:35px;width:380px}
+@media (max-width: 1399px){
+	.new-profile{padding-bottom:120px;padding-left:0px;}
+	.new-profile .goverkim{right: -40px;bottom: -47px;width: 430px;}
 	.new-profile .bx + .bx{margin-top:30px;}
-	.new-profile .bx h5{margin-right:65px;width:119px;}
+	.new-profile .bx h5{margin-right:65px;width:110px;}
 	.new-profile .bx h5:before{width:45px;right:-45px}
-	.new-profile .bx div{padding-top:52px;}
+	.new-profile .bx div{padding-top: 47px;}
 	.new-profile .bx div p{font-size:15px;text-shadow: -1px 0px #fff, 0px 1px #fff, 1px 0px #fff, 0px -1px #fff;}
 	.new-profile .bx div p + p{margin-top:7px;}
 	.new-profile .bx div p strong{padding-right:5px;}
@@ -272,29 +293,40 @@ span.listLv:before,
 }
 
 
+@media (max-width: 991px){
+	.new-profile{padding-bottom:120px;}
+	.new-profile .goverkim{right: -80px;bottom: -47px;width: 390px;}
+	.new-profile .bx + .bx{margin-top:25px;}
+	.new-profile .bx h5{margin-right:55px;width:105px;}
+	.new-profile .bx h5:before{width:45px;right:-45px}
+	.new-profile .bx div{padding-top:45px;}
+}
+
 @media (max-width: 760px){
-	.new-profile{padding-bottom:20px;}
-	.new-profile .goverkim{right:-70px;bottom:30px;width:300px;}
+	.new-profile{padding-bottom:50px;}
+	.new-profile .goverkim{right:-80px;bottom:-40px;width:300px;}
 	.new-profile .bx{display:block;}
 	.new-profile .bx + .bx{margin-top:30px;}
-	.new-profile .bx h5{margin-right:0px;width:89px;}
+	.new-profile .bx h5{margin-right:0px;width:77px;}
 	.new-profile .bx h5:before{width:1px;height:15px;right:50%;bottom:-10px;top:auto;}
 	.new-profile .bx div{padding-top:20px;}
+  .new-profile .bx div p{font-size:14px;}
 }
 
 .new-step{position:relative;display:flex;flex-wrap:wrap;}
 .new-step article{flex:1 50%;display:flex;margin-bottom:65px;flex-direction:column;}
 .new-step article h4{padding:0 0 12px 0;margin-bottom:20px;position:relative;color:#006bb7;font-size:34px;margin-top:27px;line-height:1.2;font-weight:700;}
 .new-step article h4:after{content:'';display:block;width:25px;height:2px;background:#006bb7;position:absolute;bottom:0;left:0;}
+.new-step article img{width:100%;}
 .new-step article p{color:#000;line-height:1.5;word-break:keep-all;}
 .new-step article:nth-child(2n) img{order:3;margin-top:25px;}
 .new-step article:nth-child(2n) h4{text-align:right;margin-top:0;}
 .new-step article:nth-child(2n) h4:after{right:0;left:auto;}
 .new-step article:nth-child(2n) p{text-align:right;}
 
-@media (max-width: 1024px){
+@media (max-width: 1399px){
 	.new-step article{margin-bottom:50px;}
-	.new-step article h4{padding:0 0 9px 0;margin-bottom:13px;font-size:30px;margin-top:22px;}
+	.new-step article h4{padding:0 0 9px 0;margin-bottom:13px;font-size:28px;margin-top:22px;}
 	.new-step article h4:after{width:20px;height:1px;}
 	.new-step article p{font-size:15px;}
 	.new-step article p br{display:none;}
@@ -302,33 +334,42 @@ span.listLv:before,
 }
 
 
+@media (max-width: 991px){
+	.new-step article{margin-bottom:45px;}
+	.new-step article h4{padding:0 0 9px 0;margin-bottom:13px;font-size:26px;margin-top:22px;}
+	.new-step article h4:after{width:20px;height:1px;}
+	.new-step article:nth-child(2n) img{margin-top:20px;}
+  .new-step article p{font-size:14px;}
+}
+
+
 @media (max-width: 760px){
 	.new-step{display:block;}
 	.new-step article{margin-bottom:35px;display:block;}
 	.new-step article img{display:block;margin:0 auto;}
-	.new-step article h4{padding:0 0 8px 0;margin-bottom:11px;font-size:24px;margin-top:20px;}
+	.new-step article h4{padding:0 0 8px 0;margin-bottom:11px;font-size:22px;margin-top:20px;}
 	.new-step article h4:after{width:20px;height:1px;}
-	.new-step article p{font-size:14px;}
 	.new-step article:nth-child(2n) img{margin-top:0px;}
 	.new-step article:nth-child(2n) h4{margin-top:20px;}
 }
 
 /*도지사 일정*/
 .calendar_area{overflow:hidden}
-.calendar_area .calendar_box{position:relative;overflow:hidden;padding:10px;background:url(/site/portal_new/images/conts/bg_calendar.png) repeat 0 0;}
+.calendar_area caption{font-size:0;width:0;height:0}
+.calendar_area .calendar_box{position:relative;overflow:hidden;padding:10px;background:url(/page/governor/images/sub/bg_calendar.png) repeat 0 0;margin-bottom: 50px;}
 .calendar_area .calendar_box .inner{background:#fff;padding:0 30px 9px;}
 .calendar_area .calendar_box .day_box{height:93px;text-align:center;position:relative}
-.calendar_area .calendar_box .day_box .day_month{font-size:22px;color:#000;font-weight:500;padding-top:28px;display:inline-block;}
-.calendar_area .calendar_box .day_box a{position:absolute;top:31px;display:block;}
+.calendar_area .calendar_box .day_box .day_month{font-size:22px;color:#000;font-weight: 700;padding-top:28px;display:inline-block;}
+.calendar_area .calendar_box .day_box a{position:absolute;top:31px;display:block;width:18px;}
 .calendar_area .calendar_box .day_box a.prev{left:0px;}
 .calendar_area .calendar_box .day_box a.next{right:0px;}
+.calendar_area .calendar_box .day_box a img{display:block;width:100%}
 .calendar_area .calendar_box .days{width:100%;}
-.calendar_area .calendar_box .days table{width:100%;}
+.calendar_area .calendar_box .days table{width:100%;text-align: center;}
 .calendar_area .calendar_box .days table .text_red{color:#c50000;}
 .calendar_area .calendar_box .days table .text_blue{color:#2e3e94;}
 .calendar_area .calendar_box .days table thead tr{height:52px;background:#e0f4ff;border-top:1px solid #bfd3de;border-bottom:1px solid #d8d8d8;font-size:18px;font-weight:500;color:#000;}
-.calendar_area .calendar_box .days table tbody td{font-size:18px;color:#000;height:71px;width:calc(100% / 7);letter-spacing:-1px;}
-@media screen and (min-width:0){.calendar_area .calendar_box .days table tbody td{width:123px;}}
+.calendar_area .calendar_box .days table tbody td{font-size:18px;color:#000;height: 85px;width:calc(100% / 7);letter-spacing:-1px;}
 .calendar_area .calendar_box .days table tbody td.text_red a{color:#c50000}
 .calendar_area .calendar_box .days table tbody td.sch_day span:before{content:'[선택됨] ';font-size:0;} 
 .calendar_area .calendar_box .days table tbody td.sch_day span{display:inline-block;width:60px;height:60px;background:#e3e3e3;border-radius:50%;color:#4153b9;padding-top:17px;font-weight:500}
@@ -337,28 +378,48 @@ span.listLv:before,
 .calendar_area .calendar_box .days table tbody td .schedule_list{display:none;}
 
 .calendar_area .calendar_info{padding-top:8px;}
-.calendar_area .calendar_info .date{font-weight:300;color:#333;text-align:right;}
+.calendar_area .calendar_info .date{font-weight:400;color:#333;text-align:right;padding-bottom: 7px;}
 .calendar_area .calendar_info .schedule_box + .schedule_box{margin-top:40px;}
 .calendar_area .calendar_info .schedule_box.day{border-bottom:1px solid #aaa;padding-bottom:42px;}
-
-.calendar_area .calendar_info .schedule_box .title{border-top:1px solid #000;background:#f7f7f7;padding:12px 20px 12px;}
-.calendar_area .calendar_info .schedule_box .title p{padding-left:20px;font-weight:500;color:#000;background: url(/site/portal_new/images/common/bul_st_01.gif) no-repeat 0px 6px;}
-.calendar_area .calendar_info .schedule_box .title p + p{margin-top:3px;}
-.calendar_area .calendar_info .schedule_box .list{padding:17px 32px;border:1px solid #e2e2e2;}
-.calendar_area .calendar_info .schedule_box .list li{font-weight:100;color:#010000;padding-left:11px;position:relative;}
-.calendar_area .calendar_info .schedule_box .list li:before{content:'';display:block;width:3px;height:3px;border-radius:50%;background:#0a0a0a;position:absolute;top:11px;left:0px;}
+.calendar_area .calendar_info .schedule_box + h5{margin-top:50px;}
+.calendar_area .calendar_info .schedule_box .title{border-top:1px solid #000;background:#f7f7f7;padding: 15px 20px 15px;}
+.calendar_area .calendar_info .schedule_box .title p{padding-left: 10px;font-weight: 700;color:#000;}
+.calendar_area .calendar_info .schedule_box .title p + p{margin-top: 5px;}
+.calendar_area .calendar_info .schedule_box .list{padding:17px 32px;border:1px solid #e2e2e2;border-width: 1px 0;}
+.calendar_area .calendar_info .schedule_box .list li{font-weight:100;color:#010000;padding-left:11px;position:relative;line-height: 1.6;font-size: 15px;word-break:keep-all;}
+.calendar_area .calendar_info .schedule_box .list li:before{content:'';display:block;width:3px;height:3px;border-radius:50%;background:#0a0a0a;position:absolute;top: 11px;left:0px;}
 .calendar_area .calendar_info .schedule_box .list li + li{margin-top:3px;}
 
 
+@media screen and (max-width: 1399px){
+  .calendar_area .calendar_box{margin-bottom: 35px;}
+  .calendar_area .calendar_box .inner{padding:0 20px 9px;}
+  .calendar_area .calendar_box .day_box{height:85px;}
+  .calendar_area .calendar_box .day_box .day_month{font-size:220x}
+  .calendar_area .calendar_box .day_box a{width:16px;}
+
+  .calendar_area .calendar_box .days table thead tr{font-size:16px;}
+  .calendar_area .calendar_box .days table tbody td{font-size:16px;;height: 80px;}
+  .calendar_area .calendar_box .days table tbody td.sch_day span:before{content:'[선택됨] ';font-size:0;} 
+  .calendar_area .calendar_box .days table tbody td.today span{width:45px;height:45px;padding-top:12px;}
+
+  .calendar_area .calendar_info{padding-top:8px;}
+  .calendar_area .calendar_info .schedule_box + .schedule_box{margin-top:30px;}
+  .calendar_area .calendar_info .schedule_box + h5{margin-top:35px;}
+  .calendar_area .calendar_info .date{padding-bottom:5px;margin-top:-5px;font-size:14px;}
+}
+
+
+
 @media screen and (max-width: 760px){
-	.calendar_area .calendar_box{background:none;padding:0;}
-	.calendar_area .calendar_box .inner{padding:0;}
-	.calendar_area .calendar_box .day_box{height:69px;background:#dcf3ff;}
-	.calendar_area .calendar_box .day_box .day_month{font-size:20px;padding-top:22px;}
-	.calendar_area .calendar_box .day_box a{top:21px;}
-	.calendar_area .calendar_box .day_box a.prev{left:19px;}
-	.calendar_area .calendar_box .day_box a.next{right:19px;}
-	.calendar_area .calendar_box .days{height:309px;overflow-y:auto;border:1px solid #e3e3e3;}
+  .calendar_area .calendar_box{margin-bottom:30px;padding:3px;background-size:3px 3px;}
+  #sub .calendar_area .calendar_box .inner{padding:0px;}
+	.calendar_area .calendar_box .day_box{height:46px;background:#dcf3ff;}
+	.calendar_area .calendar_box .day_box .day_month{font-size:18px;padding-top:12px;}
+	.calendar_area .calendar_box .day_box a{top:50%;margin-top:-11px;width:14px;}
+	.calendar_area .calendar_box .day_box a.prev{left:15px;}
+	.calendar_area .calendar_box .day_box a.next{right:15px;}
+	.calendar_area .calendar_box .days{height:280px;overflow-y:auto;border:1px solid #e3e3e3;scroll-behavior:smooth;}
 	.calendar_area .calendar_box .days table, 
 	.calendar_area .calendar_box .days table tbody, 
 	.calendar_area .calendar_box .days table tbody tr,
@@ -375,6 +436,10 @@ span.listLv:before,
 	.calendar_area .calendar_box .days table tbody td .schedule_list li{color:#010000;font-weight:100;padding-left:13px;position:relative;white-space:normal;}
 	.calendar_area .calendar_box .days table tbody td .schedule_list li:before{content:'';display:block;width:3px;height:3px;border-radius:50%;background:#0a0a0a;position:absolute;top:11px;left:0px;}
 	.calendar_area .calendar_box .days table tbody td .schedule_list li + li{margin-top:2px;}
-	.calendar_area .calendar_info .date{font-size:14px;text-align:left;padding-left:15px;margin:-6px 0 16px;}
 	.calendar_area .calendar_info .schedule_box + .schedule_box{margin-top:20px;}
+  .calendar_area .calendar_info .schedule_box .title{padding: 10px 10px 10px;font-size:15px;}
+  .calendar_area .calendar_info .schedule_box .list{padding:12px 15px;}
+  .calendar_area .calendar_info .schedule_box .list li{font-size:14px;padding-left:9px;}
+  .calendar_area .calendar_info .schedule_box .list li:before{top:9px;}
+  .calendar_area .calendar_info .date{padding-bottom:5px;margin-top:-7px;font-size:13px;}
 }
