@@ -775,12 +775,12 @@ $(function(){
 	});
 
 	var tabH = $('.pageTab-sub').height() + 20;
-	$('.pageTab').css('padding-bottom',tabH);
+	$('.pageTab-sub').parents('.pageTab').css('padding-bottom',tabH).addClass('has');
 	$('.pageTab-sub').parents('.pageTab').addClass('has');
 
 	$(window).on('resize', function() {
 		var tabH = $('.pageTab-sub').height() + 20;
-		$('.pageTab').css('padding-bottom',tabH);
+		$('.pageTab-sub').parents('.pageTab').css('padding-bottom',tabH);
 	});
 
 	$('.pageTab-sub > li.active > a').on('click', function () {
