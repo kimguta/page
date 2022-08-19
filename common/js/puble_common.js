@@ -411,79 +411,6 @@ function p_tab(opts){
 }
 
 
-// 슬라이더 함수
-function p_sldr(opts){
-	var $T = $(opts.seTarget);
-	var $View = $T.find(opts.seView);
-	if($View.length == 0){return;}
-	var objSlider = $View.bxSlider({
-			pager: opts.pager,
-			controls: opts.controls,
-			auto: opts.auto,
-			autoStart: opts.autoStart,
-			pause: opts.pause,
-			speed: opts.speed,
-			mode: opts.mode,
-			useCSS: opts.useCSS,
-			autoDelay: opts.autoDelay,
-			slideSelector: opts.slideSelector,
-			onSliderLoad: opts.onSliderLoad,
-			onSlideAfter: opts.onSlideAfter,
-			onSlideBefore: opts.onSlideBefore,
-			touchEnabled: opts.touchEnabled,
-			autoHover: opts.autoHover,
-			slideWidth: opts.slideWidth,
-			minSlides: opts.minSlides,
-			maxSlides: opts.maxSlides,
-			moveSlides: opts.moveSlides,
-			preventDefaultSwipeX: opts.preventDefaultSwipeX,
-			preventDefaultSwipeX: opts.preventDefaultSwipeY,
-			swipeThreshold : opts.swipeThreshold
-		});
-	if(opts.reload){
-		opts.reload(objSlider);
-		$(window).resize(function(){
-			opts.reload(objSlider);
-		});
-	}
-	
-	if(opts.seBtnPrev){
-		$T.find(opts.seBtnPrev).click(function(){
-			if($(this).data().notUse){
-				return;
-			}
-			objSlider.goToPrevSlide();
-			objSlider.stopAuto();
-			return false;
-		});
-	}
-	if(opts.seBtnNext){
-		$T.find(opts.seBtnNext).click(function(){
-			if($(this).data().notUse){
-				return;
-			}
-			objSlider.goToNextSlide();
-			objSlider.stopAuto();
-			return false;
-		});
-	}
-	if(opts.seBtnStop){
-		$T.find(opts.seBtnStop).click(function(){
-			$(this).hide();
-			$T.find(opts.seBtnPlay).show();
-			objSlider.stopAuto();
-		});
-	}
-	if(opts.seBtnPlay){
-		$T.find(opts.seBtnPlay).click(function(){
-			$(this).hide();
-			$T.find(opts.seBtnStop).show();
-			objSlider.startAuto();
-		});
-	}
-}
-
-
 // 팝업 레이어 정의
 function p_popLayer(opts){
 	/*
@@ -847,10 +774,13 @@ $(function(){
 		return false;
 	});
 
-	$( window ).on( 'resize load', function( ) {
+	var tabH = $('.pageTab-sub').height() + 20;
+	$('.pageTab').css('padding-bottom',tabH);
+	$('.pageTab-sub').parents('.pageTab').addClass('has');
+
+	$(window).on('resize', function() {
 		var tabH = $('.pageTab-sub').height() + 20;
 		$('.pageTab').css('padding-bottom',tabH);
-		$('.pageTab-sub').parents('.pageTab').addClass('has');
 	});
 
 	$('.pageTab-sub > li.active > a').on('click', function () {
@@ -903,4 +833,5 @@ $(function(){
 		speed: 600,
 		adaptiveHeight: true,
 	});
+
 });

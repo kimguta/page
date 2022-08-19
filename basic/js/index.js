@@ -19,9 +19,7 @@ $(function() {
     };
     
     initSlick($('.visual-slick .slick'), VisualOption);      
-    initSlick($('.visual-slick2 .slick'), VisualOption2);
-    
-    
+    initSlick($('.visual-slick2 .slick'), VisualOption2);    
 });
 
 
@@ -40,5 +38,8 @@ var VisualOption2 = {
     speed: 500,
     autoplaySpeed: 1500,
 };
+
+
+
 
 

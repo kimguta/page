@@ -2,11 +2,9 @@
  * 공통 스크립트
  */
 $(document).ready(function() {
-
 	$('.skinTb-wrapper').on('scroll', function () {
 		$(this).addClass('scroll');
 	});
-
 	$('.skinTb.width320').parent().addClass('width320');
 	$('.skinTb.width400').parent().addClass('width400');
 	$('.skinTb.width640').parent().addClass('width640');
@@ -24,12 +22,12 @@ function setPopup(popupList) {
 			var type		= popupList[i].type;
 			var url			= popupList[i].url;
 			var popWindowType = popupList[i].popWindowType;
-			
+
 			if (top == 0 && left == 0) {
 				top	= (screen.height - height) / 2;
 				left = (screen.width	- width)	/ 2;
 			}
-			height = height + 33;
+			height = height + 36;
 			
 			// 윈도우 팝업
 			if (popWindowType == 'Y') {
@@ -37,8 +35,9 @@ function setPopup(popupList) {
 			}
 			// 레이어 팝업
 			else if (popWindowType == 'N') {
-				var style = 'position: absolute; top: ' + top + 'px; left : ' + left + 'px; width : ' + width + 'px; height : ' + height + 'px; z-index: 99999;'
-				$('body').append('<iframe src="/egf/bp/popup/article/view.do?popItemSeq=' + popupList[i].popItemSeq +'" style="' + style + '" id="popup_frame_' + popupList[i].popItemSeq + '" title="' + title + '"></iframe>');
+				var style = 'position: absolute; top: ' + top + 'px; left : ' + left + 'px; z-index: 99999; width : ' + width + 'px; height : ' + height + 'px; background-color: white;';
+				var popup = $('<iframe src="/egf/bp/popup/article/view.do?popItemSeq=' + popupList[i].popItemSeq +'" style="' + style + '" id="popup_frame_' + popupList[i].popItemSeq + '" title="' + title + '"></iframe>');
+				$('body').append(popup);
 			}
 		}
 	}
