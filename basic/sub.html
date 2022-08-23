@@ -168,10 +168,14 @@
 <div class="puble-index">
 	<a href="#" class="close" onclick="$('.puble-index').remove();return false;">✕</a>
 	<a href="#" class="btn sub upload"></a>
+	<div class="pre-view">
+		<iframe id="preview-pc" src="/page/basic/sub.html"></iframe>
+		<iframe id="preview-mobile" src="/page/basic/sub.html"></iframe>
+	</div>
 	<div class="view">
 		<strong>
 			퍼블 콘텐츠 목록
-			<button onclick="$('.puble-index .view').hide();textChange();return false;">✕</button>
+			<button onclick="$('.puble-index .view').hide();textChange();$('.pre-view').css('display','none');return false;">✕</button>
 		</strong>
 	</div>
 </div>
@@ -180,22 +184,27 @@
 <style>
 .puble-index{position:fixed;z-index:2500;left:0;bottom:0;display:flex;flex-direction:column;align-items:flex-start;}
 .puble-index .btn{background:#111;border:1px solid #fff;z-index:10;;border-width:1px 1px 0px 0px;display:block;text-align:center;font-size:13px;line-height:1.3;padding:0px 10px;color:#fff;height:40px;line-height:40px;position:relative;z-index:2;}
-.puble-index .view{position:fixed;box-shadow:0px 0px 10px 0px rgba(0,0,0,.2);width:90vw;max-width:500px;max-height:500px;left:50%;top:50%;overflow:auto;background:#111;padding:15px;display:none;transform:translate(-50%,-50%);}
+.puble-index .view{position:fixed;box-shadow:0px 0px 10px 0px rgba(0,0,0,.2);border:1px solid #fff;width:100%;max-width:500px;max-height:500px;right:0;top:0;overflow:auto;background:#111;padding:15px;display:none;}
 .puble-index .view p{display:flex;padding:5px 0;align-items:center;border-top:1px solid rgba(255,255,255,.3)}
 .puble-index .view p:last-child{display:none;}
-.puble-index .view a{flex:1;text-align:left;font-size:13px;color:#fff;height:26px;line-height:26px;}
+.puble-index .view a{flex:1;text-align:left;font-size:13px;color:#fff;height:26px;line-height:26px;display:flex;}
 .puble-index .view a:before{content:'-';padding-right:6px;}
 .puble-index .view a:after{content:'➜';padding-left:6px;}
 .puble-index .view strong{display:flex;font-size:15px;padding-bottom:8px;color:#fff;justify-content:space-between;}
 .puble-index .view strong em{display:inline-block;font-size:12px;font-weight:300;}
-.puble-index .view .copy-html{width:60px;text-align:center;background:red;color:#fff;font-size:10px;height:26px;line-height:24px;}
+.puble-index .view .copy-html{width:67px;text-align:center;background:red;color:#fff;font-size:12px;height:26px;line-height:24px;}
 .puble-index .close{display:flex;background:#111;color:#fff;justify-content:center;align-items:center;width:22px;height:22px;border:1px solid #fff;margin-bottom:-1px;font-size:13px;}
+.puble-index .pre-view{transform:translateY(-50%) scale(.63);position:fixed;left:20px;top:50%;display:flex;align-items:flex-start;display:none;z-index:-1;transform-origin:0% 50%;}
+.puble-index .pre-view:before{content:'';display:block;position:fixed;background:rgba(0,0,0,.3);top:0;left:0;right:0;bottom:0;z-index:-1;transform:scale(2);}
+#preview-pc{width:1600px;height:938px;background:#fff;box-shadow:0px 0px 15px 0px rgba(0,0,0,.2);border:8px solid #111}
+#preview-mobile{width:414px;height:736px;background:#fff;margin-left:130px;transform:scale(1.275);transform-origin:100% 0%;box-shadow:0px 0px 15px 0px rgba(0,0,0,.2);border:6px solid #111}
+html.view-mode::-webkit-scrollbar{display:none;}
+html.view-mode .puble-index{display:none !important}
 
-
-@media (max-width:1199px) {
+@media (max-width:1399px) {
 	.puble-index .btn{font-size:13px;padding:0px 5px;color:#fff;height:34px;line-height:34px;}
-	.puble-index .view{border-right:0;}
 	.puble-index .close{width:18px;height:18px;margin-bottom:-1px;font-size:10px;}
+	.puble-index .pre-view{display:none !important}
 }
 </style>
 
@@ -224,7 +233,7 @@
 					}
 				},
 			});
-		}
+		};
 	});
 
 	function includeLayout(){
@@ -260,11 +269,12 @@
 	.on({
 		'click': function(e) { 
 			e.preventDefault();
+			$(".pre-view").css('display','none');
 			var contUrl = $(this).attr('href');
 			$('.contsArea').attr('include-html', contUrl);
 			includeLayout();
-			// $('.puble-index .view').hide();
-			// textChange();
+			$('.puble-index .view').hide();
+			textChange();
 		}
 	}, '.puble-index .view a')
 	.on({
@@ -283,7 +293,18 @@
                 }
             });
 		}
-	}, '.puble-index .view .copy-html');
+	}, '.puble-index .view .copy-html')
+	.on({
+		'mouseover': function(e) { 
+			e.preventDefault();
+			$(".pre-view").css('display','flex');
+			var contUrl = $(this).attr('href');
+			$("iframe").contents().find('.contsArea').attr('include-html', contUrl);
+			$("iframe").contents().find('html').addClass('view-mode');
+			$("iframe")[0].contentWindow.includeLayout();
+			$("iframe")[1].contentWindow.includeLayout();
+		}
+	}, '.puble-index .view a');
 	
 
 
