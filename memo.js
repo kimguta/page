@@ -1,3 +1,44 @@
+
+
+pub_navi({
+		target: '.id-gnb',
+		notItem: '.item-button'
+	});
+/* FN : pub_navi */
+function pub_navi(opts){
+	var T = opts.target;
+	var $T = $(T);
+	var List = '.cmpe-list';
+	var S = '.cmpe-submenu';
+	var clName = 'active';
+	var NotItem = opts.notItem;
+	var events = (opts.onlyClick)? 'click' : 'mouseover focusin';
+	// execute
+	$T.find(S).hide();
+	//$('.cmly-section-header').css({z-index:40});
+	$T.find(List).find('li').not(NotItem).on(events,function(e){
+		if(e.type =='mouseover' || e.type =='focusin' || e.type =='click'){
+			var $This = $(this); 
+			$This.addClass(clName).siblings().removeClass(clName);
+			$This.find(S).show();
+			$This.siblings().find(S).hide();
+			$('.cmly-section-header').css({'z-index':30});
+		}
+	});
+	// mouseout event action
+	$(T +',' + T +' '+ S).on('mouseout focusout', function(e) {
+		var act = function(){ $T.find(S).hide(); }
+		var chkClNm = T.replace('.','');
+		pub_mouseRelative(e,chkClNm,act);
+	});
+	
+	$('.item-button').on('mouseover focusin', function(e) {
+		$('.cmpe-submenu').hide();
+	});
+}
+
+
+
 height:100vh;height: calc(var(--vh, 1vh) * 100);
 
 <script>
