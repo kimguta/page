@@ -186,7 +186,7 @@
 .puble-index .btn{background:#111;border:1px solid #fff;z-index:10;;border-width:1px 1px 0px 0px;display:block;text-align:center;font-size:13px;line-height:1.3;padding:0px 10px;color:#fff;height:40px;line-height:40px;position:relative;z-index:2;}
 .puble-index .view{position:fixed;box-shadow:0px 0px 10px 0px rgba(0,0,0,.2);border:1px solid #fff;width:100%;max-width:500px;max-height:500px;right:0;top:0;overflow:auto;background:#111;padding:15px;display:none;}
 .puble-index .view p{display:flex;padding:5px 0;align-items:center;border-top:1px solid rgba(255,255,255,.3)}
-.puble-index .view p:last-child{display:none;}
+.puble-index .view.live p:last-child{display:none;}
 .puble-index .view a{flex:1;text-align:left;font-size:13px;color:#fff;height:26px;line-height:26px;display:flex;}
 .puble-index .view a:before{content:'-';padding-right:6px;}
 .puble-index .view a:after{content:'➜';padding-left:6px;}
@@ -231,7 +231,7 @@ html.view-mode .puble-index{display:none !important}
 					var dataArr = data.split("\n");
 					for (var i = 0; i < dataArr.length; i++) {
 						$('.puble-index .view').append('<p><a href="/page/basic/content/'+dataArr[i]+'">'+ dataArr[i] +'</a><button class="copy-html">HTML복사</button></p>');
-						
+						$('.puble-index .view').addClass('live');
 					}
 				},
 			});
