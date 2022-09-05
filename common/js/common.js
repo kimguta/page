@@ -1,12 +1,8 @@
-/**
- * 공통 스크립트
- */
-$(document).ready(function() {
+
+$(window).on('load', function() {
 	$('.skinTb-wrapper').on('scroll', function () {
 		$(this).addClass('scroll');
 	});
-	$('.skinTb.width320').parent().addClass('width320');
-	$('.skinTb.width400').parent().addClass('width400');
 	$('.skinTb.width640').parent().addClass('width640');
 	$('.skinTb.width768').parent().addClass('width768');
 });
