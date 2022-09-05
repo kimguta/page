@@ -215,11 +215,9 @@ html.view-mode .puble-index{display:none !important}
 		var pageUrl = $(location).attr('href');
 		if (pageUrl.match("git")){
 			$.ajax({	
-				url: "https://api.github.com/users/kimguta/repos?page/basic/content",
-				// url: "https://api.github.com/repos/kimguta/page/basic/content",
-				dataType:"text",
+				url: "https://api.github.com/repos/kimguta/page/basic/content",
 				success: function (data) {
-					var dataArr = data.split("\n");
+					var dataArr = data.name;
 					for (var i = 0; i < dataArr.length; i++) {
 						$('.puble-index .view').append('<p><a href="/page/basic/content/'+dataArr[i]+'">'+ dataArr[i] +'</a><button class="copy-html">HTML복사</button></p>');
 						
