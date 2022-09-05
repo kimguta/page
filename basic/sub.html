@@ -214,12 +214,18 @@ html.view-mode .puble-index{display:none !important}
 		textChange();
 		var pageUrl = $(location).attr('href');
 		if (pageUrl.match("git")){
-			//깃허브 올릴 때  수동입력
-			$('.puble-index .view').append(`
-			<p><a href="/page/basic/content/ui.html">ui.html</a><button class="copy-html">HTML복사</button></p>
-			<p><a href="/page/basic/content/콘텐츠1.html">콘텐츠1.html</a><button class="copy-html">HTML복사</button></p>
-			<p><a href="/page/basic/content/"></a><button class="copy-html">HTML복사</button></p>
-			`);
+			$.ajax({	
+				url: "https://api.github.com/users/kimguta/repos?page/basic/content",
+				// url: "https://api.github.com/repos/kimguta/page/basic/content",
+				dataType:"text",
+				success: function (data) {
+					var dataArr = data.split("\n");
+					for (var i = 0; i < dataArr.length; i++) {
+						$('.puble-index .view').append('<p><a href="/page/basic/content/'+dataArr[i]+'">'+ dataArr[i] +'</a><button class="copy-html">HTML복사</button></p>');
+						
+					}
+				},
+			});
 		}
 		else{
 			$.ajax({	
