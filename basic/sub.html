@@ -217,9 +217,9 @@ html.view-mode .puble-index{display:none !important}
 			$.ajax({	
 				url: "https://api.github.com/repos/kimguta/page/contents/basic/content",
 				success: function (data) {
-					var dataArr = data.name;
-					for (var i = 0; i < dataArr.length; i++) {
-						$('.puble-index .view').append('<p><a href="/page/basic/content/'+dataArr[i]+'">'+ dataArr[i] +'</a><button class="copy-html">HTML복사</button></p>');
+					// var dataArr = data.name;
+					for (var i = 0; i < data.length; i++) {
+						$('.puble-index .view').append('<p><a href="/page/basic/content/'+data.name[i]+'">'+ data.name[i] +'</a><button class="copy-html">HTML복사</button></p>');
 						
 					}
 				},
