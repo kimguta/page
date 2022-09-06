@@ -50,8 +50,47 @@ ObjDoc.on({
 	}
 }, '#title-bx .share .view a:last');
 
+ObjDoc.on({
+	'click': function(e) { 
+		e.preventDefault();
+		var fileUrl = $(this).find('img').attr('src');
+		var fileName = $(this).find('img').attr('alt');
+		$("body").append(`
+		<div id="img-modal">
+			<div class="title-bx">
+				<h1>`+ fileName +`</h1>
+				<div class="btn-bx">
+					<a href="#" class="zoom-in" id="zoom-in"><i class="fa-solid fa-magnifying-glass-plus"></i> 확대</a>
+					<a href="#" class="zoom-out" id="zoom-out"><i class="fa-solid fa-magnifying-glass-minus"></i> 축소</a>
+				</div>
+			</div>
+			<div class=thumb>
+				<img id="panzoom" src="`+fileUrl+`" alt="`+ fileName +`">
+			</div>
+			<a href="#" class="close"><i class="fa-solid fa-xmark"></i></a>
+		</div>
+		`);
+		const element = document.getElementById('panzoom');
+		const zoomInButton = document.getElementById('zoom-in');
+		const zoomOutButton = document.getElementById('zoom-out');
+		const panzoom = Panzoom(element, {
+		});
+		const parent = element.parentElement
+		parent.addEventListener('wheel', panzoom.zoomWithWheel);
+		zoomInButton.addEventListener('click', panzoom.zoomIn);
+		zoomOutButton.addEventListener('click', panzoom.zoomOut);
+		
+	}
+}, '.img-zoom-modal')
+.on({
+	'click': function(e) { 
+		e.preventDefault();
+		$('#img-modal').remove();
+	}
+}, '#img-modal .close');
 
-//콘텐츠 스크립트
+
+//콘텐츠 스크립트 (dom ready 후 동작)
 function contentScript(){
 	var TestOption = {
 		autoplay: false,	
@@ -88,9 +127,16 @@ function contentScript(){
 		speed: 600,
 		adaptiveHeight: true,
 	});
+	if ($('.img-zoom-modal').length){
+		$.getScript('https://cdn.jsdelivr.net/npm/@panzoom/panzoom/dist/panzoom.min.js');
+		$.getScript('https://kit.fontawesome.com/708e424f8f.js');
+	}
 };
+
 
 $(function() {
 	contentScript();
 });
+
+
 
