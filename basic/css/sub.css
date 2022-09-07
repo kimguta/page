@@ -12,8 +12,10 @@
 .img-modal-bx{display:flex;align-items:center;justify-content:space-between;}
 .img-modal-bx .img-zoom-modal + .img-zoom-modal{margin-left:20px;}
 .img-zoom-modal{position:relative;background:#fafafa;display:block;margin:20px 0;flex:1;}
-.img-zoom-modal:after{content:'팝업';position:absolute;right:0;bottom:0;background:rgba(0,0,0,.6);color:#fff;font-size:20px;display:flex;line-height:1.2;;width:60px;height:60px;align-items:center;justify-content:center;transition:all .2s linear;}
-.img-zoom-modal:hover:after{transform:scale(1.1);transform-origin:100% 100%;}
+.img-zoom-modal:after{content:"확대축소";clip-path: polygon(0 43%, 43% 43%, 43% 0%, 57% 0%, 57% 43%, 100% 43%, 100% 57%, 57% 57%, 57% 100%, 43% 100%, 43% 57%, 0 57%);font-size:0;position:absolute;right:16px;bottom:16px;background:rgba(0,0,0,.9);color:#fff;display:flex;line-height:1;width:26px;height:26px;align-items:center;justify-content:center;transition:all .2s linear;}
+.img-zoom-modal:before{content:'';display:block;position:absolute;bottom:10px;right:10px;width:40px;height:40px;background:rgba(255,255,255,.9);transition:all .1s linear;border-radius:50%;}
+.img-zoom-modal:hover:after,
+.img-zoom-modal:hover:before{filter:invert(1);}
 .img-zoom-modal img{display:block;margin:0 auto;max-width:100%;}
 #img-modal{width:auto;padding:60px 0px 60px;background:#191919;position:fixed;z-index:5000;top:0;right:0;left:0;bottom:0;animation:img-modal .35s 1 both ease;}
 #img-modal .thumb{width:auto;margin:0 auto;display:flex;align-items:center;justify-content:center;height: calc(100vh - 120px);overflow:hidden;background:#efefef}
@@ -40,7 +42,8 @@
   #img-modal .title-bx .btn-bx i{margin-right:0px;font-size:16px;vertical-align:middle;}
   #img-modal .title-bx .btn-bx a + a{margin-left:3px;}
   #img-modal .close{right: 10px;top: 11px;font-size: 28px;}
-  .img-zoom-modal:after{opacity:1;width:50px;height:50px;font-size:15px;}
+  .img-zoom-modal:before,
+  .img-zoom-modal:after{transform:scale(.85);transform-origin:100% 100%;}
 }
 
 @media (max-width: 760px){
@@ -52,8 +55,9 @@
   #img-modal .title-bx .btn-bx{right: 10px;}
   #img-modal .title-bx .btn-bx i{font-size:15px;}
   #img-modal .title-bx .btn-bx a + a{margin-left:1px;}
-  .img-zoom-modal:after{width:40px;height:40px;font-size:14px;}
   #img-modal .close{right: 6px;}
+  .img-zoom-modal:before{transform:scale(.7);border-radius:0;right:0;bottom:0;}
+  .img-zoom-modal:after{transform:scale(.7);right:4px;bottom:4px;}
 }
 
 
