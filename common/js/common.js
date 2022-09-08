@@ -1,10 +1,11 @@
 
-$(window).on('load', function() {
+$(window).on('load resize', function() {
 	$('.skinTb-wrapper').on('scroll', function () {
 		$(this).addClass('scroll');
 	});
 	$('.skinTb.width640').parent().addClass('width640');
 	$('.skinTb.width768').parent().addClass('width768');
+	$('.skinTb.width1000').parent().addClass('width1000');
 });
 
 function setPopup(popupList) {
