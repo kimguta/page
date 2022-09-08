@@ -79,13 +79,15 @@ ObjDoc.on({
 		parent.addEventListener('wheel', panzoom.zoomWithWheel);
 		zoomInButton.addEventListener('click', panzoom.zoomIn);
 		zoomOutButton.addEventListener('click', panzoom.zoomOut);
-		
+		$(this).addClass('active');
+		$('#img-modal a:first').focus();
 	}
 }, '.img-zoom-modal')
 .on({
 	'click': function(e) { 
 		e.preventDefault();
 		$('#img-modal').remove();
+		$('.img-zoom-modal.active').focus().removeClass('active');
 	}
 }, '#img-modal .close');
 
