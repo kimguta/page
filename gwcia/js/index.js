@@ -89,11 +89,4 @@ ObjDoc.on({
         $(this).addClass('active');
 	}
 }, '#target_area .map_point a')
-.on({
-	'click': function(e) {
-		e.preventDefault();
-		$(this).parent().parent().find('li a').removeClass('active');
-        $(this).addClass('active');
-	}
-}, '#target_area .target_shortcuts .list_item')
 
