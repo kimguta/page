@@ -160,11 +160,11 @@ ObjWin.on({
 		}
 	}
 })
-.on({
-	'load': function() {
-		$('#header').append('<span class="bg_pc"></span>');
-	}
-});
+// .on({
+// 	'load': function() {
+// 		$('#header').append('<span class="bg_pc"></span>');
+// 	}
+// });
 
 ObjDoc.on({
 	'click': function(e) {
