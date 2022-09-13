@@ -39,25 +39,23 @@
 #visual .control .dots li a em{display:block;position:relative;height:2px;background:#fff;opacity:0.5}
 /* #visual .control .dots li a em:after{content:'';display:block;position:absolute;top:-3.5px;left:0;width:9px;height:9px;border-radius:50%;background:#fff;} */
 #visual .control .dots li.slick-active a em:after{content:'';display:block;position:absolute;top:-3px;left:-4px;width:9px;height:9px;border-radius:50%;background:#fff;}
-#visual .control .dots li.loading a em:after{left:100%;transition:all 15s linear;}
-#visual .control .dots.stop li.loading a em:after{width:0%;transition:all .5s linear;}
+#visual .control .dots li.loading a em:after{animation: slickdots 15s linear;}
+#visual .control .dots.stop li.loading a em:after{animation-play-state: paused;}
 #visual .visual-slick .control .paging a{display: inline-block;position:absolute;vertical-align: middle;width: 26px;height: 26px;top:0;left:4px;}
 #visual .visual-slick .control .paging a:before{content:'';display:block;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:7px;height:12px;background: url(/page/gwcia/images/common/sp_gwcia.png) -500px -9px no-repeat;background-size:837px 938px;}
 #visual .visual-slick .control .paging a i{display:none;}
 #visual .visual-slick .control .paging .next{left:auto;right:-6px;}
 #visual .visual-slick .control .paging .next:before{background-position:-579px -9px;}
-#visual .sns-bx{position:absolute;z-index:30;bottom:45px;right:45px;}
-#visual .sns-bx a{display:block;margin-top:12px;position:relative;}
-#visual .sns-bx a img{display:block;width:37px;transition:all .2s;image-rendering:-webkit-optimize-contrast;}
-#visual .sns-bx a:hover img{transform:scale(1.1);}
-#visual .sns-bx:before{content:'';width:2px;background:#fff;height:115px;position:absolute;top:-115px;left:50%;margin-left:-1px;}
 #visual .shortcuts_area{position:absolute;top:130px;right:0;z-index:50;text-align:right;}
 #visual .shortcuts_box .box_item{displaY:inline-block;padding:0 40px 0 28px;vertical-align:top;background:#3759ae;color:#fff;min-width:170px;height:50px;line-height:50px;font-size:18px;white-space:nowrap;border-radius:25px 0 0 25px;letter-spacing:-0.4px;}
 #visual .shortcuts_box+.shortcuts_box{margin-top:12px;}
 #visual .shortcuts_box .box_item:hover{background:#284384;padding-left:13px;transition:all 0.3s;}
 #visual .shortcuts_box .box_item:hover:before{content:'';display:inline-block;vertical-align:top;width:24px;height:24px;margin:13px 12px 0 0;background: url(/page/gwcia/images/common/sp_gwcia.png) -813px -3px no-repeat;background-size:837px 938px;transition:all 0.3s;}
 
-
+@keyframes slickdots {
+    0%{left:0;}
+    100%{left:100%;}
+  }
 
 @keyframes text1{
     0%{transform:translateY(-70%);opacity:0;}
@@ -300,7 +298,7 @@
 #target_area .map_area .title_box .area_title em{font-size:28px;color:#072040;}
 #target_area .map_area .map_box{position:relative;margin-top:-50px;margin-left:46px;width:521px;height:513px;background-image: url(/page/gwcia/images/main/target_area_map.png);background-repeat:no-repeat;}
 #target_area .map_area .map_box .map_point{position:absolute;top:0;right:0;bottom:0;left:0;}
-#target_area .map_area .map_box [class*="point_"]{position:absolute;display:block;width:17px;height:17px;box-shadow: 5px 5px 10px #353535;border-radius:50%;background: url(/page/gwcia/images/common/sp_gwcia.png) -17px -325px no-repeat;background-size:837px 938px;}
+#target_area .map_area .map_box [class*="point_"]{position:absolute;display:block;width:17px;height:17px;box-shadow: 5px 5px 10px #353535;border-radius:50%;z-index:10;background: url(/page/gwcia/images/common/sp_gwcia.png) -17px -325px no-repeat;background-size:837px 938px;}
 #target_area .map_area .map_box [class*="point_"].active{background-position:-96px -325px }
 #target_area .map_area .map_box [class*="point_"].active:before{content:'';display:block;position:absolute;width:52px;height:64px;bottom:9px;left:50%;transform:translateX(-50%);margin-left:-1px;background: url(/page/gwcia/images/common/sp_gwcia.png) -157px -302px no-repeat;background-size:837px 938px;}
 #target_area .map_area .map_box .point_001{top:235px;left:135px;}
