@@ -38,24 +38,7 @@ function initSlick(target, options) {
 	});
 };
 $(function() {
-
-	$('.relevant_banner .slick').slick({
-		autoplay: false,
-		arrows: true,
-		dots: false,
-		prevArrow: '<a href="#" class="prev">이전</a>',
-		nextArrow: '<a href="#" class="next">다음</a>',
-		accessibility: true,
-		swipeToSlide: true,
-		infinite: true,
-		slidesToShow: 4,
-		slidesToScroll: 1,
-		pauseOnHover: false,
-		variableWidth: true,
-		speed: 600,
-	});
-
-	$('#footer .relevant_banner .slick02').slick({
+	$('#footer .relevant_banner .slick').slick({
 		autoplay: false,
 		arrows: true,
 		dots: false,
@@ -168,20 +151,20 @@ ObjWin.on({
 // 	}
 // }, '#header h4 a')
 
-// ObjWin.on({
-// 	'scroll load': function() {
-// 		if (ObjDoc.scrollTop() > 80) {
-// 			$('#header').addClass('fixed');
-// 		} else {
-// 			$('#header').removeClass('fixed');
-// 		}
-// 	}
-// })
-// .on({
-// 	'load': function() {
-// 		$('#header').append('<span class="bg_pc"></span>');
-// 	}
-// });
+ObjWin.on({
+	'scroll load': function() {
+		if (ObjDoc.scrollTop() > 80) {
+			$('#header').addClass('fixed');
+		} else {
+			$('#header').removeClass('fixed');
+		}
+	}
+})
+.on({
+	'load': function() {
+		$('#header').append('<span class="bg_pc"></span>');
+	}
+});
 
 ObjDoc.on({
 	'click': function(e) {
