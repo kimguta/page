@@ -486,8 +486,8 @@ function p_ctrlFiles(){
 	// click file button
 	$obj.each(function(){
 		var $this = $(this);
-		$this.find($btnFile.selector).click(function(){
-			$this.find($txt.selector).parent().find('input[type=file]').click();
+		$this.find($btnFile).click(function(){
+			$this.find($txt).parent().find('input[type=file]').click();
 		});
 		
 		$this.find('input[type=file]').change(function(){
@@ -497,14 +497,14 @@ function p_ctrlFiles(){
 			// action
 			fileVal = fileVal.split('\\');
 			fileValLength = fileVal.length;
-			$this.parent().find($txt.selector).text(fileVal[fileValLength-1]);
-			$this.parent().find($btnDel.selector).show();
+			$this.parent().find($txt).text(fileVal[fileValLength-1]);
+			$this.parent().find($btnDel).show();
 		});
 		
-		$this.find($btnDel.selector).click(function(){
+		$this.find($btnDel).click(function(){
 			var $this = $(this);
 			$this.parent().find('input[type=file]').val('');
-			$this.parent().find($txt.selector).text(placeTxt);
+			$this.parent().find($txt).text(placeTxt);
 			$this.hide();
 		});
 	});
