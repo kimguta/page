@@ -18,7 +18,8 @@ function initSlick(target, options) {
 			var allSlide = '0' + allSlide
 		}
 		target.parent().find('.count').html( nowSlide + '<span>-</span>' + '<strong>'+ allSlide + '<strong>');
-		
+		target.find('.slick-slide:not(.slick-active)').attr('tabindex','-1');
+		target.find('.slick-active').attr('tabindex','0');
 	});
 	target.slick(options);
 	ControlBtn.on('click', function (e) {
