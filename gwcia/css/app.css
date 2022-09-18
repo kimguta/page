@@ -43,10 +43,8 @@ main{display:block;}
  .inner{padding:0 15px;}
 }
 
-#header{position:fixed;z-index:2000;top:0;left:0;right:0;display:flex;justify-content:center;max-width:1920px;margin:0 auto;}
+#header{position:fixed;z-index:2000;top:0;left:0;right:0;display:flex;justify-content:center;max-width:1920px;margin:0 auto;padding:0 20px;border-bottom:1px solid rgba(255,255,255,0.1);}
 .depth-01{display:flex;align-items:flex-start;justify-content:center;}
-
-#header{padding:0 20px;border-bottom:1px solid rgba(255,255,255,0.1);}
 #header h1{position:absolute;top:50%;margin-top:-29px;left:40px;margin-left:0;z-index:20;transition:all .25s;}
 #header h1 a,
 #header h1 img{display:block;width:270px;image-rendering:-webkit-optimize-contrast;transition:all .25s;height:53px;}
@@ -119,7 +117,9 @@ main{display:block;}
 #header.fixed  nav > .depth-01 .depth-02{top:85px;}
 #header.active .site_map.active{display:block;opacity:1;}
 #header.active .bg_pc{display:block;}
-
+#header.type_white{background:#fff;border-bottom-color:#dcdcdc;}
+#header.type_white:before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;display:block;background:#fff;}
+#header.type_white.active:after{content:'';position:absolute;left:0;right:0;bottom:-1px;height:1px;display:block;background:#dcdcdc;}
 #header.type_white h1 .type_default{display:none;}
 #header.type_white h1 .type_white{display:block;}
 #header.type_white .btn_box a{color:#313131;}
@@ -187,6 +187,10 @@ main{display:block;}
   #header .sitemap{right:0px;}
 }
 
+@media (max-width:1544px) {
+  #header nav > .depth-01 h2 a{font-size:20px;padding:0 20px;transition:all 0.3s;}
+}
+
 @media (max-width:1199px) {
 
   #header{left:0;right:0;padding:0px;height:65px;}
@@ -232,22 +236,22 @@ main{display:block;}
   .mobile-close{width:33px;height:33px;font-size:0;background:url(/page/governor/images/common/close.png) no-repeat center center /cover;position:absolute;right:40px;top:48px;image-rendering:-webkit-optimize-contrast;}
   #header .site_map{max-width:414px;width:100%;left:auto;min-height:100vh;}
   #header .site_map .map_inner{width:100%;padding-bottom:0;}
-  #header .site_map .all_menu{position:fixed;margin-top:0;padding-left: 16px;height:66px;right:0;width:100%;max-width:414px;background:#fff;font-size:24px;line-height:66px;z-index:10;}
+  #header .site_map .all_menu{position:fixed;margin-top:0;padding-left: 16px;height:66px;right:0;width:100%;max-width:414px;background:#fff;font-size:24px;line-height:62px;z-index:10;}
   #header .site_map .all_menu:after{content:'';display:block;position:absolute;left:0;right:0;bottom:0;height:1px;background:#e8e8e8;}
-  #header .site_map .all_menu:before{transform:scale(0.735)}
+  #header .site_map .all_menu:before{transform:scale(0.735);margin-right:2px;vertical-align:-4px;}
   #header .site_map .close_btn{transform:scale(0.763);right:13px;}
   #header .site_map .depth-01{padding-top:65px;margin-top:0;}
-  #header .site_map .depth-01  > li{border-top:1px solid #e8e8e8;padding-top:35px 0 37px!important;width:100%!important;}
-  #header .site_map .depth-01 h2{display:block;float:none;padding:0 20px;width:auto;}
-  #header .site_map .depth-02{float:none;margin-top:24px;padding:0 20px;}
+  #header .site_map .depth-01  > li{border-top:1px solid #e8e8e8;padding:33px 0 37px!important;width:100%!important;}
+  #header .site_map .depth-01 h2{display:block;float:none;padding:0 19px;width:auto;}
+  #header .site_map .depth-02{float:none;margin-top:22px;padding:0 19px;}
   #header .site_map .depth-02 > li+li{margin-top:20px;}
-  #header .site_map .depth-01 h2 a{display:block;font-size:24px;line-height:34px;}
+  #header .site_map .depth-01 h2 a{display:block;font-size:24px;line-height:34px;;}
   #header .site_map .depth-02 h3{display:block;padding-left: 33px;}
   #header .site_map .depth-02 h3.has-depth a{display:block;position:relative;}
-  #header .site_map .depth-02 h3.has-depth a:after{content:'';display:block;position:absolute;top:-4px;right:20px;width:34px;height:34px;;background: url(/page/gwcia/images/common/sp_gwcia.png) -568px -314px no-repeat;background-size:837px 938px}
+  #header .site_map .depth-02 h3.has-depth a:after{content:'';display:block;position:absolute;top:-2px;right:3px;width:34px;height:34px;;background: url(/page/gwcia/images/common/sp_gwcia.png) -568px -314px no-repeat;background-size:837px 938px}
   #header .site_map .depth-02 h3.has-depth.active a:after{transform:rotate(180deg);transition:all 0.3s;}
   #header .site_map .depth-02 h3.has-depth.active ~ .depth-03{display:block;}
-  #header .site_map .depth-03{display:none;margin-left:0;margin-top:9px;}
+  #header .site_map .depth-03{display:none;margin-left:0;margin-top:7px;margin-bottom:-2px;}
   #header .site_map .depth-03 li{display:block;}
   #header .site_map .depth-03 li+li{margin-left:0;margin-top:5px;}
   #header .site_map .depth-03 h4{padding-left:33px;}

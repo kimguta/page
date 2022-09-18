@@ -15,17 +15,17 @@ ObjDoc.on({
 		if ($(this).hasClass('active')) {
 			$(this).removeClass('active');
 			$(this).children('span').text('열기');
-			$('#breadcrumb-bx .box ul').slideUp(250);
+			$('#breadcrumb .box ul').slideUp(250);
 		} else{
-			$('#breadcrumb-bx .open').removeClass('active');
+			$('#breadcrumb .open').removeClass('active');
 			$(this).addClass('active');
-			$('#breadcrumb-bx .open span').text('열기');
+			$('#breadcrumb .open span').text('열기');
 			$(this).children('span').text('닫기');
-			$('#breadcrumb-bx .box ul').slideUp(250);
+			$('#breadcrumb .box ul').slideUp(250);
 			$(this).next('ul').slideDown(250);
 		}
 	}
-}, '#breadcrumb-bx .bx .open')
+}, '#breadcrumb .bx .open')
 ObjDoc.on({
 	'click': function(e) {
 		e.preventDefault();
@@ -35,34 +35,34 @@ ObjDoc.on({
 }, '#sub .pageTab >li .pageTab-tab')
 .on({
 	'mouseleave': function() {
-		$('#breadcrumb-bx .open span').text('열기');
-		$('#breadcrumb-bx .box ul').slideUp(300);
-		$('#breadcrumb-bx .box .open').removeClass('active');
+		$('#breadcrumb .open span').text('열기');
+		$('#breadcrumb .box ul').slideUp(300);
+		$('#breadcrumb .box .open').removeClass('active');
 	}
-}, '#breadcrumb-bx')
+}, '#breadcrumb')
 .on({
 	'focusout': function() {
 		$(this).parents('.box').children('.open').focus();
 	}
-}, '#breadcrumb-bx .box ul li:last-child a')
+}, '#breadcrumb .box ul li:last-child a')
 .on({
 	'click': function(e) {
 		e.preventDefault();
-		$(this).next('.view').fadeToggle(100);
+		$(this).next('ul').fadeToggle(100);
 	}
-}, '#title-bx .share .open')
+}, '#breadcrumb .share .open')
 .on({
 	'click': function(e) {
 		e.preventDefault();
-		$(this).parents('.view').fadeToggle(100);
+		$(this).parents('ul').fadeToggle(100);
 	}
-}, '#title-bx .share .close')
+}, '#breadcrumb .share .close')
 .on({
 	'focusout': function() {
 		$('#title-bx .share .open').focus();
 		$('.view').fadeOut(100);
 	}
-}, '#title-bx .share .view a:last');
+}, '#breadcrumb .share .view a:last');
 
 ObjDoc.on({
 	'click': function(e) {
