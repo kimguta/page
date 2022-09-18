@@ -73,6 +73,11 @@ ObjWin.on({
 		}
 	}
 })
+// .on({
+// 	'resize load': function() {
+// 		$('#header .site_map .depth-03').prev('h3').addClass('has-depth');
+// 	}
+// })
 .on({
 	'resize': function() {
 		var Wwidth2 = $(window).outerWidth();
@@ -121,11 +126,11 @@ ObjDoc.on({
 }, '#header.pc-mode nav')
 .on({
 	'click': function() {
-		// $('body').css('overflow','');
+		$('body').css('overflow','');
 		$('#header').removeClass('active');
 		$('#header h2').removeClass('active');
 	}
-}, '#header.active nav a')
+}, '#header.pc-mode .active nav a')
 .on({
 	'click': function(e) {
 		if ($(this).parent().hasClass('active')) {
@@ -157,25 +162,32 @@ ObjDoc.on({
 		$('#header .site_map h4').removeClass('active');
 		$(this).parent().addClass('active');
 	}
-}, '#header .site_map .depth-01 h2 a')
+}, '.site_map .depth-01 a')
 .on({
 	'click': function(e) {
 		e.preventDefault();
-		$('#header .site_map h2').removeClass('active');
-		$('#header .site_map h3').removeClass('active');
-		$('#header .site_map h4').removeClass('active');
+		e.stopPropagation();
 		$(this).parent().addClass('active');
 	}
-}, '#header .site_map .depth-02 h3 a')
-.on({
-	'click': function(e) {
-		e.preventDefault();
-		$('#header .site_map h2').removeClass('active');
-		$('#header .site_map h3').removeClass('active');
-		$('#header .site_map h4').removeClass('active');
-		$(this).parent().addClass('active');
-	}
-}, '#header .site_map .depth-03 h4 a')
+}, '.site_map .depth-02 h3.has-depth a')
+// .on({
+// 	'click': function(e) {
+// 		e.preventDefault();
+// 		$('#header .site_map h2').removeClass('active');
+// 		$('#header .site_map h3').removeClass('active');
+// 		$('#header .site_map h4').removeClass('active');
+// 		$(this).parent().addClass('active');
+// 	}
+// }, '#header .site_map .depth-02 h3 a')
+// .on({
+// 	'click': function(e) {
+// 		e.preventDefault();
+// 		$('#header .site_map h2').removeClass('active');
+// 		$('#header .site_map h3').removeClass('active');
+// 		$('#header .site_map h4').removeClass('active');
+// 		$(this).parent().addClass('active');
+// 	}
+// }, '#header .site_map .depth-03 h4 a')
 .on({
 	'click': function(e) {
 		e.preventDefault();
