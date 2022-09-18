@@ -3,9 +3,11 @@
 #main{position:relative;z-index:10;}
 
 #visual{position:relative;height:520px;overflow:hidden;}
-#visual .slick{position:absolute;z-index:5;background:#111;width:1920px;left:50%;top:0;margin-left:-960px;}
-#visual .slick img{transform:scale(1.0);transition-delay:1s;image-rendering:-webkit-optimize-contrast;transform-origin:30% 30%;display:block;}
-#visual .slick .slick-zoom img{transform:scale(1);transition:all 13s linear;filter:brightness(1);}
+#visual:before{content:'';display:block;position:absolute;top:0;left:50%;transform:translateX(-50%);width:100%;height:100%;background-image: url(/page/gwcia/images/main/main_visual_bg.png); background-repeat:no-repeat;background-size:1920px 520px;background-position: 50% 0;}
+#visual .slick{position:absolute;width:1920px;left:50%;top:0;transform:translateX(-50%);z-index:5;}
+#visual .slick img{position:relative;left:50%;transform:translateX(-50%);\image-rendering:-webkit-optimize-contrast;display:block;z-index:20;width:auto!important;height:100%!important;}
+/* #visual .slick .slick-zoom img{transform:scale(1);transition:all 3s linear;filter:brightness(1);} */
+#visual .slick .slick-current img{animation: fadeInUp 3s;}
 #visual .visual-slick{width:1200px;margin:0 auto;position:relative;padding-bottom:80px;}
 #visual .visual-slick .dots{position:absolute;bottom:0;width:100%;}
 #visual .visual-slick .control div a{font-weight:900;font-size:40px;display:inline-block}
@@ -13,14 +15,14 @@
 #visual .visual-slick2{margin:0 0 150px;}
 #visual .visual-slick2 .slick-slide{margin:0 10px;}
 #visual .visual-slick2 .dots{margin-top:20px;}
-#visual .inner{position:absolute;top:0;left:0;height:520px;z-index:20;width:603px;}
+#visual .inner{position:absolute;top:0;left:50%;transform:translateX(-50%);height:520px;z-index:20;width:1200px;padding:0;}
 #visual .inner .man{display:block;position:absolute;bottom:0;left:0;filter:brightness(.8) blur(.5px);transition-duration:1s;image-rendering:-webkit-optimize-contrast;}
 #visual .inner .man.active{filter:brightness(1) blur(0px);transition:all 5s;}
-#visual .inner .text-bx{color:#fff;text-shadow:0px 0px 7px rgba(0,0,0,.7);position:relative;;height:100%;z-index:10;display:flex;justify-content:center;flex-direction:column;margin-top:-17px;}
+#visual .inner .text-bx{color:#fff;position:relative;;height:100%;z-index:10;display:flex;justify-content:center;flex-direction:column;margin-top:-17px;}
 #visual .inner .text-bx h2{line-height:1.4;font-weight:500;transition:all .2s .5s;}
-#visual .inner .text-bx h2 strong{font-weight:500;font-size:45.5px;display:block;white-space: nowrap;letter-spacing:-4px;opacity:0;font-weight:bold;}
+#visual .inner .text-bx h2 strong{font-weight:500;font-size:45.5px;display:block;white-space: nowrap;letter-spacing:-1.9px;opacity:0;font-weight:bold;}
 #visual .inner .text-bx h2 strong em{font-weight:400;}
-#visual .inner .text-bx h2 span{font-weight:500;font-size:30px;display:block;white-space: nowrap;letter-spacing:-3px;opacity:0;}
+#visual .inner .text-bx h2 span{font-weight:500;font-size:30px;display:block;white-space: nowrap;letter-spacing:-1.4px;opacity:0;}
 
 #visual .inner .text-bx h2.active span{animation:text1 .55s .3s both ease-in-out;}
 #visual .inner .text-bx h2.active strong{animation:text1 .55s .6s both ease-in-out;}
@@ -49,8 +51,8 @@
 #visual .shortcuts_area{position:absolute;top:130px;right:0;z-index:50;text-align:right;}
 #visual .shortcuts_box .box_item{displaY:inline-block;padding:0 40px 0 28px;vertical-align:top;background:#3759ae;color:#fff;min-width:170px;height:50px;line-height:50px;font-size:18px;white-space:nowrap;border-radius:25px 0 0 25px;letter-spacing:-0.4px;}
 #visual .shortcuts_box+.shortcuts_box{margin-top:12px;}
-#visual .shortcuts_box .box_item:hover{background:#284384;padding-left:13px;transition:all 0.3s;}
-#visual .shortcuts_box .box_item:hover:before{content:'';display:inline-block;vertical-align:top;width:24px;height:24px;margin:13px 12px 0 0;background: url(/page/gwcia/images/common/sp_gwcia.png) -813px -3px no-repeat;background-size:837px 938px;transition:all 0.3s;}
+#visual .shortcuts_box .box_item:hover{background:#284384;padding-left:13px;transition:all 1s;}
+#visual .shortcuts_box .box_item:hover:before{content:'';display:inline-block;vertical-align:top;width:24px;height:24px;margin:13px 12px 0 0;background: url(/page/gwcia/images/common/sp_gwcia.png) -813px -3px no-repeat;background-size:837px 938px;transition:all 1s;}
 
 @keyframes slickdots {
     0%{left:0;}
@@ -62,9 +64,22 @@
     100%{transform:translateY(0%);opacity:1;}
 }
 
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 100%, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translateZ(0);
+    }
+}
+
 @media (max-width:1199px) {
     #visual .visual-slick{width:auto;}
     #visual{height:379px;}
+    #visual .slick{height:379px;width:100%;}
+    #visual .slick .slick-slide{height:379px;}
     #visual .inner{height:379px;left:20px;margin-left:0;}
     #visual .inner .text-bx{margin-top:0;padding-left:0;}
     #visual .inner .text-bx h2 strong{font-size:40px;letter-spacing:-3px;}
@@ -92,13 +107,14 @@
     #visual .inner .text-bx h2 span{font-size:20px;letter-spacing:-1px;max-width:calc(100% - 40px);white-space:normal;}
     #visual .inner .text-bx h2 i{font-size:15px;margin-top:5px;}
     #visual .control{margin-top:0px;transform:scale(.8);position:absolute;top:202px;left:-9px;}
-    #visual .shortcuts_area{top:auto;bottom:0;left:0;width:100%;font-size:0;text-align:center;}
+    #visual .shortcuts_area{display:none;}
+    /* #visual .shortcuts_area{top:auto;bottom:0;left:0;width:100%;font-size:0;text-align:center;}
     #visual .shortcuts_box+.shortcuts_box{margin-top:0;margin-left:5px;}
     #visual .shortcuts_box {display:inline-block;vertical-align:top;width:calc((100% / 3) - 4px);}
     #visual .shortcuts_box .box_item{display:block;width:100%;border-radius:0;min-width:auto;padding:0;font-size:14px;}
     #visual .shortcuts_box .box_item:hover:before{display:none;}
     #visual .shortcuts_box .box_item:hover{padding:0;}
-    #visual .shortcuts_box+.shortcuts_box{margin-left:5px;}
+    #visual .shortcuts_box+.shortcuts_box{margin-left:5px;} */
 }
 
 @media (max-width:390px) {
@@ -111,24 +127,30 @@
 
 #consulting_wrap{position:relative;width:100%;height:267px;background: url(/page/gwcia/images/main/consulting_wrap_bg.png) 50% 0 #353ec9 no-repeat;background-size:1920px 267px;}
 #consulting_wrap .section_inner{position:relative;width:1200px;height:100%;margin:0 auto;}
-#consulting_wrap .section_title h3{display:inline-block;vertical-align:top;padding-top:61px;font-size:24px;line-height:32px;color:#fff;font-weight:bold;}
+#consulting_wrap .section_title h3{display:inline-block;vertical-align:top;padding-top:61px;font-size:24px;line-height:32px;color:#fff;font-weight:bold;letter-spacing:-0.7px;}
 #consulting_wrap .section_title h3 em{position:relative;display:inline-block;vertical-align:0;font-size:30px;color:#ffde8c}
 #consulting_wrap .section_title h3 em:before{content:'';display:block;position:absolute;top:-23px;left:-12px;width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,0.05);}
-#consulting_wrap .section_title p{position:relative;margin-top:23px;padding-top:12px;font-size:18px;line-height:34px;color:#fff;font-weight:normal;}
-#consulting_wrap .section_title p:before{content:'';display:block;position:absolute;top:0;left:0;width:18px;height:1px;background:#fff;}
-#consulting_wrap .consulting_list{position:absolute;top:45px;right:0;width:885px;height:176px;padding:0 64px;border-radius:50px 0 50px 50px;background:#fff;font-size:0;}
+#consulting_wrap .section_title p{position:relative;margin-top:23px;padding-top:8px;font-size:18px;line-height:34px;color:#fff;font-weight:normal;}
+#consulting_wrap .section_title p:before{content:'';display:block;position:absolute;top:0;left:1px;width:18px;height:1px;background:#fff;}
+#consulting_wrap .consulting_list{position:absolute;top:45px;right:0;width:885px;height:176px;padding-left:70px;border-radius:50px 0 50px 50px;background:#fff;font-size:0;}
 #consulting_wrap .consulting_list .list_item{display:inline-block;margin-top:-11px;height:184px;font-size:20px;line-height:28px;color:#000;}
 #consulting_wrap .consulting_list .list_item:hover .item_image{transform:scale(1.1);transition:all 0.3s;}
-#consulting_wrap .consulting_list .list_item+.list_item{margin-left:20px;}
-#consulting_wrap .consulting_list .list_item:last-child{position:relative;padding-left:64px;margin-left:62px;}
-#consulting_wrap .consulting_list .list_item:last-child:before{content:'';display:block;position:absolute;top:35px;left:0;height:106px;border-left:1px dashed #a4a4a4;}
-#consulting_wrap .consulting_list .item_image{display:block;width:106px;height:106px;margin:0 auto;box-shadow: 8px 8px 8px #d6d6d6;border-radius:21px;;background-image: url(/page/gwcia/images/common/sp_gwcia.png);background-repeat:no-repeat;background-size:837px 938px}
+/* #consulting_wrap .consulting_list .list_item:nth-child(2){margin-left:38px;}
+#consulting_wrap .consulting_list .list_item:nth-child(3){margin-left:54px;} */
+#consulting_wrap .consulting_list .list_item:first-child{margin-left:0!important;}
+#consulting_wrap .consulting_list .list_item:nth-child(3) .item_title{font-size:20px;}
+#consulting_wrap .consulting_list .list_item:nth-child(3) .item_title em{font-size:18px;}
+#consulting_wrap .consulting_list .list_item:nth-child(-n+3){width:140px;margin-left:37px;}
+#consulting_wrap .consulting_list .list_item:last-child{position:relative;padding-left:65px;margin-left:50px;}
+#consulting_wrap .consulting_list .list_item:last-child:before{content:'';display:block;position:absolute;top:46px;left:0;width:1px;height:106px;background: url(/page/gwcia/images/main/border_consulting_list.png) repeat-y;}
+#consulting_wrap .consulting_list .list_item:last-child .item_title{font-size:20px;}
+#consulting_wrap .consulting_list .item_image{display:block;width:106px;height:106px;margin:0 auto;box-shadow: 8px 8px 8px #d6d6d6;border-radius:21px;background-image: url(/page/gwcia/images/common/sp_gwcia.png);background-repeat:no-repeat;background-size:837px 938px}
 #consulting_wrap .consulting_list .online{background-position:-10px -79px}
 #consulting_wrap .consulting_list .offline{background-position:-168px -79px}
 #consulting_wrap .consulting_list .faq{background-position:-336px -79px}
 #consulting_wrap .consulting_list .simulation{transform:translateY(6px);box-shadow:none;border-radius:0;background-position:-484px -79px}
-#consulting_wrap .consulting_list .item_title{display:block;margin-top:22px;font-weight:normal;}
-#consulting_wrap .consulting_list .item_title em{font-weight:bold;}
+#consulting_wrap .consulting_list .item_title{display:block;margin-top:20px;font-size:18px;font-weight:normal;text-align:center;}
+#consulting_wrap .consulting_list .item_title em{font-size:20px;}
 @media (max-width:1399px) {
     #consulting_wrap .section_inner{width:100%;padding:0 40px;}
     #consulting_wrap .section_title h3{font-size:20px;line-height:28px;}
@@ -150,7 +172,7 @@
     #consulting_wrap .section_title h3 br{display:none;}
     #consulting_wrap .section_title p{margin-top:0;}
     #consulting_wrap .section_title p:before{display:none;}
-    #consulting_wrap .consulting_list{position:relative;width:100%;top:auto;right:auto;margin-top:20px;}
+    #consulting_wrap .consulting_list{position:relative;width:100%;top:auto;right:auto;margin-top:20px;padding:0;}
     #consulting_wrap .consulting_list p:before{display:none;}
 }
 
@@ -189,11 +211,11 @@
 #notice_board .media_list .title_info{display:block;margin-top:2px;font-weight:normal; overflow: hidden; text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2; -webkit-box-orient: vertical;max-height:56px;}
 #notice_board .notice_wrap{position:relative;display:inline-block;vertical-align:top;width:580px;}
 #notice_board .notice_list ul{font-size:0;border-top:2px solid #000;}
-#notice_board .notice_list ul li{display:table;height:127px;;font-size:20px;line-height:28px;border-bottom:1px solid #e6e6e6;}
-#notice_board .notice_list .list_item{display:table-cell;vertical-align:middle}
+#notice_board .notice_list ul li{font-size:20px;line-height:28px;border-bottom:1px solid #e6e6e6;padding:0 10px;}
+#notice_board .notice_list .list_item{display:table;height:127px;width:100%;;vertical-align:middle;}
 #notice_board .notice_list .list_item:hover p{text-decoration:underline;transition:all 0.3s;}
-#notice_board .notice_list .list_item p{display:table-cell;}
-#notice_board .notice_list .date_info{display:table-cell;vertical-align:middle;font-size:18px;line-height:25px;width:168px;text-align:right;}
+#notice_board .notice_list .list_item p{display:table-cell;vertical-align:middle;}
+#notice_board .notice_list .date_info{display:table-cell;vertical-align:middle;font-size:18px;line-height:25px;width:168px;text-align:right;color:#888;}
 #notice_board .notice_list .badge{display:inline-block;vertical-align:top;width:26px;height:26px;border-radius:50%;background:#ff9000;font-size:14px;line-height:24px;color:#fff;text-align:center;font-weight:bold;}
 #notice_board .more_view{position:absolute;top:27px;right:0;font-size:18px;line-height:25px;}
 #notice_board .more_view:after{content:'';display:inline-block;vertical-align:top;width:8px;height:13px;margin:6px 0 0 3px;background: url(/page/gwcia/images/common/sp_gwcia.png) -660px -86px no-repeat;background-size:837px 938px;}
@@ -209,7 +231,8 @@
     #notice_board .media_list ul li+li{margin-left:14px;}
     #notice_board .media_list .title_info{max-height:44px;}
     #notice_board .notice_wrap{width:calc(48.3% - 20px);margin-left:20px;}
-    #notice_board .notice_list ul li{height:115px;font-size:16px;line-height:22px;}
+    #notice_board .notice_list ul li{font-size:16px;line-height:22px;}
+    #notice_board .notice_list .list_item{height:115px;}
     #notice_board .notice_list .badge{width:22px;height:22px;font-size:12px;line-height:22px;}
     #notice_board .more_view{top:10px; font-size: 16px;line-height:22px;}
 }
@@ -249,7 +272,7 @@
 #incentive_wrap .incentive_list .list_item{display:block;position:relative;padding-top:34px;width:100%;height:100%;background:#fff;border-radius:14px;box-shadow: 8px 8px 8px #d6d6d6;text-align:center;}
 #incentive_wrap .incentive_list .list_item:before{content:'';display:block;position:absolute;top:0;left:0;right:0;bottom:0;border:1px solid rgba(0,0,0,0.1);border-radius:14px;}
 #incentive_wrap .incentive_list .item_title{display:inline-block;vertical-align:top;height:41px;border-radius:41px;margin-top:16px;padding:0 23px;background:#3f43db;border:1px solid #3f43db;font-size:20px;line-height:39px;color:#fff;}
-#incentive_wrap .incentive_list .sub_title{display:block;margin-top:8px;font-size:18px;line-height:26px;color:#313131;word-break: keep-all;word-wrap: break-word;padding:0 10px;}
+#incentive_wrap .incentive_list .sub_title{display:block;margin-top:8px;font-size:18px;line-height:26px;color:#a5a5a5;word-break: keep-all;word-wrap: break-word;padding:0 10px;}
 #incentive_wrap .incentive_list .item_image{display:block;height:61px;margin:0 auto;background-image: url(/page/gwcia/images/common/sp_gwcia.png);background-repeat:no-repeat;background-size:837px 938px}
 #incentive_wrap .incentive_list .goverment{width:50px;background-position:0 -228px;}
 #incentive_wrap .incentive_list .local{width:51px;background-position:-81px -228px;}
@@ -302,9 +325,9 @@
 #target_area .map_area .title_box .area_title em{font-size:28px;color:#072040;}
 #target_area .map_area .map_box{position:relative;margin-top:-50px;margin-left:46px;width:521px;height:513px;background-image: url(/page/gwcia/images/main/target_area_map.png);background-repeat:no-repeat;}
 #target_area .map_area .map_box .map_point{position:absolute;top:0;right:0;bottom:0;left:0;}
-#target_area .map_area .map_box [class*="point_"]{position:absolute;display:block;width:17px;height:17px;box-shadow: 5px 5px 10px #353535;border-radius:50%;z-index:10;background: url(/page/gwcia/images/common/sp_gwcia.png) -17px -325px no-repeat;background-size:837px 938px;}
+#target_area .map_area .map_box [class*="point_"]{position:absolute;display:block;width:17px;height:17px;box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.12);;border-radius:50%;z-index:10;background: url(/page/gwcia/images/common/sp_gwcia.png) -17px -325px no-repeat;background-size:837px 938px;}
 #target_area .map_area .map_box [class*="point_"].active{background-position:-96px -325px }
-#target_area .map_area .map_box [class*="point_"].active:before{content:'';display:block;position:absolute;width:52px;height:64px;bottom:9px;left:50%;transform:translateX(-50%);margin-left:-1px;background: url(/page/gwcia/images/common/sp_gwcia.png) -157px -302px no-repeat;background-size:837px 938px;}
+#target_area .map_area .map_box [class*="point_"].active:before{content:'';display:block;position:absolute;width:54px;height:65px;bottom:9px;left:50%;transform:translateX(-50%);margin-left:-1px;background: url(/page/gwcia/images/common/sp_gwcia.png) -157px -302px no-repeat;background-size:837px 938px;}
 #target_area .map_area .map_box .point_001{top:235px;left:135px;}
 #target_area .map_area .map_box .point_002{top:245px;left:118px;}
 #target_area .map_area .map_box .point_003{top:345px;left:180px;}
