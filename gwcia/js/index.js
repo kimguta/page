@@ -127,8 +127,11 @@ ObjDoc.on({
 .on({
 	'click': function(e) {
 		e.preventDefault();
+		var idx = $("#target_area .map_point a").index(this);
 		$(this).parent().find('a').removeClass('active');
         $(this).addClass('active');
+		$("#target_area .map_area .area_info_group").removeClass('active');
+		$("#target_area .map_area .area_info_group").eq(idx).addClass('active');
+
 	}
 }, '#target_area .map_point a')
-
