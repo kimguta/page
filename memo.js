@@ -37,7 +37,13 @@ function pub_navi(opts){
 	});
 }
 
-
+var sfDateDiff = moment(moment().format("YYYY-MM-DD")).diff(moment("2022-10-07"), "days");
+        if(sfDateDiff >= 0) {
+            $(".inner .date").text("문화행사 시작");
+        } else {
+            sfDateDiff = Math.abs(parseInt(sfDateDiff));
+            $(".inner .date").text(sfDateDiff < 10 ? "0" + sfDateDiff : sfDateDiff);
+        }
 
 height:100vh;height: calc(var(--vh, 1vh) * 100);
 
