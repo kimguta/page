@@ -175,22 +175,22 @@
 		var pageUrl = $(location).attr('href');
 		if (pageUrl.match("git")){
 			$.ajax({
-				url: "https://api.github.com/repos/kimguta/page/contents/basic/content",
+				url: "https://api.github.com/repos/kimguta/page/contents/gwcia/content",
 				success: function (data) {
 					for (var i = 0; i < data.length; i++) {
-						$('.puble-index .view').append('<p><a href="/page/basic/content/'+data[i].name+'">'+ data[i].name +'</a><button class="copy-html">HTML복사</button></p>');
+						$('.puble-index .view').append('<p><a href="/page/gwcia/content/'+data[i].name+'">'+ data[i].name +'</a><button class="copy-html">HTML복사</button></p>');
 					}
 				},
 			});
 		}
 		else{
 			$.ajax({
-				url: "/page/basic/content/",
+				url: "/page/gwcia/content/",
 				dataType:"text",
 				success: function (data) {
 					var dataArr = data.split("\n");
 					for (var i = 0; i < dataArr.length; i++) {
-						$('.puble-index .view').append('<p><a href="/page/basic/content/'+dataArr[i]+'">'+ dataArr[i] +'</a><button class="copy-html">HTML복사</button></p>');
+						$('.puble-index .view').append('<p><a href="/page/gwcia/content/'+dataArr[i]+'">'+ dataArr[i] +'</a><button class="copy-html">HTML복사</button></p>');
 						$('.puble-index .view').addClass('live');
 					}
 				},
@@ -276,6 +276,9 @@
 	});
 
 	function footerTest(){
+		$("#title-bx h3").text("투자여건");
+		$("#breadcrumb .bx .box .text").text("투자여건");
+		$("#breadcrumb .bx .box+.box .text").text("교통인프라");
 		$('#footer .slick').slick({
 			autoplay: false,
 			arrows: true,
@@ -305,6 +308,11 @@
 			});
 		});
 	};
+</script>
+
+<script>
+	$("#title-bx h3").text("투자여건");
+
 </script>
 <!--//[d] 인클루드, 디자인 확인 용 개발 시 제거-->
 
