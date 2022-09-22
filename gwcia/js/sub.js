@@ -1,6 +1,30 @@
 
 //서브공통 스크립트
+var ObjWin = $(window);
 var ObjDoc = $(document);
+var Wwidth = ObjWin.outerWidth();
+
+ObjWin.on({
+	'resize load': function() {
+
+		if(ObjWin.width() < 1200){
+			var mapwidth = (Wwidth - 60) / 1200;
+			var maphidth = mapwidth * 889;
+			$('.estate_wrap .map_area_list').css({'height':maphidth});
+			$('.estate_wrap .map_area').css({'margin-left':'-30px','transform':'scale('+mapwidth+') translate(-50%, 0)'});
+		}
+		// var mapwidth = Wwidth / 1200;
+		// if(ObjWin.width() < 1200){
+		// 	$(this).css('transform','scale(0.9)');
+		// }
+		// else{
+		// 	$('#header').removeClass('pc-mode');
+		// 	$('#header').addClass('mobile-mode');
+		// 	$('.mobile-mode .active + .depth-02').show();
+		// }
+		// $(this).css('transform','scale(0.9)');
+	}
+})
 
 ObjDoc.on({
 	'click': function(e) {
@@ -29,8 +53,11 @@ ObjDoc.on({
 ObjDoc.on({
 	'click': function(e) {
 		e.preventDefault();
+		var idx = $('#sub .pageTab >li .pageTab-tab').index(this);
 		$('.pageTab >li').removeClass('active');
 		$(this).parent().addClass('active');
+		$('.estate_wrap .map_area').removeClass('active');
+		$('.estate_wrap .map_area').eq(idx).addClass('active');
 	}
 }, '#sub .pageTab >li .pageTab-tab')
 .on({
@@ -85,7 +112,24 @@ ObjDoc.on({
 		$('.status_wrap .bar_chart .chart_img img').removeClass('active');
 		$('.status_wrap .bar_chart .chart_img img').eq(idx).addClass('active');
 	}
-}, '.status_wrap .chart_tab li a');
+}, '.status_wrap .chart_tab li a')
+.on({
+	'click': function(e) {
+		e.preventDefault();
+		var idx = $('.estate_wrap .map_area.active .map_tab li a').index(this);
+		$('.estate_wrap .map_area.active .map_tab li').removeClass('active');
+		$(this).parent().addClass('active');
+		$('.estate_wrap .map_area.active .map_box .estate_item').removeClass('active');
+		$('.estate_wrap .map_area.active .map_box .estate_item').eq(idx).addClass('active');
+	}
+}, '.estate_wrap .map_area.active .map_tab li a')
+.on({
+	'mouseleave': function(e) {
+		e.preventDefault();
+		$(this).parent().removeClass('active');
+	}
+}, '.estate_wrap .map_area.active .map_tab li a');
+
 
 
 ObjDoc.on({
