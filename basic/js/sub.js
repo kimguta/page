@@ -84,6 +84,12 @@ ObjDoc.on({
 	}
 }, '.img-zoom-modal')
 .on({
+	'keydown': function(e) { 
+		if (e.keyCode == 9) {
+			$('#img-modal a:first').focus();
+			return false;
+		}
+	},
 	'click': function(e) { 
 		e.preventDefault();
 		$('#img-modal').remove();
