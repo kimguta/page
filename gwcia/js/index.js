@@ -135,3 +135,11 @@ ObjDoc.on({
 
 	}
 }, '#target_area .map_point a')
+.on({
+	'mouseover focusin': function(e) {
+		e.preventDefault();
+        $(this).parent().parent().find('li').removeClass('active');
+		$(this).parent().addClass('active');
+
+	}
+}, '#target_area .target_shortcuts li a');

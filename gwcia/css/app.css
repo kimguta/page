@@ -53,9 +53,9 @@ main{display:block;}
 #header nav{position:relative;display:flex;align-items:center;justify-content:center;letter-spacing:-0.4px;}
 #header nav > .depth-01{margin:0 225px;text-align:center;}
 #header nav > .depth-01 li{display:inline-block;vertical-align:top;}
-#header nav > .depth-01 h2 a{display:block;position:relative;height:89px;line-height:89px;padding:0 39px;color:#fff;font-size:24px;font-weight:bold;text-align: center;white-space:nowrap;}
+#header nav > .depth-01 h2 a{display:block;position:relative;height:89px;line-height:89px;padding:0 39px;color:#fff;font-size:24px;font-weight:bold;text-align: center;white-space:nowrap;z-index:10;}
 #header nav > .depth-01 .depth-02{position:absolute;top:90px;left:50%;right:0;width:1200px;height:auto!important;transform:translateX(-50%);padding-top:1px!important;padding-left:195px;padding-bottom:25px;display:none!important;font-size:0;text-align:left;}
-#header nav > .depth-01 .depth-02:before{content:'';display:block;position:absolute;top:0;bottom:0;left:-10000px;right:-10000px;min-height:121px;background:#fff;}
+#header nav > .depth-01 .depth-02:before{content:'';display:block;position:absolute;top:-85px;bottom:0;left:-10000px;right:-10000px;min-height:121px;background:#fff;}
 #header nav > .depth-01 .depth-02 > li{margin:00;padding:27px 0 23px;display:inline-block;width:239px;vertical-align:top;}
 #header nav > .depth-01 .depth-02 > li:nth-child(4n+5){position:relative;}
 #header nav > .depth-01 .depth-02 > li:nth-child(4n+5):before{content:'';position:absolute;top:0;width:832px;height:1px;background:#e8e8e8;}
@@ -77,7 +77,7 @@ main{display:block;}
 #header nav > .depth-01 .depth-02 h3.active a span{background:#df3128;} */
 #header nav > .depth-01 .depth-03{margin-top:1px;}
 #header nav > .depth-01 .depth-03 h4 a{display:block;height:29px;color:#333;font-size:16px;font-weight:normal;position:relative;word-break:keep-all;}
-#header nav > .depth-01 .depth-03 h4.active a{color:#4c68ea;font-weight:bold;}
+#header nav > .depth-01 .depth-03 h4 a:hover{color:#4c68ea;font-weight:bold;}
 #header .cycle{display:none;position:absolute;bottom:-2px;left:50%;margin-left:-10px;width:19px;height:4px;background:#4c68ea;z-index:10;}
 #header.active{background:#fff;border-bottom-color:#d6d6d6;}
 #header.active:before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;display:block;background:#fff;}
@@ -159,6 +159,7 @@ main{display:block;}
 #header .site_map .depth-02 > li+li{margin-top:35px;}
 #header .site_map .depth-02 h3 {display:inline-block;vertical-align:top;min-width:108px;}
 #header .site_map .depth-02 h3 a{font-size:18px;color:#333;line-height:25px;font-weight:bold;}
+#header .site_map .depth-02 h3 a .logo_fez{margin-top:0;}
 #header .site_map .depth-03{display:inline-block;vertical-align:top;margin-top:0;margin-left:36px;}
 #header .site_map .depth-03 li{display:inline-block;vertical-align:top;}
 #header .site_map .depth-03 li+li{margin-left:22px;}
@@ -266,6 +267,16 @@ main{display:block;}
   #header .site_map .close_btn{position:fixed;top:4px;right:13px;z-index:20;}
 }
 
+
+@media (max-width:760px) {
+  #header .btn_box{right:16px;}
+  #header .btn_login{transform:scale(0.8);padding: 0 3px 10px 10px;}
+  #header .btn_login:before{vertical-align:-12px;}
+  #header .btn_search{transform:scale(0.8);}
+  #header .btn_search:before{vertical-align:-12px;margin-right:6px;}
+  #header .sitemap{transform:scale(0.8);}
+  #header .sitemap:before{top:20px;}
+}
 @media (max-width:475px) {
   #header nav{right:-93vw;background:#fff;padding: 35px 20px 30px;width:93vw}
   .mobile-close{right:20px;top:34px;}
@@ -298,8 +309,11 @@ main{display:block;}
 
 @media (max-width:1199px) {
   .relevant_banner{padding: 14px 0 7px;}
-  .relevant_banner .logo_box{transform:scale(.8);}
-  .relevant_banner .list_item{font-size:14px;height:52px;line-height:52px;margin-right:60px;}
+  .relevant_banner .logo_box{transform:scale(.9);margin-top: -1px;}
+  .relevant_banner .banner_list{width:calc(100% - 108px);}
+  .relevant_banner .list_item{font-size:15px;height:54px;line-height:54px;margin-right:60px;}
+  .relevant_banner .slick-arrow{left:-34px;}
+  .relevant_banner .slick-arrow.next{right:-34px;}
   #footer{padding:0 0 41px;}
   #footer .inner{width:100%;padding:21px 0 0;text-align:center;height:auto;}
   #footer .inner:before{top:0;left:0;right:0;border-radius:0;height:176px;}

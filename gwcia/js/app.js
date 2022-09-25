@@ -73,11 +73,6 @@ ObjWin.on({
 		}
 	}
 })
-// .on({
-// 	'resize load': function() {
-// 		$('#header .site_map .depth-03').prev('h3').addClass('has-depth');
-// 	}
-// })
 .on({
 	'resize': function() {
 		var Wwidth2 = $(window).outerWidth();
