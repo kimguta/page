@@ -196,13 +196,11 @@ function sideBar(wrapElem, elem){
 	}); 
 }
 
-ObjWin.on('load', function(){
-    ObjWin.on('scroll load', function(){
-        var posY = ObjWin.scrollTop() + 300;
-        var welOppset = $('#welcome').prev().prev('section').offset().top;
-        if(welOppset < posY){
-            $('#welcome img').addClass('active');
-        }  
-    });
+ObjWin.on('scroll load', function(){
+    var posY = ObjWin.scrollTop() + 300;
+    var welOppset = $('#welcome').prev().prev('section').offset().top;
+    if(welOppset < posY){
+        $('#welcome img').addClass('active');
+    }  
 });
 

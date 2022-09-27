@@ -1,14 +1,32 @@
 @charset "utf-8";
 
+#sub{background:#f5f5f5;}
+#content{padding-top:50px;padding-bottom:50px}
 
 
-#breadcrumb-bx .box ul,
-.share .view{display:none;}
+#sub-visual{position:relative;}
+#sub-visual .visual-bx{display:flex;align-items:center;justify-content:center;height:800px;overflow:hidden;}
+#sub-visual .visual-bx img{display:block;width:1920px;left:50%;margin-left:-960px;position:absolute;top:0;}
+#sub-visual .visual-bx h3{color:#fff;position:relative;z-index:3;font-weight:700;font-size:70px;text-shadow:0px 0px 15px rgba(0,0,0,.3);line-height:1.1;}
+#sub-visual .tab-bx{background:#fff;border-bottom:1px solid #ddd;padding:7px 0;}
+#sub-visual .tab-bx .tab{display:flex;align-items:center;}
+#sub-visual .tab-bx .tab a{height:46px;line-height:49px;padding:0 20px;border-radius:23px;color:#555;font-weight:500;font-size:18px;}
+#sub-visual .tab-bx .tab a.active{background: linear-gradient(to right, #b100cf 0%,#f41216 100%);font-weight:700;color:#fff;}
 
-#content{padding-top:50px;padding-bottom:50px;}
+#sub-visual .tab-bx .bread-crumb{position:absolute;right:20px;top:0;}
+#sub-visual .tab-bx .bread-crumb a{height:46px;line-height:49px;padding:0 20px;margin-left:5px;color:#555;font-weight:300;font-size:14px;position:relative;}
+#sub-visual .tab-bx .bread-crumb a:last-child{padding-right:0;font-weight:500;color:#333}
+#sub-visual .tab-bx .bread-crumb a:not(:last-child):after{content:'>';position:absolute;right:-10px;}
+
+#sub .titLv{color:#111;font-size:36px;line-height:1.2;font-weight:700;margin-bottom:10px;}
+#sub .pgraph{padding-left:0;}
+#sub .titLv2{padding-left:0;color:#333;font-size:30px;line-height:1.2;font-weight:700;margin-bottom:5px;}
+#sub .titLv2:before{display:none;}
+
+
+
 
 /*이미지 줌 모달*/
-
 .img-modal-bx{display:flex;align-items:center;justify-content:space-between;}
 .img-modal-bx .img-zoom-modal + .img-zoom-modal{margin-left:20px;}
 .img-zoom-modal{position:relative;background:#fafafa;display:block;margin:20px 0;flex:1;}
@@ -31,7 +49,7 @@
 #img-modal .title-bx .btn-bx i{margin-right:3px;}
 #img-modal .title-bx .btn-bx a + a{margin-left:3px;}
 
-@media (max-width: 1399px){
+@media (max-width: 1499px){
   .img-modal-bx .img-zoom-modal + .img-zoom-modal{margin-left:10px;}
   #img-modal{padding: 50px 0px 50px;}
   #img-modal .thumb{height: calc(100vh - 100px);}
