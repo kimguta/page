@@ -94,7 +94,7 @@ ObjWin.on({
 .on({
 	'scroll load': function() {
 		var elementLeft=$('#header nav > .depth-01 li:first-child h2 a').offset().left;
-		$('#header nav > .depth-01 .depth-02').css('padding-left',elementLeft+'px')
+		$('#header nav > .depth-01 .depth-02').css('padding-left',elementLeft - 151 + 'px')
 	}
 })
 
