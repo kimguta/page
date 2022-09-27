@@ -92,10 +92,10 @@ ObjWin.on({
 	}
 })
 .on({
-	'resize': function() {
-		var divEl = $("#header nav");
-		var divX = divEl.offset().left;
-		$('#header nav > .depth-01 .depth-02').css({'padding-left': divX + 30 + 'px'})
+	'resize load': function() {
+		var divEl = $("#header nav > .depth-01");
+		var divY = divEl.outerWidth();
+		$('#header nav > .depth-01 .depth-02').css({'padding-left': (1200 - divY) / 2 + 'px'})
 	}
 });
 
