@@ -95,7 +95,7 @@ ObjWin.on({
 	'resize load': function() {
 		var divEl = $("#header nav > .depth-01");
 		var divY = divEl.outerWidth();
-		$('#header nav > .depth-01 .depth-02').css({'padding-left': (1200 - divY) / 2 - 11 + 'px'})
+		$('#header nav > .depth-01 .depth-02').css({'padding-left': (1200 - divY) /2 + 38 + 'px'})
 	}
 });
 
