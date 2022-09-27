@@ -58,7 +58,7 @@ $(function() {
 var ObjWin = $(window);
 var ObjDoc = $(document);
 var Wwidth = ObjWin.outerWidth();
-
+$(window).resize(function(){document.location.reload();})
 ObjWin.on({
 	'resize load': function() {
 		$('#header .depth-02').prev('h2').addClass('has-depth');
@@ -92,13 +92,13 @@ ObjWin.on({
 	}
 })
 .on({
-	'resize load': function() {
+	'resize': function() {
 		var divEl = $("#header nav > .depth-01");
 		var divY = divEl.outerWidth();
-		$('#header nav > .depth-01 .depth-02').css({'padding-left': (1200 - divY) /2 + 38 + 'px'})
+		$('#header nav > .depth-01 .depth-02').css({'padding-left': (1200 - divY) / 2 - 11 + 'px'});
+
 	}
 });
-
 
 ObjDoc.on({
 	'click': function(e) {
