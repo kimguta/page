@@ -24,5 +24,6 @@
   <li><a href="culture/index_list.html" target="_blank">강원문화유산 아카이브</a></li>
   <li><a href="mayor2022/index_list.html" target="_blank">양양군수실2022</a></li>
   <li><a href="governor/index_list.html" target="_blank">강원도지사실2022</a></li>
+  <li><a href="gwtour2022" target="_blank">강원관광2022</a></li>
 </ul>
 
