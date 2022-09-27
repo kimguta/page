@@ -178,6 +178,8 @@
 			퍼블 콘텐츠 목록
 			<button onclick="$('.puble-index .view').hide();textChange();$('.pre-view').css('display','none');return false;">✕</button>
 		</strong>
+		<p><a href="/page/basic/" target="_blank" onmouseover="$('.pre-view').hide();">메인페이지</a></p>
+		<div></div>
 	</div>
 </div>
 
@@ -196,7 +198,7 @@
 	.puble-index .view .copy-html{width:67px;text-align:center;background:red;color:#fff;font-size:12px;height:26px;line-height:24px;}
 	.puble-index .close{display:flex;background:#111;color:#fff;justify-content:center;align-items:center;width:22px;height:22px;border:1px solid #fff;margin-bottom:-1px;font-size:13px;}
 	.puble-index .pre-view{transform:translateY(-50%) scale(.63);position:fixed;left:20px;top:50%;display:flex;align-items:flex-start;display:none;z-index:-1;transform-origin:0% 50%;}
-	.puble-index .pre-view:before{content:'';display:block;position:fixed;background:rgba(0,0,0,.3);top:0;left:0;right:0;bottom:0;z-index:-1;transform:scale(2);}
+	.puble-index .pre-view:before{content:'';display:block;position:fixed;background:rgba(0,0,0,.7);top:0;left:0;right:0;bottom:0;z-index:-1;transform:scale(2);}
 	#preview-pc{width:1600px;height:938px;background:#fff;box-shadow:0px 0px 15px 0px rgba(0,0,0,.2);border:8px solid #111}
 	#preview-mobile{width:414px;height:736px;background:#fff;margin-left:130px;transform:scale(1.275);transform-origin:100% 0%;box-shadow:0px 0px 15px 0px rgba(0,0,0,.2);border:6px solid #111}
 	html.view-mode::-webkit-scrollbar{display:none;}
@@ -221,7 +223,7 @@
 				url: "https://api.github.com/repos/kimguta/page/contents/basic/content",
 				success: function (data) {
 					for (var i = 0; i < data.length; i++) {
-						$('.puble-index .view').append('<p><a href="/page/basic/content/'+data[i].name+'">'+ data[i].name +'</a><button class="copy-html">HTML복사</button></p>');
+						$('.puble-index .view div').append('<p><a href="/page/basic/content/'+data[i].name+'">'+ data[i].name +'</a><button class="copy-html">HTML복사</button></p>');
 					}
 				},
 			});
@@ -233,7 +235,7 @@
 				success: function (data) {
 					var dataArr = data.split("\n");
 					for (var i = 0; i < dataArr.length; i++) {
-						$('.puble-index .view').append('<p><a href="/page/basic/content/'+dataArr[i]+'">'+ dataArr[i] +'</a><button class="copy-html">HTML복사</button></p>');
+						$('.puble-index .view div').append('<p><a href="/page/basic/content/'+dataArr[i]+'">'+ dataArr[i] +'</a><button class="copy-html">HTML복사</button></p>');
 						$('.puble-index .view').addClass('live');
 					}
 				},
@@ -291,7 +293,7 @@
 			$("iframe")[0].contentWindow.includeLayout();
 			$("iframe")[1].contentWindow.includeLayout();
 		}
-	}, '.puble-index .view a')
+	}, '.puble-index .view div a')
 	.on({
 		'click': function(e) { 
 			e.preventDefault();
