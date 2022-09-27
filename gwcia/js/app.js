@@ -62,7 +62,7 @@ var Wwidth = ObjWin.outerWidth();
 ObjWin.on({
 	'resize load': function() {
 		$('#header .depth-02').prev('h2').addClass('has-depth');
-		if(ObjWin.width() > 1399){
+		if(ObjWin.width() > 1199){
 			$('#header').removeClass('mobile-mode');
 			$('#header').addClass('pc-mode');
 		}
@@ -92,11 +92,12 @@ ObjWin.on({
 	}
 })
 .on({
-	'scroll load': function() {
-		var elementLeft=$('#header nav > .depth-01 li:first-child h2 a').offset().left;
-		$('#header nav > .depth-01 .depth-02').css('padding-left',elementLeft - 151 + 'px')
+	'resize': function() {
+		var divEl = $("#header nav");
+		var divX = divEl.offset().left;
+		$('#header nav > .depth-01 .depth-02').css({'padding-left': divX + 30 + 'px'})
 	}
-})
+});
 
 
 ObjDoc.on({
