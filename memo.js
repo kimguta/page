@@ -1,5 +1,5 @@
 
-
+font-family:"Apple SD Gothic Neo"," NotoSans","Malgun Gothic","맑은 고딕",helvetica,sans-serif; 
 pub_navi({
 		target: '.id-gnb',
 		notItem: '.item-button'
