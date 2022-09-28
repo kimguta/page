@@ -1,5 +1,5 @@
 
-font-family:"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic","맑은 고딕",helvetica,sans-serif; 
+#sub{background:#f5f5f5;font-family:"Apple SD Gothic Neo","Noto Sans", "Noto Sans KR","Malgun Gothic","맑은 고딕",helvetica,sans-serif;letter-spacing: -1px;}
 pub_navi({
 		target: '.id-gnb',
 		notItem: '.item-button'
