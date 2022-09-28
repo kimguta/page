@@ -104,7 +104,7 @@ function contentScript(){
 		$.getScript('https://cdn.jsdelivr.net/npm/@panzoom/panzoom/dist/panzoom.min.js');
 		$.getScript('https://kit.fontawesome.com/708e424f8f.js');
 	}
-
+	$('.skinBtnBo i').parent().addClass('icon');
 };
 
 

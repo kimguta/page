@@ -27,14 +27,35 @@ $(function() {
         if (video.currentTime > 5) {
             $('#visual').addClass('v1')
         }
+        $('.video-wrap .point').each(function(index, item){
+            var sTime = $(this).data('start');
+            var eTime = $(this).data('end');
+            if (video.currentTime >= sTime && video.currentTime <= eTime) {
+                $(this).addClass('active');
+            }
+            else{
+                $(this).removeClass('active');
+            }
+        })
+    });
+
+    $('.video-wrap .point').on({
+        'mouseover': function() { 
+            sample.pause();
+            $('.video-wrap').addClass('active');
+        },
+        'mouseout': function() { 
+            sample.play();
+            $('.video-wrap').removeClass('active');
+        },
     });
 
     var windowWidth = $(window).width();
-    $('#Uplayer').on('mousemove', function(e) {
+    $('.video-wrap').on('mousemove', function(e) {
         var moveX = (($(window).width() / 2) - e.pageX) * 0.4;
         var moveY = (($(window).height() / 2) - e.pageY) * 0.6;
         if (windowWidth > 1499) {
-            $('#Uplayer').stop().css('margin-left', moveX + 'px').css('margin-top', moveY + 'px');
+            $('.video-wrap').stop().css('margin-left', moveX + 'px').css('margin-top', moveY + 'px');
         }
     });
 
@@ -55,9 +76,10 @@ $(function() {
         speed: 1200,
         responsive: [
             {
-                breakpoint: 761,
+                breakpoint: 1500,
                 settings: {
-                speed: 900,
+                speed: 700,
+                centerMode: true,
                 }
             }
         ]
@@ -77,9 +99,10 @@ $(function() {
         speed: 900,
         responsive: [
             {
-                breakpoint: 761,
+                breakpoint: 1500,
                 settings: {
-                speed: 300,
+                speed: 500,
+                centerMode: true,
                 }
             }
         ]
@@ -98,7 +121,7 @@ $(function() {
         speed: 600,
         responsive: [
             {
-                breakpoint: 761,
+                breakpoint: 1500,
                 settings: {
                 speed: 500,
                 }
@@ -120,9 +143,10 @@ $(function() {
         speed: 600,
         responsive: [
             {
-                breakpoint: 761,
+                breakpoint: 1500,
                 settings: {
-                speed: 300,
+                speed: 500,
+                centerMode: true,
                 }
             }
         ]
