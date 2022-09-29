@@ -41,7 +41,7 @@
 			<div id="sub-detail-visual" include-html="/page/gwcia/include/sub-detail-visual.html"></div>
 			<div id="content" class="inner">
 				<a href="#A-Contents-focus" id="A-Contents-focus" class="blind">본문 시작</a>
-				<div class="contsArea skinContainer" include-html="/page/gwcia/content/sub_efez.html">
+				<div class="contsArea skinContainer" include-html="/page/gwcia/content/sub_complex_detail.html">
 					<!--콘텐츠 입력 -->
 				</div>
 			</div>
@@ -95,6 +95,43 @@
 
 		<footer id="footer" class="clearfix" include-html="/page/gwcia/include/footer.html"></footer>
 	</div>
+	<div class="notice_layer">
+		<div class="layer_wrap">
+			<div class="layer_top">
+				<strong><em>춘천시</em> 현황</strong>
+			</div>
+			<div class="layer_body">
+				<div class="item_area">
+					<ul>
+						<li>
+							<span class="item_name people">인구수</span>
+							<span class="item_count">288,320</span>
+						</li>
+						<li>
+							<span class="item_name households">세대수</span>
+							<span class="item_count">130,277</span>
+						</li>
+						<li>
+							<span class="item_name surface">면적(㎢)</span>
+							<span class="item_count">1,116</span>
+						</li>
+					</ul>
+				</div>
+				<div class="complex_area">
+					<div class="complex_box">
+						<strong class="complex_name">산업단지</strong>
+						<span class="complex_info">남면, 후평, 동춘천, 남춘천, 전력IT문화복합, 도시첨단문화, 도시첨단정보, 네이버도시첨단</span>
+					</div>
+					<div class="complex_box">
+						<strong class="complex_name">농공단지</strong>
+						<span class="complex_info">거두, 당림, 창촌, 퇴계, 수동</span>
+					</div>
+				</div>
+			</div>
+			<a href="#" class="close_btn"><span class="blind">닫기</span></a>
+		</div>
+	</div>
+	<span class="dimmed"></span>
 </body>
 
 </html>
@@ -282,6 +319,7 @@
 		$("#visual-bx .page-simbol .img-simbol").removeClass("active");
 		$("#visual-bx .page-simbol .img-simbol:nth-child(3)").addClass("active");
 
+
 		$('#footer .slick').slick({
 			autoplay: false,
 			arrows: true,
@@ -297,6 +335,21 @@
 			speed: 600,
 			variableWidth: true,
 		});
+		$('.complex_detail_wrap .image_area .slick').slick({
+			autoplay: false,
+			arrows: true,
+			dots: false,
+			prevArrow: '<a href="#" class="prev">이전</a>',
+			nextArrow: '<a href="#" class="next">다음</a>',
+			accessibility: true,
+			swipeToSlide: true,
+			infinite: true,
+			slidesToShow: 1,
+			slidesToScroll: 1,
+			pauseOnHover: false,
+			speed: 600,
+		});
+
 	}
 
 	function includeLayout(){

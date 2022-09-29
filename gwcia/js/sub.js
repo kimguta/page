@@ -1,4 +1,23 @@
 
+
+$(function() {
+	$('.complex_detail_wrap .image_area .slick').slick({
+		autoplay: false,
+		arrows: true,
+		dots: false,
+		prevArrow: '<a href="#" class="prev">이전</a>',
+		nextArrow: '<a href="#" class="next">다음</a>',
+		accessibility: true,
+		swipeToSlide: true,
+		infinite: true,
+		slidesToShow: 4,
+		slidesToScroll: 1,
+		pauseOnHover: false,
+		variableWidth: true,
+		speed: 600,
+	});
+});
+
 //서브공통 스크립트
 var ObjWin = $(window);
 var ObjDoc = $(document);
@@ -131,10 +150,33 @@ ObjDoc.on({
 		e.preventDefault();
 		$('.relevant_wrap .relevant_list li').removeClass('active');
 	}
-}, '.relevant_wrap .relevant_list .list_item');
-
-
-
+}, '.relevant_wrap .relevant_list .list_item')
+.on({
+	'click': function(e) {
+		e.preventDefault();
+		$(this).toggleClass('active');
+	}
+}, '#sub-detail-visual .view_btn.complex_shortcut')
+.on({
+	'click': function(e) {
+		e.preventDefault();
+		$('#sub-detail-visual .view_btn.complex_shortcut').removeClass('active');
+	}
+}, '#sub-detail-visual .view_btn_box .complex_list li a')
+.on({
+	'click': function(e) {
+		e.preventDefault();
+		$('.notice_layer').addClass('active');
+		$('.dimmed').addClass('active');
+	}
+}, '#sub-detail-visual .notice_btn')
+.on({
+	'click': function(e) {
+		e.preventDefault();
+		$('.notice_layer').removeClass('active');
+		$('.dimmed').removeClass('active');
+	}
+}, '.notice_layer .close_btn');
 
 ObjDoc.on({
 	'click': function(e) {
