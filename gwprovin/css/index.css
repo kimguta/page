@@ -1,0 +1,92 @@
+@charset "utf-8";
+
+#main{position:relative;z-index:10;padding-top:160px;transition:all .35s ease-out;}
+.fixed ~ #main{padding-top:80px;}
+
+@media (max-width:1399px) {
+    #main{padding-top:70px !important}
+    .fixed ~ #main{padding-top:20px !important;}
+}
+    
+#visual{position:relative;z-index:2;}
+#visual:before{content:'';display:block;position:absolute;bottom:50px;top:0;left:0;right:0;z-index:-1;background:url(/page/gwprovin/images/main/bg_visual.jpg) no-repeat center top /cover}
+#visual .inner{display:flex;padding-top:50px;align-items:flex-end;}
+
+#visual .seach-bx{order:2;padding-left:40px;width:507px;flex-basis:507px;}
+#visual .seach-bx h2{display:flex;align-items:center;color:#1b1b1b;font-size:26px;font-weight:700;letter-spacing:-1px;justify-content:space-between;line-height:1.2;}
+#visual .seach-bx h2 img{width:90px;}
+#visual fieldset{margin-top: 27px;background:#00529b;border-radius:10px;padding:4px 60px 4px 4px;position: relative;}
+#visual fieldset input[type="search"]{background:#fff;padding-left:20px;height:54px;width:100%;border-radius:6px 0 0 6px;font-size:16px}
+#visual fieldset input[type="submit"]{width:40px;position:absolute;right:10px;top:0;bottom:0;font-size:0;background: url(/page/gwprovin/images/common/sp_gwprovin.png) no-repeat -173px 13px /674px 600px}
+#visual fieldset input[type="submit"]:active{transform:scale(.95);}
+#visual .gover{margin-top: 36px;position:relative;z-index:2;overflow:hidden;border-radius:10px;background:#fff;transition:all .2s;padding: 1px;}
+#visual .gover:hover{background:rgba(255,255,255,.7);backdrop-filter:blur(2px);}
+#visual .gover:before{content:'';display:block;z-index:-1;bottom:0;left:0;right:0;height:50px;background:#ea3541;position:absolute;}
+#visual .gover > a{display:block;position:relative;width:100%;padding: 32px 0px 0 17px;transition:all .2s;margin-bottom:-2px;}
+#visual .gover > a img{display:block;width:100%;transition:all .2s;}
+#visual .gover:hover > a img{filter:brightness(1.1);}
+#visual .gover .sns-bx{position:absolute;display:flex;left:25px;align-items:center;bottom:70px;transform:scale(.78);transform-origin:0% 100%;}
+#visual .gover .sns-bx a{width:38px;height:39px;margin-right:25px;transition:filter .1s;font-size:0;background: url(/page/gwprovin/images/common/sp_gwprovin.png) no-repeat -159px -121px /674px 600px;position: relative;}
+#visual .gover .sns-bx a.twitter{background-position-x:-230px;}
+#visual .gover .sns-bx a.instagram{background-position-x:-300px;}
+#visual .gover .sns-bx a.kakao{background-position-x:-372px;}
+#visual .gover .sns-bx a.blog{background-position-x:-442px;}
+#visual .gover .sns-bx a.youtube{background-position-x:-512px;}
+#visual .gover .sns-bx a:hover{filter:hue-rotate(90deg);}
+#visual .gover .sns-bx a:not(:last-child):after{content:'';display:block;height:16px;width:1px;background:#9aa1ae;position:absolute;right:-13px;top:50%;margin-top:-9px;transform:rotate(25deg);pointer-events:none;}
+#visual .gover .link-bx{position:absolute;bottom:0;left:30px;display:flex;}
+#visual .gover .link-bx a{color:#fff;height:50px;line-height:50px;color:#fff;padding:0 28px;transition:all .1s;}
+#visual .gover .link-bx a:hover{font-weight:700;}
+
+
+#visual .slick-wrap{order:1;flex:1;width:calc(100% - 507px);position:relative;}
+#visual .slick{overflow:hidden;border-radius:10px;box-shadow:0px 0px 15px 0px rgba(0,0,0,.3);-webkit-mask-image:-webkit-radial-gradient(white, black);position:relative;z-index:2;}
+#visual .slick .slick-slide img{transition:all .2s;}
+#visual .slick .slick-slide:focus img{border:2px dashed #000;}
+#visual .slick .slick-slide:hover img{filter:brightness(1.1);}
+#visual .control{position:absolute;display:flex;z-index:3;height:48px;align-items:center;background:#fff;padding:0 30px;border-radius:24px;right:15px;bottom:15px;}
+#visual .control .count{color:#1f2d4b;font-size:20px;display:flex;align-items:center;margin-right:17px;}
+#visual .control .count span{padding:0 6px 0 7px;font-size:14px;margin-top:2px;}
+#visual .control a{height:16px;width:12px;background: url(/page/gwprovin/images/common/sp_gwprovin.png) no-repeat -251px -9px /674px 600px;font-size:0;color:transparent;}
+#visual .control a.next{background-position-x:-339px;}
+#visual .control a.pause{background-position-x:-280px;}
+#visual .control a.play{background-position-x:-311px;display:none;}
+#visual .control a.ps-btn{margin:0 15px;}
+#visual .control a:active{transform:scale(.9);}
+
+#visual .video-on{position:absolute;top:40px;right:-10px;transition:all .2s;z-index:20;}
+#visual .video-on:hover{filter:hue-rotate(45deg);right:0;}
+#visual .video-on:active{transform:scale(.95);transform-origin:100% 50%;}
+
+
+#video-wrap{position:fixed;top:0;left:0;right:0;bottom:0;display:none;background:rgba(0,0,0,.7);z-index:3000;align-items:center;justify-content:center;flex-direction:column;padding-bottom:50px;animation:video-modal1 .35s 1 both ease-out;}
+#video-wrap .video-bx{max-width:1260px;margin:0 auto;width:100%;order:2;animation:video-modal2 .5s .3s 1 both ease-out;}
+#video-wrap .video-bx > div{position:relative;width:100%;padding-top:56.25%;}
+#video-wrap .video-bx iframe{display:block;position:absolute;top:0;left:0;width:100%;height:100%;}
+#video-wrap .btn-bx{max-width:1260px;margin:0 auto;width:100%;order:1;display:flex;justify-content:flex-end;margin-bottom:15px;}
+#video-wrap .close{width:64px;}
+#video-wrap .close img{display:block;width:100%;}
+
+
+
+@keyframes video-modal1{ 
+    0%{opacity:0;}
+    100%{opacity:1;} 
+}
+
+@keyframes video-modal2{ 
+    0%{opacity:0;transform:translateY(20%);}
+    100%{opacity:1;transform:translateY(0%);} 
+}
+
+
+/* 
+
+
+@keyframes text1{ 
+    0%{transform:translateY(-70%);opacity:0;}
+    100%{transform:translateY(0%);opacity:1;} 
+}
+
+
+} */
