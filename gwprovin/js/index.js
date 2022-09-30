@@ -20,7 +20,12 @@ $(function() {
 
 
 ObjDoc.on({
-	'click focusout': function(e) { 
+    'keydown': function(e) { 
+        if(e.keyCode==9){ 
+            $('#video-wrap .video-bx').attr('tabindex', -1).focus();
+        }
+	},
+	'click': function(e) { 
         e.preventDefault();
 		$('#player1')[0].contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
         $('#video-wrap').hide();
@@ -32,7 +37,7 @@ ObjDoc.on({
         e.preventDefault();
         $('#video-wrap').css('display','flex');
         $('#player1')[0].contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*');
-        $('#video-wrap a:first').focus();
+        $('#video-wrap .video-bx div').attr('tabindex', -1).focus();
 	}
 }, '#main .video-on');
 
