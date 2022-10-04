@@ -14,8 +14,28 @@ $(function() {
         speed: 1200,
         autoplaySpeed: 5000,
     };
+
+    var slickOption2 = {
+        autoplay: true,
+        arrows: true,
+        accessibility: false,
+        dots:false,
+        prevArrow: $('#notice .prev'),
+        nextArrow: $('#notice .next'),
+        draggable: true,
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        pauseOnHover: false,
+        speed: 600,
+        autoplaySpeed: 5000,
+    };
     
-    initSlick($('#visual .slick'), slickOption);      
+    initSlick($('#visual .slick'), slickOption);
+    initSlick($('#notice .slick'), slickOption2);
+    
+
+    $('#notice .item:first-child, #information .item:first-child').addClass('active');
 });
 
 
@@ -39,7 +59,20 @@ ObjDoc.on({
         $('#player1')[0].contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*');
         $('#video-wrap .video-bx div').attr('tabindex', -1).focus();
 	}
-}, '#main .video-on');
-
+}, '#main .video-on')
+.on({
+	'click': function(e) { 
+        e.preventDefault();
+        $('#notice .item').removeClass('active');
+        $(this).parents('.item').addClass('active');
+	}
+}, '#notice h2 a')
+.on({
+	'click': function(e) { 
+        e.preventDefault();
+        $('#information .item').removeClass('active');
+        $(this).parents('.item').addClass('active');
+	}
+}, '#information h3 a');
 
 
