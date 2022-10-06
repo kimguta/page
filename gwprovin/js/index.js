@@ -13,6 +13,26 @@ $(function() {
         pauseOnHover: false,
         speed: 1200,
         autoplaySpeed: 5000,
+        responsive: [
+            {
+                breakpoint: 992,
+                settings: {
+                speed: 700,
+                slidesToShow: 3,
+                variableWidth: true,
+                swipeToSlide:true,
+                centerMode: true,
+                }
+            },
+            {
+              breakpoint: 761,
+              settings: {
+                slidesToShow: 1,
+                variableWidth: false,
+                centerMode: false,
+              }
+            }
+        ]
     };
 
     var slickOption2 = {
@@ -29,6 +49,18 @@ $(function() {
         pauseOnHover: false,
         speed: 600,
         autoplaySpeed: 5000,
+        responsive: [
+            {
+                breakpoint: 992,
+                settings: {
+                speed: 500,
+                centerMode: true,
+                slidesToShow: 3,
+                variableWidth: true,
+                swipeToSlide:true,
+                }
+            }
+        ]
     };
     
     initSlick($('#visual .slick'), slickOption);
