@@ -63,6 +63,7 @@ ObjWin.on({
 	'resize load': function() { 
 		$('#header .depth-02').prev('h2').addClass('has-depth');
 		$('#header .depth-03').prev('h3').addClass('has-depth');
+		$('#side-menu .depth-03').prev('h3').addClass('has-depth');
 		$('#header .depth-02 h3.active').next('.depth-03').show();
 		if(ObjWin.width() > 1379){ 
 			$('#header, #sub').removeClass('mobile-mode');

@@ -1,35 +1,112 @@
 @charset "utf-8";
 
-
-
-
-#content{padding-top:50px;padding-bottom:50px;}
 .boGalleryView .slick-dots li + li{margin-left:8px;}
 .boGalleryView .slick-dots button{background:#ccc}
 
 
 /*서브비쥬얼*/
-#breadcrumb-bx .box ul, .sns-bx .share .view{display:none;}
-#sub-visual{position:relative;overflow:hidden;z-index:2;}
+
+#sub-visual{position:relative;z-index:21;}
 #sub-visual .visual-bg{width:1920px;top:0;bottom:0;object-fit:cover;position:absolute;left:50%;margin-left:-960px;z-index:-1;}
-#sub-visual .inner{padding-left:375px;display:flex;justify-content:space-between;align-items:flex-end;height:327px;padding-bottom:60px;}
-.title-bx{position:relative;padding-top:30px;}
+#sub-visual .inner{padding-left:390px;display:flex;justify-content:space-between;align-items:flex-end;height:327px;padding-bottom: 65px;}
 .title-bx h2{color:#242b45;line-height:1.1;font-size:30px;font-weight:700;}
-#breadcrumb-bx{display:flex;align-items:center;margin-top:7px;margin-left:-3px;margin-bottom:-15px;}
+#breadcrumb-bx{display:flex;align-items:center;margin-top:7px;margin-left:-3px;margin-bottom: -21px;}
 #breadcrumb-bx .home{width:22px;height:22px;background: url(/page/gwprovin/images/sub/sub_icon.png) no-repeat -7px -7px /142px 178px;font-size:0;color:transparent;transition:all .1s;}
 #breadcrumb-bx .home:hover{transform:scale(1.1);}
 #breadcrumb-bx .open{color:#242b45;font-size:14px;padding:0 5px;margin-left: 7px;position:relative;transition:all .1s;}
 #breadcrumb-bx .open:after{content:'';display:block;width:5px;height:5px;border:1px solid #242b45;border-width:1px 1px 0 0;position:absolute;top:50%;margin-top:-2.5px;left: -7px;transform:rotate(45deg);}
 #breadcrumb-bx .open:hover{font-weight:700;}
+#sub-visual .sns-bx{display:flex;}
+#sub-visual .sns-bx .print{font-size:0;width:36px;height:36px;background: url(/page/common/images/sp_dq.png) no-repeat -362px -2px /520px 1500px;margin-left:10px;}
+#sub-visual .sns-bx .open{font-size:0;width:36px;height:36px;background: url(/page/common/images/sp_dq.png) no-repeat -322px -2px /520px 1500px;display:block;}
+#sub-visual .sns-bx .print:hover, #sub-visual .sns-bx .open:hover{background-position-y:-42px;}
+#sub-visual .sns-bx .print:active, #sub-visual .sns-bx .open:active{transform:scale(.95);}
+#sub-visual .sns-bx .share{position:relative;}
+#sub-visual .sns-bx .view{position:absolute;background:#fff;top:-1px;bottom:-1px;border-radius:18px;display:none;white-space:nowrap;right:-1px;}
+#sub-visual .sns-bx .view a{width:52px;position:relative;font-size:0;color:transparent;display:flex;align-items:center;justify-content:center;}
+#sub-visual .sns-bx .view a:after{content:'';background: url(/page/gwprovin/images/sub/sub_icon.png) no-repeat -37px -5px /142px 178px;width:30px;height:28px;}
+#sub-visual .sns-bx .view a.twitter:after{background-position-x:-74px;}
+#sub-visual .sns-bx .view a.close:after{background-position: -109px -4px;}
+#sub-visual .sns-bx .view a:not(:first-child):before{content:'';display:block;top:9px;bottom:10px;position:absolute;left:0;border-left:1px dotted #a8acb2;}
+
+
+@media (min-width: 1399px){
+  #breadcrumb-bx .box ul{display:none !important}
+}  
+
+@media (max-width: 1399px){
+  #sub-visual .visual-bg{width:1400px;margin-left:-700px;bottom:20px;top:auto;}
+  #sub-visual .inner{padding-left:20px;height:230px;padding-bottom: 20px;align-items:center;padding-top:60px;}
+  .title-bx h2{color:#242b45;line-height:1.1;font-size:26px;font-weight:700;}
+  #breadcrumb-bx{margin:0;position:absolute;bottom:0;left:20px;right:20px;}
+  #breadcrumb-bx .home{display:none;}
+  #breadcrumb-bx .box{flex:1 33.333%;display:flex;position:relative;transition:width .2s ease-out;width:33.333%}
+  #breadcrumb-bx .box:nth-of-type(2).active{min-width:175px;}
+  #breadcrumb-bx .box:last-of-type.active{min-width:260px;}
+  #breadcrumb-bx .open{color:#fff;font-size:14px;padding:0 15px 0 15px;margin-left:0px;height:40px;background:#008993;width:100%;align-items:center;display:flex;justify-content:space-between;z-index:5;font-weight:300}
+  #breadcrumb-bx .open:hover{font-weight:400;}
+  #breadcrumb-bx .box:first-of-type .open{border-radius:5px 0 0 5px;background:#00a885;}
+  #breadcrumb-bx .box:last-of-type .open{border-radius:0 5px 5px 0;background:#009fa3;}    
+  #breadcrumb-bx .open:after{border-color:#fff;position:relative;top:auto;margin-top:0;left:auto;transform:rotate(135deg);transition:all .2s;}
+  #breadcrumb-bx .open.active:after{transform:rotate(-45deg);margin-top:2px;}
+  #breadcrumb-bx .open .text{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:calc(100% - 10px);}
+  #breadcrumb-bx .box ul{position:absolute;top:30px;left:0;right:0;background:#008993;padding:10px 0 5px;display:none;}
+  #breadcrumb-bx .box:first-of-type ul{background:#00a885;}
+  #breadcrumb-bx .box:last-of-type ul{background:#009fa3;}  
+  #breadcrumb-bx .box ul a{display:flex;font-size:13.5px;align-items:center;height:36px;padding:0 10px 0 15px;color:#fff;white-space:normal;word-break:keep-all;font-weight:300;}
+  #sub-visual .sns-bx{display:flex;transform:scale(.9);transform-origin:100% 50%;}
+  #sub-visual .sns-bx .print{display:none;}
+}
+
+@media (max-width: 716px){
+  #sub-visual .visual-bg{width:1000px;margin-left:-500px;}
+  #sub-visual .inner{padding-left:15px;height:190px;padding-top:50px;}
+  .title-bx h2{font-size:22px;}
+  #breadcrumb-bx{bottom:0;left:5px;right:5px;justify-content:flex-end;}
+  #breadcrumb-bx .open{padding:0 9px 0 12px;}
+  #breadcrumb-bx .open.active:after{transform:rotate(-45deg);}
+  #breadcrumb-bx .box ul a{font-size:13px;padding:0 5px 0 12px;height:34px;}
+  #sub-visual .sns-bx{transform:scale(.8);}
+}
+
+
+#content{position:relative;display:flex;}
+#content-bx{flex:1;padding:40px 0 50px;}
+
+
+
+
+
+#side-menu{width:307px;margin-right:65px;z-index:100;margin-top:-148px;padding-bottom:40px;}
+#side-menu h2{width:307px;height:159px;background:url(/page/gwprovin/images/sub/leftmenu_bg.png) no-repeat center center /cover;font-weight:700;padding-bottom:20px;;display:flex;align-items:center;justify-content:center;color:#fff;font-size:30px;letter-spacing:-2px;}
+#side-menu .depth-02{margin-top:15px;}
+#side-menu .depth-02 > li{margin-bottom:5px;}
+#side-menu h3 a{display:flex;width:100%;align-items:center;justify-content:space-between;height:48px;padding:0 15px 0 20px;border-radius:10px;border:1px solid #c5c9d5;transition:all .2s;}
+#side-menu h3.has-depth a:after{content:'';width:6px;height:6px;border:1px solid #7c7e97;border-width:1px 1px 0 0;transform:rotate(135deg);transition:all .2s;margin-top:-3px;}
+#side-menu h3.has-depth.active a:after{transform:rotate(-45deg);margin-top:2px;border-color:#fff}
+#side-menu h3.active a{color:#fff;background:#009ea8;border-color:#009ea8}
+#side-menu h3 a:hover{font-weight:700;}
+#side-menu .depth-03{padding:23px 5px 12px 20px;border:1px solid #009ea8;border-width:0 1px 1px;margin-top:-10px;border-radius:0 0 10px 10px;display:none;}
+#side-menu h4 a{height:30px;display:flex;align-items:center;color:#707070;transition:all .1s;font-size:15px;}
+#side-menu h4 a:hover{color:#009ea8}
+#side-menu h4 a:before{content:'';transition:all .1s;width:4px;height:4px;border-radius:50%;background:#c6cad6;margin-right:7px;}
+#side-menu h4 a:hover:before{background:#009ea8}
+#side-menu h3 a span{display:flex;align-items:center;}
+#side-menu h4 a span{display:flex;align-items:center;}
+#side-menu h4 a[target="_blank"] span:after,
+#side-menu h3 a[target="_blank"] span:after{content:'';margin-left:5px;background: url(/page/gwprovin/images/common/sp_gwprovin.png) no-repeat -577px -115px /674px 600px;width:16px;height:16px;}
+
 
 
 
 
 
 @media (max-width: 1399px){
-
+  #content{display:block}
+  #side-menu{display:none;}
   
 }
+
 
 
 /*이미지 줌 모달*/

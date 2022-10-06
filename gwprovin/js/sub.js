@@ -7,41 +7,44 @@ ObjDoc.on({
 		e.preventDefault();
 		if ($(this).hasClass('active')) {
 			$(this).removeClass('active');
+			$(this).parent('.box').removeClass('active');
 			$(this).children('span').text('열기');
 			$('#breadcrumb-bx .box ul').slideUp(250);
 		} else{
 			$('#breadcrumb-bx .open').removeClass('active');
+			$('#breadcrumb-bx .box').removeClass('active');
 			$(this).addClass('active');
+			$(this).parent('.box').addClass('active');
 			$('#breadcrumb-bx .open span').text('열기');
 			$(this).children('span').text('닫기');
 			$('#breadcrumb-bx .box ul').slideUp(250);
 			$(this).next('ul').slideDown(250);
 		}
 	}
-}, '.mobile-mode #breadcrumb-bx .bx .open')
+}, '.mobile-mode #breadcrumb-bx .open')
 .on({
 	'mouseleave': function() { 
 		$('#breadcrumb-bx .open span').text('열기');
 		$('#breadcrumb-bx .box ul').slideUp(300);
-		$('#breadcrumb-bx .box .open').removeClass('active');
+		$('#breadcrumb-bx .box .open, #breadcrumb-bx .box').removeClass('active');
 	}
 }, '.mobile-mode #breadcrumb-bx')
 .on({
 	'click': function(e) { 
 		e.preventDefault();
-		$(this).next('.view').fadeToggle(100);
+		$(this).next('.view').css('display','flex');
 	}
 }, '.sns-bx .share .open')
 .on({
 	'click': function(e) { 
 		e.preventDefault();
-		$(this).parents('.view').fadeToggle(100);
+		$(this).parents('.view').css('display','none');
 	}
 }, '.sns-bx .share .close')
 .on({
 	'focusout': function() { 
 		$('.sns-bx .share .open').focus();
-		$('.view').fadeOut(100);
+		$('.view').css('display','none');
 	}
 }, '.sns-bx .share .view a:last');
 
@@ -90,7 +93,21 @@ ObjDoc.on({
 		$('#img-modal').remove();
 		$('.img-zoom-modal.active').focus().removeClass('active');
 	}
-}, '#img-modal .close');
+}, '#img-modal .close')
+.on({
+	'click': function(e) { 
+		e.preventDefault();
+		if ($(this).parent('h3').hasClass('active')) {
+			$(this).parent('h3').removeClass('active');
+			$(this).parent('h3').next('.depth-03').slideUp(300);
+		} else{
+			$('#side-menu h3').removeClass('active');
+			$('#side-menu .depth-03').slideUp(300);
+			$(this).parent('h3').addClass('active');
+			$(this).parent('h3').next('.depth-03').slideDown(300);
+		}
+	}
+}, '#side-menu h3.has-depth a');
 
 
 //콘텐츠 스크립트 (dom ready 후 동작)
