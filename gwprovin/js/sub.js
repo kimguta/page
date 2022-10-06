@@ -18,37 +18,32 @@ ObjDoc.on({
 			$(this).next('ul').slideDown(250);
 		}
 	}
-}, '#breadcrumb-bx .bx .open')
+}, '.mobile-mode #breadcrumb-bx .bx .open')
 .on({
 	'mouseleave': function() { 
 		$('#breadcrumb-bx .open span').text('열기');
 		$('#breadcrumb-bx .box ul').slideUp(300);
 		$('#breadcrumb-bx .box .open').removeClass('active');
 	}
-}, '#breadcrumb-bx')
-.on({
-	'focusout': function() { 
-		$(this).parents('.box').children('.open').focus();
-	}
-}, '#breadcrumb-bx .box ul li:last-child a')
+}, '.mobile-mode #breadcrumb-bx')
 .on({
 	'click': function(e) { 
 		e.preventDefault();
 		$(this).next('.view').fadeToggle(100);
 	}
-}, '#title-bx .share .open')
+}, '.sns-bx .share .open')
 .on({
 	'click': function(e) { 
 		e.preventDefault();
 		$(this).parents('.view').fadeToggle(100);
 	}
-}, '#title-bx .share .close')
+}, '.sns-bx .share .close')
 .on({
 	'focusout': function() { 
-		$('#title-bx .share .open').focus();
+		$('.sns-bx .share .open').focus();
 		$('.view').fadeOut(100);
 	}
-}, '#title-bx .share .view a:last');
+}, '.sns-bx .share .view a:last');
 
 ObjDoc.on({
 	'click': function(e) { 

@@ -65,12 +65,12 @@ ObjWin.on({
 		$('#header .depth-03').prev('h3').addClass('has-depth');
 		$('#header .depth-02 h3.active').next('.depth-03').show();
 		if(ObjWin.width() > 1379){ 
-			$('#header').removeClass('mobile-mode');
-			$('#header').addClass('pc-mode');
+			$('#header, #sub').removeClass('mobile-mode');
+			$('#header, #sub').addClass('pc-mode');
 		}
 		else{
-			$('#header').removeClass('pc-mode');
-			$('#header').addClass('mobile-mode');
+			$('#header, #sub').removeClass('pc-mode');
+			$('#header, #sub').addClass('mobile-mode');
 		}
 	}
 })

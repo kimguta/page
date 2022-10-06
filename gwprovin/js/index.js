@@ -104,6 +104,11 @@ ObjDoc.on({
         e.preventDefault();
         $('#information .item').removeClass('active');
         $(this).parents('.item').addClass('active');
+        
+        if($(window).width() < 992){ 
+			var offSet = $(this).offset().top - 100;
+            $('html, body').animate({scrollTop: offSet}, 300);
+		}
 	}
 }, '#information h3 a');
 

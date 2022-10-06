@@ -25,6 +25,7 @@
 #visual .gover:before{content:'';display:block;z-index:-1;bottom:0;left:0;right:0;height:50px;background:#ea3541;position:absolute;}
 #visual .gover > a{display:block;position:relative;width:100%;padding: 32px 0px 0 17px;transition:all .2s;margin-bottom:-2px;}
 #visual .gover > a img{display:block;width:100%;transition:all .2s;}
+#visual .gover > a img.tabmode{display:none;}
 #visual .gover:hover > a img{filter:brightness(1.1);}
 #visual .gover .sns-bx{position:absolute;display:flex;left:25px;align-items:center;bottom:70px;transform:scale(.78);transform-origin:0% 100%;}
 #visual .gover .sns-bx a{width:38px;height:39px;margin-right:25px;transition:filter .1s;font-size:0;background: url(/page/gwprovin/images/common/sp_gwprovin.png) no-repeat -159px -121px /674px 600px;position: relative;}
@@ -104,7 +105,9 @@
     #video-wrap .video-bx{padding:0 15px;}
     #video-wrap .btn-bx{padding:0 15px;margin-bottom: 10px;}
     #video-wrap .close{width:42px;}
-}
+    #visual .gover:hover{background:#fff;backdrop-filter:blur(0px);}
+}    
+   
 
 @media (max-width:991px) {
     #visual{padding-right:0px;}
@@ -116,16 +119,17 @@
     #visual fieldset{border-radius:10px;padding:2px 50px 2px 2px;position:absolute;top: 76px;right:20px;width:calc(100% - 420px);z-index:10;}
     #visual fieldset input[type="search"]{height: 40px;}
     #visual fieldset input[type="submit"]{background: url(/page/gwprovin/images/common/sp_gwprovin.png) no-repeat -173px 5px /674px 600px;right: 6px;}
-    #visual .gover{margin-top:20px;max-width: 450px;margin-right:50px;}
+    #visual .gover{margin-top:20px;margin-right:50px;width: calc(100% - 50px);}
     #visual .gover:before{height:40px}
-    #visual .gover > a{padding: 20px 0px 0 15px;height: 240px;text-align:right;}
-    #visual .gover > a img{width:auto;height:100%;display:inline-block;}
-    #visual .gover .sns-bx{left:20px;bottom:60px;transform:scale(.72);}
+    #visual .gover > a{padding: 15px 0px 0 15px;height: 220px;text-align:right;}
+    #visual .gover > a img{width:auto;height:100%;display:none;}
+    #visual .gover > a img.tabmode{display:block;}
+    #visual .gover .sns-bx{left:20px;bottom: 52px;transform:scale(.72);}
     #visual .gover .link-bx a{padding:0 15px;font-size:14px;}
     #visual .slick-wrap{padding:0px;max-width:initial;order:1;width:calc(100% + 40px);margin:0 -20px}
     #visual .slick-slide{width:600px;margin:0 6px;border-radius:10px;overflow:hidden}
     #visual .control{right:auto;left:50%;bottom:15px;transform:scale(.7);transform-origin:0% 50%;margin-left:-70px;}
-    #visual .video-on{top:auto;bottom:-10px;right:-5px;transform-origin:100% 100%;transform:scale(.78);}
+    #visual .video-on{top:auto;bottom: -23px;right:-5px;transform-origin:100% 100%;transform:scale(.78);}
     #visual .video-on:hover{right:-5px;}
     #visual .video-on:active{transform:scale(.73);transform-origin:100% 100%;}
 }
@@ -143,7 +147,8 @@
     #visual .gover{margin-top:20px;margin-right: 10px;}
     #visual .gover:before{height:40px}
     #visual .gover > a{padding: 15px 0px 0 10px;height: 197px;}
-    #visual .gover > a img{width:auto;height:100%;display:inline-block;}
+    #visual .gover > a img{width:auto;height:100%;display:block;}
+    #visual .gover > a img.tabmode{display:none;}    
     #visual .gover .sns-bx{left:15px;bottom:50px;transform:scale(.7);}
     #visual .gover .link-bx a{padding:0 10px;font-size:14px;}
     #visual .slick-wrap{padding:0px;max-width:initial;order:1;width:calc(100% + 40px);margin:0 -20px}
@@ -424,9 +429,9 @@
     #information .info-bx h3 a:after{width:12px;height:12px;bottom:5px;}
     #information .info-bx .item.active h3 a:after{bottom:-6px;}
     #information .list-bx{height:auto;position:relative;flex-direction:column;border-radius:0 0 10px 10px;margin-top:10px}
-    #information .item .ill-bx{width:100%;padding:30px 0 15px;flex-basis:auto;position:relative;}
+    #information .item .ill-bx{width:100%;padding: 20px 0 10px;flex-basis:auto;position:relative;}
     #information .item .ill-bx strong{font-size:19px;} 
-    #information .item .ill-bx span{margin:10px 0 5px;font-size:14px;}
+    #information .item .ill-bx span{margin: 7px 0 5px;font-size:14px;}
     #information .item .ill-bx img{width:auto;height:120px;position:absolute;right:0;bottom:0;}
     #information .item .link-bx{padding:15px 20px 15px 20px;}
     #information .text-link a{height:28px;font-size:14px;}
@@ -443,7 +448,7 @@
     #information .info-bx{margin-top:15px;}
     #information .info-bx h3 a{height:42px;font-size:15px;z-index:3;}
     #information .list-bx{height:auto;position:relative;flex-direction:column;border-radius:0;margin:0 -15px;width:auto;}
-    #information .item .ill-bx{width:100%;padding:15px 0 13px;flex-basis:auto;position:relative;}
+    #information .item .ill-bx{width:100%;padding: 17px 0 11px;flex-basis:auto;position:relative;}
     #information .item .ill-bx strong{font-size:17px;} 
     #information .item .ill-bx span{margin:10px 0 5px;font-size:13px;text-shadow:1px 1px 1px #fff;}
     #information .item .ill-bx img{height:100px;right:-20px;opacity:.6;}
