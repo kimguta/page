@@ -127,7 +127,8 @@ ObjDoc.on({
 	}
 }, '#header.pc-mode')
 .on({
-	'click': function() { 
+	'click': function(e) { 
+		e.preventDefault();
 		$(this).toggleClass('active');
 	}
 }, '#header .lang-bx .ibtn')
