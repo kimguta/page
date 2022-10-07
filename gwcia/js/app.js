@@ -166,6 +166,7 @@ ObjDoc.on({
 		if ($(this).parent().hasClass('has-depth')) {
 			$(this).parent().addClass('active');
 		} else{
+			$('body').css('overflow','visible');
 			$('#header').removeClass('active');
 			$('#header .site_map').removeClass('active');
 		}
@@ -214,6 +215,7 @@ ObjDoc.on({
 	'click': function(e) {
 		e.preventDefault();
 		e.stopPropagation();
+		$('body').css('overflow','visible');
 		$('#header').removeClass('active');
 		$('#header .site_map').removeClass('active');
 		$('#header .sitemap').focus();
