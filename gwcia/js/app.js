@@ -90,7 +90,7 @@ ObjWin.on({
 			$('#header').removeClass('fixed');
 		}
 	}
-});
+})
 // .on({
 // 	'resize': function() {
 // 		var divEl = $("#header nav > .depth-01");
@@ -103,10 +103,12 @@ ObjWin.on({
 ObjDoc.on({
 	'click': function(e) {
 		e.preventDefault();
-		// $('body').css('overflow','hidden');
 		$('#header').addClass('active');
 		$('#header .site_map').addClass('active');
 		$('#header .site_map a:first').focus();
+		if(ObjWin.width() < 1199){
+			$('body').css('overflow','hidden');
+		}
 	}
 }, '#header .sitemap')
 .on({

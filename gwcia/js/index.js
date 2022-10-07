@@ -106,19 +106,12 @@ var ObjWin = $(window);
 var ObjDoc = $(document);
 var Wwidth = ObjWin.outerWidth();
 
-ObjDoc.on({
-	' click': function(e) {
-		e.preventDefault();
-		$(this).parent().parent().find('.box_item').removeClass('active');
-		$(this).addClass('active');
-	}
-}, '#visual .shortcuts_box .box_item')
-.on('click', '.family .open', function(e){
+ObjDoc.on('click', '.family .open', function(e){
 	e.preventDefault();
 	$(this).toggleClass('active');
 })
 .on({
-	'mouseover focusin click': function(e) {
+	'mouseover focusin': function(e) {
         e.preventDefault();
         $(this).parent().parent().find('li').removeClass('active');
 		$(this).parent().addClass('active');
