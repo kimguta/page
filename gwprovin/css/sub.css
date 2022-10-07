@@ -104,18 +104,20 @@
 
 
 /*서브ui*/
+
+#sub .pageTab{display:flex;flex-wrap:wrap;}
 #sub .pageTab > li{border-radius:10px;background:#eaebee;;border:0;width: calc((100% - 15px) / 4);margin-right:5px;padding:0 20px;display:flex;align-items:center;justify-content:space-between;}
 #sub .pageTab > li:nth-child(4n){margin-right:0;}
 #sub .pageTab > li:nth-child(n+5){margin-top:5px;}
-#sub .pageTab > li > a{height:70px;color:#313131;word-break:keep-all;flex:1;padding:0 15px;}
+#sub .pageTab > li > a{height:auto;color:#313131;word-break:keep-all;flex:1;padding:5px 15px;min-height:50px;}
 #sub .pageTab > li.active {background:#242b45;}
 #sub .pageTab > li.active > a{color:#fff;}
 #sub .pageTab > li:after{content:'';width:12px;height:2px;background:#b4b7c6;}
 #sub .pageTab > li.active:after{width:6px;height:6px;background:transparent;border:2px solid #fff;border-width:2px 2px 0 0;transform:rotate(135deg);}
 
-#sub .pageTab-sub {color: #313131;border-color:#d6d6d6;background:#fcfcfc;padding:0 15px;left:0;right:0;border-radius: 5px;}
+#sub .pageTab-sub {color: #313131;border-color:#d6d6d6;background:#fcfcfc;padding:0 15px;left:0;right:0;border-radius: 5px;display:flex;flex-wrap:wrap;}
 #sub .pageTab-sub li{padding:0px;border-bottom:1px dashed #bebebe;padding:0 15px;display:flex;justify-content:space-around;align-items:center;position:relative;}
-#sub .pageTab-sub li a{font-size:15px;height:50px;line-height:1.2;padding:0 5px;flex:1}
+#sub .pageTab-sub li a{font-size:15px;height:auto;line-height:1.2;padding:5px 5px;flex:1;min-height:46px;}
 #sub .pageTab-sub li.active a {color:#114ab0;background:transparent;}
 #sub .pageTab-sub li.active:before{content:'';background:url(/page/gwprovin/images/sub/sub_icon.png) no-repeat -79px -150px /142px 178px;width:20px;height:20px;border-radius:50%;position:absolute;left:0px;top:50%;margin-top:-8px;}
 
@@ -125,8 +127,8 @@
   #sub .pageTab > li:nth-child(4n){margin-right:5px;}
   #sub .pageTab > li:nth-child(3n){margin-right:0px;}
   #sub .pageTab > li:nth-child(n+4){margin-top:5px;}
-  #sub .pageTab > li a{font-size:14px;height:60px;padding:0 5px;}
-  #sub .pageTab-sub li a{font-size:14px;height:42px;}
+  #sub .pageTab > li a{font-size:14px;padding: 5px 5px;min-height: 46px;}
+  #sub .pageTab-sub li a{font-size:14px;min-height: 42px;}
 }
 
 
@@ -137,13 +139,13 @@
   #sub .pageTab > li.active{display:flex;border-radius:5px;}
   #sub .pageTab.on > li{display:flex;}
   #sub .pageTab > li:nth-child(n+4){margin:0}
-  #sub .pageTab > li a{font-size:13px;height:42px;padding:0px;justify-content:flex-start;text-align:left;padding-right: 15px;}
+  #sub .pageTab > li a{font-size: 14px;height:42px;padding:0px;justify-content:flex-start;text-align:left;padding-right: 15px;min-height: initial !important;}
   #sub .pageTab > li:after{display:none;}
   #sub .pageTab-sub{top:47px;}
   #sub .pageTab-sub{padding:38px 0 0;}
   #sub .pageTab-sub li{border-top:0;display:none;border-radius: 5px;}
   #sub .pageTab-sub li.active{position:absolute;border-bottom-width:0;}
-  #sub .pageTab-sub.on li.active{border-bottom:1px dotted #bebebe;}
+  #sub .pageTab-sub.on li.active{border-bottom: 1px dashed #bebebe;}
   #sub .pageTab > li.active > a:after{width:5px;height:5px;margin-top:-4px;}
   #sub .pageTab-sub li.active > a:after{border-color:#114ab0;width:5px;height:5px;margin-top:-4px;}
   #sub .pageTab-sub li.active:before{display:none;}
@@ -151,7 +153,7 @@
   #sub .pageTab-sub > li.active,
   #sub .pageTab-sub.on > li{display:flex;}
   #sub .pageTab-sub li:last-child{border-bottom:0;}
-  #sub .pageTab-sub > li a{height:36px;font-size:12.5px !important}
+  #sub .pageTab-sub > li a{height:36px;font-size: 13.5px !important;}
 }
 
 
