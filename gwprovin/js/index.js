@@ -30,6 +30,7 @@ $(function() {
                 slidesToShow: 1,
                 variableWidth: false,
                 centerMode: false,
+                speed: 600,
               }
             }
         ]
@@ -68,6 +69,8 @@ $(function() {
     
 
     $('#notice .item:first-child, #information .item:first-child').addClass('active');
+  
+
 });
 
 
