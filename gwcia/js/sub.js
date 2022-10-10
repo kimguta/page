@@ -176,7 +176,15 @@ ObjDoc.on({
 		$('.notice_layer').removeClass('active');
 		$('.dimmed').removeClass('active');
 	}
-}, '.notice_layer .close_btn');
+}, '.notice_layer .close_btn')
+.on({
+	'click focus': function(e) {
+		e.preventDefault();
+		$('.member_wrap .id_pw_wrap .input_row').removeClass('focus');
+		$(this).parent().addClass('focus');
+	}
+}, '.member_wrap .id_pw_wrap input');
+
 
 ObjDoc.on({
 	'click': function(e) {
