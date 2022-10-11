@@ -148,8 +148,8 @@ function contentScript(){
 		adaptiveHeight: true,
 	});
 	if ($('.img-zoom-modal').length){
-		$.getScript('https://cdn.jsdelivr.net/npm/@panzoom/panzoom/dist/panzoom.min.js');
-		$.getScript('https://kit.fontawesome.com/708e424f8f.js');
+		$.getScript('/page/gwprovin/js/panzoom.min.js');
+		$.getScript('/page/gwprovin/js/708e424f8f.js');
 	}
 };
 
