@@ -50,6 +50,7 @@ ObjDoc.on({
 }, '#img-modal .close');
 
 
+
 //콘텐츠 스크립트 (dom ready 후 동작)
 function contentScript(){
 	if ($('.img-zoom-modal').length){
@@ -57,6 +58,20 @@ function contentScript(){
 		$.getScript('/page/gwtour2022/js/708e424f8f.js');
 	}
 	$('.skinBtnBo i').parent().addClass('icon');
+
+	ObjWin.on({
+		'scroll': function() { 
+			var nowOffset = $('#sub-visual').outerHeight();
+			if ($(document).scrollTop() > nowOffset){
+				$('.now-visual-bx01').addClass('fixed');
+			} else {
+				$('.now-visual-bx01').removeClass('fixed');
+			}
+		}	
+	});
+
+
+	
 };
 
 
