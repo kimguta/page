@@ -70,7 +70,35 @@ function contentScript(){
 		}	
 	});
 
+	var imgSrc = $('.now-festival-bx .img-bx img').attr('src');
+	$('.now-festival-bx .img-bx').append('<span style=background-image:url('+imgSrc+') class="bg-img"></span>');
+	
+	var SlickOptionSub1 = {
+        autoplay: false,
+        arrows: true,
+        accessibility: false,
+        swipeToSlide:true,
+        dots: true,
+        draggable: true,
+        infinite: true,
+		slidesToScroll: 1,
+        slidesToShow: 2,
+        pauseOnHover: false,
+        speed: 600,
+        responsive: [
+            {
+                breakpoint: 1500,
+                settings: {
+                speed: 500,
+                centerMode: true,
+				variableWidth: true,
+				slidesToShow: 3,
+                }
+            }
+        ]
+    };
 
+	initSlick($('.sub-slick-wrap1 .slick'), SlickOptionSub1);
 	
 };
 
