@@ -151,6 +151,12 @@ function contentScript(){
 		$.getScript('/page/gwprovin/js/panzoom.min.js');
 		$.getScript('/page/gwprovin/js/708e424f8f.js');
 	}
+	$('.skinTb-wrapper').on('scroll', function () {
+		$(this).addClass('scroll');
+	});
+	$('.skinTb.width640').parent().addClass('width640');
+	$('.skinTb.width768').parent().addClass('width768');
+	$('.skinTb.width1000').parent().addClass('width1000');
 };
 
 

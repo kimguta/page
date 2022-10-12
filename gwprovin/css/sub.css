@@ -147,7 +147,7 @@
 #sub p.listLv4::before, #sub div.listLv4::before, #sub span.listLv4::before, #sub .listLv4 > li::before, #sub .listLv4 > dt::before { top: 10px; left: 3px; width: 3px; height: 3px; background: rgb(0, 82, 155); }
 #sub .listLv > li > .listLv2, #sub .listLv2 > li > .listLv3, #sub .listLv3 > li > .listLv4 { margin-top: 10px; }
 #sub .imptBox { border: 0px; background: rgb(236, 236, 236); }
-#sub .caution { display: block; font-weight: 400; font-size: 15px; color: rgb(234, 53, 65); margin: 3px 0px; }
+#sub .caution { display: block; font-weight: 400; font-size: 15px; color: rgb(234, 53, 65); margin: 5px 0px; }
 #sub .caution::before { content: ""; display: inline-block; vertical-align: top; background: url("/page/gwprovin/images/sub/sub_icon.png") -8px -150px / 142px 178px no-repeat; width: 20px; height: 20px; margin: 2px 5px 0px 0px; }
 #sub .caution.v2 { color: rgb(77, 115, 185); }
 #sub .caution.v2::before { background-position-x: -43px; }
@@ -162,6 +162,21 @@
 #sub .skinTb > thead > tr > th { border-bottom-color: rgb(36, 43, 69); }
 #sub .skinIptTxt, #sub .skinSelectBox, #sub .boSrchArea .boMeta, #sub .skinTb > tr > td, #sub .skinTb > thead > tr > td, #sub .skinTb > tbody > tr > td, #sub .skinTb > tfoot > tr > td, #sub .skinTb-td { font-weight: 400; }
 #sub .skinTb-sbj { font-weight: 500 !important; }
+
+
+#sub .titLv3 + .titLv3{margin-top:10px;}
+#sub .titLv3 + .titLv2,
+#sub .titLv2 + .titLv2,
+#sub .titLv2 + .imptBox,
+#sub .titLv2 + .skinTb-wrapper{margin-top:20px;}
+#sub .titLv + .titLv2,
+#sub .listLv + .titLv2, 
+#sub .listLv2 + .titLv2, 
+#sub .listLv3 + .titLv2, 
+#sub .listLv4 + .titLv2{margin-top: 30px;}
+
+
+
 @media (max-width: 1199px) {
   html { font-size: 9.2px; }
   #sub p.listLv::before, #sub div.listLv::before, #sub span.listLv::before, #sub .listLv > li::before, #sub .listLv > dt::before { top: 14px; }
@@ -169,6 +184,17 @@
   #sub p.listLv3::before, #sub div.listLv3::before, #sub span.listLv3::before, #sub .listLv3 > li::before, #sub .listLv3 > dt::before { left: 0px; }
   #sub p.listLv4::before, #sub div.listLv4::before, #sub span.listLv4::before, #sub .listLv4 > li::before, #sub .listLv4 > dt::before { left: 0px; }
   #sub p.listLv2, #sub div.listLv2, #sub span.listLv2, #sub .listLv2 > li, #sub .listLv2 > dt, #sub .listLv2 > dd, #sub p.listLv3, #sub div.listLv3, #sub span.listLv3, #sub .listLv3 > li, #sub .listLv3 > dt, #sub p.listLv4, #sub div.listLv4, #sub span.listLv4, #sub .listLv4 > li, #sub .listLv4 > dt { padding-left: 10px; font-size: 1.6rem; }
+
+  #sub .titLv3 + .titLv3{margin-top:8px;}
+  #sub .titLv3 + .titLv2,
+  #sub .titLv2 + .titLv2,
+  #sub .titLv2 + .imptBox,
+  #sub .titLv2 + .skinTb-wrapper{margin-top:17px;}
+  #sub .titLv + .titLv2,
+  #sub .listLv + .titLv2, 
+  #sub .listLv2 + .titLv2, 
+  #sub .listLv3 + .titLv2, 
+  #sub .listLv4 + .titLv2{margin-top: 25px;}
 }
 @media (max-width: 760px) {
   html { font-size: 8.6px; }
@@ -181,6 +207,17 @@
   #sub .caution::before { margin: 1px 1px 0px 0px; transform: scale(0.9); transform-origin: 0% 50%; }
   #sub .pgraph { padding-top: 2px; }
   #sub .imptBox { margin: 0px -15px; }
+
+  #sub .titLv3 + .titLv3{margin-top:7px;}
+  #sub .titLv3 + .titLv2,
+  #sub .titLv2 + .titLv2,
+  #sub .titLv2 + .imptBox,
+  #sub .titLv2 + .skinTb-wrapper{margin-top:15px;}
+  #sub .titLv + .titLv2,
+  #sub .listLv + .titLv2, 
+  #sub .listLv2 + .titLv2, 
+  #sub .listLv3 + .titLv2, 
+  #sub .listLv4 + .titLv2{margin-top: 22px;}
 }
 .infomation-bx { position: relative; margin: 42px 0px 27px; padding: 20px 220px 6px 0px; z-index: 2; }
 .infomation-bx::before { content: ""; display: block; background: url("/page/gwprovin/images/sub/explanation_bg.png") right top / cover no-repeat; position: absolute; top: 0px; right: 0px; left: 0px; height: 180px; }
@@ -249,7 +286,7 @@
 }
 .img-modal-bx { display: flex; align-items: center; justify-content: space-between; }
 .img-modal-bx .img-zoom-modal + .img-zoom-modal { margin-left: 15px; }
-.img-zoom-modal { position: relative; background: rgb(250, 250, 250); display: block; margin: 20px 0px; flex: 1 1 0%; }
+.img-zoom-modal { position: relative; background: rgb(250, 250, 250); display: block; margin: 25px 0px; flex: 1 1 0%; }
 .img-zoom-modal::after {content: "확대축소";transition: all 0.2s ease 0s;width: 40px;height: 40px;background: url("/page/common/images/zoom_w.png") center center / 25px 25px no-repeat rgba(0, 0, 0, 0.7);border-radius: 50%;position: absolute;bottom: 10px;right: 10px;display: block;font-size: 0px;}
 .img-zoom-modal::before {content: "확대축소";transition: all 0.2s ease 0s;width: 70px;height: 70px;opacity: 0;background: url("/page/common/images/zoom_w.png") center center / 50px 50px no-repeat rgba(0, 0, 0, 0.7);border-radius: 50%;position: absolute;left: 50%;top: 50%;display: block;font-size: 0px;margin: -50px 0px 0px -50px;}
 .img-zoom-modal:hover::after { opacity: 0; }
@@ -284,7 +321,7 @@
 @media (max-width: 760px) {
   .img-modal-bx { overflow-x: auto; padding: 0px 0px 0px 15px; margin: 0px -15px; }
   .img-modal-bx .img-zoom-modal { min-width: 300px; margin: 10px 7px 10px 0px !important; }
-  .img-zoom-modal { margin: 15px 0px; }
+  .img-zoom-modal { margin: 20px 0px; }
   #img-modal .title-bx { height: 50px; padding: 0px 90px 0px 0px; }
   #img-modal .title-bx h1 { font-size: 14px; }
   #img-modal .title-bx .btn-bx { right: 10px; }
