@@ -106,7 +106,8 @@ function contentScript(){
         ]
     };
 
-	initSlick($('.sub-slick-wrap1 .slick'), SlickOptionSub1);	
+	initSlick($('.sub-slick-wrap1 .slick'), SlickOptionSub1);
+	$('#search-wrap').parents('#wrapper').find('.seach-open.header-btn').hide();	
 };
 
 
