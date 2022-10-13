@@ -53,6 +53,14 @@ ObjDoc.on({
 
 //콘텐츠 스크립트 (dom ready 후 동작)
 function contentScript(){
+
+	$('.skinTb-wrapper').on('scroll', function () {
+		$(this).addClass('scroll');
+	});
+	$('.skinTb.width640').parent().addClass('width640');
+	$('.skinTb.width768').parent().addClass('width768');
+	$('.skinTb.width1000').parent().addClass('width1000');
+
 	if ($('.img-zoom-modal').length){
 		$.getScript('/page/gwtour2022/js/panzoom.min.js');
 		$.getScript('/page/gwtour2022/js/708e424f8f.js');
@@ -98,8 +106,7 @@ function contentScript(){
         ]
     };
 
-	initSlick($('.sub-slick-wrap1 .slick'), SlickOptionSub1);
-	
+	initSlick($('.sub-slick-wrap1 .slick'), SlickOptionSub1);	
 };
 
 

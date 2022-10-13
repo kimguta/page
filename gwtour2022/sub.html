@@ -76,31 +76,6 @@
 
 </html>
 
-<script>
-	//게시판 슬라이드
-	$(window).on('load', function(){
-		$('.boGalleryView .boGalleryView-view').slick({
-			autoplay: false,
-			arrows: true,
-			accessibility: false,
-			dots:true,
-			prevArrow: $('.boGalleryView .boGalleryView-btnPrev'),
-			nextArrow: $('.boGalleryView .boGalleryView-btnNext'),
-			draggable: true,
-			infinite: true,
-			slidesToShow: 1,
-			slidesToScroll: 1,
-			pauseOnHover: false,
-			speed: 600,
-			adaptiveHeight: true,
-		});
-
-		p_ctrlFiles();
-	});
-	
-</script>
-
-
 
 <!--[d] 인클루드, 디자인 확인 용 개발 시 제거-->
 <div class="puble-index">
@@ -149,6 +124,27 @@
 </style>
 	
 <script>
+	function subScript(){	
+		setTimeout(function() {
+				var SubOption = {
+				autoplay: false,
+				arrows: true,
+				accessibility: false,
+				dots:true,
+				prevArrow: $('.boGalleryView .boGalleryView-btnPrev'),
+				nextArrow: $('.boGalleryView .boGalleryView-btnNext'),
+				draggable: true,
+				infinite: true,
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				pauseOnHover: false,
+				speed: 600,
+				adaptiveHeight: true,
+			};
+			initSlick($('.boGalleryView .boGalleryView-view'), SubOption);	
+		}, 2000);
+		p_ctrlFiles();
+	};
 	$(function(){
 		includeLayout();
 		textChange();
@@ -187,6 +183,7 @@
 			self.load(url, function(){
 				$("[include-html]").removeAttr("include-html");
 				contentScript();
+				subScript();
 			});
 		});
 	};
