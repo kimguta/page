@@ -112,41 +112,7 @@ ObjDoc.on({
 
 //콘텐츠 스크립트 (dom ready 후 동작)
 function contentScript(){
-	var TestOption = {
-		autoplay: false,	
-		arrows: true,
-		accessibility: false,
-		dots: false,
-		draggable: true,
-		infinite: true,
-		slidesToShow: 1,
-		swipeToSlide: true,
-		slidesToScroll: 1,
-		pauseOnHover: false,
-		speed: 500,
-	};
-	initSlick($('.test-slick .slick'), TestOption);
-
-	$('.content1 .btn-test').on('click', function(e){
-		e.preventDefault();
-		alert('안녕하세요 디큐입니다!!')
-	});		
-
-	$('.boGalleryView .boGalleryView-view').slick({
-		autoplay: false,
-		arrows: true,
-		accessibility: false,
-		dots:true,
-		prevArrow: $('.boGalleryView .boGalleryView-btnPrev'),
-		nextArrow: $('.boGalleryView .boGalleryView-btnNext'),
-		draggable: true,
-		infinite: true,
-		slidesToShow: 1,
-		slidesToScroll: 1,
-		pauseOnHover: false,
-		speed: 600,
-		adaptiveHeight: true,
-	});
+	
 	if ($('.img-zoom-modal').length){
 		$.getScript('/page/gwprovin/js/panzoom.min.js');
 		$.getScript('/page/gwprovin/js/708e424f8f.js');

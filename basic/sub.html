@@ -175,7 +175,7 @@
 	</div>
 	<div class="view">
 		<strong>
-			퍼블 콘텐츠 목록
+			<span>퍼블 콘텐츠 목록 <span>완료 콘텐츠 <em></em> 건</span> </span>
 			<button onclick="$('.puble-index .view').hide();textChange();$('.pre-view').css('display','none');return false;">✕</button>
 		</strong>
 		<p><a href="/page/basic/" target="_blank" onmouseover="$('.pre-view').hide();">메인페이지</a></p>
@@ -194,7 +194,8 @@
 	.puble-index .view a:before{content:'-';padding-right:6px;}
 	.puble-index .view a:after{content:'➜';padding-left:6px;}
 	.puble-index .view strong{display:flex;font-size:15px;padding-bottom:8px;color:#fff;justify-content:space-between;}
-	.puble-index .view strong em{display:inline-block;font-size:12px;font-weight:300;}
+	.puble-index .view strong span span{font-size:14px;font-weight:400;padding-left:30px;}
+	.puble-index .view strong em{display:inline-block;font-size:13px;padding:0 3px 0 5px;}
 	.puble-index .view .copy-html{width:67px;text-align:center;background:red;color:#fff;font-size:12px;height:26px;line-height:24px;}
 	.puble-index .close{display:flex;background:#111;color:#fff;justify-content:center;align-items:center;width:22px;height:22px;border:1px solid #fff;margin-bottom:-1px;font-size:13px;}
 	.puble-index .pre-view{transform:translateY(-50%) scale(.63);position:fixed;left:20px;top:50%;display:flex;align-items:flex-start;display:none;z-index:-1;transform-origin:0% 50%;}
@@ -209,7 +210,6 @@
 		.puble-index .close{width:18px;height:18px;margin-bottom:-1px;font-size:10px;}
 		.puble-index .pre-view{display:none !important}
 	}
-
 </style>
 
 
@@ -243,6 +243,17 @@
 		};
 	});
 
+	function countContent(){
+		var pageUrl = $(location).attr('href');
+		if (pageUrl.match("git")){
+			var count = $('.puble-index .view div p').length;
+		}
+		else{
+			var count = $('.puble-index .view div p').length - 1;
+		}
+		$('.puble-index .view strong em').text(count);
+	};	
+
 	function includeLayout(){
 		var includeArea = $("[include-html]");
 		var self, url;
@@ -272,6 +283,7 @@
 			$('.puble-index .view').toggle();
 			$(".pre-view").css('display','none');
 			textChange();
+			countContent();
 		}
 	}, '.puble-index .sub')
 	.on({
