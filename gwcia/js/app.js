@@ -172,15 +172,15 @@ ObjDoc.on({
 		}
 	}
 }, '#header.mobile-mode .site_map a')
-.on({
-	'click': function(e) {
-		e.preventDefault();
-		$('#header .site_map h2').removeClass('active');
-		$('#header .site_map h3').removeClass('active');
-		$('#header .site_map h4').removeClass('active');
-		$(this).parent().addClass('active');
-	}
-}, '.site_map .depth-01 a')
+// .on({
+// 	'click': function(e) {
+// 		e.preventDefault();
+// 		$('#header .site_map h2').removeClass('active');
+// 		$('#header .site_map h3').removeClass('active');
+// 		$('#header .site_map h4').removeClass('active');
+// 		$(this).parent().addClass('active');
+// 	}
+// }, '.site_map .depth-01 a')
 // .on({
 // 	'click': function(e) {
 // 		e.preventDefault();
