@@ -183,8 +183,27 @@ ObjDoc.on({
 		$('.member_wrap .id_pw_wrap .input_row').removeClass('focus');
 		$(this).parent().addClass('focus');
 	}
-}, '.member_wrap .id_pw_wrap input');
+}, '.member_wrap .id_pw_wrap input')
+.on({
+	'click focus': function(e) {
+		e.preventDefault();
+		var idx = $('.estate_wrap .district_tab li a').index(this);
+		$('.estate_wrap .district_tab li').removeClass('active');
+		$(this).parent().addClass('active');
+		$('.estate_wrap .estate_tab ul').removeClass('active');
+		$('.estate_wrap .estate_tab ul').eq(idx).addClass('active');
+		$('.estate_wrap .estate_tab ul').eq(idx).find('li:first-child').addClass('active');
+		$('.estate_wrap .district_map_area [class*="district_map_"]').removeClass('active');
+		$('.estate_wrap .district_map_area [class*="district_map_"]').eq(idx).addClass('active');
 
+	}
+}, '.estate_wrap .district_tab li a')
+.on({
+	'click focus': function(e) {
+		e.preventDefault();
+		$(this).parent().parent().addClass('on');
+	}
+}, '.estate_wrap .estate_tab li a');
 
 ObjDoc.on({
 	'click': function(e) {
