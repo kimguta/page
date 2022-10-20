@@ -188,7 +188,7 @@ ObjDoc.on({
 		$('.estate_wrap .district_map_area [class*="district_map_"]').eq(idx).addClass('active');
 
 	}
-}, '.estate_wrap .district_tab li a')
+}, '.estate_wrap .district_tab li a');
 
 ObjDoc.on({
 	'click': function(e) {
