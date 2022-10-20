@@ -46,16 +46,7 @@ ObjWin.on({
 			}
 		}, delay);
 	}
-})
-// .on({
-// 	'click': function(e) {
-// 		e.preventDefault();
-// 		if(ObjWin.width() < 760){
-// 			$(this).parrnt().toggleClass('on');
-// 		}
-// 	}
-// }, '.estate_wrap .map_area .map_tab li a');
-
+});
 
 ObjDoc.on({
 	'click': function(e) {
@@ -198,12 +189,6 @@ ObjDoc.on({
 
 	}
 }, '.estate_wrap .district_tab li a')
-.on({
-	'click focus': function(e) {
-		e.preventDefault();
-		$(this).parent().parent().addClass('on');
-	}
-}, '.estate_wrap .estate_tab li a');
 
 ObjDoc.on({
 	'click': function(e) {
