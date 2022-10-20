@@ -691,7 +691,7 @@ span.listLv:before,
 .estate_wrap .district_tab li.active a{color:#1735c0;font-weight:bold;}
 .estate_wrap .district_tab li:nth-child(2n+1){margin-left:0}
 .estate_wrap .district_tab li a{display:block;color:#fff;font-size:1.8rem;text-align:center;}
-.estate_wrap .estate_tab{display:inline-block;vertical-align:top;width:28.4rem;padding-top:14px;}
+.estate_wrap .estate_tab{display:inline-block;vertical-align:top;width:28.4rem;height: 56.3rem;padding-top:14px;box-shadow: 4px 2px 18px 0px rgba(0, 0, 0, 0.1);}
 .estate_wrap .estate_tab ul{display:none;}
 .estate_wrap .estate_tab ul.active{display:block;}
 .estate_wrap .estate_tab li{font-size:1.7rem;line-height:3.8rem;color:#111;}
@@ -746,31 +746,35 @@ span.listLv:before,
   .estate_wrap{height:565px;margin-bottom:300px;padding-top:169px;}
   .estate_wrap .district_tab li{height:4.0rem;line-height:4.0rem;}
   .estate_wrap .district_tab li a{font-size:1.6rem;}
-  .estate_wrap .estate_tab{width:calc((100vw - 30px *2) - 543px);}
+  .estate_wrap .estate_tab{width:calc((100vw - 30px *2) - 543px);height: 43.3rem;}
   .estate_wrap .district_map_area{transform:scale(0.70);transform-origin: top left;}
   .estate_wrap .estate_tab li a{padding:0 15px;}
   .estate_wrap .estate_tab li a:after{right:6px;}
 }
 @media (max-width: 760px){
-  .estate_wrap{height:580px;padding-top:205px;margin-bottom:100px;border:0;}
+  .estate_wrap{height:580px;padding-top:196px;margin-bottom:100px;border:0;}
   .estate_wrap .district_list{display:block;}
   .estate_wrap .district_tab li{width:calc((100% - 24px) / 6);height:3.6rem;line-height:3.6rem;margin-left:4px;}
   .estate_wrap .district_tab li:nth-child(2n+1){margin-left:4px;}
   .estate_wrap .district_tab li:nth-child(9n+1){margin-left:4px;}
   .estate_wrap .district_tab li:nth-child(6n+1){margin-left:0;}
-  .estate_wrap .estate_tab{position:relative;display:block;width:100%;padding-top: 42px;}
-  .estate_wrap .estate_tab ul{position:absolute;top:0;left:0;right:0;padding-top:33px;background:#fff;z-index:10;}
+  .estate_wrap .estate_tab{position:relative;display:block;width:100%;height:auto;}
+  .estate_wrap .estate_tab:after{content:'';display:block;position:absolute;left:0;right:0;bottom:0;height:32px;background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);z-index:10;}
+  .estate_wrap .estate_tab ul{max-height:200px;overflow:hidden;overflow-y:auto;}
+  .estate_wrap .estate_tab ul li:last-child{padding-bottom:32px;z-index:20;}
+  .estate_wrap .estate_tab ul li:last-child a{position:relative;z-index:20;}
+  /* .estate_wrap .estate_tab ul{position:absolute;top:0;left:0;right:0;padding-top:33px;background:#fff;z-index:10;}
   .estate_wrap .estate_tab ul.active.on li{display:block;}
   .estate_wrap .estate_tab ul.active.on li.active a:after{margin-top: -2px;transform: rotate(-45deg);}
   .estate_wrap .estate_tab li{display:none;}
   .estate_wrap .estate_tab li a:hover:after{display:none;}
   .estate_wrap .estate_tab li.active{position: absolute;display:block;top: 0;left: 0;right: 0;border-bottom: 0;z-index: -1;display: block;}
-  .estate_wrap .estate_tab li.active a:after{content: '';display: block;width: 7px;height: 7px;border: 1px solid #fff;border-width: 1px 1px 0 0;transform: rotate(135deg);position: absolute;right: 15px !important;top: 50%; margin-top: -6px;transition: all .05s;border-color: #4c68ea;background:none;}
+  .estate_wrap .estate_tab li.active a:after{content: '';display: block;width: 7px;height: 7px;border: 1px solid #fff;border-width: 1px 1px 0 0;transform: rotate(135deg);position: absolute;right: 15px !important;top: 50%; margin-top: -6px;transition: all .05s;border-color: #4c68ea;background:none;} */
   .estate_wrap .district_map_area{left:50%;transform:scale(0.55) translateX(-50%);transform-origin: top left;}
 }
 
 @media (max-width: 500px){
-  .estate_wrap{height:580px;padding-top:248px;margin-bottom:50px;}
+  .estate_wrap{height:730px;padding-top:249px;margin-bottom:50px;}
   .estate_wrap .district_tab ul{padding-top:10px}
   .estate_wrap .district_tab li{width:calc((100% - 12px) / 4);margin-left:4px;height:3.2rem;line-height:3.2rem;}
   .estate_wrap .district_tab li:nth-child(6n+1){margin-left:4px;}
