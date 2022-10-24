@@ -163,14 +163,50 @@ ObjDoc.on({
 		e.preventDefault();
 		if ($(this).hasClass('active')) {
 			$(this).removeClass('active');
-			$('.food-item').removeClass('active').hide(300);
+			$('.food-item').removeClass('active');
 		}else{
 			$('.food-list a').removeClass('active');
 			$(this).addClass('active');
-			$('.food-item').addClass('active').css('top',$(this).position().top + $(this).innerHeight());
+			$('.food-item').removeClass('active', function(){
+				$('.food-item').addClass('active');
+			});
+			$('.food-item').css('top',$(this).position().top + $(this).innerHeight());
 			initSlick($('.food-item .slick'), SlickOptionSub3);
-			$('html, body').animate({scrollTop: $('.food-item').position().top + $('.food-item').innerHeight()}, 400);
+			if(ObjWin.width() > 1499){ 
+				$('html, body').animate({scrollTop: $('.food-item').position().top + $('.food-item').innerHeight() + 120}, 400);
+			}
 		}
 	}
-}, '.food-list a');
+}, '.food-list a')
+.on({
+	'click': function(e) { 
+		e.preventDefault();
+		$('.food-item').removeClass('active');
+		$('.food-list a').removeClass('active');
+	}
+}, '.food-item .close')
+.on({
+	'change': function() { 
+		if($(".check-all").is(":checked")) {
+			$('input[type="checkbox"]').each(function(index, item){
+				$(item).prop("checked", true);
+			});
+		}
+		else {
+			$('input[type="checkbox"]').each(function(index,item){
+				$(item).prop("checked", false);
+			});
+		}
+	}
+}, '.check-bx .check-all')
+.on({
+	'change': function() { 
+		if($('input[type="checkbox"]').is(":checked")) {
+			$('.check-bx .skinBtnBo').addClass('active');
+		}
+		else {
+			$('.check-bx .skinBtnBo').removeClass('active');
+		}
+	}
+}, '.check-bx input[type="checkbox"]');
 
