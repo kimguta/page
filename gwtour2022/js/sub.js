@@ -94,6 +94,16 @@ var SlickOptionSub3 = {
 	slidesToShow: 1,
 	pauseOnHover: false,
 	speed: 500,
+	responsive: [
+		{
+			breakpoint: 717,
+			settings: {
+			centerMode: true,
+			variableWidth: true,
+			slidesToShow: 3,
+			}
+		}
+	]
 };
 
 ObjDoc.on({
@@ -170,6 +180,9 @@ ObjDoc.on({
 			$('.food-item').removeClass('active', function(){
 				$('.food-item').addClass('active');
 			});
+			// $(".food-item").removeClass('active').delay(0).queue(function(){
+			// 	$(this).addClass('active').dequeue();
+			// });
 			$('.food-item').css('top',$(this).position().top + $(this).innerHeight());
 			initSlick($('.food-item .slick'), SlickOptionSub3);
 			if(ObjWin.width() > 1499){ 
