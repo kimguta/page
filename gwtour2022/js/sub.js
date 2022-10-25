@@ -56,7 +56,31 @@ function contentScript(){
     };
 	initSlick($('.sub-slick-wrap1 .slick'), SlickOptionSub1);
 	$('#search-wrap').parents('#wrapper').find('.seach-open.header-btn').hide();
-	
+
+	var SlickOptionSub4 = {
+        autoplay: false,
+        arrows: true,
+        accessibility: false,
+        swipeToSlide:true,
+        dots: false,
+        draggable: true,
+        infinite: true,
+		slidesToScroll: 1,
+        slidesToShow: 4,
+        pauseOnHover: false,
+        speed: 500,
+		responsive: [
+            {
+                breakpoint: 1500,
+                settings: {
+				speed: 300,
+				variableWidth: true,
+				slidesToShow: 3,
+                }
+            }
+        ]
+    };
+	initSlick($('.theme-slick-wrap .slick'), SlickOptionSub4);
 };
 
 $(function() {
