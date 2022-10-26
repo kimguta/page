@@ -10,6 +10,9 @@ function contentScript(){
 	$('.skinTb.width768').parent().addClass('width768');
 	$('.skinTb.width1000').parent().addClass('width1000');
 
+	$('.map-wrap .item-bx > div:first-child, .map-wrap .tab-bx a:first-child, .city-wrap .tab-bx a:first-child, .city-wrap .item-bx > div:first-child').addClass('active');
+	$('.map-slick-bx > div:first-child').addClass('active');
+
 	if ($('.img-zoom-modal').length){
 		$.getScript('/page/gwtour2022/js/panzoom.min.js');
 		$.getScript('/page/gwtour2022/js/708e424f8f.js');
@@ -81,6 +84,58 @@ function contentScript(){
         ]
     };
 	initSlick($('.theme-slick-wrap .slick'), SlickOptionSub4);
+
+	var SlickOptionSub5 = {
+		autoplay: false,
+		arrows: true,
+		accessibility: false,
+		swipeToSlide:true,
+		dots: true,
+		draggable: true,
+		infinite: true,
+		slidesToScroll: 1,
+		slidesToShow: 1,
+		pauseOnHover: false,
+		speed: 700,
+		responsive: [
+			{
+				breakpoint: 717,
+				settings: {
+				speed: 350,
+				adaptiveHeight: true,
+				// centerMode: true,
+				// variableWidth: true,
+				// slidesToShow: 3,
+				}
+			}
+		]
+	};
+	initSlick($('.sub-slick-wrap .slick'), SlickOptionSub5);
+
+	var SlickOptionSub6 = {
+		autoplay: false,
+		arrows: true,
+		accessibility: false,
+		dots: false,
+		draggable: true,
+		infinite: true,
+		slidesToScroll: 1,
+		slidesToShow: 4,
+		pauseOnHover: false,
+		swipeToSlide:true,
+		speed: 350,
+		responsive: [
+			{
+				breakpoint: 1500,
+				settings: {
+					centerMode: true,
+					variableWidth: true,
+					slidesToShow: 3,
+				}
+			}
+		]
+	};
+	initSlick($('.map-slick-bx .slick'), SlickOptionSub6);
 };
 
 $(function() {
@@ -123,12 +178,14 @@ var SlickOptionSub3 = {
 			breakpoint: 717,
 			settings: {
 			centerMode: true,
+			speed: 300,
 			variableWidth: true,
 			slidesToShow: 3,
 			}
 		}
 	]
 };
+
 
 ObjDoc.on({
 	'click': function(e) { 
@@ -245,5 +302,24 @@ ObjDoc.on({
 			$('.check-bx .skinBtnBo').removeClass('active');
 		}
 	}
-}, '.check-bx input[type="checkbox"]');
+}, '.check-bx input[type="checkbox"]')
+.on({
+	'click': function(e) { 
+		e.preventDefault();
+		var idx = $(this).index();
+        $('.map-wrap .item-bx > div, .map-wrap .tab-bx a, .map-slick-bx > div').removeClass('active');
+        $('.map-wrap .item-bx > div').eq(idx).addClass('active');
+		$('.map-slick-bx > div').eq(idx).addClass('active').find('.slick-prev').click();
+        $(this).addClass('active');
+	}
+}, '.map-wrap .tab-bx a')
+.on({
+	'click': function(e) { 
+		e.preventDefault();
+		var idx = $(this).index();
+        $('.city-wrap .item-bx > div, .city-wrap .tab-bx a').removeClass('active');
+        $('.city-wrap .item-bx > div').eq(idx).addClass('active');
+        $(this).addClass('active');
+	}
+}, '.city-wrap .tab-bx a');
 
