@@ -321,5 +321,17 @@ ObjDoc.on({
         $('.city-wrap .item-bx > div').eq(idx).addClass('active');
         $(this).addClass('active');
 	}
-}, '.city-wrap .tab-bx a');
+}, '.city-wrap .tab-bx a')
+.on({
+	'click': function(e) { 
+		e.preventDefault();
+        $(this).toggleClass('active');
+		if($('.select-list a').hasClass('active')) {
+			$('.select-btn').addClass('active');
+		}
+		else {
+			$('.select-btn').removeClass('active');
+		}
+	}
+}, '.select-list a');
 
