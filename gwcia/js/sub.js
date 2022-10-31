@@ -188,7 +188,18 @@ ObjDoc.on({
 		$('.estate_wrap .district_map_area [class*="district_map_"]').eq(idx).addClass('active');
 
 	}
-}, '.estate_wrap .district_tab li a');
+}, '.estate_wrap .district_tab li a')
+.on({
+	'click': function(e) {
+		e.preventDefault();
+		var idx = $('.liquid_hydrogen_wrap .round_tab_area li .tab_item').index(this);
+		$('.liquid_hydrogen_wrap .round_tab_area li').removeClass('active');
+		$(this).parent().addClass('active');
+		$('.liquid_hydrogen_wrap .liquid_hydrogen_area').removeClass('active');
+		$('.liquid_hydrogen_wrap .liquid_hydrogen_area').eq(idx).addClass('active');
+
+	}
+}, '.liquid_hydrogen_wrap .round_tab_area li .tab_item');
 
 ObjDoc.on({
 	'click': function(e) {
