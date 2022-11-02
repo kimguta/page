@@ -140,13 +140,8 @@ ObjDoc.on({
 .on({
 	'click': function(e) { 
 		e.preventDefault();
-		if ($(this).parent().hasClass('active')) {
-			$(this).parent('h2').removeClass('active');
-		} else{
-			$('#header.mobile-mode h2').removeClass('active');
-			$(this).parent('h2').addClass('active');
-			
-		}
+		$('#header.mobile-mode h2').removeClass('active');
+		$(this).parent('h2').addClass('active');
 	}
 }, '#header.mobile-mode h2.has-depth a')
 .on({
