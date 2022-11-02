@@ -114,8 +114,8 @@ ObjDoc.on({
 		var idx = $('.status_wrap .chart_tab li a').index(this);
 		$('.status_wrap .chart_tab li').removeClass('active');
 		$(this).parent().addClass('active');
-		$('.status_wrap .bar_chart .chart_img img').removeClass('active');
-		$('.status_wrap .bar_chart .chart_img img').eq(idx).addClass('active');
+		$('.status_wrap .bar_chart .chart_img [id*="columnchart_values"]').removeClass('active');
+		$('.status_wrap .bar_chart .chart_img [id*="columnchart_values"]').eq(idx).addClass('active');
 	}
 }, '.status_wrap .chart_tab li a')
 .on({
@@ -199,7 +199,20 @@ ObjDoc.on({
 		$('.liquid_hydrogen_wrap .liquid_hydrogen_area').eq(idx).addClass('active');
 
 	}
-}, '.liquid_hydrogen_wrap .round_tab_area li .tab_item');
+}, '.liquid_hydrogen_wrap .round_tab_area li .tab_item')
+.on({
+	'click': function(e) {
+		e.preventDefault();
+		var idx = $('.incentive_foreign_wrap .round_tab_area li .tab_item').index(this);
+		$('#sub .title-bx h4').hide();
+		$('#sub .title-bx h4').eq(idx).show();
+		$('.incentive_foreign_wrap .round_tab_area li').removeClass('active');
+		$(this).parent().addClass('active');
+		$('.incentive_foreign_wrap .incentive_foreign_area').removeClass('active');
+		$('.incentive_foreign_wrap .incentive_foreign_area').eq(idx).addClass('active');
+
+	}
+}, '.incentive_foreign_wrap .round_tab_area li .tab_item');
 
 ObjDoc.on({
 	'click': function(e) {
