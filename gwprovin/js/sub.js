@@ -73,7 +73,7 @@ ObjDoc.on({
 		const zoomOutButton = document.getElementById('zoom-out');
 		const panzoom = Panzoom(element, {
 			maxScale: 3,
-			minScale: 0.2,
+			minScale: 0.3,
 		});
 		const parent = element.parentElement
 		parent.addEventListener('wheel', panzoom.zoomWithWheel);
