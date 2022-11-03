@@ -114,8 +114,8 @@ ObjDoc.on({
 		var idx = $('.status_wrap .chart_tab li a').index(this);
 		$('.status_wrap .chart_tab li').removeClass('active');
 		$(this).parent().addClass('active');
-		$('.status_wrap .bar_chart .chart_img [id*="columnchart_values"]').removeClass('active');
-		$('.status_wrap .bar_chart .chart_img [id*="columnchart_values"]').eq(idx).addClass('active');
+		$('.status_wrap .bar_chart .chart_img img').removeClass('active');
+		$('.status_wrap .bar_chart .chart_img img').eq(idx).addClass('active');
 	}
 }, '.status_wrap .chart_tab li a')
 .on({
@@ -148,12 +148,12 @@ ObjDoc.on({
 		$(this).toggleClass('active');
 	}
 }, '#sub-detail-visual .view_btn.complex_shortcut')
-.on({
-	'click': function(e) {
-		e.preventDefault();
-		$('#sub-detail-visual .view_btn.complex_shortcut').removeClass('active');
-	}
-}, '#sub-detail-visual .view_btn_box .complex_list li a')
+// .on({
+// 	'click': function(e) {
+// 		e.preventDefault();
+// 		$('#sub-detail-visual .view_btn.complex_shortcut').removeClass('active');
+// 	}
+// }, '#sub-detail-visual .view_btn_box .complex_list li a')
 .on({
 	'click': function(e) {
 		e.preventDefault();
