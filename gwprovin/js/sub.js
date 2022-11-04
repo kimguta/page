@@ -7,14 +7,14 @@ ObjDoc.on({
 		e.preventDefault();
 		if ($(this).hasClass('active')) {
 			$(this).removeClass('active');
-			$(this).parent('.box').removeClass('active');
+			$(this).parents('#breadcrumb-bx, .box').removeClass('active');
 			$(this).children('span').text('열기');
 			$('#breadcrumb-bx .box ul').slideUp(250);
 		} else{
 			$('#breadcrumb-bx .open').removeClass('active');
 			$('#breadcrumb-bx .box').removeClass('active');
 			$(this).addClass('active');
-			$(this).parent('.box').addClass('active');
+			$(this).parents('#breadcrumb-bx, .box').addClass('active');
 			$('#breadcrumb-bx .open span').text('열기');
 			$(this).children('span').text('닫기');
 			$('#breadcrumb-bx .box ul').slideUp(250);
@@ -26,7 +26,7 @@ ObjDoc.on({
 	'mouseleave': function() { 
 		$('#breadcrumb-bx .open span').text('열기');
 		$('#breadcrumb-bx .box ul').slideUp(300);
-		$('#breadcrumb-bx .box .open, #breadcrumb-bx .box').removeClass('active');
+		$('#breadcrumb-bx .box .open, #breadcrumb-bx .box, #breadcrumb-bx').removeClass('active');
 	}
 }, '.mobile-mode #breadcrumb-bx')
 .on({
