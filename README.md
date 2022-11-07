@@ -25,7 +25,7 @@
   <li><a href="mayor2022/index_list.html" target="_blank">양양군수실2022</a></li>
   <li><a href="governor/index_list.html" target="_blank">강원도지사실2022</a></li>
   <li><a href="gwtour2022" target="_blank">강원관광2022</a></li>
-  <li><a href="gwtour-foreign" target="_blank">강원관광2022</a></li>
+  <li><a href="gwtour-foreign" target="_blank">강원관광2022 - 외국어</a></li>
   <li><a href="gwprovin" target="_blank">강원도청2022</a></li>
   <li><a href="gw-subsite" target="_blank">강원도청-부속사이트</a></li>
 </ul>
