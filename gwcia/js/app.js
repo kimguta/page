@@ -101,17 +101,6 @@ ObjWin.on({
 // });
 
 ObjDoc.on({
-	'click': function(e) {
-		e.preventDefault();
-		$('#header').addClass('active');
-		$('#header .site_map').addClass('active');
-		$('#header .site_map a:first').focus();
-		if(ObjWin.width() < 1199){
-			$('body').css('overflow','hidden');
-		}
-	}
-}, '#header .sitemap')
-.on({
 	'mouseover focusin': function() {
 		var offset = $(this).position().left + ($(this).width() / 2 - 0);
 		// $('body').css('overflow','hidden');
@@ -124,11 +113,23 @@ ObjDoc.on({
 }, '#header.pc-mode nav > .depth-01 li')
 .on({
 	'mouseleave': function() {
-		// $('body').css('overflow','');
+		$('body').css('overflow','');
 		$('#header').removeClass('active');
 		$('#header h2').removeClass('active');
 	}
-}, '#header.pc-mode nav')
+}, '#header.pc-mode nav > ul')
+.on({
+	'click': function(e) {
+		e.preventDefault();
+		e.stopPropagation();
+		$('#header').addClass('active');
+		$('#header .site_map').addClass('active');
+		$('#header .site_map a:first').focus();
+		if(ObjWin.width() < 1199){
+			$('body').css('overflow','hidden');
+		}
+	}
+}, '#header .sitemap')
 .on({
 	'click': function() {
 		$('body').css('overflow','');
