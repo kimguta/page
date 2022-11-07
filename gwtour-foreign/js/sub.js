@@ -197,8 +197,8 @@ ObjDoc.on({
 			<div class="title-bx">
 				<h1>`+ fileName +`</h1>
 				<div class="btn-bx">
-					<a href="#" class="zoom-in" id="zoom-in"><i class="fa-solid fa-magnifying-glass-plus"></i> 확대</a>
-					<a href="#" class="zoom-out" id="zoom-out"><i class="fa-solid fa-magnifying-glass-minus"></i> 축소</a>
+					<a href="#" class="zoom-in" id="zoom-in"><i class="fa-solid fa-magnifying-glass-plus"></i> zoom-in</a>
+					<a href="#" class="zoom-out" id="zoom-out"><i class="fa-solid fa-magnifying-glass-minus"></i> zoom-out</a>
 				</div>
 			</div>
 			<div class=thumb>
