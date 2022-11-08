@@ -212,7 +212,14 @@ ObjDoc.on({
 		$('.incentive_foreign_wrap .incentive_foreign_area').eq(idx).addClass('active');
 
 	}
-}, '.incentive_foreign_wrap .round_tab_area li .tab_item');
+}, '.incentive_foreign_wrap .round_tab_area li .tab_item')
+.on({
+	'click': function(e) {
+		e.preventDefault();
+		$(this).parent().toggleClass('active');
+	}
+}, '.investment_simulation .calculation_item .select_box .box');
+
 
 ObjDoc.on({
 	'click': function(e) {
