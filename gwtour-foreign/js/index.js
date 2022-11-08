@@ -63,23 +63,19 @@ $(function() {
         autoplay: false,
         arrows: true,
         accessibility: false,
-        dots:true,
+        dots:false,
         swipeToSlide:true,
-        prevArrow: $('#only .prev'),
-        nextArrow: $('#only .next'),
-        appendDots: $('#only .dots'),
         draggable: true,
-        variableWidth: true,
         infinite: true,
         slidesToShow: 1,
+        slidesToScroll: 1,
         pauseOnHover: false,
-        speed: 1200,
+        speed: 700,
         responsive: [
             {
-                breakpoint: 1500,
+                breakpoint: 717,
                 settings: {
-                speed: 700,
-                centerMode: true,
+                speed: 500,
                 }
             }
         ]
@@ -87,46 +83,33 @@ $(function() {
 
     var SlickOption2 = {
         autoplay: false,
-        arrows: true,
+        arrows: false,
         accessibility: false,
         dots:false,
         swipeToSlide:true,
         draggable: true,
-        variableWidth: true,
         infinite: true,
-        slidesToShow: 3,
+        lidesToShow: 1,
+        slidesToScroll: 1,
         pauseOnHover: false,
-        speed: 900,
-        responsive: [
-            {
-                breakpoint: 1500,
-                settings: {
-                speed: 500,
-                centerMode: true,
-                }
-            }
-        ]
+        speed: 1000,
+        asNavFor: '#map .slick2'
     };
 
     var SlickOption3 = {
-        autoplay: false,
-        arrows: false,
+        autoplay: true,
+        arrows: true,
         accessibility: false,
-        dots:true,
+        dots:false,
         draggable: true,
         infinite: true,
+        fade: true,
         slidesToShow: 1,
         slidesToScroll: 1,
         pauseOnHover: false,
-        speed: 600,
-        responsive: [
-            {
-                breakpoint: 1500,
-                settings: {
-                speed: 500,
-                }
-            }
-        ]
+        speed: 800,
+        asNavFor: '#map .slick',
+        autoplaySpeed: 8000,
     };
 
     var SlickOption4 = {
@@ -140,12 +123,12 @@ $(function() {
         infinite: true,
         slidesToShow: 3,
         pauseOnHover: false,
-        speed: 600,
+        speed: 500,
         responsive: [
             {
                 breakpoint: 1500,
                 settings: {
-                speed: 500,
+                speed: 350,
                 centerMode: true,
                 }
             }
@@ -153,10 +136,9 @@ $(function() {
     };
 
     initSlick($('#only .slick'), SlickOption1);
-    initSlick($('#festival .slick'), SlickOption2);
-    initSlick($('#gift .slick'), SlickOption2);
-    initSlick($('#notice .slick'), SlickOption3);
-    initSlick($('#sns .slick'), SlickOption4);    
+    initSlick($('#map .slick'), SlickOption2);
+    initSlick($('#map .slick2'), SlickOption3);
+    initSlick($('#food .slick'), SlickOption4);    
     // sideBar($('#like .tab-bx'), $('#like .tab-bx > div'));
     $('#like .item-bx > div:first-child, #like .tab-bx a:first-of-type, #like .tab-bx p, #map .item-bx > div:first-child, #map .tab-bx a:first-child').addClass('active');
 });

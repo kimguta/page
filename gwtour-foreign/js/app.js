@@ -23,7 +23,7 @@ function initSlick(target, options) {
 		if(allSlide < 10){ 
 			var allSlide = '0' + allSlide
 		}
-		target.parent().find('.count').html( nowSlide + '<span>-</span>' + '<strong>'+ allSlide + '<strong>');
+		target.parent().find('.count').html( nowSlide + '<span>/</span>' + '<strong>'+ allSlide + '<strong>');
 		target.find('.slick-slide:not(.slick-active)').attr('tabindex','-1');
 		target.find('.slick-active').attr('tabindex','0');
 	});
