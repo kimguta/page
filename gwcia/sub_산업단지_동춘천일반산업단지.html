@@ -162,6 +162,7 @@
 <!--[d] 인클루드, 디자인 확인 용 개발 시 제거-->
 <div class="puble-index">
 	<a href="#" class="close" onclick="$('.puble-index').remove();return false;">✕</a>
+	<a href="#" class="btn noimage">이미지 없는 경우</a>
 	<a href="#" class="btn sub upload"></a>
 	<div class="pre-view">
 		<iframe id="preview-pc" src="/page/gwcia/sub.html"></iframe>
@@ -366,6 +367,15 @@
 			});
 		});
 	}
+
+	var ObjDoc = $(document);
+	ObjDoc.on({
+	'click': function() {
+		$(".complex_detail_wrap .status_area .state_info").addClass("no_image");
+		$(".complex_detail_wrap .status_area .zoning_map img").attr("src", "/page/gwcia/images/sub/complex_detail_noimage.jpg");
+		$(".complex_detail_wrap .status_area .parcelout_area").hide();
+	}
+}, '.puble-index .btn.noimage');
 </script>
 <!--//[d] 인클루드, 디자인 확인 용 개발 시 제거-->
 
