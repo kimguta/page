@@ -371,9 +371,10 @@
 	var ObjDoc = $(document);
 	ObjDoc.on({
 	'click': function() {
-		$(".complex_detail_wrap .status_area .state_info").addClass("no_image");
-		$(".complex_detail_wrap .status_area .zoning_map img").attr("src", "/page/gwcia/images/sub/complex_detail_noimage.jpg");
-		$(".complex_detail_wrap .status_area .parcelout_area").hide();
+		$(".complex_detail_wrap .image_area").addClass('no_image');
+		$(".complex_detail_wrap .image_area").prepend("<img src='/page/gwcia/images/sub/complex_detail_noimage.jpg' width='795' height='416' alt='동춘천일반산업단지 구역도'>")
+		$(".complex_detail_wrap .image_area .slick").hide();
+		$(".complex_detail_wrap .image_area .image_title").hide();
 	}
 }, '.puble-index .btn.noimage');
 </script>
