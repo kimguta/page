@@ -200,19 +200,19 @@ ObjDoc.on({
 
 	}
 }, '.liquid_hydrogen_wrap .round_tab_area li .tab_item')
-.on({
-	'click': function(e) {
-		e.preventDefault();
-		var idx = $('.incentive_foreign_wrap .round_tab_area li .tab_item').index(this);
-		$('#sub .title-bx h4').hide();
-		$('#sub .title-bx h4').eq(idx).show();
-		$('.incentive_foreign_wrap .round_tab_area li').removeClass('active');
-		$(this).parent().addClass('active');
-		$('.incentive_foreign_wrap .incentive_foreign_area').removeClass('active');
-		$('.incentive_foreign_wrap .incentive_foreign_area').eq(idx).addClass('active');
+// .on({
+	//'click': function(e) {
+	//	e.preventDefault();
+	//	var idx = $('.incentive_foreign_wrap .round_tab_area li .tab_item').index(this);
+	//	$('#sub .title-bx h4').hide();
+	//	$('#sub .title-bx h4').eq(idx).show();
+	//	$('.incentive_foreign_wrap .round_tab_area li').removeClass('active');
+	//	$(this).parent().addClass('active');
+	//	$('.incentive_foreign_wrap .incentive_foreign_area').removeClass('active');
+	//	$('.incentive_foreign_wrap .incentive_foreign_area').eq(idx).addClass('active');
 
-	}
-}, '.incentive_foreign_wrap .round_tab_area li .tab_item')
+	//}
+//}, '.incentive_foreign_wrap .round_tab_area li .tab_item')
 // .on({
 // 	'click': function(e) {
 // 		e.preventDefault();
