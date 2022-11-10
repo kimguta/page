@@ -62,7 +62,7 @@ var Wwidth = ObjWin.outerWidth();
 ObjWin.on({
 	'resize load': function() {
 		$('#header .depth-02').prev('h2').addClass('has-depth');
-		if(ObjWin.width() > 1199){
+		if(ObjWin.width() > 1400){
 			$('#header').removeClass('mobile-mode');
 			$('#header').addClass('pc-mode');
 		}
