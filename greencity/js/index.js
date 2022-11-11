@@ -1,6 +1,6 @@
 $(function() { 
     var slickOption = {
-        autoplay: true,
+        autoplay: false,
         arrows: false,
         accessibility: false,
         dots:false,
@@ -10,7 +10,6 @@ $(function() {
         slidesToScroll: 1,
         pauseOnHover: false,
         speed: 800,
-        cssEase: 'linear',
         responsive: [
             {
                 breakpoint: 992,
@@ -31,17 +30,17 @@ $(function() {
         prevArrow: $('#notice .prev'),
         nextArrow: $('#notice .next'),
         draggable: true,
-        infinite: true,
+        infinite: false,
         slidesToShow: 1,
         slidesToScroll: 1,
         pauseOnHover: false,
-        speed: 600,
+        speed: 1200,
         autoplaySpeed: 5000,
         responsive: [
             {
                 breakpoint: 992,
                 settings: {
-                speed: 500,
+                speed: 900,
                 centerMode: true,
                 slidesToShow: 3,
                 variableWidth: true,
@@ -54,52 +53,54 @@ $(function() {
     
     initSlick($('#notice .slick'), slickOption2);
     
+    $('#visual .tab a:first, #visual .data-bx .item:first-child').addClass('active');
 
-    // $('#notice .item:first-child, #information .item:first-child').addClass('active');
-  
+    $('.data-bx > div').each(function (index, item) {
+        $(item).find('.spot-bx a:first').addClass('active');
+    });
 
 });
 
 
+
 ObjDoc.on({
-    'keydown': function(e) { 
-        if(e.keyCode==9){ 
-            $('#video-wrap .video-bx').attr('tabindex', -1).focus();
-        }
-	},
 	'click': function(e) { 
         e.preventDefault();
-		$('#player1')[0].contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
-        $('#video-wrap').hide();
-        $('#main .video-on').focus();
+        var Idx = $(this).index();
+        $('#visual .slick').slick('slickGoTo', Idx);
+        $('#visual .tab a').removeClass('active');
+        $(this).addClass('active');
+        $('#visual .data-bx .item').removeClass('active');
+        $('#visual .data-bx .item').eq(Idx).addClass('active');
 	}
-}, '#video-wrap .close')
+}, '#visual .tab a')
 .on({
 	'click': function(e) { 
         e.preventDefault();
-        $('#video-wrap').css('display','flex');
-        $('#player1')[0].contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*');
-        $('#video-wrap .video-bx div').attr('tabindex', -1).focus();
+        $(this).toggleClass('active');
+	    $(this).next('.view').stop().slideToggle(300);
 	}
-}, '#main .video-on')
+}, '.local-bx .open')
 .on({
 	'click': function(e) { 
         e.preventDefault();
-        $('#notice .item').removeClass('active');
-        $(this).parents('.item').addClass('active');
+        var Idx2 = $(this).index();
+        var Name = $(this).text();
+	    $(this).parent('.view').stop().slideUp(300);
+        $(this).parent('.view').prev('.open').text(Name);
+        $(this).parents('.item').find('.map-bx .spot-bx a').removeClass('active');
+        $(this).parents('.item').find('.map-bx .spot-bx a').eq(Idx2).addClass('active');
 	}
-}, '#notice h2 a')
+}, '.local-bx .view a')
 .on({
 	'click': function(e) { 
         e.preventDefault();
-        $('#information .item').removeClass('active');
-        $(this).parents('.item').addClass('active');
-        
-        if($(window).width() < 992){ 
-			var offSet = $(this).offset().top - 100;
-            $('html, body').animate({scrollTop: offSet}, 300);
-		}
+        var Name2 = $(this).text();
+        $(this).parents('.item').find('.open').text(Name2);
+        $(this).parents('.item').find('.map-bx .spot-bx a').removeClass('active');
+        $(this).addClass('active');
 	}
-}, '#information h3 a');
+}, '.map-bx .spot-bx a')
+;
 
 
