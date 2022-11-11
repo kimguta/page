@@ -28,5 +28,6 @@
   <li><a href="gwtour-foreign" target="_blank">강원관광2022 - 외국어</a></li>
   <li><a href="gwprovin" target="_blank">강원도청2022</a></li>
   <li><a href="gw-subsite" target="_blank">강원도청-부속사이트</a></li>
+  <li><a href="greencity" target="_blank">스마트그린도시-포탈</a></li>
 </ul>
 
