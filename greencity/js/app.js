@@ -102,8 +102,8 @@ ObjWin.on({
 				`<div class="sitemap-bx">
 					<div>`+ navDom +` <a href="#" class="close">닫기</a> </div>
 				</div>`
-			);
-		}, 200);
+			);	
+		}, 300);
 	}
 });
 

@@ -1,40 +1,27 @@
 $(function() { 
     var slickOption = {
         autoplay: true,
-        arrows: true,
+        arrows: false,
         accessibility: false,
         dots:false,
-        prevArrow: $('#visual .prev'),
-        nextArrow: $('#visual .next'),
         draggable: true,
         infinite: true,
         slidesToShow: 1,
         slidesToScroll: 1,
         pauseOnHover: false,
-        speed: 1200,
-        autoplaySpeed: 5000,
+        speed: 800,
+        cssEase: 'linear',
         responsive: [
             {
                 breakpoint: 992,
                 settings: {
-                speed: 700,
-                slidesToShow: 3,
-                variableWidth: true,
-                swipeToSlide:true,
-                centerMode: true,
-                }
-            },
-            {
-              breakpoint: 761,
-              settings: {
-                slidesToShow: 1,
-                variableWidth: false,
-                centerMode: false,
                 speed: 600,
-              }
+                }
             }
         ]
     };
+
+    initSlick($('#visual .slick'), slickOption);
 
     var slickOption2 = {
         autoplay: true,
@@ -64,11 +51,11 @@ $(function() {
         ]
     };
     
-    initSlick($('#visual .slick'), slickOption);
+    
     initSlick($('#notice .slick'), slickOption2);
     
 
-    $('#notice .item:first-child, #information .item:first-child').addClass('active');
+    // $('#notice .item:first-child, #information .item:first-child').addClass('active');
   
 
 });
