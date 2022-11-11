@@ -48,42 +48,42 @@ ObjWin.on({
 	}
 });
 
+// ObjDoc.on({
+// 	'click': function(e) {
+// 		e.preventDefault();
+// 		if ($(this).hasClass('active')) {
+// 			$(this).removeClass('active');
+// 			$(this).children('span').text('열기');
+// 			$('#breadcrumb .box ul').slideUp(250);
+// 		} else{
+// 			$('#breadcrumb .open').removeClass('active');
+// 			$(this).addClass('active');
+// 			$('#breadcrumb .open span').text('열기');
+// 			$(this).children('span').text('닫기');
+// 			$('#breadcrumb .box ul').slideUp(250);
+// 			$(this).next('ul').slideDown(250);
+// 		}
+// 	}
+// }, '#breadcrumb .bx .open')
+// .on({
+// 	'mouseleave': function() {
+// 		$('#breadcrumb .open span').text('열기');
+// 		$('#breadcrumb .box ul').slideUp(300);
+// 		$('#breadcrumb .box .open').removeClass('active');
+// 	}
+// }, '#breadcrumb')
+// .on({
+// 	'focusout': function() {
+// 		$(this).parents('.box').children('.open').focus();
+// 	}
+// }, '#breadcrumb .box ul li:last-child a')
+// .on({
+// 	'click': function(e) {
+// 		e.preventDefault();
+// 		$(this).next('ul').fadeToggle(100);
+// 	}
+// }, '#breadcrumb .share .open');
 ObjDoc.on({
-	'click': function(e) {
-		e.preventDefault();
-		if ($(this).hasClass('active')) {
-			$(this).removeClass('active');
-			$(this).children('span').text('열기');
-			$('#breadcrumb .box ul').slideUp(250);
-		} else{
-			$('#breadcrumb .open').removeClass('active');
-			$(this).addClass('active');
-			$('#breadcrumb .open span').text('열기');
-			$(this).children('span').text('닫기');
-			$('#breadcrumb .box ul').slideUp(250);
-			$(this).next('ul').slideDown(250);
-		}
-	}
-}, '#breadcrumb .bx .open')
-ObjDoc.on({
-	'mouseleave': function() {
-		$('#breadcrumb .open span').text('열기');
-		$('#breadcrumb .box ul').slideUp(300);
-		$('#breadcrumb .box .open').removeClass('active');
-	}
-}, '#breadcrumb')
-.on({
-	'focusout': function() {
-		$(this).parents('.box').children('.open').focus();
-	}
-}, '#breadcrumb .box ul li:last-child a')
-.on({
-	'click': function(e) {
-		e.preventDefault();
-		$(this).next('ul').fadeToggle(100);
-	}
-}, '#breadcrumb .share .open')
-.on({
 	'click': function(e) {
 		e.preventDefault();
 		$(this).parents('ul').fadeToggle(100);
@@ -200,26 +200,75 @@ ObjDoc.on({
 
 	}
 }, '.liquid_hydrogen_wrap .round_tab_area li .tab_item')
+// .on({
+	//'click': function(e) {
+	//	e.preventDefault();
+	//	var idx = $('.incentive_foreign_wrap .round_tab_area li .tab_item').index(this);
+	//	$('#sub .title-bx h4').hide();
+	//	$('#sub .title-bx h4').eq(idx).show();
+	//	$('.incentive_foreign_wrap .round_tab_area li').removeClass('active');
+	//	$(this).parent().addClass('active');
+	//	$('.incentive_foreign_wrap .incentive_foreign_area').removeClass('active');
+	//	$('.incentive_foreign_wrap .incentive_foreign_area').eq(idx).addClass('active');
+
+	//}
+//}, '.incentive_foreign_wrap .round_tab_area li .tab_item')
+// .on({
+// 	'click': function(e) {
+// 		e.preventDefault();
+// 		$(this).parent().toggleClass('active');
+// 	}
+// }, '.investment_simulation .calculation_item .select_box select')
 .on({
 	'click': function(e) {
 		e.preventDefault();
-		var idx = $('.incentive_foreign_wrap .round_tab_area li .tab_item').index(this);
-		$('#sub .title-bx h4').hide();
-		$('#sub .title-bx h4').eq(idx).show();
-		$('.incentive_foreign_wrap .round_tab_area li').removeClass('active');
-		$(this).parent().addClass('active');
-		$('.incentive_foreign_wrap .incentive_foreign_area').removeClass('active');
-		$('.incentive_foreign_wrap .incentive_foreign_area').eq(idx).addClass('active');
+		// var top01 = ('#simulation_popbtn_01').offset().top;
+		$('#simulation_popup_01').css("top", Math.max(0, (($(window).height() - $(this).outerHeight()) / 2) + $(window).scrollTop()) - 100 + "px");
+		$('#simulation_popup_01').addClass('active');
 
+		$('.dimmed').addClass('active');
 	}
-}, '.incentive_foreign_wrap .round_tab_area li .tab_item')
+}, '#simulation_popbtn_01')
 .on({
 	'click': function(e) {
 		e.preventDefault();
-		$(this).parent().toggleClass('active');
+		$('#simulation_popup_02').css("top", Math.max(0, (($(window).height() - $(this).outerHeight()) / 2) + $(window).scrollTop()) - 200 + "px");
+		$('#simulation_popup_02').addClass('active');
+		$('.dimmed').addClass('active');
 	}
-}, '.investment_simulation .calculation_item .select_box .box');
-
+}, '#simulation_popbtn_02')
+.on({
+	'click': function(e) {
+		e.preventDefault();
+		$('#simulation_popup_03').css("top", Math.max(0, (($(window).height() - $(this).outerHeight()) / 2) + $(window).scrollTop()) - 200 + "px");
+		$('#simulation_popup_03').addClass('active');
+		$('.dimmed').addClass('active');
+	}
+}, '#simulation_popbtn_03')
+.on({
+	'click': function(e) {
+		e.preventDefault();
+		$('#simulation_popup_04').css("top", Math.max(0, (($(window).height() - $(this).outerHeight()) / 2) + $(window).scrollTop()) - 200 + "px");
+		$('#simulation_popup_04').addClass('active');
+		$('.dimmed').addClass('active');
+	}
+}, '#simulation_popbtn_04')
+.on({
+	'click': function(e) {
+		e.preventDefault();
+		$('#simulation_popup_05').css("top", Math.max(0, (($(window).height() - $(this).outerHeight()) / 2) + $(window).scrollTop()) - 200 + "px");
+		$('#simulation_popup_05').addClass('active');
+		$('.dimmed').addClass('active');
+	}
+}, '#simulation_popbtn_05')
+.on({
+	'click': function(e) {
+		e.preventDefault();
+		$('#simulation_popup_06').css("top", Math.max(0, (($(window).height() - $(this).outerHeight()) / 2) + $(window).scrollTop()) - 200 + "px");
+		$('#simulation_popup_06').addClass('active');
+		$('.dimmed').addClass('active');
+	}
+}, '#simulation_popbtn_06');
 
 ObjDoc.on({
 	'click': function(e) {

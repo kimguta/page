@@ -682,6 +682,7 @@
 <!--[d] 인클루드, 디자인 확인 용 개발 시 제거-->
 <div class="puble-index">
 	<a href="#" class="close" onclick="$('.puble-index').remove();return false;">✕</a>
+	<a href="#" class="btn login">로그인후</a>
 	<a href="/page/gwcia/sub.html" target="_blank" class="btn">서브페이지열기</a>
 </div>
 
@@ -731,5 +732,13 @@
 			});
 		});
 	};
+	var ObjDoc = $(document);
+	ObjDoc.on({
+	'click': function() {
+		$('#header .btn_login').hide();
+		$('#header .btn_mypage').addClass('active');
+		$('#header .btn_logout').addClass('active');
+	}
+}, '.puble-index .btn.login');
 </script>
 <!--//[d] 인클루드, 디자인 확인 용 개발 시 제거-->
