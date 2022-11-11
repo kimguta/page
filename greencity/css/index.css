@@ -1,0 +1,552 @@
+@charset "utf-8";
+
+#main{position:relative;z-index:10;padding-top:160px;transition:all .15s ease-out;}
+.fixed ~ #main{padding-top:80px;}
+
+@media (max-width:1389px) {
+    #main{padding-top:0px !important}
+    .fixed ~ #main{padding-top:0px !important;}
+}
+    
+#visual{position:relative;z-index:2;}
+#visual:before{content:'';display:block;position:absolute;bottom:50px;top:0;left:0;right:0;z-index:-1;background:url(/page/greencity/images/main/bg_visual.jpg) no-repeat right top /cover}
+#visual .inner{display:flex;padding-top:50px;align-items:flex-end;}
+
+#visual .seach-bx{order:2;padding-left:40px;width:507px;flex-basis:507px;display: flex;flex-direction:column;}
+#visual .seach-bx h2{display:flex;align-items:center;color:#1b1b1b;font-size:26px;font-weight:700;letter-spacing:-1.5px;justify-content:space-between;line-height:1.2;}
+#visual .seach-bx h2 img{width:90px;}
+#visual .seach-bx h2 br{display:none;}
+#visual fieldset{margin-top: 27px;background:#00529b;border-radius:10px;padding:4px 60px 4px 4px;position: relative;}
+#visual fieldset input[type="search"]{background:#fff;padding-left:20px;height:54px;width:100%;border-radius:6px 0 0 6px;font-size:16px}
+#visual fieldset input[type="submit"]{width:40px;position:absolute;right:10px;top:0;bottom:0;font-size:0;background: url(/page/greencity/images/common/sp_gwprovin.png) no-repeat -173px 13px /674px 600px}
+#visual fieldset input[type="submit"]:active{transform:scale(.95);}
+#visual .gover{margin-top: 36px;position:relative;z-index:2;overflow:hidden;border-radius:10px;background:#fff;transition:all .2s;padding: 1px;}
+#visual .gover:hover{background:rgba(255,255,255,.5);backdrop-filter:blur(2px);}
+#visual .gover:before{content:'';display:block;z-index:-1;bottom:0;left:0;right:0;height:50px;background:#ea3541;position:absolute;}
+#visual .gover > a{display:block;position:relative;width:100%;padding: 32px 0px 0 17px;transition:all .2s;margin-bottom:-2px;}
+#visual .gover > a img{display:block;width:100%;transition:all .2s;}
+#visual .gover > a img.tabmode{display:none;}
+#visual .gover:hover > a img{filter:brightness(1.1);}
+#visual .gover .sns-bx{position:absolute;display:flex;left:25px;align-items:center;bottom:70px;transform:scale(.78);transform-origin:0% 100%;}
+#visual .gover .sns-bx a{width:38px;height:39px;margin-right:25px;transition:filter .1s;font-size:0;background: url(/page/greencity/images/common/sp_gwprovin.png) no-repeat -159px -121px /674px 600px;position: relative;}
+#visual .gover .sns-bx a.twitter{background-position-x:-230px;}
+#visual .gover .sns-bx a.instagram{background-position-x:-300px;}
+#visual .gover .sns-bx a.kakao{background-position-x:-372px;}
+#visual .gover .sns-bx a.blog{background-position-x:-442px;}
+#visual .gover .sns-bx a.youtube{background-position-x:-512px;}
+#visual .gover .sns-bx a:hover{filter:hue-rotate(90deg);}
+#visual .gover .sns-bx a:not(:last-child):after{content:'';display:block;height:16px;width:1px;background:#9aa1ae;position:absolute;right:-13px;top:50%;margin-top:-9px;transform:rotate(25deg);pointer-events:none;}
+#visual .gover .link-bx{position:absolute;bottom:0;left:30px;display:flex;}
+#visual .gover .link-bx a{color:#fff;height:50px;line-height:50px;color:#fff;padding:0 28px;transition:all .1s;}
+#visual .gover .link-bx a:hover{font-weight:700;}
+
+#visual .slick-wrap{order:1;flex:1;width:calc(100% - 507px);position:relative;}
+#visual .slick{overflow:hidden;border-radius:10px;box-shadow:0px 0px 15px 0px rgba(0,0,0,.3);-webkit-mask-image:-webkit-radial-gradient(white, black);position:relative;z-index:2;}
+#visual .slick .slick-slide img{transition:all .2s;}
+#visual .slick .slick-slide:focus img{border:2px dashed #000;}
+#visual .slick .slick-slide:hover img{filter:brightness(1.1);}
+#visual .control{position:absolute;display:flex;z-index:3;height:48px;align-items:center;background:#fff;padding:0 30px;border-radius:24px;right:15px;bottom:15px;}
+#visual .control .count{color:#1f2d4b;font-size:20px;display:flex;align-items:center;margin-right:17px;}
+#visual .control .count span{padding:0 6px 0 7px;font-size:14px;margin-top:2px;}
+#visual .control a{height:16px;width:12px;background: url(/page/greencity/images/common/sp_gwprovin.png) no-repeat -251px -9px /674px 600px;font-size:0;color:transparent;}
+#visual .control a.next{background-position-x:-339px;}
+#visual .control a.pause{background-position-x:-280px;}
+#visual .control a.play{background-position-x:-311px;display:none;}
+#visual .control a.ps-btn{margin:0 15px;}
+#visual .control a:active{transform:scale(.9);}
+
+#visual .video-on{position:absolute;top:40px;right:-10px;transition:all .2s;z-index:20;}
+#visual .video-on:hover{filter:hue-rotate(45deg);right:0;}
+#visual .video-on:active{transform:scale(.95);transform-origin:100% 50%;}
+
+#video-wrap{position:fixed;top:0;left:0;right:0;bottom:0;display:none;background:rgba(0,0,0,.7);z-index:3000;align-items:center;justify-content:center;flex-direction:column;padding-bottom:50px;animation:video-modal1 .35s 1 both ease-out;}
+#video-wrap .video-bx{max-width:1260px;margin:0 auto;width:100%;order:2;animation:video-modal2 .5s .3s 1 both ease-out;}
+#video-wrap .video-bx > div{position:relative;width:100%;padding-top:56.25%;}
+#video-wrap .video-bx iframe{display:block;position:absolute;top:0;left:0;width:100%;height:100%;}
+#video-wrap .btn-bx{max-width:1260px;margin:0 auto;width:100%;order:1;display:flex;justify-content:flex-end;margin-bottom:15px;}
+#video-wrap .close{width:64px;}
+#video-wrap .close img{display:block;width:100%;}
+
+@keyframes video-modal1{ 
+    0%{opacity:0;}
+    100%{opacity:1;} 
+}
+
+@keyframes video-modal2{ 
+    0%{opacity:0;transform:translateY(20%);}
+    100%{opacity:1;transform:translateY(0%);} 
+}
+
+
+@media (max-width:1389px) {
+    #visual{padding-right:40px;}
+    #visual:before{position:absolute;bottom:35px;}
+    #visual .inner{padding-top:100px;justify-content:center;}
+    #visual .seach-bx{order:1;padding-left:0px;width:400px;flex-basis:400px;}
+    #visual .seach-bx h2{font-size:24px;}
+    #visual .seach-bx h2 img{width:80px;}
+    #visual fieldset{border-radius:10px;padding:3px 50px 3px 3px;margin: 15px auto 0;}
+    #visual fieldset input[type="search"]{padding-left:15px;height:44px;border-radius:6px 0 0 6px;font-size:15px}
+    #visual fieldset input[type="submit"]{background: url(/page/greencity/images/common/sp_gwprovin.png) no-repeat -173px 10px /674px 600px;right: 6px;}
+    #visual .gover{margin-top:15px;}
+    #visual .gover:before{height:40px}
+    #visual .gover > a{padding:20px 0px 0 15px;}
+    #visual .gover .sns-bx{left:20px;bottom:60px;transform:scale(.72);}
+    #visual .gover .sns-bx a{margin-right:20px;}
+    #visual .gover .sns-bx a:not(:last-child):after{right:-10px;}
+    #visual .gover .link-bx{left:15px;}
+    #visual .gover .link-bx a{height:40px;line-height:40px;padding:0 20px;font-size:15px;}
+    #visual .slick-wrap{order:2;width:calc(100% - 400px);padding:5px 0 0 15px;max-width:680px;}
+    #visual .control{right:15px;bottom:15px;transform:scale(.78);transform-origin:100% 100%;}
+    #visual .video-on{top:50px;right:-10px;transform-origin:100% 50%;transition:all .2s;transform:scale(.78);}
+    #visual .video-on:hover{filter:none;right:-10px;}
+    #visual .video-on:active{transform:scale(.73);}
+    #video-wrap{justify-content:flex-start;padding:30px 0 0;}
+    #video-wrap .video-bx{padding:0 15px;}
+    #video-wrap .btn-bx{padding:0 15px;margin-bottom: 10px;}
+    #video-wrap .close{width:42px;}
+    #visual .gover:hover{background:#fff;backdrop-filter:blur(0px);}
+}    
+   
+
+@media (max-width:991px) {
+    #visual{padding-right:0px;}
+    #visual:before{position:absolute;bottom:100px;}
+    #visual .inner{padding-top: 158px;flex-direction:column;justify-content:flex-start;align-items:center;}
+    #visual .seach-bx{order:2;width:100%;flex-basis:auto;align-items:flex-start;justify-content:flex-start;}
+    #visual .seach-bx h2{position:absolute;top: 97px;left:0;width:100%;padding:0 20px;justify-content:flex-start;word-break:keep-all;letter-spacing:inherit;font-size:22px;}
+    #visual .seach-bx h2 img{margin-left:12px}
+    #visual fieldset{border-radius:10px;padding:2px 50px 2px 2px;position:absolute;top: 76px;right:20px;width:calc(100% - 420px);z-index:10;}
+    #visual fieldset input[type="search"]{height: 40px;}
+    #visual fieldset input[type="submit"]{background: url(/page/greencity/images/common/sp_gwprovin.png) no-repeat -173px 5px /674px 600px;right: 6px;}
+    #visual .gover{margin-top:20px;margin-right:50px;width: calc(100% - 50px);}
+    #visual .gover:before{height:40px}
+    #visual .gover > a{padding: 15px 0px 0 15px;height: 220px;text-align:right;}
+    #visual .gover > a img{width:auto;height:100%;display:none;}
+    #visual .gover > a img.tabmode{display:block;}
+    #visual .gover .sns-bx{left:20px;bottom: 52px;transform:scale(.72);}
+    #visual .gover .link-bx a{padding:0 15px;font-size:14px;}
+    #visual .slick-wrap{padding:0px;max-width:initial;order:1;width:calc(100% + 40px);margin:0 -20px}
+    #visual .slick-slide{width:600px;margin:0 6px;border-radius:10px;overflow:hidden}
+    #visual .control{right:auto;left:50%;bottom:15px;transform:scale(.7);transform-origin:0% 50%;margin-left:-70px;}
+    #visual .video-on{top:auto;bottom: -23px;right:-5px;transform-origin:100% 100%;transform:scale(.78);}
+    #visual .video-on:hover{right:-5px;}
+    #visual .video-on:active{transform:scale(.73);transform-origin:100% 100%;}
+}
+
+
+@media (max-width:716px) {
+    #visual{padding-right:0px;}
+    #visual:before{position:absolute;bottom:100px;}
+    #visual .inner{padding-top: 205px;}
+    #visual .seach-bx h2{position:absolute;top: 95px;left:0;width:100%;padding:0 15px;font-size: 22px;justify-content: center;white-space: nowrap;}
+    #visual .seach-bx h2 img{margin-left:15px;width:70px;}
+    #visual fieldset{border-radius:10px;padding:2px 50px 2px 2px;position:absolute;top: 128px;right:15px;width:calc(100% - 30px);}
+    #visual fieldset input[type="search"]{height: 38px;font-size:14px;border-radius: 7px 0 0 7px;}
+    #visual fieldset input[type="submit"]{background: url(/page/greencity/images/common/sp_gwprovin.png) no-repeat -173px 4px /674px 600px;right: 6px;transform: scale(.9);}
+    #visual .gover{margin-top:20px;width: calc(100% - 41px);}
+    #visual .gover:before{height:40px}
+    #visual .gover > a{padding: 15px 0px 0 10px;height: 197px;}
+    #visual .gover > a img{width:auto;height:100%;display:block;}
+    #visual .gover > a img.tabmode{display:none;}    
+    #visual .gover .sns-bx{left:15px;bottom:50px;transform:scale(.7);}
+    #visual .gover .link-bx a{padding:0 10px;font-size:14px;}
+    #visual .slick-wrap{width:calc(100% + 40px);margin:0px}
+    #visual .slick{border-radius:0;}
+    #visual .slick-slide{width:auto;margin:0;border-radius:0;}
+    #visual .control{transform-origin:0% 100%;bottom:10px;background:rgba(255,255,255,.7);}
+    #visual .video-on{right:-10px;transform: scale(.72);bottom: -20px;}
+    #visual .video-on:hover{right:-10px;}
+    #visual .video-on:active{transform:scale(.62);}
+    #video-wrap{padding: 0px 0 70px;justify-content: center;}
+    #video-wrap .video-bx{padding:0px;max-width: 550px;}
+    #video-wrap .btn-bx{padding:0 10px;max-width: 550px;}
+    #video-wrap .close{width:36px;}
+}
+
+@media (max-width:920px) and (max-height:420px){
+    #video-wrap{padding-top:10px;}
+    #video-wrap .video-bx{padding:0px;max-width: 550px;}
+    #video-wrap .btn-bx{padding:0 10px;max-width: 550px;}
+}
+
+
+#service{position:relative;padding-top:80px;}
+#service .inner{display:flex;align-items:center;}
+#service h2{width:280px;font-size:32px;font-weight:700;letter-spacing:-2px;margin-top:-20px;}
+#service .link-bx{display:flex;justify-content:space-between;width:calc(100% - 280px);-webkit-overflow-scrolling:touch}
+#service .link-bx::-webkit-scrollbar{display:none;}
+#service .link-bx a{color:#313131;line-height:1.2;white-space:nowrap;text-align:center;}
+#service .link-bx a i{display:block;transition:all .3s;top:0;width:100px;height:100px;display:flex;align-items:center;justify-content:center;border-radius:10px;background:#f2f3f8;position:relative;margin:0 auto 10px}
+#service .link-bx a:hover i{top:-15px;box-shadow:2px 2px 0px 2px #cacdd4;}
+#service .link-bx a i:after{content:'';background: url(/page/greencity/images/common/sp_gwprovin.png) no-repeat -7px -49px /674px 600px;height:46px;width:54px;}
+#service .link-bx a i.v2:after{background-position-x: -79px;}
+#service .link-bx a i.v3:after{background-position-x: -149px;}
+#service .link-bx a i.v4:after{background-position-x: -221px;}
+#service .link-bx a i.v5:after{background-position-x: -288px;}
+#service .link-bx a i.v6:after{background-position-x: -362px;}
+#service .link-bx a i.v7:after{background-position-x: -433px;}
+#service .link-bx a i.v8:after{background-position-x: -503px;}
+
+
+@media (max-width:1389px) {
+    #service{position:relative;padding-top:45px;}
+    #service .inner{display:block}
+    #service h2{width:auto;font-size:24px;letter-spacing:-1px;margin:0px 0 5px;}
+    #service .link-bx{display:flex;justify-content:space-between;width:auto;overflow-y:auto;align-items: flex-start;padding:15px 20px 10px;margin:0 -20px;}
+    #service .link-bx a{font-size:15px;margin-right:20px;word-break: keep-all;white-space: normal;}
+    #service .link-bx a i{width:94px;height:94px;margin:0 auto 10px}
+    #service .link-bx a i:after{transform:scale(.85);}
+    #service .link-bx a:last-child{margin-right:0;}
+    #service .link-bx a:hover i{top:-5px;}
+}
+
+@media (max-width:991px) {
+    #service{padding-top:35px;}
+    #service h2{font-size:22px;margin:0px;}
+    #service .link-bx{padding:15px 20px 10px;}
+    #service .link-bx a{font-size:14px;}
+}  
+
+@media (max-width:716px) {
+    #service{padding-top: 32px;}
+    #service h2{text-align: center;}
+    #service .link-bx{padding: 16px 15px 10px;margin:0 -15px;}
+    #service .link-bx a i{width: 82px;height: 82px;}
+    #service .link-bx a i:after{transform: scale(.75);}
+    #service .link-bx a{font-size:14px;margin-right:10px;}
+} 
+
+#notice{position:relative;padding:78px 0}
+#notice .inner{display:flex;justify-content:space-between;}
+#notice .notice-bx{position:relative;display:flex;padding-right:62px;border-radius:10px;display:flex;flex:1;}
+#notice .notice-bx .item{flex:1;}
+#notice .notice-bx h2 a{display:flex;align-items:center;justify-content:center;border:1px solid #dcdcdc;border-width:1px 1px 1px 0;font-size:18px;transition:all .1s;height:68px;width:100%;}
+#notice .notice-bx .item:first-child h2 a{border-left-width:1px;border-radius:10px 0 0 10px;}
+#notice .notice-bx .item.active h2 a{background:#00529b;color:#fff;font-weight:700;}
+#notice .notice-bx h2 a:hover{font-weight:700;}
+
+#notice .list{display:none;}
+#notice .more{display:none;}
+#notice .notice-bx .item.active .list{display:block;position:absolute;width:100%;bottom:0;left:0;padding:5px 0 5px 318px;animation:list-move1 .5s 1 both ease-out;}
+#notice .notice-bx .item.active .list a{display:flex;position:relative;height:37px;align-items:center;justify-content:space-between;padding-left:15px;}
+#notice .notice-bx .item.active .list a:after{content:'';display:block;width:5px;height:5px;border-radius:50%;background:#8e8e8e;position:absolute;top:15px;left:0px;}
+#notice .notice-bx .item.active .list a span{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-right:10px;transition:all .2s;}
+#notice .notice-bx .item.active .list a:first-child{position:absolute;animation:list-move2 .35s .3s 1 both ease-out;transition:all .2s;bottom:0;left:0;width:285px;border-radius:10px;border:1px solid #00529b;padding:0 25px;flex-direction:column;height:100%;justify-content:center;align-items:flex-start;}
+#notice .notice-bx .item.active .list a:first-child em{order:1;transition:all .2s;color:#00529b;font-weight:700;margin-bottom:12px;font-size:22px;}
+#notice .notice-bx .item.active .list a:first-child span{white-space:normal;word-break:keep-all;font-size:18px;order:2;flex-grow:0;flex:initial;line-height:1.7;max-height:5.1em;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient: vertical;}
+#notice .notice-bx .item.active .list a:first-child:after{display:none;}
+#notice .notice-bx .item.active .list a:hover span{font-weight:700;}
+#notice .notice-bx .item.active .list a:hover:first-child{background:#00529b}
+#notice .notice-bx .item.active .list a:hover:first-child em{color:#fff;}
+#notice .notice-bx .item.active .list a:hover:first-child span{color:#fff;font-weight:400;}
+#notice .notice-bx .item.active .more{display:flex;height:68px;align-items:center;justify-content:center;font-size:0;color:transparent;border:1px solid #dcdcdc;border-width:1px 1px 1px 0;border-radius:0 10px 10px 0;width:62px;position:absolute;right:0;top:0}
+#notice .notice-bx .item.active .more:after{content:'';animation:list-move3 .35s .35s 1 both ease-out;width:18px;height:18px;transition:all .2s;background: url(/page/greencity/images/common/sp_gwprovin.png) no-repeat -9px -115px /674px 600px;}
+#notice .notice-bx .item.active .more:hover:after{transform:rotate(90deg);}
+
+#notice .slick-wrap{flex:0 1 340px;margin-left:40px;height:327px;background:#00529b;border-radius:10px;padding:20px 20px 0;display:flex;flex-direction:column;width:100%;max-width:340px;position:relative;z-index:2;}
+#notice .slick-wrap .control{order:2;}
+#notice .slick-wrap .slick{order:1;overflow:hidden;border-radius:10px;box-shadow:0px 0px 15px 0px rgba(0,0,0,.3);-webkit-mask-image:-webkit-radial-gradient(white, black);position:relative;}
+#notice .slick-wrap .slick img{transition:all .2s;}
+#notice .slick-wrap .slick .slick-slide:hover img{filter:brightness(1.1);}
+#notice .slick-wrap .slick .slick-slide:focus img{border:2px dashed #fff}
+#notice .control{display:flex;z-index:3;align-items:center;justify-content:flex-end;margin-top:15px;}
+#notice .control .count{color:#fff;font-size:16px;display:flex;align-items:center;margin-right:14px;}      
+#notice .control .count span{padding:0 4px 0 5px;font-size:12px;margin-top:2px;}
+#notice .control a{height:16px;width:12px;background: url(/page/greencity/images/common/sp_gwprovin.png) no-repeat -37px -115px /674px 600px;font-size:0;color:transparent;}
+#notice .control a.next{background-position-x:-125px;}
+#notice .control a.pause{background-position-x: -67px;}
+#notice .control a.play{background-position-x: -96px;display:none;}
+#notice .control a.ps-btn{margin:0 13px;}
+#notice .control a:active{transform:scale(.9);}
+
+
+@keyframes list-move1{ 
+    0%{opacity:0;transform:translateY(50%);}
+    100%{opacity:1;transform:translateY(0%);} 
+}
+
+@keyframes list-move2{ 
+    0%{opacity:0;transform:rotateY(90deg);}
+    100%{opacity:1;transform:rotateY(0deg);} 
+}
+
+
+@keyframes list-move3{ 
+    0%{opacity:0;}
+    100%{opacity:1;} 
+}
+
+
+@media (max-width:1389px) {
+    #notice{padding:50px 0}
+    #notice .notice-bx{padding-right:50px;}
+    #notice .notice-bx h2 a{height:56px;font-size:16px;}
+    #notice .notice-bx .item.active .list{padding:5px 0 5px 220px;}
+    #notice .notice-bx .item.active .list a{height:34px;font-size:15px;padding-left:10px;}
+    #notice .notice-bx .item.active .list a:after{width:3px;height:3px;top:15px;}
+    #notice .notice-bx .item.active .list a span{padding-right:10px;}
+    #notice .notice-bx .item.active .list a em{font-size:14px;}
+    #notice .notice-bx .item.active .list a:first-child{width:200px;padding:0 10px 0 20px;}
+    #notice .notice-bx .item.active .list a:first-child em{margin-bottom:9px;font-size:18px;}
+    #notice .notice-bx .item.active .list a:first-child span{font-size:16px;line-height:1.6;max-height:4.8em;}
+    #notice .notice-bx .item.active .list a:first-child{background:#00529b}
+    #notice .notice-bx .item.active .list a:first-child em{color:#fff;}
+    #notice .notice-bx .item.active .list a:first-child span{color:#fff;font-weight:400;}
+    #notice .notice-bx .item.active .more{height:56px;width:50px;}
+    #notice .notice-bx .item.active .more:after{transform:scale(.9);}
+    #notice .slick-wrap{flex:0 1 295px;margin-left:35px;height:300px;max-width:320px;}
+    #notice .control{display:flex;z-index:3;align-items:center;justify-content:flex-end;margin: 16px 0 7px;transform:scale(.83);transform-origin:100% 0%;}
+    
+}   
+
+
+@media (max-width:991px) {
+    #notice{padding:20px 0 40px}
+    #notice .inner{display:block;}
+    #notice .notice-bx{padding-right:50px;padding-bottom:220px;}
+    #notice .notice-bx h2 a{height:52px;font-size:15px;}
+    #notice .notice-bx .item.active .list{padding:5px 0 5px 220px;}
+    #notice .notice-bx .item.active .list a{height:32px;font-size:14px;padding-left:10px;}
+    #notice .notice-bx .item.active .list a span{padding-right:10px;}
+    #notice .notice-bx .item.active .more{height:52px;width:50px;}
+    #notice .notice-bx .item.active .more:after{transform:scale(.9);}
+    #notice .slick-wrap{height:auto;width:auto;max-width:initial;border-radius:0;margin:25px -20px 0;padding:20px 0 5px}
+    #notice .slick-wrap .slick{border-radius:0;}
+    #notice .slick-wrap .slick-slide{margin:0 6px;width:220px;border-radius:5px;overflow:hidden;}
+    #notice .control{padding-right:0px;justify-content:center;transform-origin: 50% 0%;margin: 14px 0 8px;}
+    
+} 
+
+
+@media (max-width:716px) {
+    #notice{padding: 27px 0 30px;}
+    #notice .inner{display:block;}
+    #notice .notice-bx{padding-right:40px;padding-bottom: 295px;flex-wrap:wrap;}
+    #notice .notice-bx .item{flex:1 30%}
+    #notice .notice-bx h2 a{height:42px;font-size:15px;}
+    #notice .notice-bx .item:nth-child(n+4) h2 a{border-top:0;}
+    #notice .notice-bx .item:nth-child(4) h2 a{border-left-width:1px;border-radius:0 0 0 10px;}
+    #notice .notice-bx .item:nth-child(1) h2 a{border-radius:10px 0 0 0;}
+    #notice .notice-bx .item.active .list{padding: 95px 0 0;}
+    #notice .notice-bx .item.active .list a{height:30px;font-size: 13.5px;padding-left: 9px;}
+    #notice .notice-bx .item.active .list a em{font-size:13px;}
+    #notice .notice-bx .item.active .more{height: 84px;width: 40px;}
+    #notice .notice-bx .item.active .more:after{transform:scale(.85);}
+    #notice .notice-bx .item.active .list a:first-child{padding:0 10px 0 15px;top:0;left:0;width:100%;bottom:auto;height:82px;}
+    #notice .notice-bx .item.active .list a:first-child em{margin-bottom:3px;font-size:15px;font-weight:400;}
+    #notice .notice-bx .item.active .list a:first-child span{font-size:14px;line-height:1.6;max-height:1.6em;font-weight:400;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%;}
+    #notice .slick-wrap{border-radius:0;margin: 25px -15px 0;padding: 15px 0 3px;}
+    #notice .slick-wrap .slick-slide{margin:0 5px;width:210px;} 
+} 
+
+
+
+#information{position:relative;padding:70px 0 80px;background:#f5f5f9;}
+#information .title-bx{display:flex;align-items:center;justify-content:space-between;}
+#information .title-bx h2{font-size:32px;font-weight:700;letter-spacing:-2px;}
+#information .sns-bx{display:flex;align-items:center;}
+#information .sns-bx span{color:#bebec0;font-size:28px;font-weight:700;padding-right:40px;font-family:Arial, Helvetica, sans-serif;position:relative;}
+#information .sns-bx span:after{content:'';display:block;height:1px;width:30px;background:#bebec0;position:absolute;top:50%;right:0px;}
+#information .sns-bx a{margin-left:10px;width:38px;height:39px;background: url(/page/greencity/images/common/sp_gwprovin.png) no-repeat -159px -121px /674px 600px;font-size:0;color:transparent;}
+#information .sns-bx a.twitter{background-position-x:-230px;}
+#information .sns-bx a.instagram{background-position-x:-300px;}
+#information .sns-bx a.kakao{background-position-x:-372px;}
+#information .sns-bx a.blog{background-position-x:-442px;}
+#information .sns-bx a.youtube{background-position-x:-512px;}
+#information .sns-bx a:hover{filter:hue-rotate(90deg);}
+
+#information .info-bx{display:flex;margin-top:30px;position:relative;padding-bottom:500px;}
+#information .info-bx .item{flex:1;}
+#information .info-bx .item + .item{margin-left:15px;}
+#information .info-bx h3 a{position:relative;height:68px;transition:all .1s;border-radius:10px;border:1px solid #eaebee;background:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;position:relative;z-index:1;}
+#information .info-bx h3 a:after{content:'';display:block;width:18px;height:18px;position:absolute;bottom:5px;left:50%;margin-left:-7px;transform:rotate(45deg);background:#d74047;z-index:-1;opacity:0;;transition:all 0s 0s ease-out;}
+#information .info-bx .item.active h3 a:after{bottom:-8px;opacity:1;transition:all .3s .2s ease-out}
+#information .info-bx .item.active h3 a{color:#fff;background:#d74047;border-color:#d74047;font-weight:700;}
+#information .info-bx h3 a:hover{font-weight:700;}
+
+#information .list-bx{display:none;position:absolute;bottom:0;left:0;width:100%;border:1px solid #eaebee;border-radius:10px;background:#fff;height:470px;}
+#information .item.active .list-bx{display:flex;}
+#information .item .ill-bx{flex-basis:465px;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;background:#fff0f1;animation:list-move2 .55s 1 both ease-out;z-index:2;}
+#information .item .ill-bx strong{text-align:center;font-size:28px;line-height:1.1;} 
+#information .item .ill-bx span{text-align:center;line-height:1.3;margin:10px 0 5px;}
+#information .item .ill-bx img{z-index:-1;position:relative;}
+
+#information .item .link-bx{flex:1;padding:30px 50px 40px 70px;display:flex;flex-direction:column;justify-content:space-between;}
+#information .text-link{display:flex;flex-wrap:wrap;animation:list-move1 .5s .3s both ease-out;}
+#information .text-link a{flex:1 33.3333%;padding-right:5px;position:relative;;max-width:33.3333%;display:flex;white-space:nowrap;align-items:center;overflow:hidden;text-overflow:ellipsis;height:36px;}
+#information .text-link a:before{content:'';width:2px;height:2px;background:#313131;margin-right:5px;}
+#information .text-link a:hover{font-weight:700;}
+#information .text-link a[target="_blank"]:after{content:'';margin-left:4px;background: url(/page/greencity/images/common/sp_gwprovin.png) no-repeat -577px -115px /674px 600px;width:16px;height:16px;}
+
+#information .icon-link{display:flex;justify-content:flex-start;-webkit-overflow-scrolling:touch;margin-left:-20px;}
+#information .icon-link a{flex:1 15%;max-width:150px;text-align:center;line-height:1.3;animation:list-move2 .35s .5s 1 both ease-out}
+#information .icon-link a img{display:block;width:70px;margin:0 auto;transition:all .2s;}
+#information .icon-link a:nth-child(2){animation-delay:.6s;}
+#information .icon-link a:nth-child(3){animation-delay:.7s;}
+#information .icon-link a:nth-child(4){animation-delay:.8s;}
+#information .icon-link a:nth-child(5){animation-delay:.9s;}
+#information .icon-link a:nth-child(6){animation-delay:1s;}
+#information .icon-link a:hover img{transform:scale(1.1);}
+
+
+
+@media (max-width:1389px) {
+    #information{padding:40px 0 40px;}
+    #information .title-bx h2{font-size:24px;letter-spacing:-1px;}
+    #information .sns-bx span{font-size:22px;padding-right:35px;}
+    #information .sns-bx span:after{width:20px;right:5px;}
+    #information .sns-bx a{margin-left:0px;transform:scale(.8);}
+    #information .info-bx{margin-top:20px;padding-bottom:405px;}
+    #information .info-bx .item + .item{margin-left:10px;}
+    #information .info-bx h3 a{height:52px;font-size:16px;}
+    #information .info-bx h3 a:after{width:14px;height:14px;bottom:5px;}
+    #information .info-bx .item.active h3 a:after{bottom:-7px;}
+    #information .list-bx{height:385px;}
+    #information .item .ill-bx{flex-basis:305px;}
+    #information .item .ill-bx strong{font-size:22px;} 
+    #information .item .ill-bx span{margin:10px 0 5px;font-size:15px;}
+    #information .item .ill-bx img{width:100%;}
+    #information .item .link-bx{padding:20px 20px 25px 35px;}
+    #information .text-link a{height:32px;font-size:14px;}
+    #information .text-link a:before{content:'';width:2px;height:2px;background:#313131;margin-right:5px;}
+    #information .text-link a:hover{font-weight:700;}
+    #information .text-link a[target="_blank"]:after{transform:scale(.9);} 
+    #information .icon-link a{max-width:110px;font-size:14px;line-height:1.3;}
+    #information .icon-link a img{width:60px;} 
+} 
+
+@media (max-width:991px) {
+    #information{padding:25px 0 30px;}
+    #information .title-bx h2{font-size:22px;letter-spacing:-1px;}
+    #information .sns-bx span{font-size:20px;padding-right:35px;}
+    #information .sns-bx span:after{width:20px;right:7px;}
+    #information .sns-bx a{margin-left:-5px;transform:scale(.7);}
+    #information .info-bx{margin-top:17px;padding-bottom:0px;flex-direction:column;}
+    #information .info-bx .item{width:100%;}
+    #information .info-bx .item + .item{margin:5px 0 0;}
+    #information .info-bx h3 a{height:48px;font-size:15px;}
+    #information .info-bx h3 a:after{width:12px;height:12px;bottom:5px;}
+    #information .info-bx .item.active h3 a:after{bottom:-6px;}
+    #information .list-bx{height:auto;position:relative;flex-direction:column;border-radius:0 0 10px 10px;margin-top:10px}
+    #information .item .ill-bx{width:100%;padding: 20px 0 10px;flex-basis:auto;position:relative;}
+    #information .item .ill-bx strong{font-size:19px;} 
+    #information .item .ill-bx span{margin: 7px 0 5px;font-size:14px;}
+    #information .item .ill-bx img{width:auto;height:120px;position:absolute;right:0;bottom:0;}
+    #information .item .link-bx{padding:15px 20px 20px 20px;}
+    #information .text-link a{height:28px;font-size:14px;}
+    #information .icon-link{margin-top:15px;}
+    #information .icon-link a{max-width:105px;font-size:14px;line-height:1.3;}
+    #information .icon-link a img{width:55px;} 
+}
+
+@media (max-width:716px) {
+    #information{padding:20px 0 25px;}
+    #information .title-bx{flex-direction:column;}
+    #information .sns-bx{margin-top: 5px;}
+    #information .sns-bx span{font-size:20px;padding-right:35px;}
+    #information .info-bx{margin-top:15px;}
+    #information .info-bx h3 a{height:42px;font-size:15px;z-index:3;}
+    #information .list-bx{height:auto;position:relative;flex-direction:column;border-radius:0;margin:0 -15px;width:auto;}
+    #information .item .ill-bx{width:100%;padding: 17px 0 11px;flex-basis:auto;position:relative;}
+    #information .item .ill-bx strong{font-size:17px;} 
+    #information .item .ill-bx span{margin:10px 0 5px;font-size:13px;text-shadow:1px 1px 1px #fff;}
+    #information .item .ill-bx img{height:100px;right:-20px;opacity:.6;}
+    #information .item .link-bx{padding:15px 15px 18px 15px;}
+    #information .text-link a{height:27px;font-size:13px;flex: 1 50%;max-width:50%;}
+    #information .text-link a[target="_blank"]:after{transform:scale(.8);}
+    #information .icon-link{margin:0px -15px 0;-webkit-overflow-scrolling:touch;overflow-x:auto;height:auto;padding-top:10px;align-items:center;}
+    #information .icon-link::-webkit-scrollbar{display:none;}
+    #information .icon-link a{width: 93px;font-size:13px;line-height:1.3;flex: 1 0 93px;}
+    #information .icon-link a img{width:55px;} 
+}
+
+
+
+#news{position:relative;padding:100px 0 80px;}
+#news .news-bx{display:flex;justify-content:space-between;}
+#news .news-bx h3{flex:1 33.33333%;}
+#news .news-bx h3 + h3{margin-left:30px;}
+#news .news-bx h3 a{display:flex;overflow:hidden;flex-direction:column;align-items:center;height:270px;border-radius:10px;border:1px solid #e1e1e1;position:relative;transition:all .35s;padding-top:45px;background:#fff;z-index:1;}
+#news .news-bx h3 a img{max-width:100%;position:absolute;bottom:-20px;left:0;right:0;transition:all .3s .2s ease-out;z-index:-1;}
+#news .news-bx h3 a strong{color:#464646;font-size:26px;line-height:1.2;font-weight:700;margin-top:25px;transition:all .5s;}
+#news .news-bx h3 a span{color:#464646;font-size:18px;line-height:1.2;margin-top:5px;transition:all .5s;}
+#news .news-bx h3 a i{position:relative;width:5px;height:15px;}
+#news .news-bx h3 a i:before{content:'';width:5px;height:5px;position:absolute;top:0;left:0;background:#72c829;border-radius:50%;transition:all .2s;}
+#news .news-bx h3 a i:after{content:'';width:5px;height:5px;position:absolute;bottom:0;left:0;background:#478868;border-radius:50%;transition:all .2s;}
+#news .news-bx h3 a:hover span{color:#fff;font-size:24px}
+#news .news-bx h3 a:hover strong{color:#fff;font-size:34px;}
+#news .news-bx h3 a:hover i:before,
+#news .news-bx h3 a:hover i:after{background:#fff;}
+#news .news-bx h3 a:hover{background:#00529b}
+#news .news-bx h3:nth-child(2n) a:hover{background:#fdb728}
+#news .news-bx h3:nth-child(3n) a:hover{background:#00a886}
+#news .news-bx h3 a:hover img{bottom:0;}
+
+#news .link-bx{margin-top:35px;display:flex;justify-content:space-between;align-items:center;padding:0 75px;border-radius:10px;border:1px solid #e1e1e1;}
+#news .link-bx a{height:86px;display:flex;align-items:center;white-space:nowrap;}
+#news .link-bx a span{position:relative;z-index:1;transition:all .1s;}
+#news .link-bx a span:before{content:'';z-index:-1;width:0px;height:0px;background:#fbd7d9;position:absolute;right:-17px;top:50%;transform:translateY(-50%);border-radius:50%;transition:all .3s;}
+#news .link-bx a:hover span{color:#ea3541;text-decoration:underline;}
+#news .link-bx a:hover span:before{width:45px;height:45px;}
+#news .link-bx a i{margin-right:12px;height:40px;width:35px;background: url(/page/greencity/images/common/sp_gwprovin.png) no-repeat -23px -547px /674px 600px;}
+#news .link-bx a i.v2{width:30px;background-position-x:-90px;}
+#news .link-bx a i.v3{width:27px;background-position-x:-163px;}
+#news .link-bx a i.v4{width:35px;background-position-x:-230px;}
+#news .link-bx a i.v5{width: 30px;background-position-x: -304px;}
+#news .link-bx a i.v6{width:30px;background-position-x:-374px;}
+
+
+@media (max-width:1389px) {
+    #news{padding:55px 0 40px;}
+    #news .news-bx h3 + h3{margin-left:15px;}
+    #news .news-bx h3 a{height:160px;padding:0px 0 30px;background:#00529b;text-shadow:1px 1px 2px rgba(0,0,0,.7);justify-content:center;}
+    #news .news-bx h3 a img{bottom:0px;mix-blend-mode: overlay;}
+    #news .news-bx h3 a strong{font-size:21px;margin-top:13px;color:#fff;}
+    #news .news-bx h3 a span{font-size:16px;margin-top:4px;color:#fff;}
+    #news .news-bx h3 a:hover span{font-size:16px}
+    #news .news-bx h3 a:hover strong{font-size:21px;}
+    #news .news-bx h3 a i:before,
+    #news .news-bx h3 a i:after{background:#fff;box-shadow:1px 1px 1px 0px rgba(0,0,0,.35);}
+    #news .news-bx h3:nth-child(2n) a{background:#fdb728}
+    #news .news-bx h3:nth-child(3n) a{background:#00a886}
+    #news .link-bx{margin:20px -20px 0;padding:0 20px;border-radius:0;border-width:1px 0;-webkit-overflow-scrolling:touch;overflow-x:auto;justify-content:flex-start;align-items:center;}
+    #news .link-bx::-webkit-scrollbar{display:none;}
+    #news .link-bx a{height:70px;font-size:15px;margin-right:40px;}
+    #news .link-bx a span:before{width:25px;height:25px;}
+    #news .link-bx a:hover span{color:#ea3541;text-decoration:underline;}
+    #news .link-bx a:hover span:before{width:25px;height:25px;}
+    #news .link-bx a i{margin-right:5px;transform:scale(.85);}
+} 
+
+
+@media (max-width:991px) {
+    #news{padding:35px 0 30px;}
+    #news .news-bx h3 + h3{margin-left:5px;}
+    #news .news-bx h3 a{height:150px;padding:0px 0 30px;}
+    #news .news-bx h3 a strong{font-size:20px;margin-top:11px;}
+    #news .news-bx h3 a span{font-size:15px;}
+    #news .news-bx h3 a:hover span{font-size:15px}
+    #news .news-bx h3 a:hover strong{font-size:20px;}
+    #news .link-bx{margin:20px -20px 0;padding:0 20px;}
+    #news .link-bx a{height:64px;font-size:14px;margin-right:35px;}
+    #news .link-bx a span:before{width:20px;height:20px;right:-10px}
+    #news .link-bx a:hover span:before{width:25px;height:25px;}
+    #news .link-bx a i{margin-right:3px;transform:scale(.8);}
+} 
+
+
+@media (max-width:716px) {
+    #news{padding:25px 0 20px;}
+    #news .news-bx{display:block;margin:0 -17px;}
+    #news .news-bx h3{overflow:hidden}
+    #news .news-bx h3 + h3{margin:-1px 0 0}
+    #news .news-bx h3 a{height:95px;padding:0px 0 0px;border-radius:0;margin-top:-2px;}
+    #news .news-bx h3 a i{transform:scale(.8);transform-origin:50% 0%;}
+    #news .news-bx h3 a strong{font-size:16px;margin-top:5px;}
+    #news .news-bx h3 a span{font-size:13px;}
+    #news .news-bx h3 a:hover span{font-size:13px}
+    #news .news-bx h3 a:hover strong{font-size:16px;}
+    #news .link-bx{margin:20px -15px 0;padding:0 15px;}
+    #news .link-bx a{margin-right:33px;height:60px;}
+} 

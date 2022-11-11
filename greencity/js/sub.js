@@ -1,0 +1,123 @@
+
+//서브공통 스크립트
+var ObjDoc = $(document);		
+
+ObjDoc.on({
+	'click': function(e) { 
+		e.preventDefault();
+		if ($(this).hasClass('active')) {
+			$(this).removeClass('active');
+			$(this).parents('#breadcrumb-bx, .box').removeClass('active');
+			$(this).children('span').text('열기');
+			$('#breadcrumb-bx .box ul').slideUp(250);
+		} else{
+			$('#breadcrumb-bx .open').removeClass('active');
+			$('#breadcrumb-bx .box').removeClass('active');
+			$(this).addClass('active');
+			$(this).parents('#breadcrumb-bx, .box').addClass('active');
+			$('#breadcrumb-bx .open span').text('열기');
+			$(this).children('span').text('닫기');
+			$('#breadcrumb-bx .box ul').slideUp(250);
+			$(this).next('ul').slideDown(250);
+		}
+	}
+}, '#breadcrumb-bx .open')
+.on({
+	'mouseleave': function() { 
+		$('#breadcrumb-bx .open span').text('열기');
+		$('#breadcrumb-bx .box ul').slideUp(300);
+		$('#breadcrumb-bx .box .open, #breadcrumb-bx .box, #breadcrumb-bx').removeClass('active');
+	}
+}, '#breadcrumb-bx')
+.on({
+	'focusout': function() { 
+		$(this).parents('.box').find('.open').focus();
+	}
+}, '#breadcrumb-bx .box li:last-child a');
+
+ObjDoc.on({
+	'click': function(e) { 
+		e.preventDefault();
+		var fileUrl = $(this).find('img').attr('src');
+		var fileName = $(this).find('img').attr('alt');
+		$("body").append(`
+		<div id="img-modal">
+			<div class="title-bx">
+				<h1>`+ fileName +`</h1>
+				<div class="btn-bx">
+					<a href="#" class="zoom-in" id="zoom-in"><i class="fa-solid fa-magnifying-glass-plus"></i> 확대</a>
+					<a href="#" class="zoom-out" id="zoom-out"><i class="fa-solid fa-magnifying-glass-minus"></i> 축소</a>
+				</div>
+			</div>
+			<div class=thumb>
+				<img id="panzoom" src="`+fileUrl+`" alt="`+ fileName +`">
+			</div>
+			<a href="#" class="close"><i class="fa-solid fa-xmark"></i></a>
+		</div>
+		`);
+		const element = document.getElementById('panzoom');
+		const zoomInButton = document.getElementById('zoom-in');
+		const zoomOutButton = document.getElementById('zoom-out');
+		const panzoom = Panzoom(element, {
+			maxScale: 3,
+			minScale: 0.3,
+		});
+		const parent = element.parentElement
+		parent.addEventListener('wheel', panzoom.zoomWithWheel);
+		zoomInButton.addEventListener('click', panzoom.zoomIn);
+		zoomOutButton.addEventListener('click', panzoom.zoomOut);
+		$(this).addClass('active');
+		$('#img-modal a:first').focus();
+	}
+}, '.img-zoom-modal')
+.on({
+	'keydown': function(e) { 
+		if (e.keyCode == 9) {
+			$('#img-modal a:first').focus();
+			return false;
+		}
+	},
+	'click': function(e) { 
+		e.preventDefault();
+		$('#img-modal').remove();
+		$('.img-zoom-modal.active').focus().removeClass('active');
+	}
+}, '#img-modal .close')
+.on({
+	'click': function(e) { 
+		e.preventDefault();
+		if ($(this).parent('h3').hasClass('active')) {
+			$(this).parent('h3').removeClass('active');
+			$(this).parent('h3').next('.depth-03').slideUp(300);
+		} else{
+			$('#side-menu h3').removeClass('active');
+			$('#side-menu .depth-03').slideUp(300);
+			$(this).parent('h3').addClass('active');
+			$(this).parent('h3').next('.depth-03').slideDown(300);
+		}
+	}
+}, '#side-menu h3.has-depth a');
+
+
+//콘텐츠 스크립트 (dom ready 후 동작)
+function contentScript(){
+	
+	if ($('.img-zoom-modal').length){
+		$.getScript('/page/greencity/js/panzoom.min.js');
+		$.getScript('/page/greencity/js/708e424f8f.js');
+	}
+	$('.skinTb-wrapper').on('scroll', function () {
+		$(this).addClass('scroll');
+	});
+	$('.skinTb.width640').parent().addClass('width640');
+	$('.skinTb.width768').parent().addClass('width768');
+	$('.skinTb.width1000').parent().addClass('width1000');
+};
+
+
+$(function() {
+	contentScript();
+});
+
+
+
