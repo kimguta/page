@@ -86,21 +86,22 @@ ObjDoc.on({
         e.preventDefault();
         var Idx2 = $(this).index();
         var Name = $(this).text();
-	    $(this).parent('.view').stop().slideUp(300);
-        $(this).parent('.view').prev('.open').text(Name);
-        $(this).parents('.item').find('.map-bx .spot-bx a').removeClass('active');
-        $(this).parents('.item').find('.map-bx .spot-bx a').eq(Idx2).addClass('active');
+        var Item = $(this).parents('.item');
+	    Item.find('.view').slideUp(300);
+        Item.find('.open').text(Name);
+        Item.find('.map-bx .spot-bx a').removeClass('active');
+        Item.find('.map-bx .spot-bx a').eq(Idx2).addClass('active');
 	}
-}, '.local-bx .view a')
-.on({
-	'click': function(e) { 
-        e.preventDefault();
-        var Name2 = $(this).text();
-        $(this).parents('.item').find('.open').text(Name2);
-        $(this).parents('.item').find('.map-bx .spot-bx a').removeClass('active');
-        $(this).addClass('active');
-	}
-}, '.map-bx .spot-bx a')
-;
+}, '.local-bx .view a, .map-bx .spot-bx a');
+// .on({
+// 	'click': function(e) { 
+//         e.preventDefault();
+//         var Name2 = $(this).text();
+//         $(this).parents('.item').find('.open').text(Name2);
+//         $(this).parents('.item').find('.map-bx .spot-bx a').removeClass('active');
+//         $(this).addClass('active');
+// 	}
+// }, '.map-bx .spot-bx a')
+
 
 
