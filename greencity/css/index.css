@@ -1,44 +1,37 @@
 @charset "utf-8";
 
 
-#visual{position:relative;height:100vh;max-height:940px;}
+#visual{position:relative;height:100vh;max-height:940px;overflow:hidden;}
 #visual .slick{position:absolute;top:0;height:100vh;width:1920px;left:50%;margin-left:-960px;}
- 
-
 #visual .inner{display:flex;height:100%;align-items:center;padding-top:100px;}
+
 #visual .info-wrap{padding-left:75px;text-shadow:0px 0px 5px rgba(0,0,0,.5);}
-#visual .info-wrap .tab{display:flex;align-items:center;position:relative;z-index:3;}
-#visual .info-wrap .tab a{color:#fff;height:48px;display:flex;align-items:center;justify-content:center;margin-right:10px;font-size:18px;font-weight:700;border:2px solid #fff;transition:all .2s;min-width:100px;padding:0 10px;border-radius:24px;}
+#visual .info-wrap .tab{display:flex;align-items:center;position:relative;z-index:13;}
+#visual .info-wrap .tab a{color:#fff;height:48px;display:flex;align-items:center;justify-content:center;margin-right:10px;font-size:20px;font-weight:700;border:2px solid #fff;transition:all .2s;min-width:100px;padding:0 10px;border-radius:24px;}
 #visual .info-wrap .tab a.active{background:#ff7200;border-color:#ff7200;text-shadow:none;}
 
 #visual .data-bx{margin-top:-30px;}
-#visual .data-bx .item{position:relative;display:none;}
+#visual .data-bx .item{position:relative;display:none;height:600px;}
 #visual .data-bx .item.active{display:flex;}
 #visual .data-bx .item.active .weather-bx{animation:visual-move1 .5s .1s 1 both ease-out;}
 #visual .data-bx .item.active .map-bx{animation:visual-move1 .5s .35s 1 both ease-out;}
 
-@keyframes visual-move1{
-    0%{opacity:0;transform:translateY(30%);}
-    100%{opacity:1;transform:translatey(0%);}
-}
-
-
 #visual .weather-bx{width:395px;margin-right:30px;color:#fff;margin-top:75px;display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;}
 #visual .weather{position:relative;padding-top:85px;}
 #visual .weather .info{display:flex;align-items:center;padding-bottom:2px;line-height:1.1;}
-#visual .weather .info img{height:64.5px;}
-#visual .weather .info strong{font-size:56px;font-weight:400;margin:-4px 15px 0 15px;}
-#visual .weather .info span{font-size:26px;}
+#visual .weather .info img{height:64.5px;animation:icon-move1 .8s infinite alternate ease-in-out;image-rendering: -webkit-optimize-contrast;}
+#visual .weather .info strong{font-size:62px;font-weight:400;margin:-4px 15px 0 15px;}
+#visual .weather .info span{font-size:28px;}
 #visual .weather p{margin-top:18px;text-align:center;line-height:1.1;font-size:20px;}
 #visual .weather p span{display:inline-block;vertical-align:top;position:relative;}
 #visual .weather p span + span{padding-left:13px;margin-left:11px;}
 #visual .weather p span + span:after{content:'';display:block;width:1px;height:18px;background:rgba(255,255,255,.5);position:absolute;left:0;top:50%;margin-top:-9px}
-#visual .caution{background:rgba(0,0,0,.5);border-radius:10px;padding:20px 20px;}
-#visual .caution img{display:block;margin:0 auto;}
+#visual .caution{background:rgba(0,0,0,.5);border-radius:10px;padding:20px 20px;width:100%;}
+#visual .caution img{display:block;margin:0 auto;height:74px;}
 #visual .caution p{margin-top:25px;padding-top:22px;word-break:keep-all;display:flex;align-items:flex-start;border-top:1px solid rgba(255,255,255,.5)}
-#visual .caution p:before{content:'';width:24px;height:22px;background:red;margin-top:0px;flex-shrink:0;margin-right:17px;}
+#visual .caution p:before{content:'';width:24px;height:21px;background:url(/page/greencity/images/main/ico-warning2.png) no-repeat center center /cover;margin-top:1px;flex-shrink:0;margin-right:15px;}
 
-#visual .map-bx{position:relative;width:780px;max-width:100%;}
+#visual .map-bx{position:relative;width:780px;max-width:100%;z-index:3;}
 #visual .map-bx .map{position:relative;width:729px;}
 #visual .map-bx .map.all:after{content:'';display:block;position:absolute;top:0;left:0;bottom:0;right:0;background:url(/page/greencity/images/main/map-border.png) no-repeat center center /cover;}
 #visual .map-bx .bg-map{display:block;width:100%;}
@@ -64,60 +57,66 @@
 #visual .map-bx .city.goseong.bad{background-image:url(/page/greencity/images/main/map-gs-watch.png);}
 #visual .map-bx .city.goseong.very-bad{background-image:url(/page/greencity/images/main/map-gs-warning.png);}  
 
-
 #visual .map-bx .spot-bx{position:absolute;top:0;left:0;right:0;bottom:0;}
-#visual .map-bx .spot-bx .pin{position:absolute;width:50px;height:70px;background:rgba(255,255,255,.7);font-size:10px;display:flex;justify-content:center;}
-#visual .map-bx .spot-bx .pin.active{background:red}
+#visual .map-bx .spot-bx .pin{position:absolute;width:62px;height:40px;font-size:10px;z-index:1;font-size:0;color:transparent;display:flex;justify-content:flex-start;text-shadow:none;z-index:2;flex-direction:column;align-items:center;}
+#visual .map-bx .spot-bx .pin.active{pointer-events:none;}
+#visual .map-bx .spot-bx .pin:before{content:'';width:27px;height:37.5px;background:url(/page/greencity/images/main/ico-pin2.png) no-repeat center center /cover;margin-top:-40px;flex-shrink:0;opacity:0;transition:opacity .15s;}
+#visual .map-bx .spot-bx .pin:after{content:'';width:14px;height:14px;box-sizing:border-box;border-radius:50%;background:#fdc903;border:1px solid #9a9a9a;transition:all .1s;flex-shrink:0;}
+#visual .map-bx .spot-bx .pin.active:before{animation:pin-move1 1.2s infinite alternate ease-out;opacity:1;}
+#visual .map-bx .spot-bx .pin.active:after{border:2px solid #07040f;}
+#visual .map-bx .spot-bx .pin:hover:before{animation:pin-move2 .25s infinite alternate ease-out;opacity:1;}
+#visual .map-bx .spot-bx .pin:active:after{transform: scale(.6);}
 
 /*철원 - 핀*/
-#visual .map-bx .cheorwon .pin.v1{left:10%;top:10%;}
-#visual .map-bx .cheorwon .pin.v2{left:20%;top:10%;}
-#visual .map-bx .cheorwon .pin.v3{left:30%;top:10%;}
-#visual .map-bx .cheorwon .pin.v4{left:40%;top:10%;}
-#visual .map-bx .cheorwon .pin.v5{left:50%;top:10%;}
-#visual .map-bx .cheorwon .pin.v6{left:60%;top:10%;}
-#visual .map-bx .cheorwon .pin.v7{left:10%;top:50%;}
-#visual .map-bx .cheorwon .pin.v8{left:20%;top:50%;}
-#visual .map-bx .cheorwon .pin.v9{left:30%;top:50%;}
-#visual .map-bx .cheorwon .pin.v10{left:40%;top:50%;}
-#visual .map-bx .cheorwon .pin.v11{left:50%;top:50%;}
+#visual .map-bx .cheorwon .pin.v1{left: 9%;top: 44%;}
+#visual .map-bx .cheorwon .pin.v2{left: 33%;top: 38%;}
+#visual .map-bx .cheorwon .pin.v3{left: 26%;top: 51%;}
+#visual .map-bx .cheorwon .pin.v4{left: 19%;top: 38%;}
+#visual .map-bx .cheorwon .pin.v5{left: 37%;top: 55%;}
+#visual .map-bx .cheorwon .pin.v6{left: 44%;top: 44%;}
+#visual .map-bx .cheorwon .pin.v7{left: 33%;top: 28%;}
+#visual .map-bx .cheorwon .pin.v8{left: 51%;top: 31%;}
+#visual .map-bx .cheorwon .pin.v9{left: 61%;top: 30%;}
+#visual .map-bx .cheorwon .pin.v10{left: 73%;top: 29%;}
+#visual .map-bx .cheorwon .pin.v11{left: 85.5%;top: 30%;padding-right: 45px;padding-top: 9px;}
 
 /*화천 - 핀*/
-#visual .map-bx .hwacheon .pin.v1{left:10%;top:10%;}
-#visual .map-bx .hwacheon .pin.v2{left:20%;top:10%;}
-#visual .map-bx .hwacheon .pin.v3{left:30%;top:10%;}
-#visual .map-bx .hwacheon .pin.v4{left:40%;top:10%;}
-#visual .map-bx .hwacheon .pin.v5{left:50%;top:10%;}
+#visual .map-bx .hwacheon .pin.v1{left: 55%;top: 38%;}
+#visual .map-bx .hwacheon .pin.v2{left: 58%;top: 65%;}
+#visual .map-bx .hwacheon .pin.v3{left: 41%;top: 58%;}
+#visual .map-bx .hwacheon .pin.v4{left: 34%;top: 35%;}
+#visual .map-bx .hwacheon .pin.v5{left: 25%;top: 63%;}
 
 /*양구 - 핀*/
-#visual .map-bx .yanggu .pin.v1{left:10%;top:10%;}
-#visual .map-bx .yanggu .pin.v2{left:20%;top:10%;}
-#visual .map-bx .yanggu .pin.v3{left:30%;top:10%;}
-#visual .map-bx .yanggu .pin.v4{left:40%;top:10%;}
-#visual .map-bx .yanggu .pin.v5{left:50%;top:10%;}
+#visual .map-bx .yanggu .pin.v1{left: 43%;top: 57%;}
+#visual .map-bx .yanggu .pin.v2{left: 54%;top: 65%;}
+#visual .map-bx .yanggu .pin.v3{left: 55%;top: 24%;}
+#visual .map-bx .yanggu .pin.v4{left: 35%;top: 26%;}
+#visual .map-bx .yanggu .pin.v5{left: 67%;top: 18%;}
 
 /*인제 - 핀*/
-#visual .map-bx .inje .pin.v1{left:10%;top:10%;}
-#visual .map-bx .inje .pin.v2{left:20%;top:10%;}
-#visual .map-bx .inje .pin.v3{left:30%;top:10%;}
-#visual .map-bx .inje .pin.v4{left:40%;top:10%;}
-#visual .map-bx .inje .pin.v5{left:50%;top:10%;}
-#visual .map-bx .inje .pin.v6{left:60%;top:10%;}
+#visual .map-bx .inje .pin.v1{left: 49%;top: 57%;}
+#visual .map-bx .inje .pin.v2{left: 34%;top: 72%;}
+#visual .map-bx .inje .pin.v3{left: 59%;top: 42%;}
+#visual .map-bx .inje .pin.v4{left: 61%;top: 74%;}
+#visual .map-bx .inje .pin.v5{left: 48%;top: 21%;}
+#visual .map-bx .inje .pin.v6{left: 46%;top: 80%;}
 
 /*고성 - 핀*/
-#visual .map-bx .goseong .pin.v1{left:10%;top:10%;}
-#visual .map-bx .goseong .pin.v2{left:20%;top:10%;}
-#visual .map-bx .goseong .pin.v3{left:30%;top:10%;}
-#visual .map-bx .goseong .pin.v4{left:40%;top:10%;}
-#visual .map-bx .goseong .pin.v5{left:50%;top:10%;}
-#visual .map-bx .goseong .pin.v6{left:60%;top:10%;}
+#visual .map-bx .goseong .pin.v1{left: 45%;top: 55%;}
+#visual .map-bx .goseong .pin.v2{left: 51%;top: 35%;}
+#visual .map-bx .goseong .pin.v3{left: 48%;top: 19%;}
+#visual .map-bx .goseong .pin.v4{left: 58%;top: 60%;}
+#visual .map-bx .goseong .pin.v5{left: 55%;top: 74%;}
+#visual .map-bx .goseong .pin.v6{left: 37%;top: 32%;}
+
 
 #visual .local-bx{position:absolute;width:164px;top:0;left:50%;margin-left:-82px;z-index:5;}
-#visual .local-bx .open{display:flex;height:52px;align-items:center;justify-content:center;color:#fff;border-bottom:2px solid #fff;padding-left:20px;}
+#visual .local-bx .open{display:flex;height:52px;align-items:center;justify-content:center;color:#fff;border-bottom:2px solid #fff;padding-left:20px;font-size:18px}
 #visual .local-bx .open:after{content:'';display:block;transition:all .2s;width:8px;height:8px;border:2px solid #fff;border-width:2px 2px 0 0;transform:rotate(135deg);margin-top:-4px;margin-left:30px;}
 #visual .local-bx .open.active:after{transform:rotate(-45deg);margin-top:2px}
 #visual .local-bx .view{position:absolute;width:100%;left:0;top:52px;background:#fff;padding:8px 5px 8px;border-radius:0px 0px 10px 10px;display:none;}
-#visual .local-bx .view a{display:block;text-align:center;height:34px;line-height:34px;font-size:15px;text-shadow:none;transition:all .15s;}
+#visual .local-bx .view a{display:block;text-align:center;height:34px;line-height:34px;font-size:16px;text-shadow:none;transition:all .15s;}
 #visual .local-bx .view a:hover{color:#ff7200;}
 
 #visual .dust-bx{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.5);border-radius:10px;display:flex;}
@@ -125,11 +124,175 @@
 #visual .dust-bx p + p{border-left:1px solid rgba(255,255,255,.2)}
 #visual .dust-bx p span{font-size:15px;line-height:1.1;}
 #visual .dust-bx p em{line-height:1.1;font-size:14px;color:#b8bdc1;}
-#visual .dust-bx p strong{font-weight:700;line-height:1.3;font-size:21px;}
-#visual .dust-bx p.good strong{color:#0072ff}
+#visual .dust-bx p strong{font-weight:700;line-height:1.3;font-size:22px;}
+#visual .dust-bx p.good strong{color:#0074ff}
 #visual .dust-bx p.normal strong{color:#01b56e}
 #visual .dust-bx p.bad strong{color:#feb71f}
 #visual .dust-bx p.very-bad strong{color:#e8121c}
 
 
 
+
+
+#notice{position:relative;}
+#notice .vertical-bx{position:relative;border-bottom:1px solid #d0d0d0;}
+#notice .vertical-bx .inner{display:flex;justify-content:space-between;align-items:center;}
+#notice .vertical-bx h2{margin-right:25px;flex-shrink:0;font-size:24px;font-weight:700;}
+#notice .vertical-bx .slick{flex:1;max-width:calc(100% - 150px);}
+#notice .vertical-bx .slick-slide{display:flex;height:76px;align-items:center;padding-right:27px;}
+#notice .vertical-bx .slick-slide em{flex-shrink:0;margin-right:20px;height:25px;padding:0 10px;background:#dcdcdc;color:#1b1b1b;font-size:16px;border-radius:3px;}
+#notice .vertical-bx .slick-slide p{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-right:30px;font-size:18px;color:#000;transition:all .1s;}
+#notice .vertical-bx .slick-slide:hover p{color:#2189ff;}
+#notice .vertical-bx .slick-slide span{color:#5b5b5b;font-size:18px;}
+
+#notice .window-bx{max-width:1390px;position:relative;margin:0 auto;padding:45px 20px;display:flex;align-items:center;justify-content:space-between;}
+#notice .menu-bx{width:62%;flex-shrink:0;}
+#notice .menu-bx .slick{position:relative;padding:0 calc((100% - 690px) / 2)}
+#notice .menu-bx .slick-slide{margin:0 30px;}
+#notice .menu-bx .slick-slide span{display:flex;align-items:center;justify-content:center;border-radius:50%;width:105px;height:105px;background:#eaf0f7;transition:all .25s;}
+#notice .menu-bx .slick-slide span img{height:50px;width:auto;}
+#notice .menu-bx .slick-slide:hover span{background:#2189ff;}
+#notice .menu-bx .slick-slide strong{display:block;text-align:center;color:#000;font-size:18px;margin-top:17px;line-height:1.5;}
+#notice .menu-bx .slick-arrow{position:absolute;top:50%;width:20px;height:40px;margin-top:-20px;left:0;background:url(/page/greencity/images/common/ico_file.png) no-repeat -448px -39px /520px 835px;font-size:0;}
+#notice .menu-bx .slick-arrow.slick-next{left:auto;right:0;background-position-x:-491px;}
+#notice .menu-bx .slick-arrow:active{transform:scale(.9);}
+
+#notice .noti-bx{position:relative;width:440px;}
+#notice .noti-bx .slick{overflow:hidden;border-radius:20px;}
+#notice .noti-bx .control{margin-top:12px;display:flex;align-items:center;justify-content:flex-end;padding:0 5px;}
+#notice .noti-bx .control .slick-arrow{width:8px;height:14px;background:url(/page/greencity/images/common/ico_file.png) no-repeat -414px -93px /520px 835px;font-size:0;}
+#notice .noti-bx .control .slick-arrow.next{background-position-x:-455px;}
+#notice .noti-bx .control .slick-arrow:active{transform:scale(.8);}
+#notice .noti-bx .count{margin:0 10px;color:#000;}
+#notice .noti-bx .count span{padding:0 6px;color:#818181}
+#notice .noti-bx .count strong{color:#818181;font-weight:400;}
+#notice .noti-bx .ps-btn{font-size:0;margin-left:10px;width:24px;height:24px;background:url(/page/greencity/images/common/ico_file.png) no-repeat -486px -89px /520px 835px;}
+#notice .noti-bx .ps-btn.play{background-position-x:-367px;display:none;}
+#notice .noti-bx .ps-btn:active{transform:scale(.9);}
+
+
+
+
+
+
+#education{position:relative;padding:20px 0 80px;}
+#education .title-bx{line-height:1.3;}
+#education .title-bx span{color:#434343;word-break:keep-all;}
+#education .title-bx h2{font-size:40px;color:#000;margin-top:8px;font-weight:700;}
+
+#education .tab{margin-top:25px;padding-right:30px;display:flex;align-items:center;padding-right:60px;}
+#education .tab:after{content:'';height:1px;flex:1;background:#e9e9e9;margin-left:20px;}
+#education .tab a{display:flex;width:165px;height:44px;border-radius:22px;transition:all .2s;margin-right:15px;border:1px solid #434343;color:#1b1b1b;font-weight:700;align-items:center;justify-content:center;}
+#education .tab a.active{color:#fff;background:#2189ff;border-color:#2189ff;}
+
+#education .edu-bx{position:relative;margin-top:80px;padding-left:200px;}
+#education .edu-bx .item{display:none;animation:edu-move1 .5s 1 both ease-out;} 
+#education .edu-bx .item.active{display:block;} 
+#education .edu-bx:before{content:'';display:block;position:absolute;;left:0;top:0;width:154px;height:117px;background:url(/page/greencity/images/main/img-quotation.png) no-repeat center center /cover;}
+#education .edu-bx .slick{margin-right:-400px;}
+#education .edu-bx .slick-slide{padding:5px 0 0 5px;margin-right:15px;width:325px;position:relative;transition:all .25s;margin-top:18px}
+#education .edu-bx .slick-slide:hover{margin-top:0;}
+#education .edu-bx .slick-slide img{opacity:.3;transition:all .25s;}
+#education .edu-bx .slick-slide.slick-active img{opacity:1;}
+#education .edu-bx .slick-slide .number{display:flex;width:40px;height:40px;background:#fff;z-index:2;;border-radius:0px 10px 10px 10px;align-items:center;justify-content:center;border:1px solid #b7b7b7;transition:all .2s;position:absolute;top:0;left:0;color:#636363;font-size:22px;font-weight:700;}
+#education .edu-bx .slick-slide:hover .number{color:#fff;background:#2189ff;border-color:#2189ff;}
+#education .edu-bx .slick-slide.slick-current .number{background:#fa6105;border-color:#fa6105;color:#fff;}
+#education .edu-bx .slick-slide .sort{position:absolute;top:5px;right:0;height:32px;line-height:30px;color:#fff;padding:0 11px;font-size:14px;font-weight:700;background:rgba(0,0,0,.4);z-index:2;}
+#education .edu-bx .slick-slide p{position:absolute;left:5px;bottom:0;right:0;height:76px;display:flex;justify-content:center;flex-direction:column;background:rgba(255,255,255,.5);padding:0 15px 0 25px;}
+#education .edu-bx .slick-slide p strong{color:#000;font-size:18px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+#education .edu-bx .slick-slide p span{color:#313131;font-weight:300;}
+#education .edu-bx .slick-slide p span em{padding-right:7px;}
+#education .edu-bx .control{margin-top:42px;display:flex;align-items:center;}
+#education .edu-bx .control .slick-arrow{flex-shrink:0;width:12px;height:24px;background:url(/page/greencity/images/common/ico_file.png) no-repeat -452px -168px /520px 835px;font-size:0;}
+#education .edu-bx .control .slick-arrow.next{background-position-x:-494px;}
+#education .edu-bx .control .slick-arrow:active{transform:scale(.9);}
+#education .edu-bx .control .dots{flex:1;padding:0 30px;}
+#education .edu-bx .control .dots li{flex:1;position:relative;transform:none;}
+#education .edu-bx .control .dots li button{display:block;width:100%;font-size:0;height:3px;background:#ececec;position:relative;}
+#education .edu-bx .control .dots li button:before{content:'';display:block;width:100%;height:3px;background:#000;transition:all .2s;}
+#education .edu-bx .control .dots li.slick-active ~ li button:before{width:0%;}
+#education .btn-more{position:absolute;right:0px;top:-120px;animation:edu-move2 .25s .5s 1 both ease-out;}
+
+
+
+
+
+
+
+
+
+
+#vr-center{position:relative;padding-bottom:114px;background:url(/page/greencity/images/main/bg-vr.jpg) no-repeat center center fixed;}
+#vr-center h2{position:absolute;left:20px;top:110px;z-index:10;}
+#vr-center .slick-wrap{padding:0 120px 0 0;}
+#vr-center .slick{position:relative;z-index:5;}
+#vr-center .slick-list{margin-right:-500px;padding-right:500px;}
+#vr-center .slick-slide{padding:0 300px 0 0;filter:grayscale(1);transition:all .7s;}
+#vr-center .slick-slide.slick-current{padding:0 0 0 300px;filter:grayscale(0);}
+#vr-center .slick .text-bx{position:absolute;top:0;bottom:0;left:0;right:0;display:flex;flex-direction:column;color:#fff;padding:45px 0 0;transition:all .5s;opacity:0;}
+#vr-center .slick-slide.slick-current .text-bx{opacity:1;}
+#vr-center .slick .text-bx .sort{line-height:1.2;color:#2189ff;font-weight:700;font-size:27px;}
+#vr-center .slick .text-bx p{max-width:450px;word-break:keep-all;font-size:15px;font-weight:400;line-height:1.8;letter-spacing:0px;text-shadow:1px 1px 2px rgba(0,0,0,.5);margin-top:135px;}
+#vr-center .slick .text-bx p strong{display:block;font-size:28px;margin-bottom:12px;}
+#vr-center .slick .text-bx .go{display:flex;align-items:center;justify-content:space-between;margin-top:85px;height:47px;padding:0 10px 0 5px;border-bottom:2px solid #fff;width:180px;}
+#vr-center .slick .text-bx .go:after{content:'';background:url(/page/greencity/images/common/ico_file.png) no-repeat -482px -251px /520px 835px;width:34px;height:22px;}
+#vr-center .slick-slide:hover .text-bx .go:after{animation:icon-move2 .35s infinite alternate ease-out;}
+#vr-center .slick-arrow{width:78px;height:78px;border:2px solid #fff;position:absolute;top:50%;margin-top:-39px;left:-125px;z-index:10;font-size:0;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+#vr-center .slick-arrow.slick-arrow.slick-next{left:auto;right:-60px;}
+#vr-center .slick-arrow:after{content:'';background:url(/page/greencity/images/common/ico_file.png) no-repeat -439px -206px /520px 835px;width:40px;height:29px;}
+#vr-center .slick-arrow.slick-next:after{background-position-x:-480px;}
+#vr-center .slick-arrow:active:after{transform:scale(.85);}
+#vr-center .slick-arrow.slick-disabled{opacity:.15;pointer-events:none;}
+
+
+
+
+
+
+#board{position:relative;padding:70px 0 90px;z-index:5;}
+#board:before{content:'';z-index:-1;position:absolute;left:0;right:0;bottom:0;top:200px;background:#f8f8f8}
+
+
+
+
+
+
+@keyframes visual-move1{
+    0%{opacity:0;transform:translateY(30%);}
+    100%{opacity:1;transform:translateY(0%);}
+}
+
+@keyframes edu-move1{
+    0%{opacity:.3;transform:translateX(30%);}
+    100%{opacity:1;transform:translateX(0%);}
+}
+
+@keyframes edu-move2{
+    0%{opacity:0;transform:translateX(30%);}
+    100%{opacity:1;transform:translatex(0%);}
+}
+
+
+@keyframes pin-move1{
+    0%{transform:rotateY(0deg);}
+    100%{transform:rotateY(360deg);}
+}
+
+@keyframes pin-move2{
+    0%{transform:translateY(0%);}
+    100%{transform:translateY(-20%);}
+}
+
+@keyframes icon-move1{
+    0%{transform:translateY(5%);}
+    100%{transform:translateY(-10%);}
+}
+
+@keyframes icon-move2{
+    0%{transform:translateX(20%);}
+    100%{transform:translateX(-20%);}
+}
+
+
+.btn-more{width:41px;height:40px;transition:transform .25s;display:block;background:url(/page/greencity/images/common/ico_file.png) no-repeat -79px -80px /520px 835px;flex-shrink:0;font-size:0;color:transparent}
+.btn-more:hover{transform:rotate(90deg);}
