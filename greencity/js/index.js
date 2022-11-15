@@ -34,7 +34,7 @@ $(function() {
         pauseOnHover: false,
         vertical: true,
         verticalSwiping: true,
-        speed: 500,
+        speed: 350,
         autoplaySpeed: 6000,
     };
     
@@ -57,8 +57,8 @@ $(function() {
             {
                 breakpoint: 992,
                 settings: {
+                speed: 200,
                 centerMode: true,
-                slidesToShow: 3,
                 variableWidth: true,
                 }
             }
@@ -98,11 +98,11 @@ $(function() {
     initSlick($('.noti-bx .slick'), slickOption4);
 
 
-    $('.edu-bx .slick').each( function() {
-        var prevBtn =  $(this).parent('.item').find('.prev');
-        var nextBtn =  $(this).parent('.item').find('.next');
-        var dotBox =  $(this).parent('.item').find('.dots');
-        $(this).slick({
+    $('.edu-bx .slick').each( function(index, item) {
+        var prevBtn =  $(item).parent('.item').find('.prev');
+        var nextBtn =  $(item).parent('.item').find('.next');
+        var dotBox =  $(item).parent('.item').find('.dots');
+        $(item).slick({
             autoplay: false,
             arrows: true,
             accessibility: false,
@@ -117,7 +117,7 @@ $(function() {
             variableWidth: true,
             swipeToSlide:true,
             pauseOnHover: false,
-            speed: 450,
+            speed: 350,
         });
       });
 
@@ -138,8 +138,6 @@ $(function() {
                 breakpoint: 992,
                 settings: {
                 speed: 500,
-                slidesToShow: 2,
-                variableWidth: true,
                 swipeToSlide:true,
                 }
             }
@@ -149,19 +147,19 @@ $(function() {
     initSlick($('#vr-center .slick'), slickOption5);
 
 
-    $('#visual .tab a:first, #visual .data-bx .item:first-child, #education .tab a:first, #education .edu-bx .item:first-child, #board .tab a:first, #board .edu-bx .item:first-child').addClass('active');
+    $('#visual .tab a:first, #visual .data-bx .item:first-child, #education .tab a:first, #education .edu-bx .item:first-child, #board .tab a:first, #board .board-bx .item:first-child').addClass('active');
 
     $('.data-bx > div').each(function (index, item) {
         $(item).find('.spot-bx a:first').addClass('active');
     });
 
-    AOS.init({
-        easing: 'ease',
-        duration: 700,
-        delay: 500,
-        once: true,
-        offset: 50,   
-    });
+    // AOS.init({
+    //     easing: 'ease',
+    //     duration: 700,
+    //     delay: 500,
+    //     once: true,
+    //     offset: 50,   
+    // });
 
 });
 
@@ -205,7 +203,7 @@ ObjDoc.on({
         $(this).addClass('active');
         $(this).parent().next('div').find('.item').removeClass('active');
         $(this).parent().next('div').find('.item').eq(Idx3).addClass('active');
-        $(this).parent().next('div').find('.item').eq(Idx3).find('.slick').slick('setPosition');
+        $(this).parent().next('div').find('.item').eq(Idx3).find('.slick').slick('setPosition').slick('slickGoTo', 0);
 	}
 }, '#education .tab a, #board .tab a');
 
