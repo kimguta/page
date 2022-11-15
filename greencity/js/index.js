@@ -189,6 +189,7 @@ ObjDoc.on({
         var Idx2 = $(this).index();
         var Name = $(this).text();
         var Item = $(this).parents('.item');
+        $('.local-bx .open').removeClass('active');
 	    Item.find('.view').slideUp(300);
         Item.find('.open').text(Name);
         Item.find('.map-bx .spot-bx a').removeClass('active');
