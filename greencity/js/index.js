@@ -58,6 +58,7 @@ $(function() {
                 breakpoint: 992,
                 settings: {
                 speed: 200,
+                slidesToShow: 3,
                 centerMode: true,
                 variableWidth: true,
                 }
