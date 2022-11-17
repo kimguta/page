@@ -91,6 +91,13 @@ ObjWin.on({
 		}
 	}
 })
+.on({
+	'load': function() {
+		$('.mobile-mode .site_map .depth-02 h3').removeClass('has-depth');
+		$('.mobile-mode .site_map .depth-03').prev('h3').addClass('has-depth');
+	}
+})
+
 // .on({
 // 	'resize': function() {
 // 		var divEl = $("#header nav > .depth-01");
