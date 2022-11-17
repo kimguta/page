@@ -84,9 +84,9 @@ ObjWin.on({
 .on({
 	'resize': function() { 
 		var Wwidth2 = $(window).outerWidth();
-		if (Wwidth2 > 1389 && Wwidth < 1490){
+		if (Wwidth2 > 1389){
 			$('#header h2, #header h3, #header h4').removeClass('active');
-			$('.bg_pc').stop().hide();
+			$('#header .depth-02').stop().hide();
 		}
 	}
 })
