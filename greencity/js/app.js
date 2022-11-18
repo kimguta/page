@@ -205,7 +205,7 @@ ObjDoc.on({
 		$('.family-bx .open').focus();
 		$('.family-bx .view').slideUp(300);
 	}
-}, '.family .view a:last');
+}, '.family-bx .view a:last');
 
 
 $(function() {
