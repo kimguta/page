@@ -11,13 +11,13 @@ $(function() {
         slidesToShow: 1,
         slidesToScroll: 1,
         pauseOnHover: false,
-        speed: 1200,
+        speed: 700,
         autoplaySpeed: 5000,
         responsive: [
             {
                 breakpoint: 992,
                 settings: {
-                speed: 700,
+                speed: 500,
                 slidesToShow: 3,
                 variableWidth: true,
                 swipeToSlide:true,
@@ -30,7 +30,7 @@ $(function() {
                 slidesToShow: 1,
                 variableWidth: false,
                 centerMode: false,
-                speed: 600,
+                speed: 350,
               }
             }
         ]
@@ -48,13 +48,13 @@ $(function() {
         slidesToShow: 1,
         slidesToScroll: 1,
         pauseOnHover: false,
-        speed: 600,
+        speed: 500,
         autoplaySpeed: 5000,
         responsive: [
             {
                 breakpoint: 992,
                 settings: {
-                speed: 500,
+                speed: 350,
                 centerMode: true,
                 slidesToShow: 3,
                 variableWidth: true,
