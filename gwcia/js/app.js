@@ -132,9 +132,10 @@ ObjDoc.on({
 		$('#header').addClass('active');
 		$('#header .site_map').addClass('active');
 		$('#header .site_map a:first').focus();
-		if(ObjWin.width() < 1199){
-			$('body').css('overflow','hidden');
-		}
+		$('body').css('overflow','hidden');
+		// if(ObjWin.width() < 1199){
+		// 	$('body').css('overflow','hidden');
+		// }
 	}
 }, '#header .sitemap')
 .on({
