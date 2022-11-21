@@ -162,6 +162,33 @@ $(function() {
     //     offset: 50,   
     // });
 
+    setInterval(function(){
+        if($('#visual .item:first-child .spot-bx a.active').hasClass('v1') === true){
+            $('#visual .item:first-child .spot-bx a.v1').removeClass('active');
+            $('#visual .item:first-child .spot-bx a.v2').addClass('active');
+            $('#visual .item:first-child .local-bx .open').text($('#visual .item:first-child .spot-bx a.v2').text());
+        }   
+        else if($('#visual .item:first-child .spot-bx a.active').hasClass('v2') === true){
+            $('#visual .item:first-child .spot-bx a.v2').removeClass('active');
+            $('#visual .item:first-child .spot-bx a.v3').addClass('active');
+            $('#visual .item:first-child .local-bx .open').text($('#visual .item:first-child .spot-bx a.v3').text());
+        }
+        else if($('#visual .item:first-child .spot-bx a.active').hasClass('v3') === true){
+            $('#visual .item:first-child .spot-bx a.v3').removeClass('active');
+            $('#visual .item:first-child .spot-bx a.v4').addClass('active');
+            $('#visual .item:first-child .local-bx .open').text($('#visual .item:first-child .spot-bx a.v4').text());
+        } 
+        else if($('#visual .item:first-child .spot-bx a.active').hasClass('v4') === true){
+            $('#visual .item:first-child .spot-bx a.v4').removeClass('active');
+            $('#visual .item:first-child .spot-bx a.v5').addClass('active');
+            $('#visual .item:first-child .local-bx .open').text($('#visual .item:first-child .spot-bx a.v5').text());
+        } 
+        else if($('#visual .item:first-child .spot-bx a.active').hasClass('v5') === true){
+            $('#visual .item:first-child .spot-bx a.v5').removeClass('active');
+            $('#visual .item:first-child .spot-bx a.v1').addClass('active');
+            $('#visual .item:first-child .local-bx .open').text($('#visual .item:first-child .spot-bx a.v1').text());
+        }  
+    }, 5000);
 });
 
 
@@ -208,6 +235,4 @@ ObjDoc.on({
         $(this).parent().next('div').find('.item').eq(Idx3).find('.slick').slick('setPosition').slick('slickGoTo', 0);
 	}
 }, '#education .tab a, #board .tab a');
-
-
 
