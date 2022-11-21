@@ -154,40 +154,24 @@ $(function() {
         $(item).find('.spot-bx a:first').addClass('active');
     });
 
-    // AOS.init({
-    //     easing: 'ease',
-    //     duration: 700,
-    //     delay: 500,
-    //     once: true,
-    //     offset: 50,   
-    // });
-
     setInterval(function(){
-        if($('#visual .item:first-child .spot-bx a.active').hasClass('v1') === true){
-            $('#visual .item:first-child .spot-bx a.v1').removeClass('active');
-            $('#visual .item:first-child .spot-bx a.v2').addClass('active');
-            $('#visual .item:first-child .local-bx .open').text($('#visual .item:first-child .spot-bx a.v2').text());
-        }   
-        else if($('#visual .item:first-child .spot-bx a.active').hasClass('v2') === true){
-            $('#visual .item:first-child .spot-bx a.v2').removeClass('active');
-            $('#visual .item:first-child .spot-bx a.v3').addClass('active');
-            $('#visual .item:first-child .local-bx .open').text($('#visual .item:first-child .spot-bx a.v3').text());
-        }
-        else if($('#visual .item:first-child .spot-bx a.active').hasClass('v3') === true){
-            $('#visual .item:first-child .spot-bx a.v3').removeClass('active');
-            $('#visual .item:first-child .spot-bx a.v4').addClass('active');
-            $('#visual .item:first-child .local-bx .open').text($('#visual .item:first-child .spot-bx a.v4').text());
-        } 
-        else if($('#visual .item:first-child .spot-bx a.active').hasClass('v4') === true){
-            $('#visual .item:first-child .spot-bx a.v4').removeClass('active');
-            $('#visual .item:first-child .spot-bx a.v5').addClass('active');
-            $('#visual .item:first-child .local-bx .open').text($('#visual .item:first-child .spot-bx a.v5').text());
-        } 
-        else if($('#visual .item:first-child .spot-bx a.active').hasClass('v5') === true){
-            $('#visual .item:first-child .spot-bx a.v5').removeClass('active');
-            $('#visual .item:first-child .spot-bx a.v1').addClass('active');
-            $('#visual .item:first-child .local-bx .open').text($('#visual .item:first-child .spot-bx a.v1').text());
-        }  
+        var targetActive = $('#visual .item:first-child .spot-bx a.active');
+        var elemSpot = $('#visual .item:first-child .spot-bx');
+        var elemOpen = $('#visual .item:first-child .local-bx .open');
+        var mathClass = [
+            {class1 : 'v1', class2: ".v2",},
+            {class1 : 'v2', class2: ".v3",},
+            {class1 : 'v3', class2: ".v4",},
+            {class1 : 'v4', class2: ".v5",},
+            {class1 : 'v5', class2: ".v1",},
+        ]
+        for (var i = 0; i< mathClass.length; i++) {
+            if(targetActive.hasClass(mathClass[i].class1) === true){
+                elemSpot.find('a').removeClass('active');
+                elemSpot.find(mathClass[i].class2).addClass('active');
+                elemOpen.text(elemSpot.find(mathClass[i].class2).text());
+            }
+        };
     }, 5000);
 });
 
