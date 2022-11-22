@@ -233,7 +233,7 @@ main{display:block;}
   #header .btn_logout:before{vertical-align:-16px;margin-right:0;}
   /* #header .bg_pc{display:none !important;} */
   /* #header nav{position:relative;display:flex;align-items:center;justify-content:center;width:1200px;max-width:calc(100% - 564px);} */
-  #header nav{position:fixed;display:block;top:65px;width:100%;max-width:475px;right:-475px;background:#fff;background-size:cover;height:100vh;padding:45px 40px 30px;overflow-y:auto;z-index:150;}
+  #header nav{position:fixed;display:block;top:65px;width:100%;max-width:475px;right:-475px;background:#fff;background-size:cover;height:100vh;padding:45px 40px 30px;z-index:150;}
   #header nav > .depth-01{display:none;padding:0;}
   #header nav > .depth-01 > li{border:1px solid #959595;border-width:1px 0;}
   #header nav > .depth-01 > li + li{margin-top:-1px;}
@@ -262,11 +262,11 @@ main{display:block;}
   .mobile-close{width:33px;height:33px;font-size:0;background:url(/page/governor/images/common/close.png) no-repeat center center /cover;position:absolute;right:40px;top:48px;image-rendering:-webkit-optimize-contrast;}
   #header .site_map{max-width:414px;width:100%;left:auto;min-height:calc(var(--vh, 1vh) * 100);min-height: -webkit-fill-available;}
   #header .site_map .map_inner{width:100%;padding-bottom:0;}
-  #header .site_map .all_menu{position:fixed;margin-top:0;padding-left: 16px;height:66px;right:0;width:100%;max-width:414px;background:#fff;font-size:24px;line-height:62px;z-index:10;}
+  #header .site_map .all_menu{position:fixed;margin-top:0;padding-left: 16px;height:65px;right:0;width:100%;max-width:414px;background:#fff;font-size:24px;line-height:62px;z-index:10;}
   #header .site_map .all_menu:after{content:'';display:block;position:absolute;left:0;right:0;bottom:0;height:1px;background:#e8e8e8;}
   #header .site_map .all_menu:before{transform:scale(0.735);margin-right:2px;vertical-align:-4px;}
   #header .site_map .close_btn{transform:scale(0.763);right:13px;}
-  #header .site_map .depth-01{padding-top:65px;margin-top:0;}
+  #header .site_map .depth-01{padding-top:64px;margin-top:0;}
   #header .site_map .depth-01  > li{border-top:1px solid #e8e8e8;padding:33px 0 37px!important;width:100%!important;}
   #header .site_map .depth-01 h2{display:block;float:none;padding:0 19px;width:auto;}
   #header .site_map .depth-02{float:none;margin-top:22px;padding:0 19px;}
@@ -299,6 +299,12 @@ main{display:block;}
   #header .sitemap{transform:scale(0.8);}
   #header .sitemap:before{top:20px;}
 }
+
+@media (max-width:600px) {
+  #header.active h1{opacity:0;}
+  #header .site_map .all_menu{max-width:initial;}
+}
+
 @media (max-width:475px) {
   #header nav{right:-93vw;background:#fff;padding: 35px 20px 30px;width:93vw}
   #header nav .site_map{width:93vw}
