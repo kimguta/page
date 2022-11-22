@@ -3,6 +3,11 @@
 <h3>DQ_프로젝트 퍼블리싱 페이지</h3>
 <ul>
   <li><a href="basic" target="_blank">베이직소스</a></li>
+  <li><a href="gwtour2022" target="_blank">강원관광2022</a></li>
+  <li><a href="gwtour-foreign" target="_blank">강원관광2022 - 외국어</a></li>
+  <li><a href="gwprovin" target="_blank">강원도청2022</a></li>
+  <li><a href="gw-subsite" target="_blank">강원도청-부속사이트</a></li>
+  <li><a href="greencity" target="_blank">스마트그린도시-포탈</a></li>
   <li><a href="idq2022/index_list.html" target="_blank">디큐 홈페이지</a></li>
   <li><a href="untan/index_list.html" target="_blank">운탄고도길</a></li>
   <li><a href="sports/index_list.html" target="_blank">고성 강원도민체전</a></li>
@@ -24,10 +29,5 @@
   <li><a href="culture/index_list.html" target="_blank">강원문화유산 아카이브</a></li>
   <li><a href="mayor2022/index_list.html" target="_blank">양양군수실2022</a></li>
   <li><a href="governor/index_list.html" target="_blank">강원도지사실2022</a></li>
-  <li><a href="gwtour2022" target="_blank">강원관광2022</a></li>
-  <li><a href="gwtour-foreign" target="_blank">강원관광2022 - 외국어</a></li>
-  <li><a href="gwprovin" target="_blank">강원도청2022</a></li>
-  <li><a href="gw-subsite" target="_blank">강원도청-부속사이트</a></li>
-  <li><a href="greencity" target="_blank">스마트그린도시-포탈</a></li>
 </ul>
 
