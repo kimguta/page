@@ -1,4 +1,53 @@
 
+$(window).on('scroll load', function () {
+    $('.new-history .year-bx .img-bx').each(function(index, item) {
+        $(item).removeClass('fixed absol');
+        var offSset1 = $(item).offset().top - $(item).height() + 150;
+        var offSset2 = $(item).parent('.year-bx').offset().top + $(item).parent('.year-bx').height() - $(window).height() + 110;
+        if ($(window).scrollTop() > offSset1) {
+             $(item).removeClass('absol').addClass('fixed');
+        }
+        if($(window).scrollTop() > offSset2){
+            $(item).addClass('absol');
+        }
+    });
+    $('.new-history .month-bx').each(function(index, item) {
+        var offSset3 = $(item).offset().top - 700;
+        if ($(document).scrollTop() > offSset3) {
+            $(item).addClass('active');
+        }else{
+            $(item).removeClass('active');
+        }
+    });
+    var offSset4 = $('.new-history').offset().top + $('.new-history').height() - $(window).height() + 210;
+    if ($(window).scrollTop() > offSset4) {
+        $('.progress-bx').addClass('active');
+   }else{
+        $('.progress-bx').removeClass('active');
+   }    
+   $('.new-history .year-bx').each(function(index, item) {
+        var offSset5 = $(item).offset().top;
+        var offSset6 = $(window).scrollTop() - $(item).offset().top;
+        var offSset7 = $(item).offset().top + $(item).height();
+        var Width = (((offSset6 / $(item).height()) * 100) + 25)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+        if ($(window).scrollTop() > offSset5 && $(window).scrollTop() < offSset7) {
+            $('.progress-bx div p').eq(index).find('.bar').css('width',Width + '%');
+            $('.progress-bx div p').eq(index).addClass('active');
+        }
+        if ($(window).scrollTop() > offSset5 - 250) {
+            $('.progress-bx div p').eq(index).addClass('active');
+        }else{
+            $('.progress-bx div p').eq(index).removeClass('active');
+        }
+    });
+    if ($(window).scrollTop() >  $(document).height() - $(window).height() - 100) {
+        $('.progress-bx').addClass('end');
+    }else{
+        $('.progress-bx').removeClass('end');
+    }
+});
+
+
 #sub{background:#f5f5f5;font-family:"Apple SD Gothic Neo","Noto Sans", "Noto Sans KR","Malgun Gothic","맑은 고딕",helvetica,sans-serif;letter-spacing: -1px;}
 pub_navi({
 		target: '.id-gnb',
