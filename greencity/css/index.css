@@ -4,10 +4,10 @@
 #visual .slick{position:absolute;top:0;height:100vh;width:1920px;left:50%;margin-left:-960px;}
 #visual .inner{display:flex;height:100%;align-items:center;padding-top:100px;}
 
-#visual .info-wrap{padding-left:75px;text-shadow:0px 0px 5px rgba(0,0,0,.5);width:100%;}
+#visual .info-wrap{padding-left:75px;text-shadow:2px 2px 3px rgba(0,0,0,.65);width:100%;}
 #visual .info-wrap .tab{display:flex;align-items:center;position:relative;z-index:13;}
-#visual .info-wrap .tab a{color:#fff;height:48px;display:flex;align-items:center;justify-content:center;margin-right:10px;font-size:20px;font-weight:700;border:2px solid #fff;transition:all .2s;min-width:100px;padding:0 10px;border-radius:24px;}
-#visual .info-wrap .tab a.active{background:#ff7200;border-color:#ff7200;text-shadow:none;}
+#visual .info-wrap .tab a{color:#000;background:rgba(255,255,255,.7);text-shadow:none;height:48px;display:flex;align-items:center;justify-content:center;margin-right:10px;font-size:20px;font-weight:700;border:1px solid #001c58;transition:all .2s;min-width:100px;padding:0 10px;border-radius:24px;}
+#visual .info-wrap .tab a.active{background:#ff7200;border-color:#ff7200;text-shadow:none;color:#fff;}
 
 #visual .data-bx{margin-top:-30px;}
 #visual .data-bx .item{position:relative;display:none;height:600px;}
@@ -18,16 +18,16 @@
 #visual .weather-bx{width:395px;margin-right:30px;color:#fff;margin-top:75px;display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;position:relative;z-index:10;}
 #visual .weather{position:relative;padding-top:85px;}
 #visual .weather .info{display:flex;align-items:center;padding-bottom:2px;line-height:1.1;}
-#visual .weather .info img{height:64.5px;animation:icon-move1 .8s infinite alternate ease-in-out;image-rendering: -webkit-optimize-contrast;}
+#visual .weather .info img{height:64.5px;animation:icon-move1 .8s infinite alternate ease-in-out;image-rendering: -webkit-optimize-contrast;filter: drop-shadow(2px 2px 3px rgba(0,0,0,.3));}
 #visual .weather .info strong{font-size:62px;font-weight:400;margin:-9px 15px 0 15px;}
 #visual .weather .info span{font-size:28px;}
 #visual .weather p{margin-top:18px;text-align:center;line-height:1.1;font-size:20px;}
 #visual .weather p span{display:inline-block;vertical-align:top;position:relative;}
 #visual .weather p span + span{padding-left:13px;margin-left:11px;}
 #visual .weather p span + span:after{content:'';display:block;width:1px;height:18px;background:rgba(255,255,255,.5);position:absolute;left:0;top:50%;margin-top:-9px}
-#visual .caution{background:rgba(0,0,0,.5);border-radius:10px;padding:20px 20px;width:100%;}
+#visual .caution{background:rgba(255,255,255,.85);border-radius:10px;padding:20px 20px;width:100%;}
 #visual .caution img{display:block;margin:0 auto;height:74px;}
-#visual .caution p{margin-top:25px;padding-top:22px;word-break:keep-all;display:flex;align-items:flex-start;border-top:1px solid rgba(255,255,255,.5)}
+#visual .caution p{margin-top:25px;padding-top:22px;word-break:keep-all;display:flex;align-items:flex-start;border-top:1px solid rgba(0,0,0,.5);color:#000;text-shadow:none;}
 #visual .caution p:before{content:'';width:24px;height:21px;background:url(/page/greencity/images/main/ico-warning2.png) no-repeat center center /cover;margin-top:1px;flex-shrink:0;margin-right:15px;}
 
 #visual .map-bx{position:relative;width:780px;max-width:100%;z-index:3;}
@@ -61,9 +61,9 @@
 #visual .map-bx .spot-bx .pin.active{pointer-events:none;}
 #visual .map-bx .spot-bx .pin:before{content:'';width:27px;height:37.5px;background:url(/page/greencity/images/main/ico-pin2.png) no-repeat center center /cover;margin-top:-40px;flex-shrink:0;opacity:0;transition:opacity .25s .1s;}
 #visual .map-bx .spot-bx .pin:after{content:'';width:14px;height:14px;box-sizing:border-box;border-radius:50%;background:#fdc903;border:1px solid #9a9a9a;transition:all .1s;flex-shrink:0;}
-#visual .map-bx .spot-bx .pin.active:before{animation:pin-move1 1.8s infinite alternate linear;opacity:1;}
 #visual .map-bx .spot-bx .pin.active:after{border:2px solid #07040f;}
 #visual .map-bx .spot-bx .pin:hover:before{animation:pin-move2 .3s infinite alternate ease-out;opacity:1;}
+#visual .map-bx .spot-bx .pin.active:before{animation:pin-move1 1.8s infinite alternate linear;opacity:1;}
 #visual .map-bx .spot-bx .pin:active:after{transform: scale(.6);}
 
 
@@ -125,20 +125,22 @@
 #visual .map-bx .goseong .pin.v6{left: 39%;top: 37%;}
 
 
-#visual .local-bx{position:absolute;width:164px;top:0;left:50%;margin-left:-82px;z-index:5;}
-#visual .local-bx .open{display:flex;height:52px;align-items:center;justify-content:center;color:#fff;border-bottom:2px solid #fff;padding-left:20px;font-size:18px}
-#visual .local-bx .open:after{content:'';display:block;transition:all .2s;width:8px;height:8px;border:2px solid #fff;border-width:2px 2px 0 0;transform:rotate(135deg);margin-top:-4px;margin-left:30px;}
+#visual .local-bx{position:absolute;width:164px;top:0;left:50%;margin-left:-82px;z-index:5;text-shadow:none;}
+#visual .local-bx .open{display:flex;height:52px;align-items:center;justify-content:center;color:#000;border-bottom:2px solid #000;padding-left:20px;font-size:18px}
+#visual .local-bx .open:after{content:'';display:block;transition:all .2s;width:8px;height:8px;border:2px solid #000;border-width:2px 2px 0 0;transform:rotate(135deg);margin-top:-4px;margin-left:30px;}
+#visual .item:first-child .local-bx .open{border-bottom-color:#fff;color:#fff;text-shadow:2px 2px 3px rgba(0,0,0,.65);}
+#visual .item:first-child .local-bx .open:after{border-color:#fff;}
 #visual .local-bx .open.active:after{transform:rotate(-45deg);margin-top:2px}
 #visual .local-bx .view{position:absolute;width:100%;left:0;top:52px;background:#fff;padding:8px 5px 8px;border-radius:0px 0px 10px 10px;display:none;box-shadow:0px 5px 5px 0px rgba(0,0,0,.25);}
 #visual .local-bx .view a{display:block;text-align:center;height:34px;line-height:34px;font-size:16px;text-shadow:none;transition:all .15s;}
 #visual .local-bx .view a:hover{color:#ff7200;}
 
-#visual .dust-bx{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.5);border-radius:10px;display:flex;}
-#visual .dust-bx p{flex:1;height:120px;display:flex;justify-content:space-between;padding:18px 10px;align-items:center;flex-direction:column;color:#fff;}
-#visual .dust-bx p + p{border-left:1px solid rgba(255,255,255,.2)}
-#visual .dust-bx p span{font-size:15px;line-height:1.1;}
-#visual .dust-bx p em{line-height:1.1;font-size:14px;color:#b8bdc1;}
-#visual .dust-bx p strong{font-weight:700;line-height:1.3;font-size:22px;word-break:keep-all;}
+#visual .dust-bx{position:absolute;bottom:0;left:0;right:0;background:rgba(255,255,255,.85);border-radius:10px;display:flex;text-shadow:none;}
+#visual .dust-bx p{flex:1;height:120px;display:flex;justify-content:space-between;padding:18px 10px;align-items:center;flex-direction:column;color:#1b1b1b;}
+#visual .dust-bx p + p{border-left:1px solid rgba(0,0,0,.2)}
+#visual .dust-bx p span{font-size:18px;line-height:1.1;}
+#visual .dust-bx p em{line-height:1.1;font-size:18px;color:#1b1b1b}
+#visual .dust-bx p strong{font-weight:700;line-height:1.3;font-size:24px;word-break:keep-all;}
 #visual .dust-bx p.good strong{color:#0074ff}
 #visual .dust-bx p.normal strong{color:#01b56e}
 #visual .dust-bx p.bad strong{color:#feb71f}
@@ -169,18 +171,20 @@
     #visual .map-bx .spot-bx .pin{width:50px;height:36px;}
     #visual .map-bx .spot-bx .pin:before{width:25.5px;height:35px;}
     #visual .map-bx .spot-bx .pin:after{width:12px;height:12px;}
+    #visual .map-bx .spot-bx .pin:hover:before{animation:none;opacity:0;}
+    #visual .map-bx .spot-bx .pin.active:before{animation:pin-move1 1.8s infinite alternate linear;opacity:1;}
     #visual .map-bx .all .spot-bx .pin:after{width:14px;height:14px;}
     #visual .map-bx .spot-bx .pin.active:after{border:1px solid #07040f;}
     #visual .local-bx{width:150px;margin-left:-75px;}
-    #visual .local-bx .open{height:46px;border-bottom:1px solid #fff;padding-left:15px;font-size:16px}
+    #visual .local-bx .open{height:46px;border-bottom: 1px solid #000;padding-left:15px;font-size:16px}
     #visual .local-bx .open:after{width:6px;height:6px;border-width:1px 1px 0 0;margin-top:-3px;margin-left:25px;}
     #visual .local-bx .open.active:after{transform:rotate(-45deg);margin-top:2px}
     #visual .local-bx .view{top:46px;padding:6px 5px 6px;border-radius:0px 0px 5px 5px;}
     #visual .local-bx .view a{height:32px;line-height:32px;font-size:15px;}
     #visual .dust-bx p{height:100px;padding:15px 5px;}
-    #visual .dust-bx p span{font-size:14px;}
-    #visual .dust-bx p em{font-size:13px;}
-    #visual .dust-bx p strong{font-size:18px;}
+    #visual .dust-bx p span{font-size: 15px;}
+    #visual .dust-bx p em{font-size: 14px;}
+    #visual .dust-bx p strong{font-size: 19px;}
 }
 
 @media (max-width:991px) {
@@ -203,7 +207,7 @@
     #visual .caution img{height:52px;}
     #visual .caution p{margin-top:18px;padding-top:15px;font-size:14px;}
     #visual .caution p:before{width:19px;height:16px;margin-right:11px;margin-top:2px;}
-    #visual .map-bx{width:100%;max-width:510px;margin:-15px auto 0;}
+    #visual .map-bx{width:100%;max-width:550px;margin:-15px auto 0;}
     #visual .map-bx .map{width:100%;}
     #visual .local-bx{width:140px;margin-left:-70px;}
     #visual .local-bx .open{height:44px;padding-left:0px;font-size:15px}
@@ -212,8 +216,8 @@
     #visual .dust-bx{position:relative;margin-top:-20px;}
     #visual .dust-bx p{height:95px;padding:15px 5px;}
     #visual .dust-bx p span{font-size:14px;}
-    #visual .dust-bx p em{font-size:13px;}
-    #visual .dust-bx p strong{font-size:16px;}
+    #visual .dust-bx p em{font-size: 13px;}
+    #visual .dust-bx p strong{font-size: 18px;}
 }
 
 @media (max-width:716px) {
@@ -248,9 +252,9 @@
     #visual .local-bx .view a{height:30px;line-height:30px;font-size:13px;}
     #visual .dust-bx{position:relative;margin:-10px 0px 0;border-radius:0;}
     #visual .dust-bx p{height:80px;padding:12px 2px;}
-    #visual .dust-bx p span{font-size:12px;}
-    #visual .dust-bx p em{font-size:12px;}
-    #visual .dust-bx p strong{font-size:14px;}
+    #visual .dust-bx p span{font-size: 13px;}
+    #visual .dust-bx p em{font-size: 12px;}
+    #visual .dust-bx p strong{font-size: 15px;}
 }
 
 
