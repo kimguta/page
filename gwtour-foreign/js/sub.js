@@ -236,9 +236,11 @@ ObjDoc.on({
 .on({
 	'click': function(e) { 
 		e.preventDefault();
+		var ParentOffSet = $(this).parents('.modal-slick-bx').offset().top;
 		$('.modal-slick-bx .slick-wrap').show();
 		$('.modal-slick-bx .slick-wrap .slick-prev').focus();
 		initSlick($('.modal-slick-bx .slick'), SlickOptionSub2);
+		$('html, body').animate({scrollTop: ParentOffSet}, 300);
 	}
 }, '.modal-slick-bx .modal-show')
 .on({

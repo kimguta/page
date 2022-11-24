@@ -154,69 +154,7 @@ $(function() {
         $(item).find('.spot-bx a:first').addClass('active');
     });
 
-    setInterval(function(){
-        var targetActive = $('#visual .item:first-child .spot-bx a.active');
-        var elemSpot = $('#visual .item:first-child .spot-bx');
-        var elemOpen = $('#visual .item:first-child .local-bx .open');
-        var mathClass = [
-            {class1 : 'v1', class2: ".v2",},
-            {class1 : 'v2', class2: ".v3",},
-            {class1 : 'v3', class2: ".v4",},
-            {class1 : 'v4', class2: ".v5",},
-            {class1 : 'v5', class2: ".v1",},
-        ]
-        for (var i = 0; i< mathClass.length; i++) {
-            if(targetActive.hasClass(mathClass[i].class1) === true){
-                elemSpot.find('a').removeClass('active');
-                elemSpot.find(mathClass[i].class2).addClass('active');
-                elemOpen.text(elemSpot.find(mathClass[i].class2).text());
-            }
-        };
-    }, 5000);
+
 });
 
-
-
-ObjDoc.on({
-	'click': function(e) { 
-        e.preventDefault();
-        var Idx = $(this).index();
-        $('#visual .slick').slick('slickGoTo', Idx);
-        $('#visual .tab a').removeClass('active');
-        $(this).addClass('active');
-        $('#visual .data-bx .item').removeClass('active');
-        $('#visual .data-bx .item').eq(Idx).addClass('active');
-	}
-}, '#visual .tab a')
-.on({
-	'click': function(e) { 
-        e.preventDefault();
-        $(this).toggleClass('active');
-	    $(this).next('.view').stop().slideToggle(300);
-	}
-}, '.local-bx .open')
-.on({
-	'click': function(e) { 
-        e.preventDefault();
-        var Idx2 = $(this).index();
-        var Name = $(this).text();
-        var Item = $(this).parents('.item');
-        $('.local-bx .open').removeClass('active');
-	    Item.find('.view').slideUp(300);
-        Item.find('.open').text(Name);
-        Item.find('.map-bx .spot-bx a').removeClass('active');
-        Item.find('.map-bx .spot-bx a').eq(Idx2).addClass('active');
-	}
-}, '.local-bx .view a, .map-bx .spot-bx a')
-.on({
-	'click': function(e) { 
-        e.preventDefault();
-        var Idx3 = $(this).index();
-        $(this).parent().find('a').removeClass('active');
-        $(this).addClass('active');
-        $(this).parent().next('div').find('.item').removeClass('active');
-        $(this).parent().next('div').find('.item').eq(Idx3).addClass('active');
-        $(this).parent().next('div').find('.item').eq(Idx3).find('.slick').slick('setPosition').slick('slickGoTo', 0);
-	}
-}, '#education .tab a, #board .tab a');
 
