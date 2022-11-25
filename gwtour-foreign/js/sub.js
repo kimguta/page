@@ -32,6 +32,11 @@ function contentScript(){
 
 	var imgSrc = $('.now-festival-bx .img-bx img').attr('src');
 	$('.now-festival-bx .img-bx').append('<span style=background-image:url('+imgSrc+') class="bg-img"></span>');
+
+	$('.brochure-bx a div').each(function(index,item){
+		var imgSrc = $(item).children('img').attr('src');
+		$(item).append('<span style=background-image:url('+imgSrc+') class="bg-img"></span>');
+	});
 	
 	var SlickOptionSub1 = {
         autoplay: false,
