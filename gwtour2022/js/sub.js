@@ -136,6 +136,32 @@ function contentScript(){
 		]
 	};
 	initSlick($('.map-slick-bx .slick'), SlickOptionSub6);
+
+	var SlickOptionSub7 = {
+		autoplay: false,
+		arrows: true,
+		accessibility: false,
+		dots: false,
+		draggable: true,
+		infinite: true,
+		slidesToScroll: 1,
+		slidesToShow: 4,
+		pauseOnHover: false,
+		swipeToSlide:true,
+		
+		speed: 350,
+		responsive: [
+			{
+				breakpoint: 1500,
+				settings: {
+					slidesToShow: 3,
+					variableWidth: true,
+					centerMode: true,
+				}
+			}
+		]
+	};
+	initSlick($('.korean-wave .slick'), SlickOptionSub7);
 };
 
 $(function() {
@@ -245,7 +271,11 @@ ObjDoc.on({
 	'click': function(e) { 
 		e.preventDefault();
 		$('.modal-slick-bx .slick-wrap').hide();
-		$('.modal-slick-bx .modal-show').focus();
+		if ($(this).parents('div').hasClass('korean-wave') == true) {
+			// $('.modal-slick-bx .modal-show').focus();
+		}else{
+			$('.modal-slick-bx .modal-show').focus();
+		}
 	}
 }, '.modal-slick-bx .modal-hide')
 .on({
