@@ -42,5 +42,19 @@ $(function() {
 	   $('#title-bx .share .open').focus();
 	   $('.view').fadeOut(100);
    });
-	
+   $('.core_strategy ul li .item_menu').on('click', function (e) {
+		e.preventDefault();
+		$(this).parent().parent().find('li').removeClass('active');
+		$(this).parent().addClass('active');
+	});
+	$('.core_strategy ul li .item_menu').on('click', function (e) {
+		e.preventDefault();
+		$(this).parent().parent().find('li').removeClass('active');
+		$(this).parent().addClass('active');
+	});
+	$('.view_box .box_title').on('click', function (e) {
+		e.preventDefault();
+		$(this).toggleClass('active');
+	});
+
 });
