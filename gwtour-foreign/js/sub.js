@@ -141,6 +141,31 @@ function contentScript(){
 		]
 	};
 	initSlick($('.map-slick-bx .slick'), SlickOptionSub6);
+
+	var SlickOptionSub7 = {
+		autoplay: false,
+		arrows: true,
+		accessibility: false,
+		dots: false,
+		draggable: true,
+		infinite: true,
+		slidesToScroll: 1,
+		slidesToShow: 4,
+		pauseOnHover: false,
+		swipeToSlide:true,
+		speed: 350,
+		responsive: [
+			{
+				breakpoint: 1500,
+				settings: {
+					variableWidth: true,
+					centerMode: true,
+				}
+			}
+		]
+	};
+	initSlick($('.korean-wave .slick'), SlickOptionSub7);
+
 };
 
 $(function() {
