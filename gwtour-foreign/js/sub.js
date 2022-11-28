@@ -277,7 +277,6 @@ ObjDoc.on({
 	'click': function(e) { 
 		e.preventDefault();
 		$('.modal-slick-bx .slick-wrap').hide();
-		$('.modal-slick-bx .modal-show').focus();
 	}
 }, '.modal-slick-bx .modal-hide')
 .on({
