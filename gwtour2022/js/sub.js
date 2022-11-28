@@ -148,13 +148,11 @@ function contentScript(){
 		slidesToShow: 4,
 		pauseOnHover: false,
 		swipeToSlide:true,
-		
 		speed: 350,
 		responsive: [
 			{
 				breakpoint: 1500,
 				settings: {
-					slidesToShow: 3,
 					variableWidth: true,
 					centerMode: true,
 				}
@@ -262,9 +260,13 @@ ObjDoc.on({
 .on({
 	'click': function(e) { 
 		e.preventDefault();
+		var ParentOffSet = $(this).parents('.modal-slick-bx').offset().top - 50;
 		$('.modal-slick-bx .slick-wrap').show();
 		$('.modal-slick-bx .slick-wrap .slick-prev').focus();
 		initSlick($('.modal-slick-bx .slick'), SlickOptionSub2);
+		if ($(this).parents('div').hasClass('korean-wave') == true) {
+			$('html, body').animate({scrollTop: ParentOffSet}, 300);
+		}
 	}
 }, '.modal-slick-bx .modal-show')
 .on({
