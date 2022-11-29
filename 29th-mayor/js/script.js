@@ -9,6 +9,7 @@ $(function() {
 	    }
 	});
 
+
 	var Wwidth = $(window).outerWidth();
 
 	$(window).on('resize load', function () {
@@ -39,13 +40,22 @@ $(function() {
 		$('.bg_pc').css('height',highestBox);
 	});
 
+	$(window).on('resize load', function () {
+		if($(window).width() < 760){
+			$('.core_strategy ul li').removeClass('active');
+			$('.core_strategy ul li').addClass('active');
+		}
+		else{
+			$('.core_strategy ul li').removeClass('active');
+			$('.core_strategy ul li:first-child').addClass('active');
+		}
+	});
 	var ObjGnb = $(document);
 
 
 	ObjGnb.init(function(){
 		$('#header .depth_03').prev('h3').addClass('has_depth');
 		$('#header .depth_02').prev('h2').addClass('has_depth');
-		$('#header nav').append('<span class="bg_pc"></span>');
 		$('#header').after('<span id="mask"></span>');
 	})
 	.on({
@@ -54,7 +64,6 @@ $(function() {
 			$('#header h2').removeClass('active');
 			$(this).children('h2').addClass('active');
 			$('.depth_02').stop().show();
-			$('.bg_pc').stop().slideDown(300);
 			$('#mask').show();
 			$('#header.pc-mode .sitemap').addClass('active');
         }
@@ -66,12 +75,11 @@ $(function() {
 				$(this).removeClass('active');
 				$('#header').removeClass('active');
 				$('#header h2').removeClass('active');
-				$('.depth_02, .bg_pc, #mask').stop().hide();
+				$('.depth_02, #mask').stop().hide();
 			} else{
 				$(this).addClass('active');
 				$('#header').addClass('active');
 				$('.depth_02').stop().show();
-				$('.bg_pc').stop().slideDown(300);
 				$('#mask').show();
 			}
         }
@@ -80,7 +88,7 @@ $(function() {
 		'focusout': function() {
             $('#header').removeClass('active');
 			$('#header h2').removeClass('active');
-			$('.depth_02, .bg_pc, #mask').stop().hide();
+			$('.depth_02, #mask').stop().hide();
 			$('#header.pc-mode .sitemap').removeClass('active');
         }
 	}, '#header .depth_01 a:last')
@@ -88,7 +96,7 @@ $(function() {
 		'mouseleave': function() {
             $('#header').removeClass('active');
 			$('#header h2').removeClass('active');
-			$('.depth_02, .bg_pc, #mask').stop().hide();
+			$('.depth_02, #mask').stop().hide();
 			$('#header.pc-mode .sitemap').removeClass('active');
         }
 	}, '#header.pc-mode')

@@ -4,7 +4,7 @@
 #sub #content{padding-bottom:70px;transition:all .2s;}
 
 #header:before{content:'';display:block;position:absolute;z-index:-1;background:#fff;top:0;bottom:0;left:-90px;right:-90px;transition:all .2s;}
-#header.fixed:before{opacity:.5;box-shadow:0px 3px 3px 0px rgba(0,0,0,.2);}
+#header.fixed:before{opacity:.5;box-shadow:0px 3px 3px 0px rgba(0,0,0,.2);position:fixed;left:0;right:0;height:84px;}
 #header.fixed ~ #sub{padding-top:84px}
 
 
@@ -37,11 +37,11 @@
 #visual-bx img.bg-txt{position:absolute;top:50%;left:50%;image-rendering:-webkit-optimize-contrast;margin:-75px 0 0 -293.5px}
 #visual-bx .text-bx{position:absolute;top:80px;left:223px;}
 #visual-bx .text-bx h2{font-size:4.0rem;line-height:4.8rem;font-weight:bold;color:#fff;text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.9);}
-#breadcrumb{position:absolute;z-index:50;left:0;bottom: -2px;background:#fff;padding-right:42px;}
+#breadcrumb{position:absolute;z-index:50;left:0;bottom: 0;background:#fff;padding-right:42px;}
 #breadcrumb .bx{position:relative;z-index:5;}
 #breadcrumb .bx .home{display: flex;width:75px;height:68px;align-items:center;justify-content:center;font-size:0;position: relative;top:0;left:0px;z-index:15;float: left;}
 #breadcrumb .bx .home:after{content:'';background:url(/page/29th-mayor/images/common/sp_sokcho_29th_mayor.png) no-repeat;background-position:-244px -7.5px;background-size:520px 835px;width:30px;height:25px;image-rendering:-webkit-optimize-contrast;z-index:10;}
-#breadcrumb .bx .box{position:relative;width: 228px;float: left;z-index:20;}
+#breadcrumb .bx .box{position:relative;min-width: 228px;max-width:300px;float: left;z-index:20;}
 #breadcrumb .bx .box a em{display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;padding-right:3.6rem;}
 #breadcrumb .bx .box:first-of-type .open:before{display:none;}
 #breadcrumb .bx .box+.box .open{padding-left:37px;padding-right:0;}
@@ -84,7 +84,7 @@
   #visual-bx .sns-bx{right:20px;}
   #breadcrumb .bx .home{width:60px;height:60px;}
   #breadcrumb .bx .home:after{transform:scale(.8);}
-  #breadcrumb .bx .box{position:relative;width:auto;float: left;}
+  #breadcrumb .bx .box{position:relative;width:auto;min-width:inherit;max-width:inherit;float: left;}
   #breadcrumb .bx .box .open{height:60px;line-height:62px;padding: 0 40px 0 30px;font-size:15px;pointer-events:none;}
   #breadcrumb .bx .box:last-child .open:before{display:none;}
   #breadcrumb .bx .box .open:after{right:0;transform:rotate(-90deg);margin-top:-5px;}
@@ -336,18 +336,21 @@ span.listLv:before,
   .timeline_list .time_info{width:10.0rem;height:10.0rem;line-height:10.0rem;font-size:2.0rem;}
   .timeline_list .item_info > li{margin-left:12.4rem;font-size: 1.6rem;line-height:2.6rem;}
 }
-.politics_goals{padding-top:3.6rem;text-align:center;}
+.politics_goals{padding-top:3.6rem;padding-bottom:8.4rem;text-align:center;}
 .politics_goals .area_title{display:inline-block;vertical-align:top;margin:6.4rem auto 0;height:4.4rem;line-height:4.4rem;border:3px solid #7223d4;border-width:3px 0;}
+.politics_goals .title_box {margin-top:2.8rem;}
 .politics_goals .title_box h3{display:inline-block;vertical-align:top;font-size:4.0rem;line-height:5.6rem;font-weight:bold;}
 .politics_goals .title_box h3 .red_text{color:#e84903;}
 .politics_goals .title_box h3 .green_text{color:#8ec220;}
-.politics_goals .text_area{display:table;width:100%;background:#f6f6f6;min-height:13.9rem;border:1px solid #c6c6c6;border-radius:7.0rem;}
-.politics_goals .text_area .text_box{display:table-cell;vertical-align:middle;height:13.9rem;}
+.politics_goals .title_box br{display:none;}
+.politics_goals .text_area{display:table;width:100%;background:#f6f6f6;min-height:13.9rem;margin-top:1.7rem;border:1px solid #c6c6c6;border-radius:7.0rem;}
+.politics_goals .text_area .text_box{display:table-cell;vertical-align:middle;height:13.9rem;word-break:keep-all;}
 .politics_goals .text_area .text_box p{font-size:1.8rem;line-height:3.1rem;font-weight:300;color:#000;letter-spacing:-1px;}
+.politics_goals .text_area .text_box p+p{margin-top:2px;}
 .politics_goals .text_area .text_box em{font-size:2.2rem;font-weight:bold;}
 .politics_goals .rule_list_wrap{margin:4.1rem -7.2rem 0;padding-bottom:1.9rem;}
 .politics_goals .rule_list{display:table;width:100%;table-layout:fixed;border-spacing: 7.2rem 0;}
-.politics_goals .rule_list li{position:relative;display:table-cell;vertical-align:top;width:calc((100% - (7.2rem*2)) / 3);margin-left:7.2rem;font-size:1.7rem;line-height:3.0rem;font-weight:300;color:#000;border:1px solid #c6c6c6;border-radius:18px;}
+.politics_goals .rule_list li{position:relative;display:table-cell;vertical-align:top;width:calc((100% - (7.2rem*2)) / 3);font-size:1.7rem;line-height:3.0rem;font-weight:300;color:#000;border:1px solid #c6c6c6;border-radius:18px;}
 .politics_goals .rule_list li .item_box{position: relative; min-height:38.4rem;padding:4.7rem 3.2rem 3.2rem;}
 .politics_goals .rule_list li:first-child{margin-left:0;}
 .politics_goals .rule_list li .item_ico{display:inline-block;vertical-align:top;width:67px;height:78px;margin-bottom:-13px;background:url(/page/29th-mayor/images/sub/ico_rule_01.png) center center / cover no-repeat}
@@ -364,7 +367,8 @@ span.listLv:before,
 .core_strategy ul li .item_menu:before{content:'';display:block;position:absolute;top:50%;left:0;width:3.9rem;height:1px;background:#7b7b7b;}
 .core_strategy ul li .item_menu em{font-size:2.5rem;font-weight:bold;}
 .core_strategy ul li .strategy_item{display:none;position:absolute;top:-4.3rem;right:-297px;width:110.5rem;height:49.9rem;padding-left:18.4rem;}
-.core_strategy ul li .strategy_item .bg_img{display:block;position:absolute;top:0;right:0;}
+.core_strategy ul li .strategy_item .bg_img{display:block;position:absolute;top:0;bottom:0;right:0;}
+.core_strategy ul li .strategy_item .bg_img img{height:100%;width:auto;}
 .core_strategy ul li .strategy_item .item_title{position:relative;display:block;margin-top:7.1rem;font-size:4.8rem;line-height:6.7rem;font-weight:bold;color:#fff;text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.75);z-index:10;}
 .core_strategy ul li .strategy_item .item_text{position:relative;display:block;margin-top:2.1rem;font-size:20px;line-height:3.6rem;font-weight:bold;color:#fff;text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.75);z-index:10;}
 .core_strategy ul li.active .item_menu{position:relative;background:#7223d4;color:#fff;box-shadow: 4px 7px 8px 0px rgba(0, 0, 0, 0.28);border-radius:6px;}
@@ -375,10 +379,200 @@ span.listLv:before,
 .view_box .box_title:before{content:'';display:block;position:absolute;top:50%;margin-top:-7px;left:21px;width:14px;height:14px;border-radius:14px;background:#7223d4}
 .view_box .box_title:after{content:'';display:block;position:absolute;top:50%;margin-top:-7px;right:37px;width:9px;height:13px;background:url(/page/29th-mayor/images/common/sp_sokcho_29th_mayor.png) no-repeat;background-position:-136px -125px;background-size:520px 835px;transform:rotate(180deg);transition: 0.3s all;}
 .view_box .box_title.active:after{transform:rotate(0);}
-.view_box .view_item{display:none;padding-top:5.5rem;padding-bottom:1.6rem;}
+.view_box .view_item{display:none;padding-top:5.0rem;padding-bottom:0.7rem;}
 .view_box .view_item img{display:block;margin:0 auto;width:100%;height:auto;}
 .view_box .view_item img+img{margin-top:2.3rem;}
 .view_box .box_title.active +.view_item{display:block;}
+
+@media (max-width: 1299px){
+  .politics_goals .text_area{display:block;}
+  .politics_goals .text_area .text_box{display:block;padding:30px;height: auto;}
+  .politics_goals .rule_list_wrap{margin:4.1rem -5.0rem;}
+  .politics_goals .rule_list{border-spacing: 5.0rem 0;}
+  .politics_goals .rule_list li{width:calc((100% - (5.0rem*2)) / 3);}
+  .politics_goals .rule_list li .item_ico{transform:scale(0.9);}
+  .core_strategy ul li .item_menu{width:57.2rem;}
+  .core_strategy ul li .strategy_item{left:46.2rem;}
+}
+
+@media (max-width: 1199px){
+  .core_strategy ul li .strategy_item{left:46.2rem;padding-left: 12.4rem;}
+  .core_strategy ul li .strategy_item .item_title,
+  .core_strategy ul li .strategy_item .item_text{width:calc(100vw - 68.2rem);}
+  .core_strategy ul li .strategy_item .item_text br{display:none;}
+}
+
+@media (max-width: 999px){
+  .politics_goals .text_area .text_box{text-align:left}
+  .politics_goals .rule_list_wrap{margin:4.1rem -3.0rem;}
+  .politics_goals .rule_list{border-spacing: 3.0rem 0;}
+  .politics_goals .rule_list li{width:calc((100% - (3.0rem*2)) / 3);}
+  .politics_goals .rule_list li .item_ico{transform:scale(0.8);}
+  .core_strategy ul li .item_menu{width:52.2rem;font-size:2.0rem;padding-left:3.1rem;}
+  .core_strategy ul li .item_menu:before{width:1.9rem;}
+  .core_strategy ul li .strategy_item{left:40.3rem;padding-left: 13.4rem;}
+  .core_strategy ul li .strategy_item .item_title,
+  .core_strategy ul li .strategy_item .item_text{width:calc(100vw - 61.2rem);}
+
+}
+@media (max-width: 760px){
+  .politics_goals .text_area{border-radius:10px;}
+  .politics_goals .text_area .text_box{padding:20px;}
+  .politics_goals .rule_list_wrap{margin:4.1rem 0 0;}
+  .politics_goals .rule_list{display:block;border-spacing: 0}
+  .politics_goals .rule_list li{display:block;width:100%;}
+  .politics_goals .rule_list li+li{margin-top:2.0rem;}
+  .politics_goals .rule_list li .item_box{min-height:auto;}
+  .politics_goals .rule_list li .item_ico{transform:scale(0.6);transform-origin: bottom;margin-bottom: -6px!important;}
+  .core_strategy ul li .strategy_item{position:relative;top:auto;right:auto;left:auto;width:100%;height:auto;padding-left:0;overflow:hidden;}
+  .core_strategy ul li.active .item_menu{width:100%;}
+  .core_strategy ul li .strategy_item .item_title,
+  .core_strategy ul li .strategy_item .item_text{width:100%;padding:20px;}
+  .core_strategy ul li .strategy_item .item_title{margin-top:0;}
+  .core_strategy ul li .strategy_item .item_text{margin-top:0;}
+  .core_strategy ul li .strategy_item .bg_img img{transform:scale(2.5);}
+  .core_strategy ul li.active .item_menu:after{display:none;}
+  .core_strategy ul li.active .item_menu{border-radius:0;pointer-events: none;cursor: default;}
+  .core_strategy ul li+li{margin-top:2.0rem;}
+}
+
+@media (max-width: 500px){
+  .politics_goals .title_box br{display:block;}
+}
+
+.manifesto_wrap .explain_area{position:relative;clear:both;margin-top:10.0rem;}
+.manifesto_wrap .explain_area .img_box{float:right;margin-left:2.7rem;}
+.manifesto_wrap .explain_area .img_box img{display:block;width:100%;height:auto;}
+.manifesto_wrap .explain_area .title_box strong{display:block;color:#7223d4;font-size:3.368rem;line-height:4.71rem;font-weight:500}
+.manifesto_wrap .explain_area .title_box h3{margin-top:1px;color:#000;font-size:4.21rem;line-height:6.0rem;font-weight:500;word-break:keep-all;}
+.manifesto_wrap .explain_area .explain_box{margin-top:7.0rem;font-size:1.7rem;line-height:3.0rem;font-weight:300;color:#000;}
+.manifesto_wrap .explain_area .explain_box p{word-break:keep-all;}
+.manifesto_wrap .explain_area .explain_box p+p{margin-top:3.0rem;}
+.manifesto_case{margin-top:8.1rem;clear:both;}
+.manifesto_case .case_list{margin-top:3.1rem;font-size:0;display: flex;flex-wrap: wrap;}
+.manifesto_case .case_list > li{display:inline-block;vertical-align:top;width:calc((100% - 5.1rem) / 2);min-height:39.6rem;border-radius:1.6rem;border:1px solid #c6c6c6;margin-top:5.6rem;}
+.manifesto_case .case_list > li:nth-child(2n){margin-left:5.1rem;}
+.manifesto_case .case_list > li:nth-child(-n+2){margin-top:0;}
+.manifesto_case .case_list > li .top_box{overflow:hidden;font-size:1.8rem;font-weight:300;;padding:2.6rem 2.9rem 2.7rem;background:#f1f2f2;border-radius:1.6rem 1.6rem 0 0;}
+.manifesto_case .case_list > li .top_box strong{display:block;margin-top:4.1rem;font-weight:500;color:#000;line-height:3.0rem;word-break:keep-all;}
+.manifesto_case .case_list > li .top_box strong em{font-size:2.2rem;}
+.manifesto_case .case_list > li .top_box p{margin-top:0.8rem;color:#004986;line-height:2.5rem;}
+.manifesto_case .case_list > li .top_box .flag_info{float:left;margin-right:3.4rem;}
+.manifesto_case .case_list > li .top_box .flag_info img{display:block;width:100%;height:auto;}
+.manifesto_case .case_list > li .detail_box{padding:2.9rem 3.3rem 3.3rem;font-size:1.6rem;line-height:2.3rem;font-weight:200;}
+.manifesto_case .case_list > li .detail_box .box_list li{position:relative;padding-left:1.7rem;color:#000;word-break:keep-all;}
+.manifesto_case .case_list > li .detail_box .box_list li+li{margin-top:1.3rem;}
+.manifesto_case .case_list > li .detail_box .box_list li:before{content:'';display:block;position:absolute;top:11px;left:0;width:7px;height:2px;background:#7d7d7d;}
+.manifesto_case .case_list > li .top_box .box_text{overflow:hidden;font-size:1.6rem;line-height:2.6rem;color:#000;font-weight:200;word-break:keep-all;}
+.manifesto_case .case_list > li .top_box .box_text+.box_text{margin-top:1.3rem;}
+.manifesto_case .case_list > li:last-child .top_box{background:none;border-radius:0;}
+.manifesto_case .case_list > li:last-child .top_box strong{margin-top:0.6rem;}
+.manifesto_wrap .moreview_area{margin-top:5.8rem;padding-bottom:4.1rem;text-align:center;}
+.manifesto_wrap .moreview_box{display:inline-block;vertical-align:top;border-top:3px solid #000;}
+.manifesto_wrap .moreview_box p{margin-top:31px;font-size:1.7rem;line-height:2.4rem;font-weight:500;color:#000;text-align:left;}
+.manifesto_wrap .moreview_box .shortcut_btn{display:block;height:5.4rem;line-height:5.4rem;margin-top:5.2rem;padding:0 3.3rem;background:#7223d4;color:#fff;font-size:1.7rem;font-weight:500;}
+
+@media (max-width: 1299px){
+  .manifesto_wrap .explain_area .img_box{width:50%;}
+  .manifesto_case .case_list > li{min-height:auto;}
+  .manifesto_case .case_list > li .top_box .flag_info{width:41%;height:auto;margin-right:2.4rem;}
+}
+
+@media (max-width: 1199px){
+  .manifesto_case .case_list > li .top_box .box_text{overflow:visible}
+  .manifesto_case .case_list > li .top_box strong{margin-top:0;}
+  .manifesto_case .case_list > li .top_box strong em{display:block;}
+}
+@media (max-width: 999px){
+  .manifesto_case .case_list > li{width: calc((100% - 3.0rem) / 2);margin-top:3.0rem;}
+  .manifesto_case .case_list > li:nth-child(2n){margin-left:3.0rem;}
+  .manifesto_case .case_list > li .top_box{padding: 2.0rem;}
+  .manifesto_case .case_list > li .top_box .flag_info{float:right;margin-left:2.4rem;margin-right:0}
+  .manifesto_case .case_list > li .detail_box{padding: 2.0rem;}
+}
+
+@media (max-width: 760px){
+  .manifesto_wrap .explain_area .img_box{width:40%}
+  .manifesto_case .case_list > li{display:block;width: 100%;margin-top:2.0rem!important;margin-left:0!important;}
+  .manifesto_case .case_list > li:nth-child(1){margin-top:0!important;}
+  .manifesto_case .case_list > li .top_box strong em{display:inline-block;}
+  .manifesto_case .case_list > li .top_box .flag_info{width:80px;}
+  .manifesto_case .case_list > li:last-child .top_box strong{margin-bottom:30px;}
+}
+
+@media (max-width: 500px){
+  .manifesto_wrap .explain_area .img_box{position:absolute;top:0;right:0;opacity:0.6;z-index: -1;}
+}
+
+.profile_wrap{position:relative;height:72.6rem;}
+.profile_wrap:before{content:'';display:block;position:absolute;width:100vw;top:0;bottom:0;left:50%;transform:translateX(-50%);background:#b1afb4;z-index:-2;}
+.profile_wrap:after{content:'';position:absolute;top:0;left:50%;width:1920px;transform:translateX(-50%);height:891px;background:url(/page/29th-mayor/images/sub/profile_bg.jpg) no-repeat;z-index:-1;}
+.profile_wrap .img_box{position:absolute;bottom:-70px;right:61px}
+.profile_wrap .img_box img{display:block;width:100%;height:auto;}
+.profile_wrap .title_box h3{display:inline-block;vertical-align:top;text-align:center;padding-top:10.7rem;padding-left:13.7rem;font-family:'ChosunNm';font-size:4.5rem;line-height:7.2rem;color:#fff;letter-spacing:0;text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.67);}
+.profile_wrap .profile_list{padding-top:6.4rem;margin-left:7px;}
+.profile_wrap .profile_list .list_title{height:8.8rem;line-height:8.8rem;color:#000;font-size:2.4rem;font-family: 'Noto Sans KR';font-weight:500;}
+.profile_wrap .profile_list .list_title [class*="ico_"]{position:relative;display:inline-block;vertical-align:top;width:88px;height:88px;margin-right:1.8rem;background:#7223d4;border-radius:100%;}
+.profile_wrap .profile_list .list_title [class*="ico_"]:before{content:'';display:block;position:absolute;width:60px;height:42px;top:50%;left:50%;margin-top:-21px;margin-left:-30px;background:url(/page/29th-mayor/images/common/sp_sokcho_29th_mayor.png) no-repeat;background-position:-49.5px -56.5px;background-size:520px 835px;}
+.profile_wrap .profile_list .list_title .ico_career:before{width:50px;height:47px;margin-top:-24px;margin-left:-25px;background-position:-134.5px -56.5px;}
+.profile_wrap .profile_list .list_box{position:relative;display:inline-block;vertical-align:top;width:36.8rem;padding-left:2.0rem;}
+.profile_wrap .profile_list .list_box ul{position:relative;margin-top:2.6rem;}
+.profile_wrap .profile_list .list_box ul:before{content:'';display:block;position:absolute;top:7px;left:-2.0rem;width:1px;height:25.4rem;background:rgba(0,0,0,0.3);}
+.profile_wrap .profile_list .list_box ul li{position:relative;padding-left:13px;font-family: 'Noto Sans KR';font-size:1.8rem;line-height:3.6rem;color:#000;font-weight:300;}
+.profile_wrap .profile_list .list_box ul li:before{content:'';display:block;position:absolute;top:1.6rem;left:0;width:3px;height:3px;border-radius:3px;background:#707070;}
+
+@media (max-width: 1299px){
+  .profile_wrap .img_box{right:0;bottom: -50px;}
+  .profile_wrap .img_box{width:350px;}
+  .profile_wrap .profile_list{margin-left:0;}
+  .profile_wrap .profile_list .list_box{width:34.8rem;}
+  .profile_wrap .profile_list .list_title [class*="ico_"]{transform:scale(0.9);}
+}
+
+@media (max-width: 999px){
+  .profile_wrap{height:auto;}
+  .profile_wrap .title_box h3{display:block;padding-left:0;}
+  .profile_wrap .profile_list{padding-top:4.0rem;}
+  .profile_wrap .profile_list .list_box{width:50%;}
+  .profile_wrap .profile_list .list_box ul:before{height:auto;bottom:0;}
+  .profile_wrap .profile_list .list_box+.list_box{margin-top:2.0rem;}
+  .profile_wrap .profile_list .list_title [class*="ico_"]{transform:scale(0.8);}
+}
+
+@media (max-width: 760px){
+  .profile_wrap .profile_list .list_title{height:6.0rem;line-height:6.0rem;}
+  .profile_wrap .profile_list .list_title [class*="ico_"]{transform:scale(0.6);transform-origin: top left;margin-right:-20px;}
+  .profile_wrap .profile_list .list_box ul{margin-top:0;}
+}
+@media (max-width: 670px){
+  .profile_wrap:after{background:url(/page/29th-mayor/images/sub/profile_bg.jpg) center center / cover no-repeat;height: calc(100% + 35px);}
+  .profile_wrap .title_box h3{font-size:3.4rem;line-height:4.8rem;}
+  .profile_wrap .img_box{position:relative;width:100%;margin-top:30px;bottom:auto;right:0;}
+  .profile_wrap .profile_list .list_box{width:100%;}
+  .profile_wrap .profile_list{padding-top:3.0rem;}
+  .profile_wrap .profile_list .list_box ul{margin-top:-20px;}
+}
+
+.greeting_wrap{position:relative;padding-bottom:11.0rem;}
+.greeting_wrap:after{content:'';position:absolute;top:0;left:50%;width:1920px;transform:translateX(-50%);height:1405px;background:url(/page/29th-mayor/images/sub/greeting_bg.jpg) no-repeat;z-index:-1;}
+.greeting_wrap .title_box h3{display:block;padding-top:10.7rem;font-family:'ChosunNm';font-size:4.5rem;line-height:7.2rem;color:#000;letter-spacing:0;}
+.greeting_wrap .greeting_box{margin-top:7.2rem;background:rgba(255,255,255,0.6);padding:3.4rem 4.4rem 7.0rem;}
+.greeting_wrap .greeting_box p{font-size:1.7rem;line-height:3.6rem;color:#201d1d;font-weight:400;z-index:10;}
+.greeting_wrap .greeting_box p .red_txt{color:#cb1d1d;font-weight:400;}
+.greeting_wrap .greeting_box p+p{margin-top:3.6rem;}
+
+@media (max-width: 999px){
+  .greeting_wrap{padding-bottom:2.0rem;}
+}
+
+@media (max-width: 760px){
+  .greeting_wrap{padding-bottom:0rem;}
+}
+@media (max-width: 670px){
+  .greeting_wrap .title_box h3{font-size:3.4rem;line-height:4.8rem;}
+  .greeting_wrap:after{background:url(/page/29th-mayor/images/sub/greeting_bg.jpg) center center / cover no-repeat;height: calc(100% + 35px);}
+}
+
 /* cmly-column-utility */
 .cmly-column-utility {position: relative;z-index: 10;min-height: 35px;background: #f6f6f6;border-bottom-width: 1px;border-style: solid;border-color: #e7e7e7;font-size: 12px;}
 .cmly-column-utility .column-inner {width: 1340px;margin: 0 auto;}
@@ -1121,7 +1315,7 @@ h6 + .cmpe-table,
 
 /* cmpe-gallery */
 .cmpe-gallery {overflow: hidden;list-style: none;}
-.cmpe-gallery li {display: block;float: left;width: 230px;height: 249px;margin: 0 0 30px 26px;}
+.cmpe-gallery li {display: block;float: left;width:calc((100% - 80px) / 4);height: 249px;margin: 0 0 30px 26px;}
 .cmpe-gallery .cmpe-link {box-sizing: border-box;width: 100%;height: 100%;padding: 0;border: 1px solid #e3e3e3;}
 .cmpe-gallery .item-first {margin-left: 0;}
 .cmpe-gallery .box-image {width: 100%;height: 151px;border-bottom: 1px solid #e3e3e3;font-size: 0;line-height: 151px;text-align: center;}
@@ -1169,3 +1363,41 @@ h6 + .cmpe-table,
 .cmpe-gallery3 .cmpe-ctitle,
 .cmpe-gallery3 .cmpe-list {margin: 5px 0;}
 .cmpe-gallery3 .cmpe-ctitle {height: 3em;font-size: 16px;line-height: 1.5em;text-align: center;}
+
+
+.cmpe-pseudo-table{line-height:1.6;}
+.cmpe-cs-view .cmpe-image{float:none;margin:15px auto;max-width:100%;width:auto;display:block;}
+.cmpe-cs-view .cmpe-image img{display:block;width:100%;}
+.cmly-panel + .cmpe-pseudo-table{margin-top:20px;}
+
+@media (max-width:1299px) {
+  .cmpe-page {margin:15px auto 20px;}
+}
+
+@media (max-width:991px) {
+  .cmpe-gallery li {width:calc((100% - 60px) / 4);height: 230px;margin: 0 0 25px 20px;}
+  .cmpe-gallery .cmpe-text {font-size:14px;}
+  .cmpe-gallery .cmpe-ctitle {font-size:14px;}
+}
+
+@media (max-width:760px) {
+  .cmpe-gallery li {width:calc((100% - 10px) / 2);height: 230px;margin: 0 0 20px 10px;}
+  .cmpe-gallery li:nth-child(2n+1){margin-left:0;}
+  .cmpe-gallery .cmpe-text {font-size:13px;}
+  .cmpe-gallery .cmpe-ctitle {font-size:13px;}
+  .cmpe-page >.cmpe-link{height:22px;line-height:20px;font-size:12px;min-width:20px;}
+  .cmpe-page .cmpe-link-next,
+  .cmpe-page .cmpe-link-last,
+  .cmpe-page .cmpe-link-prev,
+  .cmpe-page .cmpe-link-first {font-size: 0 !important;}
+  .cmpe-page {margin:5px auto 10px;padding:0;white-space:nowrap;}
+
+  .cmly-panel .cmpe-pseudo-table,
+  .cmly-panel .cmpe-pseudo-table .tr,
+  .cmly-panel .cmpe-pseudo-table .td, .cmly-panel .cmpe-pseudo-table .th{display:block;float:none;font-size:14px;border-left:0;}
+  .cmly-panel .cmpe-pseudo-table .tr > div{width:100% !important;font-size:14px;}
+  .cmpe-pseudo-table-resp{font-size:13px;}
+  .cmpe-pseudo-table-resp .th{width: 90px !important}
+  .cmpe-pseudo-table-resp .td{width:calc(100% - 90px) !important}
+  .cmpe-link-base{font-size:13px;}
+}
