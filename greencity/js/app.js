@@ -51,6 +51,15 @@ function imgNumber(slick,index){
     return '<a href="#" role="button" onclick="return false;">' + (index + 1) + '</a>';
 }
 
+function tglCls(elem){
+    $(elem).toggleClass('active');
+	if ($(elem).hasClass('active')) {
+		$(elem).find('span').text('닫기');
+	} else {
+		$(elem).find('span').text('열기');
+	}
+}
+
 var ObjWin = $(window);
 var ObjDoc = $(document);	
 var Wwidth = ObjWin.outerWidth();

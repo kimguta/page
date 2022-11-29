@@ -96,7 +96,21 @@ ObjDoc.on({
 			$(this).parent('h3').next('.depth-03').slideDown(300);
 		}
 	}
-}, '#side-menu h3.has-depth a');
+}, '#side-menu h3.has-depth a')
+.on({
+	'change': function() { 
+		if($(this).is(":checked")) {
+			$(this).parents('.city-bx').find('input[type="checkbox"]').each(function(index, item){
+				$(item).prop("checked", true);
+			});
+		}
+		else {
+			$(this).parents('.city-bx').find('input[type="checkbox"]').each(function(index,item){
+				$(item).prop("checked", false);
+			});
+		}
+	}
+}, '.check-bx .check-all');
 
 
 //콘텐츠 스크립트 (dom ready 후 동작)

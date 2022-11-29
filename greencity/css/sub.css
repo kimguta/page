@@ -276,7 +276,7 @@
 #sub .login-bx h4.v2{font-size:24px;font-weight:400;}
 #sub .login-bx h4 + .skinBtnBo{margin-top:45px;}
 #sub #input-form{display:flex;flex-direction:column;align-items:center;max-width:415px;width:100%;margin:15px auto 0;}
-#sub .result-bx #input-form:first-child{margin-top:0px;}
+#sub .login-bx .result-bx #input-form:first-child{margin-top:0px;}
 #sub #input-form > div,
 #sub #input-form > fieldset{width:100%;margin-top:10px;}
 #sub #input-form fieldset{display:flex;border:1px solid #d9d9d9;align-items:center;padding-left:15px;background:#fff;}
@@ -330,15 +330,15 @@
 #sub .skinTb textarea + .skinBtnBo{height:80px;line-height:78px;}
 
 #sub .content-flex-tab{display:flex;margin-bottom:40px;} 
-#sub .content-flex-tab a{flex:1;height:60px;display:flex;align-items:center;justify-content:center;border:1px solid #c1c1c1;color:#000;font-size:18px;}
+#sub .content-flex-tab a{flex:1;height:60px;padding:0 3px;display:flex;align-items:center;justify-content:center;border:1px solid #c1c1c1;color:#000;font-size:18px;text-align:center;word-break: keep-all;line-height: 1.3;}
 #sub .content-flex-tab a:hover{text-decoration:none;font-weight:700;}
 #sub .content-flex-tab a + a{margin-left:15px}
 #sub .content-flex-tab a.active{pointer-events:none;background:#2189ff;color:#fff;font-weight:700;}
 
-#sub .result-bx{max-width:540px;width:100%;word-break:keep-all;margin:0 auto;display:flex;align-items:center;flex-direction:column;justify-content:center;background:#f6f6f6;border-radius:15px;padding:35px 20px;margin:35px 0;}
-#sub .result-bx span{line-height:1.8;color:#767875;font-size:18px;text-align:center;}
-#sub .result-bx span strong{color:#000;font-weight:700;}
-#sub .result-bx span em{color:#2189ff;font-weight:700;}
+#sub .login-bx .result-bx{max-width:540px;width:100%;word-break:keep-all;margin:0 auto;display:flex;align-items:center;flex-direction:column;justify-content:center;background:#f6f6f6;border-radius:15px;padding:35px 20px;margin:35px 0;}
+#sub .login-bx .result-bx span{line-height:1.8;color:#767875;font-size:18px;text-align:center;}
+#sub .login-bx .result-bx span strong{color:#000;font-weight:700;}
+#sub .login-bx .result-bx span em{color:#2189ff;font-weight:700;}
 
 #sub .skinBtnBo + .skinBtnBo{margin-left:5px;}
 
@@ -380,8 +380,8 @@
   #sub .content-flex-tab a + a{margin-left:10px}
   #sub .content-flex-tab a.active{font-weight:500;}
 
-  #sub .result-bx{border-radius:10px;padding:30px 20px;margin:30px 0;}
-  #sub .result-bx span{font-size:16px;}
+  #sub .login-bx .result-bx{border-radius:10px;padding:30px 20px;margin:30px 0;}
+  #sub .login-bx .result-bx span{font-size:16px;}
 
 }
 
@@ -428,7 +428,140 @@
   #sub .content-flex-tab a{height:40px;font-size:14px;}
   #sub .content-flex-tab a + a{margin-left:5px}
 
-  #sub .result-bx{padding:25px 20px;margin:25px 0;}
-  #sub .result-bx span{font-size:14px;}
+  #sub .login-bx .result-bx{padding:25px 20px;margin:25px 0;}
+  #sub .login-bx .result-bx span{font-size:14px;}
   #sub .skinBtnBo + .skinBtnBo{margin-left:3px;}
+}
+
+/*스마트그린 도시*/
+#sub .infra-map{position:relative;max-width:1046px;margin:55px auto 35px;}
+#sub .infra-map > img{display:block;width:100%;image-rendering: -webkit-optimize-contrast;}
+#sub .infra-map .spot-bx{position:absolute;top:0;left:0;right:0;bottom:0;}
+#sub .infra-map .spot-bx .pin{position:absolute;font-size:0;color:transparent;display:flex;align-items:center;justify-content:center;z-index:2;line-height:1;width:48.5px;height:35px;}
+#sub .infra-map .spot-bx .pin em{font-size:16px;color:#fff;padding-top:1px;text-shadow:1px 1px 2px rgba(0,0,0,.3);position:relative;z-index:10;}
+#sub .infra-map .spot-bx .pin:before{content:'';image-rendering: -webkit-optimize-contrast;display:block;z-index:-1;position:absolute;top:0;left:0;right:0;bottom:0;background:url(/page/greencity/images/sub/measuring-air.png) no-repeat center center /cover;}
+#sub .infra-map .spot-bx .pin.water:before{background-image:url(/page/greencity/images/sub/measuring-water.png);}
+#sub .infra-map .spot-bx .pin.edu:before{background-image:url(/page/greencity/images/sub/measuring-edu.png);transition:all .2s;}
+#sub .infra-map .spot-bx .pin:hover:before{animation:sub-pin-move1 .3s infinite alternate linear;filter:drop-shadow(1px 1px 2px rgba(0,0,0,.15));filter:invert(2);}
+
+#sub .infra-map .pin.v1{left: 14%;top: 54%;}
+#sub .infra-map .pin.v2{left: 6%;top: 45%;}
+#sub .infra-map .pin.v3{left: 21%;top: 53%;}
+#sub .infra-map .pin.v4{left: 39%;top: 60%;}
+#sub .infra-map .pin.v5{left: 32%;top: 54%;}
+#sub .infra-map .pin.v6{left: 25%;top: 65%;}
+#sub .infra-map .pin.v7{left: 53.5%;top: 57.5%;}
+#sub .infra-map .pin.v8{left: 58.5%;top: 56%;}
+#sub .infra-map .pin.v9{left: 66.6%;top: 39.9%;}
+#sub .infra-map .pin.v10{left: 69%;top: 69%;}
+#sub .infra-map .pin.v11{left: 79%;top: 84%;}
+#sub .infra-map .pin.v12{left: 71.5%;top: 35.5%;}
+#sub .infra-map .pin.v13{left: 92.5%;top: 32%;}
+#sub .infra-map .pin.v14{left: 89%;top: 22%;}
+#sub .infra-map .pin.v15{left: 88%;top: 15%;}
+#sub .infra-map .pin.v16{left: 9%;top: 41%;}
+#sub .infra-map .pin.v17{left: 56%;top: 51.5%;}
+#sub .infra-map .pin.v18{left: 63%;top: 37%;}
+#sub .infra-map .pin.v19{left: 81%;top: 50%;}
+#sub .infra-map .pin.v20{left: 95%;top: 49%;}
+#sub .infra-map .pin.v21{left: 12%;top: 47%;}
+#sub .infra-map .pin.v22{left: 33%;top: 62%;}
+#sub .infra-map .pin.v23{left: 66.6%;top: 33.2%;}
+#sub .infra-map .pin.v24{left: 75%;top: 33%;}
+#sub .infra-map .pin.v25{left: 87.5%;top: 34%;}
+
+
+@keyframes sub-pin-move1{
+  0%{transform:scale(1);}
+  100%{transform:scale(1.15);}
+}
+
+
+@media (max-width:1389px) {
+  #sub .infra-map{margin:45px auto 30px;}
+  #sub .infra-map .spot-bx .pin{transform:scale(.82);transform-origin:0% 0%;}
+}
+
+@media (max-width:991px) {
+  #sub .infra-map{margin:40px auto 25px;}
+  #sub .infra-map .spot-bx .pin{transform:scale(.75);}
+}
+
+@media (max-width:716px) {
+  #sub .infra-map{margin:30px -15px 20px -35px;}
+  #sub .infra-map .spot-bx .pin{transform:scale(.6);transform-origin:-20% -20%;}
+  #sub .infra-map .spot-bx .pin em{font-size:18px;font-weight:500;text-shadow:1px 1px 2px rgba(0,0,0,.15);} 
+}
+
+/*기후변화/환경*/
+#sub .select-wrap{position:relative;margin:0 auto 35px;padding:25px 80px 38px;background:#f0f6f7;}
+#sub .select-wrap .data-bx{padding-bottom:25px;margin-bottom:25px;border-bottom:1px solid #dbe4e5;overflow:hidden;}
+#sub .select-wrap .skinBtnBo{background:#fff;}
+#sub .select-wrap .select-bx{display:flex;align-items:center;}
+#sub .select-wrap .select-bx > div{flex:1;}
+#sub .select-wrap .select-bx label{font-size:18px;color:#000;}
+#sub .select-wrap .select-bx select{width:190px;height:34px;font-size:15px;padding-left:10px;border:1px solid #c2c2c2;margin-left:10px;color:#535353;}
+#sub .select-wrap .select-bx select + select{margin-left:5px;}
+#sub .select-wrap .result-bx{margin:18px 0;background:#fff;padding:15px 25px;border:1px solid #d6d6d6;display:flex;line-height:1.4;font-size:15px;}
+#sub .select-wrap .result-bx strong{flex-shrink:0;margin-right:5px;color:#535353;}
+#sub .select-wrap .result-bx p{word-break:keep-all;flex:1;color:#2189ff;}
+#sub .select-wrap .check-bx > a{display:flex;width:100%;align-items:center;justify-content:center;height:40px;background:#4d5360;font-size:15px;color:#fff;}
+#sub .select-wrap .check-bx > a:hover{text-decoration:none;}
+#sub .select-wrap .check-bx > a span{margin-left:4px;}
+#sub .select-wrap .check-bx > a:after{content:'';width:5px;height:5px;border:2px solid #fff;border-width:2px 2px 0 0;margin-left:10px;transform:rotate(135deg);margin-top:-2px;transition:all .2s;}
+#sub .select-wrap .check-bx > a.active:after{transform:rotate(-45deg);margin-top:2px;}
+#sub .select-wrap .site-bx{display:none;margin-top:18px;}
+#sub .select-wrap a.active + .site-bx{display:flex;animation:box-move1 .35s 1 both ease-out;}
+#sub .select-wrap .city-bx{flex:1;background:#fff;border:1px solid #d6d6d6;padding-bottom:17px;}
+#sub .select-wrap .city-bx + .city-bx{margin-left:15px;}
+#sub .select-wrap .city-bx strong{display:flex;align-items:center;justify-content:center;background:#e5e5e5;height:34px;color:#313131;margin-bottom:17px;}
+#sub .select-wrap .city-bx div{display:flex;align-items:center;padding-left:30px;margin-top:3px;}
+#sub .select-wrap .city-bx div label{margin-left:6px;color:#535353;font-size:15px;}
+
+@keyframes box-move1{
+  0%{transform:translateY(50%);opacity:0;}
+  100%{transform:ranslateY(0%);opacity:1;}
+}
+
+
+@media (max-width:1389px) {
+  #sub .select-wrap{margin:0 -20px 30px;padding:23px 20px 25px;}
+  #sub .select-wrap .data-bx{padding-bottom:22px;margin-bottom:22px;}
+  #sub .select-wrap .select-bx label{font-size:16px;}
+  #sub .select-wrap .select-bx select{width:160px;height:32px;font-size:14px;margin-left:8px;}
+  #sub .select-wrap .result-bx{margin:15px 0;padding:15px 20px;font-size:15px;}
+  #sub .select-wrap .check-bx > a{height:38px;font-size:14px;}
+  #sub .select-wrap .check-bx > a:after{width:4px;height:4px;margin-left:8px;margin-top:-1px;}
+  #sub .select-wrap .check-bx > a.active:after{margin-top:1px;}
+  #sub .select-wrap .site-bx{margin-top:17px;}
+  #sub .select-wrap .city-bx{padding-bottom:15px;}
+  #sub .select-wrap .city-bx + .city-bx{margin-left:10px;}
+  #sub .select-wrap .city-bx strong{margin-bottom:15px;height:32px;font-size:15px;}
+  #sub .select-wrap .city-bx div{padding-left:20px;}
+  #sub .select-wrap .city-bx div label{margin-left:5px;font-size:14px;}
+  }
+
+@media (max-width:991px) {
+  #sub .select-wrap .select-bx{align-items:flex-start;flex-direction:column;}
+  #sub .select-wrap .select-bx > div{flex:1 100%;}
+  #sub .select-wrap .select-bx > div + div{margin-top:10px;}
+}
+
+@media (max-width:716px) {
+  #sub .select-wrap{margin:0 -15px 25px;padding:20px 15px 20px;}
+  #sub .select-wrap .data-bx{padding-bottom:18px;margin-bottom:18px;}
+  #sub .select-wrap .select-bx label{font-size:14px;}
+  #sub .select-wrap .select-bx select{width:130px;height:30px;font-size:13px;margin-left:7px;}
+  #sub .select-wrap .select-bx select + select{margin-left:2px;}
+  #sub .select-wrap .select-bx > div + div{margin-top:5px;}
+  #sub .select-wrap .result-bx{padding:15px;font-size:14px;flex-direction:column;}
+  #sub .select-wrap .result-bx strong{margin-bottom:5px;}
+  #sub .select-wrap .result-bx strong em{display:none;}
+  #sub .select-wrap .check-bx > a{font-size:13.5px;}
+  #sub .select-wrap .site-bx{margin-top:15px;}
+  #sub .select-wrap .city-bx{padding-bottom:13px;}
+  #sub .select-wrap .city-bx + .city-bx{margin-left:5px;}
+  #sub .select-wrap .city-bx strong{margin-bottom:12px;height:30px;font-size:14px;}
+  #sub .select-wrap .city-bx div{padding-left:15px;}
+  #sub .select-wrap .city-bx div label{font-size:13px;}
 }
