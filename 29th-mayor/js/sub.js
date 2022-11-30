@@ -56,5 +56,18 @@ $(function() {
 		e.preventDefault();
 		$(this).toggleClass('active');
 	});
-
+	$('#A-Gallery.slick').slick({
+        autoplay: false,
+		arrows: true,
+		dots: false,
+		prevArrow: '<a href="#" class="prev">이전</a>',
+		nextArrow: '<a href="#" class="next">다음</a>',
+		accessibility: true,
+		swipeToSlide: true,
+		infinite: false,
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		pauseOnHover: false,
+		speed: 600,
+    });
 });
