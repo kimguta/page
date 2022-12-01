@@ -171,11 +171,13 @@ ObjDoc.on({
 .on({
 	'mouseenter': function() { 
 		$('#search-bx').addClass('active');
-	},
-	'mouseleave': function() { 
-		$('#search-bx').removeClass('active');
 	}
 }, '#search-bx')
+.on({
+	'mouseenter': function() { 
+		$('#search-bx').removeClass('active');
+	}
+}, 'main')
 .on({
 	'focusin': function() { 
 		setTimeout(function() {
