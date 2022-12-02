@@ -380,5 +380,11 @@ ObjDoc.on({
 			$('.select-btn').removeClass('active');
 		}
 	}
-}, '.select-list a');
+}, '.select-list a')
+.on({
+	'click': function(e) { 
+		e.preventDefault();
+        $('#sub-visual .tab ').toggleClass('active');
+	}
+}, '#sub-visual .tab .active');
 
