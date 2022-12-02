@@ -64,22 +64,23 @@ $(function() {
         arrows: true,
         accessibility: false,
         dots:true,
-        swipeToSlide:true,
         prevArrow: $('#only .prev'),
         nextArrow: $('#only .next'),
         appendDots: $('#only .dots'),
         draggable: true,
-        variableWidth: true,
         infinite: true,
-        slidesToShow: 1,
+        slidesToShow: 2,
+        slidesToScroll: 2,
         pauseOnHover: false,
-        speed: 1200,
+        speed: 700,
         responsive: [
             {
                 breakpoint: 1500,
                 settings: {
-                speed: 700,
+                speed: 350,
+                variableWidth: true,
                 centerMode: true,
+                slidesToScroll: 1,
                 }
             }
         ]

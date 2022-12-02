@@ -98,7 +98,8 @@
     #visual .text-img{margin-left:-656px;height:640px;display:none}
     #visual .text-img.mobile{display:block;}
     #visual .control-bx{bottom:25px;padding-bottom:25px;}
-    #visual .btn-bx{transform:scale(.6);right:15px;}
+    #visual .btn-bx{transform:scale(.6);right: 0px;width: 100%;transform-origin: 50% 100%;justify-content: center;}
+    #visual .btn-bx a em{display:none;}
 }   
 
 
@@ -245,7 +246,8 @@
 
 
 #food{position:relative;margin-top:60px;}
-#food .slick-slide{width:360px;position:relative;}
+#food .slick-slide{width:360px;position:relative;overflow:hidden;}
+#food .slick-slide img{transition:all .25s;}
 #food .slick-slide:before{content:'';display:block;z-index:1;position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,.15) 40%, rgba(0,0,0,1) 100%);}
 #food .slick-slide > em{content:'';display:flex;z-index:2;position:absolute;align-items:center;justify-content:center;top:20px;right:20px;width:44px;height:44px;background:linear-gradient(to right, #fff 0%, #fff 100%);border-radius:50%;transition:all .2s;}
 #food .slick-slide > em:after{content:'';background:url(/page/gwtour-foreign/images/common/sp_lang.png) no-repeat -193px -113px / 960px 160px;width:14px;height:14px;display:block;}
@@ -256,6 +258,7 @@
 [lang=ja] #food .slick-slide:hover > em{background:linear-gradient(to right, #ff6cab 0%, #7366ff 100%);}
 [lang=zh] #food .slick-slide:hover > em{background:linear-gradient(to right, #ffe53b 0%, #ff2525 100%);}
 #food .slick-slide:hover > em:after{filter:invert(1) brightness(200);}
+#food .slick-slide:hover img{transform:scale(1.1);}
 
 @media (max-width:1499px) {
     #food{position:relative;margin-top:40px;}
@@ -306,11 +309,11 @@
 
 @media (max-width:716px) {
     #welcome{height:165px;padding-top: 100px;}
-    #welcome img{width: 600px;margin-left: -306px;position:absolute;left:50%}
+    #welcome img{width: 600px;margin-left: -306px;position:absolute;left:50%;display:none;}
 } 
 
-a.more-btn{width:200px;height:50px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;background:#111;transition:all .2s;border:2px solid #111;}
-a.more-btn:hover{background:#fff;color:#111;}
+a.more-btn{width:200px;height:50px;display:flex;align-items:center;justify-content:center;font-size:18px;transition:all .2s;background:#fff;color:#111;border:2px solid #111;}
+a.more-btn:hover{background:#111;color:#fff;}
 
 @media (max-width:1499px) {
     a.more-btn{width:160px;height:40px;font-size:16px;border:1px solid #111;}

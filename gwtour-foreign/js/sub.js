@@ -271,6 +271,7 @@ ObjDoc.on({
 		$('.modal-slick-bx .slick-wrap .slick-prev').focus();
 		initSlick($('.modal-slick-bx .slick'), SlickOptionSub2);
 		$('html, body').animate({scrollTop: ParentOffSet}, 300);
+		
 	}
 }, '.modal-slick-bx .modal-show')
 .on({
