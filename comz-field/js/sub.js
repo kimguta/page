@@ -2,7 +2,23 @@
 
 //콘텐츠 스크립트 (dom ready 후 동작)
 function contentScript(){
+	$('.boGalleryView .boGalleryView-view').slick({
+		autoplay: false,
+		arrows: true,
+		accessibility: false,
+		dots:true,
+		prevArrow: $('.boGalleryView .boGalleryView-btnPrev'),
+		nextArrow: $('.boGalleryView .boGalleryView-btnNext'),
+		draggable: true,
+		infinite: true,
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		pauseOnHover: false,
+		speed: 600,
+		adaptiveHeight: true,
+	});
 
+	
 	$('.skinTb-wrapper').on('scroll', function () {
 		$(this).addClass('scroll');
 	});
