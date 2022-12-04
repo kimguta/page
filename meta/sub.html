@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<title>프로젝트명</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+	<link rel="stylesheet" href="/page/common/css/fonts.css">
+	<link rel="stylesheet" href="/page/common/css/common.css">
+	<link rel="stylesheet" href="/page/common/css/jquery-ui.min.css">
+
+	<script src="/page/common/js/jquery-3.6.0.min.js"></script>
+	<script src="/page/common/js/jquery-ui.min.js"></script>
+	<script src="/page/common/js/puble_common.js"></script>
+	<script src="/page/common/js/slick.min.js"></script>
+	<script src="/page/common/js/common.js"></script>
+
+	<link rel="stylesheet" href="/page/meta/css/app.css">
+	<link rel="stylesheet" href="/page/meta/css/sub.css">
+	<link rel="stylesheet" href="/page/meta/css/aos.css">
+
+	<script src="/page/meta/js/app.js"></script>
+	<script src="/page/meta/js/sub.js"></script>
+	<script src="/page/meta/js/aos.js"></script>
+</head>
+
+
+<body>
+	<div id="wrapper" class="page-wrap">
+
+		<ul class="skipnav">
+			<li><a href="#A-Gnb-focus">주메뉴 바로가기</a></li>
+			<li><a href="#A-Contents-focus">본문 바로가기</a></li>
+			<li><a href="#A-Ftr-focus">푸터 바로가기</a></li>
+		</ul>
+
+		<header id="header" class="type_sub" include-html="/page/meta/include/header.html"></header>
+
+		<main id="sub">
+			<div id="sub-visual" include-html="/page/meta/include/sub-visual.html"></div>
+			<div id="content">
+				<ul class="pageTab">
+					<li class="active">
+						<a href="/portal/happysokcho/parttask/planInspec/pitask" class="pageTab-tab">
+							거울 세계 소개
+						</a>
+						<ul class="pageTab-sub">
+							<li class="active">
+								<a href="#">
+									Photo Scan
+								</a>
+							</li>
+							<li>
+								<a href="#">
+								3D 모델링
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#" class="pageTab-tab">
+							제작 시연 영상
+						</a>
+					</li>
+
+				</ul>
+				<a href="#A-Contents-focus" id="A-Contents-focus" class="blind">본문 시작</a>
+				<div class="contsArea skinContainer inner" include-html="/page/meta/content/ui.html">
+					<!--콘텐츠 입력 -->
+				</div>
+			</div>
+		</main>
+
+		<footer id="footer" class="clearfix" include-html="/page/meta/include/footer.html"></footer>
+	</div>
+
+</body>
+
+</html>
+
+<script>
+	//게시판 슬라이드
+	$('.boGalleryView .boGalleryView-view').slick({
+		autoplay: false,
+		arrows: true,
+		accessibility: false,
+		dots:true,
+		prevArrow: $('.boGalleryView .boGalleryView-btnPrev'),
+		nextArrow: $('.boGalleryView .boGalleryView-btnNext'),
+		draggable: true,
+		infinite: true,
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		pauseOnHover: false,
+		speed: 600,
+		adaptiveHeight: true,
+	});
+</script>
+
+
+
+<!--[d] 인클루드, 디자인 확인 용 개발 시 제거-->
+<div class="puble-index">
+	<a href="#" class="close" onclick="$('.puble-index').remove();return false;">✕</a>
+	<a href="#" class="btn sub upload"></a>
+	<div class="pre-view">
+		<iframe id="preview-pc" src="/page/meta/sub.html"></iframe>
+		<iframe id="preview-mobile" src="/page/meta/sub.html"></iframe>
+	</div>
+	<div class="view">
+		<strong>
+			<span>퍼블 콘텐츠 목록 <span>완료 콘텐츠 <em></em> 건</span> </span>
+			<button onclick="$('.puble-index .view').hide();textChange();$('.pre-view').css('display','none');return false;">✕</button>
+		</strong>
+		<p><a href="/page/meta/" target="_blank" onmouseover="$('.pre-view').hide();">메인페이지</a></p>
+		<div></div>
+	</div>
+</div>
+
+<script>
+	$(function(){
+		includeLayout();
+		textChange();
+		var pageUrl = $(location).attr('href');
+		if (pageUrl.match("git")){
+			$.ajax({
+				url: "https://api.github.com/repos/kimguta/page/contents/basic/content",
+				success: function (data) {
+					for (var i = 0; i < data.length; i++) {
+						$('.puble-index .view div').append('<p><a href="/page/meta/content/'+data[i].name+'">'+ data[i].name +'</a><button class="copy-html">HTML복사</button></p>');
+					}
+				},
+			});
+		}
+		else{
+			$.ajax({
+				url: "/page/meta/content/",
+				dataType:"text",
+				success: function (data) {
+					var dataArr = data.split("\n");
+					for (var i = 0; i < dataArr.length; i++) {
+						$('.puble-index .view div').append('<p><a href="/page/meta/content/'+dataArr[i]+'">'+ dataArr[i] +'</a><button class="copy-html">HTML복사</button></p>');
+						$('.puble-index .view').addClass('live');
+					}
+				},
+			});
+		};
+	});
+
+	function countContent(){
+		var pageUrl = $(location).attr('href');
+		if (pageUrl.match("git")){
+			var count = $('.puble-index .view div p').length;
+		}
+		else{
+			var count = $('.puble-index .view div p').length - 1;
+		}
+		$('.puble-index .view strong em').text(count);
+	};
+
+	function includeLayout(){
+		var includeArea = $("[include-html]");
+		var self, url;
+		$.each(includeArea, function() {
+			self = $(this);
+			url = self.attr("include-html");
+			self.load(url, function(){
+				$("[include-html]").removeAttr("include-html");
+				contentScript();
+			});
+		});
+		// $.getScript('/page/meta/js/sub.js');
+	};
+
+	function textChange(){
+		var text = $('.puble-index .sub').text();
+		if(text == '콘텐츠목록열기'){
+			$('.puble-index .sub').text('콘텐츠목록닫기');
+		}else{
+			$('.puble-index .sub').text('콘텐츠목록열기');
+		}
+	};
+
+	$(document).on({
+		'click': function(e) {
+			e.preventDefault();
+			$('.puble-index .view').toggle();
+			$(".pre-view").css('display','none');
+			textChange();
+			countContent();
+		}
+	}, '.puble-index .sub')
+	.on({
+		'click': function(e) {
+			e.preventDefault();
+			$(".pre-view").css('display','none');
+			var contUrl = $(this).attr('href');
+			$('.contsArea').attr('include-html', contUrl);
+			includeLayout();
+			$('.puble-index .view').hide();
+			textChange();
+		},
+		'mouseover': function(e) {
+			e.preventDefault();
+			$(".pre-view").css('display','flex');
+			var contUrl = $(this).attr('href');
+			$("iframe").contents().find('.contsArea').attr('include-html', contUrl);
+			$("iframe").contents().find('html').addClass('view-mode');
+			$("iframe")[0].contentWindow.includeLayout();
+			$("iframe")[1].contentWindow.includeLayout();
+		}
+	}, '.puble-index .view div a')
+	.on({
+		'click': function(e) {
+			e.preventDefault();
+			var contUrl2 = $(this).prev('a').attr('href');
+			var fileName = $(this).prev('a').text();
+			$.ajax({
+				url : contUrl2,
+				success : function(result) {
+					$('.puble-index').append('<textarea class="copy-bx"></textarea>')
+					$('.puble-index .copy-bx').text(result).select();
+					document.execCommand('copy');
+					$('.puble-index .copy-bx').remove();
+					alert(fileName+'복사');
+				}
+			});
+		}
+	}, '.puble-index .view .copy-html');
+
+</script>
+
+<!--//[d] 인클루드, 디자인 확인 용 개발 시 제거-->
+
