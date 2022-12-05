@@ -44,6 +44,15 @@
 			<section id="visual">
 				<div class="visual_img">
 					<img src="/page/meta/images/main/main_visual_full.png" alt="">
+					<div class="visual_item_wrap">
+						<div class="visual_item_01"><img src="/page/meta/images/main/visual_item_03_00_full.png" alt=""></div>
+						<div class="visual_item_02"><img src="/page/meta/images/main/visual_item_03_01_full.png" alt=""></div>
+						<div class="visual_item_03"><img src="/page/meta/images/main/visual_item_03_02_full.png" alt=""></div>
+						<div class="visual_item_04"><img src="/page/meta/images/main/visual_item_03_03_full.png" alt=""></div>
+						<div class="visual_item_05"><img src="/page/meta/images/main/visual_item_05_full.png" alt=""></div>
+						<div class="visual_item_06"><img src="/page/meta/images/main/visual_item_06_full.png" alt=""></div>
+						<div class="visual_item_07"><img src="/page/meta/images/main/visual_item_07_full.png" alt=""></div>
+					</div>
 				</div>
 				<div class="main_tab">
 					<ul class="depth-01">
@@ -229,6 +238,7 @@
 						</li>
 					</ul>
 				</div>
+
 				<a href="" class="download_btn"><span class="blind">Download</span></a>
 			</section>
 			<section class="main-news">
@@ -419,6 +429,35 @@
         e.preventDefault();
 		$(this).parent().toggleClass('active');
 		}
-	}, '#header .btn-bx .lang .btn');
+	}, '#header .btn-bx .lang .btn')
+	.on({
+		'click': function(e) {
+			e.preventDefault();
+			$('html, body').animate({scrollTop: 0}, 400);
+		}
+	}, '#btn-top')
+	$(function() {
+		var currentPosition = parseInt($("#btn-side").css("top"));
+		ObjWin.on({
+			'scroll': function() {
+				var posY = ObjWin.scrollTop();
+				$("#btn-side").stop().animate({"top":posY+currentPosition+"px"},500);
+				if ( posY > 100 ){
+					$("#btn-top").addClass('active');
+				} else if(posY < 100) {
+					$("#btn-top").removeClass('active');
+				};
+			}
+		})
+
+		let vh = window.innerHeight * 0.01;
+		document.documentElement.style.setProperty("--vh", `${vh}px`);
+
+		window.addEventListener("resize", () => {
+		console.log("resize");
+		let vh = window.innerHeight * 0.01;
+		document.documentElement.style.setProperty("--vh", `${vh}px`);
+		});
+	});
 </script>
 <!--//[d] 인클루드, 디자인 확인 용 개발 시 제거-->
