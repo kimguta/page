@@ -100,25 +100,30 @@ ObjWin.on({
 		$('.bg_pc').css('height',highestBox);
 	}
 });
+var ObjGnb = $(document);
+ObjGnb.init(function(){
+	$('#header .depth_03').prev('h3').addClass('has_depth');
+	$('#header .depth_02').prev('h2').addClass('has_depth');
+	$('#header').after('<span id="mask"></span>');
+})
 
 ObjDoc.on({
-	'focusout': function() {
-		$('#header').removeClass('active');
-		$('#header nav h2').removeClass('active');
-		$('.depth-02, .bg_pc').stop().hide();
+	'click': function() {
+
+		$('#header.mobile-mode .site_map .depth-01 h2').removeClass('active');
+		$(this).parent().addClass('active');
+
 	}
-}, '#header.pc-mode nav .depth-01 a:last')
+}, '#header.mobile-mode .site_map .depth-01 h2 a')
 .on({
 	'click': function() {
 		var idx = $('#header.type_sub nav .depth-01 li h2 a').index(this);
 		$('#header.type_sub nav .depth-01 li h2').removeClass('active');
 		$(this).parent().addClass('active');
-		$('#sub-visual #visual-bx').removeClass();
-		$('#sub-visual #visual-bx').addClass('type_0'+(idx+1));
+		$('#sub-visual').removeClass();
+		$('#sub-visual').addClass('type_0'+(idx+1));
 	}
 }, '#header.type_sub nav .depth-01 li h2 a')
-
-
 .on({
 	'click': function(e) {
 		e.preventDefault();
@@ -137,12 +142,14 @@ ObjDoc.on({
 .on({
 	'click': function(e) {
 		e.preventDefault();
+		$('#mask').addClass('active');
 		$('#header .site_map').addClass('active');
 	}
 }, '#header .btn-bx .sitemap')
 .on({
 	'click': function(e) {
 		e.preventDefault();
+		$('#mask').removeClass('active');
 		$('#header .site_map').removeClass('active');
 	}
 }, '#header .site_map .close_btn')
@@ -151,7 +158,7 @@ ObjDoc.on({
 		e.preventDefault();
 		$('html, body').animate({scrollTop: 0}, 400);
 	}
-}, '#btn_top')
+}, '#btn-top')
 .on('click', '.family .open', function(e){
 	e.preventDefault();
 	$(this).toggleClass('active');
@@ -164,9 +171,9 @@ $(function() {
 			var posY = ObjWin.scrollTop();
 			$("#btn-side").stop().animate({"top":posY+currentPosition+"px"},500);
 			if ( posY > 100 ){
-				$("#btn_top").addClass('active');
+				$("#btn-top").addClass('active');
 			} else if(posY < 100) {
-				$("#btn_top").removeClass('active');
+				$("#btn-top").removeClass('active');
 			};
 		}
 	})

@@ -1,9 +1,9 @@
 
 //서브공통 스크립트
-var ObjDoc = $(document);		
+var ObjDoc = $(document);
 
 ObjDoc.on({
-	'click': function(e) { 
+	'click': function(e) {
 		e.preventDefault();
 		if ($(this).hasClass('active')) {
 			$(this).removeClass('active');
@@ -20,38 +20,44 @@ ObjDoc.on({
 	}
 }, '#breadcrumb-bx .bx .open')
 .on({
-	'mouseleave': function() { 
+	'mouseleave': function() {
 		$('#breadcrumb-bx .open span').text('열기');
 		$('#breadcrumb-bx .box ul').slideUp(300);
 		$('#breadcrumb-bx .box .open').removeClass('active');
 	}
 }, '#breadcrumb-bx')
 .on({
-	'focusout': function() { 
+	'focusout': function() {
 		$(this).parents('.box').children('.open').focus();
 	}
 }, '#breadcrumb-bx .box ul li:last-child a')
 .on({
-	'click': function(e) { 
+	'click': function(e) {
 		e.preventDefault();
 		$(this).next('.view').fadeToggle(100);
 	}
 }, '#title-bx .share .open')
 .on({
-	'click': function(e) { 
+	'click': function(e) {
 		e.preventDefault();
 		$(this).parents('.view').fadeToggle(100);
 	}
 }, '#title-bx .share .close')
 .on({
-	'focusout': function() { 
+	'focusout': function() {
 		$('#title-bx .share .open').focus();
 		$('.view').fadeOut(100);
 	}
 }, '#title-bx .share .view a:last');
+// .on({
+// 	'click': function() {
+// 		$('.pageTab-sub li').removeClass('active');
+// 		$(this).parent().addClass('active');
+// 	}
+// }, '.pageTab-sub li a');
 
 ObjDoc.on({
-	'click': function(e) { 
+	'click': function(e) {
 		e.preventDefault();
 		var fileUrl = $(this).find('img').attr('src');
 		var fileName = $(this).find('img').attr('alt');
@@ -86,13 +92,13 @@ ObjDoc.on({
 	}
 }, '.img-zoom-modal')
 .on({
-	'keydown': function(e) { 
+	'keydown': function(e) {
 		if (e.keyCode == 9) {
 			$('#img-modal a:first').focus();
 			return false;
 		}
 	},
-	'click': function(e) { 
+	'click': function(e) {
 		e.preventDefault();
 		$('#img-modal').remove();
 		$('.img-zoom-modal.active').focus().removeClass('active');
@@ -103,7 +109,7 @@ ObjDoc.on({
 //콘텐츠 스크립트 (dom ready 후 동작)
 function contentScript(){
 	var TestOption = {
-		autoplay: false,	
+		autoplay: false,
 		arrows: true,
 		accessibility: false,
 		dots: false,
@@ -120,7 +126,7 @@ function contentScript(){
 	$('.content1 .btn-test').on('click', function(e){
 		e.preventDefault();
 		alert('안녕하세요 디큐입니다!!')
-	});		
+	});
 
 	$('.boGalleryView .boGalleryView-view').slick({
 		autoplay: false,
