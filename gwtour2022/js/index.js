@@ -97,12 +97,12 @@ $(function() {
         infinite: true,
         slidesToShow: 3,
         pauseOnHover: false,
-        speed: 900,
+        speed: 500,
         responsive: [
             {
                 breakpoint: 1500,
                 settings: {
-                speed: 500,
+                speed: 350,
                 centerMode: true,
                 }
             }
@@ -119,12 +119,12 @@ $(function() {
         slidesToShow: 1,
         slidesToScroll: 1,
         pauseOnHover: false,
-        speed: 600,
+        speed: 500,
         responsive: [
             {
                 breakpoint: 1500,
                 settings: {
-                speed: 500,
+                speed: 350,
                 }
             }
         ]
@@ -141,12 +141,12 @@ $(function() {
         infinite: true,
         slidesToShow: 3,
         pauseOnHover: false,
-        speed: 600,
+        speed: 500,
         responsive: [
             {
                 breakpoint: 1500,
                 settings: {
-                speed: 500,
+                speed: 350,
                 centerMode: true,
                 }
             }

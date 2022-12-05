@@ -86,11 +86,11 @@ $(function() {
         arrows: false,
         accessibility: false,
         dots:false,
-        swipeToSlide:true,
         draggable: true,
         infinite: true,
         lidesToShow: 1,
         slidesToScroll: 1,
+        fade: true,
         pauseOnHover: false,
         speed: 1000,
         asNavFor: '#map .slick2'

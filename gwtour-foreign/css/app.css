@@ -50,22 +50,24 @@ main{display:block;}
  .inner{padding:0 15px;}
 }
 
-#header{position:fixed;z-index:2000;top:0;transition:all .5s;display:flex;justify-content:flex-end;left:0;right:0;align-items:center;min-height:140px;padding-right:50px;max-width:1920px;left:50%;margin-left:-960px;}
-#header.fixed{min-height:100px;}
+#header{position:fixed;z-index:2000;top:0;transition:min-height .5s;display:flex;justify-content:flex-end;left:0;right:0;align-items:center;min-height:140px;padding-right:50px;max-width:1920px;left:50%;margin-left:-960px;}
+#header.fixed{min-height:80px;background:#fff;}
 #header:before{content:'';display:block;z-index:-1;pointer-events:none;position:absolute;left:0;right:0;top:0;height:0px;background:#000518;transition:all .2s linear;visibility:hidden;}
 #header.search:before{height:250px;visibility:visible;}
 #header.fixed.search:before{height:180px;backdrop-filter: blur(2px);background: rgba(0,5,24,.6);}
 #header h1{position:absolute;left:75px;top:50%;margin-top:-23px;}
 #header h1 img{display:block;transition:all .3s;width:110px;}
-#header.fixed h1 img{filter:drop-shadow(1px 1px 1px rgba(0,0,0,.5));}
+#header.fixed h1 img{filter:invert(1);}
 
 #header .pc-menu{position:relative;transition:all .5s;}
-#header.fixed .pc-menu{margin-top:-160px;}
+
 #header .pc-menu .depth-01{display:flex;align-items:flex-start;justify-content:center;}
 #header .pc-menu .depth-01 > li{position:relative;}
 #header .pc-menu .depth-01 > li + li{margin-left:25px;}
 #header .pc-menu .depth-01 h2 a{display:block;height:140px;line-height:140px;font-size:18px;font-weight:500;color:#fff;min-width: 185px;padding:0 15px;text-align:center;}
+#header.fixed .pc-menu .depth-01 h2 a{height:80px;line-height:80px;color:#000;}
 #header .pc-menu .depth-02{position:absolute;left:0;right:0;top:100px;opacity:0; pointer-events:none;visibility:hidden;transform:translateX(50%);transition:all 0.4s ease;background:#fff;}
+#header.fixed .pc-menu .depth-02{top:80px;}
 #header .pc-menu .depth-02.active{pointer-events:initial;z-index:2;opacity:1;transform:translateX(0%);box-shadow:0px 0px 15px 0px rgba(0,0,0,.1);visibility:visible;}
 #header .pc-menu .depth-02 > li{position:relative;overflow:hidden;}
 #header .pc-menu .depth-02 > li:before{content:'';z-index:-1;display:block;position:absolute;left:0;right:0;bottom:0;top:0;background:linear-gradient(to right, #00b4ff 0%, #007aff 100%);transition:all .3s;transform:translateX(100%);}
@@ -85,7 +87,7 @@ main{display:block;}
 
 #header .header-btn{width:70px;height:60px;font-size:0;display:flex;align-items:center;justify-content:center;margin-left:30px;}
 #header .header-btn:after{content:'';background: url(/page/gwtour-foreign/images/common/sp_new.png) no-repeat -19px -21px / 960px 320px;width:40px;height:40px;}
-#header.fixed .header-btn{filter:drop-shadow(1px 1px 1px rgba(0,0,0,.5));}
+#header.fixed .header-btn{filter:invert(1);}
 #header .header-btn.map-open:after{background-position-x: -339px;}
 
 #header .site-map{position:fixed;z-index:20;right:-380px;height:100vh;width:100%;max-width:380px;top:0;transition:all .35s ease-out;overflow-y:auto;box-shadow:0px -10px 10px 0px rgba(0,0,0,.15);}
