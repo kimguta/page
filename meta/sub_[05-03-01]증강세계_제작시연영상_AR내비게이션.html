@@ -49,35 +49,44 @@
 				추가 2 #017eff type_08
 				클래스 추가
 			-->
-			<div id="sub-visual" class="type_02" include-html="/page/meta/include/sub-visual.html"></div>
+			<div id="sub-visual" class="type_05" include-html="/page/meta/include/sub-visual.html"></div>
 			<div id="content">
 				<ul class="pageTab">
-					<li class="active">
-						<a href="/portal/happysokcho/parttask/planInspec/pitask" class="pageTab-tab">
-							거울 세계 소개
+					<li>
+						<a href="#" class="pageTab-tab">
+							증강세계 소개
 						</a>
-						<ul class="pageTab-sub">
+					</li>
+					<li>
+						<a href="#" class="pageTab-tab">
+							AR 투어 가이드
+						</a>
+					</li>
+					<li class="active">
+						<a href="#" class="pageTab-tab">
+							제작 시연 영상
+						</a>
+                        <ul class="pageTab-sub">
 							<li class="active">
 								<a href="#">
-									Photo Scan
+									AR 내비게이션
 								</a>
 							</li>
 							<li>
 								<a href="#">
-								3D 모델링
+								    AR 도슨트
+								</a>
+							</li>
+							<li>
+								<a href="#">
+								    AR 미니어쳐
 								</a>
 							</li>
 						</ul>
 					</li>
-					<li>
-						<a href="#" class="pageTab-tab">
-							제작 시연 영상
-						</a>
-					</li>
-
 				</ul>
 				<a href="#A-Contents-focus" id="A-Contents-focus" class="blind">본문 시작</a>
-				<div class="contsArea skinContainer inner" include-html="/page/meta/content/ui.html">
+				<div class="contsArea skinContainer" include-html="/page/meta/content/sub_multimeia_wrap.html">
 					<!--콘텐츠 입력 -->
 				</div>
 			</div>
@@ -162,7 +171,7 @@
 		var pageUrl = $(location).attr('href');
 		if (pageUrl.match("git")){
 			$.ajax({
-				url: "https://api.github.com/repos/kimguta/page/contents/basic/content",
+				url: "https://api.github.com/repos/kimguta/page/contents/meta/content",
 				success: function (data) {
 					for (var i = 0; i < data.length; i++) {
 						$('.puble-index .view div').append('<p><a href="/page/meta/content/'+data[i].name+'">'+ data[i].name +'</a><button class="copy-html">HTML복사</button></p>');
@@ -265,8 +274,33 @@
 			});
 		}
 	}, '.puble-index .view .copy-html');
-
 </script>
+<script>
+	$(function(){
+		includeLayout();
 
+		contentTest();
+	});
+
+	function contentTest(){
+		$('#header.type_sub nav .depth-01 li h2').removeClass("active")
+		$('#header.type_sub nav .depth-01 li:nth-child(5) h2').addClass("active")
+		$('#sub-visual #title-bx h3').text("증강세계");
+        $('.multimedia_box > img').attr({src : "/page/meta/images/sub/multimedia_example_img_05_03_01.png", alt:"증강세계 제작시연영상 AR내비게이션"});
+	}
+
+	function includeLayout(){
+		var includeArea = $("[include-html]");
+		var self, url;
+		$.each(includeArea, function() {
+			self = $(this);
+			url = self.attr("include-html");
+			self.load(url, function(){
+				$("[include-html]").removeAttr("include-html");
+				contentTest();
+			});
+		});
+	}
+</script>
 <!--//[d] 인클루드, 디자인 확인 용 개발 시 제거-->
 

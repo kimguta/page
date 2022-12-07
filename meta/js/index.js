@@ -50,14 +50,14 @@ ObjDoc.on({
 		$(this).addClass('active');
 		$(this).find('.depth-02').show();
 	}
-}, '#visual .main_tab .depth-01 li')
+}, '#visual .main_tab .depth-01 > li')
 .on({
 	'mouseleave': function(e) {
 		e.preventDefault();
 		$('#visual .main_tab .depth-01 li').removeClass('active');
 		$('#visual .main_tab .depth-01 li .depth-02').hide();
 	}
-}, '#visual .main_tab .depth-01 li')
+}, '#visual .main_tab .depth-01 > li')
 .on({
 	'click': function(e) {
 		e.preventDefault();

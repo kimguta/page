@@ -109,10 +109,14 @@ ObjGnb.init(function(){
 
 ObjDoc.on({
 	'click': function() {
-
 		$('#header.mobile-mode .site_map .depth-01 h2').removeClass('active');
 		$(this).parent().addClass('active');
-
+	}
+}, '#header.mobile-mode .site_map .depth-01 h2 a')
+.on({
+	'click': function() {
+		$('#header.mobile-mode .site_map .depth-01 h2').removeClass('active');
+		$(this).parent().addClass('active');
 	}
 }, '#header.mobile-mode .site_map .depth-01 h2 a')
 .on({
