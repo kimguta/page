@@ -48,13 +48,16 @@ ObjDoc.on({
 		$('#title-bx .share .open').focus();
 		$('.view').fadeOut(100);
 	}
-}, '#title-bx .share .view a:last');
-// .on({
-// 	'click': function() {
-// 		$('.pageTab-sub li').removeClass('active');
-// 		$(this).parent().addClass('active');
-// 	}
-// }, '.pageTab-sub li a');
+}, '#title-bx .share .view a:last')
+.on({
+	'click': function() {
+		var idx = $('.introduce_wrap .process_area .area_tab ul li a').index(this);
+		$('.introduce_wrap .process_area .area_tab ul li').removeClass('active');
+		$(this).parent().addClass('active');
+		$('.process_box_wrap .process_box').removeClass('active');
+		$('.process_box_wrap .process_box').eq(idx).addClass('active');
+	}
+}, '.introduce_wrap .process_area .area_tab ul li a');
 
 ObjDoc.on({
 	'click': function(e) {
