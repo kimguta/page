@@ -7,11 +7,11 @@
 #visual .visual_img img{width:100%;height:100%;position: relative;left: 50%;transform: translateX(-50%);object-fit:cover;}
 #visual .download_btn{display:block;position:absolute;width:297px;height:88px;left:50%;bottom:98px;transform:translateX(-50%);background: url(/page/meta/images/main/download_btn.png) no-repeat;z-index:10;}
 
-#visual .main_tab{position:absolute;top:187px;width:100%;text-align:center;}
+#visual .main_tab{position:absolute;top:187px;width:100%;text-align:center;z-index:300;}
 #visual .main_tab .depth-01{font-family:'Jalnan';}
 #visual .main_tab .depth-01 li h2{position:relative;display:inline-block;vertical-align:top;width:16.7rem;height:16.7rem;font-size:2.6rem;line-height:3.4rem;text-align:center;text-shadow: 1px 2px 5px rgba(0, 0, 0, 0.23);border:3px solid;border-radius:100%;box-shadow: 0px 13px 24px 0px rgba(0, 0, 0, 0.35);z-index:10;}
 #visual .main_tab .depth-01 li h2:before{content:'';display:block;position:absolute;top:0;right:0;bottom:0;left:0;border-radius:100%;background: radial-gradient(circle, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 100%);z-index:5;}
-#visual .main_tab .depth-01 li:hover h2:before{background:#fff;}
+#visual .main_tab .depth-01 li.active h2:before{background:#fff;}
 #visual .main_tab .depth-01 > li+li{margin-left:3.5rem;}
 #visual .main_tab .depth-01 li:nth-child(1) h2{font-size:2.3rem;line-height:3.0rem;}
 #visual .main_tab .depth-01 li h2 a{position:relative;display:flex;align-items: center;justify-content: center;height:100%;z-index:10;}
@@ -41,13 +41,17 @@
 
 #visual .visual_item_wrap{position:absolute;top:0;right:0;bottom:0;left:0;}
 #visual .visual_item_wrap [class*="visual_item_"]{position:absolute;height:100%;}
-#visual .visual_item_01{animation: jump 5s ease 0s infinite alternate; margin-top: 0}
-#visual .visual_item_02{animation: fade01 5s ease 0s infinite alternate; opacity:0;}
-#visual .visual_item_03{animation: fade02 5s ease 0s infinite alternate; opacity:0;}
-#visual .visual_item_04{animation: fade03 5s ease 0s infinite alternate; opacity:0;}
-#visual .visual_item_05{animation: cloud01 1.5s linear 0s infinite alternate; margin-top: 0;}
-#visual .visual_item_06{animation: cloud02 2s linear 0s infinite alternate; margin-top: 0;}
-#visual .visual_item_07{animation: cloud03 1.7s linear 0s infinite alternate; margin-top: 0;}
+#visual .visual_item_03_01{animation: jump 5s ease 0s infinite alternate; margin-top: 0}
+#visual .visual_item_03_02{animation: fade01 5s ease 0s infinite alternate; opacity:0;}
+#visual .visual_item_03_03{animation: fade02 5s ease 0s infinite alternate; opacity:0;}
+#visual .visual_item_03_04{animation: fade03 5s ease 0s infinite alternate; opacity:0;}
+#visual .visual_item_04{z-index:10;}
+#visual .visual_item_05_01{animation: cloud01 1.5s linear 0s infinite alternate; margin-top: 0;}
+#visual .visual_item_05_02{animation: cloud02 2s linear 0s infinite alternate; margin-top: 0;}
+#visual .visual_item_05_03{animation: cloud03 1.7s linear 0s infinite alternate; margin-top: 0;}
+
+#visual .visual_item_09_02{z-index:10;animation: scaleup 5s ease 0s infinite alternate;margin:0 0 0 200px;transform:scale(0);transform-origin:bottom right;opacity:0;}
+#visual .visual_item_09_03{transform: translateY(-100px);animation: moveup 5s ease 0s infinite alternate;}
 /* #visual .visual_item_03{position:absolute;top:53.2%;left:50%;margin-left:-31.5%;}
 #visual .visual_item_05{position:absolute;top:13.3%;left:50%;margin-left:-48.8%;animation: cloud01 1.5s linear 0s infinite alternate; margin-top: 0;}
 #visual .visual_item_06{position:absolute;top:14.5%;left:50%;margin-left:25.6%;animation: cloud02 2s linear 0s infinite alternate; margin-top: 0;}
@@ -78,6 +82,12 @@
     80% {opacity:0;}
 	100% {opacity:1;}
 }
+
+@keyframes cloud01 {
+	0% {margin-top: -5x;}
+	100% {margin-top: 5px;}
+}
+
 @keyframes cloud02 {
 	0% {margin-top: -7px;}
 	100% {margin-top: 7px;}
@@ -86,6 +96,19 @@
 @keyframes cloud03 {
 	0% {margin-top: -3px;}
 	100% {margin-top: 3px;}
+}
+
+@keyframes scaleup {
+	0% {transform:scale(0);margin:0 0 0 200px; opacity:0;}
+    35%{transform:scale(0);margin:0 0 0 200px; opacity:0;}
+    45% {transform:scale(1); margin:0;opacity:1;}
+    100% {transform:scale(1); margin:0;opacity:1;}
+}
+
+@keyframes moveup {
+	0% {transform: translateY(500px);}
+    20% {transform: translateY(0);}
+	100% {transform: translateY(0);}
 }
 
 @media (max-width:1399px) {
