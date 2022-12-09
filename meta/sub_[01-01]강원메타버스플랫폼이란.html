@@ -49,22 +49,10 @@
 				추가 2 #017eff type_08
 				클래스 추가
 			-->
-			<div id="sub-visual" class="type_02" include-html="/page/meta/include/sub-visual.html"></div>
+			<div id="sub-visual" class="type_01" include-html="/page/meta/include/sub-visual.html"></div>
 			<div id="content">
-				<ul class="pageTab">
-					<li class="active">
-						<a href="/portal/happysokcho/parttask/planInspec/pitask" class="pageTab-tab">
-							거울 세계 소개
-						</a>
-					</li>
-					<li>
-						<a href="#" class="pageTab-tab">
-							제작 시연 영상
-						</a>
-					</li>
-				</ul>
 				<a href="#A-Contents-focus" id="A-Contents-focus" class="blind">본문 시작</a>
-				<div class="contsArea skinContainer inner" include-html="/page/meta/content/ui.html">
+				<div class="contsArea skinContainer" include-html="/page/meta/content/sub_introduce_wrap_01.html">
 					<!--콘텐츠 입력 -->
 				</div>
 			</div>
@@ -149,7 +137,7 @@
 		var pageUrl = $(location).attr('href');
 		if (pageUrl.match("git")){
 			$.ajax({
-				url: "https://api.github.com/repos/kimguta/page/contents/basic/content",
+				url: "https://api.github.com/repos/kimguta/page/contents/meta/content",
 				success: function (data) {
 					for (var i = 0; i < data.length; i++) {
 						$('.puble-index .view div').append('<p><a href="/page/meta/content/'+data[i].name+'">'+ data[i].name +'</a><button class="copy-html">HTML복사</button></p>');
@@ -252,8 +240,33 @@
 			});
 		}
 	}, '.puble-index .view .copy-html');
-
 </script>
+<script>
+	$(function(){
+		includeLayout();
 
+		contentTest();
+	});
+
+	function contentTest(){
+		$('#header.type_sub nav .depth-01 li h2').removeClass("active")
+		$('#header.type_sub nav .depth-01 li:nth-child(1) h2').addClass("active")
+		$('#sub-visual #title-bx h3').text("강원 메타버스 플랫폼이란?");
+
+	}
+
+	function includeLayout(){
+		var includeArea = $("[include-html]");
+		var self, url;
+		$.each(includeArea, function() {
+			self = $(this);
+			url = self.attr("include-html");
+			self.load(url, function(){
+				$("[include-html]").removeAttr("include-html");
+				contentTest();
+			});
+		});
+	}
+</script>
 <!--//[d] 인클루드, 디자인 확인 용 개발 시 제거-->
 
