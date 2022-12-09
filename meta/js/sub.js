@@ -57,7 +57,18 @@ ObjDoc.on({
 		$('.process_box_wrap .process_box').removeClass('active');
 		$('.process_box_wrap .process_box').eq(idx).addClass('active');
 	}
-}, '.introduce_wrap .process_area .area_tab ul li a');
+}, '.introduce_wrap .process_area .area_tab ul li a')
+.on({
+	'click': function() {
+		var idx = $('.round_tab_area li a').index(this);
+		$('.round_tab_area li').removeClass('active');
+		$(this).parent().addClass('active');
+		$('.multimedia_area .multimedia_box').removeClass('active');
+		$('.multimedia_area .multimedia_box').eq(idx).addClass('active');
+	}
+}, '.round_tab_area li a');
+
+
 
 ObjDoc.on({
 	'click': function(e) {
