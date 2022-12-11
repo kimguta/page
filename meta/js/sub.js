@@ -161,6 +161,37 @@ function contentScript(){
 		$.getScript('https://cdn.jsdelivr.net/npm/@panzoom/panzoom/dist/panzoom.min.js');
 		$.getScript('https://kit.fontawesome.com/708e424f8f.js');
 	}
+	$('.summary_area.mirror_world .img_area_wrap .slick-for').slick({
+		autoplay: false,
+		arrows: true,
+		dots: true,
+		prevArrow: '<a href="#" class="prev">이전</a>',
+		nextArrow: '<a href="#" class="next">다음</a>',
+		accessibility: true,
+		swipeToSlide: true,
+		infinite: false,
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		pauseOnHover: false,
+		speed: 600,
+		asNavFor: '.slick-nav',
+		fade: true,
+	});
+	$('.slick-nav').slick({
+		slidesToShow: 3,
+		slidesToScroll: 1,
+		asNavFor: '.slick-for',
+		dots: false,
+		centerMode: true,
+		focusOnSelect: true
+	  });
+	  $('.summary_area.mirror_world .img_area').each(function(i,el){
+		i+=1;
+		var slickfor = $(el).find('.slick-for').addClass('for'+ i)
+		var slicknav = $(el).find('.slick-nav').addClass('nav'+ i)
+		sliderSet(slickfor,slicknav);
+	  })
+
 };
 
 
