@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<title>알림판</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="format-detection" content="telephone=no"> 
+	<meta name="viewport" content="width=3840px, user-scalable=yes">
+	<link rel="stylesheet" href="/page/common/css/fonts.css">
+	<script src="/page/common/js/jquery-3.6.0.min.js"></script>
+	<link rel="stylesheet" href="/page/kiosk/css/app.css">
+	<script src="/page/kiosk/js/app.js"></script>
+</head>
+
+<body>
+	<div id="wrapper" class="page-wrap">
+		<header>
+			<div class="logo">
+				<img src="/page/kiosk/images/logo.png" alt="smart green city">
+			</div>
+			<div class="name">양구군<br>갈말읍</div>
+			<div class="weather">
+				<div class="info">
+					<img src="/page/greencity/images/main/ico-wether-sunny.png" alt="맑음" style="display:none">
+					<img src="/page/greencity/images/main/ico-wether-sunnycloudy.png" alt="구름 조금" style="display:none">
+					<img src="/page/greencity/images/main/ico-wether-cloudy.png" alt="구름 많음">
+					<img src="/page/greencity/images/main/ico-wether-gray.png" alt="흐림" style="display:none">
+					<img src="/page/greencity/images/main/ico-wether-rain.png" alt="비" style="display:none">
+					<img src="/page/greencity/images/main/ico-wether-snow.png" alt="눈" style="display:none">
+					<img src="/page/greencity/images/main/ico-wether-shower.png" alt="소나기" style="display:none">
+					<img src="/page/greencity/images/main/ico-wether-snowrain.png" alt="비/눈" style="display:none">
+					<div>
+						<strong>23.5°</strong>
+						<span>구름없음</span>
+					</div>
+				</div>
+				<p>	
+					<span>습도 : <em>60%</em></span>
+					<span>강수량 : <em>10mm</em></span>
+				</p>
+			</div>
+			<div class="dust">
+				<!--[d] 좋음 - good, 보통 - normal, 나쁨 - bad, 매우나쁨 - very-bad 클래스 추가-->
+				<p class="bad">
+					<span>미세먼지</span>
+					<strong>나쁨</strong>
+					<em>124 ㎍/m³</em>
+				</p>
+				<p class="bad">
+					<span>초미세먼지</span>
+					<strong>나쁨</strong>
+					<em>124 ㎍/m³</em>
+				</p>
+				<p class="normal">
+					<span>오존</span>
+					<strong>보통</strong>
+					<em>0.035 ppm</em>
+				</p>
+				<p class="good">
+					<span>이산화질소</span>
+					<strong>좋음</strong>
+					<em>0.008 ppm</em>
+				</p>
+			</div>
+		</header>
+		<main id="main">
+			<div class="map-bx">
+				<img src="/page/kiosk/images/bg-ygu.jpg" alt="" class="bg-img">
+				<img src="/page/kiosk/images/img-legenddisplay.png" alt="좋음-파랑색-0~30, 보통-녹색-31~80, 나쁨-노란색-81~150, 매우나쁨-빨간색-105~" class="notes">
+				<!--[d] 양구 yanggu 클래스 추가-->
+				<div class="map yanggu">
+					<img src="/page/kiosk/images/map-ygu.png" alt="양구군" class="bg-map">
+					<div class="spot-bx">
+						<a href="#" class="pin v1 active">양구읍</a>
+						<a href="#" class="pin v2">국토정중앙면</a>
+						<a href="#" class="pin v3">동면</a>
+						<a href="#" class="pin v4">방산면</a>
+						<a href="#" class="pin v5">해안면</a>
+					</div>
+				</div>
+			</div>
+			
+			<div class="notice-bx red">
+				<p>
+					<img src="/page/kiosk/images/icon-warning.png" alt="">미세먼지 주의보 발령, 눈이 아픈증상, 기침, 목의 통증으로 불편한 사람은 무리한 싱회활동을 피해주세요
+				</p>
+				<!--[d] blue, green, red, yellow 클래스로 말풍선 색 제어-->
+				<div class="alert-bx green">
+					<span>양구군 갈말읍</span>
+					<img src="/page/kiosk/images/ico-watch.png" alt="" style="display:none;">
+					<img src="/page/kiosk/images/ico-coldwave.png" alt="" style="display:none;">
+					<img src="/page/kiosk/images/ico-drought.png" alt="">
+					<img src="/page/kiosk/images/ico-forestfire.png" alt="" style="display:none;">	
+					<img src="/page/kiosk/images/ico-good.png" alt="" style="display:none;">	
+					<img src="/page/kiosk/images/ico-heavyrain.png" alt="" style="display:none;">	
+					<img src="/page/kiosk/images/ico-heavysnow.png" alt="" style="display:none;">	
+					<img src="/page/kiosk/images/ico-highseas.png" alt="" style="display:none;">	
+					<img src="/page/kiosk/images/ico-intenseheat.png" alt="" style="display:none;">	
+					<img src="/page/kiosk/images/ico-normal.png" alt="" style="display:none;">	
+					<img src="/page/kiosk/images/ico-strongwind.png" alt="" style="display:none;">	
+					<img src="/page/kiosk/images/ico-typhoon.png" alt="" style="display:none;">	
+					<img src="/page/kiosk/images/ico-warning.png" alt="" style="display:none;">		
+					<strong>미세먼주 주의보 발령</strong>
+				</div>
+			</div>
+		</main>	
+	</div>
+</body>
+</html>
+
+
+<!--[d] 인클루드, 디자인 확인 용 개발 시 제거-->
+<div class="puble-index">
+	<a href="#" class="close" onclick="$('.puble-index').remove();return false;">✕</a>
+	<a href="/page/kiosk/index_blank.html" target="_blank" class="btn">공백화면</a>
+	<a href="/page/kiosk/" target="_blank" class="btn">전체화면</a>
+	<a href="/page/kiosk/index_철원.html" target="_blank" class="btn">철원화면</a>
+	<a href="/page/kiosk/index_화천.html" target="_blank" class="btn">화천화면</a>
+	<a href="/page/kiosk/index_양구.html" target="_blank" class="btn">양구화면</a>
+	<a href="/page/kiosk/index_인제.html" target="_blank" class="btn">인제화면</a>
+	<a href="/page/kiosk/index_고성.html" target="_blank" class="btn">고성화면</a>
+</div>
+
+<style>
+	.puble-index{position:fixed;z-index:500;left:0;bottom:0;display:flex;flex-direction:column;align-items:flex-start;}
+	.puble-index .btn{background:#111;border:1px solid #fff;border-width:1px 1px 0px 0px;display:block;text-align:center;font-size:.7vw;line-height:1.3;padding:0px 1vw;color:#fff;height:3vh;line-height:3vh;}
+	.puble-index .close{display:flex;background:#111;color:#fff;justify-content:center;align-items:center;width:3vh;height:3vh;border:1px solid #fff;margin-bottom:-1px;font-size:.7vw;}
+</style>
+
+
+<!--//[d] 인클루드, 디자인 확인 용 개발 시 제거-->

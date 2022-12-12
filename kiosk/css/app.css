@@ -1,0 +1,192 @@
+@charset "utf-8";
+
+/* 초기화 */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font: inherit;
+	vertical-align: baseline;
+  box-sizing:border-box;
+  text-decoration:none;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+ol, ul {
+	list-style: none;
+}
+
+/* 레이아웃 공통 */
+html, body{position:relative; width:100%;}
+body{color:#333;font-family:"Apple SD Gothic Neo","Noto Sans", "Noto Sans KR","Malgun Gothic","맑은 고딕",sans-serif;word-break:break-all;letter-spacing:-0.7px;color:#000;}
+main{display:block;background:#eee;height:100vh}
+#wrapper{overflow:hidden;}
+
+header{position:fixed;top:0;left:0;right:0;height:14vh;z-index:10;display:flex;align-items:center;}
+header .logo{flex-basis:16.5%;flex-shrink:0;display:flex;align-items:center;justify-content:center;height:100%;background:#fff;}
+header .logo img{height:72%;image-rendering:-webkit-optimize-contrast;}
+header .name{flex-basis:14%;flex-shrink:0;display:flex;align-items:center;justify-content:center;height:100%;background:rgba(0,0,0,.7);font-size:1.7vw;font-weight:500;line-height:1.3;color:#fff;}
+header .weather{flex-basis:17.5%;flex-shrink:0;display:flex;align-items:center;justify-content:center;padding-bottom:1vh;flex-direction:column;height:100%;background:rgba(13,126,133,.7);font-size:1.25vw;font-weight:300;line-height:1.4;color:#fff;}
+header .weather .info{display:flex;align-items:center;height:70%;justify-content:center;width:100%;}
+header .weather .info img{height:79%;margin-left:-1.5vw;animation:icon-move1 .6s infinite alternate ease-in-out;image-rendering: -webkit-optimize-contrast;filter: drop-shadow(2px 2px 3px rgba(0,0,0,.1));}
+header .weather .info div{display:flex;flex-direction:column;margin-left:1vw;line-height:1.3;}
+header .weather .info div strong{font-weight:500;font-size:2.5vw}
+header .weather p{font-size:1vw;margin-top:.6vh}
+header .weather p span + span{margin-left:.5vw}
+header .dust{flex:1;display:flex;align-items:center;background:rgba(255,255,255,.7);height:100%;}
+header .dust p{flex:1;font-size:1vw;display:flex;flex-direction:column;justify-content:space-between;align-items:center;height:72%;font-weight:300;}
+header .dust p + p{border-left:1px solid #d3d3d3;}
+header .dust p strong{font-weight:700;font-size:1.3vw;margin-top:.3vh}
+header .dust p.good strong{color:#0074ff}
+header .dust p.normal strong{color:#01b56e}
+header .dust p.bad strong{color:#feb71f}
+header .dust p.very-bad strong{color:#e8121c}
+header .dust span{height:3.3vh;display:flex;padding:0 1vw;align-items:center;color:#fff;border-radius:1.6vw;background:#4e4e4e;}
+
+.map-bx{position:relative;max-width:100%;z-index:3;height:100vh;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:7vw 0 0 0vw}
+.map-bx.all{padding:7vw 0 0 10vw}
+.map-bx .bg-img{display:block;position:absolute;left:0;top:0;width:100%;height:100%;z-index:-1;image-rendering:-webkit-optimize-contrast;}
+.map-bx .notes{display:block;position:absolute;left:0;top:50%;height:37.5vh;margin-top:-15.75vh;image-rendering:-webkit-optimize-contrast;}
+.map-bx .title{width:41.66vw}
+.map-bx .map{position:relative;width:50.93vw;}
+.map-bx .map.all{width:55.78vw;}
+
+.map-bx .map.all:after{content:'';display:block;position:absolute;top:0;left:0;bottom:0;right:0;background:url(/page/kiosk/images/map-border.png) no-repeat center center /cover;}
+.map-bx .bg-map{display:block;width:100%;}
+.map-bx .city{position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;font-size:0;color:transparent}
+.map-bx .city.cheorwon{background:url(/page/kiosk/images/map-cwg-good.png) no-repeat center center /cover;} 
+.map-bx .city.cheorwon.normal{background-image:url(/page/kiosk/images/map-cwg-normal.png);}
+.map-bx .city.cheorwon.bad{background-image:url(/page/kiosk/images/map-cwg-watch.png);}
+.map-bx .city.cheorwon.very-bad{background-image:url(/page/kiosk/images/map-cwg-warning.png);}
+.map-bx .city.hwacheon{background:url(/page/kiosk/images/map-ihc-good.png) no-repeat center center /cover;} 
+.map-bx .city.hwacheon.normal{background-image:url(/page/kiosk/images/map-ihc-normal.png);}
+.map-bx .city.hwacheon.bad{background-image:url(/page/kiosk/images/map-ihc-watch.png);}
+.map-bx .city.hwacheon.very-bad{background-image:url(/page/kiosk/images/map-ihc-warning.png);}
+.map-bx .city.yanggu{background:url(/page/kiosk/images/map-ygu-good.png) no-repeat center center /cover;} 
+.map-bx .city.yanggu.normal{background-image:url(/page/kiosk/images/map-ygu-normal.png);}
+.map-bx .city.yanggu.bad{background-image:url(/page/kiosk/images/map-ygu-watch.png);}
+.map-bx .city.yanggu.very-bad{background-image:url(/page/kiosk/images/map-ygu-warning.png);}
+.map-bx .city.inje{background:url(/page/kiosk/images/map-inje-good.png) no-repeat center center /cover;}
+.map-bx .city.inje.normal{background-image:url(/page/kiosk/images/map-inje-normal.png);}
+.map-bx .city.inje.bad{background-image:url(/page/kiosk/images/map-inje-watch.png);}
+.map-bx .city.inje.very-bad{background-image:url(/page/kiosk/images/map-inje-warning.png);} 
+.map-bx .city.goseong{background:url(/page/kiosk/images/map-gs-good.png) no-repeat center center /cover;}
+.map-bx .city.goseong.normal{background-image:url(/page/kiosk/images/map-gs-normal.png);}
+.map-bx .city.goseong.bad{background-image:url(/page/kiosk/images/map-gs-watch.png);}
+.map-bx .city.goseong.very-bad{background-image:url(/page/kiosk/images/map-gs-warning.png);}  
+
+.map-bx .spot-bx{position:absolute;top:0;left:0;right:0;bottom:0;}
+.map-bx .spot-bx .pin{position:absolute;width:3.23vw;height:2.1vw;z-index:1;;font-size:0;color:transparent;display:flex;justify-content:flex-start;text-shadow:none;z-index:2;flex-direction:column;align-items:center;}
+.map-bx .spot-bx .pin.active{pointer-events:none;}
+.map-bx .spot-bx .pin:before{content:'';width:1.41vw;height:1.95vw;background:url(/page/kiosk/images/ico-pine.png) no-repeat center center /cover;margin-top:-2.1vw;flex-shrink:0;opacity:0;transition:opacity .25s .1s;}
+.map-bx .spot-bx .pin:after{content:'';width:.8vw;height:.8vw;box-sizing:border-box;border-radius:50%;background:#fdc903;border:.05vw solid #9a9a9a;transition:all .1s;flex-shrink:0;}
+.map-bx .spot-bx .pin.active:after{border:.1vw solid #07040f;}
+.map-bx .spot-bx .pin:hover:before{animation:pin-move2 .3s infinite alternate ease-out;opacity:1;}
+.map-bx .spot-bx .pin.active:before{animation:pin-move1 1.8s infinite alternate linear;opacity:1;}
+.map-bx .spot-bx .pin:active:after{transform: scale(.6);}
+
+
+/*전체 - 핀*/
+.map-bx .all .pin.v1{left: 12%;top: 57%;}
+.map-bx .all .pin.v2{left: 38%;top: 67%;}
+.map-bx .all .pin.v3{left: 56%;top: 67%;}
+.map-bx .all .pin.v4{left: 68%;top: 71%;}
+.map-bx .all .pin.v5{left: 87%;top: 33%;}
+.map-bx .all .spot-bx .pin:after{width:.94vw;height:.94vw;background:transparent;border:.1vw solid #fff;box-shadow:0px 0px 5px 0px rgba(0,0,0,.3);}
+.map-bx .all .spot-bx .pin.good:after{background:#0074ff}
+.map-bx .all .spot-bx .pin.normal:after{background:#01b56e}
+.map-bx .all .spot-bx .pin.bad:after{background:#feb71f}
+.map-bx .all .spot-bx .pin.very-bad:after{background:#e8121c}
+.map-bx .all .spot-bx .pin.active:after{border:2px solid #fff;}
+
+
+/*철원 - 핀*/
+.map-bx .cheorwon .pin.v1{left: 10%;top: 53%;}
+.map-bx .cheorwon .pin.v2{left: 37%;top: 41%;}
+.map-bx .cheorwon .pin.v3{left: 23%;top: 68%;}
+.map-bx .cheorwon .pin.v4{left: 9%;top: 56%;}
+.map-bx .cheorwon .pin.v5{left: 36%;top: 65%;}
+.map-bx .cheorwon .pin.v6{left: 43%;top: 47%;}
+.map-bx .cheorwon .pin.v7{left: 34%;top: 27%;}
+.map-bx .cheorwon .pin.v8{left: 53%;top: 31%;}
+.map-bx .cheorwon .pin.v9{left: 66%;top: 32%;}
+.map-bx .cheorwon .pin.v10{left: 79%;top: 29%;}
+.map-bx .cheorwon .pin.v11{left: 90.5%;top: 31%;}
+
+/*화천 - 핀*/
+.map-bx .hwacheon .pin.v1{left: 48%;top: 60%;}
+.map-bx .hwacheon .pin.v2{left: 57%;top: 71%;}
+.map-bx .hwacheon .pin.v3{left: 44%;top: 71%;}
+.map-bx .hwacheon .pin.v4{left: 42%;top: 46%;}
+.map-bx .hwacheon .pin.v5{left: 27%;top: 67%;}
+
+/*양구 - 핀*/
+.map-bx .yanggu .pin.v1{left: 47%;top: 62%;}
+.map-bx .yanggu .pin.v2{left: 52%;top: 63%;}
+.map-bx .yanggu .pin.v3{left: 56%;top: 36%;}
+.map-bx .yanggu .pin.v4{left: 41%;top: 35%;}
+.map-bx .yanggu .pin.v5{left: 69%;top: 20%;}
+
+/*인제 - 핀*/
+.map-bx .inje .pin.v1{left: 40%;top: 53%;}
+.map-bx .inje .pin.v2{left: 34%;top: 72%;}
+.map-bx .inje .pin.v3{left: 44%;top: 43%;}
+.map-bx .inje .pin.v4{left: 55%;top: 74%;}
+.map-bx .inje .pin.v5{left: 45%;top: 28%;}
+.map-bx .inje .pin.v6{left: 49%;top: 87%;}
+
+/*고성 - 핀*/
+.map-bx .goseong .pin.v1{left: 55%;top: 46%;}
+.map-bx .goseong .pin.v2{left: 55%;top: 38%;}
+.map-bx .goseong .pin.v3{left: 53%;top: 27%;}
+.map-bx .goseong .pin.v4{left: 60%;top: 57%;}
+.map-bx .goseong .pin.v5{left: 63%;top: 72%;}
+.map-bx .goseong .pin.v6{left: 39%;top: 31%;}
+
+
+.notice-bx{position:fixed;bottom:0;left:0;right:0;height:6vh;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1vw;z-index:10;background:#000;}
+.notice-bx p{height:100%;display:flex;align-items:center;}
+.notice-bx img{height:60%;margin-right:1vw;}
+.alert-bx{position:absolute;animation:icon-move2 .7s infinite alternate ease-in-out;bottom:1vw;right:1vw;padding-top:1.5vw;display:flex;width:18.64vw;height:19.63vw;background:url(/page/kiosk/images/bg-speechbubble-red.png) no-repeat center center /cover;flex-direction:column;align-items:center;}
+.alert-bx img{margin:0;height:11.2vh;margin:1.2vw 0;}
+.alert-bx span{color:#000;font-size:1.5vw;font-weight:700;}
+.alert-bx strong{color:#fff;font-size:1.3vw;font-weight:700;}
+.alert-bx.blue{background-image:url(/page/kiosk/images/bg-speechbubble-blue.png);}
+.alert-bx.green{background-image:url(/page/kiosk/images/bg-speechbubble-green.png);}
+.alert-bx.yellow{background-image:url(/page/kiosk/images/bg-speechbubble-yellow.png);}
+
+
+@keyframes pin-move1{
+  0%{transform:rotateY(0deg);}
+  100%{transform:rotateY(360deg);}
+}
+
+@keyframes pin-move2{
+  0%{transform:translateY(0%);}
+  100%{transform:translateY(-20%);}
+}
+
+@keyframes icon-move1{
+  0%{transform:translateY(3%);}
+  100%{transform:translateY(-3%);}
+}
+
+@keyframes icon-move2{
+  0%{transform:translateY(2%);filter:brightness(.95);}
+  100%{transform:translateY(-2%);filter:brightness(1.05);}
+}
