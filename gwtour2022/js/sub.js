@@ -349,8 +349,9 @@ ObjDoc.on({
 	'click': function(e) { 
 		e.preventDefault();
 		var idx = $(this).index();
-        $('.city-wrap .item-bx > div, .city-wrap .tab-bx a').removeClass('active');
-        $('.city-wrap .item-bx > div').eq(idx).addClass('active');
+        //$('.city-wrap .item-bx > div, .city-wrap .tab-bx a').removeClass('active');
+		$('.city-wrap .tab-bx a').removeClass('active');
+        //$('.city-wrap .item-bx > div').eq(idx).addClass('active');
         $(this).addClass('active');
 	}
 }, '.city-wrap .tab-bx a')
