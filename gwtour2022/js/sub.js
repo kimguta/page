@@ -52,7 +52,7 @@ function contentScript(){
                 speed: 500,
                 centerMode: true,
 				variableWidth: true,
-				slidesToShow: 3,
+				slidesToShow: 1,
                 }
             }
         ]
@@ -299,7 +299,7 @@ ObjDoc.on({
 			$('.food-item').css('top',$(this).position().top + $(this).innerHeight());
 			initSlick($('.food-item .slick'), SlickOptionSub3);
 			if(ObjWin.width() > 1499){ 
-				$('html, body').animate({scrollTop: $('.food-item').position().top + $('.food-item').innerHeight() + 120}, 400);
+				$('html, body').animate({scrollTop: $('.food-item').position().top + $('.food-item').innerHeight() + 90}, 400);
 			}
 		}
 	}

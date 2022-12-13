@@ -57,7 +57,7 @@ function contentScript(){
                 speed: 500,
                 centerMode: true,
 				variableWidth: true,
-				slidesToShow: 3,
+				slidesToShow: 1,
                 }
             }
         ]
@@ -354,7 +354,7 @@ ObjDoc.on({
         $(this).addClass('active');
 	}
 }, '.city-wrap .tab-bx a')
-.on({
+ .on({
 	'click': function(e) { 
 		e.preventDefault();
         $(this).toggleClass('active');
