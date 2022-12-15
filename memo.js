@@ -54,6 +54,9 @@ pub_navi({
 		notItem: '.item-button'
 	});
 
+
+
+
 $("div[id!='a']")// div 에 id가 a가 아닌 태그들 선택
 $("div[id^='a']")// div 에 id가 a로 시작하는 태그들 선택
 $("div[id$='a']")// div 에 id가 a로 끝나는 태그들 선택
