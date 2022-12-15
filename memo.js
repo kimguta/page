@@ -1,4 +1,7 @@
 
+
+/*테스트*/
+
 $(window).on('scroll load', function () {
     $('.new-history .year-bx .img-bx').each(function(index, item) {
         $(item).removeClass('fixed absol');
