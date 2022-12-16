@@ -199,10 +199,14 @@ function sideBar(wrapElem, elem){
 }
 
 ObjWin.on('scroll load', function(){
-    var posY = ObjWin.scrollTop() + 300;
-    var welOppset = $('#welcome').prev().prev('section').offset().top;
-    if(welOppset < posY){
-        $('#welcome img').addClass('active');
-    }  
+    try {
+        var posY = ObjWin.scrollTop() + 300;
+        var welOppset = $('#welcome').prev().prev('section').offset().top;
+        if (welOppset < posY) {
+            $('#welcome img').addClass('active');
+        }
+    } catch (e) {
+        //
+    }
 });
 
