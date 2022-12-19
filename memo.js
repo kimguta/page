@@ -111,12 +111,12 @@ height:100vh;height: calc(var(--vh, 1vh) * 100);
 <script>
 
     let vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty("--vh", `${vh}px`);
+    document.documentElement.style.setProperty("--vh", vh + "px");
 
     window.addEventListener("resize", () => {
     console.log("resize");
     let vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty("--vh", `${vh}px`);
+    document.documentElement.style.setProperty("--vh", vh + "px");
     });
 
 </script>
