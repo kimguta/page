@@ -69,8 +69,9 @@ ObjDoc.on({
 }, '.round_tab_area li a')
 .on({
 	'click': function() {
+		$(this).parent().find('img').hide();
+		$(this).parent().find('video').css('display', 'block');
 		$(this).parent().find('video').get(0).play();
-		$(this).parent().find('video').attr('controls','controls');
 		$(this).hide();
 	}
 }, '.multimedia_wrap .multimedia_box .play_btn');
