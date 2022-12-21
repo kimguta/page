@@ -66,8 +66,13 @@ ObjDoc.on({
 		$('.multimedia_area .multimedia_box').removeClass('active');
 		$('.multimedia_area .multimedia_box').eq(idx).addClass('active');
 	}
-}, '.round_tab_area li a');
-
+}, '.round_tab_area li a')
+.on({
+	'click': function() {
+		$(this).parent().find('video').get(0).play();
+		$(this).hide();
+	}
+}, '.multimedia_wrap .multimedia_box .play_btn');
 
 
 ObjDoc.on({
