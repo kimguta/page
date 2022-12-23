@@ -164,6 +164,7 @@ $(function() {
         infinite: true,
         slidesToShow: 3,
         pauseOnHover: false,
+        pauseOnFocus: false,
         speed: 500,
         autoplaySpeed: 5000,
         responsive: [
