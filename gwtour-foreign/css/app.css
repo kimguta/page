@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 /* 레이아웃 공통 */
-html, body{position:relative; width:100%;}
+html, body{position:relative; width:100%;scroll-behavior:smooth;}
 body{color:#333;max-width:1920px;margin:0 auto;font-size:16px; line-height:1.6;word-break:break-all;letter-spacing:-0.6px;max-width:1920px;margin:0 auto;}
 main{display:block;}
 .confirmIframe body{overflow:hidden;}
@@ -173,3 +173,15 @@ main{display:block;}
   #footer address span em:after{display:none;}
 }
 
+
+#btn-top{position:fixed;right:20px;bottom:20px;display:flex;align-items:center;justify-content:center;z-index:1001;border-radius:50%;color:#fff;transition:opacity .1s;opacity:0;background:url(/page/gwtour2022/images/common/top.png) no-repeat center center /cover;width:80px;height:80px;font-size:0px;}
+#btn-top.active{opacity:1;}
+#btn-top:active{transform:scale(.97);}
+
+@media (max-width:1699px) {
+  #btn-top{left:auto;margin-left:0;right:20px;bottom:20px !important;top:auto !important;width:40px;height:40px;}
+}
+
+@media (max-width:716px) {
+  #btn-top{right:15px;bottom:15px !important;width:35px;height:35px;}
+} 

@@ -101,6 +101,7 @@ ObjWin.on({
 			$('#header .depth-02').prev('h2').addClass('has-depth');
 			$('#header .depth-03').prev('h3').addClass('has-depth');
 		 }, 300);
+		 $('#wrapper').append('<a href="#" id="btn-top">top</a>');
 	}
 });
 
@@ -176,10 +177,27 @@ ObjDoc.on({
 		$('#header .site-map').addClass('active');
 		$('#header .site-map a').attr('tabindex','0');
 	}
-}, '#header .map-open');
+}, '#header .map-open')
+.on({
+	'click': function(e) { 
+		e.preventDefault();
+		$('html, body').animate({scrollTop: 0}, 0);
+	}
+}, '#btn-top');
 
 
 $(function() {
+	ObjWin.on({
+		'scroll': function() { 
+			var posY = ObjWin.scrollTop();
+			if ( posY > 100 ){
+				$("#btn-top").addClass('active');
+			} else if(posY < 100) {
+				$("#btn-top").removeClass('active');
+			};
+		}	
+	});
+
 	let vh = window.innerHeight * 0.01;
 	document.documentElement.style.setProperty("--vh", `${vh}px`);
 	window.addEventListener("resize", () => {

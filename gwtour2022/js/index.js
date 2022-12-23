@@ -19,6 +19,15 @@ $(function() {
             $(this).addClass('active');
         }
     });
+    
+    $('#visual .control-bx').after(`
+        <div class="time-bx">
+            <a href="#" class="v1" data-start="1" data-end="6">봄</a>
+            <a href="#" class="v2" data-start="7" data-end="10">여름</a>
+            <a href="#" class="v3" data-start="11" data-end="15">가을</a>
+            <a href="#" class="v4" data-start="16" data-end="20">겨울</a>
+        </div>
+    `);
 
     $('#Uplayer').on("timeupdate", function() {
         var video = $(this)[0];
@@ -36,7 +45,21 @@ $(function() {
             else{
                 $(this).removeClass('active');
             }
-        })
+        });
+        $('#visual .time-bx a').each(function(index, item){
+            var sTime = $(this).data('start');
+            var eTime = $(this).data('end');
+            if (video.currentTime >= sTime && video.currentTime <= eTime) {
+                $(this).addClass('active');
+            }
+            else{
+                $(this).removeClass('active');
+            }
+            $(this).click(function(e){
+                e.preventDefault();
+                video.currentTime =  sTime
+            });
+        });
     });
 
     $('.video-wrap .point').on({
@@ -53,7 +76,7 @@ $(function() {
     var windowWidth = $(window).width();
     $('.video-wrap').on('mousemove', function(e) {
         var moveX = (($(window).width() / 2) - e.pageX) * 0.4;
-        var moveY = (($(window).height() / 2) - e.pageY) * 0.6;
+        var moveY = (($(window).height() / 2) - e.pageY) * 0.265;
         if (windowWidth > 1499) {
             $('.video-wrap').stop().css('margin-left', moveX + 'px').css('margin-top', moveY + 'px');
         }
@@ -131,7 +154,7 @@ $(function() {
     };
 
     var SlickOption4 = {
-        autoplay: false,
+        autoplay: true,
         arrows: false,
         accessibility: false,
         swipeToSlide:true,
@@ -142,6 +165,7 @@ $(function() {
         slidesToShow: 3,
         pauseOnHover: false,
         speed: 500,
+        autoplaySpeed: 5000,
         responsive: [
             {
                 breakpoint: 1500,
@@ -222,8 +246,8 @@ function sideBar(wrapElem, elem){
 }
 
 ObjWin.on('scroll load', function(){
-    var posY = ObjWin.scrollTop() + 300;
-    var welOppset = $('#welcome').prev().prev('section').offset().top;
+    var posY = ObjWin.scrollTop() + ObjWin.height();
+    var welOppset = ObjDoc.height() - ($('#welcome').height() + $('#footer').height());
     if(welOppset < posY){
         $('#welcome img').addClass('active');
     }  
