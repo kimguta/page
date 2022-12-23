@@ -22,7 +22,7 @@ $(function() {
     
     $('#visual .control-bx').after(`
         <div class="time-bx">
-            <a href="#" class="v1" data-start="1" data-end="6">봄</a>
+            <a href="#" class="v1" data-start="0" data-end="6">봄</a>
             <a href="#" class="v2" data-start="7" data-end="10">여름</a>
             <a href="#" class="v3" data-start="11" data-end="15">가을</a>
             <a href="#" class="v4" data-start="16" data-end="20">겨울</a>
