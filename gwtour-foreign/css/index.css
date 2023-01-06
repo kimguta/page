@@ -22,7 +22,7 @@
 #visual .text-img.active{opacity:0;pointer-events:none;}
 #visual .text-img.mobile{display:none;}
 #visual .control-bx{position:absolute;bottom:80px;left:0px;right:0px;padding-bottom:50px;z-index:10;display:flex;align-items:center;justify-content:center;}
-#visual .control-bx button{width:30px;height:30px;font-size:0;color:transparent;background:url(/page/gwtour-foreign/images/common/sp_new.png) no-repeat -425px -25px / 960px 320px;}
+#visual .control-bx button{width:30px;height:30px;font-size:0;color:transparent;background:url(/page/gwtour-foreign/images/common/sp_new.png) no-repeat -425px -25px / 960px 320px;filter:drop-shadow(1px 1px 1px #000);}
 #visual .control-bx button.play{background-position-x:-505px;}
 #visual .control-bx button + button{margin-left:20px;}
 #visual .control-bx button:active{transform:scale(.9);}
@@ -49,6 +49,10 @@
 #visual .time-bx a + a{margin-left:15px;}
 #visual .time-bx a.active{width:16px;height:16px;background: linear-gradient(to right, #9a3bd4 0%,#ed455a 100%);}
 
+#visual .map-bx{position:absolute;bottom:110px;left:30px;z-index:10;width:160px;pointer-events:none;}
+#visual .map-bx img{width:100%;display:none;filter: drop-shadow(1px 1px 1px #000) brightness(2);}
+#visual .map-bx img.active{display:block;}
+
 @keyframes video-move1{ 
     0%{transform:translateX(0%);}
     20%{transform:translateX(-50%);}
@@ -63,7 +67,7 @@
     #visual .video-wrap{overflow-x:auto;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;width:100%;height:100%;top:auto;left:auto;bottom:auto;right:auto;position:initial;}
     #visual .video-wrap:after{display:none !important}
     #visual .video-wrap::-webkit-scrollbar{display:none;}
-    #visual .video-wrap:before{content:'';pointer-events:none;z-index:3;animation:video-move1 5s 1 both linear;display:none;width:88px;height:50px;position:absolute;left:50%;top:70%;margin:-30px 0 0 -53px;background:url(/page/gwtour-foreign/images/main/move01.png) no-repeat center center /cover;filter: drop-shadow(0px 0px 5px rgba(0,0,0,.5));}
+    #visual .video-wrap:before{content:'';pointer-events:none;z-index:3;animation:video-move1 5s 1 both linear;display:none;width:88px;height:50px;position:absolute;left:50%;top:65%;margin:-30px 0 0 -53px;background:url(/page/gwtour-foreign/images/main/move01.png) no-repeat center center /cover;filter: drop-shadow(0px 0px 5px rgba(0,0,0,.5));}
     #visual.mobile .video-wrap::before{display:block;}
     #Uplayer{width:auto;height:100%;transition:all 0s ease-out;position:relative;top:auto;left:auto;}
     #visual .text-img{margin-left:-922px;min-height:initial;height:900px;}
@@ -84,6 +88,7 @@
     #visual .btn-bx a span img{filter:brightness(200);}
 
     #visual .time-bx{bottom:25px;transform:scale(.9);transform-origin:50% 100%;}
+    #visual .map-bx{bottom:110px;left:20px;width:120px;}
 }    
 
 @media (max-width:1199px) {
@@ -105,10 +110,11 @@
     #visual .text-img{margin-left:-656px;height:640px;display:none}
     #visual .text-img.mobile{display:block;}
     #visual .control-bx{bottom:45px;padding-bottom:25px;}
-    #visual .btn-bx{transform:scale(.6);right: 0px;width: 100%;transform-origin: 50% 100%;justify-content: center;}
+    #visual .btn-bx{transform:scale(.6);right: 0px;width: 100%;transform-origin: 50% 100%;justify-content: center;padding-left:260px;}
     #visual .btn-bx a em{display:none;}
-
+    #visual .btn-bx a + a{margin-left:40px;}
     #visual .time-bx{bottom:20px;}
+    #visual .map-bx{bottom:90px;left:20px;width:110px;}
 }   
 
 

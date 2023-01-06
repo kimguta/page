@@ -36,7 +36,7 @@ $(function() {
         if (video.currentTime > 5) {
             $('#visual').addClass('v1')
         }
-        $('.video-wrap .point').each(function(index, item){
+        $('.video-wrap .point, #visual .map-bx img').each(function(index, item){
             var sTime = $(this).data('start');
             var eTime = $(this).data('end');
             if (video.currentTime >= sTime && video.currentTime <= eTime) {
