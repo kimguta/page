@@ -9,7 +9,7 @@
   <li><a href="gwprovin" target="_blank">강원도청2022</a></li>
   <li><a href="gw-subsite" target="_blank">강원도청-부속사이트</a></li>
   <li><a href="greencity" target="_blank">스마트그린도시-포탈</a></li>
-  <li><a href="g" target="_blank">스마트그린에어</a></li>
+  <li><a href="gwair" target="_blank">스마트그린에어</a></li>
   <li><a href="idq2022/index_list.html" target="_blank">디큐 홈페이지</a></li>
   <li><a href="untan/index_list.html" target="_blank">운탄고도길</a></li>
   <li><a href="sports/index_list.html" target="_blank">고성 강원도민체전</a></li>
