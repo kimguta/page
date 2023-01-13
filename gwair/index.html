@@ -1,0 +1,494 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<title>타이틀</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="format-detection" content="telephone=no"> 
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+	<link rel="stylesheet" href="/page/common/css/fonts.css">
+	<link rel="stylesheet" href="/page/common/css/common.css">
+	<link rel="stylesheet" href="/page/common/css/jquery-ui.min.css">
+
+	<script src="/page/common/js/jquery-3.6.0.min.js"></script>
+	<script src="/page/common/js/jquery-ui.min.js"></script>
+	<script src="/page/common/js/puble_common.js"></script>
+	<script src="/page/common/js/slick.min.js"></script>
+	<script src="/page/common/js/common.js"></script>
+
+	<link rel="stylesheet" href="/page/gwair/css/app.css">
+	<link rel="stylesheet" href="/page/gwair/css/index.css">
+	<link rel="stylesheet" href="/page/gwair/css/aos.css">
+
+	<script src="/page/gwair/js/app.js"></script>
+	<script src="/page/gwair/js/index.js"></script>
+	<script src="/page/gwair/js/aos.js"></script>
+</head>
+
+<body>
+	<div id="wrapper" class="page-wrap">
+
+		<ul class="skipnav">
+			<li><a href="#A-Gnb-focus">주메뉴 바로가기</a></li>
+			<li><a href="#A-Contents-focus">본문 바로가기</a></li>
+			<li><a href="#A-Ftr-focus">푸터 바로가기</a></li>
+		</ul>
+
+		<header id="header" include-html="/page/gwair/include/header.html"></header>
+		<main id="main">
+			<a href="#A-Contents-focus" id="A-Contents-focus" class="blind">본문 시작</a>
+			<section id="data-wrap">
+				<div class="inner">
+					<div class="info-bx">
+						<div class="dust-bx">
+							<div class="tab">
+								<div>
+									<a href="#" role="button" class="active">
+										<span>미세먼지(PM-10)</span>
+									</a>
+									<a href="#" role="button">
+										<span>초미세먼지(PM-2.5)</span>
+									</a>
+									<a href="#" role="button">
+										<span>오존(O₃)</span>
+									</a>
+									<a href="#" role="button">
+										<span>아황산가스(SO₂)</span>
+									</a>
+									<a href="#" role="button">
+										<span>일산화탄소(CO)</span>
+									</a>
+									<a href="#" role="button">
+										<span>이산화질소(NO₂)</span>
+									</a>
+									<a href="#" role="button">
+										<span>통합대기환경지수(CAI)</span>
+									</a>
+								</div>								
+							</div>
+							<div class="check">
+								<h3>측정망구분</h3>
+								<fieldset>
+									<input type="checkbox" id="city">
+									<label for="city">도시대기</label>
+									<input type="checkbox" id="road">
+									<label for="road">도로변대기</label>
+								</fieldset>
+							</div>
+							<div class="slick-bx">
+								<h3>대기오염 주의보 / 경보</h3>
+								<div class="slick warn">
+									<div>
+										<h4>
+											<img src="/page/gwair/images/main/light-good.png" alt="좋음">
+											<span>영서북부</span>
+										</h4>
+										<ul>
+											<li> 
+												<strong>미세먼지</strong>
+												<span class="warning">경보발령</span>
+											</li>
+											<li>
+												<strong>초미세먼지</strong>
+												<span class="watch">주의보발령</span>
+											</li>
+											<li>
+												<strong>오존</strong>
+												<span class="none">경보없음</span>
+											</li>
+										</ul>
+									</div>
+									<div>
+										<h4>
+											<img src="/page/gwair/images/main/light-usual.png" alt="보통">
+											<span>영서남부</span>
+										</h4>
+										<ul>
+											<li> 
+												<strong>미세먼지</strong>
+												<span class="watch">주의보발령</span>
+											</li>
+											<li>
+												<strong>초미세먼지</strong>
+												<span class="warning">경보발령</span>
+											</li>
+											<li>
+												<strong>오존</strong>
+												<span class="serious">중대경보발령</span>
+											</li>
+										</ul>
+									</div>
+									<div>
+										<h4>
+											<img src="/page/gwair/images/main/light-bad.png" alt="나쁨">
+											<span>영동북부</span>
+										</h4>
+										<ul>
+											<li> 
+												<strong>미세먼지</strong>
+												<span class="watch">주의보발령</span>
+											</li>
+											<li>
+												<strong>초미세먼지</strong>
+												<span class="warning">경보발령</span>
+											</li>
+											<li>
+												<strong>오존</strong>
+												<span class="warning">경보발령</span>
+											</li>
+										</ul>
+									</div>
+									<div>
+										<h4>
+											<img src="/page/gwair/images/main/light-seriousbad.png" alt="매우나쁨">
+											<span>영동남부</span>
+										</h4>
+										<ul>
+											<li> 
+												<strong>미세먼지</strong>
+												<span class="none">경보없음</span>
+											</li>
+											<li>
+												<strong>초미세먼지</strong>
+												<span class="none">경보없음</span>
+											</li>
+											<li>
+												<strong>오존</strong>
+												<span class="watch">주의보발령</span>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="map-bx">
+							<div class="select">
+								<a href="#" class="open" role="button">춘천시 중앙로</a>
+								<div class="view">
+									<a href="#" role="button">춘천시 중앙로</a>
+									<a href="#" role="button">춘천시 후평로</a>
+									<a href="#">춘천시 퇴계로</a>
+									<a href="#" role="button">춘천시 온의로</a>
+									<a href="#" role="button">춘천시 봉의산로</a>
+								</div>
+							</div>
+							<div class="map">
+								<div class="img-bx">
+									<div class="map-yeongseobukbu active">
+										<img src="/page/gwair/images/main/map-yeongseobukbu-seriousbad.png" alt="매우나쁨" style="display:none">
+										<img src="/page/gwair/images/main/map-yeongseobukbu-bad.png" alt="나쁨" style="display:none">
+										<img src="/page/gwair/images/main/map-yeongseobukbu-usual.png" alt="보통" style="display:none">
+										<img src="/page/gwair/images/main/map-yeongseobukbu-good.png" alt="좋음">
+										<img src="/page/gwair/images/main/map-yeongseobukbu-none.png" alt="점검중" style="display:none">
+									</div>
+									<div class="yeongseonambu">
+										<img src="/page/gwair/images/main/map-yeongseonambu-seriousbad.png" alt="매우나쁨">
+										<img src="/page/gwair/images/main/map-yeongseonambu-bad.png" alt="나쁨" style="display:none">
+										<img src="/page/gwair/images/main/map-yeongseonambu-usual.png" alt="보통" style="display:none">
+										<img src="/page/gwair/images/main/map-yeongseonambu-good.png" alt="좋음" style="display:none">
+										<img src="/page/gwair/images/main/map-yeongseonambu-none.png" alt="점검중" style="display:none">
+									</div>
+									<div class="yeongdongbukbu">
+										<img src="/page/gwair/images/main/map-yeongdongbukbu-seriousbad.png" alt="매우나쁨" style="display:none">
+										<img src="/page/gwair/images/main/map-yeongdongbukbu-bad.png" alt="나쁨">
+										<img src="/page/gwair/images/main/map-yeongdongbukbu-usual.png" alt="보통" style="display:none">
+										<img src="/page/gwair/images/main/map-yeongdongbukbu-good.png" alt="좋음" style="display:none">
+										<img src="/page/gwair/images/main/map-yeongdongbukbu-none.png" alt="점검중" style="display:none">
+									</div>
+									<div class="yeongdongnambu">
+										<img src="/page/gwair/images/main/map-yeongdongnambu-seriousbad.png" alt="매우나쁨" style="display:none">
+										<img src="/page/gwair/images/main/map-yeongdongnambu-bad.png" alt="나쁨" style="display:none">
+										<img src="/page/gwair/images/main/map-yeongdongnambu-usual.png" alt="보통">
+										<img src="/page/gwair/images/main/map-yeongdongnambu-good.png" alt="좋음" style="display:none">
+										<img src="/page/gwair/images/main/map-yeongdongnambu-none.png" alt="점검중" style="display:none">
+									</div>
+								</div>		
+								<div class="spot-bx">
+									<a href="#" role="button" class="seriousbad active" style="top:40%;left:30%">춘천시 중앙로</a>
+									<a href="#" role="button" class="bad" style="top:40%;left:35%">춘천시 후평로</a>
+									<a href="#" role="button" class="usual" style="top:40%;left:40%">춘천시 퇴계로</a>
+									<a href="#" role="button" class="good" style="top:40%;left:45%">춘천시 온의로</a>
+									<a href="#" role="button" class="none" style="top:40%;left:50%">춘천시 봉의산로</a>
+								</div>
+							</div>
+							<div class="notes">
+								<img src="/page/gwair/images/main/img-range-finedust.png" alt="미세먼지범례">
+								<img src="/page/gwair/images/main/img-range-ultrafinedust.png" alt="초미세먼지범례" style="display:none">
+								<img src="/page/gwair/images/main/img-range-ozone.png" alt="오존범례" style="display:none">
+								<img src="/page/gwair/images/main/img-range-SO2.png" alt="아황산가스범례" style="display:none">
+								<img src="/page/gwair/images/main/img-range-CO.png" alt="일산화탄소범례" style="display:none">
+								<img src="/page/gwair/images/main/img-range-NO2.png" alt="이산화질소범례" style="display:none">
+								<img src="/page/gwair/images/main/img-range-none.png" alt="통합대기환경지수범례" style="display:none">
+							</div>
+						</div>
+					</div>
+					<div class="district-bx">
+						<h3>
+							<strong>춘천시 중앙로</strong>
+						    <span>2023년 5월 26일13시기준</span>
+						</h3>
+						<div class="weather">
+							<div>
+								<img src="/page/gwair/images/main/ico-wether-sunny.png" alt="맑음" style="display:none">
+								<img src="/page/gwair/images/main/ico-wether-sunnycloudy.png" alt="구름 조금">
+								<img src="/page/gwair/images/main/ico-wether-cloudy.png" alt="구름 많음" style="display:none">
+								<img src="/page/gwair/images/main/ico-wether-gray.png" alt="흐림" style="display:none">
+								<img src="/page/gwair/images/main/ico-wether-rain.png" alt="비" style="display:none">
+								<img src="/page/gwair/images/main/ico-wether-snow.png" alt="눈" style="display:none">
+								<img src="/page/gwair/images/main/ico-wether-shower.png" alt="소나기" style="display:none">
+								<img src="/page/gwair/images/main/ico-wether-snowrain.png" alt="비/눈" style="display:none">
+								<strong>23.5°</strong>
+								<span>구름조금</span>
+							</div>
+							<p>	
+								<span>습도 <em>60%</em></span>
+								<span>강수량 <em>10mm</em></span>
+								<span>적설 <em>10mm</em></span>
+							</p>
+						</div>
+						<div class="nowair">
+							<h4>현재 대기질</h4>
+							<span class="major"><i>⚹</i> : 주오염물질</span>
+							<table>
+								<caption class="blind">계측정보 표입니다.</caption>
+								<colgroup>
+									<col width="45%">
+									<col width="30%">
+								</colgroup>
+								<thead>
+									<tr>
+										<th scope="col"><span>항목</span></th>
+										<th scope="col"><span>농도</span></th>
+										<th scope="col"><span>등급</span></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr class="active">
+										<td>미세먼지(PM-10)</td>
+										<td><span>31<em>㎍/㎥</em></span></td>
+										<td><span class="usual">보통</span></td>
+									</tr>
+									<tr>
+										<td>초미세먼지(PM-2.5)</td>
+										<td><span>36<em>㎍/㎥</em></span></td>
+										<td><span class="bad">나쁨</span></td>
+									</tr>
+									<tr>
+										<td><i>⚹</i> 오존(O₃)</td>
+										<td><span>0.0001<em>ppm</em></span></td>
+										<td><span class="seriousbad">매우나쁨</span></td>
+									</tr>
+									<tr>
+										<td>아황산가스(SO₂)</td>
+										<td><span>0.0001<em>ppm</em></span></td>
+										<td><span class="good">좋음</span></td>
+									</tr>
+									<tr>
+										<td>일산화탄소(CO)</td>
+										<td><span>0.01<em>ppm</em></span></td>
+										<td><span class="good">좋음</span></td>
+									</tr>
+									<tr>
+										<td>이산화질소(NO₂)</td>
+										<td><span>0.0001<em>ppm</em></span></td>
+										<td><span class="good">좋음</span></td>
+									</tr>
+									<tr>
+										<td>통합대기환경지수(CAI)</td>
+										<td><span>0.4</span></td>
+										<td><span class="seriousbad">매우나쁨</span></td>
+									</tr>
+								</tbody>				
+							</table>
+						</div>
+
+
+
+					</div>
+				</div>
+			</section>
+			<section id="noti-wrap">
+				<div class="inner">
+					<div class="notice-bx">
+						<h3>공지사항</h3>
+						<div>
+							<a href="#">
+								<span>2023년 6월 강원도 대기측정소 정도검사 일정 안내 2023년 6월 강원도 대기측정소 정도검사 일정 안내 2023년 6월 강원도 대기측정소 정도검사 일정 안내 2023년 6월 강원도 대기측정소 정도검사 일정 안내 2023년 6월 강원도 대기측정소 정도검사 일정 안내</span>
+								<em>2023-05-24</em>
+							</a>
+							<a href="#">
+								<span>2023년 6월 강원도 대기측정소 정도검사 일정 안내</span>
+								<em>2023-05-24</em>
+							</a>
+							<a href="#">
+								<span>2023년 6월 강원도 대기측정소 정도검사 일정 안내</span>
+								<em>2023-05-24</em>
+							</a>
+						</div>
+						<a href="#" class="more">더보기</a>
+					</div>
+					<div class="message-bx">
+						<a href="#">
+							<img src="/page/gwair/images/main/img-textservice.jpg" alt="대기질정보 문자서비스 신청" class="pc-img">
+							<img src="/page/gwair/images/main/img-textservice-m.png" alt="대기질정보 문자서비스 신청" class="mobile-img">
+						</a>
+					</div>
+					<div class="slick-bx">
+						<h3>대기오염예보</h3>
+						<div class="slick">
+							<div>
+								<h4>강원도 영서지역</h4>
+								<ul>
+									<li>
+										<strong>미세먼지</strong>
+										<p>
+											<span>
+												오늘
+												<img src="/page/gwair/images/main/img-emoti-good.jpg" alt="좋음">
+												<em class="good">좋음</em>
+											</span>
+											<span>
+												내일
+												<img src="/page/gwair/images/main/img-emoti-usual.jpg" alt="보통">
+												<em class="usual">보통</em>
+											</span>
+										</p>
+									</li>
+									<li>
+										<strong>초미세먼지</strong>
+										<p>
+											<span>
+												오늘
+												<img src="/page/gwair/images/main/img-emoti-bad.jpg" alt="나쁨">
+												<em class="bad">나쁨</em>
+											</span>
+											<span>
+												내일
+												<img src="/page/gwair/images/main/img-emoti-verybad.jpg" alt="매우나쁨">
+												<em class="seriousbad">매우나쁨</em>
+											</span>
+										</p>
+									</li>
+									<li>
+										<strong>오존</strong>
+										<p>
+											<span>
+												오늘
+												<img src="/page/gwair/images/main/img-emoti-good.jpg" alt="좋음">
+												<em class="good">좋음</em>
+											</span>
+											<span>
+												내일
+												<img src="/page/gwair/images/main/img-emoti-usual.jpg" alt="보통">
+												<em class="usual">보통</em>
+											</span>
+										</p>
+									</li>
+								</ul>
+							</div>
+							<div>
+								<h4>강원도 영동지역</h4>
+								<ul>
+									<li>
+										<strong>미세먼지</strong>
+										<p>
+											<span>
+												오늘
+												<img src="/page/gwair/images/main/img-emoti-good.jpg" alt="좋음">
+												<em class="good">좋음</em>
+											</span>
+											<span>
+												내일
+												<img src="/page/gwair/images/main/img-emoti-usual.jpg" alt="보통">
+												<em class="usual">보통</em>
+											</span>
+										</p>
+									</li>
+									<li>
+										<strong>초미세먼지</strong>
+										<p>
+											<span>
+												오늘
+												<img src="/page/gwair/images/main/img-emoti-bad.jpg" alt="나쁨">
+												<em class="bad">나쁨</em>
+											</span>
+											<span>
+												내일
+												<img src="/page/gwair/images/main/img-emoti-verybad.jpg" alt="매우나쁨">
+												<em class="seriousbad">매우나쁨</em>
+											</span>
+										</p>
+									</li>
+									<li>
+										<strong>오존</strong>
+										<p>
+											<span>
+												오늘
+												<img src="/page/gwair/images/main/img-emoti-good.jpg" alt="좋음">
+												<em class="good">좋음</em>
+											</span>
+											<span>
+												내일
+												<img src="/page/gwair/images/main/img-emoti-usual.jpg" alt="보통">
+												<em class="usual">보통</em>
+											</span>
+										</p>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>	
+
+		<footer id="footer" class="clearfix" include-html="/page/gwair/include/footer.html"></footer>
+
+	</div>
+
+</body>
+
+</html>
+
+
+
+
+<!--[d] 인클루드, 디자인 확인 용 개발 시 제거-->
+<div class="puble-index">
+	<a href="#" class="close" onclick="$('.puble-index').remove();return false;">✕</a>
+	<a href="/page/gwair/sub.html" target="_blank" class="btn">서브페이지열기</a>
+</div>
+
+<style>
+	.puble-index{position:fixed;z-index:500;left:0;bottom:0;display:flex;flex-direction:column;align-items:flex-start;}
+	.puble-index .btn{background:#111;border:1px solid #fff;border-width:1px 1px 0px 0px;display:block;text-align:center;font-size:13px;line-height:1.3;padding:0px 10px;color:#fff;height:40px;line-height:40px;}
+	.puble-index .close{display:flex;background:#111;color:#fff;justify-content:center;align-items:center;width:22px;height:22px;border:1px solid #fff;margin-bottom:-1px;font-size:13px;}
+	@media (max-width:1399px) {
+		.puble-index .btn{font-size:13px;padding:0px 5px;color:#fff;height:34px;line-height:34px;}
+		.puble-index .close{width:18px;height:18px;margin-bottom:-1px;font-size:10px;}
+	}
+</style>
+
+<script>
+	$(function(){
+		includeLayout();
+	});
+
+
+	function includeLayout(){
+		var includeArea = $("[include-html]");
+		var self, url;
+		$.each(includeArea, function() {
+			self = $(this);
+			url = self.attr("include-html");
+			self.load(url, function(){
+				$("[include-html]").removeAttr("include-html");
+				appScript();
+				appScript2();
+			});
+		});
+	};
+</script>
+
+<!--//[d] 인클루드, 디자인 확인 용 개발 시 제거-->
