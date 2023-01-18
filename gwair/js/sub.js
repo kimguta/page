@@ -122,7 +122,17 @@ ObjDoc.on({
         $('#sub .spot-bx a').removeClass('active');
         $(this).addClass('active');
 	}
-}, '#sub .spot-bx a');
+}, '#sub .spot-bx a')
+.on({
+	'click': function(e) { 
+        e.preventDefault();
+		var idx = $(this).parents('tr').index();
+        $('.district-bx table tbody tr').removeClass('active');
+        $(this).parents('tr').addClass('active');
+        $('.map-wrap .notes img').hide();
+        $('.map-wrap .notes img').eq(idx).show();
+	}
+}, '.district-bx table a');
 
 
 //콘텐츠 스크립트 (dom ready 후 동작)
