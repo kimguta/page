@@ -80,7 +80,7 @@ ObjWin.on({
 		var Wwidth2 = $(window).outerWidth();
 		if (Wwidth2 > 1279){
 			$('#header .depth-02').stop().hide();
-			('#header h2, #header h3').removeClass('active');
+			$('#header h2, #header h3').removeClass('active');
 		}
 	},
 	'resize load': function() { 
@@ -120,6 +120,7 @@ function appScript(){
 			{
 				breakpoint: 992,
 				settings: {
+					speed: 150,
 					centerMode: true,
 				}
 			}

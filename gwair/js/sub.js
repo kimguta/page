@@ -94,35 +94,35 @@ ObjDoc.on({
 		$('#img-modal').remove();
 		$('.img-zoom-modal.active').focus().removeClass('active');
 	}
-}, '#img-modal .close')
+}, '#img-modal .close');
+
+
+ObjDoc.on({
+	'click': function(e) { 
+        e.preventDefault();
+		var idx = $(this).index();
+        $(this).toggleClass('active');
+	}
+}, '#sub .select .open')
 .on({
 	'click': function(e) { 
-		e.preventDefault();
-		if ($(this).parent('h3').hasClass('active')) {
-			$(this).parent('h3').removeClass('active');
-			$(this).parent('h3').next('.depth-03').slideUp(300);
-		} else{
-			$('#side-menu h3').removeClass('active');
-			$('#side-menu .depth-03').slideUp(300);
-			$(this).parent('h3').addClass('active');
-			$(this).parent('h3').next('.depth-03').slideDown(300);
-		}
+        e.preventDefault();
+		var Name = $(this).text();
+        var idx = $(this).index();
+        $('#sub .select .open').text(Name).removeClass('active');
+        $('#sub .spot-bx a').removeClass('active');
+        $('#sub .spot-bx a').eq(idx).addClass('active');
 	}
-}, '#side-menu h3.has-depth a')
+}, '#sub .select .view a')
 .on({
-	'change': function() { 
-		if($(this).is(":checked")) {
-			$(this).parents('.city-bx').find('input[type="checkbox"]').each(function(index, item){
-				$(item).prop("checked", true);
-			});
-		}
-		else {
-			$(this).parents('.city-bx').find('input[type="checkbox"]').each(function(index,item){
-				$(item).prop("checked", false);
-			});
-		}
+	'click': function(e) { 
+        e.preventDefault();
+		var Name = $(this).text();
+        $('#sub .select .open').text(Name).removeClass('active');
+        $('#sub .spot-bx a').removeClass('active');
+        $(this).addClass('active');
 	}
-}, '.check-bx .check-all');
+}, '#sub .spot-bx a');
 
 
 //콘텐츠 스크립트 (dom ready 후 동작)
