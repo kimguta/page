@@ -94,27 +94,22 @@ ObjWin.on({
 			}
 		});
 	setTimeout(function() {
-			var menuDom = $('#header nav').clone();
-			$('#header .site-map').append(menuDom);
-			$('#header .site-map nav').removeAttr('class');
-			$('#header .site-map a').attr('tabindex','-1');
+		var menuDom = $('#header nav').clone();
+		$('#header .site-map').append(menuDom);
+		$('#header .site-map nav').removeAttr('class');
+		$('#header .site-map a').attr('tabindex','-1');
 
-			$('#header .depth-02').prev('h2').addClass('has-depth');
-			$('#header .depth-03').prev('h3').addClass('has-depth');
-
+		$('#header .depth-02').prev('h2').addClass('has-depth');
+		$('#header .depth-03').prev('h3').addClass('has-depth');
 
 		$("#header .depth-02").prev('h2').each(function(index){
 			console.log($(this).find('span:eq(0)').html());
-
 			if(index == 6) {
 				$(this).removeClass("has-depth")
 			}
-
 		});
-
-
-		 }, 300);
-		 $('#wrapper').append('<a href="#" id="btn-top">top</a>');
+	}, 300);
+	$('#wrapper').append('<a href="#" id="btn-top">top</a>');
 	}
 });
 
