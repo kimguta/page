@@ -1,6 +1,55 @@
 
 
 /*테스트*/
+<div class="dday-ui">
+				<div class="dbx">
+					<img src="/main_cons/imgs/intro_logo_gwd.png" alt="강원특별자치도 출범">
+					<p data-day="2023,06,11">
+						<em class="blind">d</em>
+						<span></span>
+						<em class="blind">일</em>
+						<i></i>
+					</p>
+				</div>
+				<div class="dbx">
+					<img src="/main_cons/imgs/intro_logo_gwfe.png" alt="강원세계살림엑스포">
+					<p data-day="2023,09,22">
+						<em class="blind">d</em>
+						<span></span>
+						<em class="blind">일</em>
+						<i></i>
+					</p>
+				</div>
+				<div class="dbx">
+					<img src="/main_cons/imgs/intro_logo_olympics.png" alt="2024강원동계청소년올림픽">
+					<p data-day="2024,01,19">
+						<em class="blind">d</em>
+						<span></span>
+						<em class="blind">일</em>
+						<i></i>
+					</p>
+				</div>
+			</div>
+
+
+$('.dday-ui .dbx').each(function(index, item) {
+					var today = new Date();
+					var date = $(this).children('p').data('day');
+					var dday = new Date(date);
+					var gap = dday.getTime() - today.getTime();
+					var result = Math.ceil(gap / (1000 * 60 * 60 * 24));
+					var NumBer = 0;
+					if (result > 0){
+						setInterval(function(){
+							if(NumBer < result){
+								NumBer++
+								$(item).find('span').text(NumBer);
+							} 
+						}, 10);
+					}else{
+						$(this).remove();
+					}	
+				});
 
 $(window).on('scroll load', function () {
     $('.new-history .year-bx .img-bx').each(function(index, item) {
