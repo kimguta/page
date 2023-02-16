@@ -37,6 +37,25 @@ body{color:#333;font-family:"Apple SD Gothic Neo","Noto Sans", "Noto Sans KR","M
 main{display:block;background:#eee;height:100vh}
 #wrapper{overflow:hidden;}
 
+/* slick 플러그인 */
+.slick-slider .slick-list{display:block; overflow-x:hidden; overflow-y:hidden; position:relative}
+.slick-slider .slick-list.dragging{cursor:pointer}
+.slick-slider .slick-list .slick-track{display:block; position:relative; top:0; left:0}
+.slick-slider .slick-list .slick-track:before, .slick-slider .slick-list .slick-track:after{display:table; content:''}
+.slick-slider .slick-list .slick-track:after{clear:both}
+.slick-slider .slick-list.slick-loading .slick-track{visibility:hidden}
+.slick-slider .slick-list .slick-track .slick-slide{display:none; float:left}
+.slick-slider[dir='rtl'] .slick-list .slick-track .slick-slide{float:right}
+.slick-slider .slick-list .slick-track .slick-slide.slick-loading img{display:none}
+.slick-slider.slick-initialized .slick-list .slick-track .slick-slide{display:block}
+.slick-slider .slick-list .slick-track.slick-loading .slick-slide{visibility:hidden}
+.slick-slider .slick-arrow.slick-hidden{display:none}
+.slick-dots{display:flex;justify-content:center;align-items:center;}
+.slick-dots li{transition:transform .3s;transform:scale(.8);}
+.slick-dots li.slick-active{transform:scale(1);}
+.slick-dots li a{display:block;width:70px;height:70px;}
+
+
 header{position:fixed;top:0;left:0;right:0;height:14vh;z-index:10;display:flex;align-items:center;}
 header .logo{flex-basis:16.5%;flex-shrink:0;display:flex;align-items:center;justify-content:center;height:100%;background:#fff;}
 header .logo img{height:72%;image-rendering:-webkit-optimize-contrast;}
@@ -73,22 +92,27 @@ header .dust span{height:3.3vh;display:flex;padding:0 1vw;align-items:center;col
 .map-bx .city.cheorwon.normal{background-image:url(/page/kiosk/images/map-cwg-normal.png);}
 .map-bx .city.cheorwon.bad{background-image:url(/page/kiosk/images/map-cwg-watch.png);}
 .map-bx .city.cheorwon.very-bad{background-image:url(/page/kiosk/images/map-cwg-warning.png);}
+.map-bx .city.cheorwon.blank{background-image:url(/page/kiosk/images/map-cwg-normal.png);}
 .map-bx .city.hwacheon{background:url(/page/kiosk/images/map-ihc-good.png) no-repeat center center /cover;} 
 .map-bx .city.hwacheon.normal{background-image:url(/page/kiosk/images/map-ihc-normal.png);}
 .map-bx .city.hwacheon.bad{background-image:url(/page/kiosk/images/map-ihc-watch.png);}
 .map-bx .city.hwacheon.very-bad{background-image:url(/page/kiosk/images/map-ihc-warning.png);}
+.map-bx .city.hwacheon.blank{background-image:url(/page/kiosk/images/map-ihc-normal.png);}
 .map-bx .city.yanggu{background:url(/page/kiosk/images/map-ygu-good.png) no-repeat center center /cover;} 
 .map-bx .city.yanggu.normal{background-image:url(/page/kiosk/images/map-ygu-normal.png);}
 .map-bx .city.yanggu.bad{background-image:url(/page/kiosk/images/map-ygu-watch.png);}
 .map-bx .city.yanggu.very-bad{background-image:url(/page/kiosk/images/map-ygu-warning.png);}
+.map-bx .city.yanggu.blank{background-image:url(/page/kiosk/images/map-ygu-normal.png);}
 .map-bx .city.inje{background:url(/page/kiosk/images/map-inje-good.png) no-repeat center center /cover;}
 .map-bx .city.inje.normal{background-image:url(/page/kiosk/images/map-inje-normal.png);}
 .map-bx .city.inje.bad{background-image:url(/page/kiosk/images/map-inje-watch.png);}
-.map-bx .city.inje.very-bad{background-image:url(/page/kiosk/images/map-inje-warning.png);} 
+.map-bx .city.inje.very-bad{background-image:url(/page/kiosk/images/map-inje-warning.png);}
+.map-bx .city.inje.blank{background-image:url(/page/kiosk/images/map-inje-normal.png);}
 .map-bx .city.goseong{background:url(/page/kiosk/images/map-gs-good.png) no-repeat center center /cover;}
 .map-bx .city.goseong.normal{background-image:url(/page/kiosk/images/map-gs-normal.png);}
 .map-bx .city.goseong.bad{background-image:url(/page/kiosk/images/map-gs-watch.png);}
-.map-bx .city.goseong.very-bad{background-image:url(/page/kiosk/images/map-gs-warning.png);}  
+.map-bx .city.goseong.very-bad{background-image:url(/page/kiosk/images/map-gs-warning.png);}
+.map-bx .city.goseong.blank{background-image:url(/page/kiosk/images/map-gs-normal.png);}
 
 .map-bx .spot-bx{position:absolute;top:0;left:0;right:0;bottom:0;}
 .map-bx .spot-bx .pin{position:absolute;width:3.23vw;height:2.1vw;z-index:1;;font-size:0;color:transparent;display:flex;justify-content:flex-start;text-shadow:none;z-index:2;flex-direction:column;align-items:center;}
@@ -100,6 +124,12 @@ header .dust span{height:3.3vh;display:flex;padding:0 1vw;align-items:center;col
 .map-bx .spot-bx .pin.active:before{animation:pin-move1 1.8s infinite alternate linear;opacity:1;}
 .map-bx .spot-bx .pin:active:after{transform: scale(.6);}
 
+.map-bx .spot-bx .pin.active{pointer-events:none;}
+.map-bx .spot-bx .pin.good:after{background:#0074ff}
+.map-bx .spot-bx .pin.normal:after{background:#01b56e}
+.map-bx .spot-bx .pin.bad:after{background:#feb71f}
+.map-bx .spot-bx .pin.very-bad:after{background:#e8121c}
+.map-bx .spot-bx .pin.blank:after{background:#ececec}
 
 /*전체 - 핀*/
 .map-bx .all .pin.v1{left: 12%;top: 57%;}
@@ -127,6 +157,8 @@ header .dust span{height:3.3vh;display:flex;padding:0 1vw;align-items:center;col
 .map-bx .cheorwon .pin.v9{left: 66%;top: 32%;}
 .map-bx .cheorwon .pin.v10{left: 79%;top: 29%;}
 .map-bx .cheorwon .pin.v11{left: 90.5%;top: 31%;}
+
+
 
 /*화천 - 핀*/
 .map-bx .hwacheon .pin.v1{left: 48%;top: 60%;}
