@@ -22,6 +22,7 @@ $(function() {
 
     initSlick($('#visual .slick'), slickOption);
 
+
     var slickOption2 = {
         autoplay: true,
         arrows: false,

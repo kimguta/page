@@ -41,6 +41,7 @@ function initSlick(target, options) {
 	});
 };
 
+
 // dots 커스텀 함수
 function imgPaging(slick,index){
     var targetImage = slick.$slides.eq(index).find('img').attr('src');
