@@ -1,6 +1,7 @@
 @charset "utf-8";
 
 /* 레이아웃 공통 */
+html{font-size:10px;}
 html, body{position:relative; width:100%;}
 body{color:#313131; font-size:16px; line-height:1.6;font-family:"S-CoreDream", "Apple SD Gothic Neo","Noto Sans", "Noto Sans KR","Malgun Gothic","맑은 고딕",sans-serif;word-break:break-all;letter-spacing:-0.7px;max-width:1920px;margin:0 auto;}
 main{display:block;}
@@ -41,6 +42,14 @@ main{background:#fff;}
 @media (max-width:716px) {
   .inner{padding:0 15px;}
 }
+
+
+@media (max-width:999px) {
+  #sub .skinTb colgroup{display:none;}
+}
+
+
+
 
 #header{position:fixed;z-index:2000;top:0;left:0px;right:0px;transition:top .3s;border-bottom:1px solid rgba(255,255,255,.5);}
 #header .gnb-wrap{position:relative;max-width:1920px;margin:0 auto;height:80px;}
@@ -103,8 +112,10 @@ main{background:#fff;}
   #header .nav-bx .depth-01 h2 a{height:50px;padding:0 20px 0 20px;justify-content:space-between;font-weight: 500;z-index:10;text-shadow:none;}
   #header .nav-bx .depth-01 h2.has-depth a:after{content:'+'}
   #header .nav-bx .depth-01 h2.active a{color: #fff !important;background:#13a436;box-shadow:0px 1px 3px 0px rgba(0,0,0,.3);}
+
   #header .nav-bx .depth-01 h2.has-depth.active a:after{content:'-';position:relative;width:auto;height:auto;background:transparent;margin-left: 0;bottom: auto;left: auto;}
   #header .nav-bx .depth-01 > li h2 a span{text-align:left;padding:0;border:0 !important}
+  #header.active .nav-bx .depth-01 h2:not(.has-depth).active a:after{display:none;}
   #header .nav-bx .depth-02{padding: 10px 0px 10px 0px;position:relative;top:auto;left:auto;background:#e4e4e4;}
   #header .nav-bx .depth-02 li{display:block;width:100%;margin:0;}
   #header .nav-bx .depth-02 h3 a{height:38px;font-size: 14px;border-radius:0px;justify-content:flex-start;position:relative;padding-left:15px;font-weight:300;}
