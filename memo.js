@@ -58,7 +58,23 @@
 				</div>
 			</div>
 
-
+ $('.dday-ui .dbx').each(function(index, item) {
+					var today = new Date();
+					var date = $(this).children('p').data('day');
+					var dday = new Date(date);
+					var gap = dday.getTime() - today.getTime();
+					var result = parseInt(1199);
+					var NumBer = 0;
+					var resultText = String(result);
+					if (result > 0){
+						setInterval(function(){
+							if(NumBer < result){
+								NumBer++
+								$(item).find('span').text(NumBer.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
+							} 
+						}, 1);
+					}
+				});
 $('.dday-ui .dbx').each(function(index, item) {
 					var today = new Date();
 					var date = $(this).children('p').data('day');
