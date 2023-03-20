@@ -43,265 +43,216 @@
 		<main id="main">
 			<a href="#A-Contents-focus" id="A-Contents-focus" class="blind">본문 시작</a>
 			<section id="visual">
-				<h2 class="blind">알림</h2>
 				<div class="slick">
-					<a href="#">
-						<img src="/page/comz-field/images/main/top-banner-w.png" alt="대체텍스트">
-						<img src="/page/comz-field/images/main/top-banner-m.png" alt="대체텍스트" class="mobile-img">
-					</a>
-					<a href="#">
-						<img src="https://loremflickr.com/1920/460?lock=2" alt="대체텍스트">
-						<img src="https://picsum.photos/1200/1200?lock=3" alt="대체텍스트" class="mobile-img">
-					</a>
-					<a href="#">
-						<img src="/page/comz-field/images/main/top-banner-w.png" alt="대체텍스트">
-						<img src="/page/comz-field/images/main/top-banner-m.png" alt="대체텍스트" class="mobile-img">
-					</a>
-					<a href="#">
-						<img src="https://loremflickr.com/1920/460?lock=2" alt="대체텍스트">
-						<img src="https://picsum.photos/1200/1200?lock=3" alt="대체텍스트" class="mobile-img">
-					</a>
+					<div>
+						<img src="/page/comz-field/images/main/main-visual.jpg" alt="">
+						<p>
+							작은도시 춘천의 고유한 감각으로,
+							시민과 함께 새로운 변화를 만들어가는
+							이 곳은 커먼즈필드 춘천 입니다.
+						</p>
+					</div>
+					<div>
+						<img src="/page/comz-field/images/main/main-visual.jpg" alt="">
+						<p>
+							일이삼사오 일이삼사오 일이삼사오
+							일이삼사오 일이삼사오 일이삼사오
+							일이삼사오 일이삼사오 일이삼사오 
+						</p>
+					</div>
+				</div>
+				<div class="info-bx">
+					<div class="inner">
+						<div class="address-bx">
+							<p>
+								<strong>COMMONZ FIELD <em>춘천</em></strong> 
+								(24374)강원도 춘천시 공지로 255, 커먼즈필드 춘천
+							</p>
+							<p>
+								<span>TEL: 033-912-5000~5013</span>
+								<span>Email : hello@commonzfield.kr</span>
+							</p>
+						</div>
+						<div class="time-bx">
+							<p>
+								<strong><em>커먼즈필드 춘천</em> 운영시간</strong> 
+								<strong class="color-red">10:00 AM  -  8:00 PM</strong>
+							</p>
+							<p>
+								<span>평 일 - 10:00 AM  ~  8:00 PM  /  토요일 - 10:00 AM  ~  6:00 PM  /  일요일, 공휴일 <em class="color-red">휴무</em></span>
+							</p>
+						</div>
+					</div>
 				</div>
 			</section>
-			<section id="wanted">
+			<section id="space">
 				<div class="inner">
-					<h2 class="tit-v1">
-						<strong>모집 <img src="/page/comz-field/images/common/pin.png" alt=""> 공고</strong>
-						<span>HI matel 커먼즈필드 춘천의 프로젝트에 함께해요.</span>
-					</h2>
+					<div class="number-bx">
+						<h2>
+							Our<br>
+							Space
+						</h2>
+						<div class="count-bx">
+							<p>춘천사람들의 상상을 현실로 만들고 춘천다운 가능성을 여는 <em>혁신문화공간 커먼즈필드 춘천</em></p>
+							<div>
+								<div class="nbx">
+									<h3>함께한 사람들</h3>
+									<p>
+										<span id="counter1"></span>
+										<em>명</em>
+									</p>
+								</div>
+								<div class="nbx">
+									<h3>춘천을 바꾸는 실험들</h3>
+									<p>
+										<span id="counter2"></span>
+										<em>건</em>
+									</p>
+								</div>
+								<div class="nbx">
+									<h3>누적 방문객</h3>
+									<p>
+										<span id="counter3"></span>
+										<em>명</em>
+									</p>
+								</div>
+							</div>
+							<script>
+								//카운트 함수
+								function numberCounter(target_frame, target_number) {
+									this.count = 0; this.diff = 0;
+									this.target_count = parseInt(target_number);
+									this.target_frame = document.getElementById(target_frame);
+									this.timer = null;
+									this.counter();
+								};
+								numberCounter.prototype.counter = function() {
+									var self = this;
+									this.diff = this.target_count - this.count;
+									if(this.diff > 0) {
+										self.count += Math.ceil(this.diff / 5);
+									}
+									this.target_frame.innerHTML = this.count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+								
+									if(this.count < this.target_count) {
+										this.timer = setTimeout(function() { self.counter(); }, 50);
+									} else {
+										clearTimeout(this.timer);
+									}
+								};
+								//카운트 실행
+								ObjWin.on({
+									'scroll load': function() { 
+										var ObjWin = $(window);	
+											Wheight = ObjWin.height();
+											Offest = $('#space').offset().top;
+											Start = (Wheight + ($(document).scrollTop())) - Offest;
+											elemHeight = $('.number-bx').height();
+										if (Start > elemHeight) {
+											//카운트 데이터
+											new numberCounter("counter1", 489);
+											new numberCounter("counter2", 780);
+											new numberCounter("counter3", 18246);
+											$('.nbx span').removeAttr('id');
+										}	
+									}		
+								});
+						   </script>
+						</div>
+					</div>
+					<div class="sns-bx clearfix">
+						<a href="#">
+							<img src="/page/comz-field/images/main/sns-1.jpg" alt="">
+						</a>
+						<a href="#">
+							<img src="/page/comz-field/images/main/sns-2.jpg" alt="">
+						</a>
+						<a href="#">
+							<img src="/page/comz-field/images/main/sns-3.jpg" alt="">
+						</a>
+						<a href="#">
+							<img src="/page/comz-field/images/main/sns-4.jpg" alt="">
+						</a>
+						<a href="#">
+							<img src="/page/comz-field/images/main/sns-5.jpg" alt="">
+						</a>
+						<a href="#">
+							<img src="/page/comz-field/images/main/sns-6.jpg" alt="">
+						</a>
+						<a href="#">
+							<img src="/page/comz-field/images/main/sns-8.jpg" alt="">
+						</a>
+						<a href="#">
+							<img src="/page/comz-field/images/main/sns-8.jpg" alt="">
+						</a>
+					</div>
+				</div>
+			</section>
+			<section id="banner">
+				<div class="inner">
+					<div class="text-bx">
+						<h2>우리가 함께 만든 지역의 변화  <em>COMMONZ FIELD ARCHIVE</em></h2>
+						<span>지역의 문제와 필요를 해결하는 다양한 프로젝트를 살펴보세요.</span>
+					</div>
+					<a href="#" class="btn-go">PROJECT 바로가기</a>
+				</div>
+			</section>
+			<section id="partner">
+				<div class="inner">
+					<div class="title-bx">
+						<h2>
+							<em>우리는 유연한 협동, 공동의 임팩트,</em>
+							<span>더 많은 연결을 통해 지역의 긍정적인 변화에 함께합니다.</span>
+						</h2>
+						<a href="#" class="btn-go">함께하는 파트너 만나보기</a>
+					</div>
 					<div class="slick">
 						<a href="#">
-							<img src="https://loremflickr.com/330/330?lock=16" alt="대체텍스트">
-							<div class="text-bx">
-								<p>
-									<strong>공공미술 전시회 “두 번째 만남” <br>작가와의 대화</strong>
-								</p>
-								<!--[d] 모집중 v1, 마감 v2, 준비중 v3, 클래스 추가-->
-								<span class="v1">모집중</span>
-								<em>2022-11-01 ~ 2023-01-31</em>
-							</div>
+							<img src="/page/comz-field/images/main/partner-01.png" alt="">
+							<p>
+								<span>주식회사 로컬랩 플로우</span>
+								<em>청년 디자인 그룹으로 지역의 콘텐츠를 디자인 합니다.</em>
+							</p>
 						</a>
 						<a href="#">
-							<img src="https://loremflickr.com/330/330?lock=21" alt="대체텍스트">
-							<div class="text-bx">
-								<p>
-									<strong>2021 소소한 동네연구-강원</strong>
-								</p>
-								<!--[d] 모집중 v1, 마감 v2, 준비중 v3, 클래스 추가-->
-								<span class="v2">신청마감</span>
-								<em>2022-11-01 ~ 2023-01-31</em>
-							</div>
+							<img src="/page/comz-field/images/main/partner-02.png" alt="">
+							<p>
+								<span>주식회사 로컬랩 플로우 주식회사 로컬랩 플로우 주식회사 로컬랩 플로우</span>
+								<em>청년 디자인 그룹으로 지역의 콘텐츠를 디자인 합니다 청년 디자인 그룹으로 지역의 콘텐츠를 디자인 합니다.</em>
+							</p>
 						</a>
 						<a href="#">
-							<img src="https://loremflickr.com/330/330?lock=31" alt="대체텍스트">
-							<div class="text-bx">
-								<p>
-									<strong>도시전술</strong>
-								</p>
-								<!--[d] 모집중 v1, 마감 v2, 준비중 v3, 클래스 추가-->
-								<span class="v2">신청마감</span>
-								<em>2022-11-01 ~ 2023-01-31</em>
-							</div>
+							<img src="/page/comz-field/images/main/partner-03.png" alt="">
+							<p>
+								<span>주식회사 로컬랩 플로우</span>
+								<em>청년 디자인 그룹으로 지역의 콘텐츠를 디자인 합니다.</em>
+							</p>
 						</a>
 						<a href="#">
-							<img src="https://loremflickr.com/330/330?lock=13" alt="대체텍스트">
-							<div class="text-bx">
-								<p>
-									<strong>2022년 강원소셜리빙</strong>
-								</p>
-								<!--[d] 모집중 v1, 마감 v2, 준비중 v3, 클래스 추가-->
-								<span class="v3">준비중</span>
-								<em>2022-11-01 ~ 2023-01-31</em>
-							</div>
+							<img src="/page/comz-field/images/main/partner-01.png" alt="">
+							<p>
+								<span>주식회사 로컬랩 플로우</span>
+								<em>청년 디자인 그룹으로 지역의 콘텐츠를 디자인 합니다.</em>
+							</p>
 						</a>
 						<a href="#">
-							<img src="https://loremflickr.com/330/330?lock=41" alt="대체텍스트">
-							<div class="text-bx">
-								<p>
-									<strong>공공미술 전시회 “두 번째 만남” 작가와의 대화 공공미술 전시회 “두 번째 만남” 작가와의 대화 화 공공미술 전시회 “두 번째 만남” </strong>
-								</p>
-								<!--[d] 모집중 v1, 마감 v2, 준비중 v3, 클래스 추가-->
-								<span class="v1">모집중</span>
-								<em>2022-11-01 ~ 2023-01-31</em>
-							</div>
+							<img src="/page/comz-field/images/main/partner-02.png" alt="">
+							<p>
+								<span>주식회사 로컬랩 플로우</span>
+								<em>청년 디자인 그룹으로 지역의 콘텐츠를 디자인 합니다.</em>
+							</p>
 						</a>
 						<a href="#">
-							<img src="https://loremflickr.com/330/330?lock=25" alt="대체텍스트">
-							<div class="text-bx">
-								<p>
-									<strong>2021 소소한 동네연구-강원</strong>
-								</p>
-								<!--[d] 모집중 v1, 마감 v2, 준비중 v3, 클래스 추가-->
-								<span class="v2">신청마감</span>
-								<em>2022-11-01 ~ 2023-01-31</em>
-							</div>
-						</a>
-						<a href="#">
-							<img src="https://loremflickr.com/330/330?lock=35" alt="대체텍스트">
-							<div class="text-bx">
-								<p>
-									<strong>도시전술</strong>
-								</p>
-								<!--[d] 모집중 v1, 마감 v2, 준비중 v3, 클래스 추가-->
-								<span class="v2">신청마감</span>
-								<em>2022-11-01 ~ 2023-01-31</em>
-							</div>
-						</a>
-						<a href="#">
-							<img src="https://loremflickr.com/330/330?lock=37" alt="대체텍스트">
-							<div class="text-bx">
-								<p>
-									<strong>2022년 강원소셜리빙</strong>
-								</p>
-								<!--[d] 모집중 v1, 마감 v2, 준비중 v3, 클래스 추가-->
-								<span class="v3">준비중</span>
-								<em>2022-11-01 ~ 2023-01-31</em>
-							</div>
+							<img src="/page/comz-field/images/main/partner-03.png" alt="">
+							<p>
+								<span>주식회사 로컬랩 플로우</span>
+								<em>청년 디자인 그룹으로 지역의 콘텐츠를 디자인 합니다.</em>
+							</p>
 						</a>
 					</div>
 				</div>
+				
 			</section>
-			<section id="project">
-				<div class="inner">
-					<h2 class="tit-v1">
-						<strong>프로젝트</strong>
-						<span>시민들과 함께 만들어간 변화를 소개합니다.</span>
-					</h2>
-					<div class="slick">
-						<a href="#">
-							<strong>시민 학습 과정 - 도시 전술</strong>
-							<img src="https://loremflickr.com/266/213?lock=1" alt="대체텍스트">
-							<p>
-								<em>2022-11-01 ~ 2023-01-31</em>
-								<!--[d] 진행중 v1, 진행완료 v2-->	
-								<span class="v1">진행중</span>
-							</p>
-						</a>
-						<a href="#">
-							<strong>모두의 메이커 스페이스</strong>
-							<img src="https://loremflickr.com/266/213?lock=2" alt="대체텍스트">
-							<p>
-								<em>2022-11-01 ~ 2023-01-31</em>
-								<!--[d] 진행중 v1, 진행완료 v2-->	
-								<span class="v2">진행중</span>
-							</p>
-						</a>
-						<a href="#">
-							<strong>시민 학습 과정 - 도시 전술</strong>
-							<img src="https://loremflickr.com/266/213?lock=3" alt="대체텍스트">
-							<p>
-								<em>2022-11-01 ~ 2023-01-31</em>
-								<!--[d] 진행중 v1, 진행완료 v2-->	
-								<span class="v1">진행중</span>
-							</p>
-						</a>
-						<a href="#">
-							<strong>모두의 메이커 스페이스 모두의 메이커 스페이스 모두의 메이커 스페이스</strong>
-							<img src="https://loremflickr.com/266/213?lock=5" alt="대체텍스트">
-							<p>
-								<em>2022-11-01 ~ 2023-01-31</em>
-								<!--[d] 진행중 v1, 진행완료 v2-->	
-								<span class="v2">진행중</span>
-							</p>
-						</a>
-						<a href="#">
-							<strong>시민 학습 과정 - 도시 전술</strong>
-							<img src="https://loremflickr.com/266/213?lock=1" alt="대체텍스트">
-							<p>
-								<em>2022-11-01 ~ 2023-01-31</em>
-								<!--[d] 진행중 v1, 진행완료 v2-->	
-								<span class="v1">진행중</span>
-							</p>
-						</a>
-						<a href="#">
-							<strong>모두의 메이커 스페이스</strong>
-							<img src="https://loremflickr.com/266/213?lock=2" alt="대체텍스트">
-							<p>
-								<em>2022-11-01 ~ 2023-01-31</em>
-								<!--[d] 진행중 v1, 진행완료 v2-->	
-								<span class="v2">진행중</span>
-							</p>
-						</a>
-						<a href="#">
-							<strong>시민 학습 과정 - 도시 전술</strong>
-							<img src="https://loremflickr.com/266/213?lock=3" alt="대체텍스트">
-							<p>
-								<em>2022-11-01 ~ 2023-01-31</em>
-								<!--[d] 진행중 v1, 진행완료 v2-->	
-								<span class="v1">진행중</span>
-							</p>
-						</a>
-						<a href="#">
-							<strong>모두의 메이커 스페이스 모두의 메이커 스페이스 모두의 메이커 스페이스</strong>
-							<img src="https://loremflickr.com/266/213?lock=5" alt="대체텍스트">
-							<p>
-								<em>2022-11-01 ~ 2023-01-31</em>
-								<!--[d] 진행중 v1, 진행완료 v2-->	
-								<span class="v2">진행중</span>
-							</p>
-						</a>
-					</div>
-					<a href="#" class="more">더보기 +</a>
-				</div>
-			</section>
-			<section id="rental">
-				<div class="inner">
-					<div class="info-bx">
-						<h2>공간대여</h2>
-						<div>
-							커먼즈필드 춘천 운영시간 <strong>10:00 AM - 8:00 PM</strong>
-							<span>평    일 - 10:00 AM  -  8:00 PM  /  토요일 - 10:00 AM  -  6:00 PM  /  일요일, 공휴일 휴무</span>
-						</div>
-					</div>
-					<div class="link-bx">
-						<div>
-							<p>
-								<img src="/page/comz-field/images/common/icon-1.png" alt="">
-								<strong>모두의 <em>공간</em></strong>
-								<span>’커먼즈 필드 춘천’을 빌려드립니다.</span>
-							</p>
-							<a href="#">대관안내</a>
-						</div>
-						<div>
-							<p>
-								<img src="/page/comz-field/images/common/icon-2.png" alt="">
-								<strong>커먼즈 <em>맵</em></strong>
-								<span>지도 기반의 지역 사회혁신 활동 아카이빙 플랫폼</span>
-							</p>
-							<a href="#">꼼 바로가기</a>
-						</div>
-					</div>
-				</div>
-			</section>
-			<section id="commonz">
-				<div class="inner">
-					<div class="out-wrap">
-						<div class="space-bx">
-							<h2>COMMONZ FIELD 춘천</h2>
-							<p>
-								함께 모여 관계를 만드는 사람 사이의<br>
-								‘연결고리가 되는 공간’
-							</p>
-							<div>
-								<a href="#">
-									<img src="https://loremflickr.com/240/240?lock=21" alt="">
-								</a>
-								<a href="#">
-									<img src="https://loremflickr.com/240/240?lock=12" alt="">
-								</a>
-								<a href="#">
-									<img src="https://loremflickr.com/240/240?lock=13" alt="">
-								</a>
-							</div>
-						</div>
-						<div class="video-bx">
-							<div>
-								<iframe id="player1" src="https://www.youtube.com/embed/yE2Rzfs9dGY?loop=1&playlist=yE2Rzfs9dGY&enablejsapi=1&autoplay=1&mute=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>		
 		</main>	
 
 		<footer id="footer" class="clearfix" include-html="/page/comz-field/include/footer.html"></footer>

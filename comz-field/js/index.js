@@ -1,18 +1,19 @@
 $(function() { 
 
-    var SlickOption1 = {
+    var sOption1 = {
         autoplay: true,
-        arrows: false,
+        arrows: true,
         accessibility: false,
-        dots:true,
+        dots:false,
         draggable: true,
         infinite: true,
         slidesToShow: 1,
+        fade: true,
         slidesToScroll: 1,
         pauseOnHover: false,
         pauseOnFocus: false,
         speed: 800,
-        autoplaySpeed: 6000,
+        autoplaySpeed: 8000,
         responsive: [
             {
                 breakpoint: 717,
@@ -23,48 +24,32 @@ $(function() {
         ]
     };
 
-    initSlick($('#visual .slick'), SlickOption1);
-
-
-    var SlickOption2 = {
+    var sOption2 = {
         autoplay: false,
         arrows: true,
         accessibility: false,
         dots:false,
-        swipeToSlide:true,
         draggable: true,
         infinite: true,
-        slidesToShow: 1,
+        swipeToSlide: true,
         slidesToScroll: 1,
+        slidesToShow: 3,
         pauseOnHover: false,
-        variableWidth: true,
         pauseOnFocus: false,
-        speed: 500,
+        speed: 350,
         responsive: [
             {
-                breakpoint: 1400,
-                settings: {
-                speed: 350,
-                centerMode: true,
-                }
+                breakpoint: 717,
+                settings: 'unslick'
             }
         ]
     };
 
-    initSlick($('#wanted .slick'), SlickOption2);
-    initSlick($('#project .slick'), SlickOption2);
-
+    initSlick($('#visual .slick'), sOption1);
+    initSlick($('#partner .slick'), sOption2);
 });
 
-
-ObjWin.on({
-    'scroll load': function() { 
-        var offSet = $('#commonz').offset().top - $('#commonz').height();
-        var scrollTop = $(document).scrollTop();
-        if (offSet < scrollTop){
-            $('#commonz .video-bx').addClass('active');
-        }
-    }		
+$(window).on('resize', function(){
+   $('#partner .slick').slick('resize');
 });
-
 

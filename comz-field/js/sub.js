@@ -182,6 +182,8 @@ function contentScript(){
 	};
 	initSlick($('.korean-wave .slick'), SlickOptionSub7);
 
+
+	/*콘텐츠 스크립트*/
 };
 
 $(function() {
