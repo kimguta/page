@@ -85,7 +85,13 @@ ObjDoc.on({
 		$('.select-bx .select-list').hide();
 		$('.view-bx article').hide().eq(Idx).show().find('.slick').slick('resize');
 	}
-}, '.select-bx .select-list a');
+}, '.select-bx .select-list a')
+.on({
+	'click': function(e) { 
+		e.preventDefault();
+        $('#sub-visual .tab ').toggleClass('active');
+	}
+}, '#sub-visual .tab .active');;
 
 
 ObjDoc.on({
