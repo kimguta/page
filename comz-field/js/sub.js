@@ -125,24 +125,13 @@ ObjDoc.on({
 		$('.img-bx img, .btn-bx button').removeClass('active');	
         $('.img-bx img').eq(Idx).addClass('active');
 		$(this).addClass('active');
-		if (Idx == 0) {
-			$('.space-bx .map-bx .slick').slick('slickGoTo', 0);
-		}
-		else if (Idx == 1) {
-			$('.space-bx .map-bx .slick').slick('slickGoTo', 4);
-		}
-		else if (Idx == 2) {
-			$('.space-bx .map-bx .slick').slick('slickGoTo', 11);
-		}
-		else if (Idx == 3) {
-			$('.space-bx .map-bx .slick').slick('slickGoTo', 13);
-		}
-		else if (Idx == 4) {
-			$('.space-bx .map-bx .slick').slick('slickGoTo', 14);
-		}
-		else if (Idx == 5) {
-			$('.space-bx .map-bx .slick').slick('slickGoTo', 15);
-		}
+
+		var imgNum = [0, 4, 11, 13, 14, 15];	
+		for (var i = 0; i< imgNum.length; i++) {		
+			if (Idx == i) {
+				$('.space-bx .map-bx .slick').slick('slickGoTo', imgNum[i]);
+			}
+		};
 	}
 }, '.floor-bx .btn-bx button');
 

@@ -12,31 +12,20 @@ function initSlick(target, options) {
 	// 슬라이드 체인지 후
 		if ($(this).hasClass('map')) {
 			$('.img-bx img, .btn-bx button').removeClass('active');
-
-			if (currentSlide >= 0 && currentSlide <= 3) {
-				$('.img-bx img').eq(0).addClass('active');
-				$('.btn-bx button').eq(0).addClass('active');
-			}
-			else if (currentSlide >= 4 && currentSlide <= 10) {
-				$('.img-bx img').eq(1).addClass('active');
-				$('.btn-bx button').eq(1).addClass('active');
-			}
-			else if (currentSlide >= 11 && currentSlide <= 12) {
-				$('.img-bx img').eq(2).addClass('active');
-				$('.btn-bx button').eq(2).addClass('active');
-			}
-			else if (currentSlide == 13) {
-				$('.img-bx img').eq(3).addClass('active');
-				$('.btn-bx button').eq(3).addClass('active');
-			}
-			else if (currentSlide == 14) {
-				$('.img-bx img').eq(4).addClass('active');
-				$('.btn-bx button').eq(4).addClass('active');
-			}
-			else if (currentSlide == 15) {
-				$('.img-bx img').eq(5).addClass('active');
-				$('.btn-bx button').eq(5).addClass('active');
-			}	
+			var slideNum = [
+				{slideStart: 0, slideEnd: 3},
+				{slideStart: 4, slideEnd: 10},
+				{slideStart: 11, slideEnd: 12},
+				{slideStart: 13, slideEnd: 13},
+				{slideStart: 14, slideEnd: 14},
+				{slideStart: 15, slideEnd: 15},
+			];	
+			for (var i = 0; i< slideNum.length; i++) {	
+				if (currentSlide >= slideNum[i].slideStart && currentSlide <= slideNum[i].slideEnd) {
+					$('.img-bx img').eq(i).addClass('active');
+					$('.btn-bx button').eq(i).addClass('active');
+				} 
+			};
 		}
 		var nowSlide = (currentSlide ? currentSlide : 0) + 1;
 		var allSlide = slick.slideCount
