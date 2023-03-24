@@ -6,14 +6,37 @@ function initSlick(target, options) {
 	var PauseBtn  = target.parent().find('.control .pause');
 	target.on('beforeChange', function (event, slick, currentSlide, nextSlide) {
 		// 슬라이드 체인지 전
-		if ($(this).hasClass('move1')) {
-			$('#gift h2').removeClass('active');
-	    }
+
 	});
-	target.on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
-	// 초기 후, 슬라이드 체인지 후
-		if ($(this).hasClass('move1')) {
-			$('#gift h2').addClass('active');
+	target.on('afterChange', function (event, slick, currentSlide, nextSlide) {
+	// 슬라이드 체인지 후
+		if ($(this).hasClass('map')) {
+			$('.img-bx img, .btn-bx button').removeClass('active');
+
+			if (currentSlide >= 0 && currentSlide <= 3) {
+				$('.img-bx img').eq(0).addClass('active');
+				$('.btn-bx button').eq(0).addClass('active');
+			}
+			else if (currentSlide >= 4 && currentSlide <= 10) {
+				$('.img-bx img').eq(1).addClass('active');
+				$('.btn-bx button').eq(1).addClass('active');
+			}
+			else if (currentSlide >= 11 && currentSlide <= 12) {
+				$('.img-bx img').eq(2).addClass('active');
+				$('.btn-bx button').eq(2).addClass('active');
+			}
+			else if (currentSlide == 13) {
+				$('.img-bx img').eq(3).addClass('active');
+				$('.btn-bx button').eq(3).addClass('active');
+			}
+			else if (currentSlide == 14) {
+				$('.img-bx img').eq(4).addClass('active');
+				$('.btn-bx button').eq(4).addClass('active');
+			}
+			else if (currentSlide == 15) {
+				$('.img-bx img').eq(5).addClass('active');
+				$('.btn-bx button').eq(5).addClass('active');
+			}	
 		}
 		var nowSlide = (currentSlide ? currentSlide : 0) + 1;
 		var allSlide = slick.slideCount
