@@ -42,8 +42,10 @@
 
 			<div id="content" class="inner">
 				<a href="#A-Contents-focus" id="A-Contents-focus" class="blind">본문 시작</a>
-				<div class="contsArea skinContainer" include-html="/page/comz-field/content/2_공간_공간구성.html">
+				<div class="contsArea skinContainer" include-html="/page/comz-field/content/4_뉴스_타기관소식.html">
 					<!--콘텐츠 입력 -->
+					<script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
+					
 				</div>			
 			</div>
 		</main>
@@ -51,6 +53,83 @@
 
 	</div>	
 </body>
+
+<!--프로젝트 모달-->
+<div id="modal-project" style="display:none;">
+	<div class="m-bx">
+		<div class="img">
+			<img src="https://loremflickr.com/600/450?random=1">
+			<a href="#" class="skinBtnBo"><i class="v6"></i>다운로드</a>
+		</div>
+		<div class="text">
+			<em>춘천의 가능성을 여는 춘천다운 실험</em>
+			<h1>2021 사회혁신 아카이브 워크북 - 지역과 소통하는 N개의 실험</h1>
+			<span class="hash">#도시실험  #커뮤니티</span>
+			<span class="list"><em>제작</em> 2021.12</span>
+			<span class="list"><em>문의</em> 지역협력팀 033-912-5003</span>
+			<p>
+				<strong>1장 소통협력공간, 지역의 풍경을 바꾸다</strong><br>
+				행정안전부는 사회 혁신의 기반을 강화하고 생태계를 마련하기 위해, 2018년부터 지역거점별 소통협력공간을 조성하고 있습니다.<br>
+				소통협력공간은 지역의 풍경을 어떻게 바꾸고 있을까요? <br>
+				공간 재생과 지역 문제 해결, 두 키워드를 잇는 소통협력공간의 히스토리를 살펴봅니다.<br><br>
+				<strong>2장 이웃들의 10가지 실험,지역에 활력을 불어넣다</strong><br>
+				우리는 제각각 다른 지역에서 다른 모습으로 하루를 살아갑니다.<br>
+				하지만, 우리들은 동일하게 어제보다 나은 오늘을 소망합니다.<br>
+				내가 바라는 내일에 나만이 아니라 더 많은 사람이 함께 웃고 있는 삶은 어떨까요?<br>
+				춘천, 전주, 대전, 제주에 사는 10명의 이웃들이 더불어 사는 삶의 매력을 알려드립니다.
+			</p>
+		</div>
+		<a href="#" class="close" onclick="$('#modal-project').hide();return false;">
+			<img src="/page/comz-field/images/sub/icon_close.png" alt="닫기">
+		</a>
+	</div>
+</div>
+
+<!--모달 스타일-->
+<style>
+	#modal-project{position:fixed;top:0;left:0;right:0;bottom:0;z-index:3000;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;}
+	#modal-project .m-bx{position:relative;background:#fff;max-width:90vw;max-height:90vh;overflow:auto;padding:70px;border-radius:30px;display:flex;width:1160px;}
+	#modal-project .m-bx::-webkit-scrollbar{display:none;}
+	#modal-project .close{position:absolute;width:20px;display:block;top:30px;right:30px;}
+	#modal-project .close img{width:100%}
+	#modal-project .img{text-align:center;}
+	#modal-project .img img{display:block;max-width:390px;max-height:520px;margin-bottom:20px;}
+	#modal-project .text{flex:1;padding-left:80px;}
+	#modal-project .text > em{display:inline-block;line-height:1.6;padding:0 5px;background:#898989;color:#fff;font-size:16px;font-weight:300;}
+	#modal-project .text h1{line-height:1.3;font-weight:500;font-size:26px;word-break:keep-all;margin-top:15px;}
+	#modal-project .text .hash{padding:22px 0;color:#666;font-size:20px;font-weight:300;display:block;}
+	#modal-project .text .list{display:block;line-height:1.3;margin-top:2px;font-weight:300;}
+	#modal-project .text .list em{font-weight:500;color:#666;}
+	#modal-project .text p{margin-top:15px;padding-top:15px;border-top:1px solid #f2f2f2;line-height:1.5;font-weight:300;font-size:17px;color:333;}
+	#modal-project .text p strong{font-weight:500;}
+
+	@media (max-width: 1399px){
+		#modal-project .m-bx{padding:30px;border-radius:20px;width:960px;}
+		#modal-project .close{width:16px;top:20px;right:20px;}
+		#modal-project .img img{max-width:340px;max-height:460px;margin-bottom:15px;}
+		#modal-project .text{padding-left:30px;}
+		#modal-project .text > em{font-size:14px;}
+		#modal-project .text h1{font-size:20px;margin-top:10px;}
+		#modal-project .text .hash{padding:17px 0;font-size:15px;}
+		#modal-project .text .list{font-size:13px;}
+		#modal-project .text p{margin-top:13px;padding-top:13px;font-size:14px;}
+	}
+
+	@media (max-width: 719px){
+		#modal-project .m-bx{padding:50px 15px 15px;border-radius:15px;display:block;}
+		#modal-project .close{width:15px;top:15px;right:15px;}
+		#modal-project .img img{max-width:initial;max-height:initial;margin-bottom:10px;width:100%;}
+		#modal-project .text{padding:15px 0 0;}
+		#modal-project .text > em{font-size:12px;}
+		#modal-project .text h1{font-size:16px;margin-top:7px;}
+		#modal-project .text .hash{padding:12px 0;font-size:13px;}
+		#modal-project .text .list{font-size:12px;}
+		#modal-project .text p{margin-top:11px;padding-top:11px;font-size:13px;}
+	}
+	
+</style>
+
+
 
 </html>
 

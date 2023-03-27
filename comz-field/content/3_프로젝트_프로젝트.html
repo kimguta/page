@@ -1,0 +1,117 @@
+<div class="project-bx">
+    <div class="project-tab">
+        <div class="tab-main">
+            <button type="button" class="all active">전체</button>
+            <button type="button">창의적인 라이프스타일 커뮤니티</button>
+            <button type="button">춘천의 가능성을 여는 춘천다운 실험</button>
+            <button type="button">지속가능한 전환도시 실험</button>
+        </div>
+        <div class="tab-sub">
+            <button type="button">아동·청소년</button>
+            <button type="button">청년</button>
+            <button type="button">라이프스타일</button>
+            <button type="button">로컬</button>
+            <button type="button">커뮤니티</button>
+            <button type="button">도시실험</button>
+            <button type="button">네트워크</button>
+            <button type="button">세대</button>
+            <button type="button">기후위기</button>
+            <button type="button">기술</button>
+            <button type="button">다양성과 평등</button>
+            <button type="button">돌봄·교육</button>
+        </div>
+    </div>
+    <script>
+        //프로젝트 탭 스크립트
+        $(document).on({
+            'click': function() { 
+                $('.project-tab .tab-main button').removeClass('active');
+                $('.tab-sub').hide();
+                $(this).addClass('active');
+                if($(this).hasClass('all')){
+                    $('.tab-sub').show();
+                }
+            }
+        }, '.project-tab .tab-main button')
+        .on({
+            'click': function() { 
+                $(this).toggleClass('active');
+            }
+        }, '.project-tab .tab-sub button');
+    </script>
+
+    <div class="project-list">
+        <a href="#" onclick="$('#modal-project').show(); return false;">
+            <em>2022.12</em>
+            <strong>2022년 강원소셜리빙랩 시민 공감 투표</strong>
+            <span>#도시실험 #커뮤니티</span>
+            <img src="https://loremflickr.com/310/230?random=1">
+        </a>
+        <a href="#" onclick="$('#modal-project').show(); return false;">
+            <em>2022.06</em>
+            <strong>도시 숲 데이터</strong>
+            <span>#도시실험 #커뮤니티</span>
+            <img src="https://loremflickr.com/310/230?random=1">
+        </a>
+        <a href="#" onclick="$('#modal-project').show(); return false;">
+            <em>2022.12</em>
+            <strong>2021 소소한 동네연구-강원</strong>
+            <span>#도시실험 #커뮤니티</span>
+            <img src="https://loremflickr.com/230/310?random=1">
+        </a>
+        <a href="#" onclick="$('#modal-project').show(); return false;">
+            <em>2022.06</em>
+            <strong>시민 학습 과정 - 도시 전술</strong>
+            <span>#도시실험 #커뮤니티</span>
+            <img src="https://loremflickr.com/310/230?random=1">
+        </a>
+        <a href="#" onclick="$('#modal-project').show(); return false;">
+            <em>2022.12</em>
+            <strong>2022년 강원소셜리빙랩 시민 공감 투표 2022년 강원소셜리빙랩 시민 공감 투표 2022년 강원소셜리빙랩 시민 공감 투표</strong>
+            <span>#도시실험 #커뮤니티</span>
+            <img src="https://loremflickr.com/310/230?random=1">
+        </a>
+        <a href="#" onclick="$('#modal-project').show(); return false;">
+            <em>2022.06</em>
+            <strong>도시 숲 데이터</strong>
+            <span>#도시실험 #커뮤니티</span>
+            <img src="https://loremflickr.com/310/230?random=1">
+        </a>
+        <a href="#" onclick="$('#modal-project').show(); return false;">
+            <em>2022.06</em>
+            <strong>시민 학습 과정 - 도시 전술</strong>
+            <span>#도시실험 #커뮤니티</span>
+            <img src="https://loremflickr.com/310/230?random=1">
+        </a>
+        <a href="#" onclick="$('#modal-project').show(); return false;">
+            <em>2022.12</em>
+            <strong>2021 소소한 동네연구-강원</strong>
+            <span>#도시실험 #커뮤니티</span>
+            <img src="https://loremflickr.com/230/310?random=1">
+        </a>
+    </div>
+
+    <!-- pager -->
+    <div class="pager">
+        <a href="?pageIndex=1" class="pager-link pager-link-data-first" onclick="linkPage(1);return false; ">10페이지 앞으로 이동</a> 
+        <a href="?pageIndex=1" class="pager-link pager-link-data-prev" onclick="linkPage(1);return false; ">1페이지 앞으로 이동</a> 
+        <span class="pager-num">1/361</span>
+        <a onclick="return false;" class="pager-link active">1</a> 
+        <a href="?pageIndex=2" class="pager-link" onclick="linkPage(2);return false; ">2</a> 
+        <a href="?pageIndex=3" class="pager-link" onclick="linkPage(3);return false; ">3</a> 
+        <a href="?pageIndex=4" class="pager-link pager-link-data-ellipsis" onclick="linkPage(4);return false; ">4</a> 
+        <a href="?pageIndex=5" class="pager-link pager-link-data-ellipsis" onclick="linkPage(5);return false; ">5</a> 
+        <a href="?pageIndex=6" class="pager-link pager-link-data-ellipsis" onclick="linkPage(6);return false; ">6</a> 
+        <a href="?pageIndex=7" class="pager-link pager-link-data-ellipsis" onclick="linkPage(7);return false; ">7</a> 
+        <a href="?pageIndex=8" class="pager-link pager-link-data-ellipsis" onclick="linkPage(8);return false; ">8</a> 
+        <a href="?pageIndex=9" class="pager-link pager-link-data-ellipsis" onclick="linkPage(9);return false; ">9</a> 
+        <a href="?pageIndex=10" class="pager-link" onclick="linkPage(10);return false; ">10</a> 
+        <a href="?pageIndex=2" onclick="linkPage(2);return false; " class="pager-link pager-link-data-next">1페이지 뒤로 이동</a> 
+        <a href="?pageIndex=11" onclick="linkPage(11);return false; " class="pager-link pager-link-data-last">10페이지 뒤로 이동</a> 
+    </div>
+    <!--// pager -->
+
+</div>
+
+
+

@@ -78,6 +78,9 @@ function contentScript(){
         ]
     };
 	initSlick($('.space-bx .map-bx .slick'), SOptionSub2);
+
+	initSlick($('.center-bx .slick'), SOptionSub1);
+
 };
 
 ObjWin.on({
