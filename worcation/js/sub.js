@@ -31,56 +31,35 @@ function contentScript(){
 		$.getScript('/page/worcation/js/708e424f8f.js');
 	}
 
-	var SOptionSub1 = {
-        autoplay: false,
-        arrows: true,
-        swipeToSlide:true,
-        dots: false,
-        draggable: true,
-        infinite: true,
-		slidesToScroll: 1,
-        slidesToShow: 1,
-        pauseOnHover: false,
-        speed: 500,
-        responsive: [
-            {
-                breakpoint: 1500,
-                settings: {
-                speed: 350,
-                }
-            }
-        ]
-    };
-	initSlick($('.space-bx .view-bx .slick'), SOptionSub1);
-
-
-	var SOptionSub2 = {
-        autoplay: true,
-		autoplaySpeed: 5000,
-        arrows: false,
-        swipeToSlide:true,
-        dots: false,
-        draggable: true,
-        infinite: true,
-        slidesToShow: 1,
-		centerMode: true,
-		variableWidth: true,
-        pauseOnHover: false,
-		pauseOnfocus: false,
-        speed: 350,
-        responsive: [
-            {
-                breakpoint: 1500,
-                settings: {
-                speed: 300,
-                }
-            }
-        ]
-    };
-	initSlick($('.space-bx .map-bx .slick'), SOptionSub2);
-
-	initSlick($('.center-bx .slick'), SOptionSub1);
-
+	$('.program-bx article').each(function(index, item){
+		var PrevBtn  = $(item).find('.prev');
+		var NextBtn  = $(item).find('.next');
+		var sOption1 = {
+			autoplay: false,
+			arrows: true,
+			accessibility: false,
+			dots:false,
+			draggable: true,
+			infinite: true,
+			slidesToShow: 1,
+			prevArrow: PrevBtn,
+			nextArrow: NextBtn,
+			fade: true,
+			slidesToScroll: 1,
+			pauseOnHover: false,
+			pauseOnFocus: false,
+			speed: 500,
+			responsive: [
+				{
+					breakpoint: 717,
+					settings: {
+					speed: 500,
+					}
+				}
+			]
+		};
+		initSlick($(item).find('.slick'), sOption1);
+	});
 };
 
 ObjWin.on({
@@ -136,7 +115,14 @@ ObjDoc.on({
 			}
 		};
 	}
-}, '.floor-bx .btn-bx button');
+}, '.floor-bx .btn-bx button')
+.on({
+	'click': function(e) { 
+		e.preventDefault();
+		$('.fun-bx a').removeClass('active');
+		$(this).addClass('active');
+	}
+}, '.fun-bx a');
 
 
 ObjDoc.on({

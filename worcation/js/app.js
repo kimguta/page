@@ -4,11 +4,12 @@ function initSlick(target, options) {
 	var ControlBtn = target.parent().find('.control .ps-btn');
 	var PlayBtn  = target.parent().find('.control .play');
 	var PauseBtn  = target.parent().find('.control .pause');
+	
 	target.on('beforeChange', function (event, slick, currentSlide, nextSlide) {
 		// 슬라이드 체인지 전
 
 	});
-	target.on('init afterChange', function (event, slick, currentSlide, nextSlide) {
+	target.on('init reinit afterChange', function (event, slick, currentSlide, nextSlide) {
 	// 슬라이드 체인지 후
 		// if ($(this).hasClass('map')) {
 			
