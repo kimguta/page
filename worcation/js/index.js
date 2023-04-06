@@ -32,8 +32,8 @@ ObjDoc.on({
     'click': function(e) { 
         e.preventDefault();
         var Idx = $(this).index();
-        $('#map .btn-bx a, #map .img-bx img').removeClass('active');
-        $('#map .img-bx img').eq(Idx).addClass('active');
+        $('#map .btn-bx a, #map .img-bx a').removeClass('active');
+        $('#map .img-bx a').eq(Idx).addClass('active');
         $(this).addClass('active');
     }
 }, '#map .btn-bx a');
