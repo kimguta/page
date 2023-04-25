@@ -2,39 +2,6 @@
 //서브공통 스크립트
 var ObjDoc = $(document);		
 
-ObjDoc.on({
-	'click': function(e) { 
-		e.preventDefault();
-		if ($(this).hasClass('active')) {
-			$(this).removeClass('active');
-			$(this).parents('#breadcrumb-bx, .box').removeClass('active');
-			$(this).children('span').text('열기');
-			$('#breadcrumb-bx .box ul').slideUp(250);
-		} else{
-			$('#breadcrumb-bx .open').removeClass('active');
-			$('#breadcrumb-bx .box').removeClass('active');
-			$(this).addClass('active');
-			$(this).parents('#breadcrumb-bx, .box').addClass('active');
-			$('#breadcrumb-bx .open span').text('열기');
-			$(this).children('span').text('닫기');
-			$('#breadcrumb-bx .box ul').slideUp(250);
-			$(this).next('ul').slideDown(250);
-		}
-	}
-}, '#breadcrumb-bx .open')
-.on({
-	'mouseleave': function() { 
-		$('#breadcrumb-bx .open span').text('열기');
-		$('#breadcrumb-bx .box ul').slideUp(300);
-		$('#breadcrumb-bx .box .open, #breadcrumb-bx .box, #breadcrumb-bx').removeClass('active');
-	}
-}, '#breadcrumb-bx')
-.on({
-	'focusout': function() { 
-		$(this).parents('.box').find('.open').focus();
-	}
-}, '#breadcrumb-bx .box li:last-child a');
-
 
 
 ObjDoc.on({
@@ -90,12 +57,12 @@ ObjDoc.on({
 		e.preventDefault();
 		if ($(this).parent('h3').hasClass('active')) {
 			$(this).parent('h3').removeClass('active');
-			$(this).parent('h3').next('.depth-03').slideUp(300);
+			$(this).parent('h3').next('.depth-03').slideUp(200);
 		} else{
 			$('#side-menu h3').removeClass('active');
 			$('#side-menu .depth-03').slideUp(300);
 			$(this).parent('h3').addClass('active');
-			$(this).parent('h3').next('.depth-03').slideDown(300);
+			$(this).parent('h3').next('.depth-03').slideDown(200);
 		}
 	}
 }, '#side-menu h3.has-depth a')
