@@ -1,0 +1,126 @@
+@charset "utf-8";
+
+/* 레이아웃 공통 */
+html, body{position:relative; width:100%;}
+body{color:#000;max-width:1920px;margin:0 auto;font-size:16px; line-height:1.6;word-break:break-all;letter-spacing:-0.6px;max-width:1920px;margin:0 auto;font-family:'Noto Sans KR', "Apple SD Gothic Neo", Helvetica, Arial, sans-serif;scroll-behavior: smooth;}
+/* body::-webkit-scrollbar{display:none;} */
+main{display:block;}
+.confirmIframe body{overflow:hidden;}
+#progressScroll{display:none;}
+#wrapper{overflow:hidden;}
+a, a:hover, a:link, a:visited, a:active{color:#000}
+
+
+
+/* 본문바로가기 */
+.skipnav{position:absolute;z-index:2999;top:-100px;width:100%;padding:0;list-style:none;font-size:14px;}
+.skipnav li{position:relative;top:0;left:0;width:100%}
+.skipnav li a{display:block;position:absolute;top:0;width:100%;padding:15px 0;background:#000;color:#fff;text-align:center;text-decoration:none}
+.skipnav li a:focus,.skipnav li a:active{top:100px}
+
+/* slick 플러그인 */
+.slick-slider .slick-list{display:block; overflow-x:hidden; overflow-y:hidden; position:relative}
+.slick-slider .slick-list.dragging{cursor:pointer}
+.slick-slider .slick-list .slick-track{display:block; position:relative; top:0; left:0}
+.slick-slider .slick-list .slick-track:before, .slick-slider .slick-list .slick-track:after{display:table; content:''}
+.slick-slider .slick-list .slick-track:after{clear:both}
+.slick-slider .slick-list.slick-loading .slick-track{visibility:hidden}
+.slick-slider .slick-list .slick-track .slick-slide{display:none; float:left}
+.slick-slider[dir='rtl'] .slick-list .slick-track .slick-slide{float:right}
+.slick-slider .slick-list .slick-track .slick-slide img{display:block;width:100%;}
+.slick-slider .slick-list .slick-track .slick-slide.slick-loading img{display:none}
+.slick-slider.slick-initialized .slick-list .slick-track .slick-slide{display:block}
+.slick-slider .slick-list .slick-track.slick-loading .slick-slide{visibility:hidden}
+.slick-slider .slick-arrow.slick-hidden{display:none}
+.slick-dots{display:flex;justify-content:center;align-items:center;}
+.slick-dots li a{display:block;width:70px;height:70px;}
+.slick-dots img{display:block;width:100%;height:100%;object-fit:cover;}
+
+/* 공통 */
+.inner{max-width:1440px;position:relative;margin:0 auto;padding:0 20px;}
+.page-wrap{background:#001d58 url(/page/eatof/images/common/bg-footer.jpg) no-repeat right bottom /1920px 562px;}
+
+@media (max-width:1399px) {
+  .inner{max-width:1400px;}
+ }
+
+@media (max-width:716px) {
+ .inner{padding:0 15px;}
+}
+
+#header{position:fixed;z-index:1000;top:0;transition:all .25s;left:0;right:0;color:#fff;}
+#header.fixed{background:rgba(0,0,0,.5);}
+#header .inner{display:flex;justify-content:space-between;align-items:center;}
+#header h1 img{display:block;height:50px;transition:all .2s;}
+#header.fixed h1 img{height:35px;}
+#header nav{margin-right:-40px;display:flex;align-items:center;justify-content:flex-end;transition:all .2s ease-out;}
+#header h2 a{font-size:18px;color:#fff;font-weight:700;padding:0 40px;height:100px;display:flex;align-items:center;position:relative;z-index:1;transition:all .2s;}
+#header h2 a:before{content:'';display:block;z-index:-1;position:absolute;top:0;left:0;right:0;height:0;background:#fff;transition:all .25s;}
+#header h2.active a,
+#header h2 a:hover{color:#0563dd}
+#header h2.active a:before,
+#header h2 a:hover:before{height:85%;}
+#header.fixed h2 a{height:60px;font-size:16px;}
+#header .mobile-menu{display:none;height:70px;transition:all .2s;}
+#header .mobile-menu img{height:18px;}
+#header .mobile-menu img:last-child{display:none;}
+#header.active .mobile-menu img{display:none;}
+#header.active .mobile-menu img:last-child{display:block;}
+
+main{display:block;padding-top:100px;transition:all .2s;}
+#header.fixed ~ main{padding-top:60px;}
+
+@media (max-width:1399px) {
+  #header.active{background:rgba(0,0,0,.75);}
+  #header .mobile-menu{display:flex;align-items:center;}
+  #header nav{margin-right:0;position:fixed;top:70px;bottom:0;right:0;width:100%;background:rgba(0,0,0,.75);backdrop-filter:blur(2px);flex-direction:column;justify-content:flex-start;padding-top:20px;align-items:stretch;opacity:0;pointer-events:none;}
+  #header.fixed nav{top:50px;}
+  #header h1 img{height:42px;}
+  #header.fixed .mobile-menu{height:50px;}
+  #header h2 a{height:68px !important;font-size:20px !important;padding:0 0 0 35px;border-bottom:1px solid rgba(255,255,255,.3)}
+  #header.active nav{opacity:1;pointer-events:initial;}
+  #header h2.active a:before,
+  #header h2 a:hover:before{height:100%;}
+
+  .page-wrap{background-size:1400px 410px;}
+  main{padding-top:70px;}
+  #header.fixed ~ main{padding-top:50px;}
+}
+
+
+@media (max-width:716px) {
+
+
+  .page-wrap{background-size:1000px 293px;}
+}
+
+#footer{position:relative;padding:85px 0;z-index:50;}
+#footer .inner{display:flex;justify-content:space-between;align-items:flex-start;}
+#footer .logo-bx{display:flex;align-items:center;flex-shrink:0;padding-right:35px;}
+#footer .logo-bx h1{margin-right:55px;}
+#footer .logo-bx h1 img{height:50px;display:block;}
+#footer .logo-bx > div{display:flex;align-items:center;}
+#footer .logo-bx > div a + a{margin-left:33px;}
+#footer .logo-bx > div a img{display:block;transition:all .2s;}
+#footer .logo-bx > div a:hover img{transform:scale(1.1);}
+#footer .logo-bx > div img{display:block;height:26px;}
+#footer address{color:#fff;font-style:normal;flex:1;padding-top:8px;display:flex;}
+#footer address p{text-align:right;letter-spacing:0px;flex-shrink:0;line-height:1.7;font-weight:100;}
+#footer address p span{display:block;}
+#footer address:before{content:'';height:1px;flex:1;background:rgba(255,255,255,.3);margin:15px 18px 0 0;}
+
+@media (max-width:1399px) {
+  #footer{padding:40px 0 35px}
+  #footer .inner{flex-direction:column;}
+  #footer .logo-bx{flex-direction:column;justify-content:center;width:100%;padding-right:0;}
+  #footer .logo-bx h1{margin:0px 0 23px -11px;}
+  #footer .logo-bx h1 img{height:40px;display:block;}
+  #footer .logo-bx > div{display:flex;align-items:center;}
+  #footer .logo-bx > div a + a{margin-left:30px;}
+  #footer .logo-bx > div img{height:24px;}
+  #footer address{width:100%;padding-top:22px;}
+  #footer address p{text-align:center;font-size:12px;width:100%;word-break:keep-all;line-height:1.8;}
+  #footer address p em{display:block;}
+  #footer address:before{display:none;}
+}
+
