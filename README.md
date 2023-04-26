@@ -3,6 +3,7 @@
 <h3>DQ_프로젝트 퍼블리싱 페이지</h3>
 <ul>
   <li><a href="basic" target="_blank">베이직소스</a></li>
+  <li><a href="eatof" target="_blank">이토프</a></li>
   <li><a href="contract" target="_blank">강원도 세입세출</a></li>
   <li><a href="worcation" target="_blank">강원워케이션</a></li>
   <li><a href="gwd" target="_blank">강원댁</a></li>
