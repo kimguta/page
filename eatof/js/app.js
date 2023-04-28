@@ -89,6 +89,21 @@ ObjWin.on({
 });
 
 ObjDoc.on({
+	'mouseover focusin': function() { 
+		$('#header h2').removeClass('active');
+		$(this).addClass('active');
+		$('#header .depth-02').stop().slideUp(100);
+		$(this).next('.depth-02').stop().slideDown(200);
+	}
+}, '#header.pc-mode h2')
+.on({
+	'mouseleave': function() { 
+		$('#header h2').removeClass('active');
+		$('#header .depth-02').stop().slideUp(100);
+	}
+}, '#header.pc-mode')
+
+.on({
 	'click': function(e) { 
 		e.preventDefault();
 		$('#header').toggleClass('active');

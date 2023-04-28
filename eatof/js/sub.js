@@ -184,5 +184,13 @@ ObjDoc.on({
 		$('#img-modal').remove();
 		$('.img-zoom-modal.active').focus().removeClass('active');
 	}
-}, '#img-modal .close');
+}, '#img-modal .close')
+.on({
+	'click': function(e) { 
+		e.preventDefault();
+		var Idx = $(this).index();
+		$('.map-bx > div').removeClass('active').eq(Idx).addClass('active');
+		$('.view-bx > div').removeClass('active').eq(Idx).addClass('active');
+	}
+}, '.member-bx .btn-bx button');
 

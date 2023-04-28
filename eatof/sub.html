@@ -36,7 +36,7 @@
 		</ul>
 		<header id="header" include-html="/page/eatof/include/header.html"></header>
 
-		<main id="sub" include-html="/page/eatof/content/0_content-ui.html">
+		<main id="sub" include-html="/page/eatof/content/4_news.html">
 			
 		</main>
 		<footer id="footer" class="clearfix" include-html="/page/eatof/include/footer.html"></footer>
@@ -115,7 +115,7 @@
 					var dataArr = data.split("\n");
 					for (var i = 0; i < dataArr.length; i++) {
 						$('.puble-index .view div').append('<p><a href="/page/eatof/content/'+dataArr[i]+'">'+ dataArr[i] +'</a><button class="copy-html">HTML복사</button></p>');
-						$('.puble-index .view').addClass('live');
+						// $('.puble-index .view').addClass('live');
 					}
 				},
 			});
@@ -171,12 +171,12 @@
 			e.preventDefault();
 			$(".pre-view").css('display','none');
 			var contUrl = $(this).attr('href');
-			$('.contsArea').attr('include-html', contUrl);
-			if (contUrl.match("여행안내")){
-				$('#sub-visual').attr('include-html', '/page/eatof/include/sub-visual-여행안내.html');
-			}else{
-				$('#sub-visual').attr('include-html', '/page/eatof/include/sub-visual.html');
-			}
+			$('#sub').attr('include-html', contUrl);
+			// if (contUrl.match("여행안내")){
+			// 	$('#sub-visual').attr('include-html', '/page/eatof/include/sub-visual-여행안내.html');
+			// }else{
+			// 	$('#sub-visual').attr('include-html', '/page/eatof/include/sub-visual.html');
+			// }
 			includeLayout();
 			$('.puble-index .view').hide();
 			textChange();
@@ -185,12 +185,12 @@
 			e.preventDefault();
 			$(".pre-view").css('display','flex');
 			var contUrl = $(this).attr('href');
-			if (contUrl.match("여행안내")){
-				$("iframe").contents().find('#sub-visual').attr('include-html', '/page/eatof/include/sub-visual-여행안내.html');
-			}else{
-				$("iframe").contents().find('#sub-visual').attr('include-html', '/page/eatof/include/sub-visual.html');
-			}
-			$("iframe").contents().find('.contsArea').attr('include-html', contUrl);
+			// if (contUrl.match("여행안내")){
+			// 	$("iframe").contents().find('#sub-visual').attr('include-html', '/page/eatof/include/sub-visual-여행안내.html');
+			// }else{
+			// 	$("iframe").contents().find('#sub-visual').attr('include-html', '/page/eatof/include/sub-visual.html');
+			// }
+			$("iframe").contents().find('#sub').attr('include-html', contUrl);
 			$("iframe").contents().find('html').addClass('view-mode');
 			$("iframe")[0].contentWindow.includeLayout();
 			$("iframe")[1].contentWindow.includeLayout();
