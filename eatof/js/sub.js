@@ -90,6 +90,11 @@ ObjWin.on({
 		} else {
 			$('#header').removeClass('fixed');
 		}
+
+		const str = $('#sub-visual .text-bx h2').text();
+		if (str.indexOf('Joint') != -1) {
+			$('#sub-visual .text-bx p').addClass('joint');
+		} 
 	}		
 })
 
@@ -193,4 +198,3 @@ ObjDoc.on({
 		$('.view-bx > div').removeClass('active').eq(Idx).addClass('active');
 	}
 }, '.member-bx .btn-bx button');
-
