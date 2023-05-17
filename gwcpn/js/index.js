@@ -34,6 +34,15 @@ $(function() {
         pauseOnHover: false,
         speed: 300,
         autoplaySpeed: 3500,
+        responsive: [{
+            breakpoint: 1400,
+            settings: {
+                slidesToScroll: 1,
+                slidesToShow: 6,
+                variableWidth: true,
+                swipeToSlide: true,
+            }
+        }]
     };
 
     initSlick($('#visual .slick'), slickOption1);
