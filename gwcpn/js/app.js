@@ -74,7 +74,7 @@ ObjWin.on({
 	}		
 })
 .on({
-	'resize load': function() { 
+	'load': function() { 
 		appScript();
 	}
 });
