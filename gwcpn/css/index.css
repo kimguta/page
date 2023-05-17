@@ -9,17 +9,19 @@
 #visual h2 strong:last-child{color:#f51a3f}
 #visual .dots{margin-top:20px;padding-left:5px;}
 #visual .dots .slick-dots{justify-content:flex-start;}
-#visual .dots .slick-dots li a{width:auto;white-space:nowrap;;height:auto;color:#fff;font-size:15px;font-weight:500;transition:all .2s;margin-right:15px;text-shadow:1px 1px 2px rgba(0,0,0,.25);display:flex;align-items:center;}
-#visual .dots .slick-dots li.slick-active a{color:#f51a3f}
-#visual .dots .slick-dots li a span{margin-left:15px;position:relative;background:#fff;width:0px;height:2px;opacity:0;transition:all .5s;}
-#visual .dots .slick-dots li.slick-active a span{opacity:1;width:100px;}
-#visual .dots .slick-dots li a span:after{content:'';position:absolute;top:0;bottom:0;left:0;width:0%;background:#f51a3f;display:block;}
-#visual .dots .slick-dots li.slick-active a span:after{animation:main2 6s 1 both linear;}
+#visual .dots .slick-dots li button{width:auto;white-space:nowrap;;height:auto;color:#fff;font-size:15px;font-weight:500;transition:all .2s;margin-right:15px;text-shadow:1px 1px 2px rgba(0,0,0,.25);display:flex;align-items:center;}
+#visual .dots .slick-dots li.slick-active  button{color:#f51a3f}
+#visual .dots .slick-dots li button span{margin-left:15px;position:relative;background:#fff;width:0px;height:2px;opacity:0;transition:all .5s;}
+#visual .dots .slick-dots li.slick-active  button span{opacity:1;width:100px;}
+#visual .dots .slick-dots li  button span:after{content:'';position:absolute;top:0;bottom:0;left:0;width:0%;background:#f51a3f;display:block;}
+#visual .dots .slick-dots li.slick-active button span:after{animation:main2 6s 1 both linear;}
 #visual .link-bx{position:absolute;right:0;bottom:0;display:flex;align-items:flex-end;padding-right:20px;}
 #visual .link-bx a{display:flex;align-items:center;margin-left:25px;width:230px;transition:all .1s;height:95px;color:#fff;justify-content:center;background:rgba(0,0,0,.6);border-radius:20px 20px 0 0;font-size:20px;line-height:1.3;}
 #visual .link-bx a img{height:54px;margin-right:15px;transition:all .1s;}
+#visual .link-bx a img.hover{display:none;}
 #visual .link-bx a:hover{background:#fff;color:#000;height:120px;font-size:22px;font-weight:600;}
-#visual .link-bx a:hover img{filter: invert(1) grayscale(1);}
+#visual .link-bx a:hover img{display:none;}
+#visual .link-bx a:hover img.hover{display:block;}
 
 @media (max-width:1399px) {
     #visual{height:700px;}
@@ -131,7 +133,7 @@
 #store{position:relative;padding-top:60px;z-index:5;}
 #store .inner{padding-right:420px}
 #store .find-bx{position:relative;z-index:1;padding:60px 0 40px;display:flex;}
-#store .find-bx:after{content:'';z-index:-1;position:absolute;left:-400px;right:0;top:0;bottom:0;border-radius:0 20px 50px 0;box-shadow:10px 10px 20px 0px rgba(0,57,179,.15);background:#fff;}
+#store .find-bx:after{content:'';z-index:-1;position:absolute;left:-400px;right:0;top:0;bottom:0;border-radius:0 20px 50px 0;box-shadow:10px 10px 20px 0px rgba(0,57,179,.3);background:#fff;}
 #store .find-bx:before{content:'';transition:all 1.5s;transform: rotate(-90deg);transform-origin: 0% 100%;z-index:-2;position:absolute;width:320px;height:240px;background:url(/page/gwcpn/images/main/HAND.png) no-repeat 0 0 /cover;top:calc(50% - 100px);right:-280px;display:block;}
 #store.active .find-bx:before{transform:rotate(0deg);}
 #store .find-bx > div{flex:1;height:220px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:20px 0;}
@@ -139,7 +141,8 @@
 #store .find-bx > div h2{font-weight:300;font-size:26px;}
 #store .find-bx > div h2 strong{font-weight:700;}
 #store .find-bx > div h2 span{display:inline-block;position: relative;z-index:1;}
-#store .find-bx > div h2 span:before{content:'';display:block;position:absolute;bottom:5px;left:-3px;right:-3px;top:60%;background:#f28799;z-index:-1;}
+#store .find-bx > div h2 span:before{content:'';display:block;position:absolute;bottom:5px;left:0;width:0%;top:60%;background:#f28799;z-index:-1;transition:all .7s;}
+#store.active .find-bx > div h2 span:before{width:100%;}
 #store .find-bx > div a{display:flex;height:48px;width:220px;border:1px solid #6f6f6f;border-radius:5px;align-items:center;justify-content:center;transition:all .1s;}
 #store .find-bx > div a img{filter:invert(1);margin-left:7px;height:14px;}
 #store .find-bx > div a:hover{color:#fff;background:#f51a3f;border-color:#f51a3f}

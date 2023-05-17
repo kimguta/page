@@ -12,7 +12,7 @@ $(function() {
             if(index < 10){ 
                 var index = '0' + index
             }
-            return '<a href="#" role="button">' + (index) + '<span></span></a>';
+            return '<button type="button">' + (index) + '<span></span></button>';
         },
         slidesToShow: 1,
         slidesToScroll: 1,
