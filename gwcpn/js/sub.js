@@ -95,6 +95,33 @@ function contentScript(){
 	$('.skinTb.width640').parent().addClass('width640');
 	$('.skinTb.width768').parent().addClass('width768');
 	$('.skinTb.width1000').parent().addClass('width1000');
+
+	var slickSub1 = {
+        autoplay: true,
+        arrows: true,
+        accessibility: false,
+        dots:false,
+        draggable: true,
+		prevArrow: $('.good-shop-end .prev'),
+        nextArrow: $('.good-shop-end .next'),
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        pauseOnHover: false,
+        speed: 250,
+        autoplaySpeed: 6000,
+        // responsive: [{
+        //     breakpoint: 1400,
+        //     settings: {
+        //         slidesToScroll: 1,
+        //         slidesToShow: 6,
+        //         variableWidth: true,
+        //         swipeToSlide: true,
+        //     }
+        // }]
+    };
+
+    initSlick($('.good-shop-end .slick'), slickSub1);
 };
 
 

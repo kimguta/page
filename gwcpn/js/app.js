@@ -4,7 +4,6 @@ function initSlick(target, options) {
 	var ControlBtn = target.parent().find('.control .ps-btn');
 	var PlayBtn  = target.parent().find('.control .play');
 	var PauseBtn  = target.parent().find('.control .pause');
-	var PrevBtn  = target.parent().find('.control .prev');
 
 	target.on('beforeChange', function (event, slick, currentSlide, nextSlide) {
 		// 슬라이드 체인지 전
@@ -58,7 +57,7 @@ var ObjDoc = $(document);
 var Wwidth = ObjWin.outerWidth();
 
 ObjWin.on({
-	'scroll load': function() { 
+	'scroll load': function() {
 		if (ObjDoc.scrollTop() > 10) {
 			$('#header').addClass('fixed');
 		} else {
@@ -71,12 +70,11 @@ ObjWin.on({
 		if (HanOn > HandOff) {
 			$('#store').addClass('active');
 		}
-	}		
-})
-.on({
-	'load': function() { 
-		appScript();
 	}
+});
+
+$(document).ready(function(){
+	appScript();
 });
 
 //콘텐츠 스크립트 (dom ready 후 동작)
@@ -117,6 +115,7 @@ function appScript(){
 				<a href="#" class="close"><img src="/page/gwcpn/images/common/btn-close-sitemap.png" alt="사이트맵 닫기"></a>
 			</div>`
 		);
+		$('.sitemap-bx .depth-02').attr('style','display:block');
 	}, 100);
 };
 
