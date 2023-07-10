@@ -1,4 +1,14 @@
-
+<div id="google_translate_element"></div>
+				<script type="text/javascript">
+					function googleTranslateElementInit() {
+						new google.translate.TranslateElement({
+							pageLanguage: 'ko',
+							layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+							autoDisplay: false},
+							'google_translate_element');
+					}
+				</script>
+				<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 /*테스트*/
 //카운트 업 스크립트
