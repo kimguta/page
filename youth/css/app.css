@@ -56,7 +56,7 @@ main{background:#fff;}
 #header h1{position:absolute;display:flex;align-items:center;left:110px;top:0;bottom:0;z-index:10;}
 #header h1 a{display:block;color:transparent;height:32px;}
 #header h1 a img{display:block;height:100%;}
-#header .nav-bx{display:flex;justify-content:flex-end;align-items:center;position:relative;transition:all .3s;}
+#header .nav-bx{display:flex;justify-content:flex-end;align-items:center;position:relative;transition:all .3s;margin-right:-60px;}
 #header .nav-bx nav{display:flex;flex:1;}
 #header .bg_pc{position:absolute;top:131px;background:#fff;z-index:-2;height:0;left:0;right:0;animation:view1 .2s 1 both ease-out;display:none;box-shadow:0px 3px -3px 0px rgba(0,0,0,.1);}
 #header .bg_pc:before{content:'';display:block;position:absolute;bottom:0;right:0;width:312px;height:409px;background:url(/page/youth/images/common/logo_bg.png) no-repeat center center;}
@@ -80,18 +80,20 @@ main{background:#fff;}
 #header .nav-bx .depth-02 > li:nth-child(8){animation-delay:.45s;}
 #header .nav-bx .depth-02 > li:nth-child(9){animation-delay:.5s;}
 #header .nav-bx .depth-02 > li:nth-child(10){animation-delay:.55s;}
-#header .btn-bx{display:flex;align-items:center;justify-content:flex-end;flex-shrink:0;height:100%;position:absolute;top:0;bottom:0;right:-100px;}
+#header .btn-bx{display:flex;align-items:center;justify-content:flex-end;flex-shrink:0;height:100%;position:absolute;top:0;bottom:0;right:-170px;}
 #header .menu-on{width:26px;height:25px;color:transparent;font-size:0;background: url(/page/youth/images/common/allmenu.png) no-repeat center center /cover;display:none;margin-left:20px;}
 #header .menu-on:active{transform:scale(.8);}
 #header .log-in{display:flex;color:#fff;font-weight:600;height:34px;padding:0 20px;border-radius:17px;background:#000;align-items:center;padding-top:2px;}
 #main, #sub{transition:all .2s;padding-top:130px;}
 #header.active + #main,
 #header.active + #sub{filter:brightness(.5);}
-
+@media (max-width:1680px) {
+  #header .btn-bx{position:relative;right:-50px;}
+}
 
 @media (max-width:1399px) {
   #header{transition:all .35s .2s;height:65px;}
-  #header .nav-bx{height:65px}
+  #header .nav-bx{height:65px;margin-right:0;}
   #header .gnb-wrap{height:65px;}
   #header.fixed{top:-65px;transition:all .35s 0s;}
   #header.active{transition-delay:0s;top:0;}
