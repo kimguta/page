@@ -1,3 +1,20 @@
+
+/*오프셋 액티브*/
+function OffsetScroll(obj){
+	$(obj).each(function(){
+		var Offset = $(this).offset().top + $(this).outerHeight();
+		var Scrolltop = $(window).outerHeight() + $(document). scrollTop();	
+		if(Offset < Scrolltop){
+			$(this).addClass('active');
+		}
+	});
+}
+$(window).on('scroll', function(){
+	OffsetScroll('.menu-bx');
+});
+
+
+
 <div id="google_translate_element"></div>
 				<script type="text/javascript">
 					function googleTranslateElementInit() {
