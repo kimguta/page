@@ -3,6 +3,7 @@
 <h3>DQ_프로젝트 퍼블리싱 페이지</h3>
 <ul>
   <li><a href="basic" target="_blank">베이직소스</a></li>
+  <li><a href="soldier" target="_blank">제대군인지원센터</a></li>
   <li><a href="youth" target="_blank">디딤돌2배</a></li>
   <li><a href="gwcpn" target="_blank">강원물가정보망</a></li>
   <li><a href="eatof" target="_blank">이토프</a></li>
