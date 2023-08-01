@@ -123,8 +123,8 @@ var subSlickOption3 = {
 function contentScript(){
 	
 	if ($('.img-zoom-modal').length){
-		$.getScript('/page/gwd/js/panzoom.min.js');
-		$.getScript('/page/gwd/js/708e424f8f.js');
+		$.getScript('/page/soldier/js/panzoom.min.js');
+		$.getScript('/page/soldier/js/708e424f8f.js');
 	}
 	$('.skinTb-wrapper').on('scroll', function () {
 		$(this).addClass('scroll');
