@@ -13,6 +13,29 @@ $(window).on('scroll', function(){
 	OffsetScroll('.menu-bx');
 });
 
+/*오프셋 풀페이지*/
+function FullPage(obj){
+	$(obj).each(function(){
+		$(this).on('wheel', function (e) {
+            e.preventDefault();
+            var Offset1 = $(this).prev(obj).offset();
+            var Offset2 = $(this).next(obj).offset();
+            var Height1 = $(this).prev(obj).outerHeight();
+            var Height2 = $(this).next(obj).outerHeight();
+            var Wheight =  $(window).outerHeight();
+            if (e.originalEvent.deltaY < 0) {
+                $('html, body').stop().animate({scrollTop : Offset1.top - (Wheight - Height1)}, 500);
+            } 
+            else if (e.originalEvent.deltaY > 0) {
+                $('html, body').stop().animate({scrollTop : Offset2.top - (Wheight - Height2)}, 500);  
+            }
+        });
+	});
+}
+
+$(function() { 
+    FullPage('.full-page');
+});
 
 
 <div id="google_translate_element"></div>
