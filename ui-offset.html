@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<title>오프셋 테스트</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+	<link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css" rel="stylesheet">
+	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<body>
+	<div class="offset full-page" style="background:blue;height:600px"></div>
+	<div class="offset full-page" style="background:red;height:600px"></div>
+	<div class="offset full-page" style="background:green;height:600px"></div>
+	<div class="offset full-page" style="background:yellow;height:600px"></div>
+	<div class="offset full-page" style="background:gray;height:600px"></div>
+	<div class="offset full-page" style="background:purple;height:600px"></div>
+	<div class="offset full-page" style="background:blue;height:600px"></div>
+	<div class="offset full-page" style="background:red;height:600px"></div>
+	<div class="offset full-page" style="background:green;height:600px"></div>
+	<div class="offset full-page" style="background:yellow;height:600px"></div>
+	<div class="offset full-page" style="background:gray;height:600px"></div>
+	<div class="offset full-page" style="background:purple;height:600px"></div>
+</body>
+</html>
+
+<script>
+/*오프셋 액티브*/
+function elemOffset(obj){
+	$(obj).each(function(){
+        var Offset = $(this).offset().top;
+        var Height = $(this).outerHeight();
+        var Wheight =  $(window).outerHeight();
+        var scrollTop =  $(document).scrollTop();
+
+		//요소 화면 인
+		var elemIn = Offset - (Wheight + scrollTop);
+		if( elemIn <= 0 ){
+			$(this).addClass('elem-in');
+		}
+
+		//요소 아래쪽 붙음
+		var elemBottom = (Offset + Height) - (Wheight + scrollTop);
+		if( elemBottom <= 0 ){
+			$(this).addClass('elem-bottom');
+		}
+
+		//요소 위쪽 붙음
+		var elemTop = Offset - scrollTop;
+		if( elemTop <= 0 ){
+			$(this).addClass('elem-top');
+		}
+
+		//요소 화면 아웃
+		var elemOut = (Offset + Height) - scrollTop;
+		if( elemOut <= 0 ){
+			$(this).addClass('elem-out');
+		}
+	});
+}
+
+$(window).on('scroll', function(){
+	elemOffset('.offset');
+});
+
+/*오프셋 풀페이지*/
+function FullPage(obj){
+	$(obj).each(function(){
+		$(this).on('wheel', function (e) {
+			var Offset = $(this).offset().top;
+			var Height = $(this).outerHeight();
+			var Wheight =  $(window).outerHeight();
+			var scrollTop =  $(document).scrollTop();
+			if (e.originalEvent.deltaY < 0) {
+			$('html, body').stop().animate({scrollTop : Offset - Wheight}, 500);
+			} 
+			else if (e.originalEvent.deltaY > 0) {
+				$('html, body').stop().animate({scrollTop : Offset + Height}, 500);  
+			}
+        });
+	});
+}
+
+$(function() { 
+    FullPage('.full-page');
+});
+
+
+</script>
