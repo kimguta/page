@@ -105,6 +105,25 @@ function appScript(){
 			return false
 		}
 	});
+
+	var appOption1 = {
+        autoplay: true,
+        arrows: true,
+        accessibility: false,
+        dots:false,
+        draggable: true,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+		swipeToSlide: true,
+        infinite: true,
+        pauseOnHover: false,
+        speed: 200,
+        autoplaySpeed: 3000,
+		variableWidth: true,
+		prevArrow: $('#footer .prev'),
+        nextArrow: $('#footer .next'),
+    };
+    initSlick($('#footer .top-bx .inner > div:last-child'), appOption1);
 };
 
 function appScript2(){
