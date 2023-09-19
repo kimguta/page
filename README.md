@@ -3,6 +3,7 @@
 <h3>DQ_프로젝트 퍼블리싱 페이지</h3>
 <ul>
   <li><a href="basic" target="_blank">베이직소스</a></li>
+  <li><a href="efez" target="_blank">동해안권경제자유구역청</a></li>
   <li><a href="heritage" target="_blank">평창유산재단</a></li>
   <li><a href="isc" target="_blank">강원정보보호센터</a></li>
   <li><a href="soldier" target="_blank">제대군인지원센터</a></li>
