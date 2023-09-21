@@ -52,28 +52,6 @@ ObjDoc.on({
 }, '#img-modal .close');
 
 
-var subSlickOption = {
-	autoplay: false,
-	arrows: true,
-	accessibility: false,
-	dots:false,
-	draggable: true,
-	slidesToShow: 1,
-	slidesToScroll: 1,
-	pauseOnHover: false,
-	prevArrow: '<button href="#" class="prev"><img src="/page/heritage/images/sub/arrow1.png" alt="이전"></button>',
-  	nextArrow: '<button href="#" class="next"><img src="/page/heritage/images/sub/arrow2.png" alt="다음"></button>',
-	speed: 500,
-	responsive: [
-		{
-			breakpoint: 992,
-			settings: {
-				speed: 350,
-			}
-		}
-	]
-};
-
 
 //콘텐츠 스크립트 (dom ready 후 동작)
 function contentScript(){
@@ -104,39 +82,43 @@ function contentScript(){
 		$('.gourmet-road .view-bx > div').eq(currentSlide).show();
 	});
 
-	initSlick($('.program-slick'), subSlickOption);
 };
 
 $(function() {
 	contentScript();
 });
 
+function elemOffset(obj){
+	$(obj).each(function(){
+        var elemTop = $(this).offset().top;
+        var elemBottom =$(this).offset().top + $(this).outerHeight();
+		var winTop = $(document).scrollTop();
+        var winBottom = $(document).scrollTop() + $(window).outerHeight()
 
-ObjDoc.on({
-	'click': function(e) { 
-		e.preventDefault();
-		var idx = $(this).index();
-		$('.specialty-store .sp-bx a, .specialty-store .tab-bx a').removeClass('active');
-		$('.specialty-store .sp-bx a').eq(idx).addClass('active');
-		$('.specialty-store .tab-bx a').eq(idx).addClass('active');
-		$('.specialty-store .slick').slick('slickGoTo', idx);	
-	}
-}, '.specialty-store .sp-bx a, .specialty-store .tab-bx a')
-.on({
-	'click': function(e) { 
-		e.preventDefault();
-		var idx = $(this).index();
-		$('.gourmet-road .sp-bx a, .gourmet-road .tab-bx a').removeClass('active');
-		$('.gourmet-road .sp-bx a').eq(idx).addClass('active');
-		$('.gourmet-road .tab-bx a').eq(idx).addClass('active');
-		$('.gourmet-road .view-bx > div').hide();
-		$('.gourmet-road .view-bx > div').eq(idx).show();
-		$('.gourmet-road .slick').slick('slickGoTo', idx);	
-	}
-}, '.gourmet-road .sp-bx a, .gourmet-road .tab-bx a')
-.on({
-	'click': function(e) { 
-		e.preventDefault();
-		$('#sub-tab').toggleClass('active');
-	}
-}, '#sub-tab .active');
+		//요소 화면 인
+
+		if( elemTop <= winBottom ){
+			$(this).addClass('active');
+		}
+
+		// //요소 아래쪽 붙음
+		// if( elemBottom <= winBottom ){
+		// 	$(this).addClass('elem-bottom');
+		// }
+
+		// //요소 위쪽 붙음
+		// if( elemTop <= winTop ){
+		// 	$(this).addClass('elem-top');
+		// }
+
+		// //요소 화면 아웃
+		// if( elemBottom <=  winTop ){
+		// 	$(this).addClass('elem-out');
+		// }
+	});
+}
+
+$(window).on('scroll load', function(){
+	elemOffset('.offset');
+});
+
