@@ -151,7 +151,7 @@ ObjDoc.on({
 		$('#header h2').removeClass('active');
 		$('#header .depth-02').stop().show();
 		$(this).children('h2').addClass('active');
-		$('.bg_pc').css('height',highestBox).show();
+		$('.bg_pc').css('height',highestBox - 1).show();
 		$('#header .depth-02').css('height',highestBox);
 
 	}
