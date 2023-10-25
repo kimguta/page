@@ -15,10 +15,13 @@
     color: transparent;
     transition:all .3s ease-out;
     white-space:nowrap;
-    display:flex;align-items:center;justify-content:center;font-weight:900;font-size:580px;line-height:1;
+    display:flex;align-items:center;justify-content:center;font-weight:900;font-size:520px;line-height:1;
     height: calc(var(--vh, 1vh) * 100);
+    letter-spacing:-20px;
     max-height:1000px;
     min-height:900px;
+    padding-right:60px;
+    
 }
 #visual .text-bx p br{display:none;}
 #visual .alram{position:absolute;right:0;bottom:150px;}
@@ -35,11 +38,10 @@
 
 @media (max-width:1399px) {
     #main{padding-bottom:50px;}
-
     #visual .bg-img{width:1600px;left:calc(50% - 800px)}
     #visual .inner h2{padding-top:35px;font-size:30px;}
     #visual .inner h2 strong{font-size:50px;}
-    #visual .text-bx p{font-size:450px;line-height:1;background-size:1600px 937px;}
+    #visual .text-bx p{font-size:330px;line-height:1;background-size:1600px 937px;letter-spacing:-15px;padding-bottom:45px;padding-right:15px;}
     #visual .alram{bottom:100px;transform:scale(.85);transform-origin:90% 50%;}
     #visual .alram .view-bx{right:0px;bottom:20px;}
 } 
@@ -49,8 +51,9 @@
     #visual .inner{max-height:900px;}
     #visual .inner h2{padding-top:50px;font-size:26px;}
     #visual .inner h2 strong{font-size:46px;}
-    #visual .text-bx p{font-size:350px;max-height:900px;}
-    #visual .alram{bottom:150px;transform:scale(.8);}
+    #visual .text-bx p{font-size:320px;max-height:900px;text-align:center;line-height:.9;letter-spacing:-10px;padding-bottom:35px;padding-right:10px;}
+    #visual .text-bx p br{display:block;}
+    #visual .alram{bottom:35px;transform:scale(.8);}
 } 
 
 @media (max-width:740px) {
@@ -58,9 +61,8 @@
     #visual .inner{max-height:750px;min-height:700px;}
     #visual .inner h2{padding-top:35px;font-size:18px;}
     #visual .inner h2 strong{font-size:36px;}
-    #visual .text-bx p{font-size:240px;min-height:700px;}
-    #visual .text-bx p br{display:block;}
-    #visual .alram{bottom:90px;transform:scale(.75);}
+    #visual .text-bx p{font-size:210px;min-height:700px;letter-spacing:-5px;padding-bottom:45px;padding-right:5px;}
+    #visual .alram{bottom:50px;transform:scale(.75);}
 
     [lang=ru] #visual .inner h2{font-size:15px;}
     [lang=ru] #visual .inner h2 strong{font-size:30px;}
@@ -458,9 +460,8 @@
 #business .card-bx .item{flex:1;position:relative;height:500px;overflow:hidden;z-index:1;display:flex;flex-direction:column;justify-content:space-between;padding:25px 30px 40px 30px;transition:all .35s ease-out;}
 #business .card-bx .item.active{flex:2;}
 #business .card-bx .item > img{display:block;position:absolute;right:0;height:100%;top:0;z-index:-2;}
-#business .card-bx .item:before{content:'';z-index:-1;position:absolute;top:0;bottom:0;right:0;left:0;background:url(/page/efez/images/main/Pattern-1.png) repeat center center /5px 5px;box-shadow:inset 10px 0px 25px rgba(0,0,0,.35);}
-#business .card-bx .item:first-child{box-shadow:none;}
-#business .card-bx .item.active:before{display:none;}
+#business .card-bx .item:before{content:'';z-index:-1;opacity:1;transition:all .2s .1s;position:absolute;top:0;bottom:0;right:0;left:0;background:url(/page/efez/images/main/Pattern-1.png) repeat center center /5px 5px;box-shadow:inset 10px 0px 25px rgba(0,0,0,.35);}
+#business .card-bx .item.active:before{opacity:0;}
 #business .card-bx .item h3{text-align:right;color:#fff;font-size:40px;font-weight:600;line-height:1.5;text-shadow:1px 1px 1px rgba(0,0,0,.3);transition:all .2s .15s;}
 #business .card-bx .item h3 em{font-size:16px;display:block;}
 #business .card-bx .item p{color:#fff;text-shadow:1px 1px 2px rgba(0,0,0,.3);font-size:15px;transition:all .2s .15s;word-break:keep-all;}
@@ -477,7 +478,7 @@
     #business .card-bx{border-radius:25px;}
     #business .card-bx .item{height:420px;padding:23px 20px 30px 20px;}
     #business .card-bx .item > img{height:120%;}
-    #business .card-bx .item:before{box-shadow:inset 7px 0px 20px rgba(0,0,0,.35);background-size:3px 3px;}
+    #business .card-bx .item:before{box-shadow:inset 7px 0px 20px rgba(0,0,0,.35)}
     #business .card-bx .item h3{font-size:30px;}
     #business .card-bx .item h3 em{font-size:14px;}
     #business .card-bx .item p{font-size:13px;}
@@ -487,10 +488,10 @@
 @media (max-width:991px) {
     #business{padding-top:70px;}
     #business .card-bx{border-radius:20px;flex-direction:column;}
-    #business .card-bx .item{max-height:120px;padding:20px 20px 20px 20px;flex:0;}
-    #business .card-bx .item.active{flex:0;max-height:300px}
+    #business .card-bx .item{max-height:125px;padding:20px 20px 20px 20px;flex:0;}
+    #business .card-bx .item.active{flex:0;max-height:315px}
     #business .card-bx .item > img{height:auto;width:100%;top:auto;bottom:0;}
-    #business .card-bx .item:before{box-shadow:inset 7px 0px 20px rgba(0,0,0,.35);background-size:3px 3px;}
+    #business .card-bx .item:before{box-shadow:inset 0px 7px 10px rgba(0,0,0,.35);background-size:3px 3px;}
     #business .card-bx .item h3{font-size:24px;}
     #business .card-bx .item h3 em{font-size:13px;}
     #business .card-bx .item > div{margin-top:-50px;}
@@ -499,16 +500,15 @@
     #business .card-bx .item a{width:130px;margin-top:15px;height:38px;font-size:14px;}
 } 
 
-@media (max-width:991px) {
+@media (max-width:740px) {
     #business{padding-top:55px;}
     #business .card-bx{border-radius:15px;}
-    #business .card-bx .item{max-height:110px;padding:15px;flex:0;}
-    #business .card-bx .item.active{flex:0;max-height:280px}
-    #business .card-bx .item:before{box-shadow:inset 7px 0px 20px rgba(0,0,0,.35);background-size:3px 3px;}
+    #business .card-bx .item{padding:15px;flex:0;}
+    #business .card-bx .item.active{flex:0;}
     #business .card-bx .item h3{font-size:20px;}
     #business .card-bx .item h3 em{font-size:12px;}
-    #business .card-bx .item > div{margin-top:-30px;}
-    #business .card-bx .item p{font-size:12px;}
+    #business .card-bx .item > div{margin-top:-15px;}
+    #business .card-bx .item p{font-size:11.5px;}
     #business .card-bx .item p + p{margin-top:5px;}
     #business .card-bx .item a{width:110px;margin-top:13px;height:32px;font-size:13px;}
 } 

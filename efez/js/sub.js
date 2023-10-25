@@ -2,6 +2,39 @@
 //서브공통 스크립트
 var ObjDoc = $(document);		
 
+ObjDoc.on({
+	'click': function(e) { 
+		e.preventDefault();
+		if ($(this).hasClass('active')) {
+			$(this).removeClass('active');
+			$(this).parents('#breadcrumb, .box').removeClass('active');
+			$(this).children('span').text('열기');
+			$('#breadcrumb .box ul').slideUp(250);
+		} else{
+			$('#breadcrumb .open').removeClass('active');
+			$('#breadcrumb .box').removeClass('active');
+			$(this).addClass('active');
+			$(this).parents('#breadcrumb, .box').addClass('active');
+			$('#breadcrumb .open span').text('열기');
+			$(this).children('span').text('닫기');
+			$('#breadcrumb .box ul').slideUp(250);
+			$(this).next('ul').slideDown(250);
+		}
+	}
+}, '#breadcrumb .open')
+.on({
+	'mouseleave': function() { 
+		$('#breadcrumb .open span').text('열기');
+		$('#breadcrumb .box ul').slideUp(300);
+		$('#breadcrumb .box .open, #breadcrumb .box, #breadcrumb').removeClass('active');
+	}
+}, '#breadcrumb')
+.on({
+	'focusout': function() { 
+		$(this).parents('.box').find('.open').focus();
+	}
+}, '#breadcrumb .box li:last-child a');	
+
 
 
 ObjDoc.on({

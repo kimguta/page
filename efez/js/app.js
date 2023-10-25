@@ -148,6 +148,7 @@ ObjDoc.on({
 	'click': function(e) { 
 		e.preventDefault();
 		$('#header .sitemap-bx').addClass('active');
+		$('#header .sitemap-bx .depth-02').removeAttr('style');
 		$('#header .sitemap-bx a:first').focus();
 	}
 }, '#header .sitemap')
