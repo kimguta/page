@@ -128,6 +128,33 @@ function contentScript(){
 	$('.skinTb.width640').parent().addClass('width640');
 	$('.skinTb.width768').parent().addClass('width768');
 	$('.skinTb.width1000').parent().addClass('width1000');
+
+	var slickOptionSub1 = {
+        autoplay: false,
+        arrows: true,
+        accessibility: false,
+        dots:false,
+        draggable: true,
+        prevArrow: $('.sub-slick-wrap-01 .prev'),
+        nextArrow: $('.sub-slick-wrap-01 .next'),
+        infinite: true,
+        swipeToSlide: true,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        pauseOnHover: false,
+        speed: 250,
+        responsive: [
+            {
+                breakpoint: 1181,
+                settings: {
+					slidesToShow: 3,
+					variableWidth: true,
+                }
+            }
+        ]
+    };
+    
+    initSlick($('.sub-slick-wrap-01 .slick'), slickOptionSub1);
 };
 
 
