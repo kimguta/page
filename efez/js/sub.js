@@ -112,7 +112,19 @@ ObjDoc.on({
 			});
 		}
 	}
-}, '.check-bx .check-all');
+}, '.check-bx .check-all')
+.on({
+	'click': function(e) { 
+		e.preventDefault();
+		$(this).parents('.item').addClass('active');
+	}
+}, '.article-list .item > a')
+.on({
+	'click': function(e) { 
+		e.preventDefault();
+		$(this).parents('.item').removeClass('active');
+	}
+}, '.article-list .item .close');
 
 
 //콘텐츠 스크립트 (dom ready 후 동작)
@@ -155,6 +167,34 @@ function contentScript(){
     };
     
     initSlick($('.sub-slick-wrap-01 .slick'), slickOptionSub1);
+
+
+	var slickOptionSub1 = {
+        autoplay: false,
+        arrows: true,
+        accessibility: false,
+        dots:false,
+        draggable: true,
+        prevArrow: $('.corporate-slick-wrap .prev'),
+        nextArrow: $('.corporate-slick-wrap .next'),
+        infinite: true,
+        swipeToSlide: true,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        pauseOnHover: false,
+        speed: 350,
+        responsive: [
+            {
+                breakpoint: 1400,
+                settings: {
+					slidesToShow: 3,
+					variableWidth: true,
+                }
+            }
+        ]
+    };
+    
+    initSlick($('.corporate-slick'), slickOptionSub1);
 };
 
 
