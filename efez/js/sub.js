@@ -124,7 +124,20 @@ ObjDoc.on({
 		e.preventDefault();
 		$(this).parents('.item').removeClass('active');
 	}
-}, '.article-list .item .close');
+}, '.article-list .item .close')
+.on({
+	'click': function(e) { 
+		e.preventDefault();
+		var Idx = $(this).index();
+		$('.active-tab button').removeClass('active');
+		$('.active-tab').each(function(){
+			$(this).children('button').eq(Idx).addClass('active');
+		});
+		$('.view-bx > div').removeClass('active');
+		$('.view-bx > div').eq(Idx).addClass('active');
+	}
+}, '.active-tab button');
+
 
 
 //콘텐츠 스크립트 (dom ready 후 동작)
