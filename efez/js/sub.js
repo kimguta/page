@@ -182,7 +182,7 @@ function contentScript(){
     initSlick($('.sub-slick-wrap-01 .slick'), slickOptionSub1);
 
 
-	var slickOptionSub1 = {
+	var slickOptionSub2 = {
         autoplay: false,
         arrows: true,
         accessibility: false,
@@ -207,7 +207,32 @@ function contentScript(){
         ]
     };
     
-    initSlick($('.corporate-slick'), slickOptionSub1);
+    initSlick($('.corporate-slick'), slickOptionSub2);
+
+	var slickOptionSub3 = {
+        autoplay: false,
+        arrows: true,
+        accessibility: false,
+        dots:false,
+        draggable: true,
+        infinite: true,
+        swipeToSlide: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        pauseOnHover: false,
+        speed: 300,
+        responsive: [
+            {
+                breakpoint: 1400,
+                settings: {
+					// slidesToShow: 3,
+					// variableWidth: true,
+                }
+            }
+        ]
+    };
+    
+    initSlick($('.development-project .slick'), slickOptionSub3);
 };
 
 
