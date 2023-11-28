@@ -1,4 +1,14 @@
 
+/*키업 공백 확인*/
+function searchPlace(obj){
+	$(obj).on('keyup', function(){
+		$(this).addClass('active');
+		if($.trim($(this).val())==''){
+			$(this).removeClass('active');
+		}
+	});
+}
+
 /*오프셋 액티브*/
 function OffsetScroll(obj){
 	$(obj).each(function(){
