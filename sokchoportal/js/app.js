@@ -17,7 +17,7 @@ function initSlick(target, options) {
 		if(allSlide < 10){ 
 			var allSlide = '0' + allSlide
 		}
-		target.parent().find('.count').html( nowSlide + '<span>/</span>' + '<strong>'+ allSlide + '<strong>');
+		target.parent().find('.count').html( '<strong>'+ nowSlide + '</strong>' + '<span>/</span>' + allSlide) ;
 		target.find('.slick-slide:not(.slick-active)').attr('tabindex','-1');
 		target.find('.slick-active').attr('tabindex','0');
 		if($(this).hasClass('visual')){ 
@@ -92,6 +92,22 @@ ObjWin.on({
 				$('#header h2').removeClass('active');
 			}, 100);
 		}
+		var appSlickOption1 = {
+			autoplay: true,
+			arrows: false,
+			accessibility: false,
+			dots:false,
+			draggable: false,
+			infinite: true,
+			slidesToShow: 1,
+			slidesToScroll: 1,
+			pauseOnHover: false,
+			pauseOnFocus: false,
+			vertical: true,
+			speed: 250,
+			autoplaySpeed: 2000,
+		}; 
+		initSlick($('#header .button-slick'), appSlickOption1);
 	}
 });
 
@@ -164,11 +180,6 @@ ObjDoc.on({
 	}
 }, '.view-bx a:last-child')
 .on({
-	'keyup': function() { 
-		$(this).addClass('active');
-	}
-}, '#search-header')
-.on({
 	'click': function(e) { 
 		e.preventDefault();
 		$('#header .modal-search').show();
@@ -184,7 +195,14 @@ ObjDoc.on({
 	}
 }, '#header .modal-search .close');
 
-
+function searchPlace(obj){
+	$(document).on('keyup', obj, function(){
+		$(this).addClass('active');
+		if($.trim($(this).val())==''){
+			$(this).removeClass('active');
+		}
+	});
+}
 
 
 function toggleBox(Btn, Box){
@@ -218,5 +236,7 @@ $(function() {
     });
 
 	toggleBox('.view-btn', '.view-bx');
+	searchPlace('#search-main');
+	searchPlace('#search-header');
 });
 

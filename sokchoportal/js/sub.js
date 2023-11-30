@@ -63,7 +63,18 @@ ObjDoc.on({
 			$(this).parent('h3').next('.depth-03').slideDown(200);
 		}
 	}
-}, '#side-menu h3.has-depth a');
+}, '#side-menu h3.has-depth a')
+.on({
+	'click': function(e) { 
+		e.preventDefault();
+		$(this).next('ul').toggle();
+	}
+}, '.share .open')
+.on({
+	'focusout': function() { 
+		$('.share .open').focus();
+	}
+}, '.share ul li:last-child a');
 
 
 //콘텐츠 스크립트 (dom ready 후 동작)
