@@ -109,7 +109,6 @@ $(function() {
                     speed: 350,
                     slidesToShow: 4,
                     variableWidth: true,
-                    centerMode: true,
                 }
             }
         ]

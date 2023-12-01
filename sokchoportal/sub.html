@@ -474,10 +474,10 @@
 		var pageUrl = $(location).attr('href');
 		if (pageUrl.match("git")){
 			$.ajax({	
-				url: "https://api.github.com/repos/kimguta/page/contents/efez/content",
+				url: "https://api.github.com/repos/kimguta/page/contents/sokchoportal/content",
 				success: function (data) {
 					for (var i = 0; i < data.length; i++) {
-						$('.puble-index .view div').append('<p><a href="/page/efez/content/'+data[i].name+'">'+ data[i].name +'</a><button class="copy-html">HTML복사</button></p>');
+						$('.puble-index .view div').append('<p><a href="/page/sokchoportal/content/'+data[i].name+'">'+ data[i].name +'</a><button class="copy-html">HTML복사</button></p>');
 					}
 				},
 			});
@@ -489,7 +489,7 @@
 				success: function (data) {
 					var dataArr = data.split("\n");
 					for (var i = 0; i < dataArr.length; i++) {
-						$('.puble-index .view div').append('<p><a href="/page/efez/content/'+dataArr[i]+'">'+ dataArr[i] +'</a><button class="copy-html">HTML복사</button></p>');
+						$('.puble-index .view div').append('<p><a href="/page/sokchoportal/content/'+dataArr[i]+'">'+ dataArr[i] +'</a><button class="copy-html">HTML복사</button></p>');
 						// $('.puble-index .view').addClass('live');
 					}
 				},
