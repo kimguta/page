@@ -13,7 +13,7 @@ $(function() {
         autoplaySpeed: 6000,
         responsive: [
             {
-                breakpoint: 1400,
+                breakpoint: 1500,
                 settings: {
                     variableWidth: true,
                     centerMode: true,
@@ -52,7 +52,7 @@ $(function() {
             speed: 250,
             responsive: [
                 {
-                    breakpoint: 1400,
+                    breakpoint: 1500,
                     settings: {
                         speed: 350,
                         variableWidth: true,
@@ -104,11 +104,12 @@ $(function() {
         autoplaySpeed: 6000,
         responsive: [
             {
-                breakpoint: 1400,
+                breakpoint: 1500,
                 settings: {
                     speed: 350,
                     slidesToShow: 4,
                     variableWidth: true,
+                    swipeToSlide: true,
                 }
             }
         ]
@@ -182,12 +183,13 @@ ObjDoc.on({
 .on({
 	'click': function(e) { 
 		e.preventDefault();
+        e.stopPropagation()
         $('.menu-list .item > a').removeClass('active');
         $(this).addClass('active');
 	}
 }, '.menu-list .item > a')
 .on({
 	'click': function() { 
-        $(this).prev('a').removeClass('active');
+        $('.menu-list .item > a').removeClass('active');
 	}
-}, '.menu-list .item .view');
+}, '#main');
