@@ -63,7 +63,7 @@ ObjWin.on({
 		}
 	},
 	'resize load': function() { 
-		if(ObjWin.width() > 1499){ 
+		if(ObjWin.width() > 1180){ 
 			$('#header, #sub').removeClass('mobile-mode');
 			$('#header, #sub').addClass('pc-mode');
 		}
@@ -74,7 +74,7 @@ ObjWin.on({
 	},
 	'resize': function() { 
 		var Wwidth2 = $(window).outerWidth();
-		if (Wwidth2 > 1499){
+		if (Wwidth2 > 1180){
 			$('#header h2, #header h3, #header h4').removeClass('active');
 			$('#header .depth-02').stop().hide();
 		}
@@ -86,7 +86,7 @@ ObjWin.on({
 				return false;
 			}
 		});
-		if(ObjWin.width() > 1499){ 
+		if(ObjWin.width() > 1180){ 
 			
 			setTimeout(function() {
 				$('#header h2').removeClass('active');
