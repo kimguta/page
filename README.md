@@ -4,6 +4,8 @@
 <ul>
   <li><a href="basic" target="_blank">베이직소스</a></li>
   <li><a href="sokchoportal" target="_blank">속초행정</a></li>
+  <li><a href="sokchomayor" target="_blank">속초시장실</a></li>
+  <li><a href="sokchooffice" target="_blank">속초사업소</a></li>
   <li><a href="efez" target="_blank">동해안권경제자유구역청</a></li>
   <li><a href="heritage" target="_blank">평창유산재단</a></li>
   <li><a href="isc" target="_blank">강원정보보호센터</a></li>

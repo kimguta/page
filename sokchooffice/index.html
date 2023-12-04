@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<title>타이틀</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="format-detection" content="telephone=no"> 
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+	<link rel="stylesheet" href="/page/common/css/fonts.css">
+	<link rel="stylesheet" href="/page/common/css/common.css">
+	<link rel="stylesheet" href="/page/common/css/jquery-ui.min.css">
+
+	<script src="/page/common/js/jquery-3.6.0.min.js"></script>
+	<script src="/page/common/js/jquery-ui.min.js"></script>
+	<script src="/page/common/js/puble_common.js"></script>
+	<script src="/page/common/js/slick.min.js"></script>
+	<script src="/page/common/js/common.js"></script>
+
+	<link rel="stylesheet" href="/page/sokchooffice/css/app.css">
+	<link rel="stylesheet" href="/page/sokchooffice/css/index.css">
+
+	<script src="/page/sokchooffice/js/app.js"></script>
+	<script src="/page/sokchooffice/js/index.js"></script>
+</head>
+
+<body>
+	<div id="wrapper" class="page-wrap">
+
+		<ul class="skipnav">
+			<li><a href="#A-Gnb-focus">주메뉴 바로가기</a></li>
+			<li><a href="#A-Contents-focus">본문 바로가기</a></li>
+			<li><a href="#A-Ftr-focus">푸터 바로가기</a></li>
+		</ul>
+
+		<header id="header" include-html="/page/sokchooffice/include/header.html"></header>
+
+		<main id="main">
+			<a href="#A-Contents-focus" id="A-Contents-focus" class="blind">본문 시작</a>
+
+		</main>	
+
+		<footer id="footer" class="clearfix" include-html="/page/sokchooffice/include/footer.html"></footer>
+		<a href="#" id="btn-top" role="button">
+			<img src="/page/sokchooffice/images/common/main-down.png" alt="위로">
+		</a>
+	</div>
+
+</body>
+
+</html>
+ 
+
+
+
+<!--[d] 인클루드, 디자인 확인 용 개발 시 제거-->
+<div class="puble-index">
+	<a href="#" class="close" onclick="$('.puble-index').remove();return false;">✕</a>
+	<a href="/page/sokchooffice/sub.html" target="_blank" class="btn">서브페이지열기</a>
+</div>
+
+<style>
+	.puble-index{position:fixed;z-index:500;left:0;bottom:0;display:flex;flex-direction:column;align-items:flex-start;}
+	.puble-index .btn{background:#111;border:1px solid #fff;border-width:1px 1px 0px 0px;display:block;text-align:center;font-size:13px;line-height:1.3;padding:0px 10px;color:#fff;height:40px;line-height:40px;}
+	.puble-index .close{display:flex;background:#111;color:#fff;justify-content:center;align-items:center;width:22px;height:22px;border:1px solid #fff;margin-bottom:-1px;font-size:13px;}
+	@media (max-width:1399px) {
+		.puble-index .btn{font-size:13px;padding:0px 5px;color:#fff;height:34px;line-height:34px;}
+		.puble-index .close{width:18px;height:18px;margin-bottom:-1px;font-size:10px;}
+	}
+</style>
+
+<script>
+	$(function(){
+		includeLayout();
+	});
+
+	function includeLayout(){
+		var includeArea = $("[include-html]");
+		var self, url;
+		$.each(includeArea, function() {
+			self = $(this);
+			url = self.attr("include-html");
+			self.load(url, function(){
+				$("[include-html]").removeAttr("include-html");
+			});
+		});
+	};
+</script>
+<!--//[d] 인클루드, 디자인 확인 용 개발 시 제거-->
