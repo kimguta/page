@@ -13,7 +13,7 @@ $(function() {
         autoplaySpeed: 6000,
         responsive: [
             {
-                breakpoint: 1500,
+                breakpoint: 1181,
                 settings: {
                     variableWidth: true,
                     centerMode: true,
@@ -52,7 +52,7 @@ $(function() {
             speed: 250,
             responsive: [
                 {
-                    breakpoint: 1500,
+                    breakpoint: 1181,
                     settings: {
                         speed: 350,
                         variableWidth: true,
@@ -104,7 +104,7 @@ $(function() {
         autoplaySpeed: 6000,
         responsive: [
             {
-                breakpoint: 1500,
+                breakpoint: 1181,
                 settings: {
                     speed: 350,
                     slidesToShow: 4,

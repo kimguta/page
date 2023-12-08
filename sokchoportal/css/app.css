@@ -94,10 +94,15 @@ main{background:#fff;padding-top:130px;}
 #header .depth-02 > li:nth-child(14){animation-delay:.75s;}
 #header .depth-02 > li:nth-child(15){animation-delay:.8s;}
 
+#header li:last-child .depth-02 > li{width:calc(100% / 8)}
+
 #header h3 a{color:#222;padding:6px 0;line-height:1.3;width:100%;text-align:left;display:block;word-break:keep-all;}
 #header h4 a{color:#8d8d8d;font-size:14px;display:block;padding:4px 0;line-height:1.4;word-break:keep-all;text-align:left;font-weight:300;}
 #header h3 a:hover, 
 #header h4 a:hover{color:#0666d3;}
+#header h3 a strong{display:flex;align-items:center;justify-content:center;flex-direction:column;}
+#header h3 a strong span{display:block;width:88px;height:88px;border:1px solid #ddd;border-radius:50%;margin-bottom:10px;display:flex;align-items:center;justify-content:center;}
+#header h3 a strong span img{width:48px;}
 
 #header .site-bx{width:620px;position:relative;margin-right:-210px;background:#1d3a8f;border-radius:0px 0px 0px 130px;padding-left:70px;}
 #header .lang-bx{height:70px;display:flex;align-items:center;justify-content:flex-end;background:#fff;padding-right:210px;border-bottom-left-radius: 70px;}
@@ -171,9 +176,12 @@ main{background:#fff;padding-top:130px;}
   #header h2 a:after{content:'';display:block;width:10px;height:6px;background:url(/page/sokchoportal/images/common/lnb-ico-menudown.png) no-repeat center center /cover;transition:all .2s;}
   #header h2.active a:after{transform:rotate(180deg);}
   #header .depth-02{display:none;position:relative;top:auto;left:auto;padding:10px 0 10px 30px;border-top:1px solid #ccc;}
-  #header .depth-02 > li{width:100%;margin-top:0px;animation:none !important;}
+  #header .depth-02 > li{width:100% !important;margin-top:0px;animation:none !important;}
   #header .depth-03{padding:0 0 6px 5px;}
-  /* #header h2.active + .depth-02{display:block;} */
+  #header .depth-02 > li{width:100% !important;margin-top:0px;animation:none !important;}
+  #header li:last-child .depth-02{overflow:hidden;}
+  #header li:last-child .depth-02 > li{width:50% !important;float:left}
+
   #header h3 a{font-size:14px;padding-top:9px;}
   #header h4 a{font-size: 12.5px;display:flex;align-items:center;font-weight:300;}
   #header h4 a:before{content:'-';margin-right:5px;}
@@ -216,6 +224,14 @@ main{background:#fff;padding-top:130px;}
   #header.fixed .mobile-menu img{filter:drop-shadow(1px 1px 1px rgba(0,0,0,1));}
 
   #header a[target=_blank]:after{margin-left:7px;}
+
+  #header h3 a strong{display:flex;align-items:center;justify-content:flex-start;flex-direction:row;margin:-5px 0;}
+  #header h3 a strong span{width:40px;height:40px;margin:0 15px 0 0;}
+  #header h3 a strong span img{width:22px;}
+
+  #header h3.acitve a, 
+  #header h4.active a{color:#0666d3;}
+
 } 
 
 

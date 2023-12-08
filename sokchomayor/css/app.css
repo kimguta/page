@@ -59,7 +59,7 @@ main{background:#fff;padding-top:135px;}
 #header #gnb-bx{position:relative;}
 #header .nav-bx{width:100%}
 
-#header .family-bx{height:44px;display:flex;align-items:center;justify-content:flex-end;position:absolute;left:20px;top:-44px;}
+#header .family-bx{height:44px;display:flex;align-items:center;justify-content:flex-end;position:absolute;left:20px;top:-44px;z-index: 10;}
 #header .family-bx > a{height:26px;padding:0 6px;font-size:14px;color:#8d8d8d;display:flex;align-items:center;}
 #header .family-bx .view-wrap{margin-left:20px;position:relative;}
 #header .family-bx button{display:flex;height:26px;padding:0 17px;border-radius:13px;background:#edf0f2;font-size:14px;color:#777;align-items:center;}
@@ -115,7 +115,7 @@ main{background:#fff;padding-top:135px;}
 #header .modal-search .place-holder{position:absolute;top:0;left:25px;bottom:0;display:flex;align-items:center;pointer-events:none;color:#8d8d8d;font-size:18px;}
 #header .modal-search .place-holder strong{color:#222;font-weight:400;padding-right:5px;}
 #header .modal-search .place-holder img{width:15px;margin:-13px 10px 0 0}
-#header .modal-search input[type=search]{flex:1;height:100%;padding-left:25px;background:transparent;font-size:16px;}
+#header .modal-search input[type=search]{flex:1;height:100%;padding-left:25px;background:transparent;font-size:16px;-webkit-appearance: textfield;}
 #header .modal-search input[type=search]:focus + span.place-holder,
 #header .modal-search input[type=search].active + span.place-holder{opacity:0;}
 #header .modal-search button{height:100%;width:80px;flex-shrink:0;position:relative;}
@@ -164,7 +164,7 @@ main{background:#fff;padding-top:135px;}
   #header h3 a{font-size:14px;padding-top:9px;}
   #header h4 a{font-size:12px;display:flex;align-items:center;font-weight:300;padding:5px 0;}
 
-  #header .mobile-close{position:absolute;top:10px;right:10px;padding:5px;display:block;}
+  #header .mobile-close{position:absolute;top:10px;right:10px;padding:5px;display:block;z-index: 100;}
   #header .mobile-close img{display:block;width:15px;height:15px;}
 
   #header .site-bx{width:100%;position:relative;margin-right:0px;background:transparent;border-radius:0px;padding-left:0px;display:flex;justify-content:flex-end;height:62px;}
@@ -207,6 +207,11 @@ main{background:#fff;padding-top:135px;}
   #header .weather img{display:block;height:20px;}
   #header .weather strong{font-size:11px;padding:0px;}
   #header .weather span{font-size:10px;}
+
+  #header.fixed .mobile-menu{filter:invert(0);}
+  #header.fixed .mobile-menu img{filter:drop-shadow(1px 1px 1px rgba(0,0,0,1));}
+
+  #header h4.active a{color:#ff4b1d}
 } 
 
 

@@ -20,9 +20,6 @@ function initSlick(target, options) {
 		target.parent().find('.count').html( '<strong>'+ nowSlide + '</strong>' + '<span>/</span>' + allSlide) ;
 		target.find('.slick-slide:not(.slick-active)').attr('tabindex','-1');
 		target.find('.slick-active').attr('tabindex','0');
-		if($(this).hasClass('visual')){ 
-			
-		}
 	});
 	target.slick(options);
 	ControlBtn.on('click', function (e) {
@@ -87,10 +84,13 @@ ObjWin.on({
 			}
 		});
 		if(ObjWin.width() > 1180){ 
-			
 			setTimeout(function() {
-				$('#header h2').removeClass('active');
+				$('#header h2, #header h3, #header h4').removeClass('active');
 			}, 100);
+		}
+		else{
+			$('#header h2.active').next('.depth-02').show();
+			$('#header h3.active').next('.depth-03').show();
 		}
 		var appSlickOption1 = {
 			autoplay: true,

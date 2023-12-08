@@ -6,6 +6,7 @@ function initSlick(target, options) {
 	var PauseBtn  = target.parent().find('.control .pause');
 	target.on('beforeChange', function (event, slick, currentSlide, nextSlide) {
 		// 슬라이드 체인지 전
+		target.find('.slick-current').addClass('before');
 	});
 	target.on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
 	// 초기 후, 슬라이드 체인지 후
@@ -90,8 +91,11 @@ ObjWin.on({
 		if(ObjWin.width() > 1180){ 
 			
 			setTimeout(function() {
-				$('#header h2').removeClass('active');
+				$('#header h2, #header h3, #header h4').removeClass('active');
 			}, 100);
+		}else{
+			$('#header h2.active').next('.depth-02').show();
+			$('#header h3.active').next('.depth-03').show();
 		}
 		var appSlickOption1 = {
 			autoplay: true,

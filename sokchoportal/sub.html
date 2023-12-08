@@ -459,6 +459,7 @@
 			<button onclick="$('.puble-index .view').hide();textChange();$('.pre-view').css('display','none');return false;">✕</button>
 		</strong>
 		<p><a href="/page/sokchoportal/" target="_blank" onmouseover="$('.pre-view').hide();">메인페이지</a></p>
+		<p><a href="/page/sokchoportal/branch.html" target="_blank" onmouseover="$('.pre-view').hide();">분야별정보</a></p>
 		<!-- <p><a href="#" onclick="$('#contentsArea').load('/page/sokchoportal/content/continfo.html'); return false;">계약정보페이지</a></p>
 		<p><a href="#" onclick="$('#contentsArea').load('/page/sokchoportal/content/supervisory.html'); return false;">감리·감독 ·검사 현황페이지</a></p>
 		<p><a href="#" onclick="$('#contentsArea').load('/page/sokchoportal/content/disclosure.html'); return false;">세입현황페이지</a></p>
@@ -526,7 +527,7 @@
 		var pageUrl = $(location).attr('href');
 		if (pageUrl.match("git")){
 			$.ajax({	
-				url: "https://api.github.com/repos/kimguta/page/contents/sokchoportal/content",
+				url: "/page/sokchoportal/content/list.txt",
 				success: function (data) {
 					for (var i = 0; i < data.length; i++) {
 						$('.puble-index .view div').append('<p><a href="/page/sokchoportal/content/'+data[i].name+'">'+ data[i].name +'</a><button class="copy-html">HTML복사</button></p>');

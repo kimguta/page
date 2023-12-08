@@ -77,9 +77,32 @@ ObjDoc.on({
 }, '.share ul li:last-child a');
 
 
+var slickOptionSub1 = {
+	autoplay: true,
+	arrows: true,
+	accessibility: false,
+	dots:false,
+	draggable: true,
+	infinite: true,
+	slidesToShow: 1,
+	slidesToScroll: 1,
+	pauseOnHover: false,
+	speed: 350,
+	autoplaySpeed: 6000,
+	responsive: [
+		{
+			breakpoint: 717,
+			settings: {
+				variableWidth: true,
+				centerMode: true,
+			}
+		}
+	]
+}; 
+
 //콘텐츠 스크립트 (dom ready 후 동작)
 function contentScript(){
-	
+
 	if ($('.img-zoom-modal').length){
 		$.getScript('/page/sokchoportal/js/panzoom.min.js');
 		$.getScript('/page/sokchoportal/js/708e424f8f.js');
@@ -90,13 +113,17 @@ function contentScript(){
 	$('.skinTb.width640').parent().addClass('width640');
 	$('.skinTb.width768').parent().addClass('width768');
 	$('.skinTb.width1000').parent().addClass('width1000');
+	
 };
 
 
 $(function() {
 	contentScript();
 	$('.depth-03').prev('h3').addClass('has-depth');
+	initSlick($('.slick-board-bx .slick'), slickOptionSub1);
 });
+
+
 
 
 
