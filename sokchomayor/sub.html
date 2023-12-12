@@ -269,11 +269,6 @@
 			<button onclick="$('.puble-index .view').hide();textChange();$('.pre-view').css('display','none');return false;">✕</button>
 		</strong>
 		<p><a href="/page/sokchomayor/" target="_blank" onmouseover="$('.pre-view').hide();">메인페이지</a></p>
-		<!-- <p><a href="#" onclick="$('#contentsArea').load('/page/sokchomayor/content/continfo.html'); return false;">계약정보페이지</a></p>
-		<p><a href="#" onclick="$('#contentsArea').load('/page/sokchomayor/content/supervisory.html'); return false;">감리·감독 ·검사 현황페이지</a></p>
-		<p><a href="#" onclick="$('#contentsArea').load('/page/sokchomayor/content/disclosure.html'); return false;">세입현황페이지</a></p>
-		<p><a href="#" onclick="$('#contentsArea').load('/page/sokchomayor/content/appropriation.html'); return false;">세출현황페이지</a></p>
-		<p><a href="#" onclick="$('#contentsArea').load('/page/sokchomayor/content/budget.html'); return false;">예산집행 현황페이지</a></p> -->
 		<div></div>
 	</div>
 </div>
@@ -333,30 +328,17 @@
 	$(function(){
 		includeLayout();
 		textChange();
-		var pageUrl = $(location).attr('href');
-		if (pageUrl.match("git")){
-			$.ajax({	
-				url: "https://api.github.com/repos/kimguta/page/contents/sokchomayor/content",
-				success: function (data) {
-					for (var i = 0; i < data.length; i++) {
-						$('.puble-index .view div').append('<p><a href="/page/sokchomayor/content/'+data[i].name+'">'+ data[i].name +'</a><button class="copy-html">HTML복사</button></p>');
-					}
-				},
-			});
-		}
-		else{
-			$.ajax({	
-				url: "/page/sokchomayor/content/list.txt",
-				dataType:"text",
-				success: function (data) {
-					var dataArr = data.split("\n");
-					for (var i = 0; i < dataArr.length; i++) {
-						$('.puble-index .view div').append('<p><a href="/page/sokchomayor/content/'+dataArr[i]+'">'+ dataArr[i] +'</a><button class="copy-html">HTML복사</button></p>');
-						// $('.puble-index .view').addClass('live');
-					}
-				},
-			});
-		};
+		$.ajax({	
+			url: "/page/sokchomayor/content/list.txt",
+			dataType:"text",
+			success: function (data) {
+				var dataArr = data.split("\n");
+				for (var i = 0; i < dataArr.length; i++) {
+					$('.puble-index .view div').append('<p><a href="/page/sokchomayor/content/'+dataArr[i]+'">'+ dataArr[i] +'</a><button class="copy-html">HTML복사</button></p>');
+					// $('.puble-index .view').addClass('live');
+				}
+			},
+		});
 	});
 
 	function countContent(){

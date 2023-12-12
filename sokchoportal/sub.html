@@ -524,30 +524,17 @@
 	$(function(){
 		includeLayout();
 		textChange();
-		var pageUrl = $(location).attr('href');
-		if (pageUrl.match("git")){
-			$.ajax({	
-				url: "/page/sokchoportal/content/list.txt",
-				success: function (data) {
-					for (var i = 0; i < data.length; i++) {
-						$('.puble-index .view div').append('<p><a href="/page/sokchoportal/content/'+data[i].name+'">'+ data[i].name +'</a><button class="copy-html">HTML복사</button></p>');
-					}
-				},
-			});
-		}
-		else{
-			$.ajax({	
-				url: "/page/sokchoportal/content/list.txt",
-				dataType:"text",
-				success: function (data) {
-					var dataArr = data.split("\n");
-					for (var i = 0; i < dataArr.length; i++) {
-						$('.puble-index .view div').append('<p><a href="/page/sokchoportal/content/'+dataArr[i]+'">'+ dataArr[i] +'</a><button class="copy-html">HTML복사</button></p>');
-						// $('.puble-index .view').addClass('live');
-					}
-				},
-			});
-		};
+		$.ajax({	
+			url: "/page/sokchoportal/content/list.txt",
+			dataType:"text",
+			success: function (data) {
+				var dataArr = data.split("\n");
+				for (var i = 0; i < dataArr.length; i++) {
+					$('.puble-index .view div').append('<p><a href="/page/sokchoportal/content/'+dataArr[i]+'">'+ dataArr[i] +'</a><button class="copy-html">HTML복사</button></p>');
+					// $('.puble-index .view').addClass('live');
+				}
+			},
+		});
 	});
 
 	function countContent(){

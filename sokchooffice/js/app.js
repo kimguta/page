@@ -284,5 +284,6 @@ $(function() {
 	toggleBox('.view-btn', '.view-bx');
 	searchPlace('#search-main');
 	searchPlace('#search-header');
+
 });
 
