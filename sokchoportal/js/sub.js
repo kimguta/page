@@ -74,8 +74,36 @@ ObjDoc.on({
 	'focusout': function() { 
 		$('.share .open').focus();
 	}
-}, '.share ul li:last-child a');
+}, '.share ul li:last-child a')
+.on({
+	'click': function(e) { 
+		e.preventDefault();
+		var Idx = $(this).index();
+		$('.community-center-main .btn-bx a').removeClass('active');
+		$(this).addClass('active');
+		$('.map-img-bx img').hide();
+		$('.map-img-bx img').eq(Idx).css('display','block');
+		$('.item-bx .item').hide();
+		$('.item-bx .item').eq(Idx).css('display','block');
+	}
+}, '.community-center-main .btn-bx a');
 
+
+//콘텐츠 스크립트 (dom ready 후 동작)
+function contentScript(){
+
+	if ($('.img-zoom-modal').length){
+		$.getScript('/page/sokchoportal/js/panzoom.min.js');
+		$.getScript('/page/sokchoportal/js/708e424f8f.js');
+	}
+	$('.skinTb-wrapper').on('scroll', function () {
+		$(this).addClass('scroll');
+	});
+	$('.skinTb.width640').parent().addClass('width640');
+	$('.skinTb.width768').parent().addClass('width768');
+	$('.skinTb.width1000').parent().addClass('width1000');
+
+};
 
 var slickOptionSub1 = {
 	autoplay: true,
@@ -100,27 +128,62 @@ var slickOptionSub1 = {
 	]
 }; 
 
-//콘텐츠 스크립트 (dom ready 후 동작)
-function contentScript(){
-
-	if ($('.img-zoom-modal').length){
-		$.getScript('/page/sokchoportal/js/panzoom.min.js');
-		$.getScript('/page/sokchoportal/js/708e424f8f.js');
-	}
-	$('.skinTb-wrapper').on('scroll', function () {
-		$(this).addClass('scroll');
-	});
-	$('.skinTb.width640').parent().addClass('width640');
-	$('.skinTb.width768').parent().addClass('width768');
-	$('.skinTb.width1000').parent().addClass('width1000');
-	
-};
-
-
 $(function() {
 	contentScript();
 	$('.depth-03').prev('h3').addClass('has-depth');
+	
 	initSlick($('.slick-board-bx .slick'), slickOptionSub1);
+	var slickOptionSub2 = {
+		autoplay: true,
+		arrows: true,
+		accessibility: false,
+		dots:false,
+		draggable: true,
+		prevArrow: $('.community-center-entry .visual .prev'),
+		nextArrow: $('.community-center-entry .visual .next'),
+		infinite: true,
+		slidesToShow: 1,
+		fade: true,
+		slidesToScroll: 1,
+		pauseOnHover: false,
+		speed: 350,
+		autoplaySpeed: 6000,
+		responsive: [
+			{
+				breakpoint: 717,
+				settings: {
+					// variableWidth: true,
+					// centerMode: true,
+				}
+			}
+		]
+	};
+	
+	var slickOptionSub3 = {
+		autoplay: false,
+		arrows: true,
+		accessibility: false,
+		dots:false,
+		draggable: true,
+		prevArrow: $('.community-center-entry .gallery .prev'),
+		nextArrow: $('.community-center-entry .gallery .next'),
+		infinite: true,
+		slidesToShow: 4,
+		swipeToSlide: true,
+		slidesToScroll: 1,
+		pauseOnHover: false,
+		speed: 350,
+		responsive: [
+			{
+				breakpoint: 717,
+				settings: {
+					slidesToShow: 3,
+				}
+			}
+		]
+	};
+	initSlick($('.community-center-entry .visual .slick'), slickOptionSub2);
+	initSlick($('.community-center-entry .gallery .slick'), slickOptionSub3);
 });
 
 

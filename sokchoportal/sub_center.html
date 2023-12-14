@@ -34,13 +34,12 @@
 			<li><a href="#A-Ftr-focus">푸터 바로가기</a></li>
 		</ul>
 
-		<header id="header" include-html="/page/sokchoportal/include/header_branch.html"></header>
+		<header id="header" include-html="/page/sokchoportal/include/header_center.html"></header>
 
-		<!--[d] 복지 v1, 환경 v2, 문화 v3, 경제 v4, 주택 v5, 안전 v6, 교통 v7 클래스 추가-->
-		<main id="sub" class="v1">
+		<main id="sub">
 			<div id="content" class="inner">
 				<div id="side-menu">
-					<h2>복지포털</h2>
+					<h2>영랑동</h2>
 					<ul class="depth-02">
 						<li>
 							<h3>
@@ -270,7 +269,7 @@
 							</a>
 						</div>
 					</div>
-					<div class="contsArea skinContainer" id="contentsArea" include-html="/page/sokchoportal/content/경제.html">
+					<div class="contsArea skinContainer" id="contentsArea" include-html="/page/sokchoportal/content/주민센터_영랑동.html">
 						
 					</div>
 				</div>		
@@ -368,15 +367,15 @@
 	<a href="#" class="close" onclick="$('.puble-index').remove();return false;">✕</a>
 	<a href="#" class="btn sub upload"></a>
 	<div class="pre-view">
-		<iframe id="preview-pc" src="/page/sokchoportal/branch.html"></iframe>
-		<iframe id="preview-mobile" src="/page/sokchoportal/branch.html"></iframe>
+		<iframe id="preview-pc" src="/page/sokchoportal/sub_center.html"></iframe>
+		<iframe id="preview-mobile" src="/page/sokchoportal/sub_center.html"></iframe>
 	</div>
 	<div class="view">
 		<strong>
 			<span>퍼블 콘텐츠 목록 <span>완료 콘텐츠 <em></em> 건</span> </span>
 			<button onclick="$('.puble-index .view').hide();textChange();$('.pre-view').css('display','none');return false;">✕</button>
 		</strong>
-		<p><a href="/page/sokchoportal/" target="_blank" onmouseover="$('.pre-view').hide();">메인페이지</a></p>
+		<p><a href="/page/sokchoportal/center.html" target="_blank" onmouseover="$('.pre-view').hide();">주민센터메인</a></p>
 		<div></div>
 	</div>
 </div>
@@ -429,13 +428,11 @@
 				adaptiveHeight: true,
 			};
 			initSlick($('.boGalleryView .boGalleryView-view'), SubOption);
-
-			if($('.branch-bx').length){
+			if($('.community-center-entry').length){
 				$('#content-title').hide();
 			}else{
 				$('#content-title').show();
 			}
-
 		}, 500);
 		p_ctrlFiles();
 		p_dataPicker();
@@ -446,7 +443,7 @@
 		includeLayout();
 		textChange();
 		$.ajax({	
-			url: "/page/sokchoportal/content/list2.txt",
+			url: "/page/sokchoportal/content/list3.txt",
 			dataType:"text",
 			success: function (data) {
 				var dataArr = data.split("\n");
@@ -456,9 +453,6 @@
 				}
 			},
 		});
-
-
-		
 });
 
 	function countContent(){
