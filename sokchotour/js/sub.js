@@ -53,20 +53,6 @@ ObjDoc.on({
 .on({
 	'click': function(e) { 
 		e.preventDefault();
-		if ($(this).parent('h3').hasClass('active')) {
-			$(this).parent('h3').removeClass('active');
-			$(this).parent('h3').next('.depth-03').slideUp(200);
-		} else{
-			$('#side-menu h3').removeClass('active');
-			$('#side-menu .depth-03').slideUp(300);
-			$(this).parent('h3').addClass('active');
-			$(this).parent('h3').next('.depth-03').slideDown(200);
-		}
-	}
-}, '#side-menu h3.has-depth a')
-.on({
-	'click': function(e) { 
-		e.preventDefault();
 		$(this).next('ul').toggle();
 	}
 }, '.share .open')
@@ -78,15 +64,35 @@ ObjDoc.on({
 .on({
 	'click': function(e) { 
 		e.preventDefault();
-		var Idx = $(this).index();
-		$('.community-center-main .btn-bx a').removeClass('active');
-		$(this).addClass('active');
-		$('.map-img-bx img').hide();
-		$('.map-img-bx img').eq(Idx).css('display','block');
-		$('.item-bx .item').hide();
-		$('.item-bx .item').eq(Idx).css('display','block');
+		if ($(this).hasClass('active')) {
+			$(this).removeClass('active');
+			$(this).parents('#breadcrumb, .box').removeClass('active');
+			$(this).children('span').text('열기');
+			$('#breadcrumb .box ul').slideUp(250);
+		} else{
+			$('#breadcrumb .open').removeClass('active');
+			$('#breadcrumb .box').removeClass('active');
+			$(this).addClass('active');
+			$(this).parents('#breadcrumb, .box').addClass('active');
+			$('#breadcrumb .open span').text('열기');
+			$(this).children('span').text('닫기');
+			$('#breadcrumb .box ul').slideUp(250);
+			$(this).next('ul').slideDown(250);
+		}
 	}
-}, '.community-center-main .btn-bx a');
+}, '#breadcrumb .open')
+.on({
+	'mouseleave': function() { 
+		$('#breadcrumb .open span').text('열기');
+		$('#breadcrumb .box ul').slideUp(300);
+		$('#breadcrumb .box .open, #breadcrumb .box, #breadcrumb').removeClass('active');
+	}
+}, '#breadcrumb')
+.on({
+	'focusout': function() { 
+		$(this).parents('.box').find('.open').focus();
+	}
+}, '#breadcrumb .box li:last-child a');
 
 
 //콘텐츠 스크립트 (dom ready 후 동작)
@@ -130,7 +136,6 @@ var slickOptionSub1 = {
 
 $(function() {
 	contentScript();
-	$('.depth-03').prev('h3').addClass('has-depth');
 	
 	initSlick($('.slick-board-bx .slick'), slickOptionSub1);
 	var slickOptionSub2 = {
