@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <title>고시정보 목록 | 강원도 문화재DB 아카이브 시스템 &gt; 문화재 행정정보 &gt; 고시정보</title>
+    <title>고시정보 목록 | 강원특별자치도 문화재DB 아카이브 시스템 &gt; 문화재 행정정보 &gt; 고시정보</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport"
         content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
     <meta name="Keywords" content="">
     <meta name="Description" content="">
-    <meta name="Author" content="강원도 문화재DB 아카이브 시스템">
-    <meta name="_csrf_parameter" content="_csrf">
-    <meta name="_csrf_header" content="X-XSRF-TOKEN">
-    <meta name="_csrf" content="1f23e8d0-b977-460a-aba4-adf635b9fddc">
+    <meta name="Author" content="강원특별자치도 문화재DB 아카이브 시스템">
     <link rel="stylesheet" href="/page/common/css/fonts.css">
     <link rel="stylesheet" href="/page/common/css/common.css">
     <link rel="stylesheet" href="/page/common/css/common_style.css">
@@ -82,9 +79,6 @@
     <script src="/page/culture/js/script.js"></script>
     <script src="/page/culture/js/sub.js"></script>
     <script>
-        // csrf token - add by YJ.SON :: 2021-05-16
-        var csrf_token = $("meta[name='_csrf']").attr("content");
-        var csrf_token_header = $("meta[name='_csrf_header']").attr("content");
         $(document).ready(function () {
             var pageUrl = '/gwchdb/administration/notification';
             var pageTitle = '고시정보';
@@ -97,10 +91,6 @@
                         , 'pageTitle': pageTitle
                     }
                     , dataType: 'json'
-                    , beforeSend: function (xhr) {
-                        // add csrf token - add by YJ.SON :: 2021-05-16
-                        xhr.setRequestHeader(csrf_token_header, csrf_token);
-                    }
                 });
             }
         });
@@ -217,7 +207,7 @@
                                         <li>
                                             <h3 class="culture-map-menu">
                                                 지도로 만나보는<br>
-                                                스마트한 강원도<br>
+                                                스마트한 강원특별자치도<br>
                                                 문화유산지도 !
                                             </h3>
                                         </li>
@@ -227,7 +217,7 @@
                                 <li>
                                     <h2>
                                         <a href="/gwchdb/gwheritage" target="_self">
-                                            <span>강원도문화유산</span>
+                                            <span>강원문화유산</span>
                                         </a>
                                     </h2>
                                     <!-- two depth -->
@@ -449,7 +439,7 @@
                                 <li>
                                     <h2>
                                         <a href="/gwchdb/gwheritage" target="_self">
-                                            <span>강원도문화유산</span>
+                                            <span>강원문화유산</span>
                                         </a>
                                     </h2>
                                     <!-- two depth -->
@@ -672,10 +662,10 @@
                                 <ul class="depth_02">
                                     <li>
                                         <h3 class="culture-map-menu">
-                                            우리 지역, 강원도에는<br>
+                                            우리 지역, 강원특별자치도에는<br>
                                             어떤 문화유산이 있을까요?<br>
                                             지도로 만나보는 스마트한<br>
-                                            강원도 문화유산지도 !
+                                            강원특별자치도 문화유산지도 !
                                         </h3>
                                     </li>
                                 </ul>
@@ -998,7 +988,6 @@
                                     </div>
                                     <form name="mForm" method="post" class="boMultiSrch"
                                         action="/gwchdb/administration/notification">
-                                        <input type="hidden" name="_csrf" value="1f23e8d0-b977-460a-aba4-adf635b9fddc">
                                         <input type="hidden" name="seq" value="0">
                                         <input type="hidden" name="pageIndex" value="1">
                                         <fieldset class="boMultiSrch-group">
@@ -1019,7 +1008,7 @@
                                                 class="boSrch-selectBox skinSelectBox">
                                                 <option value="">소관기관</option>
                                                 <option value="DC01">문화재청</option>
-                                                <option value="DC02">강원도청</option>
+                                                <option value="DC02">강원특별자치도청</option>
                                                 <option value="DC03">춘천시</option>
                                             </select>
                                         </fieldset>
@@ -1080,7 +1069,7 @@
                                                     <a href="#nolink" onclick="fnView(2)">고시정보 2</a>
                                                 </td>
                                                 <td class="skinTxa-center">
-                                                    강원도청
+                                                    강원특별자치도청
                                                 </td>
                                                 <td class="skinTxa-center">
                                                     2021-09-23
@@ -1093,7 +1082,7 @@
                                                     <a href="#nolink" onclick="fnView(1)">고시정보 1 테스트 입니다.</a>
                                                 </td>
                                                 <td class="skinTxa-center">
-                                                    강원도청
+                                                    강원특별자치도청
                                                 </td>
                                                 <td class="skinTxa-center">
                                                     2021-10-01
@@ -1131,11 +1120,11 @@
                         </a>
                     </h1>
                     <div class="link clearfix">
-                        <a href="#">강원도문화재연구소</a>
+                        <a href="#">강원문화재연구소</a>
                         <a href="#">개인정보취급방침</a>
                     </div>
                     <div class="address">
-                        <p><span>소재지 : 24227 강원도 춘천시 우두하리길 33 (우두동 296-3), </span><span>대표전화 : 033-815-1700,
+                        <p><span>소재지 : 24227 강원특별자치도 춘천시 우두하리길 33 (우두동 296-3), </span><span>대표전화 : 033-815-1700,
                             </span><span>팩스 : 033-815-1707</span></p>
                         <p class="copy"><span>COPYRIGHTS 2014 ⓒ GWMY.OR.KR.</span> <span>ALL RIGHT RESERVED</span></p>
                     </div>
@@ -1147,7 +1136,7 @@
 
                                 <a href="https://www.cha.go.kr" target="_blank" title="새창이동">문화재청</a>
 
-                                <a href="https://www.provin.gangwon.kr" target="_blank" title="새창이동">강원도청</a>
+                                <a href="https://www.provin.gangwon.kr" target="_blank" title="새창이동">강원특별자치도청</a>
 
                             </div>
                         </div>

@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <title>법규정보 목록 | 강원도 문화재DB 아카이브 시스템 &gt; 문화재 행정정보 &gt; 법규정보</title>
+    <title>법규정보 목록 | 강원특별자치도 문화재DB 아카이브 시스템 &gt; 문화재 행정정보 &gt; 법규정보</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport"
         content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
     <meta name="Keywords" content="">
     <meta name="Description" content="">
-    <meta name="Author" content="강원도 문화재DB 아카이브 시스템">
-    <meta name="_csrf_parameter" content="_csrf">
-    <meta name="_csrf_header" content="X-XSRF-TOKEN">
-    <meta name="_csrf" content="1f23e8d0-b977-460a-aba4-adf635b9fddc">
+    <meta name="Author" content="강원특별자치도 문화재DB 아카이브 시스템">
     <link rel="stylesheet" href="/page/common/css/fonts.css">
     <link rel="stylesheet" href="/page/common/css/common.css">
     <link rel="stylesheet" href="/page/common/css/common_style.css">
@@ -77,9 +74,6 @@
     <script src="/page/culture/js/script.js"></script>
     <script src="/page/culture/js/sub.js"></script>
     <script>
-        // csrf token - add by YJ.SON :: 2021-05-16
-        var csrf_token = $("meta[name='_csrf']").attr("content");
-        var csrf_token_header = $("meta[name='_csrf_header']").attr("content");
         $(document).ready(function () {
             var pageUrl = '/gwchdb/administration/legalinfo';
             var pageTitle = '법규정보';
@@ -92,10 +86,6 @@
                         , 'pageTitle': pageTitle
                     }
                     , dataType: 'json'
-                    , beforeSend: function (xhr) {
-                        // add csrf token - add by YJ.SON :: 2021-05-16
-                        xhr.setRequestHeader(csrf_token_header, csrf_token);
-                    }
                 });
             }
         });
@@ -198,7 +188,7 @@
                                         <li>
                                             <h3 class="culture-map-menu">
                                                 지도로 만나보는<br>
-                                                스마트한 강원도<br>
+                                                스마트한 강원특별자치도<br>
                                                 문화유산지도 !
                                             </h3>
                                         </li>
@@ -208,7 +198,7 @@
                                 <li>
                                     <h2>
                                         <a href="/gwchdb/gwheritage" target="_self">
-                                            <span>강원도문화유산</span>
+                                            <span>강원문화유산</span>
                                         </a>
                                     </h2>
                                     <!-- two depth -->
@@ -425,7 +415,7 @@
                                 <li>
                                     <h2>
                                         <a href="/gwchdb/gwheritage" target="_self">
-                                            <span>강원도문화유산</span>
+                                            <span>강원문화유산</span>
                                         </a>
                                     </h2>
                                     <!-- two depth -->
@@ -648,10 +638,10 @@
                                 <ul class="depth_02">
                                     <li>
                                         <h3 class="culture-map-menu">
-                                            우리 지역, 강원도에는<br>
+                                            우리 지역, 강원특별자치도에는<br>
                                             어떤 문화유산이 있을까요?<br>
                                             지도로 만나보는 스마트한<br>
-                                            강원도 문화유산지도 !
+                                            강원특별자치도 문화유산지도 !
                                         </h3>
                                     </li>
                                 </ul>
@@ -973,7 +963,6 @@
                                     </div>
                                     <form name="mForm" method="post" class="boSrch"
                                         action="/gwchdb/administration/legalinfo">
-                                        <input type="hidden" name="_csrf" value="1f23e8d0-b977-460a-aba4-adf635b9fddc">
                                         <input type="hidden" name="seq" value="0">
                                         <input type="hidden" name="infoSeq" value="0">
                                         <input type="hidden" name="pageIndex" value="1">
@@ -1077,7 +1066,7 @@
                         </a>
                     </h1>
                     <div class="link clearfix">
-                        <a href="#">강원도문화재연구소</a>
+                        <a href="#">강원문화재연구소</a>
                         <a href="#">개인정보취급방침</a>
                     </div>
                     <div class="address">
