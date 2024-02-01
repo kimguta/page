@@ -92,7 +92,16 @@ ObjDoc.on({
 	'focusout': function() { 
 		$(this).parents('.box').find('.open').focus();
 	}
-}, '#breadcrumb .box li:last-child a');
+}, '#breadcrumb .box li:last-child a')
+.on({
+	'click': function(e) { 
+		e.preventDefault();
+		var Idx = $(this).index();
+		$('.floor-tab button, .floor-bx .img-bx img').removeClass('active');
+		$('.floor-tab button').eq(Idx).addClass('active');
+		$('.floor-bx .img-bx img').eq(Idx).addClass('active');
+	}
+}, '.floor-tab button');
 
 
 //콘텐츠 스크립트 (dom ready 후 동작)
@@ -108,6 +117,35 @@ function contentScript(){
 	$('.skinTb.width640').parent().addClass('width640');
 	$('.skinTb.width768').parent().addClass('width768');
 	$('.skinTb.width1000').parent().addClass('width1000');
+
+
+	$('.slick-list-bx .slick-wrap').each(function(){
+		var Prev =  $(this).find('.prev');
+		var Next =  $(this).find('.next');
+        $(this).find('.slick').slick({
+            autoplay: false,
+            arrows: true,
+            accessibility: false,
+            dots:false,
+			prevArrow: Prev,
+            nextArrow: Next,
+            draggable: true,
+            swipeToSlide: true,
+            slidesToScroll: 1,
+            infinite: true,
+            slidesToShow: 1,
+            pauseOnHover: false,
+            speed: 250,
+            responsive: [
+                {
+                    breakpoint: 1181,
+                    settings: {
+                        
+                    }
+                }
+            ]
+        });
+    });
 
 };
 
@@ -138,57 +176,8 @@ $(function() {
 	contentScript();
 	
 	initSlick($('.slick-board-bx .slick'), slickOptionSub1);
-	var slickOptionSub2 = {
-		autoplay: true,
-		arrows: true,
-		accessibility: false,
-		dots:false,
-		draggable: true,
-		prevArrow: $('.community-center-entry .visual .prev'),
-		nextArrow: $('.community-center-entry .visual .next'),
-		infinite: true,
-		slidesToShow: 1,
-		fade: true,
-		slidesToScroll: 1,
-		pauseOnHover: false,
-		speed: 350,
-		autoplaySpeed: 6000,
-		responsive: [
-			{
-				breakpoint: 717,
-				settings: {
-					// variableWidth: true,
-					// centerMode: true,
-				}
-			}
-		]
-	};
+
 	
-	var slickOptionSub3 = {
-		autoplay: false,
-		arrows: true,
-		accessibility: false,
-		dots:false,
-		draggable: true,
-		prevArrow: $('.community-center-entry .gallery .prev'),
-		nextArrow: $('.community-center-entry .gallery .next'),
-		infinite: true,
-		slidesToShow: 4,
-		swipeToSlide: true,
-		slidesToScroll: 1,
-		pauseOnHover: false,
-		speed: 350,
-		responsive: [
-			{
-				breakpoint: 717,
-				settings: {
-					slidesToShow: 3,
-				}
-			}
-		]
-	};
-	initSlick($('.community-center-entry .visual .slick'), slickOptionSub2);
-	initSlick($('.community-center-entry .gallery .slick'), slickOptionSub3);
 });
 
 
