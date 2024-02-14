@@ -163,7 +163,7 @@ $(function() {
 	$('.cool_place .group02 > div:first-child h5 a').addClass('active');
 	$('.cool_place .group02 > div:first-child .movie').show();
 
-
+	$('.cool_place h5 a.active').attr('title','선택됨');
 
 	$('.cool_place h5 a').on('click', function (e) {
 		e.preventDefault();
@@ -172,8 +172,8 @@ $(function() {
 		$('#if03')[0].contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
 		$('#if04')[0].contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
 		$('#if05')[0].contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
-		$('.cool_place h5 a').removeClass('active');
-		$(this).addClass('active');
+		$('.cool_place h5 a').removeClass('active').removeAttr('title');
+		$(this).addClass('active').attr('title','선택됨');
 		$('.cool_place .movie').hide();
 		$(this).parent('h5').next('.movie').show();
 	});
