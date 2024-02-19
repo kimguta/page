@@ -110,6 +110,8 @@ ObjWin.on({
 			autoplaySpeed: 2000,
 		}; 
 		initSlick($('#header .button-slick'), appSlickOption1);
+
+		$('#side-menu h3.active').next('.depth-03').show();
 	}
 });
 

@@ -301,9 +301,20 @@
 #side-menu .depth-03{background: #fafafa;padding: 11px 0;display:none;border-bottom: 1px solid #ccc;}
 #side-menu h4 a{display:flex;align-items:center;word-break:keep-all;padding: 3px 15px 3px 30px;font-size: 16px;color: #8d8d8d;}
 #side-menu h4 a:before{content:'·';margin-right:5px;font-weight:700;}
+#side-menu h4.active a,
 #side-menu h4 a:hover{color:#0666d3}
+#side-menu h4.active a span,
 #side-menu h4 a:hover span{text-decoration:underline;}
 #side-menu a[target=_blank]:after{content:'';margin-left:5px;display:inline-block;width:12px;height:12px;background:url(/page/common/images/sp_dq.png) no-repeat -54px -94px /520px 1500px;}
+
+#side-menu .depth-04{padding: 5px 0 5px 0px;}
+#side-menu h5 a{display:flex;align-items:center;word-break:keep-all;padding: 2px 0px 2px 42px;font-size: 14px;color: #8d8d8d;font-weight:300;}
+#side-menu h5 a:before{content:'-';margin-right:5px;font-weight:300;}
+#side-menu h5.active a,
+#side-menu h5 a:hover{color:#0666d3}
+#side-menu h5.active a span,
+#side-menu h5 a:hover span{text-decoration:underline;}
+
 
 #content-bx{padding-left:50px;}
 .contsArea{position:relative;padding: 40px 0px 40px 0px;z-index:10;flex:1;}
@@ -1091,18 +1102,15 @@
 .center-greeting > div p{font-size:18px;font-weight:500;word-break:keep-all;}
 .center-greeting > div p + p{margin-top:25px;}
 
-.center-report-bx{position:relative;display:flex;padding:5px 0 0;}
-.center-report-bx .item{flex:1;margin:0 20px 15px 0;background:#ebf0f2;border-radius:20px;border:1px solid #c1c7ce;}
+.center-report-bx{position:relative;display:flex; padding:5px 0 0;}
+.center-report-bx .item{flex:1;margin:0 20px 15px 0; padding-top: 25px; background:#ebf0f2; display: flex; align-items: center; flex-direction: column; border-radius:20px;border:1px solid #c1c7ce;}
 .center-report-bx .item:last-child{margin-right:0;}
-.center-report-bx .item h4{display:flex;align-items:flex-end;justify-content:center;height:54px;}
-.center-report-bx .item h4 span{display:inline-block;padding:0 3px 5px;line-height:1.2;font-size:18px;font-weight:500;color:#275071;border-bottom:1px solid #afbdc7;}
+.center-report-bx .item h4{display:flex;align-items:center;justify-content:center; width: 126px; height:35px; background: #fff; border-radius: 30px;}
+.center-report-bx .item h4 span{display:inline-block; padding-left: 16px; line-height:1.2;font-size:18px;font-weight:500;color:#275071;}
 .center-report-bx .item p{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:135px;padding:5px 0 30px}
 .center-report-bx .item p strong{font-weight:500;font-size:36px;}
 .center-report-bx .item p strong em{font-size:30px;}
 .center-report-bx .item p span{font-weight:500;margin-top:3px;}
-
-
-
 
 
 @media (max-width:1180px) {
@@ -1111,10 +1119,8 @@
   .center-greeting > div{padding:5px 0 0 25px;}
   .center-greeting > div p{font-size:15px;font-weight:400;}
   .center-greeting > div p + p{margin-top:20px;}
-
   .center-report-bx .item{margin:0 15px 15px 0;border-radius:15px;}
-  .center-report-bx .item h4{height:44px;}
-  .center-report-bx .item h4 span{padding:0 3px 5px;font-size:15px;}
+  .center-report-bx .item h4 span{font-size:15px;}
   .center-report-bx .item p{min-height:115px;padding:5px 0 25px}
   .center-report-bx .item p strong{font-size:28px;}
   .center-report-bx .item p strong em{font-size:22px;}
@@ -1127,10 +1133,9 @@
   .center-greeting > div{padding:5px 0 0 20px;}
   .center-greeting > div p{font-size:14px;}
   .center-greeting > div p + p{margin-top:15px;}
-
   .center-report-bx .item{margin:0 10px 10px 0;}
-  .center-report-bx .item h4{height:40px;}
-  .center-report-bx .item h4 span{padding:0 3px 5px;font-size:14px;}
+  .center-report-bx .item h4{height: 32px;}
+  .center-report-bx .item h4 span{font-size:14px; padding-left: 8px;}
   .center-report-bx .item p{min-height:105px;padding:5px 0 25px}
   .center-report-bx .item p strong{font-size:24px;}
   .center-report-bx .item p strong em{font-size:20px;}
@@ -1145,12 +1150,201 @@
   .center-greeting > div p + p{margin-top:12px;}
 
   .center-report-bx{flex-wrap:wrap;justify-content:center;flex-wrap:wrap;}
-  .center-report-bx .item{margin:0 5px 5px 0;border-radius:10px;width:calc((100% - 5px) /2);flex:auto;}
+  .center-report-bx .item{margin:0 5px 5px 0; padding-top: 12px; border-radius:10px;width:calc((100% - 5px) /2);flex:auto;}
   .center-report-bx .item:nth-child(2n){margin-right:0;}
-  .center-report-bx .item h4{height:32px;}
-  .center-report-bx .item h4 span{padding:0 3px 3px;font-size:13px;}
+  .center-report-bx .item h4{height: 25px; width: 90px;}
+  .center-report-bx .item h4 img{height: 18px;}
+  .center-report-bx .item h4 span{font-size:13px;}
   .center-report-bx .item p{min-height:42px;padding:7px 0 7px;flex-direction:row;}
   .center-report-bx .item p strong{font-size:18px;}
   .center-report-bx .item p strong em{font-size:15px;}
-  .center-report-bx .item p span{font-size:12px;margin:3px 0 0 7px;}
+  .center-report-bx .item p span{font-size:12px;}
+}
+
+/* 주민센터_인사말 */
+
+.greeting01{position: relative; text-align: center; height: 894px;}
+.greeting01::before{content: ''; background: url(/page/sokchoportal/images/sub/greeting_bg.png)no-repeat; width: 333px; height: 150px;
+position: absolute; right: 0; top: -40px; z-index: -1;}
+.greeting01::after{content: ''; background: url(/page/sokchoportal/images/sub/greeting_bg01.png)no-repeat; width: 100%; height: 297px;
+position: absolute;  bottom: 0; left: 0; right: 0; z-index: -1;}
+.greeting01 strong{font-size: 27px; color: #078096; font-weight: 500; display: block; padding: 48px 0 32px;}
+.greeting01 p{color: #000; font-size: 18px; font-weight: 500;}
+.greeting01 p + p{padding-top: 32px;}
+
+@media (max-width:1399px) {
+  .greeting01::before {top: -30px;}
+  .greeting01::after{background-size: contain;}
+  
+}
+
+@media (max-width:991px) {
+  .greeting01{height: 760px;}
+  .greeting01 strong{padding: 80px 0 32px; font-size: 20px; word-break: keep-all;}
+  .greeting01 p{font-size: 14px; word-break: keep-all;}
+}
+
+@media (max-width:716px) {
+  .greeting01{height: 700px;}
+  .greeting01::before{width: 166.5px; height: 75px; background-size: cover; top: -26px;}
+  .greeting01::after{height: 130px;}
+  .greeting01 strong{padding: 70px 0 32px; font-size: 16px;}
+  .greeting01 p{font-size: 14px;}
+  .greeting01 p br{display: none;}
+  .greeting01 p + p{padding-top: 20px;}
+  
+}
+
+/* 종합민원 */
+
+.civil img{max-width: 100%;}
+
+/* 종합민원_로그인 */
+
+.civil_login{text-align: center; padding-top: 80px;}
+.login_tit p{padding-top: 42px; font-size: 20px; color: #222; font-weight: 400;}
+.confirm_bx{position: relative; padding-top: 63px; display: flex; justify-content: center;}
+.confirm_bx .phone,
+.confirm_bx .i-pin{padding: 45px 40px 0 40px; color: #000; position: relative; background: url(/page/sokchoportal/images/sub/phone_bg.png)no-repeat center center; width: 406px; height: 436px;}
+.confirm_bx .i-pin{background-image: url(/page/sokchoportal/images/sub/i-pin_bg.png); margin-left: 45px;}
+.confirm_bx .phone strong,
+.confirm_bx .i-pin strong{font-size: 24px; font-weight: 600;}
+.confirm_bx .phone p,
+.confirm_bx .i-pin p{font-size: 18px; font-weight: 400; padding-top: 22px;}
+.confirm_bx .phone span,
+.confirm_bx .i-pin span{color: #07a33e; font-size: 16px; font-weight: 400; padding-top: 32px; display: block;}
+.confirm_bx .i-pin span{color: #023894;}
+.confirm_bx .phone > div,
+.confirm_bx .i-pin > div{display: flex; flex-direction: column; align-items: flex-start; background: #f7f8fa; border: 1px solid #e0e0e0;
+border-radius: 10px; padding: 5px 32px 8px 32px; margin-top: 9px;}
+.confirm_bx .phone > div em,
+.confirm_bx .i-pin > div em{margin-left: 10px; position: relative;}
+.confirm_bx .phone > div em::before,
+.confirm_bx .i-pin > div em::before{content: ''; background: #000; width: 3px; height: 3px; border-radius: 50%; position: absolute;
+left: -10px; top: 50%; transform: translateY(-50%);}
+.confirm_bx .phone > a,
+.confirm_bx .i-pin > a{width: 100%; height: 89px; font-weight: 600; display: block; position: absolute; left: 50%; bottom: 0; padding-top: 31px; font-size: 20px; color: #fff; transform: translate(-50%);}
+.confirm_bx .phone > a:hover,
+.confirm_bx .i-pin > a:hover{text-decoration: none;}
+.survey{
+  position: relative; z-index: 2;  border:1px solid transparent;  border-radius: 10px;
+  background-image: linear-gradient(#fff, #fff), linear-gradient(-15deg, #023894 50%, #07a33e 30%);
+  background-origin: border-box;
+  background-clip: content-box, border-box;}
+.survey > div{padding: 18px 17px 26px 17px;}
+.survey > div em img{vertical-align: middle; padding-right: 4px;}
+.survey > div em + em{margin-left: 31px;}
+.survey .survey_bx{padding-left: 31px; border-top: 1px solid #dcdcdc; margin-top: 13px; padding-top: 17px;}
+.survey .survey_bx span{position: relative;  font-weight: 400;}
+.survey .survey_bx span::before{content: ''; background: url(/page/sokchoportal/images/sub/check.png)no-repeat center center/cover; width: 23px; height: 23px;
+position: absolute; left: -32px; top: 0;} 
+.survey .survey_bx fieldset{display: flex; align-items: center; margin-top: 6px;}
+.survey .survey_bx label{margin:0 22px 0 8px; vertical-align: 2px;}
+.survey .survey_bx input[type="text"]{width: 462px; height: 43px; border: 1px solid #a4a4a4; padding-left: 10px; margin-left: 107px;}
+.survey .survey_bx a{text-decoration: none; width: 65px; height: 43px; border: 1px solid #a4a4a4; display: flex; align-items: center; justify-content: center;
+background: #e0e0e0; margin-left: 11px;}
+.survey .survey_bx .search{width: 55%; display: flex; justify-content: flex-end;}
+
+
+@media (max-width:1199px) {
+  .survey .survey_bx input[type="text"]{width: 100%; margin-left: 40px;}
+  .survey .survey_bx span{font-size: 15px;}
+  .survey .survey_bx label{font-size: 14px;}
+  .survey .survey_bx .search{width: 52%;}
+}
+
+@media (max-width:1024px) {
+  .survey .survey_bx .search{width: 50%;}
+}
+
+@media (max-width:991px) {
+  .login_tit p{font-size: 18px; padding-top: 35px;}
+  .confirm_bx{margin-bottom: 105px;}
+  .confirm_bx .phone,
+  .confirm_bx .i-pin{background-size: contain; width: 100%; padding: 25px 40px 0 40px; height: 387px;} 
+  .confirm_bx .phone strong, 
+  .confirm_bx .i-pin strong{font-size: 22px;}
+  .confirm_bx .phone p,
+  .confirm_bx .i-pin p{font-size: 16px;}
+  .confirm_bx .phone span, 
+  .confirm_bx .i-pin span{padding-top: 20px; font-size: 15px;}
+  .confirm_bx .phone > div,
+  .confirm_bx .i-pin > div{padding: 5px 20px 8px 20px;}
+  .confirm_bx .phone > a, 
+  .confirm_bx .i-pin > a{bottom: 0; height: 79px; padding-top: 24px; font-size: 18px;}
+  .survey .survey_bx fieldset{flex-direction: column; align-items: flex-start;}
+  .survey .survey_bx input[type="text"]{margin-left: 0;}
+  .survey .survey_bx .search{width: 100%; margin-top: 15px;}
+  .survey .survey_bx a{font-size: 14px;}
+}
+
+
+@media (max-width:768px) {
+  .confirm_bx{margin-bottom: 85px;}
+  .confirm_bx .phone,
+  .confirm_bx .i-pin{height: 368px;}
+  .confirm_bx .phone > div em,
+  .confirm_bx .i-pin > div em{font-size: 14px;}
+  .confirm_bx .phone p,
+  .confirm_bx .i-pin p{font-size: 15px;}
+  .survey > div{font-size: 14px;}
+  .survey .survey_bx span{font-size: 14px;}
+  .survey .survey_bx label{vertical-align: 2px;}
+}
+
+
+@media (max-width:716px) {
+  .civil_login{padding-top: 50px;}
+  .login_tit img{height: 35px;}
+  .login_tit p br{display: none;}
+  .login_tit p{font-size: 14px; word-break: keep-all;}
+  .confirm_bx{padding-top: 55px; flex-direction: column;}
+  .confirm_bx .phone, .confirm_bx .i-pin{padding: 20px 15px 0 15px; height: 386px;}
+  .confirm_bx .i-pin{margin-left: 0; margin-top: 20px;}
+  .confirm_bx .phone strong, .confirm_bx .i-pin strong{font-size: 16px;}
+  .confirm_bx .phone p, .confirm_bx .i-pin p{font-size: 14px;}
+  .confirm_bx .phone span, .confirm_bx .i-pin span{font-size: 14px;}
+  .confirm_bx .phone > a, .confirm_bx .i-pin > a{font-size: 16px; padding-top: 27px;}
+  .survey > div{display: flex; padding: 15px; flex-direction: column;}
+  .survey > div em + em{margin-left: 0; margin-top: 5px;}
+  .survey .survey_bx label{min-width: 38px; margin: 0 4px 0 8px;}
+  .survey .survey_bx input[type="text"]{height: 33px;}
+  .survey .survey_bx a{height: 33px;}
+  
+}
+
+@media (max-width:500px) {
+  .confirm_bx .phone, .confirm_bx .i-pin{height: 414px; background-size: contain; padding:25px 58px 58px 58px;} 
+  .confirm_bx .phone > div,
+  .confirm_bx .i-pin > div{margin-top: 30px;}
+  .confirm_bx .phone > a, .confirm_bx .i-pin > a{padding-top: 29px; height: 84px;}
+  .survey .survey_bx label{min-width: 33px;}
+}
+
+@media (max-width:414px) {
+  .confirm_bx .phone, .confirm_bx .i-pin{height: 390px; padding: 20px 30px 0 30px;  background-size: contain;}
+  .confirm_bx .phone > a, .confirm_bx .i-pin > a{height: 80px;}
+  .survey .survey_bx label{margin: 0 8px; min-width: 38px;}
+}
+
+@media (max-width:393px){
+  .survey .survey_bx label{min-width: 33px;}
+}
+
+@media (max-width:390px){
+  .confirm_bx .phone, .confirm_bx .i-pin{height: 360px;}
+  .confirm_bx .phone > a, .confirm_bx .i-pin > a{height: 74px; padding-top: 25px; }
+  .survey .survey_bx label{min-width: 38px; margin: 0 4px 0 8px;}
+}
+
+@media (max-width:375px) {
+  .confirm_bx .phone, .confirm_bx .i-pin{height: 369px;}
+  .confirm_bx .phone > a, .confirm_bx .i-pin > a{height: 75px;} 
+  .survey .survey_bx label{min-width: 32px;}
+}
+
+@media (max-width:360px) {
+  .confirm_bx .phone, .confirm_bx .i-pin{height: 356px;}
+  .confirm_bx .phone > a, .confirm_bx .i-pin > a{height: 73px;} 
+  .survey .survey_bx label{min-width: 52px;}
 }

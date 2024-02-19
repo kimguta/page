@@ -92,14 +92,20 @@ ObjDoc.on({
 	'focusout': function() { 
 		$(this).parents('.box').find('.open').focus();
 	}
-}, '#breadcrumb .box li:last-child a');
+}, '#breadcrumb .box li:last-child a')
+.on({
+	'click': function(e) { 
+		e.preventDefault();
+		$('.tour-tap').toggleClass('active');
+	}
+}, '.tour-tap a.active');
 
 
 //콘텐츠 스크립트 (dom ready 후 동작)
 function contentScript(){
 
 	if ($('.img-zoom-modal').length){
-		$.getScript('/page/sokchotour/js/panzoom.min.js');
+		$.getScript('/page/common/js/VM11249.js');
 		$.getScript('/page/sokchotour/js/708e424f8f.js');
 	}
 	$('.skinTb-wrapper').on('scroll', function () {
@@ -108,6 +114,31 @@ function contentScript(){
 	$('.skinTb.width640').parent().addClass('width640');
 	$('.skinTb.width768').parent().addClass('width768');
 	$('.skinTb.width1000').parent().addClass('width1000');
+
+	var slickOptionSub2 = {
+		autoplay: false,
+		arrows: true,
+		accessibility: false,
+		dots:false,
+		draggable: true,
+		infinite: true,
+		slidesToShow: 2,
+		slidesToScroll: 1,
+		pauseOnHover: false,
+		swipeToSlide: true,
+		speed: 350,
+		responsive: [
+			{
+				breakpoint: 1181,
+				settings: {
+					variableWidth: true,
+					// centerMode: true,
+				}
+			}
+		]
+	};
+
+	initSlick($('.land-slick'), slickOptionSub2);
 
 };
 
@@ -138,57 +169,8 @@ $(function() {
 	contentScript();
 	
 	initSlick($('.slick-board-bx .slick'), slickOptionSub1);
-	var slickOptionSub2 = {
-		autoplay: true,
-		arrows: true,
-		accessibility: false,
-		dots:false,
-		draggable: true,
-		prevArrow: $('.community-center-entry .visual .prev'),
-		nextArrow: $('.community-center-entry .visual .next'),
-		infinite: true,
-		slidesToShow: 1,
-		fade: true,
-		slidesToScroll: 1,
-		pauseOnHover: false,
-		speed: 350,
-		autoplaySpeed: 6000,
-		responsive: [
-			{
-				breakpoint: 717,
-				settings: {
-					// variableWidth: true,
-					// centerMode: true,
-				}
-			}
-		]
-	};
-	
-	var slickOptionSub3 = {
-		autoplay: false,
-		arrows: true,
-		accessibility: false,
-		dots:false,
-		draggable: true,
-		prevArrow: $('.community-center-entry .gallery .prev'),
-		nextArrow: $('.community-center-entry .gallery .next'),
-		infinite: true,
-		slidesToShow: 4,
-		swipeToSlide: true,
-		slidesToScroll: 1,
-		pauseOnHover: false,
-		speed: 350,
-		responsive: [
-			{
-				breakpoint: 717,
-				settings: {
-					slidesToShow: 3,
-				}
-			}
-		]
-	};
-	initSlick($('.community-center-entry .visual .slick'), slickOptionSub2);
-	initSlick($('.community-center-entry .gallery .slick'), slickOptionSub3);
+
+
 });
 
 

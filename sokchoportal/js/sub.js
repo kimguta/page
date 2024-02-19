@@ -93,7 +93,7 @@ ObjDoc.on({
 function contentScript(){
 
 	if ($('.img-zoom-modal').length){
-		$.getScript('/page/sokchoportal/js/panzoom.min.js');
+		$.getScript('/page/common/js/VM11249.js');
 		$.getScript('/page/sokchoportal/js/708e424f8f.js');
 	}
 	$('.skinTb-wrapper').on('scroll', function () {
