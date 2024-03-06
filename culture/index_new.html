@@ -16,7 +16,7 @@
 	<link rel="stylesheet" href="/page/common/css/jquery-ui.min.css" />
 	<link rel="stylesheet" href="/page/common/css/jquery.bxslider.min.css" />
 
-	<script src="/page/common/js/jquery-1.12.2.min.js"></script>
+	<script src="/page/common/js/jquery-3.2.1.min.js"></script>
 	<script src="/page/common/js/jquery.easing.1.3.min.js"></script>
 	<script src="/page/common/js/jquery-ui.min.js"></script>
 	<script src="/page/common/js/puble_common.js"></script>
@@ -25,7 +25,6 @@
 	<script src="/page/common/js/common.js"></script>
 	<script src="/page/common/js/foto.min.js"></script>
 	<script src="/page/common/js/jquery.touchSwipe.min.js"></script>
-	<script src="/page/culture/js/main.js"></script>
 
 	<link rel="stylesheet" href="/page/culture/css/style.css" />
 	<link rel="stylesheet" href="/page/culture/css/main.css" />
@@ -709,14 +708,51 @@
 
 				<section id="visual">
 					<div class="video-wrap">
-						<div id="playerVideo1" style="pointer-events:none;" class="player" data-property="{videoURL:'U6fkNc7HR5M',containment:'self',showControls:false, startAt:0, mute:false, autoPlay:true, loop:true, opacity:1, showYTLogo:false, optimizeDisplay:true, stopMovieOnBlur: false, playOnlyIfVisible:true}"></div>
+						<div id="playerVideo1" style="pointer-events:none;" class="player" data-property="{videoURL:'l_tHTmd5pgk',containment:'self',showControls:false, startAt:0, mute:true, loop:true, opacity:1, showYTLogo:false, optimizeDisplay:true, autoPlay:false, stopMovieOnBlur: false, playOnlyIfVisible:true}"></div>
 						<script>
 							myPlayer = $("#playerVideo1").YTPlayer();
 						</script>
 					</div>
+					<div class="control-bx">
+						<!--[d] 영상주소 4개 -->
+						<button class="command active" onclick="jQuery('#playerVideo1').YTPChangeVideo({videoURL: 'l_tHTmd5pgk'})">1</button>
+						<button class="command" onclick="jQuery('#playerVideo1').YTPChangeVideo({videoURL: '7SnmCUwOsts'})">2</button>
+						<button class="command" onclick="jQuery('#playerVideo1').YTPChangeVideo({videoURL: 'BsekcY04xvQ'})">3</button>
+						<button class="command" onclick="jQuery('#playerVideo1').YTPChangeVideo({videoURL: '8AE3_AJ9o2A'})">4</button>
+						<button onclick="jQuery('#playerVideo1').YTPPlay()" class="play-btn">
+							<img src="/page/culture/images/new/button_play.png" alt="재생">
+						</button>
+						<button onclick="jQuery('#playerVideo1').YTPPause()" class="pause-btn" style="display:none;">
+							<img src="/page/culture/images/new/button_stop.png" alt="정지">
+						</button>
+						<button onclick="jQuery('#playerVideo1').YTPToggleVolume()" class="mute-btn">
+							<img src="/page/culture/images/new/button_sound_on.png" alt="소리켜기">
+							<img src="/page/culture/images/new/button_sound_off.png" alt="소리끄기">
+						</button>
+						<script>
+							$('.command').on('click', function (e){
+								$('.command').removeClass('active');
+								$(this).addClass('active');
+								$('.mute-btn').removeClass('active');
+								$('.pause-btn').show();
+								$('.play-btn').hide();
+							});
+							$('.mute-btn').on('click', function (e){
+								$(this).toggleClass('active');
+							});
+							$('.play-btn').on('click', function (e){
+								$(this).hide();
+								$('.pause-btn').show();
+							});
+							$('.pause-btn').on('click', function (e){
+								$(this).hide();
+								$('.play-btn').show();
+							});
+						</script>
+					</div>
 					<div class="inner">
-						<img src="/page/culture/images/new/visual_text_img.png" alt="소중한 강원의 역사를 기록하고 기억하다" class="text-img">
-						<span>scroll</span>
+						<!-- <img src="/page/culture/images/new/visual_text_img.png" alt="소중한 강원의 역사를 기록하고 기억하다" class="text-img">
+						<span>scroll</span> -->
 						<a href="#">
 							<img src="/page/culture/images/new/rtxt_top.png" alt="360도로 즐기는 강원의역사">
 						</a>
