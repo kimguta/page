@@ -20,7 +20,7 @@ function initSlick(target, options) {
 		if(allSlide < 10){ 
 			var allSlide = '0' + allSlide
 		}
-		target.parent().find('.count').html( '<strong>'+ nowSlide + '</strong>' + '<span>/</span>' + allSlide) ;
+		target.parent().find('.count').html( '<strong>'+ nowSlide + '</strong>' + '<span>/</span>' + '<em>'+ allSlide+ '</em>') ;
 		target.find('.slick-slide:not(.slick-active)').attr('tabindex','-1');
 		target.find('.slick-active').attr('tabindex','0');
 		if($(this).hasClass('zoom')){ 
