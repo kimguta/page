@@ -10,6 +10,7 @@
   <li><a href="sokchochannel" target="_blank">속초행정 속초채널</a></li>
   <li><a href="sokchotour" target="_blank">속초관광</a></li>
   <li><a href="sokchoarthall" target="_blank">속초예술회관</a></li>
+  <li><a href="sokchomuseum" target="_blank">속초박물관</a></li>
   <li><a href="efez" target="_blank">동해안권경제자유구역청</a></li>
   <li><a href="heritage" target="_blank">평창유산재단</a></li>
   <li><a href="isc" target="_blank">강원정보보호센터</a></li>

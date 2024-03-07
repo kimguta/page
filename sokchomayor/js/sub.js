@@ -106,8 +106,41 @@ ObjDoc.on({
 	'focusout': function() { 
 		$(this).parents('.box').find('.open').focus();
 	}
-}, '#breadcrumb .box li:last-child a');	;
-
+}, '#breadcrumb .box li:last-child a')
+//속초 시장실 공약이행현황
+.on({
+	'click': function(e) { 
+		e.preventDefault();
+		var Idx = $(this).index();
+		$('.pledge_fulfillment .city_btn a , .pledge_fulfillment ul > li').removeClass('active');
+		$(this).addClass('active');
+		$('.pledge_fulfillment ul > li').eq(Idx).addClass('active');
+	}
+}, '.pledge_fulfillment .city_btn a')
+//  공약지도 클릭 이벤트
+.on({
+	'click': function(e) { 
+		e.preventDefault();
+		var Idx = $(this).index();
+		$('.pledge_map .pledge_wrap .pledge_tab a, .pledge_map_ct ul li').removeClass('active');
+		$(this).addClass('active');
+		$('.pledge_map .map_img img').removeClass('active');
+		$('.pledge_map .map_img img').eq(Idx).addClass('active');
+	 	$('.pledge_map_ct ul li').eq(Idx).addClass('active');
+	}
+}, '.pledge_map .pledge_wrap .pledge_tab a');
+/* 
+$(function(){
+	$('.pledge_map .tab a').on('click', function (e) {
+		e.preventDefault();
+		var idx = $(this).index();
+		$('.pledge_map .tab a , .condition ul li').removeClass('active');
+		$(this).addClass('active');
+		$('.pledge_map .img_bx img').removeClass('active');
+		$('.pledge_map .img_bx img').eq(idx).addClass('active');
+		$('.condition ul li').eq(idx).addClass('active');
+	});
+}); */
 
 //콘텐츠 스크립트 (dom ready 후 동작)
 function contentScript(){
