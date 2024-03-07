@@ -59,18 +59,43 @@ $(function() {
         slidesToShow: 1,
         slidesToScroll: 1,
         pauseOnHover: false,
-        cssEase: 'linear',
-        speed: 600,
+        asNavFor: '#exhibit .slick-bg',
+        speed: 800,
         responsive: [
             {
                 breakpoint: 1181,
                 settings: {
-                    speed: 350,
+                    speed: 500,
                  
                 }
             }
         ]
     }; 
     initSlick($('#exhibit .slick'), slickOption3);
+
+    var slickOption4 = {
+        autoplay: false,
+        arrows: false,
+        accessibility: false,
+        dots:false,
+        draggable: true,
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        asNavFor: '#exhibit .slick',
+        fade:true,
+        pauseOnHover: false,
+        speed: 800,
+        responsive: [
+            {
+                breakpoint: 1181,
+                settings: {
+                    speed: 500,
+                 
+                }
+            }
+        ]
+    }; 
+    initSlick($('#exhibit .slick-bg'), slickOption4);
  
 });
