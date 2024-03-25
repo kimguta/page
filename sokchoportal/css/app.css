@@ -46,7 +46,15 @@ main{background:#fff;padding-top:130px;}
 @media (max-width:716px) {
   .inner{padding:0 15px;}
 }
+html[lang=en] #header,
+html[lang=ru] #header,
+html[lang=zh-CN] #header,
+html[lang=ja] #header{top:30px;}
 
+html[lang=en] #header.fixed,
+html[lang=ru] #header.fixed,
+html[lang=zh-CN] #header.fixed,
+html[lang=ja] #header.fixed{top:-40px;}
 
 #header{position:fixed;z-index:2000;top:0;left:0px;right:0px;transition:top .3s;}
 #header.active{background:#fff;}
@@ -68,17 +76,17 @@ main{background:#fff;padding-top:130px;}
 
 #header .nav-wrap{display:flex;align-items:center;justify-content:space-between;margin-left:-210px;padding-left:180px;background:#0ba13a;border-radius:0px 0px 60px 0;padding-right:80px;}
 #header .depth-01{display:flex;}
-#header h2 a{height:60px;color:#fff;display:flex;position:relative;align-items:center;padding:0 30px;font-size:20px;font-weight:400;}
-#header h2 a span{display:inline-block;position:relative;line-height:1.2;word-break:keep-all;text-align:center;}
-#header h2 a span:before{content:'';display:block;width:15px;height:14px;position:absolute;left:-20px;top:10px;opacity:0;transition:all .2s;background:url(/page/sokchoportal/images/common/ico-star.png) center center /cover;filter:brightness(1) hue-rotate(0deg)}
-#header h2.active a span:before{opacity:1;top:0;filter:brightness(200) hue-rotate(-75deg)}
+#header .tlv-02 a{height:60px;color:#fff;display:flex;position:relative;align-items:center;padding:0 30px;font-size:20px;font-weight:400;}
+#header .tlv-02 a span{display:inline-block;position:relative;line-height:1.2;word-break:keep-all;text-align:center;}
+#header .tlv-02 a span:before{content:'';display:block;width:15px;height:14px;position:absolute;left:-20px;top:10px;opacity:0;transition:all .2s;background:url(/page/sokchoportal/images/common/ico-star.png) center center /cover;filter:brightness(1) hue-rotate(0deg)}
+#header .tlv-02.active a span:before{opacity:1;top:0;filter:brightness(200) hue-rotate(-75deg)}
 #header .nav-wrap .sitemap{display:block;width:25px;}
 #header .nav-wrap .sitemap img{display:block;width:100%;}
 #header .nav-wrap .sitemap span{display:none;}
 
 #header .depth-02{display:none;flex-wrap:wrap;position:absolute;top:130px;width:100%;left:15px;right:0;padding:20px 0 25px;text-align:center;}
 #header .bg_pc{position:absolute;top:130px;background:#fff url(/page/sokchoportal/images/common/bg-mainstar.png) no-repeat right bottom /305px 363px;left:50%;width:1920px;margin-left:-960px;z-index:-2;height:0;transition:all .35s ease-out;overflow:hidden;box-shadow:0px 5px 5px -2px rgba(0,0,0,.15);}
-#header .depth-02 > li{width:calc(100% / 7);margin-top:13px;padding-right:15px;animation:gnb1 .35s .1s 1 both ease-out;}
+#header .depth-02 > li{width:calc(100% / 7);margin-top:13px;padding-right:6px;animation:gnb1 .35s .1s 1 both ease-out;}
 #header .depth-02 > li:nth-child(2){animation-delay:.15s;}
 #header .depth-02 > li:nth-child(3){animation-delay:.2s;}
 #header .depth-02 > li:nth-child(4){animation-delay:.25s;}
@@ -96,16 +104,17 @@ main{background:#fff;padding-top:130px;}
 
 #header li:last-child .depth-02 > li{width:calc(100% / 8)}
 
-#header h3 a{color:#222;padding:6px 0;line-height:1.3;width:100%;text-align:left;display:block;word-break:keep-all;}
-#header h4 a{color:#8d8d8d;font-size:14px;display:block;padding:4px 0;line-height:1.4;word-break:keep-all;text-align:left;font-weight:300;}
-#header h3 a:hover, 
-#header h4 a:hover{color:#0666d3;}
-#header h3 a strong{display:flex;align-items:center;justify-content:center;flex-direction:column;}
-#header h3 a strong span{display:block;width:88px;height:88px;border:1px solid #ddd;border-radius:50%;margin-bottom:10px;display:flex;align-items:center;justify-content:center;}
-#header h3 a strong span img{width:48px;}
+#header .tlv-03 a{color:#222;padding:6px 0;line-height:1.3;width:100%;text-align:left;display:block;word-break:keep-all;}
+#header .tlv-04 a{color:#767676;font-size:15px;display:block;padding:4px 0;line-height:1.4;word-break:keep-all;text-align:left;font-weight:300;}
+#header .tlv-03 a:hover, 
+#header .tlv-04 a:hover{color:#0666d3;}
+#header .tlv-03 a span{font-size: 17px;}
+#header .tlv-03 a strong{display:flex;align-items:center;justify-content:center;flex-direction:column;}
+#header .tlv-03 a strong span{display:block;width:88px;height:88px;border:1px solid #ddd;border-radius:50%;margin-bottom:10px;display:flex;align-items:center;justify-content:center;}
+#header .tlv-03 a strong span img{width:48px;}
 
 #header .site-bx{width:620px;position:relative;margin-right:-210px;background:#1d3a8f;border-radius:0px 0px 0px 130px;padding-left:70px;}
-#header .lang-bx{height:70px;display:flex;align-items:center;justify-content:flex-end;background:#fff;padding-right:210px;border-bottom-left-radius: 70px;}
+/* #header .lang-bx{height:70px;display:flex;align-items:center;justify-content:flex-end;background:#fff;padding-right:210px;border-bottom-left-radius: 70px;} */
 #header .search-word{height:60px;display:flex;align-items:center;justify-content:flex-end;padding-right:210px;}
 #header .word-bx .view-wrap{position:relative;}
 #header .word-bx .view-btn{display:flex;align-items:center;color:#fff;font-weight:300;}
@@ -142,20 +151,29 @@ main{background:#fff;padding-top:130px;}
 #header .mobile-menu{margin-left:15px;display:none;}
 #header .mobile-menu img{width:25px;}
 #header .mobile-close{display:none;}
-#header a[target=_blank]:after{content:'';margin-left:5px;display:inline-block;width:12px;height:12px;background:url(/page/common/images/sp_dq.png) no-repeat -54px -94px /520px 1500px;}
+#header a[target=_blank]:after{content:'';margin-left:2px;display:inline-block;width:12px;height:12px;background:url(/page/common/images/sp_dq.png) no-repeat -54px -94px /520px 1500px;}
 .view-bx{display:none;}
 
 #header.active + main{filter:brightness(.6);}
 
 
 #header .depth-04{padding: 3px 0 3px 0px;display:none !important;}
-#header h5 a{display:flex;align-items:center;word-break:keep-all;padding: 3px 0px 3px 8px;font-size: 12px;color: #8d8d8d;font-weight:300;}
-#header h5 a:before{content:'·';margin-right:5px;font-weight:300;}
+#header .tlv-05 a{display:flex;align-items:center;word-break:keep-all;padding: 3px 0px 3px 8px;font-size: 12px;color: #8d8d8d;font-weight:300;}
+#header .tlv-05 a:before{content:'·';margin-right:5px;font-weight:300;}
+#header .lang-wrap{height:70px;display:flex;align-items:center;justify-content:flex-end;background:#fff;padding-right:210px;border-bottom-left-radius: 70px;}
+#header .lang-bx{margin-right:0px;position:relative;}
+#header .lang-bx .ibtn{display:flex;align-items:center;font-weight:700;}
+#header .lang-bx .ibtn img{width:30px;margin-right:4px;margin-top:-4px;}
+#header .lang-bx .ibtn:after{content:'';display:block;width:12px;height:7px;margin-left:5px;background:url(/page/sokchotour/images/common/Language-2.png) no-repeat center center /cover;transition:all .2s;}
+#header .lang-view{position:absolute;top:30px;width:100px;left:calc(50% - 50px);background:linear-gradient(to right, #0ba13a 0%, #1d3a8f 100%);padding:10px 0;border-radius:15px;opacity:0;transition:all .2s;transform:rotateY(90deg);pointer-events:none;}
+#header .lang-view a{display:block;text-align:center;font-size:15px;height:24px;line-height:24px;color:#fff;}
+#header .lang-bx.active .ibtn:after{transform:rotate(180deg);}
+#header .lang-bx.active .lang-view{transform:rotateY(0deg);pointer-events:initial;opacity:1;}
 
 
 @media (max-width:1400px) and (min-width:1181px){
   #header .nav-wrap{margin-left:-30px;padding-left:20px;padding-right:30px;}
-  #header h2 a{height:60px;color:#fff;display:flex;position:relative;align-items:center;padding:0 25px;font-size:17px;font-weight:400;}
+  #header .tlv-02 a{height:60px;color:#fff;display:flex;position:relative;align-items:center;padding:0 25px;font-size:17px;font-weight:400;}
 
 }
 
@@ -178,9 +196,9 @@ main{background:#fff;padding-top:130px;}
   #header .nav-wrap{display:block;margin-left:0;padding-left:0;background: #fff;border-radius:0px;padding-right:0px;position:relative;height: calc(var(--vh) - 140px);border-bottom-left-radius: 35px;}
   #header .depth-01{display:block;border-top:1px solid #ccc;height: calc(var(--vh) - 185px);overflow-y:auto;}
   #header .depth-01 > li{width:100%;border-bottom:1px solid #ccc;}
-  #header h2 a{height:50px;color:#000;justify-content:space-between;padding:0 20px;font-size:18px;font-weight:500;}
-  #header h2 a:after{content:'';display:block;width:10px;height:6px;background:url(/page/sokchoportal/images/common/lnb-ico-menudown.png) no-repeat center center /cover;transition:all .2s;}
-  #header h2.active a:after{transform:rotate(180deg);}
+  #header .tlv-02 a{height:50px;color:#000;justify-content:space-between;padding:0 20px;font-size:18px;font-weight:500;}
+  #header .tlv-02 a:after{content:'';display:block;width:10px;height:6px;background:url(/page/sokchoportal/images/common/lnb-ico-menudown.png) no-repeat center center /cover;transition:all .2s;}
+  #header .tlv-02.active a:after{transform:rotate(180deg);}
   #header .depth-02{display:none;position:relative;top:auto;left:auto;padding:10px 0 10px 30px;border-top:1px solid #ccc;}
   #header .depth-02 > li{width:100% !important;margin-top:0px;animation:none !important;}
   #header .depth-03{padding:0 0 6px 5px;}
@@ -188,19 +206,19 @@ main{background:#fff;padding-top:130px;}
   #header li:last-child .depth-02{overflow:hidden;}
   #header li:last-child .depth-02 > li{width:50% !important;float:left}
 
-  #header h3 a{font-size:14px;padding-top:9px;}
-  #header h4 a{font-size: 12.5px;display:flex;align-items:center;font-weight:300;}
-  #header h4 a:before{content:'-';margin-right:5px;}
-  #header h3.active a span,
-  #header h5.active a span,
-  #header h4.active a span{color:#0666d3;text-decoration:underline;}
+  #header .tlv-03 a{font-size:14px;padding-top:9px;}
+  #header .tlv-04 a{font-size: 12.5px;display:flex;align-items:center;font-weight:300;}
+  #header .tlv-04 a:before{content:'-';margin-right:5px;}
+  #header .tlv-03.active a span,
+  #header .tlv-05.active a span,
+  #header .tlv-04.active a span{color:#0666d3;text-decoration:underline;}
   #header .nav-wrap .sitemap{display: flex;width:100%;background: linear-gradient(to left, #0ba13a 0%, #1d3a8f 100%);align-items: center;justify-content: center;height: 45px;border-bottom-left-radius: 30px;}
   #header .nav-wrap .sitemap img{display:none;}
   #header .nav-wrap .sitemap span{display:flex;justify-content:center;font-size:14px;font-weight:500;height: 100%;color: #fff;align-items: center;}
   #header .mobile-close{position:absolute;top:10px;right:10px;padding:5px;display:block;}
   #header .mobile-close img{display:block;width:15px;height:15px;}
   #header .site-bx{width:100%;position:relative;margin-right:0px;background:transparent;border-radius:0px;padding-left:0px;display:flex;justify-content:flex-end;}
-  #header .lang-bx{height:62px;background:transparent;padding-right:0px;border-bottom-left-radius: 0px;}
+  /* #header .lang-bx{height:62px;background:transparent;padding-right:0px;border-bottom-left-radius: 0px;} */
   #header .search-word{height:62px;padding-right:0px;}
   #header .search-word .word-bx{display:none;}
   #header .search-bx{margin-left:15px;display:flex;align-items:center;}
@@ -232,14 +250,16 @@ main{background:#fff;padding-top:130px;}
 
   #header a[target=_blank]:after{margin-left:7px;}
 
-  #header h3 a strong{display:flex;align-items:center;justify-content:flex-start;flex-direction:row;margin:-5px 0;}
-  #header h3 a strong span{width:40px;height:40px;margin:0 15px 0 0;}
-  #header h3 a strong span img{width:22px;}
+  #header .tlv-03 a strong{display:flex;align-items:center;justify-content:flex-start;flex-direction:row;margin:-5px 0;}
+  #header .tlv-03 a strong span{width:40px;height:40px;margin:0 15px 0 0;}
+  #header .tlv-03 a strong span img{width:22px;}
 
-  #header h3.acitve a, 
-  #header h4.active a{color:#0666d3;}
+  #header .tlv-03.acitve a, 
+  #header .tlv-04.active a{color:#0666d3;}
 
   #header .depth-04{display:block !important;}
+  #header .lang-wrap{height:62px;background:transparent;padding-right:0px;border-bottom-left-radius: 0px;}
+  #header .lang-bx{margin-right: 0px;transform: scale(.93);transform-origin:0% 50%;}
 
 } 
 

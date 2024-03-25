@@ -170,7 +170,6 @@ $(function() {
 
 });
 
-
 ObjDoc.on({
 	'click': function(e) { 
 		e.preventDefault();
@@ -192,4 +191,26 @@ ObjDoc.on({
 	'click': function() { 
         $('.menu-list .item > a').removeClass('active');
 	}
-}, '#main');
+}, '#main')
+.on({
+	'click': function(e) { 
+        e.preventDefault();
+        $('.all-view-bx').toggleClass('active');
+        $('.all-view2').focus();
+	}
+}, '.all-view')
+.on({
+	'click': function(e) { 
+        e.preventDefault();
+        $('#all-view-modal').show();
+        $('#all-view-modal .noti-bx').attr('tabindex','-1').focus();
+	}
+}, '.all-view2')
+.on({
+	'click': function(e) { 
+        e.preventDefault();
+        $('#all-view-modal').hide();
+        $('.all-view-bx').removeClass('active');
+        $('.all-view').focus();
+	}
+}, '#all-view-modal .close');

@@ -53,17 +53,17 @@ ObjDoc.on({
 .on({
 	'click': function(e) { 
 		e.preventDefault();
-		if ($(this).parent('h3').hasClass('active')) {
-			$(this).parent('h3').removeClass('active');
-			$(this).parent('h3').next('.depth-03').slideUp(200);
+		if ($(this).parent('.tlv-03').hasClass('active')) {
+			$(this).parent('.tlv-03').removeClass('active');
+			$(this).parent('.tlv-03').next('.depth-03').slideUp(200);
 		} else{
-			$('#side-menu h3').removeClass('active');
+			$('#side-menu .tlv-03').removeClass('active');
 			$('#side-menu .depth-03').slideUp(300);
-			$(this).parent('h3').addClass('active');
-			$(this).parent('h3').next('.depth-03').slideDown(200);
+			$(this).parent('.tlv-03').addClass('active');
+			$(this).parent('.tlv-03').next('.depth-03').slideDown(200);
 		}
 	}
-}, '#side-menu h3.has-depth a')
+}, '#side-menu .tlv-03.has-depth a')
 .on({
 	'click': function(e) { 
 		e.preventDefault();
@@ -86,7 +86,58 @@ ObjDoc.on({
 		$('.item-bx .item').hide();
 		$('.item-bx .item').eq(Idx).css('display','block');
 	}
-}, '.community-center-main .btn-bx a');
+}, '.community-center-main .btn-bx a')
+// 속초부서 탭메뉴
+/* .on({
+	'click': function(e) { 
+		e.preventDefault();
+		var Idx = $(this).index();
+		$('.division .btn-bx01 a , .division ul > li').removeClass('active');
+		$(this).addClass('active');
+		$('.division ul > li').eq(Idx).addClass('active');
+	}
+}, '.division .btn-bx01 a') */
+// 속초소개 역사와유래 시대별 연혁 
+.on({
+	'click': function(e) { 
+		e.preventDefault();
+		var Idx = $(this).index();
+		$('.history .history_btn a, .history .sokcho-history').removeClass('active');
+		$(this).addClass('active');
+		$('.history .sokcho-history').eq(Idx).addClass('active');
+	}
+}, '.history .history_btn a')
+// 속초소개 청사안내도 버튼
+.on({
+	'click': function(e) { 
+		e.preventDefault();
+		var Idx = $(this).index();
+		$('.office .map button, .office ul li').removeClass('active');
+	/* 	$('.office .map button').eq(Idx).addClass('active'); */
+		$(this).addClass('active');
+		$('.office ul li').eq(Idx).addClass('active');
+	}
+}, '.office .map button')
+.on({
+	'click': function(e) {
+		e.preventDefault();	
+		if ($(this).hasClass('active')) {
+			$(this).removeClass('active');
+			$(this).parent('.slide').next('.box_wrap01').stop().slideUp(300);
+			$(this).parent('.slide').removeClass('active');
+			$(this).parent('.slide').children('em').removeClass('active');
+		}
+		else{
+			$('.office .qa-bx a, .office .guide_bx .qa-bx em , .office .guide_bx .qa-bx .slide').removeClass('active');
+			$('.box_wrap01').stop().slideUp(300);
+			$(this).parent('.slide').next('.box_wrap01').stop().slideDown(300);
+			$(this).parent('.slide').addClass('active');
+			$(this).addClass('active');
+			$(this).parent('.slide').children('em').addClass('active');
+		}
+	}
+}, '.office .qa-bx a')
+
 
 
 //콘텐츠 스크립트 (dom ready 후 동작)
@@ -130,7 +181,7 @@ var slickOptionSub1 = {
 
 $(function() {
 	contentScript();
-	$('.depth-03').prev('h3').addClass('has-depth');
+	$('.depth-03').prev('.tlv-03').addClass('has-depth');
 	
 	initSlick($('.slick-board-bx .slick'), slickOptionSub1);
 	var slickOptionSub2 = {
