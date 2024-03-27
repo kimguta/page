@@ -128,20 +128,18 @@ ObjDoc.on({
 		$('.pledge_map .map_img img').eq(Idx).addClass('active');
 	 	$('.pledge_map_ct ul li').eq(Idx).addClass('active');
 	}
-}, '.pledge_map .pledge_wrap .pledge_tab a');
-/* 
-$(function(){
-	$('.pledge_map .tab a').on('click', function (e) {
+}, '.pledge_map .pledge_wrap .pledge_tab a')
+// 시정목표와비전 시정슬로건 보기
+.on({
+	'click': function(e) { 
 		e.preventDefault();
-		var idx = $(this).index();
-		$('.pledge_map .tab a , .condition ul li').removeClass('active');
-		$(this).addClass('active');
-		$('.pledge_map .img_bx img').removeClass('active');
-		$('.pledge_map .img_bx img').eq(idx).addClass('active');
-		$('.condition ul li').eq(idx).addClass('active');
-	});
+		$(this).toggleClass('active');
+	}
+}, '.slogan_bx a');
+/* $('.view_box .box_title').on('click', function (e) {
+	e.preventDefault();
+	$(this).toggleClass('active');
 }); */
-
 //콘텐츠 스크립트 (dom ready 후 동작)
 function contentScript(){
 	
