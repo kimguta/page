@@ -3,6 +3,7 @@
 <h3>DQ_프로젝트 퍼블리싱 페이지</h3>
 <ul>
   <li><a href="basic" target="_blank">베이직소스</a></li>
+  <li><a href="drd" target="_blank">도립대샘플</a></li>
   <li><a href="sokchoportal" target="_blank">속초행정</a></li>
   <li><a href="sokchomayor" target="_blank">속초시장실</a></li>
   <li><a href="sokchooffice" target="_blank">속초사업소</a></li>
