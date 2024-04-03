@@ -104,10 +104,10 @@ $(function() {
     setTimeout(function() {
         AOS.init({
             easing: 'ease-out-back',
-            duration: 1500,
-            delay: 500,
+            duration: 1000,
+            delay: 350,
             // once: true,
-            offset: 500
+            offset: 350
         });
      }, 200);
 
