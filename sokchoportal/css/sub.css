@@ -321,7 +321,7 @@
 #side-menu .tlv-05 a:hover span{text-decoration:underline;}
 
 
-#content-bx{padding-left:50px;}
+/* #content-bx{padding-left:50px;} */
 .contsArea{position:relative;padding: 40px 0px 40px 0px;z-index:10;flex:1;}
 
 #sub textarea{width:100%;}
@@ -357,7 +357,7 @@
 #content .pageTab >li + li{margin:0 0 0 10px !important}
 #content .pageTab >li.active {background:linear-gradient(to right, #0ba13a 0%, #1d3a8f 100%);}
 #content .pageTab >li a{height:50px;}
-
+#content-bx{padding-left: 50px;}
 
 @media (max-width: 1199px){
 	#content .pageTab{margin:25px 0 0;}
@@ -1393,3 +1393,61 @@ content: ''; background: url(/page/sokchoportal/images/contents/call.png)no-repe
   .family_wrap > div .family_tit strong{font-size: 18px;}
   .family_wrap > div .family_address{padding-top: 15px;}
 } 
+
+/* 사이트맵 */
+
+#sitemap .depth-01{display: flex; height: 1560px; padding-bottom: 20px;}
+#sitemap .depth-01 > li{position: relative;}
+ #sitemap .depth-02::before{content: ''; width: 1px; height: 95%; background: #dcdcdc; position: absolute; left: 0; top: 72px;} */
+#sitemap .depth-01 li:first-child .level_01 a,
+#sitemap .depth-01 li:last-child .level_01 a{width: 198px; }
+#sitemap .depth-01 li:first-child .level_01{margin-right: 9px;}
+#sitemap .depth-01 li .level_01 a{width: 209px; height: 59px; display: flex; justify-content: center; align-items: center; font-size: 18px; font-weight: 500;
+border: 1px solid #ccc; border-radius: 15px;}
+#sitemap .depth-01 li .level_01 a span{display: inline-block; padding-left: 30px;}
+#sitemap .depth-01 > li + li{margin-left: 9px;}
+#sitemap .depth-02{padding: 25px 0 0 15px;}
+#sitemap .depth-02 > li + li{padding-top: 15px;}
+#sitemap .depth-02 li .level_02 a{color: #222; font-weight: 500;}
+#sitemap .depth-03{padding-top: 3px;}
+#sitemap .depth-03 li + li{margin-top: 5px;}
+#sitemap .depth-03 li .level_03 a{font-size: 15px; color: #757575;}
+#sitemap .depth-04{padding: 12px 4px 12px 12px; background: #faf9f7; margin: 7px 0 4px;}
+#sitemap .depth-04 li{ padding-left: 8px; position: relative;}
+#sitemap .depth-04 li a{font-size: 15px; color: #757575;}
+#sitemap .depth-04 li::before{content: ''; width: 3px; height: 3px; border-radius: 50%; background: #565656;
+position: absolute; left: 0; top: 10px;}
+#sitemap .depth-04 li + li{margin-top: 0;}
+
+@media (max-width:1399px) {
+  #sitemap .depth-01{margin-top: 25px; flex-wrap: wrap; justify-content: space-between; height: 100%;}
+  #sitemap .depth-02::before{height: 94%}
+  #sitemap .depth-01 li .level_01 a{width: 100%; margin-bottom: 15px;}
+  #sitemap .depth-01 li:first-child .level_01 a, 
+  #sitemap .depth-01 li:last-child .level_01 a{width: 100%;}
+  #sitemap .depth-01 > li{width: calc((100% - 100px) / 3);}
+  #sitemap .depth-01 > li + li{margin-left: 0;}
+  #sitemap .depth-01 li + li{margin-left: 0;}
+  #sitemap .depth-01 li:first-child .level_01{margin-right: 0;}
+  #sitemap .depth-02{margin-bottom: 20px;}
+}
+
+@media (max-width:991px) {
+  #sitemap .depth-01{justify-content: flex-start;}
+  #sitemap .depth-01 > li{width: calc((100% - 10px) / 2);  margin-right: 10px;}
+  #sitemap .depth-01 > li:nth-child(2n){margin-right: 0;}
+  #sitemap .depth-01 > li:last-child{margin-top: 30px;}
+  #sitemap .depth-02 {padding: 15px 0 0 15px;}
+}
+
+@media (max-width:716px) {
+  #sitemap .depth-01 > li{width: 100%; margin-right: 0;}
+  #sitemap .depth-01 > li:last-child{margin-top: 0;}
+  #sitemap .depth-01 li .level_01 a{font-size: 16px;}
+  #sitemap .depth-02 li .level_02 a{font-size: 14px;}
+  #sitemap .depth-03 li .level_03 a{font-size: 13px;}
+  #sitemap .depth-04 li .level_04 a{font-size: 12px;}
+  #sitemap .depth-02{display: none;}
+  #sitemap .depth-02::before{display: none;}
+  #sitemap .depth-02 {padding: 5px 0 0 0;}
+}

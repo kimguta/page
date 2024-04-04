@@ -22,7 +22,7 @@
 				</a>
 			</h1>
 			<div class="intro-video-bx">
-				<video style="width:100%;position:relative;top:-200px" autoplay muted>
+				<video style="width:100%;position:relative;top:-180px" autoplay muted>
 					<source src="http://211.192.116.152:9000/gw_brand_vedio.mp4" type="video/mp4">
 				</video>
 			</div>
@@ -53,15 +53,15 @@
 	#intro h1{position:absolute;left:30px;top:35px;z-index:50;}
 	#intro h1 img{display:block;width:290px;filter:drop-shadow(1px 1px 2px rgba(0,0,0,.5));}
 	.intro-video-bx{width:2200px;position:relative;left:calc(50% - 1100px)}
-	.intro-text-bx{display:flex;align-items:center;justify-content:center;flex-direction:column;position:absolute;width:655px;height:292px;z-index:100;left:50%;top:50%;margin:-186px 0 0 -327px}
+	.intro-text-bx{display:flex;align-items:center;animation:textmove5 2s 20s 1 both ease-in-out;justify-content:center;flex-direction:column;position:absolute;width:655px;height:292px;z-index:100;left:50%;top:50%;margin:-186px 0 0 -327px}
 	.intro-text-bx img{display:block;position:absolute;top:0;left:0;}
-	.intro-text-bx img:nth-child(1){animation:textmove1 1.5s 10s 1 both ease-in-out;}
-	.intro-text-bx img:nth-child(2){animation:textmove2 1.5s 11s 1 both ease-in-out;}
-	.intro-text-bx img:nth-child(3){animation:textmove3 1.5s 12s 1 both ease-in-out;}
+	.intro-text-bx img:nth-child(1){animation:textmove1 1.5s 2s 1 both ease-in-out;}
+	.intro-text-bx img:nth-child(2){animation:textmove2 1.5s 2.5s 1 both ease-in-out;}
+	.intro-text-bx img:nth-child(3){animation:textmove3 1.5s 3s 1 both ease-in-out;}
 
 	.intro-btn-bx{position:absolute;z-index:120;right:60px;bottom:40px;display:flex;align-items: center;}
-	.intro-btn-bx a{display:flex;width:270px;transition:all .1s;height:160px;align-items:center;justify-content:center;flex-direction:column;margin-left:20px;background:rgba(0,0,0,.6);animation:textmove4 1s 13s 1 both ease-in-out;border:3px solid #fff}
-	.intro-btn-bx a:nth-child(2){animation-delay:13.5s;}
+	.intro-btn-bx a{display:flex;width:270px;transition:all .1s;height:160px;align-items:center;justify-content:center;flex-direction:column;margin-left:20px;background:rgba(0,0,0,.6);animation:textmove4 1s 4s 1 both ease-in-out;border:3px solid #fff}
+	.intro-btn-bx a:nth-child(2){animation-delay:4.5s;}
 	.intro-btn-bx a span{display:flex;align-items:center;justify-content:center;color:#fff;font-weight:500;font-size:22px;margin-top:8px;}
 	.intro-btn-bx a  > img{display:block;width:70px}
 	.intro-btn-bx a span img{width:24px;display:block;margin:-2px 0 0 10px}
@@ -91,6 +91,11 @@
 		0%{transform:translateY(200%) scale(.3)}
 		80%{transform:translateY(-10%) scale(1)}
 		100%{transform:translateY(0%) scale(1)}  
+	}
+
+	@keyframes textmove5{ 
+		0%{opacity:1;}
+		100%{opacity:0;}  
 	}
 
 	@keyframes shake2 {

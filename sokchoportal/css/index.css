@@ -1,6 +1,7 @@
 @charset "utf-8"; 
-
-#main{position:relative;color:#222}
+html,
+body{scroll-behavior: smooth;}
+#main{position:relative;color:#222;background:#fff;scroll-behavior: smooth;}
 #main:before{content:'';position:absolute;top:130px;right:240px;width:175px;height:168px;background:url(/page/sokchoportal/images/main/img-mainstar-small.png) no-repeat center center /cover;display:block;animation:main1 30s infinite linear;}
 #main:after{content:'';position:absolute;top:270px;right:-35px;width:403px;height:390px;background:url(/page/sokchoportal/images/main/img-mainstar-big.png) no-repeat center center /cover;display:block;animation:main1 50s reverse infinite linear;}
 
@@ -28,6 +29,20 @@
 #main-search .weather span .good{color:#0e73e6;}
 #main-search .weather span .bad{color:#fb1f48;}
 
+.intro-video-bx{display:none;}
+
+@media (min-width:1181px) {
+    #header .family-bx{position: relative;}
+    #header .family-bx:before{content:'';display:block;background:#fff;position:absolute;z-index:-1;top:0;bottom:0;right:0;left:-240px;}
+    #header.fixed + .intro-video-bx{top: 0px;}
+    .intro-video-bx{height:100vh;min-height:900px;z-index:1;position:fixed;left:0;top: 70px;width:100%;overflow:hidden;display:block;transition:all .3s;/* border-top: 3px solid  gainsboro; */}
+    .intro-video-bx video{width:1920px;left:50%;position:relative;margin-left:-960px;top:-150px;}
+    .intro-video-bx + #main{padding-top:0px;z-index:5;margin-top:100vh;transition:all .3s;}
+
+    /* .intro-video-bx + #main #main-search .inner{height:160px;} */
+
+  
+}    
 
 @media (max-width:1180px) {
     #main button:active{transform:scale(.9);}

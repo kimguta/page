@@ -137,8 +137,15 @@ ObjDoc.on({
 		}
 	}
 }, '.office .qa-bx a')
-
-
+//분야별정보_사이트맵
+.on({
+	'click': function(e) { 
+		e.preventDefault();
+			$('#sitemap .depth-01 li .level_01').removeClass('active');
+			$(this).addClass('active');
+			$(this).next('.depth-02').slideToggle(200);
+	}
+}, '#sitemap .depth-01 li .level_01')
 
 //콘텐츠 스크립트 (dom ready 후 동작)
 function contentScript(){
