@@ -29,4 +29,34 @@ $(function() {
         ]
     }; 
     initSlick($('#pledge .slick'), slickOption1);
+
+    var slickOption2 = {
+        autoplay: true,
+        arrows: false,
+        accessibility: false,
+        dots:false,
+        infinite: true,
+        fade: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        pauseOnHover: false,
+        // cssEase: 'linear',
+        speed: 1000,
+        autoplaySpeed: 4000,
+        responsive: [
+            {
+                breakpoint: 1181,
+                settings: {
+                   
+                }
+            },
+            {
+                breakpoint: 717,
+                settings: {
+                    
+                }
+            }
+        ]
+    }; 
+    initSlick($('#visual .slick'), slickOption2);
 });
