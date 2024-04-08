@@ -38,15 +38,13 @@
 				<source src="/page/sokchoportal/video01.mp4" type="video/mp4">
 			</video>
 			<script>
-				let vid = document.getElementById("myVideo");
-					vid.playbackRate = 0.9;
-					setInterval(function(){
-						if($("#myVideo").prop("ended")){
-							setTimeout(function(){
-								$("#myVideo").get(0).play();
-							}, 3000);
-						}
-					},200);
+				var vdo = document.getElementById("myVideo");
+				vdo.playbackRate = 0.9;
+				vdo.onended = function() {
+					setTimeout(function(){
+						vdo.play();
+					}, 3000);
+				};
 			</script>
 		</div>
 
