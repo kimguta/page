@@ -42,7 +42,7 @@ $(function() {
         pauseOnHover: false,
         // cssEase: 'linear',
         speed: 1000,
-        autoplaySpeed: 4000,
+        autoplaySpeed: 5000,
         responsive: [
             {
                 breakpoint: 1181,

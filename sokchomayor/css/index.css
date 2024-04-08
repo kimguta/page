@@ -22,6 +22,7 @@
 
 #visual .slick{display:block;width:1920px;position:absolute;top:0;left:50%;margin-left:-960px;transform-origin:50% 50%;z-index:1;animation:main-new1 3s 9.5s 1 both ease-out;overflow:hidden;}
 #visual .slick-slide{margin-left:-1px;}
+#visual .slick-current{animation:imgmove1 4.5s .3s 1 both ease-out;transform-origin:65% 55%;}
 #visual .text-bx h2{animation:textmove3 2s 6s 1 both ease-in-out;-webkit-text-stroke: 1px #000;color:transparent}
 #visual .text-bx h2 span{display:block;animation:textmove1 1.5s 1s 1 both ease-in-out;}
 #visual .text-bx h2 span:nth-child(2){display:block;animation:textmove2 1.5s 1.5s 1 both ease-in-out;} 
@@ -53,6 +54,11 @@
     50%{opacity:1;}
     80%{opacity:1;}
     100%{opacity:0;}  
+}
+
+@keyframes imgmove1{ 
+    0%{transform:scale(1.2);filter:brightness(.3) grayscale(1);}
+    100%{transform:scale(1);filter:brightness(1) grayscale(0);}  
 }
 
 @keyframes textcolor{ 
