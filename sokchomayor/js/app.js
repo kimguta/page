@@ -230,7 +230,13 @@ ObjDoc.on({
 		$('#header .modal-search .bx').removeAttr('tabindex');
 		$('#header .search-bx button').focus();
 	}
-}, '#header .modal-search .close');
+}, '#header .modal-search .close')
+.on({
+	'click': function(e) { 
+		e.preventDefault();
+		$('#header .lang-bx').toggleClass('active');
+	}
+}, '#header .lang-bx .ibtn');
 
 function searchPlace(obj){
 	$(document).on('keyup', obj, function(){

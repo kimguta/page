@@ -34,9 +34,20 @@
 		<header id="header" include-html="/page/sokchoportal/include/header.html"></header>
 
 		<div class="intro-video-bx">
-			<video autoplay muted loop>
+			<video autoplay muted id="myVideo">
 				<source src="/page/sokchoportal/video01.mp4" type="video/mp4">
 			</video>
+			<script>
+				let vid = document.getElementById("myVideo");
+					vid.playbackRate = 0.9;
+					setInterval(function(){
+						if($("#myVideo").prop("ended")){
+							setTimeout(function(){
+								$("#myVideo").get(0).play();
+							}, 3000);
+						}
+					},200);
+			</script>
 		</div>
 
 		<main id="main">
