@@ -101,17 +101,17 @@
 #office .tab-bx button{flex:1;display:flex;align-items:center;justify-content:center;height:58px;border:1px solid #c0c0c0;border-radius:30px;font-size:18px;font-weight:600;transition:all .2s;}
 #office .tab-bx button.active{color:#fff;background:#1b1b1b;}
 #office .tab-bx button + button{margin-left:20px;}
-#office .tab-view{padding-top:30px;perspective:3000px;}
-#office .tab-view > div{display:none;animation:bxmove1 1s .1s 1 both ease-out;transform-origin:100% 50%;}
+#office .tab-view{padding-top:30px;}
+#office .tab-view > div{display:none;transform-origin:100% 50%;}
 #office .tab-view .slick{position:relative;}
 #office .tab-view .slide{display:flex;perspective:1000px;perspective-origin:50% 50%;}
 #office .tab-view .text{width:450px;padding-right:20px;padding-top:60px;}
 #office .tab-view .text h3{font-size: 36px;font-weight:700;line-height:1.3;}
 #office .tab-view .text p{font-size:18px;word-break:keep-all;margin-top:26px;}
 #office .tab-view .text .more-btn{margin:40px 0 0;animation:none !important;}
-#office .slick-current .text{animation:textmove6 .45s .35s 1 both ease-out;}
+/* #office .slick-current .text{animation:textmove6 .45s .35s 1 both ease-out;} */
 #office .tab-view .slide > img{flex:1;border-radius:10px;}
-#office .tab-view .slide.slick-current > img{animation:imgmove3 .5s 1 both ease-out;}
+/* #office .tab-view .slide.slick-current > img{animation:imgmove3 .5s 1 both ease-out;} */
 #office .slick-arrow.slick-prev{display:none !important;}
 #office .slick-arrow{width:80px;height:80px;background:url(/page/worknew/images/main/circlearrow_gray.png) no-repeat center center /cover;position:absolute;right:-130px;top:50%;margin-top:-40px;color:transparent;font-size:0}
 
@@ -415,8 +415,8 @@
 }
 
 @keyframes bxmove1{ 
-    0%{transform:rotateX(-180deg);}
-    100%{transform:rotateX(0deg)}  
+    0%{transform:translateY(-50%);opacity:0;}
+    100%{transform:translateY(0%);opacity:1;}  
 }
 
 @keyframes textcolor{ 
