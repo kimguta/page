@@ -142,7 +142,10 @@ ObjDoc.on({
 }); */
 //콘텐츠 스크립트 (dom ready 후 동작)
 function contentScript(){
-	
+	// if ($('.img-zoom-modal').length){
+	// 	$.getScript('/page/worcation/js/panzoom.min.js');
+	// 	$.getScript('/page/worcation/js/708e424f8f.js');
+	// }
 	
 	$('.skinTb-wrapper').on('scroll', function () {
 		$(this).addClass('scroll');
@@ -150,6 +153,36 @@ function contentScript(){
 	$('.skinTb.width640').parent().addClass('width640');
 	$('.skinTb.width768').parent().addClass('width768');
 	$('.skinTb.width1000').parent().addClass('width1000');
+
+	$('.program-bx article').each(function(index, item){
+		var PrevBtn  = $(item).find('.prev');
+		var NextBtn  = $(item).find('.next');
+		var sOption1 = {
+			autoplay: false,
+			arrows: true,
+			accessibility: false,
+			dots:false,
+			draggable: true,
+			infinite: true,
+			slidesToShow: 1,
+			prevArrow: PrevBtn,
+			nextArrow: NextBtn,
+			fade: true,
+			slidesToScroll: 1,
+			pauseOnHover: false,
+			pauseOnFocus: false,
+			speed: 500,
+			responsive: [
+				{
+					breakpoint: 717,
+					settings: {
+					speed: 500,
+					}
+				}
+			]
+		};
+		initSlick($(item).find('.slick'), sOption1);
+	});
 };
 
 
@@ -159,4 +192,50 @@ $(function() {
 });
 
 
+/*콘텐츠 스크립트*/
+ObjDoc.on({
+	'click': function(e) { 
+		e.preventDefault();
+		$(this).toggleClass('active');
+		$('.select-bx .select-list').toggle();
+	}
+}, '.select-bx button')
+.on({
+	'click': function(e) { 
+		e.preventDefault();
+		var btnText = $(this).text();
+		var Idx = $(this).index();
+		$('.select-bx button').removeClass('active').text(btnText);
+		$('.select-bx .select-list').hide();
+		$('.view-bx article').hide().eq(Idx).show().find('.slick').slick('resize');
+	}
+}, '.select-bx .select-list a')
+.on({
+	'click': function(e) { 
+		e.preventDefault(e);
+        $('#sub-visual .tab ').toggleClass('active');
+	}
+}, '#sub-visual .tab .active')
+.on({
+	'click': function(e) { 
+		e.preventDefault();
+		var Idx = $(this).index();
+		$('.img-bx img, .btn-bx button').removeClass('active');	
+        $('.img-bx img').eq(Idx).addClass('active');
+		$(this).addClass('active');
 
+		var imgNum = [0, 4, 11, 13, 14, 15];	
+		for (var i = 0; i< imgNum.length; i++) {		
+			if (Idx == i) {
+				$('.space-bx .map-bx .slick').slick('slickGoTo', imgNum[i]);
+			}
+		};
+	}
+}, '.floor-bx .btn-bx button')
+.on({
+	'click': function(e) { 
+		e.preventDefault();
+		$('.fun-bx a').removeClass('active');
+		$(this).addClass('active');
+	}
+}, '.fun-bx a');

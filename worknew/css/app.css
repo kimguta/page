@@ -59,8 +59,10 @@ html::-webkit-scrollbar-thumb {background-color:rgba(34,70,157,.7);;border-radiu
 #header.active:after{content:'';z-index:5;left:0;right:0;bottom:0;background:#f1f1f1;height:1px;position:absolute;}
 #header.active:before{opacity:1;}
 #header .header-wrap{max-width:1920px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:0 100px 0 70px;height:110px;}
+#header h1{position:relative;}
 #header h1, #header h1 a, #header h1 img{display:block;height:62px;z-index:120;transition:all .15s;} 
-#header.active h1 img{filter:invert(1);}
+#header h1 .img-active{opacity:0;transition:all 0s 0s;position:absolute;top:0;left:0;right:0;}
+#header.active h1 .img-active{opacity:1;transition:all .3s;}
 #header .nav-wrap{width:100%;position:relative;padding-left:100px}
 #header .depth-01{display:flex;justify-content:center;}
 #header .depth-01 > li{flex:1;max-width:215px;position:relative;}
@@ -154,13 +156,14 @@ html::-webkit-scrollbar-thumb {background-color:rgba(34,70,157,.7);;border-radiu
 @media (max-width:1439px) {
   #header .header-wrap{height:80px;padding:0 10px 0 25px;}
   #header.fixed{top:-80px;}
-  #header h1, #header h1 a, #header h1 img{height:50px;mix-blend-mode:difference;} 
+  #header h1, #header h1 a, #header h1 img{height: 46px;mix-blend-mode:difference;} 
   #header.active h1, #header.active h1 a, #header.active h1 a img{mix-blend-mode:multiply;}
   #header .bg_pc{display:none !important;}
   #header .nav-wrap{height:100vh;min-height:650px !important;box-shadow:5px -5px 10px 0px rgba(0,0,0,.35);perspective:0px;transform:translate(100%, -50%) rotate(0deg);animation:none;width:440px;max-width:100%;position:fixed;top:0;right:0;left:auto !important;background:#fff;transform-origin:50% 100%;z-index:20;transition:all .4s ease-out;padding-left:0;}
   #header .nav-wrap .close{right:15px;top:30px;padding:0 15px;}
   #header .nav-wrap .close img{display:block;width:14px;}
-  #header .nav-wrap nav{padding:0px 30px 70px 30px;flex:1;overflow-y:auto;height:calc(100vh - 90px);margin-top:85px;}
+  #header .nav-wrap nav{padding:0px 30px 70px 30px;flex:1;overflow-y:auto;height:calc(100vh - 85px);margin-top:85px;}
+  #header.fixed .nav-wrap nav{margin-top:35px;height:calc(100vh - 35px);}
   #header .nav-wrap .depth-01{width:100%;flex-direction:column;}
   #header .nav-wrap .depth-01 > li{max-width:initial;border-bottom:1px solid #e0e0e0;display:block;padding:10px 0}
   #header .nav-wrap .tlv-02{width:100%;}
