@@ -1,0 +1,457 @@
+<div id="top-bx">	
+	<div class="site-bx inner">
+		<h1>
+			<a href="#">
+				<img src="/page/sokchodata/images/common/sokcho.png" alt="속초시">
+				스마트데이터
+			</a>
+		</h1>
+		<div class="weather">
+			<img src="/page/sokchoportal/images/main/img-weather-clody.png" alt="구름">
+			<!-- <img src="/page/sokchoportal/images/main/img-weather-rainy.png" alt="비">
+			<img src="/page/sokchoportal/images/main/img-weather-snowy.png" alt="눈">
+			<img src="/page/sokchoportal/images/main/img-weather-sunny.png" alt="맑음">
+			<img src="/page/sokchoportal/images/main/img-weather-windy.png" alt="바람"> -->
+			<strong>10.0°</strong>
+			<span>미세먼지 <em class="good">좋음</em></span>
+		</div>
+		<div class="lang-wrap">
+			<div id="google_translate_element" style="display:none;"></div>
+			<div class="lang-bx">
+				<a href="#" class="ibtn">
+					<img src="/page/sokchoportal/images/common/Language-1.png" alt="language">KR
+				</a>
+				<div class="lang-view translation-links">
+					<a href="javascript:void(0)" data-lang="en"> English</a>
+					<a href="javascript:void(0)" data-lang="zh-CN"> 中国语</a>
+					<a href="javascript:void(0)" data-lang="ja"> 日本語</a>
+					<a href="javascript:void(0)" data-lang="ru"> Русский</a>
+				</div>
+			</div>
+
+			<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+			<script type="text/javascript">
+				/* 구글 번역 초기화 */
+				function googleTranslateElementInit() {new google.translate.TranslateElement({pageLanguage: 'ko',autoDisplay: true}, 'google_translate_element');}
+			</script>
+			<script type="text/javascript">
+				/* 새 UI 선택 클릭 이벤트가 발생하면
+					감춤 처리한 구글 번역 콤보리스트에
+					선택한 언어를 적용해 변경 이벤트를 발생시키는 코드  */
+				document.querySelector('.translation-links').addEventListener('click',function(event) {
+					let el = event.target;
+					if(el != null){
+						while(el.nodeName == 'FONT'){el = el.parentElement;}//data-lang 속성이 있는 태그 찾기
+						const tolang = el.dataset.lang; // 변경할 언어 코드 얻기
+						const gtcombo = document.querySelector('.goog-te-combo');
+						if (gtcombo == null) {
+							alert("Error: Could not find Google translate Combolist.");
+							return false;
+						}
+						gtcombo.value = tolang; // 변경할 언어 적용
+						gtcombo.dispatchEvent(new Event('change')); // 변경 이벤트 트리거
+					}
+					return false;
+				});
+			</script>
+		</div>
+		<div class="search-word">
+			<div class="search-bx">
+				<button type="button" class="view-btn">
+					<img src="/page/sokchodata/images/common/ico-search-w.png" alt="검색">
+				</button>
+				<div class="view-bx modal-search">
+					<div class="bx">
+						<div class="search-form">
+							<label for="search-header" class="blind">검색</label>
+							<input type="search" id="search-header" placeholder="무엇을 도와드릴까요?">
+							<span class="place-holder">
+								<img src="/page/sokchodata/images/common/ico-star.png" alt="">
+								<strong>무엇을</strong> 도와드릴까요?
+							</span>
+							<button type="submit">
+								<img src="/page/sokchodata/images/common/ico-search.png" alt="검색">
+							</button>
+						</div>
+						<a href="#" class="close">
+							<img src="/page/sokchodata/images/common/ico-menulayer-close.png" alt="닫기">
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<a href="#" class="mobile-menu">
+			<img src="/page/sokchodata/images/common/ico-allmenuopen.png" alt="사이트맵">
+		</a>
+	</div>
+</div>
+<div id="gnb-bx" class="inner">
+	<div class="nav-bx">
+		<div class="family-bx">
+			<a href="#">속초시의회</a>
+			<a href="#">속초관광</a>
+			<a href="#">채널속초</a>
+			<div class="view-wrap">
+				<button type="button" class="view-btn">
+					주요사이트
+					<img src="/page/sokchoportal/images/common/lnb-ico-fselect.png" alt="">
+				</button>
+				<div class="view-bx">
+					<a href="#">속초시립박물관</a>
+					<a href="#">세입세출계약정보공개시스템</a>
+					<a href="#">속초시립박물관</a>
+					<a href="#">세입세출계약정보공개시스템</a>
+					<a href="#">속초시립박물관</a>
+					<a href="#">세입세출계약정보공개시스템</a>
+					<a href="#">속초시립박물관</a>
+					<a href="#">세입세출계약정보공개시스템</a>
+					<a href="#">속초시립박물관</a>
+					<a href="#">세입세출계약정보공개시스템</a>
+				</div>
+			</div>
+		</div>
+		<div class="nav-wrap">
+			<nav class="clearfix">
+				<ul class="depth-01">
+					<li>
+					<div class="tlv-02">
+					<a href="/mayor/intro" target="_self">
+					<span>한눈에 보는 속초</span>
+					</a>
+					</div>
+					<!-- two depth -->
+					<ul class="depth-02" style="display: none;">
+						<li>
+						<div class="tlv-03">
+						<a href="/mayor/intro/newyear" target="_self">
+						<span>신년사</span>
+						</a>
+						</div>
+						<!-- three depth -->
+						</li>
+						<li>
+						<div class="tlv-03">
+						<a href="/mayor/intro/greeting" target="_self">
+						<span>인사말</span>
+						</a>
+						</div>
+						<!-- three depth -->
+						</li>
+						<li>
+						<div class="tlv-03">
+						<a href="/mayor/intro/profile" target="_self">
+						<span>프로필</span>
+						</a>
+						</div>
+						<!-- three depth -->
+						</li>
+					</ul>
+					<!-- //depth2 -->
+					</li>
+					<li>
+					<div class="tlv-02">
+					<a href="/mayor/facility" target="_self">
+					<span>속초지표</span>
+					</a>
+					</div>
+					<!-- two depth -->
+					<ul class="depth-02" style="display: none;">
+						<li>
+						<div class="tlv-03">
+						<a href="/mayor/facility/manifesto" target="_self">
+						<span>매니페스토란</span>
+						</a>
+						</div>
+						<!-- three depth -->
+						</li>
+						<li>
+						<div class="tlv-03">
+						<a href="/mayor/facility/vision" target="_self">
+						<span>시정목표와 비전</span>
+						</a>
+						</div>
+						<!-- three depth -->
+						</li>
+						<li>
+						<div class="tlv-03">
+						<a href="/mayor/facility/pledge" target="_self">
+						<span>민선8기 공약</span>
+						</a>
+						</div>
+						<!-- three depth -->
+						<ul class="depth-03">
+							<li>
+							<div class="tlv-04">
+							<a href="/mayor/facility/pledge/process" target="_self">
+							<span>공약 완성과정</span>
+							</a>
+							</div>
+							</li>
+							<li>
+							<div class="tlv-04">
+							<a href="/mayor/facility/pledge/status" target="_self">
+							<span>공약 총괄현황</span>
+							</a>
+							</div>
+							</li>
+							<li>
+							<div class="tlv-04">
+							<a href="/mayor/facility/pledge/performance" target="_self">
+							<span>공약 이행현황</span>
+							</a>
+							</div>
+							</li>
+							<li>
+							<div class="tlv-04">
+							<a href="/mayor/facility/pledge/accont" target="_self">
+							<span>공약 가계부</span>
+							</a>
+							</div>
+							</li>
+						</ul>
+						<!-- //depth3 -->
+						</li>
+						<li>
+						<div class="tlv-03">
+						<a href="/mayor/facility/map" target="_self">
+						<span>공약지도</span>
+						</a>
+						</div>
+						<!-- three depth -->
+						</li>
+						<li>
+						<div class="tlv-03">
+						<a href="/mayor/facility/management" target="_self">
+						<span>공약관리</span>
+						</a>
+						</div>
+						<!-- three depth -->
+						<ul class="depth-03">
+							<li>
+							<div class="tlv-04">
+							<a href="/mayor/facility/management/rules" target="_self">
+							<span>공약관리규칙</span>
+							</a>
+							</div>
+							</li>
+							<li>
+							<div class="tlv-04">
+							<a href="/mayor/facility/management/system" target="_self">
+							<span>공약관리체계</span>
+							</a>
+							</div>
+							</li>
+							<li>
+							<div class="tlv-04">
+							<a href="/mayor/facility/management/committee" target="_self">
+							<span>미래전략 정책자문위원회 운영</span>
+							</a>
+							</div>
+							</li>
+							<li>
+							<div class="tlv-04">
+							<a href="/mayor/facility/management/change" target="_self">
+							<span>공약변경</span>
+							</a>
+							</div>
+							</li>
+						</ul>
+						<!-- //depth3 -->
+						</li>
+						<li>
+						<div class="tlv-03">
+						<a href="/mayor/facility/reference" target="_self">
+						<span>공약자료실</span>
+						</a>
+						</div>
+						<!-- three depth -->
+						</li>
+					</ul>
+					<!-- //depth2 -->
+					</li>
+					<li>
+						<div class="tlv-02">
+						<a href="/mayor/facility" target="_self">
+						<span>데이터지도</span>
+						</a>
+						</div>
+						<!-- two depth -->
+						<ul class="depth-02" style="display: none;">
+							<li>
+							<div class="tlv-03">
+							<a href="/mayor/facility/manifesto" target="_self">
+							<span>매니페스토란</span>
+							</a>
+							</div>
+							<!-- three depth -->
+							</li>
+							<li>
+							<div class="tlv-03">
+							<a href="/mayor/facility/vision" target="_self">
+							<span>시정목표와 비전</span>
+							</a>
+							</div>
+							<!-- three depth -->
+							</li>
+							<li>
+							<div class="tlv-03">
+							<a href="/mayor/facility/pledge" target="_self">
+							<span>민선8기 공약</span>
+							</a>
+							</div>
+							<!-- three depth -->
+							<ul class="depth-03">
+								<li>
+								<div class="tlv-04">
+								<a href="/mayor/facility/pledge/process" target="_self">
+								<span>공약 완성과정</span>
+								</a>
+								</div>
+								</li>
+								<li>
+								<div class="tlv-04">
+								<a href="/mayor/facility/pledge/status" target="_self">
+								<span>공약 총괄현황</span>
+								</a>
+								</div>
+								</li>
+								<li>
+								<div class="tlv-04">
+								<a href="/mayor/facility/pledge/performance" target="_self">
+								<span>공약 이행현황</span>
+								</a>
+								</div>
+								</li>
+								<li>
+								<div class="tlv-04">
+								<a href="/mayor/facility/pledge/accont" target="_self">
+								<span>공약 가계부</span>
+								</a>
+								</div>
+								</li>
+							</ul>
+							<!-- //depth3 -->
+							</li>
+							<li>
+							<div class="tlv-03">
+							<a href="/mayor/facility/map" target="_self">
+							<span>공약지도</span>
+							</a>
+							</div>
+							<!-- three depth -->
+							</li>
+							<li>
+							<div class="tlv-03">
+							<a href="/mayor/facility/management" target="_self">
+							<span>공약관리</span>
+							</a>
+							</div>
+							<!-- three depth -->
+							<ul class="depth-03">
+								<li>
+								<div class="tlv-04">
+								<a href="/mayor/facility/management/rules" target="_self">
+								<span>공약관리규칙</span>
+								</a>
+								</div>
+								</li>
+								<li>
+								<div class="tlv-04">
+								<a href="/mayor/facility/management/system" target="_self">
+								<span>공약관리체계</span>
+								</a>
+								</div>
+								</li>
+								<li>
+								<div class="tlv-04">
+								<a href="/mayor/facility/management/committee" target="_self">
+								<span>미래전략 정책자문위원회 운영</span>
+								</a>
+								</div>
+								</li>
+								<li>
+								<div class="tlv-04">
+								<a href="/mayor/facility/management/change" target="_self">
+								<span>공약변경</span>
+								</a>
+								</div>
+								</li>
+							</ul>
+							<!-- //depth3 -->
+							</li>
+							<li>
+							<div class="tlv-03">
+							<a href="/mayor/facility/reference" target="_self">
+							<span>공약자료실</span>
+							</a>
+							</div>
+							<!-- three depth -->
+							</li>
+						</ul>
+						<!-- //depth2 -->
+						</li>
+					<li>
+					<div class="tlv-02">
+					<a href="/mayor/together" target="_self">
+					<span>통계조사자료</span>
+					</a>
+					</div>
+					<!-- two depth -->
+					<ul class="depth-02" style="display: none;">
+						<li>
+						<div class="tlv-03">
+						<a href="/mayor/together/photo" target="_self">
+						<span>포토갤러리</span>
+						</a>
+						</div>
+						<!-- three depth -->
+						</li>
+						<li>
+						<div class="tlv-03">
+						<a href="/mayor/together/media" target="_self">
+						<span>영상갤러리</span>
+						</a>
+						</div>
+						<!-- three depth -->
+						</li>
+						<li>
+						<div class="tlv-03">
+						<a href="/mayor/together/schedule" target="_self">
+						<span>공개일정</span>
+						</a>
+						</div>
+						<!-- three depth -->
+						</li>
+					</ul>
+					<!-- //depth2 -->
+					</li>
+					<li>
+					<div class="tlv-02">
+					<a href="/mayor/communication" target="_self">
+					<span>통계정보</span>
+					</a>
+					</div>
+					<!-- two depth -->
+					<ul class="depth-02" style="display: none;">
+						<li>
+						<div class="tlv-03">
+						<a href="/mayor/communication/suggestion" target="_self">
+						<span>시민정책제안</span>
+						</a>
+						</div>
+						<!-- three depth -->
+						</li>
+					</ul>
+					<!-- //depth2 -->
+					</li>
+				</ul>	
+			</nav>
+		</div>
+		<div class="bg_pc"></div>
+		<a href="#" class="mobile-close">
+			<img src="/page/sokchodata/images/common/ico-menulayer-close.png" alt="메뉴닫기">
+		</a>
+	</div>
+</div>
+
+
