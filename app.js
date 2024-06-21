@@ -156,9 +156,9 @@ $Doc.on({
         // 전체 2depth 메뉴 활성
         // var $HighestBox = 0;
 		// $Depth02.each(function(){
-		// 	if($(this).height() > $HighestBox){
-		// 		$HighestBox = $(this).height();
-		// 	}
+        //   if($(this).height() > $HighestBox){
+        // 	     $HighestBox = $(this).height();
+        // 	  }
 		// });
         // $Header.each($addActiveClass);
 		// $Title01.each($removeActiveClass);
