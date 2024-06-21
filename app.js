@@ -95,7 +95,7 @@ var $Title03 = $('.Htlv04');
 var $MobileWidth = 1180;
 
 // 이벤트 선택자 변수
-var $Depth01List = $('#header.pc-mode .depth01 > li');
+var $Depth01List = $('#header.pc-mode .Hdepth01 > li');
 var $Depth01LastLink = $('#header.pc-mode .Hdepth01 a:last');
 var $HeaderPcMode = $('#header.pc-mode');
 var $MobileMenu = $('#header .mobile-menu');
