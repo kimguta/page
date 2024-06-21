@@ -91,6 +91,7 @@ var $Depth03 = $('.Hdepth03');
 var $Title01 = $('.Htlv02');
 var $Title02 = $('.Htlv03');
 var $Title03 = $('.Htlv04');
+// 모바일 분기
 var $MobileWidth = 1180;
 
 // 이벤트 선택자 변수
