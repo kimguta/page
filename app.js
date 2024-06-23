@@ -72,15 +72,10 @@ function removeClassWithParam(className) {
 
 // 클래스를 추가하는 변수
 var $addActiveClass = addClassWithParam('active');
-var $addFixedClass = addClassWithParam('fixed');
-var $addPcClass = addClassWithParam('pc-mode');
-var $addMobileClass = addClassWithParam('mobile-mode');
 
 // 클래스를 제거하는 변수
 var $removeActiveClass = removeClassWithParam('active');
-var $removeFixedClass = removeClassWithParam('fixed');
-var $removePcClass = removeClassWithParam('pc-mode');
-var $removeMobileClass = removeClassWithParam('mobile-mode');
+
 
 // 선택자 변수
 var $Win = $(window);
