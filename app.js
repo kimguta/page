@@ -83,9 +83,9 @@ var $Doc = $(document);
 var $Header = $('#header');
 var $Depth02 = $('.Hdepth02');
 var $Depth03 = $('.Hdepth03');
-var $Title01 = $('.Htlv02');
-var $Title02 = $('.Htlv03');
-var $Title03 = $('.Htlv04');
+var $Title01 = $('.Htlv01');
+var $Title02 = $('.Htlv02');
+var $Title03 = $('.Htlv03');
 // 모바일 분기
 var $MobileWidth = 1180;
 
@@ -95,7 +95,7 @@ var $Depth01LastLink = $('#header.pc-mode .Hdepth01 a:last');
 var $HeaderPcMode = $('#header.pc-mode');
 var $MobileMenu = $('#header .mobile-menu');
 var $MobileClose = $('#header .mobile-close');
-var $MobileNavLink = $('#header.mobile-mode .Htlv02 a');
+var $MobileNavLink = $('#header.mobile-mode .Htlv01 a');
 var $BtnTop = $('#btn-top');
 var $NavBox = $('#header .nav-bx');
 
