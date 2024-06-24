@@ -55,21 +55,11 @@ var Wwidth = ObjWin.outerWidth();
 
 ObjWin.on({
 	'scroll load': function() { 
-		if (ObjDoc.scrollTop() > 10) {
-			$('#header').addClass('fixed');
-		} else {
-			$('#header').removeClass('fixed');
-		}
+		$('#header').toggleClass('fixed', ObjDoc.scrollTop() > 10);
 	},
 	'resize load': function() { 
-		if(ObjWin.width() > 1180){ 
-			$('#header, #sub').removeClass('mobile-mode');
-			$('#header, #sub').addClass('pc-mode');
-		}
-		else{
-			$('#header, #sub').removeClass('pc-mode');
-			$('#header, #sub').addClass('mobile-mode');
-		}
+		$('#header').toggleClass('pc-mode', ObjWin.width() > 1180)
+                    .toggleClass('mobile-mode', ObjWin.width() <= 1180);
 	},
 	'resize': function() { 
 		var Wwidth2 = $(window).outerWidth();
