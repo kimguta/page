@@ -3,6 +3,7 @@
 <h3>DQ_프로젝트 퍼블리싱 페이지</h3>
 <ul>
   <li><a href="basic" target="_blank">베이직소스</a></li>
+  <li><a href="childcare" target="_blank">양양육아지원센터</a></li>
   <li><a href="worknew" target="_blank">강원 워케이션 2024</a></li>
   <li><a href="drd/intro.html" target="_blank">도립대샘플</a></li>
   <li><a href="sokchodata" target="_blank">속초스마트데이터</a></li>
