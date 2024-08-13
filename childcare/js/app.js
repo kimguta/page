@@ -86,6 +86,7 @@ $Win.on({
         if ($WinWidth > $MobileWidth) {
             setTimeout(function() {
                 $('.Htlv01').add('.Htlv02').add('.Htlv03').removeClass('active');
+                $('.Stlv01.active').next('.Sdepth02').show();
             }, 100);
             $('.Hdepth02').stop().hide();
         }else {
@@ -98,7 +99,7 @@ $Win.on({
                 $(this).trigger('click');
                 e.preventDefault();
             }
-        });            
+        });          
     }
 });
 

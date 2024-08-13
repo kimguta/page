@@ -86,13 +86,47 @@ function contentScript(){
 	$('.skinTb.width640').parent().addClass('width640');
 	$('.skinTb.width768').parent().addClass('width768');
 	$('.skinTb.width1000').parent().addClass('width1000');
+
+	
+	
 };
 
 
 $(function() {
 	contentScript();
+
+	var slickOptionSub1 = {
+		autoplay: false,
+		arrows: true,
+		accessibility: false,
+		dots:false,
+		draggable: true,
+		infinite: true,
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		prevArrow: $('.facility-info .prev'),
+		nextArrow: $('.facility-info .next'),
+		pauseOnHover: false,
+		swipeToSlide: true,
+		speed: 500,
+		responsive: [
+			{
+				breakpoint: 1181,
+				settings: {
+					// variableWidth: true,
+					// centerMode: true,
+				}
+			}
+		]
+	};
+
+
+	initSlick($('.facility-info .slick'), slickOptionSub1);
+	
 	$('.Sdepth02').prev('.Stlv01').addClass('has-depth');
 });
+
+
 
 
 
