@@ -9,20 +9,23 @@
 	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
-	<div class="offset full-page" style="background:blue;height:600px"></div>
-	<div class="offset full-page" style="background:red;height:600px"></div>
-	<div class="offset full-page" style="background:green;height:600px"></div>
-	<div class="offset full-page" style="background:yellow;height:600px"></div>
-	<div class="offset full-page" style="background:gray;height:600px"></div>
-	<div class="offset full-page" style="background:purple;height:600px"></div>
-	<div class="offset full-page" style="background:blue;height:600px"></div>
-	<div class="offset full-page" style="background:red;height:600px"></div>
-	<div class="offset full-page" style="background:green;height:600px"></div>
-	<div class="offset full-page" style="background:yellow;height:600px"></div>
-	<div class="offset full-page" style="background:gray;height:600px"></div>
-	<div class="offset full-page" style="background:purple;height:600px"></div>
+	<div class="offset full-page" style="background:blue;height:600px" data-nav-text="1 페이지"></div>
+	<div class="offset full-page" style="background:red;height:600px" data-nav-text="2 페이지"></div>
+	<div class="offset full-page" style="background:green;height:600px" data-nav-text="3 페이지"></div>
+	<div class="offset full-page" style="background:yellow;height:600px" data-nav-text="4 페이지"></div>
+	<div class="offset full-page" style="background:gray;height:600px" data-nav-text="5 페이지"></div>
+	<div class="offset full-page" style="background:purple;height:600px" data-nav-text="6 페이지"></div>
+	<div class="offset full-page" style="background:blue;height:600px" data-nav-text="7 페이지"></div>
+
+	<div class="page-nav" style="">
+
+	</div>
 </body>
 </html>
+
+<style>
+	.page-nav{position:fixed;left:30px;top:50%;z-index:100;display:flex;flex-direction:column;transform:translateY(-50%);}
+</style>
 
 <script>
 /*오프셋 액티브*/
@@ -61,27 +64,43 @@ $(window).on('scroll', function(){
 	elemOffset('.offset');
 });
 
-/*오프셋 풀페이지*/
-function FullPage(obj){
-	$(obj).each(function(){
-		$(this).on('wheel', function (e) {
-			var Offset = $(this).offset().top;
-			var Height = $(this).outerHeight();
-			var Wheight =  $(window).outerHeight();
-			var scrollTop =  $(document).scrollTop();
-			
-			if (e.originalEvent.deltaY < 0) {
-			$('html, body').stop().animate({scrollTop : Offset - Wheight}, 500);
-			} 
-			else if (e.originalEvent.deltaY > 0) {
-				$('html, body').stop().animate({scrollTop : Offset + Height}, 500);  
-			}
-        });
-	});
+function FullPage(obj, nav) {
+    var $pages = $(obj);  // 페이지 객체 캐싱
+    var $nav = $(nav);    // 네비게이션 객체 캐싱
+    var pageCount = $pages.length;  // 페이지 수 계산
+
+    // 페이지 수만큼 버튼 추가 (각 페이지의 data-nav-text 값을 버튼에 적용)
+    $pages.each(function(index) {
+        var navText = $(this).data('nav-text') || '페이지 ' + (index + 1);  // 데이터가 없을 경우 기본값 설정
+        $nav.append('<button class="page-btn" data-index="' + index + '">' + navText + '</button>');
+    });
+
+    // 스크롤 애니메이션 함수 (중복 제거)
+    function scrollToPage(index) {
+        var targetOffset = $pages.eq(index).offset().top;
+        $('html, body').stop().animate({ scrollTop: targetOffset }, 500);
+    }
+
+    // 휠 이벤트 처리
+    $pages.on('wheel', function(e) {
+        var currentIndex = $pages.index(this);
+        var direction = e.originalEvent.deltaY > 0 ? 1 : -1;  // 휠 방향에 따른 계산
+        var newIndex = currentIndex + direction;
+
+        if (newIndex >= 0 && newIndex < pageCount) {  // 페이지 범위 내에서만 이동
+            scrollToPage(newIndex);
+        }
+    });
+
+    // 버튼 클릭 시 해당 페이지로 이동
+    $nav.on('click', '.page-btn', function() {
+        var index = $(this).data('index');
+        scrollToPage(index);
+    });
 }
 
 $(function() { 
-    FullPage('.full-page');
+    FullPage('.full-page', '.page-nav');
 });
 
 
