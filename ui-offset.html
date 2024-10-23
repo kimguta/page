@@ -20,6 +20,16 @@
 	<div class="page-nav" style="">
 
 	</div>
+
+	<div class="page-nav">
+		<button class="page-btn" data-index="0">
+			<img src="icon1.png" alt="아이콘1" class="nav-icon"> 페이지 1
+		</button>
+		<button class="page-btn" data-index="1">
+			<img src="icon2.png" alt="아이콘2" class="nav-icon"> 페이지 2
+		</button>
+		<!-- 추가 페이지 버튼 -->
+	</div>
 </body>
 </html>
 
@@ -103,5 +113,52 @@ $(function() {
     FullPage('.full-page', '.page-nav');
 });
 
+
+
+function FullPage(obj, nav) {
+    var $pages = $(obj);  
+    var $nav = $(nav);    
+    var pageCount = $pages.length;  
+
+    // 페이지 수에 따라 각 버튼에 아이콘과 텍스트 설정
+    $pages.each(function(index) {
+        var navText = $(this).data('nav-text') || '페이지 ' + (index + 1);
+        // 각 버튼의 텍스트와 아이콘 설정
+        var $btn = $nav.find('.page-btn').eq(index);
+        $btn.find('.nav-icon').attr('src', 'icon' + (index + 1) + '.png');
+        $btn.append(navText); // 텍스트 추가
+    });
+
+    // 스크롤 애니메이션 및 active 클래스 관리
+    function scrollToPage(index) {
+        var targetOffset = $pages.eq(index).offset().top;
+        $('html, body').stop().animate({ scrollTop: targetOffset }, 500);
+        $nav.find('.page-btn').removeClass('active').eq(index).addClass('active');
+    }
+
+    // 휠 이벤트 처리
+    $pages.on('wheel', function(e) {
+        var currentIndex = $pages.index(this);
+        var direction = e.originalEvent.deltaY > 0 ? 1 : -1;
+        var newIndex = currentIndex + direction;
+
+        if (newIndex >= 0 && newIndex < pageCount) {
+            scrollToPage(newIndex);
+        }
+    });
+
+    // 버튼 클릭 시 해당 페이지로 이동
+    $nav.on('click', '.page-btn', function() {
+        var index = $(this).data('index');
+        scrollToPage(index);
+    });
+
+    // 처음 페이지 로드 시 첫 번째 버튼에 active 클래스 추가
+    $nav.find('.page-btn').eq(0).addClass('active');
+}
+
+$(function() { 
+    FullPage('.full-page', '.page-nav');
+});
 
 </script>

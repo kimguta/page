@@ -202,3 +202,64 @@ $(function() {
 
 });
 
+$(function() {
+    var $header = $('#header');
+    var $bgPc = $('.bg_pc');
+    var $hDepth02 = $('.Hdepth02');
+    var $htlv01 = $('.Htlv01');
+
+    // 메뉴 활성화 및 배경 높이 설정
+    function activateMenu($element) {
+        $header.addClass('active');
+        $htlv01.removeClass('active');
+        $hDepth02.stop().css('display', 'none');
+        $element.children($htlv01).addClass('active');
+        $element.children($hDepth02).stop().css('display', 'flex');
+
+        var highestBox = $element.children($hDepth02).height() + 50;
+        $bgPc.show().css('height', highestBox);
+    }
+
+    // 메뉴 비활성화
+    function deactivateMenu() {
+        $header.add($htlv01).removeClass('active');
+        $hDepth02.stop().css('display', 'none');
+        $bgPc.hide().css('height', 0);
+    }
+
+    // 이벤트 핸들러 설정
+    $header.on({
+        'mouseover focusin': function() {
+            activateMenu($(this));
+        }
+    }, '.Hdepth01 > li')
+    .on('focusout', '.Hdepth01 a:last', deactivateMenu)
+    .on('mouseleave', '.Hdepth01 > li', deactivateMenu)
+    .on('click', '.mobile-menu', function(e) {
+        e.preventDefault();
+        $header.add('.nav-bx').addClass('active');
+    })
+    .on('click', '.mobile-close', function(e) {
+        e.preventDefault();
+        $header.add('.nav-bx').removeClass('active');
+    })
+    .on('click', '.Htlv01 a', function(e) {
+        e.preventDefault();
+        var $parent = $(this).parent();
+        if ($parent.is('.active')) {
+            $parent.removeClass('active').next($hDepth02).stop().slideUp(350);
+        } else {
+            $htlv01.removeClass('active');
+            $parent.addClass('active');
+            $hDepth02.stop().slideUp(300);
+            $parent.next($hDepth02).stop().slideDown(350);
+        }
+    });
+
+    // 톱버튼 클릭 이벤트를 문서에 설정
+    $(document).on('click', '#btn-top', function(e) {
+        e.preventDefault();
+        $('html, body').delay(100).animate({ scrollTop: 0 }, 350);
+        $('#header h1 a').focus();
+    });
+});
