@@ -57,15 +57,17 @@
         }
 
 
-      function startCheckingTime() {
+        function startCheckingTime() {
             checkTimeInterval = setInterval(function() {
                 var currentTime = player.getCurrentTime();
+                var totalTime = player.getDuration(); // 영상의 총 길이 가져오기
                 console.log("현재 재생 시간: " + currentTime);
+                console.log("총 재생 시간: " + totalTime);
 
-                // 10초에 도달했을 때 이벤트 발생
-                // if (currentTime >= 10 && currentTime < 11) {
-                //     console.log("5초에 도달했습니다!");
-                // }
+                // 특정 시간에 도달했을 때 이벤트 발생 (예: 10초에 도달)
+                if (currentTime >= 10 && currentTime < 11) {
+                    console.log("10초에 도달했습니다!");
+                }
 
             }, 1000);
         }
@@ -73,6 +75,58 @@
         function stopCheckingTime() {
             clearInterval(checkTimeInterval);
         }
+
+
+        // 현재 재생 중인 영상의 URL을 가져오기
+        var videoUrl = player.getVideoUrl();
+        console.log("현재 재생 중인 비디오의 URL: " + videoUrl);
+
+        // 현재 재생 중인 영상의 Embed 코드를 가져오기
+        var embedCode = player.getVideoEmbedCode();
+        console.log("Embed 코드: " + embedCode);
+
+        // 플레이어 상태를 확인 (-1: 시작 전, 0: 종료, 1: 재생 중, 2: 일시 정지, 3: 버퍼링 중, 5: 신호 로드)
+        var state = player.getPlayerState();
+        console.log("플레이어 상태: " + state);
+
+        // 재생 시간을 30초로 이동
+        player.seekTo(30, true);
+
+        // 음소거 (Mute)
+        player.mute();
+
+        // 음소거 해제 (Unmute)
+        player.unMute();
+
+        // 현재 음소거 상태인지 확인
+        var isMuted = player.isMuted();
+        console.log("음소거 상태: " + isMuted);
+
+        // 볼륨을 50으로 설정 (0~100 사이의 값)
+        player.setVolume(50);
+
+        // 현재 볼륨을 확인
+        var volume = player.getVolume();
+        console.log("현재 볼륨: " + volume);
+
+        // 현재 재생 속도를 가져오기 (1, 1.5, 2 등의 값)
+        var rate = player.getPlaybackRate();
+        console.log("재생 속도: " + rate);
+
+        // 재생 속도를 1.5배속으로 설정
+        player.setPlaybackRate(1.5);
+
+        // 사용할 수 있는 재생 속도 목록을 가져오기
+        var rates = player.getAvailablePlaybackRates();
+        console.log("사용 가능한 재생 속도: " + rates);
+
+        // 현재 재생 중인 영상의 전체 길이를 초 단위로 가져오기
+        var totalTime = player.getDuration();
+        console.log("총 재생 시간: " + totalTime);
+
+        // 현재 재생 시간을 초 단위로 가져오기
+        var currentTime = player.getCurrentTime();
+        console.log("현재 재생 시간: " + currentTime);
  
     </script>
   </body>
