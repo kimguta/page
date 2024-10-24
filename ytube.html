@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<html>
+  <body>
+    <div id="player"></div>
+    <button id="playButton">플레이</button>
+    <button id="pauseButton">정지</button>
+    <script>
+      var tag = document.createElement('script');
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+          height: '360',  //변경가능-영상 높이
+          width: '640',  //변경가능-영상 너비
+          videoId: '9AVmZE1ZWmk',  //변경-영상ID
+          playerVars: {
+          	'rel': 0,    //연관동영상 표시여부(0:표시안함)
+            'controls': 0,    //플레이어 컨트롤러 표시여부(0:표시안함)
+            'autoplay' : 1,   //자동재생 여부(1:자동재생 함, mute와 함께 설정)
+            'mute' : 1,   //음소거여부(1:음소거 함)
+            'loop' : 1,    //반복재생여부(1:반복재생 함)
+            'playsinline' : 1,    //iOS환경에서 전체화면으로 재생하지 않게
+            // 'playlist' : '4bAZXEjxDDE'   //재생할 영상 리스트
+          },
+          events: {
+            'onReady': onPlayerReady, //onReady 상태일 때 작동하는 function이름
+            'onStateChange': onPlayerStateChange //onStateChange 상태일 때 작동하는 function이름
+          }
+        });
+      }
+
+      function onPlayerStateChange(event) {
+            if (event.data == YT.PlayerState.ENDED) {
+                console.log("영상이 끝났습니다.");
+            }
+        }
+
+
+      function startCheckingTime() {
+            checkTimeInterval = setInterval(function() {
+                var currentTime = player.getCurrentTime();
+                console.log("현재 재생 시간: " + currentTime);
+
+                // 10초에 도달했을 때 이벤트 발생
+                if (currentTime >= 10 && currentTime < 11) {
+                    console.log("10초에 도달했습니다!");
+                }
+
+            }, 1000);
+        }
+
+      // 4. API는 비디오 플레이어가 준비되면 아래의 function을 불러올 것이다.
+      function onPlayerReady(event) {
+            startCheckingTime();
+            $('#playButton').click(function() {
+                player.playVideo();
+                
+            });
+            $('#pauseButton').click(function() {
+                player.pauseVideo();
+            });
+        }
+ 
+    </script>
+  </body>
+</html>
