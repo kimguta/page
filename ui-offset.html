@@ -23,10 +23,10 @@
 
 	<div class="page-nav">
 		<button class="page-btn" data-index="0">
-			<img src="icon1.png" alt="아이콘1" class="nav-icon"> 페이지 1
+			<img src="icon1.png" alt="아이콘1" class="nav-icon">
 		</button>
 		<button class="page-btn" data-index="1">
-			<img src="icon2.png" alt="아이콘2" class="nav-icon"> 페이지 2
+			<img src="icon2.png" alt="아이콘2" class="nav-icon">
 		</button>
 		<!-- 추가 페이지 버튼 -->
 	</div>
@@ -74,44 +74,44 @@ $(window).on('scroll', function(){
 	elemOffset('.offset');
 });
 
-function FullPage(obj, nav) {
-    var $pages = $(obj);  // 페이지 객체 캐싱
-    var $nav = $(nav);    // 네비게이션 객체 캐싱
-    var pageCount = $pages.length;  // 페이지 수 계산
+// function FullPage(obj, nav) {
+//     var $pages = $(obj);  // 페이지 객체 캐싱
+//     var $nav = $(nav);    // 네비게이션 객체 캐싱
+//     var pageCount = $pages.length;  // 페이지 수 계산
 
-    // 페이지 수만큼 버튼 추가 (각 페이지의 data-nav-text 값을 버튼에 적용)
-    $pages.each(function(index) {
-        var navText = $(this).data('nav-text') || '페이지 ' + (index + 1);  // 데이터가 없을 경우 기본값 설정
-        $nav.append('<button class="page-btn" data-index="' + index + '">' + navText + '</button>');
-    });
+//     // 페이지 수만큼 버튼 추가 (각 페이지의 data-nav-text 값을 버튼에 적용)
+//     $pages.each(function(index) {
+//         var navText = $(this).data('nav-text') || '페이지 ' + (index + 1);  // 데이터가 없을 경우 기본값 설정
+//         $nav.append('<button class="page-btn" data-index="' + index + '">' + navText + '</button>');
+//     });
 
-    // 스크롤 애니메이션 함수 (중복 제거)
-    function scrollToPage(index) {
-        var targetOffset = $pages.eq(index).offset().top;
-        $('html, body').stop().animate({ scrollTop: targetOffset }, 500);
-    }
+//     // 스크롤 애니메이션 함수 (중복 제거)
+//     function scrollToPage(index) {
+//         var targetOffset = $pages.eq(index).offset().top;
+//         $('html, body').stop().animate({ scrollTop: targetOffset }, 500);
+//     }
 
-    // 휠 이벤트 처리
-    $pages.on('wheel', function(e) {
-        var currentIndex = $pages.index(this);
-        var direction = e.originalEvent.deltaY > 0 ? 1 : -1;  // 휠 방향에 따른 계산
-        var newIndex = currentIndex + direction;
+//     // 휠 이벤트 처리
+//     $pages.on('wheel', function(e) {
+//         var currentIndex = $pages.index(this);
+//         var direction = e.originalEvent.deltaY > 0 ? 1 : -1;  // 휠 방향에 따른 계산
+//         var newIndex = currentIndex + direction;
 
-        if (newIndex >= 0 && newIndex < pageCount) {  // 페이지 범위 내에서만 이동
-            scrollToPage(newIndex);
-        }
-    });
+//         if (newIndex >= 0 && newIndex < pageCount) {  // 페이지 범위 내에서만 이동
+//             scrollToPage(newIndex);
+//         }
+//     });
 
-    // 버튼 클릭 시 해당 페이지로 이동
-    $nav.on('click', '.page-btn', function() {
-        var index = $(this).data('index');
-        scrollToPage(index);
-    });
-}
+//     // 버튼 클릭 시 해당 페이지로 이동
+//     $nav.on('click', '.page-btn', function() {
+//         var index = $(this).data('index');
+//         scrollToPage(index);
+//     });
+// }
 
-$(function() { 
-    FullPage('.full-page', '.page-nav');
-});
+// $(function() { 
+//     FullPage('.full-page', '.page-nav');
+// });
 
 
 
