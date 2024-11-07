@@ -177,4 +177,55 @@ $(function() {
     FullPage('.full-page', '.page-nav');
 });
 
+
+(function($) {
+    // jQuery 플러그인 정의
+    // $.fn을 통해 jQuery 객체에 메서드를 추가할 수 있음.
+    // 이렇게 하면 선택자에 대해 직접 함수 호출이 가능해짐.
+    $.fn.exampleFunction = function(options) {
+        // 기본값 정의
+        var defaults = {
+            param1: 'pcmode', // 기본값: 'pcmode'
+            count: 0          // 기본값: 0 (div 요소 추가하지 않음)
+        };
+
+        // 기본값과 사용자 옵션 병합
+        options = $.extend({}, defaults, options);
+
+        // each()는 선택된 jQuery 객체 내의 각 요소에 대해 함수를 실행함.
+        // 선택된 여러 요소에 대해 개별적으로 작업을 수행할 수 있음.
+        return this.each(function() {
+            // this는 현재 선택된 DOM 요소를 가리킴.
+            // $(this)를 사용해 jQuery 메서드를 사용할 수 있음.
+            var $this = $(this);  // 현재 요소를 jQuery 객체로 변환
+
+            // param1 값에 따라 다른 작업 수행
+            if (options.param1 === 'pcmode') {
+                console.log("PC 모드 활성화 - " + $this[0].className);  // 현재 요소의 클래스명 출력
+                $this.find('.pc-layout').show();   // PC 모드 레이아웃 표시
+                $this.find('.mobile-layout').hide(); // 모바일 모드 레이아웃 숨김
+            } else if (options.param1 === 'mobilemode') {
+                console.log("모바일 모드 활성화 - " + $this[0].className); // 현재 요소의 클래스명 출력
+                $this.find('.mobile-layout').show();  // 모바일 모드 레이아웃 표시
+                $this.find('.pc-layout').hide();    // PC 모드 레이아웃 숨김
+            }
+
+            // count 값에 따라 div 요소 추가
+            if (options.count > 0) {
+                $.each(new Array(options.count), function(index) {
+                    // 새로운 div 요소를 생성하여 추가
+                    var newDiv = $('<div>').addClass('new-element').text("Element " + (index + 1));
+                    $this.append(newDiv);
+                });
+            }
+        });
+    };
+})(jQuery);
+
+// 선택자에 대해 함수 호출
+// 플러그인 방식으로 정의했기 때문에 선택자에 대해 직접 호출 가능
+$('.selector1').exampleFunction({ param1: 'pcmode', count: 3 });    // .selector1에 대해 'pcmode' 적용 후 3개의 div 추가
+$('.selector2').exampleFunction({ param1: 'mobilemode', count: 2 }); // .selector2에 대해 'mobilemode' 적용 후 2개의 div 추가
+$('.selector3').exampleFunction(); // 기본값인 'pcmode'로 0개의 div 추가
+
 </script>
