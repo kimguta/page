@@ -109,7 +109,7 @@ $Doc.on({
         e.preventDefault();
         var Idx = $(this).index();
         $('#notice .tab-bx button').removeClass('active').filter(this).addClass('active');
-        $('.view-bx > div').removeClass('active').eq(Idx).addClass('active');
+        $('#notice .view-bx > div').removeClass('active').eq(Idx).addClass('active');
     }
 }, '#notice .tab-bx button')
 .on({
@@ -122,7 +122,15 @@ $Doc.on({
         var Idx = $(this).index();
         $('#reason .img-bx span').removeClass('active').eq(Idx).addClass('active');
     },
-}, '#reason .reason-bx a');
+}, '#reason .reason-bx a')
+.on({
+    'click': function(e) {
+        e.preventDefault();
+        var Idx = $(this).index();
+        $('#procedure .tab-bx button').removeClass('active').filter(this).addClass('active');
+        $('#procedure .view-bx > div').removeClass('active').eq(Idx).addClass('active');
+    }
+}, '#procedure .tab-bx button');
 
 
 function elemOffset(obj) {
