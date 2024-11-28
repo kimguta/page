@@ -107,7 +107,7 @@ $(window).on('scroll', function() {
             $('#main-movie-wrap').toggleClass('active');
             hasExecuted2 = true;
         }   
-    }else if(hasExecuted2 == true){
+    }else{
         if ($(document).scrollTop() <= $('#main-movie-wrap').height()) {  
             hasExecuted2 = false;
         }
