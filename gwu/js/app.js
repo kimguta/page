@@ -207,6 +207,20 @@ $Doc.on({
 .on({
     'click': function(e) {
         e.preventDefault();
+        $(this).toggleClass('active')
+        $(this).next('div').slideToggle(200);
+    }
+}, '#footer .family-bx button')
+.on({
+    'focusout': function(e) {
+        e.preventDefault();
+        $(this).parents().find('button').removeClass('active')
+        $(this).parent('div').slideUp(200);
+    }
+}, '#footer .family-bx div a:last-child')
+.on({
+    'click': function(e) {
+        e.preventDefault();
         $('html, body').delay(100).animate({ scrollTop: 0 }, 0);
         $('#header h1 a').focus();
     }

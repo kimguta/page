@@ -59,7 +59,6 @@ $Doc.on({
 }, '.today-tab button');
 
 
-
 function elemOffset(obj) {
     $(obj).each(function() {
         var elemTop = $(this).offset().top;
@@ -95,14 +94,24 @@ function elemOffset(obj) {
     });
 }
 
+
 // 플래그를 전역으로 설정
 let hasExecuted = false;
+let hasExecuted2 = false;
 
 $(window).on('scroll', function() {
     // 스크롤 이벤트가 한 번만 실행되도록 설정
-    // if (!hasExecuted) {
-    //     elemOffset('#major');  // 조건이 만족할 때만 실행
-    // }
+    if (!hasExecuted2) {
+        if ($(document).scrollTop() >=  $('#main-movie-wrap').height()) {  
+          
+            $('#main-movie-wrap').toggleClass('active');
+            hasExecuted2 = true;
+        }   
+    }else if(hasExecuted2 == true){
+        if ($(document).scrollTop() <= $('#main-movie-wrap').height()) {  
+            hasExecuted2 = false;
+        }
+    }
 
     elemOffset('.video-wrap'); 
 });
