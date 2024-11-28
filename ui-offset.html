@@ -228,4 +228,28 @@ $('.selector1').exampleFunction({ param1: 'pcmode', count: 3 });    // .selector
 $('.selector2').exampleFunction({ param1: 'mobilemode', count: 2 }); // .selector2에 대해 'mobilemode' 적용 후 2개의 div 추가
 $('.selector3').exampleFunction(); // 기본값인 'pcmode'로 0개의 div 추가
 
+
+
+// 플래그를 전역으로 설정
+let hasExecuted = false;
+
+$(window).on('scroll', function() {
+    // 스크롤 이벤트가 한 번만 실행되도록 설정
+    if (!hasExecuted) {
+        if ($(document).scrollTop() >=  $('#main-movie-wrap').height()) {  
+          
+            $('#main-movie-wrap').toggleClass('active');
+            hasExecuted = true;
+        }   
+    }else if(hasExecuted == true){
+        if ($(document).scrollTop() <= $('#main-movie-wrap').height()) {  
+            hasExecuted = false;
+        }
+    }
+});
+
 </script>
+
+
+
+
