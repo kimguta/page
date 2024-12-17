@@ -11,22 +11,19 @@ $(function() {
      }, 100);
 
     var slickOption1 = {
-        autoplay: true,
+        autoplay: false,
         arrows: true,
         accessibility: false,
-        dots: true,
+        dots: false,
         draggable: true,
         prevArrow: $('#introduce .prev'),
         nextArrow: $('#introduce .next'),
         infinite: true,
-        slidesToShow: 6,
+        slidesToShow: 1,
         slidesToScroll: 1,
         pauseOnHover: false,
-        variableWidth: true,
         swipeToSlide: true,
         speed: 350,
-        autoplaySpeed: 5000,
-        appendDots: $('#introduce .dots'),
         responsive: [
             {
                 breakpoint: 992,
@@ -38,16 +35,37 @@ $(function() {
     }; 
     initSlick($('#introduce .slick'), slickOption1);
 
+
+    var slickOption2 = {
+        autoplay: true,
+        arrows: true,
+        accessibility: false,
+        dots: false,
+        draggable: true,
+        prevArrow: $('#pride .prev'),
+        nextArrow: $('#pride .next'),
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        pauseOnHover: false,
+        variableWidth: true,
+        swipeToSlide: true,
+        centerMode: true,
+        speed: 550,
+        autoplaySpeed: 5000,
+        responsive: [
+            {
+                breakpoint: 992,
+                settings: {
+                    // variableWidth: true,
+                }
+            }
+        ]
+    }; 
+    initSlick($('#pride .slick'), slickOption2);
+
 });
 
-$(window).on('load', function() {
-    var $headerOff = $('#header').offset().top; // 윈도우가 로드된 후 초기 오프셋 값을 가져옴
-
-    $(window).on('scroll', function() {
-        $('#header').toggleClass('scrolled', $(document).scrollTop() > 50);
-        $('#header').toggleClass('fixed', $(document).scrollTop() > $headerOff); 
-    });
-});
 
 $Doc.on({
     'click': function(e) {
@@ -56,7 +74,24 @@ $Doc.on({
         $('.today-tab button').removeClass('active').filter(this).addClass('active');
         $('.today-view > div').removeClass('active').eq(Idx).addClass('active');
     }
-}, '.today-tab button');
+}, '.today-tab button')
+.on({
+    'click': function(e) {
+        e.preventDefault();
+        var Idx = $(this).attr('data-go')
+        var sIdx = $(this).attr('data-slick');
+        $('.land-bx > div').removeClass('active').eq(Idx).addClass('active');
+        $('#introduce .slick').slick('slickGoTo', sIdx);
+        $('.major-list, .major-land').addClass('active');
+    }
+}, '.major-list button')
+.on({
+    'click': function(e) {
+        e.preventDefault();
+        var Idx = $(this).attr('data-go');
+        $('.land-bx > div').removeClass('active').eq(Idx).addClass('active');
+    }
+}, '.major-land .go-btn');
 
 
 function elemOffset(obj) {
@@ -111,7 +146,7 @@ $(window).on('scroll', function() {
         if ($(document).scrollTop() <= $('#main-movie-wrap').height()) {  
             hasExecuted2 = false;
         }
-    }
-
-    elemOffset('.video-wrap'); 
+    } 
+    $('#quick-menu').toggleClass('active', $(document).scrollTop() >= $('#main-movie-wrap').height());
+    elemOffset('.youtube-bx'); 
 });
