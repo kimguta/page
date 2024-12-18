@@ -51,30 +51,19 @@ ObjDoc.on({
 	}
 }, '#img-modal .close')
 .on({
-	'click': function(e) { 
-		e.preventDefault();
-		if ($(this).parent('.Stlv01').hasClass('active')) {
-			$(this).parent('.Stlv01').removeClass('active');
-			$(this).parent('.Stlv01').next('.Sdepth02').slideUp(200);
-		} else{
-			$('#side-menu .Stlv01').removeClass('active');
-			$('#side-menu .Sdepth02').slideUp(300);
-			$(this).parent('.Stlv01').addClass('active');
-			$(this).parent('.Stlv01').next('.Sdepth02').slideDown(200);
-		}
-	}
-}, '#side-menu .Stlv01.has-depth a')
-.on({
-	'click': function(e) { 
-		e.preventDefault();
-		$(this).next('ul').toggle();
-	}
-}, '.share .open')
-.on({
-	'focusout': function() { 
-		$('.share .open').focus();
-	}
-}, '.share ul li:last-child a');
+    'click': function(e) {
+        e.preventDefault();
+        if ($(this).hasClass('active')) {
+			$(this).removeClass('active');
+			$(this).next('div').slideUp(300);
+        } else {
+			$('#breadcrumb button').removeClass('active').filter(this).addClass('active');
+			$(this).addClass('active');
+			$('#breadcrumb .item > div').slideUp(300);
+			$(this).next('div').slideDown(300);
+        }
+    }
+}, '#breadcrumb button');
 
 
 //콘텐츠 스크립트 (dom ready 후 동작)
