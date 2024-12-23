@@ -191,8 +191,7 @@ $Doc.on({
 .on({
     'click': function(e) {
         e.preventDefault();
-        $('.quick-bx').show();
-        $('#quick-menu .slick').slick('setPosition');
+        $('.quick-bx').css('display','flex');
         // $('.qbtn-bx .menu-open').focus();
     }
 }, '#quick-menu .menu-open')

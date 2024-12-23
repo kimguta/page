@@ -1,5 +1,34 @@
 $(function() { 
 
+
+    const $container = $('.major-land .slick-wrap');
+    const $image = $('.move-img');
+
+    $container.on('mousemove', function(event) {
+        // 컨테이너 내부 좌표 계산
+        const containerOffset = $container.offset();
+        const mouseX = event.pageX - containerOffset.left;
+        const mouseY = event.pageY - containerOffset.top;
+
+        // 이미지 위치 업데이트 (이미지가 컨테이너 밖으로 나가지 않도록 제한)
+        const imageWidth = $image.width();
+        const imageHeight = $image.height();
+
+        const newLeft = Math.min(
+            Math.max(0, mouseX - imageWidth / 2),
+            $container.width() - imageWidth
+        );
+        const newTop = Math.min(
+            Math.max(0, mouseY - imageHeight / 2),
+            $container.height() - imageHeight
+        );
+
+        $image.css({
+            left: newLeft + 50 +'px',
+            top: newTop + 'px'
+        });
+    });
+
     setTimeout(function() {
         AOS.init({
             easing: 'ease-out-back',
@@ -10,30 +39,32 @@ $(function() {
         });
      }, 100);
 
-    var slickOption1 = {
-        autoplay: false,
-        arrows: true,
-        accessibility: false,
-        dots: false,
-        draggable: true,
-        prevArrow: $('#introduce .prev'),
-        nextArrow: $('#introduce .next'),
-        infinite: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        pauseOnHover: false,
-        swipeToSlide: true,
-        speed: 350,
-        responsive: [
-            {
-                breakpoint: 992,
-                settings: {
-                    // variableWidth: true,
-                }
-            }
-        ]
-    }; 
-    initSlick($('#introduce .slick'), slickOption1);
+    // var slickOption1 = {
+    //     autoplay: false,
+    //     arrows: true,
+    //     accessibility: false,
+    //     dots: false,
+    //     draggable: true,
+    //     prevArrow: $('#introduce .prev'),
+    //     nextArrow: $('#introduce .next'),
+    //     infinite: true,
+    //     slidesToShow: 5,
+    //     slidesToScroll: 1,
+    //     vertical: true,
+    //     verticalSwiping: true,
+    //     pauseOnHover: false,
+    //     swipeToSlide: true,
+    //     speed: 350,
+    //     responsive: [
+    //         {
+    //             breakpoint: 992,
+    //             settings: {
+    //                 // variableWidth: true,
+    //             }
+    //         }
+    //     ]
+    // }; 
+    // initSlick($('#introduce .slick'), slickOption1);
 
 
     var slickOption2 = {
@@ -64,7 +95,52 @@ $(function() {
     }; 
     initSlick($('#pride .slick'), slickOption2);
 
+    $('#introduce .slick').on('afterChange', function (event, slick, currentSlide, nextSlide) {
+        $('.land-bx > div').removeClass('active').eq(currentSlide).addClass('active');
+    });
+
+
+    $('#introduce .slick').slick({
+        autoplay: false,
+        arrows: false,
+        accessibility: false,
+        dots: false,
+        draggable: true,
+        infinite: true,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        vertical: true,
+        centerMode: true,
+        verticalSwiping: true,
+        pauseOnHover: false,
+        swipeToSlide: true,
+        focusOnSelect: true,
+        speed: 350,
+        responsive: [
+            {
+                breakpoint: 992,
+                settings: {
+                    vertical: false,
+                    verticalSwiping: false,
+                    variableWidth: true,
+                    slidesToShow: 1,
+                    centerMode: false,
+                }
+            }
+        ]
+      });
+
+      $('#introduce .slick').on('wheel', function (e) {
+            e.preventDefault();
+            if (e.originalEvent.deltaY > 0) {
+            $(this).slick('slickNext'); // 아래로 스크롤
+            } else {
+            $(this).slick('slickPrev'); // 위로 스크롤
+            }
+        });
+
 });
+
 
 
 $Doc.on({
@@ -74,24 +150,25 @@ $Doc.on({
         $('.today-tab button').removeClass('active').filter(this).addClass('active');
         $('.today-view > div').removeClass('active').eq(Idx).addClass('active');
     }
-}, '.today-tab button')
-.on({
-    'click': function(e) {
-        e.preventDefault();
-        var Idx = $(this).attr('data-go')
-        var sIdx = $(this).attr('data-slick');
-        $('.land-bx > div').removeClass('active').eq(Idx).addClass('active');
-        $('#introduce .slick').slick('slickGoTo', sIdx);
-        $('.major-list, .major-land').addClass('active');
-    }
-}, '.major-list button')
-.on({
-    'click': function(e) {
-        e.preventDefault();
-        var Idx = $(this).attr('data-go');
-        $('.land-bx > div').removeClass('active').eq(Idx).addClass('active');
-    }
-}, '.major-land .go-btn');
+}, '.today-tab button');
+// .on({
+//     'click': function(e) {
+//         e.preventDefault();
+//         var Idx = $(this).attr('data-go')
+//         var sIdx = $(this).attr('data-slick');
+//         $('.land-bx > div').removeClass('active').eq(Idx).addClass('active');
+//         $('#introduce .slick').slick('slickGoTo', sIdx);
+//         $('.major-list, .major-land').addClass('active');
+//     }
+// }, '.major-list button')
+// .on({
+//     'click': function(e) {
+//         e.preventDefault();
+//         var Idx = $(this).attr('data-go');
+//         $('.land-bx > div').removeClass('active').eq(Idx).addClass('active');
+//         $('#introduce .slick').slick('slickGoTo', Idx);
+//     }
+// }, '.major-land .go-btn');
 
 
 function elemOffset(obj) {
