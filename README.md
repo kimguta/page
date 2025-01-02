@@ -8,6 +8,7 @@
   <li><a href="childcare" target="_blank">양양육아지원센터</a></li>
   <li><a href="worknew" target="_blank">강원 워케이션 2024</a></li>
   <li><a href="drd/intro.html" target="_blank">도립대샘플</a></li>
+  <li><a href="sokchooffice/index_holic.html" target="_blank">속초홀릭</a></li>
   <li><a href="sokchodata" target="_blank">속초스마트데이터</a></li>
   <li><a href="sokchoportal" target="_blank">속초행정</a></li>
   <li><a href="sokchomayor" target="_blank">속초시장실</a></li>
