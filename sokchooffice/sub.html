@@ -19,19 +19,110 @@
 
 	<link rel="stylesheet" href="/page/sokchooffice/css/app.css">
 	<link rel="stylesheet" href="/page/sokchooffice/css/sub.css">
+	<link rel="stylesheet" href="/page/sokchooffice/css/content.css">
 
 	<script src="/page/sokchooffice/js/app.js"></script>
 	<script src="/page/sokchooffice/js/sub.js"></script>
+	<script type="text/javascript">
+		var dataWssl;
+		function successDoWssl(data) {
+		  console.log("success");
+		  console.log(data);
+		  dataWssl = data;
+		  makeSelectBox();
+		}
+		var jqxhr = getJSON(ctxRoot + '/waterSewerSectorList.json', null, successDoWssl);
+		function makeSelectBox(data) {
+		  var _waterSector = $('#waterSector');
+		  var _sewerSector = $('#sewerSector');
+		  var _caliber = $('#caliber');
+		  var innerText;
+		  _waterSector.empty();
+		  _sewerSector.empty();
+		  _caliber.empty();
+		  $.each(dataWssl.waterSewerSectorList, function (key, entry) {
+			innerText = entry.yoyFr+'~'+entry.yoyTo;
+			if (entry.yoyTo >= 99999999) {
+			  innerText = entry.yoyFr+'이상';
+			}
+			if ('상수도'==entry.yoyGubun) {
+			  _waterSector.append($('<option></option>').attr('value', entry.yoyKey).text(entry.yoyUpname+'('+innerText+')'));
+			}
+			if ('하수도'==entry.yoyGubun) {
+			  _sewerSector.append($('<option></option>').attr('value', entry.yoyKey).text(entry.yoyUpname+'('+innerText+')'));
+			}
+		  })
+		  $.each(dataWssl.caliberList, function (key, entry) {
+			innerText = entry.sonNsizeN;
+			_caliber.append($('<option></option>').attr('value', entry.sonGasize).text(innerText));
+		  })
+		}
+		var dataWsslG;
+		function successDoWssgl(data) {
+		  console.log("success");
+		  console.log(data);
+		  dataWsslG = data;
+		  makeSelectBoxG();
+		}
+		var jqxhrG = getJSON(ctxRoot + '/waterSewerSectorGropupList.json', null, successDoWssgl);
+		function makeSelectBoxG(data) {
+		  var _waterSector = $('#waterSector');
+		  var _sewerSector = $('#sewerSector');
+		  var _caliber = $('#caliber');
+		  var innerText;
+		  _waterSector.empty();
+		  _sewerSector.empty();
+		  _caliber.empty();
+		  $.each(dataWsslG.waterSewerSectorGropupList, function (key, entry) {
+			if ('상수도'==entry.yoyGubun) {
+			  _waterSector.append($('<option></option>').attr('value', entry.yoyKey).text(entry.yoyUpname));
+			}
+			if ('하수도'==entry.yoyGubun) {
+			  _sewerSector.append($('<option></option>').attr('value', entry.yoyKey).text(entry.yoyUpname));
+			}
+		  })
+		  $.each(dataWsslG.caliberList, function (key, entry) {
+			innerText = entry.sonNsizeN;
+			_caliber.append($('<option></option>').attr('value', entry.sonGasize).text(innerText));
+		  })
+		}
+	
+		function setData(_targetObj, value, separator, removeIndex) {
+		  var tempArr = _targetObj.prop('innerHTML').split(separator);
+		  tempArr.splice(removeIndex, 1);
+		  tempArr.push(numberWithCommas(value)+'원');
+		  _targetObj.prop('innerHTML', tempArr.join(separator));
+		}
+		function successDoGwcc(data) {
+		  console.log("success");
+		  console.log(data);
+		  setData($('#waterFee'), getValueDefault(data.waterFee, 0), '>', 2);
+		  setData($('#sewerFee'), getValueDefault(data.sewerFee, 0), '>', 2);
+		  setData($('#caliberFee'), getValueDefault(data.caliberFee, 0), '>', 2);
+		  setData($('#waterUseChargeFee'), getValueDefault(data.waterUseChargeFee, 0), '>', 2);
+		  setData($('#totalFee'), getValueDefault(data.totalFee, 0), ' ', 1);
+		  showCalc_result();
+		}
+		
+		$(document).ready(function(){
+		$('#getWaterChargeCalculation').click(function () {
+		  var dataToBeSent = $("#f66").serialize();
+		  var jqxhr = getJSON(ctxRoot + '/waterChargeCalculation.json', dataToBeSent, successDoGwcc);
+		 console.log(dataToBeSent);
+		  return true;
+		});
+		});
+		function showCalc_result(){
+			$('#calc_result').show();
+			return false;
+		}
+	</script>
 </head>
-
-
 <body>
 	<div id="wrapper" class="page-wrap">
 
 		<ul class="skipnav"> 
-			<li><a href="#A-Gnb-focus">주메뉴 바로가기</a></li>
-			<li><a href="#A-Contents-focus">본문 바로가기</a></li>
-			<li><a href="#A-Ftr-focus">푸터 바로가기</a></li>
+			<li><a href="#contentsArea">본문 바로가기</a></li>
 		</ul>
 
 		<header id="header" include-html="/page/sokchooffice/include/header.html"></header>
@@ -107,181 +198,209 @@
 						<img src="/page/sokchooffice/images/sub/bg-lnb-health.jpg" alt="">
 						<!-- <img src="/page/sokchooffice/images/sub/bg-lnb-agriculture.jpg" alt="">
 						<img src="/page/sokchooffice/images/sub/bg-lnb-environment.jpg" alt="">
-						<img src="/page/sokchooffice/images/sub/bg-lnb-sewerage.jpg" alt="">
+						<img src="/page/sokchooffice/images/sub/bg-lnb-sewage.jpg" alt="">
 						<img src="/page/sokchooffice/images/sub/bg-lnb-water.jpg" alt=""> -->
 						시민참여
 					</h2>
 					<ul class="depth-02">
 						<li>
-							<h3 class="active">
+							<div class="tlv-03" class="active">
 								<a href="#">
 									<span>2depth</span>
 								</a>
-							</h3>
+							</div>
 							<ul class="depth-03">
 								<li>
-									<h4 class="active">
+									<div class="tlv-04" class="active">
 										<a href="#">
-											<span>적극행정 시민추천</span>
+											<span>희귀질환자 의료비 지원</span>
 										</a>
-									</h4>
+									</div>
 								</li>
 								<li>
-									<h4>
+									<div class="tlv-04">
 										<a href="#">
-											<span>용역</span>
+											<span>암환자 의료비 지원</span>
 										</a>
-									</h4>
+									</div>
 								</li>
 								<li>
-									<h4>
+									<div class="tlv-04">
 										<a href="#" target="_blank">
-											<span>물품</span>
+											<span>재가진폐환자 등 의료비 지원</span>
 										</a>
-									</h4>
+									</div>
+								</li>
+								<li>
+									<div class="tlv-04">
+										<a href="#" target="_blank">
+											<span>치매 치료 관리비 및 검사비 지원</span>
+										</a>
+									</div>
+								</li>
+								<li>
+									<div class="tlv-04">
+										<a href="#" target="_blank">
+											<span>정신질환 치료비 및 자살 유가족 지원</span>
+										</a>
+									</div>
+								</li>
+								<li>
+									<div class="tlv-04">
+										<a href="#" target="_blank">
+											<span>알레르기 혈액검사 본인부담금 지원</span>
+										</a>
+									</div>
+								</li>
+								</li>
+								<li>
+									<div class="tlv-04">
+										<a href="#" target="_blank">
+											<span>무릎인공관절 수술비 지원</span>
+										</a>
+									</div>
 								</li>
 							</ul>
 						</li>
 						<li>
-							<h3>
+							<div class="tlv-03" class="active">
 								<a href="#" target="_blank">
 									<span>2depth</span>
 								</a>
-							</h3>
+							</div>
 						</li>
 						<li>
-							<h3>
+							<div class="tlv-03"  class="active">
 								<a href="#">
 									<span>2depth</span>
 								</a>
-							</h3>
+							</div>
 							<ul class="depth-03">
 								<li>
-									<h4>
+									<div class="tlv-04" class="active">
 										<a href="#">
 											<span>공사</span>
 										</a>
-									</h4>
+									</div>
 								</li>
 								<li>
-									<h4>
+									<div class="tlv-04">
 										<a href="#">
 											<span>용역</span>
 										</a>
-									</h4>
+									</div>
 								</li>
 								<li>
-									<h4>
+									<div class="tlv-04">
 										<a href="#">
 											<span>물품</span>
 										</a>
-									</h4>
+									</div>
 								</li>
 							</ul>
 						</li>
 						<li>
-							<h3>
+							<div class="tlv-03"  class="active">
 								<a href="#">
 									<span>2depth</span>
 								</a>
-							</h3>
+							</div>
 							<ul class="depth-03">
 								<li>
-									<h4>
+									<div class="tlv-04" class="active">
 										<a href="#">
 											<span>공사</span>
 										</a>
-									</h4>
+									</div>
 								</li>
 								<li>
-									<h4>
+									<div class="tlv-04">
 										<a href="#">
 											<span>용역</span>
 										</a>
-									</h4>
+									</div>
 								</li>
 								<li>
-									<h4>
+									<div class="tlv-04">
 										<a href="#">
 											<span>물품</span>
 										</a>
-									</h4>
+									</div>
 								</li>
 							</ul>
 						</li>
 						<li>
-							<h3>
+							<div class="tlv-03"  class="active">
 								<a href="#">
 									<span>2depth</span>
 								</a>
-							</h3>
+							</div>
 							<ul class="depth-03">
 								<li>
-									<h4>
+									<div class="tlv-04" class="active">
 										<a href="#">
 											<span>공사</span>
 										</a>
-									</h4>
+									</div>
 								</li>
 								<li>
-									<h4>
+									<div class="tlv-04">
 										<a href="#">
 											<span>용역</span>
 										</a>
-									</h4>
+									</div>
 								</li>
 								<li>
-									<h4>
+									<div class="tlv-04">
 										<a href="#">
 											<span>물품</span>
 										</a>
-									</h4>
+									</div>
 								</li>
 							</ul>
 						</li>
 						<li>
-							<h3>
+							<div class="tlv-03"  class="active">
 								<a href="#">
 									<span>2depth</span>
 								</a>
-							</h3>
+							</div>
 							<ul class="depth-03">
 								<li>
-									<h4>
+									<div class="tlv-04" class="active">
 										<a href="#">
 											<span>공사</span>
 										</a>
-									</h4>
+									</div>
 								</li>
 								<li>
-									<h4>
+									<div class="tlv-04">
 										<a href="#">
 											<span>용역</span>
 										</a>
-									</h4>
+									</div>
 								</li>
 								<li>
-									<h4>
+									<div class="tlv-04">
 										<a href="#">
 											<span>물품</span>
 										</a>
-									</h4>
+									</div>
 								</li>
 							</ul>
 						</li>
 						<li>
-							<h3>
+							<div class="tlv-03"  class="active">
 								<a href="#">
 									<span>2depth</span>
 								</a>
-							</h3>
+							</div>
 						</li>
 					</ul>
 				</div>
 				<div id="content-bx">
-					<a href="#A-Contents-focus" id="A-Contents-focus" class="blind">본문 시작</a>
-
-					<ul class="pageTab">
+		
+				 	<ul class="pageTab">
 						<li class="active">
 							<a href="#" class="pageTab-tab">
 								4DEPTH 4DEPTH
@@ -309,8 +428,8 @@
 							</a>
 						</li>
 					</ul>
-
-					<div class="contsArea skinContainer" id="contentsArea" include-html="/page/sokchooffice/content/0content-ui.html">
+					<div class="contsArea skinContainer" id="contentsArea" include-html="/page/sokchooffice/content/보건소_치매안심센터안내.html">
+					
 						<!--콘텐츠 입력 -->
 					</div>	
 				</div>		
@@ -397,10 +516,195 @@
 			<a href="#" class="close" onclick="$('.ui-modal').hide(); return false;">닫기</a>
 		</div>
 	</div>
-	
+	<div class="ui-modal v2" style="display:none;">
+		<div class="bx">
+			<form>
+				<label>
+				<span>업소명</span>
+					<input type="text">
+					<div class="search">
+						<a href="#">검색</a>
+					</div>
+				</label>
+				<div class="skinTb-wrapper">
+					<table class="skinTb width768">
+						<caption class="blind">보건소 의약업소자율점검 상호명 종별 주소 선택 표입니다.</caption>
+						<thead>
+							<tr>
+								<th scope="col">상호명</th>
+								<th scope="col">종별</th>
+								<th scope="col">주소</th>
+								<th scope="col">선택</th>
+							</tr>
+						</thead>
+						<tbody class="skinTxa-center">
+							<tr>
+								<td>감초약국</td>
+								<td>약국</td>
+								<td>강원특별자치도 속초시 1-1 300</td>
+								<td>
+									<a href="#">선택</a>
+								</td>
+							</tr>
+							<tr>
+								<td>강약국</td>
+								<td>병원</td>
+								<td>강원특별자치도 속초시 1-1 300</td>
+								<td>
+									<a href="#">선택</a>
+								</td>
+							</tr>
+							<tr>
+								<td>건강약국</td>
+								<td>한의원</td>
+								<td>강원특별자치도 속초시 1-1 300</td>
+								<td>
+									<a href="#">선택</a>
+								</td>
+							</tr>
+							<tr>
+								<td>금강산약국</td>
+								<td>약국</td>
+								<td>강원특별자치도 속초시 1-1 300</td>
+								<td>
+									<a href="#">선택</a>
+								</td>
+							</tr>
+							<tr>
+								<td>늘푸른약국</td>
+								<td>치과</td>
+								<td>강원특별자치도 속초시 1-1 300</td>
+								<td>
+									<a href="#">선택</a>
+								</td>
+							</tr>
+							<tr>
+								<td>대보약국</td>
+								<td>요양병원</td>
+								<td>강원특별자치도 속초시 1-1 300</td>
+								<td>
+									<a href="#">선택</a>
+								</td>
+							</tr>
+							<tr>
+								<td>대승당약국</td>
+								<td>부속의원</td>
+								<td>강원특별자치도 속초시 1-1 300</td>
+								<td>
+									<a href="#">선택</a>
+								</td>
+							</tr>
+							<tr>
+								<td>동산약국</td>
+								<td>약국</td>
+								<td>강원특별자치도 속초시 1-1 300</td>
+								<td>
+									<a href="#">선택</a>
+								</td>
+							</tr>
+							<tr>
+								<td>반디약국</td>
+								<td>병원</td>
+								<td>강원특별자치도 속초시 1-1 300</td>
+								<td>
+									<a href="#">선택</a>
+								</td>
+							</tr>
+							<tr>
+								<td>백세약국</td>
+								<td>한의원</td>
+								<td>강원특별자치도 속초시 1-1 300</td>
+								<td>
+									<a href="#">선택</a>
+								</td>
+							</tr>
+							<tr>
+								<td>보건약국</td>
+								<td>약국</td>
+								<td>강원특별자치도 속초시 1-1 300</td>
+								<td>
+									<a href="#">선택</a>
+								</td>
+							</tr>
+							<tr>
+								<td>부부약국</td>
+								<td>치과</td>
+								<td>강원특별자치도 속초시 1-1 300</td>
+								<td>
+									<a href="#">선택</a>
+								</td>
+							</tr>
+							<tr>
+								<td>사랑약국</td>
+								<td>요양병원</td>
+								<td>강원특별자치도 속초시 1-1 300</td>
+								<td>
+									<a href="#">선택</a>
+								</td>
+							</tr>
+							<tr>
+								<td>삼성약국</td>
+								<td>부속의원</td>
+								<td>강원특별자치도 속초시 1-1 300</td>
+								<td>
+									<a href="#">선택</a>
+								</td>
+							</tr>
+							<tr>
+								<td>서독약국</td>
+								<td>부속의원</td>
+								<td>강원특별자치도 속초시 1-1 300</td>
+								<td>
+									<a href="#">선택</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="ui-modal v4" style="display:none;">
+		<div class="bx">
+			<div class="privateConfirm-box" tabindex="0">
+				<h6 class="titLv">개인정보 수집ㆍ이용 동의</h6>
+				<p class="skinMb-xsmall">oo 홈페이지에서 수집하게 될 개인정보는 「개인정보보호법」 제15조에 따라 개인정보의 수집 이용 시 본인의 동의를 얻어야 하는 정보입니다. 
+					이에 아래 내용과 같이 개인정보를 수집·이용하고자 합니다. 
+					oo 홈페이지 이용자는 동의를 거부할 수 있습니다. 다만 이 경우 oo 홈페이지 게시판 글 등록을 하실 수 없습니다.</p>
+				<dl class="listLv skinMl-0 skinMb-small">
+					<dt>개인정보의 수집 및 이용 목적</dt>
+					<dd class="skinFont-normal">oo 홈페이지 게시판 운영을 위해 개인정보를 수집 및 이용합니다. 
+						수집된 개인정보는 정해진 목적 이외의 용도로는 이용되지 않으며, 수집 목적 등이 변경될 경우에는 홈페이지 이용자에게 알리고 동의를 받을 예정입니다.</dd>
+					<dt>수집하는 개인정보의 항목</dt>
+					<dd class="skinFont-normal">
+						oo 홈페이지에서는 필요한 최소한의 개인정보를 수집하며, 이에 대한 동의를 얻고 있습니다. 수집하는 개인정보 항목은 다음과 같습니다.
+						<ul class="listLv3">
+							<li>필수항목 : 이름</li>
+							
+							<li>자동수집항목: IP(Internet Protocol)주소, 접속로그, 쿠키 정보 등</li>
+						</ul>
+					</dd>
+					<dt>개인정보의 보유 및 이용기간</dt>
+					<dd class="skinFont-normal">oo 홈페이지 게시판 운영(해당 게시글 삭제 시)까지 처리 목적이 달성된 경우에는 지체 없이 개인정보를 파기합니다.</dd>
+					<dt>동의를 거부할 권리 및 불이익 내용</dt>
+					<dd class="skinFont-normal">개인정보 수집에 동의를 거부할 수 있으며, 동의 거부 시 oo 홈페이지 게시판 글 등록을 하실 수 없습니다.</dd>
+				</dl>
+				<p class="skinMb-xsmall">※수집된 개인정보는 위 목적 이외의 용도로는 이용되지 않으며, 제3자에게 제공하지 않습니다.</p>
+			</div>
+			<div class="check">
+				<input type="checkbox" class="skinIptPass" id="Private">  
+				<label for="Private" class="skinColor-fmInfo">개인정보 수집 및 이용목적에 동의하십니까?</label>
+			</div>
+			<div class="skinTxa-center skinMt-large">
+				<a href="#nolink" onclick="checkPrivatePopup();" class="skinBtnBo skinBtnBo-data-neg">동의</a> 
+				<a href="/ct/tour/tour_guide/application" class="skinBtnBo skinBtnBo-data-pos">동의 취소</a>
+			</div>
+		</div>
+	</div>	
 </body>
 
 </html>
+<script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
 
 
 <!--[d] 인클루드, 디자인 확인 용 개발 시 제거-->
@@ -477,6 +781,21 @@
 		}, 2000);
 		p_ctrlFiles();
 		p_dataPicker();
+
+		$(".root_daum_roughmap").each(function(index, item){
+			if ($(".root_daum_roughmap[data-time]").length) {
+				var time = $(this).attr('data-time');
+				var key = $(this).attr('data-key');
+				var width = $(this).attr('data-width');
+				var height = $(this).attr('data-height');
+				new daum.roughmap.Lander({
+					"timestamp" : time,
+					"key" : key,
+					"mapWidth" : width,
+					"mapHeight" : height
+				}).render();
+			}
+		});
 	};
 	$(function(){
 		includeLayout();
