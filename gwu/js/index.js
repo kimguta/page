@@ -68,7 +68,7 @@ $(function() {
 
 
     var slickOption2 = {
-        autoplay: true,
+        // autoplay: true,
         arrows: true,
         accessibility: false,
         dots: false,
