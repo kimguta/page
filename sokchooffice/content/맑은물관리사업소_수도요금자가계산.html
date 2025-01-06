@@ -1,0 +1,131 @@
+<h4 class="titLv">수도요금 자가계산</h4>
+<div class="self_bx">
+    <ul>
+        <li>가구수의 경우 가정용일때 입력하세요.</li>
+        <li>일반용등과 겸업할 경우, 가정용 외에 대표업종을 선택하세요.</li>
+        <li>아래 입력란에 정확히 입력하신 후 ‘계산하기’ 버튼을 누르시면 결과를 보실 수 있습니다. </li>
+    </ul>    
+</div>
+<div class="calc_tit">
+    <img src="/page/sokchooffice/images/contents/icon_11.png" alt="">
+    요금계산
+</div>
+<form method="post" id="f66" name="f66">
+    <div class="calc_group">
+        <ul>
+            <li>
+                <span>상수도업종</span>
+                <select name="waterSector" id="waterSector">
+                    <option value="01">가정용</option>
+                    <option value="02">일반용(1~100)</option>
+                    <option value="02">일반용(101~300)</option>
+                    <option value="02">일반용(301~500)</option>
+                    <option value="02">일반용(501이상)</option>
+                    <option value="03">전용공업용(1~150)</option>
+                    <option value="03">전용공업용(151이상)</option>
+                </select>
+            </li>
+            <li>
+                <span>사용량</span><input type="number" name="usage" id="usage" value="">
+                <label for="">m³</label>
+            </li>
+            <li>
+                <span>가구수</span>
+                <input type="number" name="householdNumber" id="householdNumber" value="">
+                <label for="">세대</label>
+            </li>
+            <li>
+                <span>구경</span>
+                <select name="caliber" id="caliber">
+                    <option value="1">13</option>
+                    <option value="2">20</option>
+                    <option value="3">25</option>
+                    <option value="4">32</option>
+                    <option value="5">40</option>
+                    <option value="6">50</option>
+                    <option value="7">75</option>
+                    <option value="8">100</option>
+                    <option value="9">150</option>
+                    <option value="10">200</option>
+                    <option value="11">250</option>
+                    <option value="12">300</option>
+                    <option value="13">350</option>
+                    <option value="14">400</option>
+                    <option value="1">13</option>
+                    <option value="2">20</option>
+                    <option value="3">25</option>
+                    <option value="4">32</option>
+                    <option value="5">40</option>
+                    <option value="6">50</option>
+                    <option value="7">75</option>
+                    <option value="8">100</option>
+                    <option value="9">150</option>
+                    <option value="10">200</option>
+                    <option value="11">250</option>
+                    <option value="12">300</option>
+                    <option value="13">350</option>
+                    <option value="14">400</option>
+                </select>
+                <label for="">mm</label>
+            </li>
+        </ul>
+        <div class="calc_btn">
+            <a href="javascript:void(0)" id="getWaterChargeCalculation" class="reset">초기화</a>
+            <a href="javascript:void(0)" id="getWaterChargeCalculation">계산하기</a>
+        </div>
+    </div>
+</form>
+<div id="calc_result" class="active">
+    <div class="calc_tit">
+        <img src="/page/sokchooffice/images/contents/icon_11.png" alt="결과 아이콘 이미지">
+        계산결과
+    </div>
+    <form method="post" id="f66" name="f66">
+        <div class="calc_group v2">
+            <ul>
+                <li>
+                    <span>상수도업종</span>
+                   <input type="text" value="가정용" disabled>
+                </li>
+                <li>
+                    <span>가구수</span>
+                    <input type="text"  name="householdNumber" id="householdNumber"  value="3" disabled>
+                    <label for="">세대</label>
+                </li>
+                <li>
+                    <span>상수도 사용량</span>
+                    <input type="text" name="usage" id="usage" value="10" disabled>
+                    <label for="">m³</label>
+                </li>
+                <li>
+                    <span>요금</span>
+                    <input type="text" name="fee" id="fee" value="5,800" disabled>
+                    <label for="">원</label>
+                </li>
+                <li>
+                    <span>하수도 사용량</span>
+                    <input type="text" name="usage01" id="usage01" value="10" disabled>
+                    <label for="">m³</label>
+                </li>
+                <li>
+                    <span>요금</span>
+                    <input type="text" name="fee" id="fee" value="8,130" disabled>
+                    <label for="">원</label>
+                </li>
+                <li>
+                    <span>구경</span>
+                    <input type="text" name="caliber" id="caliber" value="13" disabled>
+                    <label for="">㎜</label>
+                </li>
+                <li>
+                    <span>구경별 정액</span>
+                    <input type="text" name="caliber_fee" id="caliber_fee" value="510" disabled>
+                    <label for="">원</label>
+                </li>
+            </ul>
+            <div class="calc_btn">
+                <a href="javascript:void(0)" class="total">합계 14,400원</a>
+            </div>
+        </div>
+    </form>
+</div>
