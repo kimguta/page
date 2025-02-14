@@ -41,6 +41,11 @@
 		<main id="sub">
 			<div id="sub-visual">
 				<img src="/page/gwu/images/sub/sub_visualimg01.jpg" alt="" class="visual-img">
+				<!-- <img src="/page/gwu/images/sub/sub_visualimg02.jpg" alt="" class="visual-img">
+				<img src="/page/gwu/images/sub/sub_visualimg03.jpg" alt="" class="visual-img">
+				<img src="/page/gwu/images/sub/sub_visualimg04.jpg" alt="" class="visual-img">
+				<img src="/page/gwu/images/sub/sub_visualimg05.jpg" alt="" class="visual-img">
+				<img src="/page/gwu/images/sub/sub_visualimg06.jpg" alt="" class="visual-img"> -->
 				<div class="inner">
 					<h2>
 						<em>GSU</em>
@@ -132,15 +137,15 @@
 					<h3>3DEPTH</h3>
 				</div>
 
-				<div id="content-tab">
+				<!--[d] 4댑스 메뉴입니다-->
+				<!-- <div id="content-tab">
 					<a href="#">4DEPTH</a>
 					<a href="#">4DEPTH</a>
 					<a href="#" class="active">4DEPTH</a>
-					<a href="#">4DEPTH</a>
-				</div>
+				</div> -->
 
 				
-				<div class="contsArea skinContainer" id="contentsArea" include-html="/page/gwu/content/0content-ui.html">
+				<div class="contsArea skinContainer" id="contentsArea" include-html="/page/gwu/content/03축구부.html">
 					<!--콘텐츠 입력 -->
 					
 				</div>	
@@ -281,125 +286,135 @@
 </style>
 	
 <script>
-	function subScript(){	
-		setTimeout(function() {
-				var SubOption = {
-				autoplay: false,
-				arrows: true,
-				accessibility: false,
-				dots:true,
-				prevArrow: $('.boGalleryView .boGalleryView-btnPrev'),
-				nextArrow: $('.boGalleryView .boGalleryView-btnNext'),
-				draggable: true,
-				infinite: true,
-				slidesToShow: 1,
-				slidesToScroll: 1,
-				pauseOnHover: false,
-				speed: 600,
-				adaptiveHeight: true,
-			};
-			initSlick($('.boGalleryView .boGalleryView-view'), SubOption);	
-		}, 2000);
-		p_ctrlFiles();
-		p_dataPicker();
-	};
-	$(function(){
-		includeLayout();
-		textChange();
-		$.ajax({	
-			url: "/page/gwu/content/list.txt",
-			dataType:"text",
-			success: function (data) {
-				var dataArr = data.split("\n");
-				for (var i = 0; i < dataArr.length; i++) {
-					$('.puble-index .view div').append('<p><a href="/page/gwu/content/'+dataArr[i]+'">'+ dataArr[i] +'</a><button class="copy-html">HTML복사</button></p>');
-					// $('.puble-index .view').addClass('live');
-				}
-			},
-		});
-	});
+$(function () {
+    // Initialize layout and dynamic elements
+    includeLayout();
+    textChange();
 
-	function countContent(){
-		var pageUrl = $(location).attr('href');
-		if (pageUrl.match("git")){
-			var count = $('.puble-index .view div p').length;
-		}
-		else{
-			var count = $('.puble-index .view div p').length - 1;
-		}
-		$('.puble-index .view strong em').text(count);
-	};	
+    // Fetch and display content list
+    $.ajax({
+        url: "/page/gwu/content/list.txt",
+        dataType: "text",
+        success: function (data) {
+            const dataArr = data.split("\n").filter(Boolean);
+            const viewDiv = $('.puble-index .view div');
+            dataArr.forEach(item => {
+                viewDiv.append(
+                    `<p><a href="/page/gwu/content/${item}">${item}</a><button class="copy-html">HTML복사</button></p>`
+                );
+            });
+        },
+        error: function () {
+            console.error("Failed to load content list.");
+        }
+    });
 
-	function includeLayout(){
-		var includeArea = $("[include-html]");
-		var self, url;
-		$.each(includeArea, function() {
-			self = $(this);
-			url = self.attr("include-html");
-			self.load(url, function(){
-				$("[include-html]").removeAttr("include-html");
-				contentScript();
-				subScript();
-			});
-		});
-		// $.getScript('/page/basic/js/sub.js');
-	};
+    // Event delegation
+    $(document)
+        .on('click', '.puble-index .sub', function (e) {
+            e.preventDefault();
+            $('.puble-index .view').toggle();
+            $('.pre-view').css('display', 'none');
+            textChange();
+            countContent();
+        })
+        .on('click', '.puble-index .view div a', function (e) {
+            e.preventDefault();
+            const contUrl = $(this).attr('href');
+            $('.contsArea').attr('include-html', contUrl);
+            includeLayout();
+            $('.puble-index .view').hide();
+			$('.pre-view').css('display', 'none');
+            textChange();
+        })
+        .on('mouseover', '.puble-index .view div a', function (e) {
+            e.preventDefault();
+            $('.pre-view').css('display', 'flex');
+            const contUrl = $(this).attr('href');
+            const iframe = $('iframe');
+            iframe.contents().find('.contsArea').attr('include-html', contUrl);
+            iframe.contents().find('html').addClass('view-mode');
+            iframe.each(function () {
+                if (this.contentWindow.includeLayout) {
+                    this.contentWindow.includeLayout();
+                }
+            });
+        })
+        .on('click', '.puble-index .view .copy-html', function (e) {
+            e.preventDefault();
+            const contUrl2 = $(this).prev('a').attr('href');
+            const fileName = $(this).prev('a').text();
 
-	function textChange(){
-		var text = $('.puble-index .sub').text();
-		if(text == '콘텐츠목록열기'){
-			$('.puble-index .sub').text('콘텐츠목록닫기');
-		}else{
-			$('.puble-index .sub').text('콘텐츠목록열기');
-		}
-	}; 
+            $.ajax({
+                url: contUrl2,
+                success: function (result) {
+                    const copyBox = $('<textarea class="copy-bx"></textarea>').appendTo('.puble-index');
+                    copyBox.text(result).select();
+                    document.execCommand('copy');
+                    copyBox.remove();
+                    alert(`${fileName} 복사 완료.`);
+                },
+                error: function () {
+                    alert(`${fileName} 복사 실패.`);
+                }
+            });
+        });
+});
 
-	$(document).on({
-		'click': function(e) { 
-			e.preventDefault();
-			$('.puble-index .view').toggle();
-			$(".pre-view").css('display','none');
-			textChange();
-			countContent();
-		}
-	}, '.puble-index .sub')
-	.on({
-		'click': function(e) { 
-			e.preventDefault();
-			$(".pre-view").css('display','none');
-			var contUrl = $(this).attr('href');
-			$('.contsArea').attr('include-html', contUrl);
-			includeLayout();
-			$('.puble-index .view').hide();
-			textChange();
-		},
-		'mouseover': function(e) { 
-			e.preventDefault();
-			$(".pre-view").css('display','flex');
-			var contUrl = $(this).attr('href');
-			$("iframe").contents().find('.contsArea').attr('include-html', contUrl);
-			$("iframe").contents().find('html').addClass('view-mode');
-			$("iframe")[0].contentWindow.includeLayout();
-			$("iframe")[1].contentWindow.includeLayout();
-		}
-	}, '.puble-index .view div a')
-	.on({
-		'click': function(e) { 
-			e.preventDefault();
-			var contUrl2 = $(this).prev('a').attr('href');
-			var fileName = $(this).prev('a').text();
-			$.ajax({
-				url : contUrl2,
-				success : function(result) {
-					$('.puble-index').append('<textarea class="copy-bx"></textarea>')
-					$('.puble-index .copy-bx').text(result).select();
-					document.execCommand('copy');
-					$('.puble-index .copy-bx').remove();
-					alert(fileName+'복사');
-				}
-			});
-		}
-	}, '.puble-index .view .copy-html');
+function includeLayout() {
+    const includeArea = $('[include-html]');
+    includeArea.each(function () {
+        const self = $(this);
+        const url = self.attr('include-html');
+        self.load(url, function () {
+            self.removeAttr('include-html');
+            contentScript();
+            subScript();
+        });
+    });
+}
+
+function textChange() {
+    const subText = $('.puble-index .sub');
+    const text = subText.text();
+    subText.text(text === '콘텐츠목록열기' ? '콘텐츠목록닫기' : '콘텐츠목록열기');
+}
+
+function countContent() {
+    const pageUrl = $(location).attr('href');
+    const count = $('.puble-index .view div p').length - (pageUrl.includes("git") ? 0 : 1);
+    $('.puble-index .view strong em').text(count);
+}
+
+function subScript() {
+    setTimeout(function () {
+        const SubOption = {
+            autoplay: false,
+            arrows: true,
+            accessibility: false,
+            dots: true,
+            prevArrow: $('.boGalleryView .boGalleryView-btnPrev'),
+            nextArrow: $('.boGalleryView .boGalleryView-btnNext'),
+            draggable: true,
+            infinite: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            pauseOnHover: false,
+            speed: 600,
+            adaptiveHeight: true,
+        };
+        if (typeof initSlick === 'function') {
+            initSlick($('.boGalleryView .boGalleryView-view'), SubOption);
+        }
+    }, 2000);
+    if (typeof p_ctrlFiles === 'function') {
+        p_ctrlFiles();
+    }
+    if (typeof p_dataPicker === 'function') {
+        p_dataPicker();
+    }
+}
+
 	
 </script>
 <!--//[d] 인클루드, 디자인 확인 용 개발 시 제거-->

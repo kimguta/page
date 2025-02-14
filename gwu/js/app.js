@@ -5,6 +5,7 @@ function initSlick(target, options) {
     var $PlayBtn = target.parent().find('.control .play');
     var $PauseBtn = target.parent().find('.control .pause');
     var $Count = target.parent().find('.count');
+    var $Dots = target.parent().find('.dots');
 
     target.on('beforeChange', function (event, slick, currentSlide, nextSlide) {
         // 슬라이드 변경 전에 실행할 로직
@@ -71,7 +72,52 @@ var $Doc = $(document);
 // 모바일 분기
 var $MobileWidth = 1440;
 
+window.addEventListener('load', function () {
+    let startX = 0;
+    let currentTranslate = 0;
+    let isDragging = false;
 
+    function isScreenWidthValid() {
+        return window.innerWidth <= 1440;
+    }
+
+    $('#sitemap').on('touchstart', function (e) {
+        if (!isScreenWidthValid()) return;
+
+        startX = e.touches[0].clientX;
+        isDragging = true;
+    });
+
+    $('#sitemap').on('touchmove', function (e) {
+        if (!isDragging || !isScreenWidthValid()) return;
+
+        const touchX = e.touches[0].clientX;
+        const deltaX = touchX - startX;
+        const parentWidth = $(this).parent().width();
+        currentTranslate = (deltaX / parentWidth) * 100;
+
+        if (currentTranslate < 0) {
+            currentTranslate = 0;
+        }
+
+        $(this).css('transform', `translateX(${currentTranslate}%)`);
+    });
+
+    $('#sitemap').on('touchend', function () {
+        if (!isDragging || !isScreenWidthValid()) return;
+
+        isDragging = false;
+
+        if (currentTranslate > 30) {
+
+            $('#header, .sitemap').removeClass('active');
+        } 
+        $(this).removeAttr('style');
+      
+
+        currentTranslate = 0; // Reset
+    });
+});
 
 
 $Win.on({
@@ -96,16 +142,17 @@ $Win.on({
                 e.preventDefault(); // 기본 동작 막기
             }
         });
-        var $WinWidth = $Win.outerWidth();
-        if ($WinWidth > $MobileWidth) {
-            setTimeout(function() {
-                $('.Htlv01').add('.Htlv02').add('.Htlv03').removeClass('active');
-            }, 100);
-        } else {
-            $('.Htlv01').filter('.active').next('.Hdepth02').show();
-            $('.Htlv02').filter('.active').next('.Hdepth03').show();
-        }
+        // var $WinWidth = $Win.outerWidth();
+        // if ($WinWidth > $MobileWidth) {
+        //     setTimeout(function() {
+        //         $('.Htlv01').add('.Htlv02').add('.Htlv03').removeClass('active');
+        //     }, 100);
+        // } else {
+        //     // $('.tit01').filter('.active').next('.depth02-bx').show();
+        //     // $('.tit02').filter('.active').next('.Hdepth03').show();
+        // }
         $('#sitemap .item02 > div').prev('.tit02').addClass('has_depth');
+        $('#sitemap .item01 > div').prev('.tit01').addClass('has_depth');
     }
 });
 
@@ -166,7 +213,7 @@ $Doc.on({
         e.preventDefault();
         $('#header.mobile-mode .tit01').removeClass('active').filter(this).addClass('active');
     }
-}, '#header.mobile-mode .tit01')
+}, '#header.mobile-mode .tit01.has_depth')
 .on({
     'click': function(e) {
         e.preventDefault();
@@ -314,5 +361,21 @@ $(function() {
         ]
     }; 
     initSlick($('#quick-menu .slick'), slickOptionq);
+
+
+    var $stickyDiv = $('.sticky-div'); 
+    var originalTop = $('.sticky-div').offset().top;
+
+    $(window).on('scroll load', function() {
+      var scrollTop = $(window).scrollTop();
+      var moveTop = scrollTop - originalTop;
+     if(scrollTop >=  originalTop){
+        $stickyDiv.css('top', moveTop + 72);
+        
+     }else{
+        $stickyDiv.removeAttr('style');
+     }
+    });  
+      
 });
 
