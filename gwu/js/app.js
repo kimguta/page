@@ -142,6 +142,7 @@ $Win.on({
                 e.preventDefault(); // 기본 동작 막기
             }
         });
+        
         // var $WinWidth = $Win.outerWidth();
         // if ($WinWidth > $MobileWidth) {
         //     setTimeout(function() {
@@ -221,12 +222,19 @@ $Doc.on({
     }
 }, '#header.mobile-mode .tit02.has_depth')
 .on({
-    'click': function(e) {
+    'mouseenter': function(e) {
         e.preventDefault();
-        $(this).toggleClass('active');
-        $('.lang-view').toggle();
+        $(this).addClass('active');
+        $('.lang-view').show();
     }
 }, '.language-bx button')
+.on({
+    'mouseleave': function(e) {
+        e.preventDefault();
+        $(this).removeClass('active');
+        $('.lang-view').hide();
+    }
+}, '#header')
 .on({
     'click': function(e) {
         e.preventDefault();
@@ -306,9 +314,9 @@ $(window).on('load', function() {
     $(window).on('scroll', function() {
         var currentScrollTop = $(this).scrollTop(); // 현재 스크롤 위치 가져오기
         // $('#header').toggleClass('scrolled', $(document).scrollTop() > 0);
-        $('#header').toggleClass('fixed', $(document).scrollTop() > 0);
+        $('#header').toggleClass('fixed', $(document).scrollTop() > 100);
         $('#header').toggleClass('down', currentScrollTop > lastScrollTop); 
-
+        $("#btn-top").toggleClass('active', currentScrollTop > lastScrollTop);
         lastScrollTop = currentScrollTop; // 마지막 스크롤 위치 업데이트
     });
 });
@@ -316,18 +324,7 @@ $(window).on('load', function() {
 
 
 $(function() {
-	var currentPosition = parseInt($("#btn-top").css("top"));
-	$Win.on({
-		'scroll': function() { 
-			var posY = $Win.scrollTop();
-			$("#btn-top").stop().css("top",posY+currentPosition);
-			if ( posY > 100 ){
-				$("#btn-top").addClass('active');
-			} else if(posY < 100) {
-				$("#btn-top").removeClass('active');
-			}
-		}	
-	});
+
 
 	let vh = window.innerHeight;
     document.documentElement.style.setProperty("--vh", vh + "px");
@@ -363,19 +360,21 @@ $(function() {
     initSlick($('#quick-menu .slick'), slickOptionq);
 
 
-    var $stickyDiv = $('.sticky-div'); 
-    var originalTop = $('.sticky-div').offset().top;
+    // var $stickyDiv = $('.sticky-div'); 
+    // var originalTop = $('.sticky-div').offset().top;
 
-    $(window).on('scroll load', function() {
-      var scrollTop = $(window).scrollTop();
-      var moveTop = scrollTop - originalTop;
-     if(scrollTop >=  originalTop){
-        $stickyDiv.css('top', moveTop + 72);
+    // $(window).on('scroll load', function() {
+    //   var scrollTop = $(window).scrollTop();
+    //   var moveTop = scrollTop - originalTop;
+    //  if(scrollTop >=  originalTop){
+    //     $stickyDiv.css('top', moveTop + 72);
         
-     }else{
-        $stickyDiv.removeAttr('style');
-     }
-    });  
+    //  }else{
+    //     $stickyDiv.removeAttr('style');
+    //  }
+    // });  
+    $('#main').after('<button type="button" id="btn-top"><img src="/page/gwu/images/common/top.png" alt="위로"></button>');
+
       
 });
 

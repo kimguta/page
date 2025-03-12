@@ -68,7 +68,7 @@ $(function() {
 
 
     var slickOption2 = {
-        // autoplay: true,
+        autoplay: true,
         arrows: true,
         accessibility: false,
         dots: false,
@@ -150,7 +150,9 @@ $Doc.on({
         $('.today-tab button').removeClass('active').filter(this).addClass('active');
         $('.today-view > div').removeClass('active').eq(Idx).addClass('active');
     }
-}, '.today-tab button');
+}, '.today-tab button')
+
+  
 // .on({
 //     'click': function(e) {
 //         e.preventDefault();
@@ -210,20 +212,35 @@ function elemOffset(obj) {
 // 플래그를 전역으로 설정
 let hasExecuted = false;
 let hasExecuted2 = false;
+var vdo = document.getElementById("myVideo");
 
 $(window).on('scroll', function() {
     // 스크롤 이벤트가 한 번만 실행되도록 설정
     if (!hasExecuted2) {
         if ($(document).scrollTop() >=  $('#main-movie-wrap').height()) {  
-          
             $('#main-movie-wrap').toggleClass('active');
             hasExecuted2 = true;
         }   
     }else{
         if ($(document).scrollTop() <= $('#main-movie-wrap').height()) {  
             hasExecuted2 = false;
+
         }
     } 
     $('#quick-menu').toggleClass('active', $(document).scrollTop() >= $('#main-movie-wrap').height());
+    $('#quick-menu').toggleClass('active', $(document).scrollTop() >= $('#main-top-movie').height());
     elemOffset('.youtube-bx'); 
+
+    if ($(document).scrollTop() >=  $('#main-movie-wrap').height()) {  
+        vdo.muted = true;
+    }else{
+        if ($('.sound button').hasClass('active')) {
+            vdo.muted = false;
+        }
+    }
+
 });
+
+
+
+

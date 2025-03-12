@@ -260,32 +260,47 @@
 				}
 			 </script>-->
 			 <video autoplay loop muted id="myVideo" style="width:100%;position: relative;">
-				<source src="/page/gwu/20초.mp4" type="video/mp4">
+				<source src="/page/gwu/23초.mp4" type="video/mp4">
 			</video>
-
+			 <!-- <img src="/page/gwu/images/main/strengths_img.jpg" alt="" class="hide-img">  -->
+			 <img src="/page/gwu/images/main/ico_scroll.png" alt="scroll" class="scroll-img">
+			 <div class="sound">
+				<button type="button" class="play">
+				   <span class="sr-only">재생시작</span>
+			   </button>
+			</div>
 			<script>
 				var vdo = document.getElementById("myVideo");
 				vdo.playbackRate = 1;
+				var Idx = $(this).index();
 				$('#main-movie-wrap').on('click', function(){
 					 if (vdo.muted) {
 						vdo.muted = false;
+						$('.sound button').addClass('active');
 					} else {
 						vdo.muted = true;
+						$('.sound button').removeClass('active');
 					}
 				});
+				$('.sound button').on('click', function(e) {
+					var video = $('#myVideo').get(0);
+					if(video.muted !== true) {
+						$(this).removeClass('active');
+						$('.sr-only').text('재생시작');
+						vdo.muted = false;
+					} else {
+						$(this).addClass('active');
+						$('.sr-only').text('재생중지');
+						vdo.muted = true;
+				}
+  				});
 			</script>
-
-
-			 <!-- <img src="/page/gwu/images/main/strengths_img.jpg" alt="" class="hide-img">  -->
-			 <img src="/page/gwu/images/main/ico_scroll.png" alt="scroll" class="scroll-img">
 		</div>
 
-	
-
 		<main id="main">
-
 			<section id="today">
 				<div class="inner">
+				
 					<div class="title-tab-bx" data-aos="fade-right">
 						<h2 class="main-title">
 							Today
@@ -422,44 +437,44 @@
 					<div class="schedule-bx"  data-aos="fade-left">
 						<a href="#">
 							<strong class="date">
-								<em>12.04</em>
+								<em>12.04.</em>
 							</strong>
 							<p>
-								<span>12.04(수) ~ 12.13(금)</span>
+								<span>12.04.(수) ~ 12.13.(금)</span>
 								<span>2024학년도 2학기 2차 직무수행역량평가</span>
 							</p>
 						</a>
 						<a href="#">
 							<strong class="date">
-								<em>12.04</em>
+								<em>12.04.</em>
 							</strong>
 							<p>
-								<span>12.04(수) ~ 12.13(금)</span>
+								<span>12.04.(수) ~ 12.13.(금)</span>
 								<span>2024학년도 2학기 2차 직무수행역량평가</span>
 							</p>
 						</a>
 						<a href="#">
 							<strong class="date">
-								<em>12.04</em>
+								<em>12.04.</em>
 							</strong>
 							<p>
-								<span>12.04(수) ~ 12.13(금)</span>
+								<span>12.04.(수) ~ 12.13.(금)</span>
 								<span>2024학년도 2학기 2차 직무수행역량평가</span>
 							</p>
 						</a>
 						<a href="#">
 							<strong class="date">
-								<em>12.04</em>
+								<em>12.04.</em>
 							</strong>
 							<p>
-								<span>12.04(수) ~ 12.13(금)</span>
+								<span>12.04.(수) ~ 12.13.(금)</span>
 								<span>2024학년도 2학기 2차 직무수행역량평가</span>
 							</p>
 						</a>
-						<a href="#" class="all-view1">
+					<!-- 	<a href="#" class="all-view1">
 							전체보기
 							<img src="/page/gwu/images/common/button_arrow_ico_bk.png" alt="">
-						</a>
+						</a> -->
 					</div>
 				</div>
 				<video autoplay muted id="myVideo2" loop>
@@ -769,10 +784,10 @@
 										<span> 
 											언론으로 본 GSU<em>스포츠서울</em>
 										</span>
-										<strong>GSU-2030+ 강원도립대 중장기발전계획 수립 용역제안서 평가위원회 예비평가위원(후보자)...</strong>
+										<strong>GSU-2030+ 강원도립대 중장기발전계획 수립 용역제안서 평가위원회 예비평가위원(후보자)...GSU-2030+ 강원도립대 중장기발전계획 수립 용역제안서 평가위원회 예비평가위원(후보자)...</strong>
 									</p>
 									<a href="#">
-										<img src="/page/gwu/images/main/media_button_arrow_ico_bk.png" alt="뉴스 이동">
+										<span class="blind">뉴스이동</span>
 									</a>
 								</div>
 							</div>
@@ -786,7 +801,7 @@
 										<strong>GSU-2030+ 강원도립대 중장기발전계획 수립 용역제안서 평가위원회 예비평가위원(후보자)...</strong>
 									</p>
 									<a href="#">
-										<img src="/page/gwu/images/main/media_button_arrow_ico_bk.png" alt="뉴스 이동">
+										<span class="blind">뉴스이동</span>
 									</a>
 								</div>
 							</div>
@@ -800,14 +815,42 @@
 										<strong>GSU-2030+ 강원도립대 중장기발전계획 수립 용역제안서 평가위원회 예비평가위원(후보자)...</strong>
 									</p>
 									<a href="#">
-										<img src="/page/gwu/images/main/media_button_arrow_ico_bk.png" alt="뉴스 이동">
+										<span class="blind">뉴스이동</span>
+									</a>
+								</div>
+							</div>
+							<div class="item">
+								<strong><em>2024.12</em>16</strong>
+								<div>
+									<p>
+										<span> 
+											언론으로 본 GSU<em>스포츠서울</em>
+										</span>
+										<strong>GSU-2030+ 강원도립대 중장기발전계획 수립 용역제안서 평가위원회 예비평가위원(후보자)...</strong>
+									</p>
+									<a href="#">
+										<span class="blind">뉴스이동</span>
+									</a>
+								</div>
+							</div>
+							<div class="item">
+								<strong><em>2024.12</em>16</strong>
+								<div>
+									<p>
+										<span> 
+											언론으로 본 GSU<em>스포츠서울</em>
+										</span>
+										<strong>GSU-2030+ 강원도립대 중장기발전계획 수립 용역제안서 평가위원회 예비평가위원(후보자)...</strong>
+									</p>
+									<a href="#">
+										<span class="blind">뉴스이동</span>
 									</a>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<video autoplay muted id="myVideo3" loop>
+				<video autoplay muted id="myVideo3" loop playsinline>
 					<source src="/page/gwu/Media_bg.mp4" type="video/mp4">
 				</video>
 			</section>
@@ -815,7 +858,7 @@
 			<section id="pride">
 				<div class="inner">
 					<h2 class="main-title"  data-aos="fade-down">
-						Pride in
+						PeoPle in
 						<strong>GSU</strong>
 					</h2>
 				</div>
@@ -930,10 +973,10 @@
 							</div>
 							<div class="y-bx">
 								<a href="#" class="sns-link">
-									<img src="/page/gwu/images/main/sns_youtube_img01.png" alt="">
+									<img src="/page/gwu/images/main/hq720.jpg" alt="">
 								</a>
 								<a href="#" class="sns-link">
-									<img src="/page/gwu/images/main/sns_youtube_img02.png" alt="">
+									<img src="/page/gwu/images/main/hq721.jpg" alt="">
 								</a>
 							</div>
 						</div>
@@ -942,38 +985,41 @@
 			</section>
 			
 			<section id="information">
-				<a href="#" class="item" data-aos="fade-up"  data-aos-delay="2000">
+				<a href="#" class="item aos-init aos-animate" data-aos="fade-up" data-aos-delay="2000">
 					<img src="/page/gwu/images/main/strengths_ico01.png" alt="">
 					<span>교육부 전문대학 <br>
 						혁신지원 사업</span>
 					<strong>연간35억 원 총 105억 원</strong>
 				</a>
-				<a href="#" class="item" data-aos="fade-up"  data-aos-delay="1000">
+				<a href="#" class="item aos-init aos-animate" data-aos="fade-up" data-aos-delay="1000">
 					<img src="/page/gwu/images/main/strengths_ico02.png" alt="">
 					<span>교육부 산학연협력<br>
 						선도전문대학 육성사업</span>
 					<strong>연간11억 원 총 66억 원</strong>
 				</a>
-				<a href="#" class="item" data-aos="fade-up">
+				<a href="#" class="item aos-init aos-animate" data-aos="fade-up">
 					<img src="/page/gwu/images/main/strengths_ico03.png" alt="">
 					<span>교육부 고등직업교육<br>
 						거점 지구 사업</span>
 					<strong>연간20억 원 총 60억 원</strong>
 				</a>
-				<a href="#" class="item" data-aos="fade-up"  data-aos-delay="1500">
+				<a href="#" class="item aos-init aos-animate" data-aos="fade-up" data-aos-delay="1500">
 					<img src="/page/gwu/images/main/strengths_ico04.png" alt="">
 					<span>중소벤처기업부<br>
 						메이커스페이스(전문랩)구축<br>
 						운영사업</span>
 					<strong>연간15억 원 총 74억 원</strong>
 				</a>
-				<a href="#" class="item" data-aos="fade-up"  data-aos-delay="2500">
+				<a href="#" class="item aos-init aos-animate" data-aos="fade-up" data-aos-delay="2500">
 					<img src="/page/gwu/images/main/strengths_ico05.png" alt="">
 					<span>교육부 신산업분야<br>
 						특화선도전문대학<br>
 						지원사업2.0</span>
 					<strong>연간10억 원 총30억 원</strong>
 				</a>
+			</section>
+
+			
 			</section>
 		</main>	
 

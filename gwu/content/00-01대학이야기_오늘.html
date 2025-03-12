@@ -108,3 +108,46 @@
     </div>
 </div>
 
+<script>
+    const container = document.querySelector('.zoom-wrap');
+	const scrollZoomBox = container.querySelector('.scroll-zoom-bx');
+	const img = scrollZoomBox.querySelector('img');
+
+	function handleScroll() {
+		let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+		let windowHeight = window.innerHeight;
+		let containerTop = container.offsetTop;
+		let containerHeight = container.offsetHeight;
+
+		// 스크롤 효과가 언제부터 시작될지 조정 (크면 늦게 시작)
+		let offset = 200;
+
+		// 분모를 작게 할수록 더 빨리 100%에 도달
+		// (windowHeight + containerHeight * 0.7)는 예시로 0.7 배수만 사용
+		let progress =
+		(scrollTop + windowHeight - (containerTop + offset)) /
+		((windowHeight + containerHeight * 0.69) - offset);
+
+		// 0 ~ 1 범위로 클램핑
+		if (progress < 0) progress = 0;
+		if (progress > 1) progress = 1;
+
+		// ✅ "확확" 커지는 느낌을 위해 ease out ( √progress )
+		let easedProgress = Math.pow(progress, 0.5); // 0.5 = 제곱근
+		// (원하는 강도에 맞춰 0.3 ~ 0.7 등으로 실험 가능)
+		
+		// 10% ~ 100% 범위
+		let widthPercent = 10 + (90 * easedProgress);
+		img.style.width = widthPercent + '%';
+
+		// ✅ “거의 다(예: 95% 이상) 커졌을 때” .zoom-wrap에 active 클래스 추가/제거
+		if (progress >= 0.85) {
+		container.classList.add('active');
+		} else {
+		container.classList.remove('active');
+		}
+	}
+
+	window.addEventListener('scroll', handleScroll);
+	handleScroll(); // 초기 실행
+</script>
