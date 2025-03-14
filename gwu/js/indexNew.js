@@ -23,7 +23,7 @@ window.addEventListener("scroll", function () {
 });
 
 function updateScrollEffects() {
-    const video = document.getElementById("myVideo");
+    const videoWrapper = document.querySelector(".video-wrapper");
     const mainTopMovie = document.getElementById("main-top-movie");
     let scrollTop = window.scrollY || document.documentElement.scrollTop;
     let maxScroll = window.innerHeight / 1.5;
@@ -32,7 +32,9 @@ function updateScrollEffects() {
 
     let scaleValue = 1 - (scrollTop / maxScroll) * 0.5;
     scaleValue = Math.max(scaleValue, 0.5);
-    video.style.transform = `scale(${scaleValue})`;
+
+    // ✅ 비디오 대신 부모 요소에 적용
+    videoWrapper.style.transform = `scale(${scaleValue})`;
 
     if (scrollTop >= vh50) {
         mainTopMovie.classList.add("small");
@@ -45,16 +47,18 @@ function updateScrollEffects() {
     } else {
         mainTopMovie.classList.remove("smaller");
     }
-
-    ticking = false; // 다음 requestAnimationFrame을 받을 수 있도록 초기화
 }
 
+// ✅ 스크롤 이벤트에 적용
+window.addEventListener("scroll", updateScrollEffects);
 
-  document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {
     function startCounter(counter) {
         const target = +counter.getAttribute("data-target");
         let count = 0;
-        const speed = target / 1200; // 증가 속도 조절
+        
+        // ✅ .fast 클래스가 있으면 2배 빠르게 증가
+        const speed = counter.classList.contains("fast") ? target / 170 : target / 2000;
 
         function updateCount() {
             if (count < target) {
@@ -89,7 +93,7 @@ function updateScrollEffects() {
                 }
             }
         });
-    }, { threshold: 0.5 }); // 50% 이상 보일 때 실행
+    }, { threshold: 0.9 }); // 50% 이상 보일 때 실행
 
     // .counter 요소 감시 시작
     document.querySelectorAll(".counter").forEach(counter => {
@@ -171,6 +175,7 @@ $(function() {
     initSlick($('#media .slick'), slickOption1);
 
 
+
     $('#depart .slick1').slick({
         autoplay: false,
         arrows: true,
@@ -178,7 +183,7 @@ $(function() {
         asNavFor: '#depart .slick2',
         dots: false,
         draggable: true,
-        infinite: true,
+        infinite: false,
         slidesToShow: 1,
         slidesToScroll: 1,
         vertical: true,
@@ -207,7 +212,7 @@ $(function() {
         asNavFor: '#depart .slick1',
         dots: false,
         draggable: true,
-        infinite: true,
+        infinite: false,
         slidesToShow: 2,
         variableWidth: true,
         slidesToScroll: 1,
@@ -228,6 +233,9 @@ $(function() {
         ]
       });
 
+
+     
+
       $('#people .slick1').slick({
         autoplay: false,
         arrows: false,
@@ -242,7 +250,7 @@ $(function() {
         pauseOnHover: false,
         swipeToSlide: true,
         focusOnSelect: true,
-        speed: 500,
+        speed: 0,
         responsive: [
             {
                 breakpoint: 992,
@@ -256,6 +264,17 @@ $(function() {
             }
         ]
       });
+
+    $('#people .slick1').on('beforeChange', function() {
+        $(this).addClass('active');
+    });
+
+    $('#people .slick1').on('afterChange', function(event, slick, currentSlide) {
+        var $slider = $(this); 
+        setTimeout(function(){
+            $slider.removeClass('active');
+        }, 500); 
+    });
 
       $('#people .slick2').slick({
         autoplay: false,
@@ -271,7 +290,7 @@ $(function() {
         verticalSwiping: true,
         pauseOnHover: false,
         swipeToSlide: true,
-        speed: 500,
+        speed: 350,
         responsive: [
             {
                 breakpoint: 992,
@@ -313,6 +332,11 @@ $(function() {
             }
         ]
       });
+
+      $('#air .slick').on('afterChange', function(event, slick, currentSlide) {
+        var $slider = $(this); 
+        $slider.addClass('active');
+    });
 
 });
 

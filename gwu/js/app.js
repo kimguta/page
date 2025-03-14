@@ -231,7 +231,7 @@ $Doc.on({
 .on({
     'mouseleave': function(e) {
         e.preventDefault();
-        $(this).removeClass('active');
+        // $(this).removeClass('active');
         $('.lang-view').hide();
     }
 }, '#header')

@@ -1328,9 +1328,6 @@
 				</div>
 			</div>
 
-			<p style="position:absolute;display:flex;align-items:flex-start;padding-top:210px;top:0;left:0;right:0;bottom:0;justify-content:center;color:#fff;z-index:-1;">
-				모바일 세로모드로 사용해주세요
-			</p>
 			<script>
 			document.addEventListener("DOMContentLoaded", function () {
 				document.querySelectorAll(".pin-btn").forEach(button => {
@@ -1448,31 +1445,29 @@
 					}
 				});
 
-				// .vr-open 클릭 시 동작
-					document.querySelector(".vr-open").addEventListener("click", function () {
-						document.documentElement.classList.add("vr-mode"); // html에 vr-mode 추가
-						document.querySelector("#vr-wrap").classList.add("on"); // #vr-wrap에 on 클래스 추가
-						document.querySelector("#vr-wrap").style.display = "block"; // #vr-wrap 보이기
+				 // .vr-open 클릭 시 동작
+				 document.querySelector(".vr-open").addEventListener("click", function () {
+					document.documentElement.classList.add("vr-mode"); // html에 vr-mode 추가
+					document.querySelector("#vr-wrap").style.display = "block"; // #vr-wrap 보이기
 
-						// #vr-wrap 내 첫 번째 a 요소로 포커스 이동
-						let firstLink = document.querySelector("#vr-wrap a");
-						if (firstLink) {
-							firstLink.focus();
-						}
-					});
+					// #vr-wrap 내 첫 번째 a 요소로 포커스 이동
+					let firstLink = document.querySelector("#vr-wrap a");
+					if (firstLink) {
+						firstLink.focus();
+					}
+				});
 
-					// .vr-close 클릭 시 동작
-					document.querySelector(".vr-close").addEventListener("click", function () {
-						document.documentElement.classList.remove("vr-mode"); // html에서 vr-mode 제거
-						document.querySelector("#vr-wrap").classList.remove("on"); // #vr-wrap에서 on 클래스 제거
-						document.querySelector("#vr-wrap").style.display = "none"; // #vr-wrap 숨기기
+				// .vr-close 클릭 시 동작
+				document.querySelector(".vr-close").addEventListener("click", function () {
+					document.documentElement.classList.remove("vr-mode"); // html에서 vr-mode 제거
+					document.querySelector("#vr-wrap").style.display = "none"; // #vr-wrap 숨기기
 
-						// .vr-open 버튼으로 포커스 이동
-						let vrOpenButton = document.querySelector(".vr-open");
-						if (vrOpenButton) {
-							vrOpenButton.focus();
-						}
-					});
+					// .vr-open 버튼으로 포커스 이동
+					let vrOpenButton = document.querySelector(".vr-open");
+					if (vrOpenButton) {
+						vrOpenButton.focus();
+					}
+				});
 			});
 
 
@@ -1498,14 +1493,14 @@
 				}
 
 				html.vr-mode{position:fixed;}
-				#vr-wrap{position:fixed;top:0;left:0;width:100vw;height:100vh;min-height:900px;z-index:2500;background:#000;display:none;animation:up001 1s 1 both ease-out;}
+				#vr-wrap{position:fixed;top:0;left:0;width:100vw;height:100vh;min-height:900px;z-index:2500;background:#000;display:none;}
 				.vr-title{display:flex;justify-content:center;gap:0 15px;align-items:center;position:absolute;border-radius:0 0 15px 15px;top:0;left:0;width:100%;z-index:20;height:65px;background:#2332ee;color:#fff;}
 				.vr-title img{display:block;height:31px;}
 				.vr-title span{font-size:27px;font-weight:700;padding-left:15px;display:block;position:relative;}
 				.vr-title span:after{content:'';display:block;width:1px;height:24px;background:#fff;position:absolute;left:0;top:50%;margin-top:-12px;}
 				.vr-title button{position:absolute;right:30px;}
 				.vr-title button img{display:block;width:25px;height:auto;}
-				.vr-scroll-bx{overflow:hidden;overflow-x:auto;width:100%;height:100%;position:relative;z-index:10;}
+				.vr-scroll-bx{overflow:hidden;overflow-x:auto;width:100%;height:100%;}
 				.vr-item{min-width:1900px;height:100%;width:100%;display:flex;align-items:center;justify-content:center;position:relative;}
 				.vr-item .bg-img{width:100%;height:100%;position:relative;top:50%;left:0;transform:translateY(-50%);}
 				.pin-wrap{position:absolute;z-index:10;top:0;left:0;right:0;bottom:0;}
@@ -1633,7 +1628,7 @@
 				.vr-view-bx .mode-bx{padding:0 23px 0 7px;background:#ffc000;gap:0 10px;font-size:18px;font-weight:500;border-radius:31px;}
 				.vr-view-bx .mode-bx i{background:#fff;border-radius:50%;width:54px;height:54px;display:flex;align-items:center;justify-content:center;}
 				.vr-view-bx .mode-bx i img{width:32px;}
-				.vr-view-bx.img-mode.on .vr-data-bx:before{content:'';animation:fadevr .5s 1.5s 1 both ease-out;display:block;pointer-events:none;position:absolute;top:50%;left:50%;width:538px;height:538px;transform:translate(-50%, -45%);background:url(/page/gwu/images/main/vr_360img.png) no-repeat center center /cover;}
+				.vr-view-bx.img-mode.on .vr-data-bx:before{content:'';animation:fadevr 1s 2s 1 both ease-out;display:block;pointer-events:none;position:absolute;top:50%;left:50%;width:538px;height:538px;transform:translate(-50%, -45%);background:url(/page/gwu/images/main/vr_360img.png) no-repeat center center /cover;}
 
 				@keyframes circle1{ 
 					0%{transform:scale(.2)}
@@ -1643,11 +1638,6 @@
 				@keyframes fadevr{ 
 					0%{opacity:1;}
 					100%{opacity:0;display:none;}   
-				}
-
-				@keyframes up001{ 
-					0%{transform:translateY(100%);}
-					100%{transform:translateY(0%);}   
 				}
 
 				@media (max-width:1440px){
@@ -1701,16 +1691,14 @@
 					.pin-modal{top:50%;left:50% !important;position:fixed;transform:translate(-50%, -50%);}
 				}
 				
-				@media (max-width:740px){
-					#vr-wrap{min-height:700px;}
-					
+				@media (max-width:716px){
 					.vr-title{height:50px;border-radius:0 0 5px 5px;}
 					.vr-title img{height:25px;}
 					.vr-title span{font-size:16px;}
 					.vr-title span:after{height:16px;margin-top:-8px;}
 					.vr-title button{right:15px;}
 					.vr-title button img{width:21px;}
-					.vr-item{top:0px;}
+					.vr-item{top:-40px;}
 					.pin-modal{top:90px !important;left:20px !important;right:20px !important;width:auto;transform:none;}
 					.pin-modal h2{font-size:22px;margin-bottom:-5px;}
 					.pin-modal li{margin-top:17px;padding-left:15px;}
@@ -1726,7 +1714,7 @@
 					.pin-modal li a div span:last-child{font-size:11px;}
 					.pin-modal .close{top:15px;right:15px;}
 					.pin-modal .close img{width:41.5px;}
-					/* .vr-view-bx .item{max-height:calc(100vh - 10px);} */
+
 					.vr-view-bx{padding:10px;}
 					.vr-view-bx .close{top:10px;right:10px;}
 					.vr-view-bx .close img{width:41.5px;}
@@ -1740,12 +1728,11 @@
 					.vr-view-bx .mode-bx i img{width:18px;}
 					.vr-view-bx.img-mode.on .vr-data-bx:before{width:288px;height:288px;}
 				}
-
-				@media (max-height:550px){
-					.vr-scroll-bx{display:none;}
-				}
 			</style>
 		</div>
+
+
+		
 	</div>
 </body>
 
