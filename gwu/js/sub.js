@@ -70,7 +70,14 @@ ObjDoc.on({
         e.preventDefault();
         $('.flex-fold-bx .item').removeClass('active').filter(this).addClass('active');
     }
-}, '.flex-fold-bx .item');
+}, '.flex-fold-bx .item')
+.on({
+    'click': function(e) {
+        e.preventDefault();
+		var Idx = $(this).index();
+        $('.history-z-bx .item').removeClass('on').eq(Idx).addClass('on');
+    }
+}, '.histoty-year-tab button');
 
 
 //콘텐츠 스크립트 (dom ready 후 동작)
@@ -144,6 +151,7 @@ function contentScript(){
 			}
 		]
 	};
+	
 	
 	$('.history-bg-bx .slick').each(function() {
 		let $this = $(this);

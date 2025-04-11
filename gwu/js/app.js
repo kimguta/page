@@ -170,14 +170,14 @@ $Doc.on({
         
     }
 }, '#header.pc-mode .Hdepth01 > li:not(.enter)')
-.on({
-    'mouseover focusin': function() {
-        $(this).children('.Hdepth03').stop().slideDown(300);
-    },
-    'mouseout': function() {
-        $(this).children('.Hdepth03').stop().slideUp(300);
-    }
-}, '#header.pc-mode .menu-list .item')
+// .on({
+//     'mouseover focusin': function() {
+//         $(this).children('.Hdepth03').stop().slideDown(300);
+//     },
+//     'mouseout': function() {
+//         $(this).children('.Hdepth03').stop().slideUp(300);
+//     }
+// }, '#header.pc-mode .menu-list .item')
 
 .on({
     'focusout': function() {
@@ -305,23 +305,27 @@ $Doc.on({
         $('.search-pop').removeClass('active');
         $('#header .search-open').focus();
     }
-}, '#header .search-close');
+}, '#header .search-close')
+.on({
+    'click': function(e) {
+        e.preventDefault();
+        $('#sitemap').toggle();
+        $('#sitemap .home-btn').focus();
+    }
+}, '#footer .link-bx a:last-child');
 
 $(window).on('load', function() {
-    var $headerOff = $('#header').offset().top; // 윈도우가 로드된 후 초기 오프셋 값을 가져옴
     var lastScrollTop = 0; // 마지막 스크롤 위치 저장 변수
 
     $(window).on('scroll', function() {
         var currentScrollTop = $(this).scrollTop(); // 현재 스크롤 위치 가져오기
-        // $('#header').toggleClass('scrolled', $(document).scrollTop() > 0);
+        $("#btn-top").toggleClass('active', currentScrollTop > lastScrollTop);
         $('#header').toggleClass('fixed', $(document).scrollTop() > 100);
         $('#header').toggleClass('down', currentScrollTop > lastScrollTop); 
         $("#btn-top").toggleClass('active', currentScrollTop > lastScrollTop);
         lastScrollTop = currentScrollTop; // 마지막 스크롤 위치 업데이트
     });
 });
-
-
 
 $(function() {
 
@@ -373,7 +377,7 @@ $(function() {
     //     $stickyDiv.removeAttr('style');
     //  }
     // });  
-    $('#main').after('<button type="button" id="btn-top"><img src="/page/gwu/images/common/top.png" alt="위로"></button>');
+    $('#main, #sub').after('<button type="button" id="btn-top"><img src="/page/gwu/images/common/top.png" alt="위로"></button>');
 
       
 });

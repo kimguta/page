@@ -25,13 +25,20 @@ window.addEventListener("scroll", function () {
 function updateScrollEffects() {
     const videoWrapper = document.querySelector(".video-wrapper");
     const mainTopMovie = document.getElementById("main-top-movie");
+
     let scrollTop = window.scrollY || document.documentElement.scrollTop;
     let maxScroll = window.innerHeight / 1.5;
     let vh50 = window.innerHeight / 2;
     let vh100 = window.innerHeight;
 
+    // 모바일 여부 판단 (716px 이하)
+    const isMobile = window.innerWidth <= 716;
+
+    // 최소 스케일 값 설정 (모바일은 덜 작아지게)
+    const minScale = isMobile ? 0.6 : 0.5;
+
     let scaleValue = 1 - (scrollTop / maxScroll) * 0.5;
-    scaleValue = Math.max(scaleValue, 0.5);
+    scaleValue = Math.max(scaleValue, minScale);
 
     // ✅ 비디오 대신 부모 요소에 적용
     videoWrapper.style.transform = `scale(${scaleValue})`;
@@ -93,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             }
         });
-    }, { threshold: 0.9 }); // 50% 이상 보일 때 실행
+    }, { threshold: 0.55 }); // 50% 이상 보일 때 실행
 
     // .counter 요소 감시 시작
     document.querySelectorAll(".counter").forEach(counter => {
@@ -169,6 +176,14 @@ $(function() {
                 settings: {
                     variableWidth: true,
                 }
+            },
+            {
+                breakpoint: 761,
+                settings: {
+                    variableWidth: true,
+                    slidesToShow: 2,
+                    centerMode: true,
+                }
             }
         ]
     }; 
@@ -183,13 +198,14 @@ $(function() {
         asNavFor: '#depart .slick2',
         dots: false,
         draggable: true,
-        infinite: false,
+        infinite: true,
         slidesToShow: 1,
         slidesToScroll: 1,
         vertical: true,
         verticalSwiping: true,
         pauseOnHover: false,
         swipeToSlide: true,
+        adaptiveHeight: true,
         speed: 350,
         responsive: [
             {
@@ -212,7 +228,7 @@ $(function() {
         asNavFor: '#depart .slick1',
         dots: false,
         draggable: true,
-        infinite: false,
+        infinite: true,
         slidesToShow: 2,
         variableWidth: true,
         slidesToScroll: 1,
@@ -328,6 +344,13 @@ $(function() {
                     // variableWidth: true,
                     // slidesToShow: 1,
                     // centerMode: false,
+                }
+            },
+            {
+                breakpoint: 761,
+                settings: {
+                    slidesToShow: 2,
+                    centerMode: true,
                 }
             }
         ]
