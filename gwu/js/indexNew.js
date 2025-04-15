@@ -28,14 +28,14 @@ function updateScrollEffects() {
 
     let scrollTop = window.scrollY || document.documentElement.scrollTop;
     let maxScroll = window.innerHeight / 1.5;
-    let vh50 = window.innerHeight / 2;
+    let vh50 = window.innerHeight / 4;
     let vh100 = window.innerHeight;
 
     // 모바일 여부 판단 (716px 이하)
     const isMobile = window.innerWidth <= 716;
 
     // 최소 스케일 값 설정 (모바일은 덜 작아지게)
-    const minScale = isMobile ? 0.6 : 0.5;
+    const minScale = isMobile ? 0.8 : 0.8;
 
     let scaleValue = 1 - (scrollTop / maxScroll) * 0.5;
     scaleValue = Math.max(scaleValue, minScale);
@@ -83,24 +83,28 @@ document.addEventListener("DOMContentLoaded", function () {
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // .point-bx 요소가 보이면 "on" 클래스 추가
+                // 각 .point-bx가 화면에 들어오면 on 클래스 붙이고 슬릭 실행
                 if (entry.target.classList.contains("point-bx")) {
                     entry.target.classList.add("on");
+
+                    // 해당 섹션에 따라 조건적으로 실행
+                    if (entry.target.closest('#depart')) {
+                        $('#depart .slick1').slick('slickPlay');
+                    }
+                    if (entry.target.closest('#air')) {
+                        $('#air .slick').slick('slickPlay');
+                        $('#air .count').addClass('on');
+                    }
                 }
 
-                // .counter 요소 카운트 업 실행 (한 번만 실행)
+                // counter 동작
                 if (entry.target.classList.contains("counter")) {
                     startCounter(entry.target);
-                    observer.unobserve(entry.target); // 다시 증가하지 않게 해제
-                }
-            } else {
-                // .point-bx 요소가 화면에서 사라지면 "on" 클래스 제거
-                if (entry.target.classList.contains("point-bx")) {
-                    // entry.target.classList.remove("on");
+                    observer.unobserve(entry.target); // 카운터는 1회만 실행
                 }
             }
         });
-    }, { threshold: 0.55 }); // 50% 이상 보일 때 실행
+    }, { threshold: 0.55 });
 
     // .counter 요소 감시 시작
     document.querySelectorAll(".counter").forEach(counter => {
@@ -206,7 +210,8 @@ $(function() {
         pauseOnHover: false,
         swipeToSlide: true,
         adaptiveHeight: true,
-        speed: 350,
+        speed: 400,
+        autoplaySpeed: 4000,
         responsive: [
             {
                 breakpoint: 992,
@@ -221,6 +226,15 @@ $(function() {
         ]
       });
 
+      $('#depart .slick2').on('beforeChange', function(event, slick, currentSlide){
+        // 현재 슬라이드 찾기
+        const currentImg = $(slick.$slides[currentSlide]).find('img').attr('src');
+    
+        $('.prev-img').fadeOut(200, function() {
+            $(this).attr('src', currentImg).fadeIn(400);
+        });
+    });
+
       $('#depart .slick2').slick({
         autoplay: false,
         arrows: false,
@@ -234,7 +248,7 @@ $(function() {
         slidesToScroll: 1,
         pauseOnHover: false,
         swipeToSlide: true,
-        speed: 350,
+        speed: 400,
         responsive: [
             {
                 breakpoint: 992,
@@ -321,6 +335,32 @@ $(function() {
         ]
       });
 
+     
+
+   
+      $('#air .slick').on('init reInit afterChange', function(event, slick, currentSlide) {
+        var $slider = $(this); 
+        $slider.addClass('active');
+
+        var nowSlide = (currentSlide ? currentSlide : 0) + 1;
+        var allSlide = slick.slideCount;
+
+        // 슬라이드 번호를 두 자리로 포맷팅
+        var formattedNowSlide = (nowSlide < 10) ? '0' + nowSlide : nowSlide;
+        var formattedAllSlide = (allSlide < 10) ? '0' + allSlide : allSlide;
+
+        // 슬라이드 번호 표시 업데이트
+        $('#air .count').html('<strong>' + formattedNowSlide + '</strong>' + '<span></span>' + formattedAllSlide);
+    });
+
+    $('#air .slick').on('beforeChange', function(event, slick, currentSlide) {
+        $('#air .count').removeClass('on');
+    });
+
+    $('#air .slick').on('afterChange', function(event, slick, currentSlide) {
+        $('#air .count').addClass('on');
+    });
+
 
       $('#air .slick').slick({
         autoplay: false,
@@ -331,10 +371,13 @@ $(function() {
         infinite: true,
         slidesToShow: 3,
         variableWidth: true,
+        prevArrow: $('#air .prev'),
+        nextArrow: $('#air .next'),
         slidesToScroll: 1,
         pauseOnHover: false,
         swipeToSlide: true,
         speed: 500,
+        autoplaySpeed: 4000,
         responsive: [
             {
                 breakpoint: 992,
@@ -355,11 +398,8 @@ $(function() {
             }
         ]
       });
-
-      $('#air .slick').on('afterChange', function(event, slick, currentSlide) {
-        var $slider = $(this); 
-        $slider.addClass('active');
-    });
+      
+   
 
 });
 
@@ -376,7 +416,8 @@ $Doc.on({
 .on({
     'click': function(e) {
         e.preventDefault();
-        $('#air .toggle-view-bx ').toggleClass('on');
+        $('#air .toggle-view-bx').toggleClass('on');
+        $('#air .control').fadeToggle(300);
     }
 }, '#air .toggle-btn');
 
@@ -432,7 +473,6 @@ $(window).on('scroll', function() {
     }
 
 });
-
 
 
 

@@ -260,8 +260,16 @@ $Doc.on({
 .on({
     'click': function(e) {
         e.preventDefault();
-        $(this).toggleClass('active')
-        $(this).next('div').slideToggle(200);
+        // 클릭한 버튼이 현재 active가 아니라면,
+        if (!$(this).hasClass('active')) {
+          // 다른 버튼들의 active 클래스를 제거하고, 연결된 div는 닫습니다.
+          $('#footer .family-bx button.active')
+            .removeClass('active')
+            .next('div')
+            .slideUp(200);
+        }
+        // 클릭한 버튼은 토글합니다.
+        $(this).toggleClass('active').next('div').slideToggle(200);
     }
 }, '#footer .family-bx button')
 .on({
