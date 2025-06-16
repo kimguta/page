@@ -1,0 +1,96 @@
+
+
+<div class="map-item">
+    <div class="text-bx">
+        <em>Sancheoneo Park Golf Course</em>
+        <h4>화천 산천어 파크골프장</h4>
+        <ul>
+            <li>
+                <img src="/page/golf/images/sub/location1.png" alt="">
+                <span>강원특별자치도 화천군 하남면 춘화로 3061-17</span>
+                <button type="button" class="copy-btn"><img src="/page/golf/images/sub/copy.png" alt="주소복사"></button>
+            </li>
+            <li>
+                <img src="/page/golf/images/sub/location2.png" alt="">
+                <span><strong>1구장</strong>033-441-0797 </span>
+            </li>
+            <li>
+                <img src="/page/golf/images/sub/location2.png" alt="">
+                 <span><strong>2구장</strong>070-8672-0796</span>
+            </li>
+        </ul>
+    </div>
+    <div id="daumRoughmapContainer1749430522453" class="root_daum_roughmap root_daum_roughmap_landing"></div>
+    <script charset="UTF-8">
+        new daum.roughmap.Lander({
+            "timestamp" : "1749430522453",
+            "key" : "395f93yn3en",
+        }).render();
+    </script>
+</div>
+
+<div class="map-item">
+    <div class="text-bx">
+        <em>Sports Park Park Golf Course</em>
+        <h4>화천 생활체육공원 파크골프장</h4>
+        <ul>
+            <li>
+                <img src="/page/golf/images/sub/location1.png" alt="">
+                <span>강원특별자치도 화천군 하남면 춘화로 3225-56</span>
+              <button type="button" class="copy-btn"><img src="/page/golf/images/sub/copy.png" alt="주소복사"></button>
+            </li>
+            <li>
+                <img src="/page/golf/images/sub/location2.png" alt="">
+                <span>033-441-0790</span>
+            </li>
+        </ul>
+    </div>
+    <div id="daumRoughmapContainer1749430645278" class="root_daum_roughmap root_daum_roughmap_landing"></div>
+    <script charset="UTF-8">
+    new daum.roughmap.Lander({
+        "timestamp" : "1749430645278",
+        "key" : "395b2ck4nqj",
+    }).render();
+    </script>
+</div>
+
+
+<script>
+  function fallbackCopyTextToClipboard(text) {
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+
+    // 안 보이게 숨김
+    textArea.style.position = "fixed";
+    textArea.style.top = "-1000px";
+    document.body.appendChild(textArea);
+
+    textArea.focus();
+    textArea.select();
+
+    try {
+        const successful = document.execCommand('copy');
+        alert(successful ? '주소가 복사되었습니다!' : '복사에 실패했습니다.');
+    } catch (err) {
+        alert('복사 중 오류 발생: ' + err);
+    }
+
+    document.body.removeChild(textArea);
+    }
+
+    document.querySelectorAll('.copy-btn').forEach(button => {
+    button.addEventListener('click', function () {
+        const li = this.closest('li');
+        const span = li.querySelector('span');
+        const address = span.innerText;
+
+        if (navigator.clipboard) {
+        navigator.clipboard.writeText(address)
+            .then(() => alert("주소가 복사되었습니다!"))
+            .catch(err => fallbackCopyTextToClipboard(address));
+        } else {
+        fallbackCopyTextToClipboard(address);
+        }
+    });
+    });
+</script>

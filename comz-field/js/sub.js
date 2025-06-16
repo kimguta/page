@@ -2,6 +2,19 @@
 
 //콘텐츠 스크립트 (dom ready 후 동작)
 function contentScript(){
+
+	  setTimeout(function() {
+        AOS.init({
+            easing: 'ease',
+            duration: 900,
+            delay: 350,
+            once: true,
+            offset: 100,
+            
+        });
+     }, 200);
+
+
 	$('.boGalleryView .boGalleryView-view').slick({
 		autoplay: false,
 		arrows: true,
