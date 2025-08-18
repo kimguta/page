@@ -3,6 +3,7 @@
 <h3>DQ_프로젝트 퍼블리싱 페이지</h3>
 <ul>
   <li><a href="basic" target="_blank">베이직소스</a></li>
+  <li><a href="hc-tour/" target="_blank">화천관광</a></li>
   <li><a href="golf/" target="_blank">화천파크골프</a></li>
   <li><a href="gwu/indexNew.html" target="_blank">강원도립대신규</a></li>
   <li><a href="gwu" target="_blank">강원도립대</a></li>
