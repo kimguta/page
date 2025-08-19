@@ -50,7 +50,28 @@ ObjDoc.on({
 		$('#img-modal').remove();
 		$('.img-zoom-modal.active').focus().removeClass('active');
 	}
-}, '#img-modal .close');
+}, '#img-modal .close')
+.on({
+	'click': function(e) { 
+		e.preventDefault();
+		$(this).toggleClass('active');
+	}
+}, '#sub-visual .sns-btn')
+.on({
+	'click': function(e) { 
+		e.preventDefault();
+		const $btn = $(this);
+		const $content = $btn.next('div');
+
+		// 다른 버튼 닫고 active 제거
+		$('#breadcrumb .item button').not($btn).removeClass('active');
+		$('#breadcrumb .item div').not($content).slideUp(300);
+
+		// 클릭한 버튼 toggle
+		$btn.toggleClass('active');
+		$content.stop(true, true).slideToggle(300);
+	}
+}, '#breadcrumb .item button');
 
 
 
@@ -63,84 +84,6 @@ function contentScript(){
 	$('.skinTb.width640').parent().addClass('width640');
 	$('.skinTb.width768').parent().addClass('width768');
 	$('.skinTb.width1000').parent().addClass('width1000');
-
-	var slickOptionSub1 = {
-		autoplay: false,
-		arrows: true,
-		accessibility: false,
-		dots: false,
-		draggable: true,
-		infinite: true,
-		slidesToShow: 1,
-		slidesToScroll: 1,
-		pauseOnHover: false,
-		speed: 350,
-		responsive: [
-			{
-				breakpoint: 1181,
-				settings: {
-					// variableWidth: true,
-					// centerMode: true,
-				}
-			}
-		]
-	};
-    $('.slick-item .slick').each(function() {
-		let $this = $(this);
-		initSlick($this, slickOptionSub1);
-	});
-
-
-	var slickOptionSub2 = {
-		autoplay: false,
-		arrows: true,
-		accessibility: false,
-		dots: false,
-		draggable: true,
-		infinite: true,
-		slidesToShow: 1,
-		slidesToScroll: 1,
-		pauseOnHover: false,
-		speed: 350,
-		responsive: [
-			{
-				breakpoint: 1181,
-				settings: {
-					// variableWidth: true,
-					// centerMode: true,
-				}
-			}
-		]
-	};
-    initSlick($('.intro-slick .slick'), slickOptionSub2);
-
-
-	 var slickOptionSub3 = {
-        autoplay: false,
-        arrows: true,
-        accessibility: false,
-        dots: false,
-        draggable: true,
-        infinite: false,
-        slidesToShow: 6,
-        slidesToScroll: 1,
-        pauseOnHover: false,
-        prevArrow: $('#booking .prev'),
-        nextArrow: $('#booking .next'),
-        swipeToSlide: true,
-        speed: 150,
-        responsive: [
-            {
-                breakpoint: 992,
-                settings: {
-                    variableWidth: true,
-                    // infinite: true,
-                    slidesToShow: 1,
-                }
-            }
-        ]
-    }; 
-    initSlick($('#booking .slick'), slickOptionSub3);
 };
 
 $(function() {
@@ -150,6 +93,33 @@ $(function() {
 
 });
 
+let scrollY = 0;
+let currentY = 0;
 
-       
+function animate() {
+  currentY += (scrollY - currentY) * 0.1;
+
+  // 패럴랙스 이동
+  const translateY = currentY * 0.5;  // 스크롤 속도 조절
+
+  // 밝기 감소
+  const brightness = Math.max(1 - currentY / 500, 0.1);
+
+  // 커짐 효과
+  const scale = 1 + Math.min(currentY / 2000, 0.2);
+
+  $('#sub-visual .visual-img-bx img').css({
+    transform: `scale(${scale})`,
+    filter: `brightness(${brightness})`
+  });
+
+  requestAnimationFrame(animate);
+}
+
+$(window).on('scroll', function() {
+  scrollY = $(this).scrollTop();
+});
+
+// 애니메이션 시작
+animate();
         
