@@ -84,6 +84,58 @@ function contentScript(){
 	$('.skinTb.width640').parent().addClass('width640');
 	$('.skinTb.width768').parent().addClass('width768');
 	$('.skinTb.width1000').parent().addClass('width1000');
+
+	const swiper1 = new Swiper(".subSwiper1", {
+        spaceBetween: 0,
+        speed: 400,
+        loop: true,  
+        slidesPerView: 'auto',
+        centeredSlides: true,
+        observer: true,
+        observeParents: true,
+        // slideToClickedSlide: true,
+        navigation: {
+            nextEl: ".subSwiper1 .swiper-button-next",
+            prevEl: ".subSwiper1 .swiper-button-prev"
+        },
+        breakpoints: {
+            1641:{ spaceBetween: 60,}
+        },
+    });
+
+	 const swiper2 = new Swiper(".subSwiper2", {
+		spaceBetween: 15,
+		speed: 350,
+		loop: true,  
+		slidesPerView: 1,
+		navigation: {
+			nextEl: ".subSwiper2 .swiper-button-next",
+			prevEl: ".subSwiper2 .swiper-button-prev"
+		},
+		breakpoints: {
+			717: { spaceBetween: 30, slidesPerView: 2,},
+			920: { spaceBetween: 50,slidesPerView: 2,},
+			1641:{ spaceBetween: 70,slidesPerView: 2,}
+		},
+	});
+
+	const swiper3 = new Swiper(".subSwiper3", {
+		spaceBetween: 10,
+		speed: 250,
+		slidesPerView: 3,
+		centeredSlides: true,
+		loop: true,
+		slideToClickedSlide: true,
+		navigation: {
+			nextEl: ".subSwiper3 .swiper-button-next",
+			prevEl: ".subSwiper3 .swiper-button-prev"
+		},
+		breakpoints: {
+			717: { spaceBetween: 10, centeredSlides: true, slidesPerView: 4, direction: "horizontal"},
+			920: { spaceBetween: 15, direction: "vertical", slidesPerView: 3, centeredSlides: false,},
+			1641:{ spaceBetween: 20, direction: "vertical", slidesPerView: 3, centeredSlides: false,}
+		},
+	});
 };
 
 $(function() {
