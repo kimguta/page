@@ -18,8 +18,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const lenis2 = new Lenis({
         wrapper: tableWrap,
         content: tableWrap,
-        duration: 0.5,
-        easing: t => t * t * (3 - 2 * t),
+        duration: 1,
+       easing: t => 1 - Math.pow(1 - t, 4),
         smoothWheel: true, // 마우스 휠 스크롤 부드럽게
         smoothTouch: true, // 터치 스크롤 부드럽게
     });

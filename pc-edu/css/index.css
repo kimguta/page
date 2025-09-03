@@ -145,7 +145,7 @@ button {
   border: 1px solid #f6f6f6;
 }
 #map .table-wrap > div{display:none;transform-origin:50% 70%;}
-#map .table-wrap > div.active{display:block;animation:table1 .55s 1 both cubic-bezier(0.39, 0.58, 0.57, 1);}
+#map .table-wrap > div.active{display:block;animation:table1 .45s 1 both cubic-bezier(0.39, 0.58, 0.57, 1);}
 #map .table-wrap table{table-layout:fixed;width:100%;font-size:19px;text-align:center;}
 #map .table-wrap table th{background:#e8ecf6;font-weight:700;padding:13px 5px;position:relative;}
 #map .table-wrap table th:not(:last-child):after{content:'';display:block;width:1px;height:16px;background:#fff;position:absolute;right:0;top:50%;margin-top:-8px}
@@ -253,6 +253,7 @@ button {
   #map .table-wrap table th{padding:9px 5px;}
   #map .table-wrap table th:not(:last-child):after{height:14px;margin-top:-7px}
   #map .table-wrap table td{padding:8px 5px;font-size:14px;}
+  #map .map-bx .map-img-bx > img.over{animation:pin3 .35s infinite alternate linear;}
 
   #photo{padding:70px 0 80px;}
   #photo .swiper{margin:0 -20px;padding:0 20px;}
@@ -389,7 +390,8 @@ button {
   #map .map-wrap{margin-top:-30px;display:flex;gap:20px 0;}
   #map .map-bx{width:100%;max-width:400px;}
   #map .map-bx > span{margin-top:-10px;font-size:12px;}
-  #map .map-bx .map-btn-bx button:after{top:-28px;width:33px;height:43px;margin-left:-36px;}
+  #map .map-bx .map-btn-bx button{width:50px;height:50px;}
+  #map .map-bx .map-btn-bx button:after{top:-28px;width:33px;height:43px;margin-left:-16px;}
   #map .table-wrap{height:220px;}
   #map .table-bx{border-radius:0px;padding:20px 20px;gap:15px 0;margin:0 -16px;}
   #map .table-bx .map-btn-bx{grid-template-columns:repeat(4, 1fr);gap:5px;}
@@ -438,6 +440,11 @@ button {
 }
 
 @keyframes pin2{ 
+  0%{opacity:0;filter:invert(1);}
+  100%{opacity:.5;filter:invert(1);} 
+}
+
+@keyframes pin3{ 
   0%{opacity:0;filter:invert(1);}
   100%{opacity:.5;filter:invert(1);} 
 }
