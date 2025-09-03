@@ -1,22 +1,36 @@
 
 
 document.addEventListener('DOMContentLoaded', function() {
+    // 기존 페이지 전체 Lenis (그대로 유지)
     const lenis = new Lenis({
-        duration: .5,
+        duration: 0.5,
         easing: t => 1 - Math.pow(1 - t, 2),
     });
+
     function raf(time) {
         lenis.raf(time);
         requestAnimationFrame(raf);
     }
     requestAnimationFrame(raf);
-    let ticking = false;
-    window.addEventListener("scroll", function () {
-        if (!ticking) {          
-        ticking = true;
-        }
+
+    // 테이블용 Lenis 추가
+    const tableWrap = document.querySelector('#map .table-wrap > div');
+    const lenis2 = new Lenis({
+        wrapper: tableWrap,
+        content: tableWrap,
+        duration: 0.5,
+        easing: t => t * t * (3 - 2 * t),
+        smoothWheel: true, // 마우스 휠 스크롤 부드럽게
+        smoothTouch: true, // 터치 스크롤 부드럽게
     });
 
+    function rafTable(time) {
+        lenis2.raf(time); // 테이블용 Lenis 업데이트
+        requestAnimationFrame(rafTable);
+    }
+    requestAnimationFrame(rafTable);
+
+  
 
     const swiper = new Swiper(".mySwiper1", {
         spaceBetween: 15,
