@@ -1,4 +1,3 @@
-
 //서브공통 스크립트
 var ObjDoc = $(document);
 
@@ -136,12 +135,31 @@ function contentScript(){
 			1641:{ spaceBetween: 20, direction: "vertical", slidesPerView: 3, centeredSlides: false,}
 		},
 	});
+
+	(() => {
+	const onReady = (fn) =>
+		document.readyState === 'loading'
+		? document.addEventListener('DOMContentLoaded', fn, { once: true })
+		: fn();
+
+	onReady(() => {
+		const io = new IntersectionObserver((entries) => {
+		entries.forEach(({ isIntersecting, target }) => {
+			target.classList.toggle('active', isIntersecting);
+		});
+		}, {
+		threshold: [0, 0.3],
+		rootMargin: '0px'
+		});
+
+		document.querySelectorAll('.show-elm').forEach(el => io.observe(el));
+	});
+	})();
 };
 
 $(function() {
 	contentScript();
 
-	
 
 });
 
@@ -174,4 +192,3 @@ $(window).on('scroll', function() {
 
 // 애니메이션 시작
 animate();
-        
