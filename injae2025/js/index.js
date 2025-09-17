@@ -14,18 +14,22 @@ document.addEventListener('DOMContentLoaded', function() {
     requestAnimationFrame(raf);
 
     const swiper = new Swiper(".mySwiper1", {
-        speed: 1000,
+        speed: 600,
         grabCursor: true,
         autoplay: { delay: 5000, disableOnInteraction: false },
         parallax: true,
         loop: true,
         effect: "coverflow",
         coverflowEffect: {
-            rotate: 30,
+            rotate: 35,
             stretch: 0,
-            depth: 100,
+            depth: 150,
             modifier: 1,
             slideShadows: false,
+        },
+         breakpoints: {
+            717: { speed: 800,},
+            1400:{ speed: 1000,}
         },
         navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" }
     });
@@ -74,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
         slidesPerView: 'auto', 
         loop: true,
         navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
-         breakpoints: {
+        breakpoints: {
             717: { spaceBetween: 20 },
             1400:{ spaceBetween: 21,}
         },
