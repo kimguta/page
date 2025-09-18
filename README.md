@@ -3,6 +3,7 @@
 <h3>DQ_프로젝트 퍼블리싱 페이지</h3>
 <ul>
   <li><a href="basic" target="_blank">베이직소스</a></li>
+  <li><a href="haksa2025" target="_blank">강원학사</a></li>
   <li><a href="injae2025" target="_blank">강원인재원</a></li>
   <li><a href="pc-edu/" target="_blank">평창평생학습관</a></li>
   <li><a href="hc-tour/" target="_blank">화천관광</a></li>

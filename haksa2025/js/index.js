@@ -13,26 +13,25 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     requestAnimationFrame(raf);
 
-    const swiper = new Swiper(".mySwiper1", {
-        speed: 600,
-        grabCursor: true,
-        autoplay: { delay: 5000, disableOnInteraction: false },
-        parallax: true,
+   
+    const swipe1 = new Swiper(".mySwiper1", {
+        speed: 1000,
         loop: true,
-        effect: "coverflow",
-        coverflowEffect: {
-            rotate: 35,
-            stretch: 0,
-            depth: 150,
-            modifier: 1,
-            slideShadows: false,
+        navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+        autoplay: {
+            delay: 5000,                // 4초마다 전환
+            disableOnInteraction: false, // 화살표 클릭해도 계속 자동재생
+            pauseOnMouseEnter: true      // 마우스 올리면 일시정지
         },
-         breakpoints: {
-            717: { speed: 800,},
-            1400:{ speed: 1000,}
+        pagination: {
+        el: '#visual .swiper-pagination',
+        type: 'fraction',
+            renderFraction: (currentClass, totalClass) => (
+            `<span class="${currentClass}"></span> <em> / </em> <span class="${totalClass}"></span>`
+            ),
         },
-        navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" }
     });
+
 
     // 컨테이너 범위 안에서만 요소 찾도록 스코프 고정
     const root = document.querySelector('.mySwiper2');
@@ -57,9 +56,6 @@ document.addEventListener('DOMContentLoaded', function() {
         renderFraction: (currentClass, totalClass) => (
         `<span class="${currentClass}"></span> <em> / </em> <span class="${totalClass}"></span>`
         ),
-        // (옵션) 2자리로 패딩하고 싶으면 켜세요
-        // formatFractionCurrent: n => String(n).padStart(2,'0'),
-        // formatFractionTotal:   n => String(n).padStart(2,'0'),
         },
         navigation: {
         nextEl: root.querySelector('.swiper-button-next'),
@@ -72,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
     });
 
-    // 패널 단위 스와이퍼 보장 초기화
+      // 패널 단위 스와이퍼 보장 초기화
     function ensurePanelSwiper(panelEl) {
         if (panelEl.dataset.swiperReady === '1') {
             const sw = panelEl.querySelector('.mySwiper3')?.swiper;
@@ -127,8 +123,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     }
     document.querySelectorAll('.section-toggle-bx > div').forEach(ensurePanelSwiper);    
-});
 
+});
 
 document.addEventListener("DOMContentLoaded", () => {
     const targets = document.querySelectorAll(".scroll-show");
@@ -159,7 +155,7 @@ $(document)
         const ElmIndex = $(this).index();
         $(this).closest('.toggle-wrap').find('.section-toggle-tab button').removeClass('active').end().addBack().addClass('active');
         $(this).closest('.toggle-wrap').find('.section-toggle-bx > div').removeClass('active').eq(ElmIndex).addClass('active');
-        (() => {
+         (() => {
         const $wrap   = $(this).closest('.toggle-wrap');
         const $panels = $wrap.find('.section-toggle-bx > div');
         const panelEl = $panels.get(ElmIndex);
@@ -180,13 +176,20 @@ $(document)
 .on({
     'click': function(e) {
         e.preventDefault();
-        $('.card-bx .card').removeClass('active');
+         const ElmIndex = $(this).index();
+        $('.meal-tab button').removeClass('active');
         $(this).addClass('active');
+        $('.meal-date > div').removeClass('active').eq(ElmIndex).addClass('active');
         
     }
-}, '.card-bx .card');
-
-
+}, '.meal-tab button')
+.on({
+    'click': function(e) {
+        e.preventDefault();
+        $('.meal-bx').toggleClass('active');
+        
+    }
+}, '.meal-open, .meal-close');
 
 (() => {
     const init = () => {
