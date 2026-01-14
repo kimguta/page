@@ -3,6 +3,19 @@
 var ObjDoc = $(document);
 
 
+document.addEventListener('DOMContentLoaded', function() {
+	const lenis = new Lenis({
+		duration: 0.5,
+		easing: t => 1 - Math.pow(1 - t, 2),
+	});
+	function raf(time) {
+		lenis.raf(time); // 전체 페이지 Lenis
+		requestAnimationFrame(raf);
+	}
+	requestAnimationFrame(raf);
+});
+
+
 ObjDoc.on({
 	'click': function(e) { 
 		e.preventDefault();

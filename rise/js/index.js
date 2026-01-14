@@ -1,37 +1,17 @@
 
 
 document.addEventListener('DOMContentLoaded', function() {
-   // 1. 전체 페이지 Lenis
-const lenis = new Lenis({
-    duration: 0.5,
-    easing: t => 1 - Math.pow(1 - t, 2),
+	const lenis = new Lenis({
+		duration: 0.5,
+		easing: t => 1 - Math.pow(1 - t, 2),
+	});
+	function raf(time) {
+		lenis.raf(time); // 전체 페이지 Lenis
+		requestAnimationFrame(raf);
+	}
+	requestAnimationFrame(raf);
 });
 
-// 2. 테이블용 Lenis (모든 div)
-const tableWraps = document.querySelectorAll('#map .table-wrap > div');
-const tableLenisList = [];
-
-tableWraps.forEach(tableWrap => {
-    const lenisTable = new Lenis({
-        wrapper: tableWrap,
-        content: tableWrap,
-        duration: 1,
-        easing: t => 1 - Math.pow(1 - t, 4),
-        smoothWheel: true,
-        smoothTouch: true,
-    });
-    tableLenisList.push(lenisTable);
-});
-
-// 3. RAF 한 번으로 전체 업데이트
-function raf(time) {
-    lenis.raf(time); // 전체 페이지 Lenis
-    tableLenisList.forEach(l => l.raf(time)); // 모든 테이블 Lenis
-    requestAnimationFrame(raf);
-}
-requestAnimationFrame(raf);
-
-});
 
 document.addEventListener("DOMContentLoaded", () => {
     const targets = document.querySelectorAll(".scroll-show");
