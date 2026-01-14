@@ -56,51 +56,7 @@ ObjDoc.on({
 		e.preventDefault();
 		$(this).toggleClass('active');
 	}
-}, '#sub-visual .sns-btn')
-.on({
-	'click': function(e) { 
-		e.preventDefault();
-		const $btn = $(this);
-		const $content = $btn.next('div');
-
-		// 다른 버튼 닫고 active 제거
-		$('#breadcrumb .item button').not($btn).removeClass('active');
-		$('#breadcrumb .item div').not($content).slideUp(300);
-
-		// 클릭한 버튼 toggle
-		$btn.toggleClass('active');
-		$content.stop(true, true).slideToggle(300);
-	}
-}, '#breadcrumb .item button')
-.on({
-	'click': function(e) { 
-		e.preventDefault();
-		$('.specific-bx').stop(true, true).slideToggle(350);
-	}
-}, '.specific-toggle')
-.on({
-  'click': function(e) {
-    e.preventDefault();
-    const Index = $(this).index();
-    $('.map-img-bx img, .table-wrap > div').removeClass('active');
-    $('.map-img-bx img').eq(Index).addClass('active');
-    $('.table-wrap > div').eq(Index).addClass('active');
-    $('.map-btn-bx').each(function() {
-        $(this).find('button').removeClass('active');
-        $(this).find('button').eq(Index).addClass('active');
-    });
-  },
-  'mouseover': function(e) {
-    e.preventDefault();
-    const Index = $(this).index();
-    $('.map-img-bx img').eq(Index).addClass('over');
-  },
-  'mouseleave': function(e) {
-    e.preventDefault();
-    const Index = $(this).index();
-    $('.map-img-bx img').eq(Index).removeClass('over');
-  }
-}, '.map-btn-bx button');
+}, '#sub-visual .sns-btn');
 
 //콘텐츠 스크립트 (dom ready 후 동작)
 function contentScript(){
@@ -111,18 +67,6 @@ function contentScript(){
 	$('.skinTb.width640').parent().addClass('width640');
 	$('.skinTb.width768').parent().addClass('width768');
 	$('.skinTb.width1000').parent().addClass('width1000');
-
-	const swiper1 = new Swiper(".subSwiper1", {
-        slidesPerView:1,
-		grid: {
-			rows: 3,
-		},
-		pagination: {
-			el: ".swiper-pagination",
-			clickable: true,
-		},
-    });
-
 
 	(() => {
 	const onReady = (fn) =>
@@ -143,6 +87,102 @@ function contentScript(){
 		document.querySelectorAll('.scroll-show').forEach(el => io.observe(el));
 	});
 	})();
+
+const wrap = document.querySelector('.news-board-bx');
+  const list = document.querySelector('.news-board-list');
+  const item = document.querySelector('.news-board-bx .item:first-child');
+  if (!wrap || !list || !item) return;
+
+  // 720px 이상만
+  const mq = window.matchMedia('(min-width: 720px)');
+
+  function getTopOffset() {
+    const header = document.querySelector('#header');
+    const headerH = header ? header.getBoundingClientRect().height : 0;
+    const extra = 0;
+    return headerH + extra;
+  }
+
+  function clamp(v, min, max) {
+    return Math.max(min, Math.min(max, v));
+  }
+
+  let ticking = false;
+  let enabled = false;
+
+  function update() {
+    ticking = false;
+
+    const topOffset = getTopOffset();
+    const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+
+    const wrapTop = wrap.getBoundingClientRect().top + scrollY;
+
+    const listTopInWrap = list.offsetTop;
+    const listH = list.offsetHeight;
+    const itemH = item.offsetHeight;
+
+    const maxMove = Math.max(0, (listTopInWrap + listH) - itemH);
+    const desired = (scrollY + topOffset) - wrapTop;
+    const y = clamp(desired, 0, maxMove);
+
+    item.style.transform = `translateY(${y}px)`;
+  }
+
+  function onScroll() {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(update);
+    }
+  }
+
+  function enable() {
+    if (enabled) return;
+    enabled = true;
+
+    item.style.position = 'absolute';
+    item.style.left = '0';
+    item.style.top = '0';
+    item.style.willChange = 'transform';
+    item.style.zIndex = '2';
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    window.addEventListener('load', update);
+
+    update();
+  }
+
+  function disable() {
+    if (!enabled) return;
+    enabled = false;
+
+    window.removeEventListener('scroll', onScroll);
+    window.removeEventListener('resize', onScroll);
+    window.removeEventListener('load', update);
+
+    // 원복(모바일에서는 일반 흐름으로 보이게)
+    item.style.transform = '';
+    item.style.willChange = '';
+    item.style.zIndex = '';
+
+    // 원래 absolute 유지하고 싶으면 아래 3줄은 주석 처리
+    item.style.position = '';
+    item.style.left = '';
+    item.style.top = '';
+  }
+
+  function apply() {
+    if (mq.matches) enable();
+    else disable();
+  }
+
+  // 초기 적용
+  apply();
+
+  // 해상도 변경 대응
+  if (mq.addEventListener) mq.addEventListener('change', apply);
+  else mq.addListener(apply); // 구형 브라우저 대응
 };
 
 $(function() {
