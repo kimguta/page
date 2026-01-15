@@ -270,4 +270,54 @@ $(document).on({
 }, '.board-tab a');
 
 
+(() => {
+    const init = () => {
+    const nav = document.getElementById('side-nav');
+    if (!nav) return;
 
+    const btns = Array.from(nav.querySelectorAll('button'));
+    const secs = Array.from(document.querySelectorAll('main > section'));
+
+    // 버튼 텍스트로 타깃 자동 매핑 (visual, notice, ... => #id)
+    btns.forEach(b => b.dataset.target = b.dataset.target || b.textContent.trim().toLowerCase());
+
+    const setActiveById = (id) => {
+    btns.forEach(b => b.classList.toggle('active', b.dataset.target === id));
+    };
+
+    // 클릭 시 해당 섹션 최상단으로 스크롤
+    nav.addEventListener('click', (e) => {
+    const btn = e.target.closest('button');
+    if (!btn) return;
+    const target = document.getElementById(btn.dataset.target);
+    if (!target) return;
+
+    const offset = 0; // 고정 헤더가 있으면 그 높이로 조정
+    const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+
+    if (window.lenis && typeof window.lenis.scrollTo === 'function') {
+        window.lenis.scrollTo(top, { duration: 1 });
+    } else {
+        window.scrollTo({ top, behavior: 'smooth' });
+    }
+    setActiveById(target.id); // 즉시 active 반영
+    });
+
+    // 스크롤(휠) 시 현재 섹션 기준으로 active 동기화
+    const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) setActiveById(entry.target.id);
+    });
+    }, {
+    root: null,
+    threshold: 0,
+    rootMargin: '-50% 0px -50% 0px' // 뷰포트 중앙에 들어오면 해당 섹션으로 판단
+    });
+
+    secs.forEach(sec => io.observe(sec));
+};
+
+document.readyState === 'loading'
+    ? document.addEventListener('DOMContentLoaded', init, { once: true })
+    : init();
+})();
