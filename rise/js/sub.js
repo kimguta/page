@@ -69,7 +69,23 @@ ObjDoc.on({
 		e.preventDefault();
 		$(this).toggleClass('active');
 	}
-}, '#sub-visual .sns-btn');
+}, '#sub-visual .sns-btn')
+.on({
+	'click': function(e) { 
+		e.preventDefault();
+		$('.toggle-class-btn').not(this).removeClass('is-on'); 
+		$(this).toggleClass('is-on');
+	}
+}, '.toggle-class-btn')
+.on({
+	'click': function(e) { 
+		e.preventDefault();
+		var idx = $(this).index();
+		$('.toggle-tab a').not(this).removeClass('is-on'); 
+		$(this).toggleClass('is-on');
+		$('.toggle-item').eq(idx).addClass('is-on').siblings().removeClass('is-on');
+	}
+}, '.toggle-tab a');
 
 //콘텐츠 스크립트 (dom ready 후 동작)
 function contentScript(){
@@ -81,6 +97,25 @@ function contentScript(){
 	$('.skinTb.width768').parent().addClass('width768');
 	$('.skinTb.width1000').parent().addClass('width1000');
 
+	  var swiper1 = new Swiper(".subSwiper1", {
+		slidesPerView: 2,
+		spaceBetween: 40,
+		loop: false,
+		scrollbar: {
+		el: ".swiper-scrollbar",
+		hide: false,
+		},
+		freeMode: true,
+		mousewheel: { forceToAxis: true },
+		observer: true,
+  		observeParents: true,
+		breakpoints: {
+		0: { slidesPerView: "auto", spaceBetween: 16,  freeMode: false,},      // 719 이하
+		720: { slidesPerView: "auto", spaceBetween: 20 },    // 720 ~ 1500
+		1501: { slidesPerView: 2,spaceBetween: 75 }    // 1501 이상 (기본)
+		}
+	}); 
+	  
 	(() => {
 	const onReady = (fn) =>
 		document.readyState === 'loading'
@@ -196,6 +231,8 @@ const wrap = document.querySelector('.news-board-bx');
   // 해상도 변경 대응
   if (mq.addEventListener) mq.addEventListener('change', apply);
   else mq.addListener(apply); // 구형 브라우저 대응
+
+  
 };
 
 $(function() {
