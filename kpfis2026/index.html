@@ -1251,6 +1251,9 @@
             loop: true,
             slidesPerView: "auto",
             spaceBetween: 15,
+             observer: true,
+            observeParents: true,
+            updateOnWindowResize: true,
             navigation: {
               nextEl: ".banner-bx .swiper-button-next",
               prevEl: ".banner-bx .swiper-button-prev",
@@ -1265,6 +1268,10 @@
                 slidesPerView: 6,
                 spaceBetween: 40
               }
+            },
+             on: {
+              resize(sw) { sw.update(); },          // ✅ 작->큰 / 큰->작 다 잡음
+              breakpoint(sw) { sw.update(); }       // ✅ 브레이크포인트 바뀔 때
             }
           });
         </script>  
