@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+  <title>FullPage + Footer</title>
+
+  <script src="/page/common/js/jquery-3.7.1.min.js"></script>
+
+  <style>
+    .skip-link{position:absolute;left:-9999px;top:0}
+    .skip-link:focus{left:10px;top:10px;z-index:99999;background:#000;color:#fff;padding:8px 10px;border-radius:6px}
+
+    /* 섹션 기본 */
+    .full-page{min-height:100vh; padding:40px}
+    #footer{padding:40px; border-top:1px solid #ddd}
+
+    /* 네비(헤더 밖) */
+    .page-nav{
+      position:fixed; right:24px; top:50%; transform:translateY(-50%);
+      z-index:9999; display:flex; flex-direction:column; gap:10px;
+    }
+    .page-btn{
+      display:flex; align-items:center; gap:8px;
+      padding:8px 10px; border:1px solid #ddd; border-radius:10px;
+      background:#fff; cursor:pointer;
+      transition: transform .15s ease, border-color .15s ease;
+    }
+    .page-btn:active{transform:scale(.98)}
+    .page-btn.active{border-color:#111}
+    .nav-icon{width:18px;height:18px;display:block}
+    .nav-text{font-size:13px;white-space:nowrap}
+
+    @media (max-width: 1024px){
+      .page-nav{right:12px}
+      .nav-text{display:none}
+    }
+  </style>
+</head>
+<body>
+
+  <a class="skip-link" href="#main">본문 바로가기</a>
+
+  <header id="header" role="banner" style="position:sticky;top:0;background:#fff;z-index:1000;border-bottom:1px solid #eee;">
+    <div class="inner" style="padding:16px 24px;">
+      <h1 class="logo" style="margin:0;font-size:18px;"><a href="/">LOGO</a></h1>
+    </div>
+  </header>
+
+  <!-- 페이지 네비(헤더 밖) -->
+  <nav class="page-nav" aria-label="페이지 내비게이션">
+    <button type="button" class="page-btn" data-index="0">
+      <img class="nav-icon" src="" alt="">
+      <span class="nav-text"></span>
+    </button>
+    <button type="button" class="page-btn" data-index="1">
+      <img class="nav-icon" src="" alt="">
+      <span class="nav-text"></span>
+    </button>
+    <button type="button" class="page-btn" data-index="2">
+      <img class="nav-icon" src="" alt="">
+      <span class="nav-text"></span>
+    </button>
+  </nav>
+
+  <main id="main" role="main">
+    <section class="full-page" data-nav-text="섹션 1" aria-label="섹션 1" style="background:#f7f7f7">
+      <h2>섹션 1</h2>
+      <p>내용...</p>
+	  <a href="#">링크1</a>
+    </section>
+
+    <section class="full-page" data-nav-text="섹션 2" aria-label="섹션 2" style="background:#f0f0f0">
+      <h2>섹션 2</h2>
+      <p>내용...</p>
+	  <a href="#">링크2</a>
+    </section>
+
+    <section class="full-page" data-nav-text="섹션 3" aria-label="섹션 3" style="background:#e9e9e9">
+      <h2>섹션 3</h2>
+      <p>내용...</p>
+	  <a href="#">링크3</a>
+    </section>
+  </main>
+
+  <footer id="footer" role="contentinfo">
+      <strong>Footer</strong>
+      <p>푸터는 풀페이지 미적용(일반 스크롤)</p>
+    </footer>
+
+  <script>
+    function FullPage(obj, nav, footerSel) {
+      var $pages = $(obj);
+      var $nav = $(nav);
+      var $footer = $(footerSel);
+      var pageCount = $pages.length;
+      if (!pageCount || !$nav.length) return;
+
+      // ===== 고급스럽고 확실한 프리셋 =====
+      var duration = 700;      // 이동 시간(묵직/고급)
+      var HOLD_MS = 30;       // 이동 후 입력 잠깐 홀드(연타 방지)
+      var WHEEL_END_MS = 10;  // 휠 제스처 묶는 시간
+      var THRESHOLD = 50;      // 휠 누적 임계값(확실하게 굴려야 넘어감)
+      var MIN_DELTA = 6;       // 미세 노이즈 컷(트랙패드 잔값)
+
+      // PC에서만 휠 스냅 ON: 네가 쓰던 기준 유지(1401+)
+      var mq = window.matchMedia('(min-width: 1401px)');
+
+      var isScrolling = false;
+      var snapEnabled = true;
+
+      // 휠 누적
+      var wheelSum = 0;
+      var wheelTimer = null;
+
+      // nav 세팅
+      $pages.each(function(index) {
+        var navText = $(this).data('nav-text') || ('페이지 ' + (index + 1));
+        var $btn = $nav.find('.page-btn').eq(index);
+
+        $btn.data('index', index);
+        $btn.find('.nav-icon').attr('src', 'icon' + (index + 1) + '.png');
+
+        var $txt = $btn.find('.nav-text');
+        if ($txt.length) $txt.text(navText);
+        else $btn.append('<span class="nav-text">' + navText + '</span>');
+      });
+
+      function setActive(i) {
+        $nav.find('.page-btn').removeClass('active').eq(i).addClass('active');
+      }
+
+      function updateSnapState() {
+        if (!$footer.length) { snapEnabled = true; return; }
+
+        var y = window.scrollY || window.pageYOffset;
+        var $last = $pages.last();
+        var lastBottom = $last.offset().top + $last.outerHeight();
+
+        // 마지막 섹션 바닥을 넘으면(푸터 영역) 스냅 OFF
+        snapEnabled = (y < lastBottom - 1);
+      }
+
+      // 스크롤 중심 기준으로 현재 섹션 인덱스 구하기(이벤트 타겟 의존 X)
+      function getCurrentIndexByCenter(){
+        var center = (window.scrollY || window.pageYOffset) + window.innerHeight / 2;
+        var idx = 0;
+
+        $pages.each(function(i){
+          var top = $(this).offset().top;
+          var bottom = top + $(this).outerHeight();
+          if (center >= top && center < bottom) idx = i;
+        });
+
+        return idx;
+      }
+
+      // ===== rAF 기반 고급 이징(무게감 + 확실함) =====
+      function easeInOutCubic(t){
+        return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3) / 2;
+      }
+
+      function smoothScrollTo(targetY, ms, done){
+        var startY = window.scrollY || window.pageYOffset;
+        var diff = targetY - startY;
+        if (Math.abs(diff) < 1) { done && done(); return; }
+
+        var startT = performance.now();
+
+        function step(now){
+          var p = Math.min(1, (now - startT) / ms);
+          window.scrollTo(0, startY + diff * easeInOutCubic(p));
+          if (p < 1) requestAnimationFrame(step);
+          else done && done();
+        }
+        requestAnimationFrame(step);
+      }
+
+      function scrollToPage(index){
+        if (isScrolling) return;
+        if (index < 0 || index >= pageCount) return;
+
+        isScrolling = true;
+
+        var targetY = $pages.eq(index).offset().top;
+
+        smoothScrollTo(targetY, duration, function(){
+          setActive(index);
+          setTimeout(function(){ isScrolling = false; }, HOLD_MS);
+        });
+      }
+
+      // 스크롤로 active 동기화(모바일/일반 스크롤에서도 자연스러움)
+      $(window).on('scroll', function(){
+        updateSnapState();
+        setActive(getCurrentIndexByCenter());
+      });
+
+      // ===== PC 휠 스냅: native + passive:false (확실) =====
+      function onWheelNative(e){
+        if (!mq.matches) return; // PC 조건이 아니면 개입 X
+
+        updateSnapState();
+        if (!snapEnabled) return; // 푸터 영역이면 자연 스크롤
+
+        var cur = getCurrentIndexByCenter();
+
+        // 마지막 섹션에서 아래로 휠: 푸터로 자연 진입 허용(막지 않음)
+        if (cur === pageCount - 1 && e.deltaY > 0){
+          snapEnabled = false;
+          return;
+        }
+
+        // 애니메이션 중이면 기본 스크롤 막고 무시
+        if (isScrolling){
+          e.preventDefault();
+          return;
+        }
+
+        // 여기부터는 “한 제스처 = 한 섹션”
+        e.preventDefault();
+
+        // deltaMode 보정 (라인 단위 장치 대응)
+        var dy = e.deltaY;
+        if (e.deltaMode === 1) dy *= 16;
+
+        // 미세 노이즈 컷
+        if (Math.abs(dy) < MIN_DELTA) return;
+
+        wheelSum += dy;
+
+        clearTimeout(wheelTimer);
+        wheelTimer = setTimeout(function(){
+          // 임계 미만이면 무시(원하면 이 조건 제거 가능)
+          if (Math.abs(wheelSum) < THRESHOLD){
+            wheelSum = 0;
+            return;
+          }
+
+          var dir = wheelSum > 0 ? 1 : -1;
+          wheelSum = 0;
+
+          // “확실”하게 현재 기준에서 1칸만
+          scrollToPage(cur + dir);
+        }, WHEEL_END_MS);
+      }
+
+      function bindWheel(){
+        window.addEventListener('wheel', onWheelNative, { passive: false });
+
+        // 푸터에서 위로 휠 → 마지막 섹션으로 복귀(선택)
+        if ($footer.length){
+          $footer.on('wheel.fullpage', function(e){
+            if (!mq.matches) return;
+            var dy = e.originalEvent.deltaY;
+            if (dy < 0){
+              e.preventDefault();
+              snapEnabled = true;
+              scrollToPage(pageCount - 1);
+            }
+          });
+        }
+      }
+
+      function unbindWheel(){
+        // removeEventListener는 옵션 객체가 아니라 동일 함수만 맞으면 제거됨(브라우저 호환)
+        window.removeEventListener('wheel', onWheelNative);
+        $footer.off('wheel.fullpage');
+      }
+
+      if (mq.matches) bindWheel(); else unbindWheel();
+
+      if (mq.addEventListener){
+        mq.addEventListener('change', function(ev){
+          ev.matches ? bindWheel() : unbindWheel();
+        });
+      } else {
+        mq.addListener(function(ev){
+          ev.matches ? bindWheel() : unbindWheel();
+        });
+      }
+
+      // nav 클릭(모바일에서도 동작)
+      $nav.on('click', '.page-btn', function(e){
+        e.preventDefault();
+        snapEnabled = true;
+        scrollToPage($(this).data('index'));
+      });
+
+      // 초기 상태
+      setActive(0);
+      updateSnapState();
+    }
+
+    $(function(){
+      FullPage('.full-page', '.page-nav', '#footer');
+    });
+  </script>
+</body>
+</html>
