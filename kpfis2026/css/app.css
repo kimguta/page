@@ -95,7 +95,7 @@ textarea {box-sizing:border-box;}
 
 /* 레이아웃 공통 */
 html, body{position:relative; width:100%;}
-body{color:#1a1a1a;font-size:16px; line-height:1.6;font-family:'Pretendard' ,"Apple SD Gothic Neo","Noto Sans", "Noto Sans KR","Malgun Gothic","맑은 고딕",sans-serif;word-break:break-all;letter-spacing:-0.5px;max-width:1920px;margin:0 auto;}
+body{color:#1a1a1a;font-size:16px;line-height:1.6;font-family:'Pretendard' ,"Apple SD Gothic Neo","Noto Sans", "Noto Sans KR","Malgun Gothic","맑은 고딕",sans-serif;word-break:break-all;letter-spacing:-0.5px;/* max-width:1920px; */margin:0 auto;}
 main{display:block;}
 #progressScroll{display:none;}
 #wrapper{overflow:clip;}
@@ -144,7 +144,7 @@ main{position: relative;}
 }
 
 
-#header{position:fixed;z-index:2000;top:0;margin:0 auto;width:100%;transition:all .3s .1s ease-out;top:0;height:auto;color:#0f1729;max-width:1920px;}
+#header{position:fixed;z-index:2000;top:0;margin:0 auto;width:100%;transition:all .3s .1s ease-out;top:0;height:auto;color:#0f1729;/* max-width:1920px; */}
 #header .header-top{display:flex;align-items:center;justify-content:flex-end;padding:0 60px;height:34px;background:#1b2232;gap:7px}
 #header .pop-btn img{height:26px;display:block;}
 #header .img-btn img{height:25px;display:block;}
@@ -436,7 +436,7 @@ font{font-size:.9em;}
 } 
 
 
-#footer{position:relative;z-index:100;background:#192031;color:#909ab1;padding:30px 0;max-width:1920px;margin:0 auto;}
+#footer{position:relative;z-index:100;background:#192031;color:#909ab1;padding:30px 0;/* max-width:1920px; */margin:0 auto;}
 #footer .innerWrap{display:flex;justify-content:space-between;}
 #footer .call-center{display:flex;align-items:center;height:45px;padding:0 28px;background:#b3c0d6;color:#192031;gap:35px;border-radius:16px;}
 #footer .call-center li{display:flex;align-items:center;gap:12px;position: relative;font-weight:500;}
@@ -462,8 +462,15 @@ font{font-size:.9em;}
 #footer .logo-bx{display:flex;align-items:center;gap:20px;}
 #footer .logo-bx img{display:block;height:57px;}
 
-#btn-top{position:fixed;bottom:30px;right:42px;}
+#btn-top{position: absolute;bottom:30px;right:42px;}
 #btn-top img{display:block;width:62px}
+
+main .innerWrap{padding: 63px 0 30px !important;}
+.swiper-pagination{position:relative !important;top:0 !important;width:auto !important}
+.swiper-stop:active,
+.swiper-play:active,
+.swiper-button-prev:active,
+.swiper-button-next:active {transform:scale(.9);}
 
 @media (max-width:1500px) {
   #footer{padding:25px 0 80px;}
@@ -494,6 +501,8 @@ font{font-size:.9em;}
 
   #btn-top{bottom:10px;right:10px;display:none;}
   #btn-top img{width:31px}
+
+  main .innerWrap{padding: 52px 0 30px !important;}
 } 
 
 

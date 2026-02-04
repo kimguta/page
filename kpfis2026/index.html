@@ -413,6 +413,19 @@
               $('.text-zoom .sizeBox').css('display', 'none');
               });
 
+              // sizeBox(또는 트리거 영역) 안쪽 클릭은 전파 막기 (안 닫히게)
+              $('.text-zoom .sizeBox, .text-zoom .btn_open').on('click', function(e){
+                e.stopPropagation();
+              });
+
+              // 바깥(문서) 클릭하면 닫기
+              $(document).on('click', function (e) {
+                const $wrap = $('.text-zoom');
+                if ($(e.target).closest($wrap).length === 0) {
+                  $('.text-zoom .sizeBox').css('display', 'none');
+                }
+              });
+
               // 글자크기 클릭
               $('.text-zoom .sizeBox li').on('click', function () {
               $('.text-zoom .sizeBox .btn_plus').removeClass('on');
@@ -468,6 +481,10 @@
             <img src="/page/kpfis2026/images/common/q-icon4.png" alt="">
             조직도
           </a>
+          <a href="#">
+            <img src="/page/kpfis2026/images/common/q-icon4.png" alt="">
+            조직도
+          </a>
         </div>
         <a href="#" class="open-close">
           <img src="/page/kpfis2026/images/common/btn-open.png" alt="열기">
@@ -475,17 +492,17 @@
         </a>
 
         <style>
-            #quick-menu{z-index:200;position:fixed;right:30px;top:23vh;display:flex;flex-direction:column;align-items:center; font-family: 'SebangGothic';}
+            #quick-menu{z-index:200;position:fixed;right:10px;top:20vh;display:flex;flex-direction:column;align-items:center; font-family: 'SebangGothic';}
             #quick-menu .img-bee{width:70px;margin-bottom:0px;will-change: transform, filter;animation: beeSmooth 1s cubic-bezier(.5,0,.3,1) infinite alternate;}
-            #quick-menu div{background:rgba(255,255,255,.9);border-radius:40px;width:90px;padding:10px 10px 10px;box-shadow:0px 0px 10px 0px rgba(0,0,0,.1);transition:all .3s ease-out;}
+            #quick-menu div{background:rgba(255,255,255,.9);border-radius:40px;width:82px;padding:10px 3px 10px;box-shadow:0px 0px 10px 0px rgba(0,0,0,.1);transition:all .3s ease-out;}
             #quick-menu div span{text-align:center;font-size:13px;font-weight:700;text-align:center;line-height:1.3;display:block;padding-bottom:10px;-webkit-user-select: none;user-select:none;caret-color: transparent; }
-            #quick-menu div a{display:flex;height:99px;display:flex;align-items:center;justify-content:center;flex-direction:column;font-size:14px;color:#3c3c3c;height:0;overflow:clip;transition:all .3s ease-out;}
+            #quick-menu div a{display:flex;height:99px;display:flex;align-items:center;justify-content:center;flex-direction:column;font-size:12px;color:#3c3c3c;height:0;overflow:clip;transition:all .3s ease-out;}
             #quick-menu div a img{width:44px;margin-bottom:5px;}
             /* #quick-menu div a:not(:last-child){border-bottom:1px dashed #cad0db;} */
             #quick-menu .open-close{position:absolute;bottom:-14px;}
             #quick-menu .open-close img{display:block;width:27.5px;}
             #quick-menu .open-close img:last-child{display:none;}
-            #quick-menu.active div a{height:99px;}
+            #quick-menu.active div a{height:90px;}
             #quick-menu.active div a:not(:last-child){border-bottom:1px dashed #cad0db;}
             #quick-menu.active div span,
             #quick-menu.active .open-close img{display:none;}
@@ -503,14 +520,14 @@
             }
 
             @media (max-width:1500px) {
-              #quick-menu{right:35px;top:auto;bottom:-3px;flex-direction:row;transition:bottom .5s ease-out;}
+              #quick-menu{right:15px;top:auto;bottom:-3px;flex-direction:row;transition:bottom .5s ease-out;}
               #quick-menu .img-bee{width:38px;margin:15px 5px 0 0;}
               #quick-menu div{border-radius:40px 40px 0 0;width:auto;padding:10px 10px 5px;display:flex;align-items:center;height:62px;}
               #quick-menu div span{font-size:11px;padding:10px 10px 0 0px;height:100%;}
               #quick-menu div a{height:0px;font-size:9px;overflow:hidden;width:0px;}
               #quick-menu div a img{width:30px;margin-bottom:5px;}
               #quick-menu .open-close{position:absolute;bottom:auto;right:-14px}
-              #quick-menu.active div a{height:55px;width:76px}
+              #quick-menu.active div a{height:60px;width:66px}
               #quick-menu.active div a:not(:last-child){border:1px dashed #cad0db;border-width:0 1px 0 0;}
             }
              @media (max-width:716px) {
@@ -838,7 +855,7 @@
               loop: true,
               breakpoints: {
                 0:   { loop: false }, // ✅ 717 이하
-                718: { loop: true }   // ✅ 718 이상
+                718: { loop: false }   // ✅ 718 이상
               },
               slidesPerView: 1,
               spaceBetween: 0,
@@ -1044,7 +1061,7 @@
               spaceBetween: 0,
                breakpoints: {
                 0:   { loop: false }, // ✅ 717 이하
-                718: { loop: true }   // ✅ 718 이상
+                718: { loop: false }   // ✅ 718 이상
               },
               pagination: pagerEl ? {
                 el: pagerEl,
@@ -1248,10 +1265,10 @@
         <script>
           const swiper5 = new Swiper(".mainSwiper5", {
             speed: 250,
-            loop: true,
+            loop: false,
             slidesPerView: "auto",
             spaceBetween: 15,
-             observer: true,
+            observer: true,
             observeParents: true,
             updateOnWindowResize: true,
             navigation: {
