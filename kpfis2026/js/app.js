@@ -195,7 +195,13 @@ $Doc.on({
         $(this).toggleClass('active');
         
     }
-}, '#footer .select');
+}, '#footer .select')
+.on({
+    'click': function(e) {
+        e.preventDefault();
+       $('#quick-menu').toggleClass('active'); 
+    }
+}, '#quick-menu .open-close, #quick-menu div span, #quick-menu .img-bee');
 
 
 $(window).on('load', function() {
@@ -207,7 +213,6 @@ $(window).on('load', function() {
         lastScrollTop = currentScrollTop; // 마지막 스크롤 위치 업데이트
     });
 });
-
 
 
 document.addEventListener('DOMContentLoaded', function() {

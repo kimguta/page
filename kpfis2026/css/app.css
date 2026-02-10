@@ -194,7 +194,7 @@ main{position: relative;}
 #header .nav-bx .Htlv01.active a:after{opacity:1;transform:translateX(0);}
 #header.active .nav-bx .Htlv01 a{width:220px;}
 #header .nav-bx .Htlv01.active a{color:#141e58;font-weight:800;}
-#header .nav-bx .Hdepth02{overflow:hidden;position:absolute;display:none;left:0px;right:0px;padding:25px 0px 20px;width:100%;background:transparent;animation:height1 .3s ease-out forwards;}
+#header .nav-bx .Hdepth02{overflow:hidden;position:absolute;display:none;left:0px;right:0px;padding:25px 0px 20px;width:100%;background:transparent;animation:height1 .3s ease-out forwards;transition:background .1s ease;}
 #header .nav-bx .Htlv01.active + .Hdepth02{background:#141e58;}
 #header .nav-bx .Htlv02 a{display:flex;padding:0 10px 0 30px;line-height:1.3;align-items:center;height:40px;font-size:17px;position: relative;}
 #header .nav-bx .Htlv01.active + .Hdepth02 .Htlv02 a{color:#fff;}
@@ -215,7 +215,7 @@ main{position: relative;}
 
 #header .gnb-bg{position:absolute;overflow:hidden;top:80px;height:0px;background: #fff url(/page/kpfis2026/images/common/gnb-open.jpg) no-repeat right bottom /cover;z-index:-1;overflow:hidden;pointer-events:none;left:-1px;right:-1px;opacity:1;transition:all .3s ease-out;}
 #header.active .gnb-bg{border-bottom:1px solid #ddd;opacity:1;border-width:1px 0;}
-
+#quick-menu div span, #quick-menu .img-bee{cursor: pointer;}
 @keyframes height1{ 
    0%{ clip-path: inset(0 0 100% 0); }  /* 아래를 100% 잘라서 위쪽만 남김 */
   100%{ clip-path: inset(0 0 0 0); }
@@ -509,7 +509,48 @@ main .innerWrap{padding: 63px 0 30px !important;}
   #btn-top{bottom:10px;right:10px;display:none;}
   #btn-top img{width:31px}
 
-  main .innerWrap{padding: 52px 0 30px !important;}
+  main .innerWrap{padding: 96px 0 30px !important;}
 } 
 
+#quick-menu{z-index:200;position:fixed;right:10px;top:20vh;display:flex;flex-direction:column;align-items:center; font-family: 'SebangGothic';}
+#quick-menu .img-bee{width:70px;margin-bottom:0px;will-change: transform, filter;animation: beeSmooth 1s cubic-bezier(.5,0,.3,1) infinite alternate;}
+#quick-menu div{background:rgba(255,255,255,.9);border-radius:40px;width:82px;padding:10px 3px 10px;box-shadow:0px 0px 10px 0px rgba(0,0,0,.1);transition:all .3s ease-out;}
+#quick-menu div span{text-align:center;font-size:13px;font-weight:700;text-align:center;line-height:1.3;display:block;padding-bottom:10px;-webkit-user-select: none;user-select:none;caret-color: transparent; }
+#quick-menu div a{display:flex;height:99px;display:flex;align-items:center;justify-content:center;flex-direction:column;font-size:12px;color:#3c3c3c;height:0;overflow:clip;transition:all .3s ease-out;}
+#quick-menu div a img{width:38px;margin-bottom:5px;}
+/* #quick-menu div a:not(:last-child){border-bottom:1px dashed #cad0db;} */
+#quick-menu .open-close{position:absolute;bottom:-14px;}
+#quick-menu .open-close img{display:block;width:27.5px;}
+#quick-menu .open-close img:last-child{display:none;}
+#quick-menu.active div a{height:90px;}
+#quick-menu.active div a:not(:last-child){border-bottom:1px dashed #cad0db;}
+#quick-menu.active div span,
+#quick-menu.active .open-close img{display:none;}
+#quick-menu.active .open-close img:last-child{display:block;}
 
+@keyframes beeSmooth{
+    0%{
+    transform: translateY(0) scaleX(1.05) scaleY(.99) rotate(-1deg);
+    filter: drop-shadow(0 6px 8px rgba(0,0,0,.14));
+    }
+    100%{
+    transform: translateY(-24px) scaleX(.98) scaleY(1.01) rotate(1deg);
+    filter: drop-shadow(0 24px 16px rgba(0,0,0,.08));
+    }
+}
+
+@media (max-width:1500px) {
+    #quick-menu{right:15px;top:auto;bottom:-3px;flex-direction:row;transition:bottom .5s ease-out;}
+    #quick-menu .img-bee{width:38px;margin:15px 5px 0 0;}
+    #quick-menu div{border-radius:40px 40px 0 0;width:auto;padding:10px 10px 5px;display:flex;align-items:center;height:62px;}
+    #quick-menu div span{font-size:11px;padding:10px 10px 0 0px;height:100%;}
+    #quick-menu div a{height:0px;font-size:9px;overflow:hidden;width:0px;}
+    #quick-menu div a img{width:30px;margin-bottom:5px;}
+    #quick-menu .open-close{position:absolute;bottom:auto;right:-14px}
+    #quick-menu.active div a{height:60px;width:66px}
+    #quick-menu.active div a:not(:last-child){border:1px dashed #cad0db;border-width:0 1px 0 0;}
+}
+    @media (max-width:716px) {
+    #quick-menu{bottom:-80px;}
+    .down ~ #quick-menu{bottom:-3px;}
+}

@@ -116,15 +116,43 @@ function FullPage(obj, nav, footerSel) {
     requestAnimationFrame(step);
   }
 
-  function scrollToPage(index){
+  // ===== 접근성: 해당 섹션의 첫 a로 포커스 =====
+  function focusFirstLink($section){
+    if (!$section || !$section.length) return;
+
+    var $a = $section.find('a[href], a[role="link"]').filter(':visible').first();
+
+    if ($a.length) {
+      // 포커스 못 받는 링크 대비
+      if (!$a.is('[tabindex]')) $a.attr('tabindex', '-1');
+      $a[0].focus({ preventScroll: true });
+    } else {
+      // 링크 없으면 섹션 자체로 포커스
+      if (!$section.is('[tabindex]')) $section.attr('tabindex', '-1');
+      $section[0].focus({ preventScroll: true });
+    }
+  }
+
+  function scrollToPage(index, after){
     if (isScrolling) return;
     if (index < 0 || index >= pageCount) return;
 
     isScrolling = true;
-    var targetY = $pages.eq(index).offset().top;
+    var $targetPage = $pages.eq(index);
+    var targetY = $targetPage.offset().top;
 
     smoothScrollTo(targetY, duration, function(){
       setActive(index);
+
+      // ✅ 포커스는 "홀드 이후 + 한틱"에 (버튼이 다시 뺏는거 방지)
+      setTimeout(function(){
+        requestAnimationFrame(function(){
+          focusFirstLink($targetPage);
+        });
+      }, HOLD_MS);
+
+      if (typeof after === 'function') after(index);
+
       setTimeout(function(){ isScrolling = false; }, HOLD_MS);
     });
   }
@@ -194,7 +222,6 @@ function FullPage(obj, nav, footerSel) {
 
     wheelSum += dy;
 
-    // WHEEL_END_MS=0이면 사실상 즉시 실행(그래도 setTimeout 0은 다음 tick)
     clearTimeout(wheelTimer);
     wheelTimer = setTimeout(function(){
       if (Math.abs(wheelSum) < THRESHOLD){
@@ -254,13 +281,21 @@ function FullPage(obj, nav, footerSel) {
     e.preventDefault();
     snapEnabled = true;
     resetWheelGesture();
-    scrollToPage($(this).data('index'));
+
+    var idx = $(this).data('index');
+    var trigger = this;
+
+    scrollToPage(idx, function(){
+      // ✅ 클릭한 버튼이 포커스 계속 잡는거 제거
+      trigger.blur();
+    });
   });
 
   // 초기 상태
   setActive(0);
   updateSnapState();
 }
+
 
 
 document.addEventListener("DOMContentLoaded", () => {
