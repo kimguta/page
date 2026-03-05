@@ -211,7 +211,13 @@ $Doc.on({
         
         $('#side-wrap, #side-menu .side-view-open, #side-view > div').removeClass('on');
     }
-}, '.side-view-close');
+}, '.side-view-close')
+.on({
+    'click': function(e) {
+        e.preventDefault();
+        $(this).toggleClass('active');
+    }
+}, '.calander-tab .open-btn');
 
 
 $(window).on('load', function() {

@@ -3,6 +3,7 @@
 <h3>DQ_프로젝트 퍼블리싱 페이지</h3>
 <ul>
   <li><a href="basic" target="_blank">베이직소스</a></li>
+  <li><a href="cccf/moabom.html" target="_blank">춘천모아봄</a></li>
   <li><a href="cccf" target="_blank">춘천문화재단</a></li>
   <li><a href="kpfis2026" target="_blank">재정정보원</a></li>
   <li><a href="rise" target="_blank">강대라이즈</a></li>
