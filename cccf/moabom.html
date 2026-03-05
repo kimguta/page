@@ -859,9 +859,16 @@
                     </div>
 
                     <script>
-                        $('.event-list a').click(function(e){
-                            e.preventDefault();
-                            $('.event-land').addClass('active');
+                       $('.event-list a').click(function(e){
+                        e.preventDefault();
+
+                        $('.event-land').addClass('active');
+
+                        if($(window).width() <= 716){
+                            $('html, body').animate({
+                            scrollTop: $('.event-land').offset().top
+                            }, 500);
+                        }
                         });
                         $('.event-land .close').click(function(e){
                             e.preventDefault();
