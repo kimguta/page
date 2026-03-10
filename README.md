@@ -1,14 +1,20 @@
 
 
-<h3>DQ_프로젝트 퍼블리싱 페이지</h3>
+<h3>프로젝트 페이지</h3>
+
+<h3>2026</h3>
 <ul>
-  <li><a href="basic" target="_blank">베이직소스</a></li>
   <li><a href="cccf/index-city-art.html" target="_blank">춘천시립예술단</a></li>
   <li><a href="cccf/index-dream-art.html" target="_blank">꿈꾸는예술터</a></li>
   <li><a href="cccf/moabom.html" target="_blank">춘천모아봄</a></li>
   <li><a href="cccf" target="_blank">춘천문화재단</a></li>
   <li><a href="kpfis2026" target="_blank">재정정보원</a></li>
   <li><a href="rise" target="_blank">강대라이즈</a></li>
+</ul>
+
+
+<h3>2025 ~</h3>
+<ul>
   <li><a href="haksa2025" target="_blank">강원학사</a></li>
   <li><a href="injae2025" target="_blank">강원인재원</a></li>
   <li><a href="pc-edu/" target="_blank">평창평생학습관</a></li>
