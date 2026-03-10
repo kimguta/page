@@ -13,7 +13,7 @@
 </ul>
 
 
-<h3>2025 ~</h3>
+<h3>~ 2025</h3>
 <ul>
   <li><a href="haksa2025" target="_blank">강원학사</a></li>
   <li><a href="injae2025" target="_blank">강원인재원</a></li>
