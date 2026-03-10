@@ -287,4 +287,27 @@ const allStopBtns = document.querySelectorAll('.swiper-stop');
             1400:{ spaceBetween: 45,slidesPerView: 3,}
         },
     });
+
+
+     document.querySelectorAll('.wave-text').forEach(el => {
+        let idx = 0;
+
+        // wave-text 안의 텍스트 노드/요소를 전부 글자 단위 span으로 변환
+        const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
+        const textNodes = [];
+        while (walker.nextNode()) textNodes.push(walker.currentNode);
+
+        textNodes.forEach(node => {
+            const parent = node.parentNode;
+            const frag = document.createDocumentFragment();
+            [...node.nodeValue].forEach(ch => {
+            const s = document.createElement('span');
+            s.className = 'char';
+            s.textContent = ch === ' ' ? '\u00A0' : ch;
+            s.style.setProperty('--i', idx++);
+            frag.appendChild(s);
+            });
+            parent.replaceChild(frag, node);
+        });
+    });
 });
