@@ -238,3 +238,51 @@ $(document).on('click', '.board-bx .tab-btn', function(e){
 
   $wrap.find('.item').removeClass('active').eq(idx).addClass('active');
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+  const scroller = document.querySelector('#record .record-list');
+  if (!scroller) return;
+
+  const isDesktop = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (!isDesktop) return;
+
+  let current = scroller.scrollTop;
+  let target = scroller.scrollTop;
+  let ticking = false;
+
+  function animateScroll() {
+    current += (target - current) * 0.18;
+
+    if (Math.abs(target - current) < 0.5) {
+      current = target;
+      ticking = false;
+    } else {
+      requestAnimationFrame(animateScroll);
+    }
+
+    scroller.scrollTop = current;
+  }
+
+  scroller.addEventListener('wheel', function (e) {
+    const isTop = scroller.scrollTop <= 0;
+    const isBottom = Math.ceil(scroller.scrollTop + scroller.clientHeight) >= scroller.scrollHeight;
+    const goingUp = e.deltaY < 0;
+    const goingDown = e.deltaY > 0;
+
+    if ((goingUp && !isTop) || (goingDown && !isBottom)) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      target += e.deltaY;
+
+      const maxScroll = scroller.scrollHeight - scroller.clientHeight;
+      if (target < 0) target = 0;
+      if (target > maxScroll) target = maxScroll;
+
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(animateScroll);
+      }
+    }
+  }, { passive: false });
+});
