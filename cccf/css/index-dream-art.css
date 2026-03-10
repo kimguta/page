@@ -17,7 +17,10 @@ button {
 
 #visual{position:relative;z-index:5;}
 #visual .swiper-slide{position:relative;width:100vw;height:calc(100vh - 80px);}
-#visual .swiper-slide > img{border-bottom-right-radius:60px;width:100%;height:100%;object-fit:cover;background:transparent;}
+#visual .swiper-slide > img{border-bottom-right-radius:60px;width:100%;height:100%;object-fit:cover;background:transparent;
+  /* transition:filter 1s .5s ease-out;filter:blur(10px); */
+}
+#visual .swiper-slide.swiper-slide-active > img{filter:blur(0px)}
 #visual .swiper-slide strong{position:absolute;padding-bottom:40px;border-bottom:2px solid rgba(255,255,255,.4);text-shadow:2px 2px 3px rgba(0,0,0,.15);z-index:5;bottom:200px;width:100%;max-width:1400px;left:0;right:0;margin:0 auto;font-size:70px;color:#fff;font-weight:800;line-height:1.4;word-break:keep-all;}
 #visual .control{position:absolute;bottom:80px;display:flex;align-items:center;gap:10px;width:100%;max-width:1400px;left:0;right:0;margin:0 auto;z-index:10;}
 #visual .control span{color:#fff;font-size:44px;font-weight:300;padding-left:30px;}
@@ -428,7 +431,7 @@ button {
 
 @media (max-width:716px) {
   #visual .swiper-slide{height: 580px;}
-  #visual .swiper-slide strong{padding: 0 35px 20px 0;bottom:80px;font-size: 22px;left:20px}
+  #visual .swiper-slide strong{padding: 0 35px 20px 0;bottom:80px;font-size: 26px;left:20px;border-bottom-width: 1px;}
   #visual .control{bottom:20px;left:30px}
   #visual .control span{font-size: 16px;padding-left:10px;}
   #visual .control button{width:45px;}
