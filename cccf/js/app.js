@@ -1,4 +1,19 @@
 
+document.addEventListener('DOMContentLoaded', function() {
+  window.lenis = new Lenis({
+    duration: 0.5,
+    easing: t => 1 - Math.pow(1 - t, 2),
+  });
+
+  function raf(time) {
+    window.lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
+});
+
+
+
 // slick 슬라이더 초기화 함수
 function initSlick(target, options) {
     var $ControlBtn = target.parent().find('.control .ps-btn');

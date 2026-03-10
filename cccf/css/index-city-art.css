@@ -1,0 +1,306 @@
+@charset "utf-8"; 
+
+:root {
+    --vh: 100vh;
+  }
+
+button {
+    caret-color: transparent; 
+}
+.swiper-pagination{position:relative !important;top:0 !important;width:auto !important}
+.swiper-stop:active,
+.swiper-play:active,
+.swiper-button-prev:active,
+.swiper-button-next:active {transform:scale(.9);}
+
+#main{position:relative;overflow:clip;padding-top:80px;font-family: 'NanumSquareNeo';color:#000}
+
+#visual{position:relative;position:relative;background:radial-gradient( #1b365d, #1f5f6b );z-index:5;}
+#visual .swiper-slide img{display:block;width:100%;height:100%;object-fit:cover;height:calc(100vh - 80px);min-height:850px;}
+#visual .swiper-slide img.pc-img{display:block;}
+#visual .swiper-slide img.mobile-img{display:none;}
+#visual .swiper-slide .btn-bx{position:absolute;bottom:130px;display:flex;gap:10px;justify-content:center;width:100%;}
+#visual .control{position:absolute;width:100%;left:0;top:50%;display:flex;justify-content:space-between;padding:0 30px;margin-top:-60px;}
+#visual .swiper-button-next, #visual .swiper-button-prev{height:52px;}
+#visual [class^="swiper-button-"] img{display:block;height:100%;filter:drop-shadow(1px 1px 2px rgba(0,0,0,.5));}
+
+
+#schedule{position:relative;padding:60px 0;}
+#schedule .inner{display:flex;gap:90px;align-items:center;}
+#schedule .inner > div{flex:1;}
+#schedule .inner > div + div{flex:1.13}
+#schedule .calendar-bx .title-bx{display:flex;position:relative;align-items:center;justify-content:space-between;padding-top:55px;}
+#schedule .calendar-bx .title-bx .info{position:absolute;display:block;height:46px;top:0px;}
+#schedule .calendar-bx .title-bx h2{font-size:48px;font-weight:900;white-space: nowrap;line-height:1;}
+#schedule .calander-tab{display:flex;align-items:center;justify-content:space-between;gap:20px}
+#schedule .calander-tab > a img{display:block;width:42px;}
+#schedule .year-month{display:flex;align-items:center;gap:30px;}
+#schedule .year-month .item{position:relative;}
+#schedule .open-btn{height:41px;display:flex;padding-right:5px;align-items:center;justify-content:space-between;gap:15px;font-size:30px;font-weight:900;}
+#schedule .open-btn img{display:block;width:11px;transition:all .2s;}
+#schedule .year-month .item > div{position:absolute;border:1px solid #000;width:100%;padding:10px;max-height:160px;overflow-y:auto;display:none;background:#fff;}
+#schedule .year-month .item > div a{display:block;text-align:center;font-size:14px;padding:2px;}
+#schedule .open-btn.active img{transform:rotate(180deg);}
+#schedule .open-btn.active ~ div{display:block;}
+#schedule table{table-layout:fixed;width:100%;margin-top:30px;}
+#schedule table th{height:60px;border:2px solid #000;border-width:2px 0;font-size:22px;font-weight:800;}
+#schedule table th:first-child{color:#ff0000}
+#schedule table th:last-child{color:#0054ff}
+#schedule table td{height:87px;border:1px solid #aaa;border-width:0 1px 1px 0;vertical-align:top;padding:7px 7px 0;}
+#schedule table td:last-child{border-right:0;}
+#schedule table td span{display:flex;font-weight:800;font-size:16px;transition:all .2s;width:32px;height:32px;background:#fff;border-radius:50%;align-items:center;justify-content:center;}
+#schedule table td i{display:flex;align-items:center;justify-content:center;margin-top:12px;background:#d8d9db;border-radius:3px;height:20px;}
+#schedule table td i img{display:block;width:13px;}
+#schedule table td.today{background:#268293;}
+#schedule table td.today i,
+#schedule table td.today span{background:#1c6370;color:#fff;}
+#schedule table td.today i img{filter:grayscale(1) brightness(200);}
+
+#schedule .event-bx{position:relative;z-index:2;background:#fff;padding:50px 10px 30px;border-radius:20px;box-shadow:5px 5px 15px 0px rgba(0,0,0,.15);}
+#schedule:before{content:'';z-index:-1;background:url(/page/cccf/images/city-art/bg1.jpg) no-repeat right center /cover;position:absolute;left:calc(50% - 45px);top:0px;bottom:0px;width:1002px}
+#schedule .event-bx .title-bx{display:flex;position:relative;align-items:center;justify-content:space-between;padding:0 0px 35px;margin: 0 20px 0px;border-bottom:1px solid #000}
+#schedule .event-bx .title-bx h3{display:flex;align-items:center;justify-content:center;color:#1f5f6b;font-size:24px;font-weight:900;width:350px;height:59px;background:url(/page/cccf/images/city-art/calendar_daybox.png) no-repeat left center /cover;}
+#schedule .event-bx .title-bx a img{display:block;width:55px;}
+.event-scroll-bx{
+  height:460px;
+  overflow-y:auto;
+  /* scroll-snap-type:y mandatory;
+  scroll-behavior: smooth; */
+  position: relative;
+}
+
+.event-scroll-bx{
+  overflow-y:auto;
+  scrollbar-width:thin;
+  scrollbar-color:#000 #e6e8ea;
+}
+
+.event-scroll-bx::-webkit-scrollbar{
+  width:15px;
+}
+
+.event-scroll-bx::-webkit-scrollbar-track{
+  background:#e6e8ea;
+  border-radius:20px;
+}
+
+.event-scroll-bx::-webkit-scrollbar-thumb{
+  background:#000;
+  border-radius:20px;
+  border:3px solid #e6e8ea;
+}
+.event-scroll-bx .scroll-item{
+  height:100%;
+  /* scroll-snap-align:start; */
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  padding: 35px 20px 25px;
+}
+.event-bx.on:after{content:'';display:block;position:absolute;right:-160px;background:url(/page/cccf/images/city-art/scroll_mouse.png) no-repeat center center /cover;width:135px;height:169px;top:45%;animation:jmp .35s infinite alternate ease-out;}
+
+.event-scroll-bx .scroll-item > img{display:block;max-height:100%;max-width:50%;}
+.event-scroll-bx .text-bx{display:flex;flex-direction:column;justify-content:space-between;padding-top:25px;}
+.event-scroll-bx .text-bx em{display:flex;align-items:center;gap:7px;color:#1f5f6b;font-weight:800;font-size:18px;line-height:1;}
+.event-scroll-bx .text-bx em:before{content:'';display:block;background:#1f5f6b;width:13px;height:13px;border-radius:50%;margin-top:-2px}
+.event-scroll-bx .text-bx strong{display:block;word-break:keep-all;padding-top:13px;font-size:22px;font-weight:800;line-height:1.5;}
+.event-scroll-bx dl{display:grid;grid-template-columns:auto 1fr;padding-top:23px;gap:13px 15px}
+.event-scroll-bx dt img{display:block;width:22px;}
+.event-scroll-bx dd{font-size:14px;font-weight:700;color:#222}
+.event-scroll-bx .text-bx a{width:180px;max-width:90%;display:flex;align-items:center;font-weight:800;background:#fff;justify-content:space-between;padding:0 11px 0 23px;transition:all .2s;border:1px solid #000;height:45px;font-size:14px;white-space: nowrap;}
+.event-scroll-bx .text-bx a img{display:block;width:41px;}
+.event-scroll-bx .text-bx a + a{margin-top:10px;}
+.event-scroll-bx .text-bx a:hover{filter:invert(1);}
+
+.calendar-bx{transform:translateX(-50%);opacity:0;transition:transform .8s, opacity .8s;}
+.calendar-bx.show{transform:translateX(0%);opacity:1;}
+
+.event-bx{transform:translateX(50%);opacity:0;transition:transform .8s .35s, opacity .8s .35s;}
+.event-bx.show{transform:translateX(0%);opacity:1;}
+
+#gallery{position: relative;padding:75px 0;background:linear-gradient(to right, #1b365d, #1f5f6b);display:flex;justify-content:center;}
+#gallery .item-wrap{max-width:1920px;width:100%;}
+#gallery .item{display:flex;gap:45px;}
+#gallery .item a{flex:1;position:relative;height:327px}
+#gallery .item a > img{display:block;width:100%;height:100%;object-fit:cover;}
+#gallery .item a i{position:absolute;top:15px;right:15px;}
+#gallery .item a i img{display:block;width:39px;}
+#gallery .item a strong{display:block;position:absolute;padding:20px;color:#fff;left:0;bottom:0;width:100%;text-align:center;line-height:1.3;word-break:keep-all;font-size:20px;font-weight:800;}
+#gallery .item a:hover i img{animation: wobbleDecay .5s 1 both;}
+#gallery .link{display:flex;align-items:center;justify-content:center;gap:30px;padding:30px 0;}
+#gallery .link > img{display:block;width:1174px;max-width:90%;}
+#gallery .link a img{display:block;width:77px;filter:drop-shadow(5px 5px 10px rgba(0,0,0,.5));}
+#gallery .link a:hover img{animation:shake .7s 1 both ease-out;}
+
+#gallery .item{transform:translateX(-70%);opacity:0;transition:transform 1s, opacity 1s;}
+#gallery .item:last-child{transform:translateX(70%);transition-delay:.3s;}
+#gallery .item.show{transform:translateX(0%);opacity:1;}
+
+
+
+@keyframes wobbleDecay{
+  0%   { transform: translateX(0); }
+  12%  { transform: translateX(-6px); }
+  24%  { transform: translateX(5px); }
+  36%  { transform: translateX(-4px); }
+  48%  { transform: translateX(3px); }
+  60%  { transform: translateX(-2px); }
+  72%  { transform: translateX(1.5px); }
+  84%  { transform: translateX(-1px); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes jmp {
+  0%   {transform:translateY(10%)}
+  100% {transform:translateY(0)}
+}
+
+@media (max-width:1400px) {
+  #main{padding-top:60px;}
+  #visual .swiper-slide img{height:600px;min-height:initial;}
+  #visual .swiper-slide .btn-bx{bottom:80px;}
+  #visual .control{padding:0 20px;margin-top:-50px;}
+
+  #schedule{padding:50px 0;}
+  #schedule .inner{gap:60px;}
+  #schedule .calendar-bx .title-bx{padding-top:45px;}
+  #schedule .calendar-bx .title-bx .info{height:40px;}
+  #schedule .calendar-bx .title-bx h2{font-size:34px;}
+  #schedule .calander-tab{gap:15px}
+  #schedule .calander-tab > a img{width:36px;}
+  #schedule .year-month{gap:20px;}
+  #schedule .open-btn{height:36px;font-size:24px;;}
+  #schedule .open-btn img{width:9px;}
+  #schedule .year-month .item > div{padding:5px;max-height:135px;}
+  #schedule .year-month .item > div a{font-size:13px;padding:1px;}
+  #schedule table{margin-top:30px;}
+  #schedule table th{height:50px;font-size:17px;}
+  #schedule table td{height:77px;padding:5px 5px 0;}
+  #schedule table td span{font-size:13px;width:28px;height:28px}
+  #schedule table td i{margin-top:10px;height:18px;}
+  #schedule table td i img{width:11px;}
+  #schedule .event-bx{padding:35px 10px 25px;border-radius:15px;}
+  #schedule:before{left:calc(50% - 40px);width:700px}
+  #schedule .event-bx .title-bx{padding:0 0px 25px;margin: 0 15px 0px;}
+  #schedule .event-bx .title-bx h3{font-size:20px;width:303px;height:51px;}
+  #schedule .event-bx .title-bx a img{width:45px;}
+  .event-scroll-bx{
+    height:420px;
+  }
+  .event-scroll-bx .scroll-item{
+    padding: 25px 15px 20px;
+  }
+  .event-bx.on:after{display:none;}
+  .event-scroll-bx .scroll-item > img{max-width:240px;}
+  .event-scroll-bx .text-bx{padding-top: 10px;}
+  .event-scroll-bx .text-bx em{font-size: 16px;}
+  .event-scroll-bx .text-bx em:before{width: 11px;height: 11px;margin-top:-2px}
+  .event-scroll-bx .text-bx strong{padding-top: 12px;font-size: 19px;}
+  .event-scroll-bx dl{padding-top: 20px;gap: 11px 13px;}
+  .event-scroll-bx dt img{width: 18px;}
+  .event-scroll-bx dd{font-size: 13px;}
+  .event-scroll-bx .text-bx a{width: 156px;padding: 0 10px 0 15px;height: 42px;font-size: 13px;}
+  .event-scroll-bx .text-bx a img{width: 31px;}
+
+  #gallery{padding:50px 0;}
+  #gallery .item{gap:25px;}
+  #gallery .item a{flex:1;position:relative;height:227px}
+  #gallery .item a i{top:15px;right:15px;}
+  #gallery .item a i img{width:31px;}
+  #gallery .item a strong{padding:15px;font-size:16px;}
+  #gallery .link{gap:20px;padding:20px 0;}
+  #gallery .link > img{width:874px;}
+  #gallery .link a img{width:71px;}
+
+}
+
+@media (max-width:991px) {
+  #visual .swiper-slide img{height:auto;}
+  #visual .swiper-slide img.pc-img{display:none;}
+  #visual .swiper-slide img.mobile-img{display:block;}
+  #visual .swiper-slide .btn-bx{bottom:100px;flex-direction:column;padding-left:20px;}
+  #visual .swiper-slide .btn-bx a{width:115px;justify-content:center;}
+  #visual .control{padding:0 15px;margin-top:-50px;}
+
+  #schedule{padding:50px 0;}
+  #schedule .inner{gap:60px;flex-direction:column;}
+  #schedule:before{
+    left: 0;
+    right: 0;
+    width: auto;
+    top: 628px;
+}
+  #gallery .link > img{width:684px;}
+  #gallery .link a img{width:69px;}
+}
+
+
+@media (max-width:716px) {
+  #visual .swiper-slide .btn-bx{bottom:80px;padding-left:15px;gap:8px;}
+  #visual .control{padding:0 5px;margin-top:-50px;}
+  #visual .swiper-button-next, #visual .swiper-button-prev{height:42px;}
+
+
+  #schedule{padding:40px 0;}
+  #schedule .inner{gap:40px;flex-direction:column;}
+
+  #schedule .calendar-bx .title-bx{padding-top:40px;}
+  #schedule .calendar-bx .title-bx .info{height:36px;}
+  #schedule .calendar-bx .title-bx h2{font-size:26px;}
+  #schedule .calander-tab{gap:12px}
+  #schedule .calander-tab > a img{width:32px;}
+  #schedule .year-month{gap:12px;}
+  #schedule .open-btn{height:34px;font-size:20px;}
+  #schedule .open-btn img{width:7px;}
+  #schedule .year-month .item > div{max-height:125px;}
+  #schedule .year-month .item > div a{font-size:12px;}
+  #schedule table{margin-top:20px;}
+  #schedule table th{height:46px;font-size:15px;}
+  #schedule table td{height:68px;}
+  #schedule table td span{font-size:12px;width:24px;height:24px}
+  #schedule table td i{margin-top:10px;height:16px;}
+  #schedule table td i img{width:9px;}
+  #schedule .event-bx{padding:25px 10px 25px;border-radius:15px;max-width:100%;}
+  #schedule:before{top: 542px;}
+
+  #schedule .event-bx .title-bx{padding:0 0px 20px;margin: 0 10px 0px;}
+  #schedule .event-bx .title-bx h3{font-size:17px;width:231px;height:39px;}
+  #schedule .event-bx .title-bx a img{width:35px;}
+  .event-scroll-bx{
+    height: 305px;
+  }
+  .event-scroll-bx .scroll-item{
+    padding: 20px 10px 15px;
+    align-items:flex-start;
+    gap: 15px;
+  }
+ 
+  .event-scroll-bx .scroll-item > img{max-width:140px;height:auto;}
+  .event-scroll-bx .text-bx{padding-top: 5px;}
+  .event-scroll-bx .text-bx em{font-size: 13px;}
+  .event-scroll-bx .text-bx em:before{width: 9px;height:9px;margin-top:-2px}
+  .event-scroll-bx .text-bx strong{padding-top: 12px;font-size: 15px;}
+  .event-scroll-bx dl{padding: 15px 0;gap: 7px 10px;}
+  .event-scroll-bx dt img{width: 14px;}
+  .event-scroll-bx dd{font-size: 10px;}
+  .event-scroll-bx .text-bx a{width: 125px;padding: 0 5px 0 15px;height: 34px;font-size: 12px;}
+  .event-scroll-bx .text-bx a img{width: 21px;}
+
+  #gallery{padding:25px 0;}
+  #gallery .item{gap:0px;overflow-y:auto;}
+  #gallery .item a{flex:initial;height:151px;min-width:254px;}
+  #gallery .item a i img{width:25px;}
+  #gallery .item a strong{font-size:13px;}
+  #gallery .link{gap:10px;padding:20px 0 10px;flex-direction:column;}
+  #gallery .link > img{max-width:99%;}
+  #gallery .link a img{width:59px;}
+
+  .event-scroll-bx::-webkit-scrollbar{
+    width:6px;
+  }
+  .event-scroll-bx::-webkit-scrollbar-thumb{
+  border:1px solid #e6e8ea;
+}
+
+  
+}

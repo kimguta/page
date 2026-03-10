@@ -3,6 +3,8 @@
 <h3>DQ_프로젝트 퍼블리싱 페이지</h3>
 <ul>
   <li><a href="basic" target="_blank">베이직소스</a></li>
+  <li><a href="cccf/index-city-art.html" target="_blank">춘천시립예술단</a></li>
+  <li><a href="cccf/index-dream-art.html" target="_blank">꿈꾸는예술터</a></li>
   <li><a href="cccf/moabom.html" target="_blank">춘천모아봄</a></li>
   <li><a href="cccf" target="_blank">춘천문화재단</a></li>
   <li><a href="kpfis2026" target="_blank">재정정보원</a></li>
