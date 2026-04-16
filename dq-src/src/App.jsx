@@ -1,10 +1,13 @@
+import { Navigate, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import { Navigate, Route, Routes } from 'react-router-dom';
 import MainPage from './pages/MainPage';
-import GuidesPage from './pages/GuidesPage';
-import PricingPage from './pages/PricingPage';
-import ContactPage from './pages/ContactPage';
+import CompanyPage from './pages/CompanyPage';
+import AxDxPage from './pages/AxDxPage';
+import SolutionPage from './pages/SolutionPage';
+import ServicePage from './pages/ServicePage';
+import StoryPage from './pages/StoryPage';
+import SupportPage from './pages/SupportPage';
 
 export default function App() {
   return (
@@ -14,9 +17,12 @@ export default function App() {
 
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route path="/guides" element={<GuidesPage />} />
-          <Route path="/pricing" element={<PricingPage />} />
-          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/company" element={<CompanyPage />} />
+          <Route path="/ax-dx" element={<AxDxPage />} />
+          <Route path="/solution" element={<SolutionPage />} />
+          <Route path="/service" element={<ServicePage />} />
+          <Route path="/story" element={<StoryPage />} />
+          <Route path="/support" element={<SupportPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
 

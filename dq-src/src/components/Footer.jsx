@@ -10,7 +10,7 @@ export default function Footer() {
           <span className="brand-text">DQ</span>
         </Link>
         <p className="footer-copy">
-          DQ는 브랜드 경험, 웹사이트 구축, 콘텐츠 운영을 한 흐름으로 연결하는 회사입니다.
+          Digital Quotient는 브랜드, 시스템, 콘텐츠를 하나의 경험으로 연결하는 웹 파트너입니다.
         </p>
       </div>
 

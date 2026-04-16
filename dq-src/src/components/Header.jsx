@@ -1,5 +1,5 @@
-import { menuItems } from '../data/menuItems';
 import { Link, NavLink } from 'react-router-dom';
+import { menuItems } from '../data/menuItems';
 
 export default function Header() {
   return (
@@ -9,7 +9,7 @@ export default function Header() {
         <span className="brand-text">DQ</span>
       </Link>
 
-      <nav className="nav">
+      <nav className="nav" aria-label="Primary navigation">
         {menuItems.map((item) => (
           <NavLink
             key={item.id}
@@ -22,9 +22,9 @@ export default function Header() {
         ))}
       </nav>
 
-      <button className="cta" type="button">
+      <Link className="cta" to="/support">
         문의하기
-      </button>
+      </Link>
     </header>
   );
 }
