@@ -10,6 +10,7 @@
   <li><a href="cccf" target="_blank">춘천문화재단</a></li>
   <li><a href="kpfis2026" target="_blank">재정정보원</a></li>
   <li><a href="rise" target="_blank">강대라이즈</a></li>
+  <li><a href="dq/" target="_blank">DQ 홈페이지</a></li>
 </ul>
 
 

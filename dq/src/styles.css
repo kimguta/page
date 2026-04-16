@@ -1,0 +1,374 @@
+:root {
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: #f4f7fb;
+  background:
+    radial-gradient(circle at top, #20314f 0%, #0b1020 45%, #060810 100%);
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+.app-shell {
+  min-height: 100vh;
+  padding: 24px;
+}
+
+.page {
+  width: min(100%, 980px);
+  margin: 0 auto;
+}
+
+.page-stack {
+  display: grid;
+  gap: 20px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 20px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  background: rgba(10, 14, 26, 0.55);
+  backdrop-filter: blur(16px);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.brand-mark {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #9eb7ff, #5f7cff);
+  color: #081022;
+  font-weight: 800;
+}
+
+.brand-text {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.nav a {
+  color: rgba(244, 247, 251, 0.78);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #ffffff;
+}
+
+.cta {
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 999px;
+  background: #f4f7fb;
+  color: #081022;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.card {
+  width: 100%;
+  padding: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 24px;
+  background: rgba(10, 14, 26, 0.72);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+}
+
+.hero {
+  padding-top: 56px;
+  padding-bottom: 56px;
+}
+
+.main-hero {
+  padding-top: 56px;
+  padding-bottom: 56px;
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.78rem;
+  color: #9eb7ff;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  line-height: 1;
+}
+
+.section-title,
+h2 {
+  margin: 0;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  line-height: 1.1;
+}
+
+.description {
+  margin: 18px 0 0;
+  max-width: 42rem;
+  font-size: 1.05rem;
+  color: rgba(244, 247, 251, 0.82);
+}
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+
+.primary-link,
+.secondary-link,
+.contact-form button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.primary-link,
+.contact-form button {
+  border: 0;
+  background: #f4f7fb;
+  color: #081022;
+}
+
+.secondary-link {
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #f4f7fb;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.stats-grid,
+.services-grid {
+  display: grid;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.stats-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.stat-card,
+.service-card {
+  padding: 20px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat-card strong {
+  display: block;
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+}
+
+.stat-card span,
+.service-card p {
+  color: rgba(244, 247, 251, 0.75);
+}
+
+.services-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.service-card h3 {
+  margin: 0 0 10px;
+}
+
+.contact-form {
+  display: grid;
+  gap: 12px;
+  margin-top: 24px;
+  grid-template-columns: 1fr 1fr auto;
+}
+
+.contact-form input {
+  min-height: 44px;
+  padding: 0 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: inherit;
+}
+
+.dashboard-grid,
+.content-grid {
+  display: grid;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.dashboard-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.mini-card,
+.content-card {
+  padding: 20px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mini-card span {
+  display: block;
+  margin-bottom: 8px;
+  color: rgba(244, 247, 251, 0.7);
+}
+
+.mini-card strong {
+  font-size: 1.7rem;
+}
+
+.content-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.footer {
+  padding: 8px 4px 24px;
+  color: rgba(244, 247, 251, 0.6);
+}
+
+.footerbar {
+  display: grid;
+  gap: 18px;
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  background: rgba(10, 14, 26, 0.45);
+  backdrop-filter: blur(16px);
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.footer-copy {
+  margin: 0;
+  color: rgba(244, 247, 251, 0.68);
+}
+
+.footer-nav {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.footer-link {
+  color: rgba(244, 247, 251, 0.72);
+  text-decoration: none;
+}
+
+.footer-link:hover,
+.footer-link.active {
+  color: #ffffff;
+}
+
+.footer-meta {
+  margin: 0;
+  color: rgba(244, 247, 251, 0.5);
+}
+
+code {
+  padding: 0.15rem 0.4rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 720px) {
+  .topbar {
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .nav {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .stats-grid,
+  .services-grid,
+  .contact-form {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-grid,
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-brand {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .footer-nav {
+    justify-content: center;
+  }
+}
