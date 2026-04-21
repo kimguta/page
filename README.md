@@ -1,28 +1,9 @@
 # DQ React Project
 
-DQ is a company-style React website deployed at `/page/dq/` on GitHub Pages.
-It separates the main landing page from submenu pages to make the site feel
-like a real corporate website.
-
-## Overview
-
-- Main page: brand intro and key message
-- Sub pages: Company, AX/DX, Solution, ICT Service, Story, Support
-- Tech stack: React, Vite, React Router
-
-## Preview
-
-- Live site: https://kimguta.github.io/page/dq/
-
-## Structure
-
-- `dq-src/`: React source
-- `dq/`: GitHub Pages build output
-
-<h3>프로젝트 페이지</h3>
-
-<h3>2026</h3>
+## 2026
 <ul>
+  <li><a href="healing/" target="_blank">평창치유의숲</a></li>
+  <li><a href="healing/index_wood.html" target="_blank">목재체험장</a></li>
   <li><a href="cccf/index-city-art.html" target="_blank">춘천시립예술단</a></li>
   <li><a href="cccf/index-dream-art.html" target="_blank">꿈꾸는예술터</a></li>
   <li><a href="cccf/moabom.html" target="_blank">춘천모아봄</a></li>
@@ -32,7 +13,7 @@ like a real corporate website.
   <li><a href="dq/" target="_blank">DQ 홈페이지</a></li>
 </ul>
 
-<h3>~ 2025</h3>
+## ~2025
 <ul>
   <li><a href="haksa2025" target="_blank">강원학사</a></li>
   <li><a href="injae2025" target="_blank">강원인재원</a></li>

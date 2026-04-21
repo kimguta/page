@@ -1,0 +1,2164 @@
+@charset "utf-8";
+
+:root {
+  --vh: 100vh;
+}
+
+button {
+  caret-color: transparent;
+}
+
+.swiper-pagination {
+  position: relative !important;
+  top: 0 !important;
+  width: auto !important
+}
+
+.swiper-stop:active,
+.swiper-play:active,
+.swiper-button-prev:active,
+.swiper-button-next:active {
+  transform: scale(.9);
+}
+
+#main {
+  position: relative;
+  overflow: clip;
+}
+
+#visual {
+  position: relative;
+  background: #000;
+
+}
+
+#visual .swiper-slide img {
+  height: 100vh;
+  object-fit: cover;
+  display: block;
+  width: 100%;
+}
+
+#visual .text-img-bx {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  pointer-events: none;
+}
+
+#visual .text-img-bx img {
+  display: block;
+  width: 717px
+}
+
+
+#visual .move-btn {
+  position: absolute;
+  right: 45px;
+  top: 200px;
+  z-index: 10;
+  width: 175px;
+}
+
+#visual .move-btn img {
+  display: block;
+  width: 100%;
+}
+
+#visual .move-btn:hover {
+  animation: wobbleDecay 1s 1 both;
+}
+
+#power {
+  padding-left: calc((100vw - 1600px) / 2);
+  padding-top: 50px;
+  background: url(/page/healing/images/main/f_program_bg.jpg) no-repeat left bottom /cover;
+  display: grid;
+  grid-template-columns: 800px 1fr;
+  align-items: end;
+}
+
+.main-title {
+  font-size: 56px;
+  color: #12491b;
+}
+
+.main-title strong {
+  font-weight: 800;
+}
+
+#power h2 {
+  height: 130px;
+  display: flex;
+  gap: 15px;
+  color: #fff;
+  font-weight: 400;
+  position: relative;
+  z-index: 1;
+  align-items: center;
+}
+
+
+#power .tab-bx {
+  position: relative;
+}
+
+#power .tab-list-bx {
+  position: relative;
+  overflow: visible;
+  border-top: 1px solid rgba(255, 255, 255, .3);
+  padding-top: 10px;
+  padding-bottom: 100px;
+}
+
+#power .tab-bx a {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: fit-content;
+  margin-top: 50px;
+  font-size: 22px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, .6);
+  gap: 10px;
+  transition: all .2s;
+  line-height: .8em;
+  height: 30px;
+}
+
+#power .tab-bx a:before {
+  content: '';
+  background: url(/page/healing/images/main/forest_arrow2.png) no-repeat center center /cover;
+  width: 0px;
+  height: 21px;
+  margin-right: 0px;
+  transition: width .2s, margin .2s;
+}
+
+
+#power .tab-bx a.active:before {
+  width: 16px;
+  margin-right: 5px;
+}
+
+#power .tab-bx a span {
+  padding-left: 10px;
+  border-left: 1px solid #fff;
+  display: flex;
+  align-items: center;
+}
+
+#power .tab-bx a img {
+  display: none;
+  position: absolute;
+  right: -160px;
+  top: 50%;
+  width: 171px;
+  pointer-events: none;
+}
+
+#power .tab-bx a.active {
+  color: #fff;
+  font-size: 2.2em;
+  font-weight: 800;
+}
+
+#power .thumb-preview {
+  position: absolute;
+  right: 200px;
+  top: 0;
+  width: 171px;
+  will-change: top, transform, opacity;
+  opacity: 0;
+  visibility: hidden;
+  transition: top .1s linear, opacity .22s ease, transform .22s ease, visibility 0s linear .22s;
+  pointer-events: none;
+}
+
+#power .thumb-preview.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-100%) scale(1);
+  transition: top .1s linear, opacity .22s ease, transform .22s ease, visibility 0s;
+}
+
+#power .thumb-preview img {
+  display: block;
+  width: 100%;
+}
+
+
+#power .link-bx {
+  position: relative;
+  height: 670px;
+}
+
+#power .link-bx a {
+  display: none;
+  overflow: hidden;
+  border-top-left-radius: 90px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(10%) scale(1);
+  pointer-events: none;
+  transition:
+    opacity .45s ease,
+    transform .45s ease,
+    visibility 0s linear .45s;
+  transform-origin: 50% 100%;
+  height: 100%;
+}
+
+#power .link-bx a.active {
+  opacity: 1;
+  display: block;
+  visibility: visible;
+  transform: translateX(0) scale(1);
+  pointer-events: auto;
+  z-index: 1;
+  transition:
+    opacity .45s ease,
+    transform .45s ease,
+    visibility 0s;
+  animation: powerCardIn .45s ease both;
+}
+
+#power .link-bx a>i {
+  display: block;
+  height: 100%;
+}
+
+#power .link-bx a>i img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .7s ease, filter .7s ease;
+}
+
+#power .link-bx a div {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 78px;
+  border-top: 1px solid rgba(255, 255, 255, .3);
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  font-size: 18px;
+  color: #fff;
+  font-weight: 500;
+  background: linear-gradient(180deg, rgba(9, 30, 15, 0) 0%, rgba(9, 30, 15, .35) 100%);
+  transition: background .45s ease, transform .45s ease;
+}
+
+#power .link-bx a div span:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid rgba(255, 255, 255, .3);
+  height: 100%;
+  aspect-ratio: 1/1;
+}
+
+#power .link-bx a div span img {
+  width: 39px;
+}
+
+#power .link-bx a div strong {
+  line-height: .8em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#power .link-bx a div strong span {
+  padding-left: 10px;
+  border-left: 1px solid #fff;
+  display: flex;
+  align-items: center;
+}
+
+#power .link-bx a::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 35%, rgba(255, 255, 255, .18), transparent 58%);
+  opacity: 0;
+  transition: opacity .45s ease;
+  pointer-events: none;
+}
+
+#power .link-bx a:hover {
+  transform: translateX(0) translateY(-8px) scale(1.005);
+}
+
+#power .link-bx a:hover::after {
+  opacity: 1;
+}
+
+#power .link-bx a:hover>i img {
+  transform: scale(1.06);
+  filter: saturate(1.08) contrast(1.03);
+}
+
+#power .link-bx a:hover div {
+  background: linear-gradient(180deg, rgba(9, 30, 15, 0) 0%, rgba(9, 30, 15, .5) 100%);
+  transform: translateY(-2px);
+}
+
+#power .link-bx a:hover div span img {
+  transform: rotate(90deg) scale(1.08);
+}
+
+@keyframes powerCardIn {
+  from {
+    opacity: 0;
+    transform: translateX(36px) scale(.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+
+#program {
+  padding: 130px 0 40px calc((100vw - 1600px) / 2);
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: 200px;
+}
+
+#program:before {
+  content: '';
+  display: block;
+  pointer-events: none;
+  z-index: -1;
+  width: 96px;
+  height: 689px;
+  position: absolute;
+  top: 40px;
+  left: 15px;
+  background: url(/page/healing/images/main/program_bg.png) no-repeat center center /cover;
+
+}
+
+#program h2 {
+  flex-direction: column;
+  display: flex;
+  line-height: 1.2;
+}
+
+#program .program-bx {
+  flex: 1;
+  min-width: 0
+}
+
+#program .control {
+  margin: 25px 0 120px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#program .control button img {
+  display: block;
+  width: 66px;
+}
+
+#program .title-bx a {
+  display: block;
+}
+
+#program .title-bx a img {
+  display: block;
+  width: 210px;
+}
+
+#program .title-bx a:hover {
+  animation: wobbleDecay 1s infinite;
+}
+
+#program .thumb-bx {
+  position: relative;
+  transition: all .2s;
+  overflow: hidden;
+}
+
+#program .thumb-bx>img {
+  display: block;
+  width: 100%;
+}
+
+#program .thumb-bx i {
+  display: flex;
+  position: absolute;
+  right: 0;
+  top: 0;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 40px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  font-style: normal;
+  background: #71b033;
+}
+
+#program .thumb-bx:after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 40px;
+  right: 30px;
+  width: 82px;
+  aspect-ratio: 1/1;
+  background: url(/page/healing/images/main/forest_arrow5.png) no-repeat center center /cover;
+  transition: all .2s;
+  opacity: 0;
+}
+
+#program .program-swiper {
+  padding-right: 80px;
+}
+
+#program a:hover .thumb-bx {
+  border-radius: 95px 0 95px 0;
+}
+
+#program a:hover .thumb-bx:after {
+  opacity: 1;
+}
+
+#program .swiper-slide strong {
+  color: #444;
+  display: block;
+  font-weight: 700;
+  font-size: 24px;
+  padding-top: 30px;
+}
+
+#program .swiper-slide p {
+  color: #444;
+  font-size: 18px;
+  word-break: keep-all;
+  padding-top: 10px;
+}
+
+#road {
+  padding: 90px 0 130px calc((100vw - 1600px) / 2);
+
+}
+
+#road .road-bx {
+  padding-top: 30px;
+  display: flex;
+  align-items: flex-start;
+  gap: 90px;
+}
+
+#road .road-swiper {
+  flex: 1;
+  min-width: 0;
+  position: relative;
+}
+
+#road .road-swiper .swiper-slide img {
+  width: 100%;
+  height: 470px;
+  object-fit: cover;
+  display: block;
+}
+
+#road .road-swiper .swiper-slide strong {
+  color: #444;
+  font-size: 30px;
+  font-weight: 700;
+  padding-top: 25px;
+  display: block;
+}
+
+#road .road-swiper .swiper-slide p {
+  color: #444;
+  font-size: 20px;
+  word-break: keep-all;
+  line-height: 1.8;
+  padding-top: 5px;
+}
+
+#road .control {
+  display: flex;
+  gap: 10px;
+  position: absolute;
+  top: 430px;
+  right: 25px;
+  z-index: 10;
+}
+
+#road .control button img {
+  display: block;
+  width: 72px;
+  filter: drop-shadow(3px 3px 10px rgba(0, 0, 0, .3));
+}
+
+#road .map-bx {
+  width: 950px;
+  position: relative;
+  z-index: 2;
+}
+
+#road .pin-bx {
+  width: 100%;
+  position: relative;
+}
+
+#road .pin-bx>img {
+  display: block;
+  width: 100%;
+}
+
+#road .pin-bx>div {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+
+#road .pin-bx>div a {
+  width: 39px;
+  height: 39px;
+  display: block;
+  background: url(/page/healing/images/main/mapcheck1_off.png) no-repeat center center /cover;
+  font-size: 0;
+  position: absolute;
+  transition: all .2s;
+}
+
+#road .pin-bx>div a:hover {
+  transform: scale(1.2);
+}
+
+#road .pin-bx>div a:after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: url(/page/healing/images/main/mapcheck1_on.png) no-repeat center center /cover;
+  transition: all .2s;
+  opacity: 0;
+}
+
+#road .pin-bx>div a.active:after {
+  opacity: 1;
+}
+
+
+#road .pin-bx>div a:nth-child(1) {
+  top: 49%;
+  left: 6%;
+}
+
+#road .pin-bx>div a:nth-child(2) {
+  top: 57%;
+  left: 30%;
+}
+
+#road .pin-bx>div a:nth-child(3) {
+  top: 53%;
+  left: 43%;
+}
+
+#road .pin-bx>div a:nth-child(4) {
+  top: 27%;
+  left: 47%;
+}
+
+#road .pin-bx>div a:nth-child(5) {
+  top: 18%;
+  left: 21%;
+}
+
+#road .pin-bx>div a:nth-child(6) {
+  top: 45%;
+  left: 86%;
+}
+
+#road .route-bx {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 190px;
+  display: flex;
+  width: 100%;
+  max-width: 710px;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1;
+  padding-bottom: 25px;
+}
+
+#road .route-bx:before {
+  content: '';
+  display: block;
+  height: 0;
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  top: 50%;
+  margin-top: -10px;
+  border-top: 1px dashed #fff;
+  z-index: -1;
+}
+
+#road .route-bx a {
+  position: relative;
+  width: 38px;
+  height: 53px;
+  display: flex;
+  justify-content: center;
+}
+
+#road .route-bx a:after {
+  width: 100%;
+  height: 100%;
+  content: '';
+  display: block;
+  background: url(/page/healing/images/main/mapcheck2_on.png) no-repeat center center /cover;
+  filter: grayscale(1) brightness(3);
+  transform: scale(.8);
+  transition: all .2s;
+}
+
+#road .route-bx a span {
+  color: #fff;
+  position: absolute;
+  bottom: -40px;
+  white-space: nowrap;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+#road .route-bx a.active:after {
+  filter: none;
+  transform: scale(1);
+}
+
+#road .route-bx a:hover:after {
+  transform: scale(1);
+}
+
+#road .route-bx a.active span {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+#road .map-bx:after {
+  content: '';
+  position: absolute;
+  left: -130px;
+  bottom: -37px;
+  display: block;
+  background: url(/page/healing/images/main/forest_illust1.png) no-repeat center center /cover;
+  width: 219px;
+  height: 136px
+}
+
+#infomation {
+  position: relative;
+  background: #f9feec;
+  padding: 120px 0 135px;
+}
+
+#infomation .info-wrap {
+  display: flex;
+  gap: 50px;
+  padding-top: 20px;
+}
+
+#infomation .info-bx {
+  width: 545px;
+  height: 450px;
+  background: url(/page/healing/images/main/info_bg2.jpg) no-repeat center center /cover;
+  border-radius: 0 0 0 75px;
+  flex-shrink: 0;
+  padding: 40px 25px 5px;
+  color: #fff;
+}
+
+#infomation .info-bx .time {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+}
+
+#infomation .info-bx .time li {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+#infomation .info-bx .time li img {
+  width: 82px;
+  border-radius: 10px;
+}
+
+#infomation .info-bx .time li strong {
+  font-size: 20px;
+}
+
+#infomation .info-bx .holiday {
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  height: 110px;
+  background: rgba(0, 0, 0, .3);
+  gap: 30px;
+  padding: 5px 15px 0 40px;
+  margin: 30px 0 20px;
+}
+
+#infomation .info-bx .holiday>img {
+  width: 41px;
+}
+
+#infomation .info-bx .holiday span {
+  padding-left: 30px;
+  font-weight: 500;
+  font-size: 16px;
+  border-left: 1px solid #fff;
+}
+
+#infomation .info-bx .tel {
+  padding-top: 25px;
+  border-top: 1px solid rgba(255, 255, 255, .7);
+  display: flex;
+  align-items: center;
+  gap: 25px;
+
+}
+
+#infomation .info-bx .tel img {
+  width: 120px;
+}
+
+#infomation .info-bx .tel span {
+  font-weight: 500;
+  font-size: 20px;
+}
+
+#infomation .info-bx .tel span strong {
+  display: block;
+  font-weight: 800;
+  font-size: 24px;
+}
+
+#infomation .link-bx {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 35px;
+}
+
+#infomation .link-bx a {
+  position: relative;
+  background: #fff;
+  border-radius: 0 50px 0 50px;
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, .07);
+  padding: 45px 0 20px 40px;
+  font-size: 18px;
+  color: #555;
+}
+
+#infomation .link-bx a strong {
+  display: block;
+  font-size: 24px;
+  font-weight: 800;
+  color: #222;
+  padding-bottom: 10px;
+}
+
+#infomation .link-bx a img {
+  display: block;
+  position: absolute;
+  right: 25px;
+  bottom: 25px;
+  width: 73px;
+}
+
+#infomation .link-bx a:hover img {
+  animation: wobbleDecay 1s 1 both;
+  filter: hue-rotate(180deg);
+}
+
+#facility {
+  position: relative;
+  padding: 150px 0 170px calc((100vw - 1600px) / 2);
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  z-index: 1;
+}
+
+#facility:before {
+  content: '';
+  z-index: -1;
+  position: absolute;
+  left: -50px;
+  bottom: 0;
+  width: 1944px;
+  height: 486px;
+  background: url(/page/healing/images/main/bg1.png) no-repeat center center /cover;
+}
+
+#facility .title-bx {
+  padding-top: 20px;
+}
+
+#facility .title-bx p {
+  font-size: 22px;
+  color: #444;
+  padding-top: 10px;
+}
+
+#facility .control {
+  display: flex;
+  gap: 10px;
+  margin-top: 76px;
+}
+
+
+#facility .control button img {
+  display: block;
+  width: 72px;
+  filter: drop-shadow(3px 3px 10px rgba(0, 0, 0, .3));
+}
+
+#facility .facility-bx {
+  max-width: 960px;
+}
+
+#facility .facility-swiper {
+  overflow: hidden;
+  border-radius: 0 0 0 120px;
+}
+
+#facility .facility-bx .swiper-slide {
+  height: 620px;
+  position: relative;
+
+}
+
+#facility .facility-bx .swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+}
+
+
+#facility .facility-bx .swiper-slide:after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 136px;
+  aspect-ratio: 1/1;
+  background: url(/page/healing/images/main/forest_plus3.png) no-repeat center center /cover;
+  border-radius: 50%;
+  bottom: 40px;
+  left: 45px;
+  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, .15);
+}
+
+#notice {
+  padding: 30px 0 150px;
+}
+
+#notice .inner {
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+  justify-content: space-between;
+  width: 100%;
+}
+
+#notice .board-bx {
+  max-width: 800px;
+  flex: 1;
+  position: relative;
+}
+
+#notice .list-bx {
+  padding-top: 70px;
+  min-width: 0;
+}
+
+#notice .list-bx a {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  width: 100%;
+  height: 100px;
+  border-bottom: 1px solid #ccc;
+  gap: 35px;
+  padding: 0 25px 0 15px;
+}
+
+#notice .list-bx a span {
+  color: #4b9854;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+#notice .list-bx a em {
+  color: #777;
+  font-size: 16px;
+}
+
+#notice .list-bx a strong {
+  display: block;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #062f20;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+#notice .list-bx a:hover strong {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  text-decoration-thickness: 1px;
+}
+
+#notice .more {
+  position: absolute;
+  right: 0;
+  top: 17px;
+  display: block;
+  width: 54px;
+}
+
+#notice .more img {
+  display: block;
+  width: 100%;
+}
+
+
+#notice .notice-bx {
+  width: 602px;
+  position: relative;
+  padding-top: 15px;
+}
+
+.notice-swiper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.notice-swiper .swiper-slide img {
+  display: block;
+  width: 100%;
+}
+
+.notice-swiper .control-bx {
+  position: absolute;
+  height: 65px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 15px 0 25px;
+  background: rgba(0, 0, 0, .7);
+}
+
+.notice-swiper .count {
+  color: #fff;
+}
+
+.notice-swiper .count strong {
+  font-size: 24px;
+}
+
+.notice-swiper .count em {
+  padding: 0 5px;
+}
+
+.notice-swiper .control {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.notice-swiper .control button img {
+  display: block;
+  width: 40px;
+}
+
+@media (max-width: 1600px) {
+  #power .thumb-preview {
+    display: none;
+  }
+
+  #power .tab-list-bx {
+    padding-bottom: 50px;
+  }
+
+  #visual .text-img-bx img {
+    width: 580px;
+  }
+
+  #visual .move-btn {
+    top: 140px;
+    right: 24px;
+    width: 120px;
+  }
+
+  .main-title {
+    font-size: 42px;
+  }
+
+  #power {
+    padding: 70px 0px 0 20px;
+    grid-template-columns: 500px 1fr;
+    gap: 36px;
+  }
+
+  #power h2 {
+    height: 100px;
+  }
+
+  #power .tab-bx {
+    padding-bottom: 0px;
+  }
+
+  #power .tab-bx a {
+    font-size: 19px;
+    margin-top: 35px;
+  }
+
+  #power .tab-bx a.active {
+    font-size: 24px
+  }
+
+  #power .tab-bx a img {
+    top: -100px;
+    right: -100px;
+    width: 110px;
+  }
+
+  #power .link-bx {
+    height: 480px;
+  }
+
+
+  #power .link-bx a div {
+    height: 70px;
+    gap: 20px;
+    font-size: 16px;
+  }
+
+  #power .link-bx a div span img {
+    width: 31px;
+  }
+
+  #power .link-bx a div strong {
+    line-height: .8em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  #program {
+    padding: 90px 0px 35px 20px;
+    gap: 100px;
+  }
+
+  #program .program-bx {
+    padding-right: 0;
+  }
+
+  #program:before {
+    width: 76px;
+    height: 545px;
+    top: 20px;
+    left: 0px;
+
+  }
+
+  #program .control {
+    margin: 15px 0 90px;
+  }
+
+  #program .control button img {
+    width: 56px;
+  }
+
+  #program .title-bx a img {
+    width: 180px;
+  }
+
+  #program .thumb-bx i {
+    transform: scale(.9);
+    transform-origin: 100% 0%;
+  }
+
+  #program .swiper-slide strong {
+    font-size: 20px;
+    padding-top: 20px;
+  }
+
+  #program .swiper-slide p {
+    font-size: 16px;
+    padding-top: 5px;
+  }
+
+  #road {
+    padding: 30px 20px 55px;
+  }
+
+  #road .road-bx {
+    gap: 28px;
+    padding-top: 14px;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  #road .road-swiper {
+    width: 100%;
+  }
+
+  #road .road-swiper .swiper-slide strong {
+    font-size: 22px;
+    padding-top: 19px;
+  }
+
+  #road .road-swiper .swiper-slide p {
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  #road .control {
+    transform: scale(.6);
+    transform-origin: 100% 50%;
+  }
+
+  #road .map-bx {
+    width: auto;
+    max-width: 860px;
+  }
+
+  #road .pin-bx>div a {
+    width: 32px;
+    height: 32px;
+  }
+
+  #road .pin-bx>div a:nth-child(1) {
+    top: 50%;
+    left: 7%;
+  }
+
+  #road .pin-bx>div a:nth-child(2) {
+    top: 58%;
+    left: 31%;
+  }
+
+  #road .pin-bx>div a:nth-child(3) {
+    top: 54%;
+    left: 44%;
+  }
+
+  #road .pin-bx>div a:nth-child(4) {
+    top: 28%;
+    left: 48%;
+  }
+
+  #road .pin-bx>div a:nth-child(5) {
+    top: 19%;
+    left: 22%;
+  }
+
+  #road .pin-bx>div a:nth-child(6) {
+    top: 46%;
+    left: 85%;
+  }
+
+  #road .route-bx {
+    height: 160px;
+    max-width: 620px;
+    padding-bottom: 18px;
+  }
+
+  #road .route-bx a {
+    width: 32px;
+    height: 46px;
+  }
+
+  #road .route-bx a span {
+    font-size: 14px;
+    bottom: -32px;
+  }
+
+  #infomation {
+    padding: 60px 20px 80px;
+  }
+
+
+  #facility {
+    padding: 90px 20px 100px;
+    gap: 50px;
+  }
+
+
+  #facility:before {
+    left: -50px;
+    width: 1400px;
+    height: 350px;
+  }
+
+
+  #facility .title-bx {
+    padding-top: 8px;
+    flex: 0 0 350px;
+  }
+
+  #facility .title-bx p {
+    font-size: 17px;
+    padding-top: 8px;
+    line-height: 1.5;
+  }
+
+  #facility .control {
+    margin-top: 44px;
+    gap: 8px;
+  }
+
+  #facility .control button img {
+    width: 56px;
+  }
+
+  #facility .facility-bx {
+    max-width: 840px;
+  }
+
+  #facility .facility-swiper {
+    border-radius: 0 0 0 92px;
+  }
+
+  #facility .facility-bx .swiper-slide {
+    height: 460px;
+  }
+
+  #facility .facility-bx .swiper-slide:after {
+    width: 104px;
+    bottom: 24px;
+    left: 28px;
+  }
+
+  #notice {
+    padding: 20px 20px 80px;
+  }
+
+  #notice .inner {
+    gap: 23px;
+  }
+
+  #notice .board-bx {
+    max-width: 700px;
+    width: calc(100% - 480px);
+  }
+
+  #notice .list-bx {
+    padding-top: 40px;
+  }
+
+  #notice .list-bx a {
+    height: 82px;
+    gap: 22px;
+    padding: 0 18px 0 8px;
+  }
+
+  #notice .list-bx a span {
+    font-size: 17px;
+  }
+
+  #notice .list-bx a em {
+    font-size: 14px;
+  }
+
+  #notice .list-bx a strong {
+    font-size: 19px;
+  }
+
+  #notice .more {
+    width: 41px;
+    top: 12px;
+  }
+
+  #notice .notice-bx {
+    width: 480px;
+    padding-top: 10px;
+    flex-shrink: 0;
+  }
+
+  .notice-swiper .control-bx {
+    height: 56px;
+    padding: 0 12px 0 16px;
+  }
+
+  .notice-swiper .count strong {
+    font-size: 18px;
+  }
+
+  .notice-swiper .control button img {
+    width: 32px;
+  }
+
+  #infomation .info-bx {
+    width: 460px;
+    height: 390px;
+    padding: 30px 20px 18px;
+  }
+
+  #infomation .info-bx .time {
+    gap: 22px;
+  }
+
+  #infomation .info-bx .time li img {
+    width: 68px;
+  }
+
+  #infomation .info-bx .time li strong {
+    font-size: 17px;
+  }
+
+  #infomation .info-bx .holiday {
+    height: 94px;
+    gap: 18px;
+    padding: 5px 12px 0 22px;
+    margin: 22px 0 16px;
+  }
+
+  #infomation .info-bx .holiday>img {
+    width: 34px;
+  }
+
+  #infomation .info-bx .holiday span {
+    padding-left: 18px;
+    font-size: 14px;
+  }
+
+  #infomation .info-bx .tel {
+    padding-top: 18px;
+    gap: 16px;
+  }
+
+  #infomation .info-bx .tel img {
+    width: 92px;
+  }
+
+  #infomation .info-bx .tel span {
+    font-size: 16px;
+  }
+
+  #infomation .info-bx .tel span strong {
+    font-size: 20px;
+  }
+
+  #infomation .link-bx {
+    gap: 16px 20px;
+  }
+
+  #infomation .link-bx a {
+    padding: 30px 0 16px 24px;
+    font-size: 15px;
+  }
+
+  #infomation .link-bx a strong {
+    font-size: 19px;
+  }
+
+  #infomation .link-bx a img {
+    right: 18px;
+    bottom: 18px;
+    width: 56px;
+  }
+}
+
+@media (max-width: 919px) {
+  .main-title {
+    font-size: 34px;
+  }
+
+  #visual .text-img-bx img {
+    width: 440px;
+  }
+
+  #visual .move-btn {
+    top: 112px;
+    right: 18px;
+    width: 104px;
+  }
+
+  #power {
+    padding: 24px 18px 0;
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  #power .tab-bx {
+    padding-bottom: 0px;
+  }
+
+  #power .link-bx {
+    height: 360px;
+  }
+
+  #program {
+    padding: 72px 18px 28px;
+    gap: 24px;
+    flex-direction: column;
+  }
+
+  #program .title-bx {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 100%
+  }
+
+  #program .title-bx h2 {
+    flex: 1;
+  }
+
+  #program .program-bx {
+    flex: initial;
+    width: 100%;
+  }
+
+
+  #program:before {
+    width: 52px;
+    height: 400px;
+    left: 0;
+    top: 20px;
+  }
+
+  #program .control {
+    margin: 0
+  }
+
+  #program .program-swiper {
+    padding-right: 0;
+    margin: 0 -20px;
+    padding: 0 20px;
+  }
+
+  #program .swiper-slide strong {
+    font-size: 18px;
+    padding-top: 16px;
+  }
+
+  #program .swiper-slide p {
+    font-size: 14px;
+  }
+
+  #program .thumb-bx:after {
+    bottom: 30px;
+    right: 20px;
+    width: 62px;
+  }
+
+  #road {
+    padding: 60px 18px 72px;
+  }
+
+  #road .road-bx {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  #road .road-swiper .swiper-slide img {
+    height: 360px;
+  }
+
+  #road .road-swiper .swiper-slide strong {
+    font-size: 18px;
+    padding-top: 14px;
+  }
+
+  #road .road-swiper .swiper-slide p {
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  #road .control {
+    transform: scale(.58);
+    transform-origin: 100% 50%;
+    top: 322px;
+  }
+
+  #road .map-bx {
+    width: auto;
+    max-width: none;
+    margin: 0 -20px;
+  }
+
+  #road .pin-bx>div a {
+    width: 28px;
+    height: 28px;
+  }
+
+  #road .route-bx {
+    max-width: 600px;
+    height: 150px;
+    padding-bottom: 0;
+    margin-top: 10px;
+    gap: 8px 10px;
+  }
+
+  #road .route-bx:before {
+    margin-top: 0;
+  }
+
+  #road .map-bx:after {
+    left: -130px;
+    bottom: -37px;
+    transform: scale(.7);
+    transform-origin: 100% 100%;
+  }
+
+
+  #road .route-bx a span {
+    font-size: 14px;
+  }
+
+
+  #infomation {
+    padding: 64px 18px 74px;
+  }
+
+  #infomation .info-wrap {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  #infomation .info-bx {
+    width: 100%;
+    height: auto;
+    padding: 24px 16px 18px;
+  }
+
+  #infomation .link-bx {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  #infomation .link-bx a {
+    padding: 22px 0 28px 23px;
+    font-size: 14px;
+  }
+
+  #infomation .link-bx a strong {
+    font-size: 17px;
+  }
+
+  #infomation .link-bx a img {
+    right: 14px;
+    bottom: 14px;
+    width: 48px;
+  }
+
+  #facility {
+    padding: 45px 18px 74px;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  #facility .title-bx {
+    padding-top: 4px;
+    flex: initial;
+  }
+
+  #facility .title-bx p {
+    font-size: 14px;
+    padding-top: 6px;
+  }
+
+  #facility .control {
+    margin-top: 22px;
+  }
+
+  #facility .control button img {
+    width: 46px;
+  }
+
+  #facility .facility-bx {
+    max-width: none;
+  }
+
+  #facility .facility-swiper {
+    border-radius: 0 0 0 60px;
+  }
+
+  #facility .facility-bx .swiper-slide {
+    height: 360px;
+  }
+
+  #facility .facility-bx .swiper-slide:after {
+    width: 82px;
+    bottom: 16px;
+    left: 18px;
+  }
+
+  #facility:before {
+    left: -20px;
+    width: 1000px;
+    height: 250px;
+  }
+
+
+  #notice {
+    padding: 18px 18px 72px;
+  }
+
+  #notice .inner {
+    flex-direction: column;
+    gap: 55px;
+  }
+
+  #notice .board-bx,
+  #notice .notice-bx {
+    width: 100%;
+    max-width: none;
+  }
+
+  #notice .board-bx {
+    order: 2;
+  }
+
+  #notice .notice-bx {
+    order: 1;
+    padding-top: 0;
+  }
+
+  #notice .list-bx {
+    padding-top: 6px;
+  }
+
+  #notice .list-bx a {
+    height: 72px;
+    gap: 14px;
+    padding: 0 12px 0 0;
+  }
+
+  #notice .list-bx a span {
+    font-size: 15px;
+  }
+
+  #notice .list-bx a em {
+    font-size: 13px;
+  }
+
+  #notice .list-bx a strong {
+    font-size: 16px;
+  }
+
+  #notice .more {
+    width: 36px;
+    top: 8px;
+  }
+
+  .notice-swiper .control-bx {
+    height: 48px;
+    padding: 0 15px 0 22px;
+  }
+
+  .notice-swiper .count strong {
+    font-size: 16px;
+  }
+
+  .notice-swiper .control button img {
+    width: 30px;
+  }
+
+  #infomation {
+    padding: 45px 18px 55px;
+  }
+
+  #infomation .info-wrap {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  #infomation .info-bx {
+    width: 100%;
+    height: auto;
+    padding: 24px 16px 18px;
+  }
+
+  #infomation .info-bx .time {
+    gap: 16px;
+  }
+
+  #infomation .info-bx .time li img {
+    width: 60px;
+  }
+
+  #infomation .info-bx .time li strong {
+    font-size: 15px;
+  }
+
+  #infomation .info-bx .holiday {
+    height: 84px;
+    gap: 14px;
+    margin: 18px 0 14px;
+    padding: 4px 10px 0 16px;
+  }
+
+  #infomation .info-bx .holiday>img {
+    width: 30px;
+  }
+
+  #infomation .info-bx .holiday span {
+    padding-left: 14px;
+    font-size: 13px;
+  }
+
+  #infomation .info-bx .tel {
+    padding-top: 14px;
+    gap: 12px;
+  }
+
+  #infomation .info-bx .tel img {
+    width: 78px;
+  }
+
+  #infomation .info-bx .tel span {
+    font-size: 14px;
+  }
+
+  #infomation .info-bx .tel span strong {
+    font-size: 17px;
+  }
+
+  #power .tab-list-bx {
+    padding-bottom: 20px;
+  }
+}
+
+@media (max-width: 716px) {
+  .main-title {
+    font-size: 28px;
+  }
+
+  #visual .swiper-slide img {
+    height: 100vh;
+  }
+
+  #visual .text-img-bx img {
+    width: 300px;
+  }
+
+  #visual .move-btn {
+    top: auto;
+    right: auto;
+    bottom: 20px;
+    left: 20px;
+  }
+
+  #power {
+    padding: 15px 16px 0;
+    gap: 16px;
+  }
+
+  #power h2 {
+    font-size: 24px;
+    line-height: 1.25;
+    height: 70px;
+  }
+
+  #power .tab-bx {
+    padding-bottom: 0px;
+  }
+
+  #power .tab-bx a {
+    margin-top: 18px;
+    font-size: 15px;
+    height: 24px;
+  }
+
+  #power .tab-bx a.active {
+    font-size: 17px;
+  }
+
+  #power .tab-bx a img {
+    width: 72px;
+    top: -58px;
+    right: -70px;
+  }
+
+  #power .link-bx {
+    height: 281px;
+    margin: 0 -20px;
+  }
+
+  #power .link-bx a {
+    border-top-left-radius: 52px;
+  }
+
+  #power .link-bx a div {
+    height: 56px;
+    gap: 14px;
+    font-size: 13px;
+  }
+
+  #power .link-bx a div span img {
+    width: 24px;
+  }
+
+  #power .link-bx a div strong span {
+    padding-left: 8px;
+  }
+
+  #program {
+    padding: 56px 16px 24px;
+    gap: 16px;
+  }
+
+  #program:before {
+    width: 42px;
+    height: 300px;
+    top: 34px;
+  }
+
+  #program .title-bx {
+    gap: 14px;
+  }
+
+  #program .title-bx h2 {
+    width: 100%;
+  }
+
+  #program .title-bx a img {
+    width: 126px;
+  }
+
+  #program .control {}
+
+  #program .control button img {
+    width: 40px;
+  }
+
+  #program .program-swiper {
+    margin: 0 -16px;
+    padding: 0 16px;
+  }
+
+  #program .thumb-bx i {
+    transform: scale(.8);
+  }
+
+  #program .swiper-slide strong {
+    font-size: 16px;
+    padding-top: 14px;
+  }
+
+  #program .swiper-slide p {
+    font-size: 13px;
+    padding-top: 6px;
+  }
+
+  #road {
+    padding: 25px 16px 0px;
+  }
+
+  #road .road-bx {
+    gap: 24px;
+  }
+
+  #road .road-swiper .swiper-slide img {
+    height: 240px;
+  }
+
+  #road .road-swiper .swiper-slide strong {
+    font-size: 17px;
+    padding-top: 17px;
+  }
+
+  #road .road-swiper .swiper-slide p {
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  #road .control {
+    transform: none;
+    margin-top: 10px;
+    top: 210px;
+    right: 15px;
+  }
+
+  #road .control button img {
+    width: 40px;
+  }
+
+  #road .pin-bx>div a {
+    width: 22px;
+    height: 22px;
+  }
+
+  #road .route-bx {
+    gap: 5px;
+    max-width: none;
+    height: 75px;
+    padding: 0 34px 23px;
+  }
+
+
+
+  #road .route-bx a {
+    width: 19px;
+    height: 26px;
+  }
+
+  #road .route-bx a span {
+    font-size: 9px;
+    bottom: -25px;
+  }
+
+  #road .map-bx:after {
+    left: -70px;
+    bottom: 1px;
+    width: 108px;
+    height: 68px;
+    display: none;
+  }
+
+  #infomation {
+    padding: 50px 16px 33px;
+  }
+
+  #infomation .info-wrap {
+    gap: 20px;
+  }
+
+  #infomation .info-bx {
+    padding: 24px 16px 20px;
+  }
+
+  #infomation .info-bx .time {
+    gap: 12px;
+  }
+
+  #infomation .info-bx .time li {
+    gap: 15px;
+  }
+
+  #infomation .info-bx .time li img {
+    width: 52px;
+  }
+
+  #infomation .info-bx .time li strong {
+    font-size: 14px;
+  }
+
+  #infomation .info-bx .holiday {
+    height: auto;
+    gap: 14px;
+    margin: 14px 0 12px;
+    padding: 15px 12px 15px 15px;
+  }
+
+  #infomation .info-bx .holiday>img {
+    width: 26px;
+  }
+
+  #infomation .info-bx .holiday span {
+    padding-left: 14px;
+    font-size: 13px;
+  }
+
+  #infomation .info-bx .tel {
+    padding-top: 12px;
+    gap: 10px;
+  }
+
+  #infomation .info-bx .tel img {
+    width: 66px;
+  }
+
+  #infomation .info-bx .tel span {
+    font-size: 13px;
+  }
+
+  #infomation .info-bx .tel span strong {
+    font-size: 15px;
+  }
+
+  #infomation .link-bx {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  #infomation .link-bx a {
+    padding: 15px 35px 17px;
+    font-size: 13px;
+  }
+
+  #infomation .link-bx a strong {
+    font-size: 16px;
+  }
+
+  #infomation .link-bx a img {
+    width: 40px;
+    right: 12px;
+    bottom: 12px;
+  }
+
+  #facility {
+    padding: 40px 16px 58px;
+    gap: 16px;
+  }
+
+  #facility:before {
+    left: -12px;
+    width: 600px;
+    height: 150px;
+  }
+
+  #facility .title-bx p {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  #facility .control {
+    margin-top: -35px;
+    justify-content: flex-end;
+  }
+
+  #facility .control button img {
+    width: 38px;
+  }
+
+  #facility .facility-swiper {
+    border-radius: 0 0 0 44px;
+  }
+
+  #facility .facility-bx .swiper-slide {
+    height: 260px;
+  }
+
+  #facility .facility-bx .swiper-slide:after {
+    width: 64px;
+    bottom: 12px;
+    left: 12px;
+  }
+
+  #notice {
+    padding: 20px 16px 45px;
+  }
+
+  #notice .inner {
+    gap: 40px;
+  }
+
+  #notice .board-bx {
+    order: 2;
+  }
+
+  #notice .notice-bx {
+    order: 1;
+  }
+
+  #notice .list-bx {
+    padding-top: 5px;
+  }
+
+  #notice .list-bx a {
+    min-height: 72px;
+    height: auto;
+    gap: 12px;
+    padding: 10px 8px 10px 0;
+  }
+
+  #notice .list-bx a span {
+    font-size: 14px;
+  }
+
+  #notice .list-bx a em {
+    font-size: 11px;
+  }
+
+  #notice .list-bx a strong {
+    font-size: 15px;
+  }
+
+  #notice .more {
+    width: 26px;
+    top: 6px;
+  }
+
+  #notice .notice-bx {
+    padding-top: 0;
+  }
+
+  .notice-swiper {
+    border-radius: 8px;
+  }
+
+  .notice-swiper .control-bx {
+    height: 48px;
+    padding: 0 10px 0 17px;
+  }
+
+  .notice-swiper .count strong {
+    font-size: 16px;
+  }
+
+  .notice-swiper .control button img {}
+
+  .inner {
+    padding: 0;
+  }
+
+  #road .route-bx:before {
+    margin-top: -10px
+  }
+
+  .notice-swiper .count {
+    font-size: 14px;
+  }
+
+  #power .tab-bx a.active:before {
+    width: 10px;
+    height: 16px;
+    margin-right: 1px;
+  }
+
+  #power .tab-list-bx {
+    padding-bottom: 10px;
+  }
+}
