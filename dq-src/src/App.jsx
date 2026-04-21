@@ -1,13 +1,9 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import SubPageLayout from './components/SubPageLayout';
 import MainPage from './pages/MainPage';
-import CompanyPage from './pages/CompanyPage';
-import AxDxPage from './pages/AxDxPage';
-import SolutionPage from './pages/SolutionPage';
-import ServicePage from './pages/ServicePage';
-import StoryPage from './pages/StoryPage';
-import SupportPage from './pages/SupportPage';
+import { subPageDefinitions } from './data/sitePages';
 
 export default function App() {
   return (
@@ -17,12 +13,17 @@ export default function App() {
 
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route path="/company" element={<CompanyPage />} />
-          <Route path="/ax-dx" element={<AxDxPage />} />
-          <Route path="/solution" element={<SolutionPage />} />
-          <Route path="/service" element={<ServicePage />} />
-          <Route path="/story" element={<StoryPage />} />
-          <Route path="/support" element={<SupportPage />} />
+          {subPageDefinitions.map(({ id, href, Component, ...meta }) => (
+            <Route
+              key={id}
+              path={href}
+              element={(
+                <SubPageLayout meta={meta}>
+                  <Component />
+                </SubPageLayout>
+              )}
+            />
+          ))}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
 

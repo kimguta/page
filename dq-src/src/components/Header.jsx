@@ -23,7 +23,7 @@ export default function Header() {
       </nav>
 
       <Link className="cta" to="/support">
-        문의하기
+        Inquiry
       </Link>
     </header>
   );

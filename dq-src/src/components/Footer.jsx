@@ -10,7 +10,7 @@ export default function Footer() {
           <span className="brand-text">DQ</span>
         </Link>
         <p className="footer-copy">
-          Digital Quotient는 브랜드, 시스템, 콘텐츠를 하나의 경험으로 연결하는 웹 파트너입니다.
+          DQ creates connected digital experiences across strategy, content, and operations.
         </p>
       </div>
 
@@ -26,7 +26,7 @@ export default function Footer() {
         ))}
       </nav>
 
-      <p className="footer-meta">© 2026 DQ. All rights reserved.</p>
+      <p className="footer-meta">Copyright 2026 DQ. All rights reserved.</p>
     </footer>
   );
 }
