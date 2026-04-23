@@ -1,4 +1,4 @@
-import { cp, mkdir, readdir } from 'node:fs/promises'
+import { cp, mkdir, readdir, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 
 const repoRoot = process.cwd()
@@ -13,6 +13,7 @@ async function copyTopLevelDirectory(name) {
 
 async function main() {
   await mkdir(distDir, { recursive: true })
+  await writeFile(path.join(distDir, '.nojekyll'), '')
 
   const entries = await readdir(repoRoot, { withFileTypes: true })
   const directories = entries
