@@ -56,6 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener('DOMContentLoaded', function () {
   const wrapper = document.querySelector('.event-scroll-bx');
   if (!wrapper) return;
+  const eventBox = wrapper.closest('.event-bx');
 
   const innerLenis = new Lenis({
     wrapper: wrapper,
@@ -66,9 +67,23 @@ document.addEventListener('DOMContentLoaded', function () {
     wheelMultiplier: 1
   });
 
+  const refreshEventScroll = () => {
+    if (typeof innerLenis.resize === 'function') {
+      innerLenis.resize();
+    }
+
+    if (eventBox) {
+      const hasOverflow = wrapper.scrollHeight > wrapper.clientHeight + 1;
+      eventBox.classList.toggle('on', hasOverflow);
+    }
+  };
+
   wrapper.addEventListener('wheel', function(e){
+    refreshEventScroll();
+
+    const maxScrollTop = wrapper.scrollHeight - wrapper.clientHeight;
     const isTop = wrapper.scrollTop <= 0;
-    const isBottom = wrapper.scrollTop + wrapper.clientHeight >= wrapper.scrollHeight - 1;
+    const isBottom = wrapper.scrollTop >= maxScrollTop - 1;
 
     if ((e.deltaY < 0 && isTop) || (e.deltaY > 0 && isBottom)) {
       e.preventDefault();
@@ -89,6 +104,28 @@ document.addEventListener('DOMContentLoaded', function () {
       return;
     }
   }, { passive: false });
+
+  const resizeObserver = new ResizeObserver(() => {
+    refreshEventScroll();
+  });
+  resizeObserver.observe(wrapper);
+
+  const mutationObserver = new MutationObserver(() => {
+    refreshEventScroll();
+  });
+  mutationObserver.observe(wrapper, {
+    childList: true,
+    subtree: true
+  });
+
+  wrapper.querySelectorAll('img').forEach((img) => {
+    if (!img.complete) {
+      img.addEventListener('load', refreshEventScroll, { once: true });
+    }
+  });
+
+  window.addEventListener('load', refreshEventScroll);
+  refreshEventScroll();
 
   function raf(time){
     innerLenis.raf(time);

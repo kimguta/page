@@ -271,6 +271,19 @@
             text-decoration: underline;
         }
 
+        .preview-box {
+            background: #f8fafc;
+            border: 1px solid #cbd5e0;
+            border-radius: 5px;
+            padding: 10px;
+            font-family: monospace;
+            font-size: 12px;
+            white-space: pre-wrap;
+            word-break: break-all;
+            max-height: 180px;
+            overflow-y: auto;
+        }
+
         @media (max-width: 768px) {
             .grid {
                 grid-template-columns: 1fr;
@@ -284,6 +297,29 @@
         <div class="header">
             <h1>🧪 문화인 SSO 로그인 - 통합 테스트 페이지</h1>
             <p>이 페이지에서 문화인 SSO 로그인 및 예매 기능을 테스트할 수 있습니다.</p>
+        </div>
+
+        <div>
+            <div class="card">
+                <h2>🔐 현재 세션 정보</h2>
+                <div id="sessionInfoDisplay" class="preview-box">
+                    <p style="color: #999;">로그인하면 세션 정보가 표시됩니다.</p>
+                </div>
+                <div id="refreshCountdown" style="display: none; margin-top: 15px; padding: 12px; background: #fff5f5; border-left: 4px solid #f56565; border-radius: 5px; color: #742a2a;">
+                    <strong>⏱️ 페이지 새로고침 예정:</strong> <span id="countdownNum">10</span>초 후
+                    <div style="margin-top: 10px;">
+                        <button class="btn-info" onclick="cancelRefresh()" style="padding: 8px 12px; font-size: 12px;">
+                            ⛔ 새로고침 취소
+                        </button>
+                        <button class="btn-warning" onclick="refreshNow()" style="padding: 8px 12px; font-size: 12px; margin-left: 5px;">
+                            🔄 지금 새로고침
+                        </button>
+                        <button class="btn-danger" onclick="performLogout()" style="padding: 8px 12px; font-size: 12px; margin-left: 5px;">
+                            🚪 로그아웃
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- 테스트 카드 그리드 -->
@@ -326,13 +362,30 @@
                     <textarea id="qHomepyInput" placeholder="문화인 로그인 후 q_homepy 값을 붙여넣기..."></textarea>
                 </div>
 
+                <div class="input-group">
+                    <label>internow 리턴 URL 전체 (수동 전달용)</label>
+                    <a href="https://internow.cafe24.com/111.html" target="_blank">테스트 링크</a>
+                    <textarea id="returnUrlInput" placeholder="https://internow.cafe24.com/111.html?a=b&c=d&q_homepy=... 형태의 전체 URL을 붙여넣기..."></textarea>
+                </div>
+
                 <div class="button-group">
                     <button class="btn-success" onclick="testSSOLogin()">
                         ✅ SSO 로그인 테스트
                     </button>
+                    <button class="btn-success" onclick="runManualReturnUrlLogin()">
+                        🔗 리턴 URL 자동 추출 + 로그인
+                    </button>
                     <button class="btn-warning" onclick="copySampleQHomepy()">
                         📋 샘플 q_homepy 생성 (테스트용)
                     </button>
+                    <button class="btn-info" onclick="runLatestSamplePopupLogin()">
+                        🌐 최신 샘플 팝업 로그인 실행
+                    </button>
+                </div>
+
+                <div class="input-group" style="margin-top: 15px;">
+                    <label>최신 샘플 페이지 요약 / q_homepy 후보</label>
+                    <div id="latestSamplePreview" class="preview-box">아직 최신 샘플을 불러오지 않았습니다.</div>
                 </div>
             </div>
 
@@ -447,8 +500,86 @@
 
     <!-- SSO 모듈 로드 -->
     <script src="/page/cccf/js/moonhwain-sso.js"></script>
+    <script src="/page/cccf/js/moonhwain.js"></script>
 
     <script>
+        // 새로고침 관련 변수
+        let refreshTimeout = null;
+        let countdownTimer = null;
+
+        // 페이지 새로고침 취소
+        function cancelRefresh() {
+            if (refreshTimeout) {
+                clearTimeout(refreshTimeout);
+                refreshTimeout = null;
+            }
+            if (countdownTimer) {
+                clearInterval(countdownTimer);
+                countdownTimer = null;
+            }
+            document.getElementById('refreshCountdown').style.display = 'none';
+            console.log('페이지 새로고침이 취소되었습니다.');
+            alert('페이지 새로고침이 취소되었습니다.\n세션 정보를 계속 확인하실 수 있습니다.');
+        }
+
+        // 지금 새로고침
+        function refreshNow() {
+            if (refreshTimeout) {
+                clearTimeout(refreshTimeout);
+                refreshTimeout = null;
+            }
+            if (countdownTimer) {
+                clearInterval(countdownTimer);
+                countdownTimer = null;
+            }
+            console.log('페이지 새로고침을 실행합니다.');
+            location.reload();
+        }
+
+        // 로그아웃
+        function performLogout() {
+            if (refreshTimeout) {
+                clearTimeout(refreshTimeout);
+                refreshTimeout = null;
+            }
+            if (countdownTimer) {
+                clearInterval(countdownTimer);
+                countdownTimer = null;
+            }
+
+            console.log('\n========================================');
+            console.log('SSO 로그아웃 실행');
+            console.log('========================================');
+
+            fetch('/moonhwain/logout', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('로그아웃 응답:', data);
+
+                if (data.result === 'SUCCESS') {
+                    console.log('✅ SSO 로그아웃 성공');
+                    alert('✅ 로그아웃이 완료되었습니다.\n\n세션 정보가 삭제되었으며,\nDB에는 영향을 주지 않습니다.');
+
+                    // 페이지 새로고침
+                    setTimeout(() => {
+                        location.reload();
+                    }, 1500);
+                } else {
+                    console.error('❌ 로그아웃 실패:', data.message);
+                    alert('❌ 로그아웃 실패: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('로그아웃 요청 오류:', error);
+                alert('로그아웃 처리 중 오류가 발생했습니다: ' + error.message);
+            });
+        }
+
         // 콘솔 로깅 커스터마이징
         const consoleElement = document.getElementById('console');
         const originalLog = console.log;
@@ -499,6 +630,44 @@
             }
         }
 
+        // 세션 정보 표시
+        function displaySessionInfo(data) {
+            const sessionInfoDisplay = document.getElementById('sessionInfoDisplay');
+            const lines = [];
+
+            lines.push('===== 로그인 성공 응답 =====');
+            lines.push('');
+            lines.push('result: ' + (data.result || ''));
+            lines.push('message: ' + (data.message || ''));
+            lines.push('memberId: ' + (data.memberId || ''));
+            lines.push('memberName: ' + (data.memberName || ''));
+            lines.push('userLevel: ' + (data.userLevel || ''));
+            lines.push('loginType: ' + (data.loginType || ''));
+            lines.push('');
+            lines.push('===== 서버 세션정보 (loginSession) =====');
+            if (data.loginSession) {
+                const sessionObj = data.loginSession;
+                lines.push('sessionId: ' + (sessionObj.sessionId || '(없음)'));
+                lines.push('uniqId: ' + (sessionObj.uniqId || '(없음)'));
+                lines.push('ip: ' + (sessionObj.ip || '(없음)'));
+                lines.push('loginType: ' + (sessionObj.loginType || '(없음)'));
+                lines.push('createdAt: ' + (sessionObj.createdAt ? new Date(sessionObj.createdAt).toLocaleString('ko-KR') : '(없음)'));
+            } else {
+                lines.push('(서버 세션정보 없음)');
+            }
+            lines.push('');
+            lines.push('===== 클라이언트 세션정보 =====');
+            const clientSessionInfo = getSessionInfo();
+            lines.push('isLoggedIn: ' + clientSessionInfo.isLoggedIn);
+            lines.push('memberId: ' + (clientSessionInfo.memberId || '(없음)'));
+            lines.push('memberName: ' + (clientSessionInfo.memberName || '(없음)'));
+
+            sessionInfoDisplay.textContent = lines.join('\n');
+            
+            // 콘솔에도 출력
+            console.log('📊 세션정보:', data.loginSession);
+        }
+
         // 기본 테스트
         function runBasicTest() {
             console.log('\n========================================');
@@ -536,24 +705,16 @@
         }
 
         // SSO 로그인 테스트
-        function testSSOLogin() {
-            const qHomepy = document.getElementById('qHomepyInput').value.trim();
-            if (!qHomepy) {
-                alert('q_homepy 값을 입력해주세요.');
-                return;
-            }
-
+        function submitQHomepyLogin(qHomepy) {
             console.log('\n========================================');
             console.log('SSO 로그인 테스트');
             console.log('========================================');
-            console.log('q_homepy:', qHomepy);
+            console.log('q_homepy length:', qHomepy.length);
 
-            // testSSOLogin(qHomepy) 함수 호출 (moonhwain-sso.js에서 정의)
-            // 서버로 q_homepy 전송
             const formData = new FormData();
             formData.append('q_homepy', qHomepy);
 
-            fetch('/egf/bp/auth/moonhwain/sso/verify', {
+            fetch('/moonhwain/sso/verify', {
                 method: 'POST',
                 body: formData
             })
@@ -562,17 +723,37 @@
                 console.log('서버 응답:', data);
 
                 if (data.result === 'SUCCESS') {
+                    displaySessionInfo(data);
                     console.log('✅ SSO 로그인 성공:', data.memberId);
-                    alert('✅ ' + data.memberName + '님으로 로그인되었습니다!\n\n' +
-                          '로그인 정보:\n' +
-                          '- ID: ' + data.memberId + '\n' +
-                          '- 이름: ' + data.memberName + '\n' +
-                          '- 권한: ' + data.userLevel);
 
-                    // 페이지 새로고침 (세션 반영)
-                    setTimeout(() => {
+                    // 성공 상태 표시
+                    const successMsg = '✅ ' + data.memberName + '님으로 로그인되었습니다!\n\n' +
+                                      '로그인 정보:\n' +
+                                      '- ID: ' + data.memberId + '\n' +
+                                      '- 이름: ' + data.memberName + '\n' +
+                                      '- 권한: ' + data.userLevel + '\n\n' +
+                                      '위의 "현재 세션 정보" 섹션에서\n세션 정보를 확인하세요.\n\n' +
+                                      '10초 후 자동으로 페이지가\n새로고침됩니다.';
+                    alert(successMsg);
+
+                    // 새로고침 카운트다운 UI 표시
+                    const refreshCountdownDiv = document.getElementById('refreshCountdown');
+                    refreshCountdownDiv.style.display = 'block';
+                    let countdown = 10;
+
+                    // 카운트다운 타이머
+                    countdownTimer = setInterval(() => {
+                        countdown--;
+                        document.getElementById('countdownNum').textContent = countdown;
+                        if (countdown <= 0) {
+                            clearInterval(countdownTimer);
+                        }
+                    }, 1000);
+
+                    // 페이지 새로고침 (세션 반영) - 충분한 시간 제공
+                    refreshTimeout = setTimeout(() => {
                         location.reload();
-                    }, 1500);
+                    }, 100000);
                 } else {
                     console.error('❌ SSO 로그인 실패:', data.message);
                     alert('❌ 로그인 실패: ' + data.message);
@@ -584,17 +765,155 @@
             });
         }
 
+        function testSSOLogin() {
+            const qHomepy = document.getElementById('qHomepyInput').value.trim();
+            if (!qHomepy) {
+                alert('q_homepy 값을 입력해주세요.');
+                return;
+            }
+
+            submitQHomepyLogin(qHomepy);
+        }
+
+        function extractQHomepyFromReturnUrl(returnUrl) {
+            if (!returnUrl) {
+                return '';
+            }
+
+            const matched = returnUrl.match(/[?&]q_homepy=([^&]+)/i);
+            if (!matched || matched.length < 2) {
+                return '';
+            }
+
+            try {
+                return decodeURIComponent(matched[1]);
+            } catch (error) {
+                console.warn('q_homepy decode 실패, 원본값 사용:', error);
+                return matched[1];
+            }
+        }
+
+        function runManualReturnUrlLogin() {
+            const returnUrl = document.getElementById('returnUrlInput').value.trim();
+            if (!returnUrl) {
+                alert('internow 리턴 URL 전체를 입력해주세요.');
+                return;
+            }
+
+            const extractedQHomepy = extractQHomepyFromReturnUrl(returnUrl);
+            if (!extractedQHomepy) {
+                alert('입력한 URL에서 q_homepy를 찾지 못했습니다.\nURL 형식을 확인해주세요.');
+                return;
+            }
+
+            document.getElementById('qHomepyInput').value = extractedQHomepy;
+            console.log('리턴 URL에서 q_homepy 자동 추출 완료');
+            submitQHomepyLogin(extractedQHomepy);
+        }
+
+        function renderLatestSamplePreview(data) {
+            const preview = document.getElementById('latestSamplePreview');
+            const lines = [];
+            lines.push('sourceUrl: ' + (data.sourceUrl || ''));
+            lines.push('message: ' + (data.message || ''));
+            lines.push('popupUrl: ' + (data.popupUrl || '(없음)'));
+            lines.push('goUrl: ' + (data.goUrl || '(없음)'));
+            lines.push('sampleQHomepy: ' + (data.sampleQHomepy || '(없음)'));
+            lines.push('hasSampleQHomepy: ' + (data.hasSampleQHomepy ? 'true' : 'false'));
+            lines.push('pagePreview: ' + (data.pagePreview || '(없음)'));
+            preview.textContent = lines.join('\n\n');
+        }
+
+        function buildPopupUrlForCurrentPage(originalPopupUrl) {
+            if (!originalPopupUrl) {
+                return '';
+            }
+
+            try {
+                const popupUrl = new URL(originalPopupUrl);
+                const callbackUrl = window.location.origin + window.location.pathname;
+                const encodedGoUrl = callbackUrl
+                    .replace(/\?/g, '~')
+                    .replace(/&/g, '^');
+
+                popupUrl.searchParams.set('goUrl', encodedGoUrl);
+                popupUrl.searchParams.set('target', 'opener');
+                popupUrl.searchParams.set('rq_homepy', 'Y');
+
+                return popupUrl.toString();
+            } catch (error) {
+                console.error('팝업 URL 변환 실패:', error);
+                return '';
+            }
+        }
+
+        function openLatestSamplePopup(popupUrl) {
+            const popupFeatures = 'status=no,resizeable=no,scrollbars=yes,width=1100,height=1280';
+            const popupWindow = window.open(popupUrl, 'moonhwain_latest_sample_login', popupFeatures);
+
+            if (!popupWindow || popupWindow.closed || typeof popupWindow.closed === 'undefined') {
+                alert('팝업이 차단되었습니다. 브라우저 팝업 허용 후 다시 시도해주세요.');
+                return false;
+            }
+
+            return true;
+        }
+
+        function runLatestSamplePopupLogin() {
+            console.log('\n========================================');
+            console.log('최신 샘플 popupUrl 조회 및 로그인 실행');
+            console.log('========================================');
+
+            fetch('/moonhwain/sample/latest', {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('최신 샘플 응답:', data);
+                if (data.result !== 'SUCCESS') {
+                    renderLatestSamplePreview(data);
+                    alert('❌ 최신 샘플을 불러오지 못했습니다: ' + (data.message || '알 수 없는 오류'));
+                    return;
+                }
+
+                const popupUrlForCurrentPage = buildPopupUrlForCurrentPage(data.popupUrl);
+                const previewData = Object.assign({}, data, {
+                    popupUrl: popupUrlForCurrentPage || data.popupUrl,
+                    message: 'popupUrl을 현재 테스트 페이지 goUrl로 치환해 실행합니다. 로그인 완료 후 이 페이지 URL의 q_homepy를 자동 처리합니다.'
+                });
+                renderLatestSamplePreview(previewData);
+
+                if (!popupUrlForCurrentPage) {
+                    alert('❌ 실행 가능한 popupUrl 생성에 실패했습니다. 콘솔 로그를 확인해주세요.');
+                    return;
+                }
+
+                const opened = openLatestSamplePopup(popupUrlForCurrentPage);
+                if (opened) {
+                    alert('팝업을 열었습니다. 로그인 완료 후 이 페이지로 돌아오면 q_homepy가 자동 처리됩니다.');
+                }
+            })
+            .catch(error => {
+                console.error('최신 샘플 요청 오류:', error);
+                alert('최신 샘플 요청 중 오류가 발생했습니다: ' + error.message);
+            });
+        }
+
         // 샘플 q_homepy 생성
         function copySampleQHomepy() {
             const sample = 'nTime,20260316161630^mMidx,21698^uMid,wofyd132^mName,이재용^mHp,010-7301-9919^cEmail,wodyd9999999@naver.com';
             document.getElementById('qHomepyInput').value = sample;
+            document.getElementById('latestSamplePreview').textContent = '고정 샘플 q_homepy를 입력했습니다.';
             alert('샘플 q_homepy가 입력되었습니다.\n\n※ 실제 테스트는 문화인 로그인 후 실제 q_homepy로 진행해주세요.');
         }
 
         // 예매 관련 테스트
         function testBooking() {
             const pIdx = document.getElementById('pIdx').value.trim();
-            console.log('공연 예매 테스트:', pIdx);
+            console.log('공연 예매 테스트(vwClsPidx=1):', pIdx);
             testBookingFunction('booking', pIdx);
         }
 
@@ -724,4 +1043,3 @@
     </script>
 </body>
 </html>
-

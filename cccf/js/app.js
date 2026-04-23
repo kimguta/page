@@ -1,15 +1,15 @@
 
-document.addEventListener('DOMContentLoaded', function() {
-  window.lenis = new Lenis({
-    duration: 0.5,
-    easing: t => 1 - Math.pow(1 - t, 2),
-  });
+document.addEventListener('DOMContentLoaded', function () {
+    window.lenis = new Lenis({
+        duration: 0.5,
+        easing: t => 1 - Math.pow(1 - t, 2),
+    });
 
-  function raf(time) {
-    window.lenis.raf(time);
+    function raf(time) {
+        window.lenis.raf(time);
+        requestAnimationFrame(raf);
+    }
     requestAnimationFrame(raf);
-  }
-  requestAnimationFrame(raf);
 });
 
 
@@ -43,10 +43,10 @@ function initSlick(target, options) {
         target.find('.slick-active').attr('tabindex', '0');
 
         // if($(this).hasClass('video')){ 
-		// 	$('iframe').each( function() {
-		// 		$(this)[0].contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
-		// 	});  
-		// }
+        // 	$('iframe').each( function() {
+        // 		$(this)[0].contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
+        // 	});  
+        // }
     });
 
     // slick 슬라이더 초기화
@@ -55,7 +55,7 @@ function initSlick(target, options) {
     // 컨트롤 버튼 이벤트 핸들러
     $ControlBtn.on('click', function (e) {
         e.preventDefault();
-        
+
         if ($(this).hasClass('pause')) {
             $(this).hide();
             $PlayBtn.show();
@@ -69,12 +69,12 @@ function initSlick(target, options) {
 }
 
 // dots 커스텀 함수 정의
-function imgPaging(slick,index){
+function imgPaging(slick, index) {
     var targetImage = slick.$slides.eq(index).find('img').attr('src');
     return '<a href="#" role="button" onclick="return false;"><img src=" ' + targetImage + ' "></a>';
 }
 
-function imgNumber(slick,index){
+function imgNumber(slick, index) {
     return '<a href="#" role="button" onclick="return false;">' + (index + 1) + '</a>';
 }
 
@@ -104,7 +104,7 @@ window.addEventListener('load', function () {
     });
 
 
-     function setVh() {
+    function setVh() {
         const vh = window.innerHeight + 'px';
         document.documentElement.style.setProperty('--vh', vh);
     }
@@ -112,18 +112,18 @@ window.addEventListener('load', function () {
     setVh(); // 초기값
     window.addEventListener('resize', setVh); // 창 크기 바뀔 때 갱신
 
-    
+
 
 });
 
 
 $Win.on({
-    'resize load': function() {
+    'resize load': function () {
         var $WinWidth = $Win.outerWidth();
         $('#header').toggleClass('pc-mode', $WinWidth > $MobileWidth)
-                    .toggleClass('mobile-mode', $WinWidth <= $MobileWidth);
+            .toggleClass('mobile-mode', $WinWidth <= $MobileWidth);
     },
-    'resize': function() {
+    'resize': function () {
         var $WinWidth = $Win.outerWidth();
         if ($WinWidth > $MobileWidth) {
             $('.Htlv01').add('.Htlv02').add('.Htlv03').removeClass('active');
@@ -131,14 +131,14 @@ $Win.on({
         $('#header').removeClass('active');
         $('#sitemap').hide();
     },
-    'load': function() {
-        $('a[role="button"]').on('keypress', function(e) {
+    'load': function () {
+        $('a[role="button"]').on('keypress', function (e) {
             if (e.keyCode === 32) {
                 $(this).trigger('click');
                 e.preventDefault(); // 기본 동작 막기
             }
         });
-    
+
     }
 });
 
@@ -146,111 +146,121 @@ $Win.on({
 
 
 $Doc.on({
-    'mouseover focusin': function() {
-    var $Depth2 = $(this).children('.Hdepth02');
-        $Depth2.show();
-    $('#header').addClass('active');
-    $('.Htlv01').removeClass('active');
-    $(this).children('.Htlv01').addClass('active');
-    }
-  }, '#header .header-wrap .Hdepth01 > li')
-.on({
-    'focusout': function() {
-        $('#header').add('.Htlv01').removeClass('active');      
-        $('.Hdepth02').stop().slideUp(250);
-    }
-}, '#header .header-wrap nav a:last')
-.on({
-    'mouseleave': function() {
+    'mouseover focusin': function () {
         var $Depth2 = $(this).children('.Hdepth02');
-        $('#header').add('.Htlv01').removeClass('active');
-        $Depth2.hide();
+        $Depth2.show();
+        $('#header').addClass('active');
+        $('.Htlv01').removeClass('active');
+        $(this).children('.Htlv01').addClass('active');
     }
 }, '#header .header-wrap .Hdepth01 > li')
-.on({
-    'click': function(e) {
-        e.preventDefault();
-        $('#header').add(this).toggleClass('sitemap-on');
-    }
-}, '#header .menu-btn')
-.on({
-    'focusout': function(e) {
-        e.preventDefault();
-        $(this).parents().find('button').removeClass('active')
-        $(this).parent('div').slideUp(200);
-    }
-}, '#footer .family-bx div a:last-child')
-.on({
-    'click': function(e) {
-        e.preventDefault();
-        $(this).closest('.item').siblings('.item').find('> div').stop().slideUp(300).end().find('> button').removeClass('active');
-        $(this).toggleClass('active').next('div').stop().slideToggle(300);
-    }
-}, '.family-bx button')
-.on({
-    'click': function(e) {
-         e.preventDefault();
-
-        const $btn = $(this);
-
-        // 클릭된 버튼이 어느 그룹인지 판별
-        const isMenuBtn = $btn.closest('#side-menu').length > 0;
-
-        // 클릭된 그룹 기준으로 index 구하기
-        const idx = isMenuBtn
-        ? $('#side-menu .side-view-open').index($btn)
-        : $('.side-remote .side-view-open').index($btn);
-
-        // "같은 idx"의 버튼이 이미 켜져있는지 (양쪽 중 하나만 봐도 됨)
-        const isOpen = $('#side-menu .side-view-open').eq(idx).hasClass('on') ||
-                    $('.side-remote .side-view-open').eq(idx).hasClass('on');
-
-        // 전체 초기화
-        $('#side-menu .side-view-open, .side-remote .side-view-open').removeClass('on');
-        $('#side-wrap').removeClass('on');
-        $('#side-view > div').removeClass('on');
-
-        if (!isOpen) {
-            // ✅ 같은 index의 양쪽 버튼 모두 on
-            $('#side-menu .side-view-open').eq(idx).addClass('on');
-            $('.side-remote .side-view-open').eq(idx).addClass('on');
-
-            $('#side-wrap').addClass('on');
-            $('#side-view > div').eq(idx).addClass('on');
+    .on({
+        'focusout': function () {
+            $('#header').add('.Htlv01').removeClass('active');
+            $('.Hdepth02').stop().slideUp(250);
         }
-    }
-}, '#side-menu .side-view-open, .side-remote .side-view-open')
-.on({
-    'click': function(e) {
-        e.preventDefault();
-        
-        $('#side-wrap, #side-menu .side-view-open, #side-view > div').removeClass('on');
-    }
-}, '.side-view-close')
-.on({
-    'click': function(e) {
-        e.preventDefault();
-        $(this).toggleClass('active');
-    }
-}, '.calander-tab .open-btn');
+    }, '#header .header-wrap nav a:last')
+    .on({
+        'mouseleave': function () {
+            var $Depth2 = $(this).children('.Hdepth02');
+            $('#header').add('.Htlv01').removeClass('active');
+            $Depth2.hide();
+        }
+    }, '#header .header-wrap .Hdepth01 > li')
+    .on({
+        'click': function (e) {
+            e.preventDefault();
+            $('#header').add(this).toggleClass('sitemap-on');
+        }
+    }, '#header .menu-btn')
+    .on({
+        'focusout': function (e) {
+            e.preventDefault();
+            $(this).parents().find('button').removeClass('active')
+            $(this).parent('div').slideUp(200);
+        }
+    }, '#footer .family-bx div a:last-child')
+    .on({
+        'click': function (e) {
+            e.preventDefault();
+            $(this).closest('.item').siblings('.item').find('> div').stop().slideUp(300).end().find('> button').removeClass('active');
+            $(this).toggleClass('active').next('div').stop().slideToggle(300);
+        }
+    }, '.family-bx button')
+    .on({
+        'click': function (e) {
+            e.preventDefault();
+
+            const $btn = $(this);
+
+            // 클릭된 버튼이 어느 그룹인지 판별
+            const isMenuBtn = $btn.closest('#side-menu').length > 0;
+
+            // 클릭된 그룹 기준으로 index 구하기
+            const idx = isMenuBtn
+                ? $('#side-menu .side-view-open').index($btn)
+                : $('.side-remote .side-view-open').index($btn);
+
+            // "같은 idx"의 버튼이 이미 켜져있는지 (양쪽 중 하나만 봐도 됨)
+            const isOpen = $('#side-menu .side-view-open').eq(idx).hasClass('on') ||
+                $('.side-remote .side-view-open').eq(idx).hasClass('on');
+
+            // 전체 초기화
+            $('#side-menu .side-view-open, .side-remote .side-view-open').removeClass('on');
+            $('#side-wrap').removeClass('on');
+            $('#side-view > div').removeClass('on');
+
+            if (!isOpen) {
+                // ✅ 같은 index의 양쪽 버튼 모두 on
+                $('#side-menu .side-view-open').eq(idx).addClass('on');
+                $('.side-remote .side-view-open').eq(idx).addClass('on');
+
+                $('#side-wrap').addClass('on');
+                $('#side-view > div').eq(idx).addClass('on');
+            }
+        }
+    }, '#side-menu .side-view-open, .side-remote .side-view-open')
+    .on({
+        'click': function (e) {
+            e.preventDefault();
+
+            $('#side-wrap, #side-menu .side-view-open, #side-view > div').removeClass('on');
+        }
+    }, '.side-view-close')
+    .on({
+        'click': function (e) {
+            e.preventDefault();
+            $(this).toggleClass('active');
+        }
+    }, '.calander-tab .open-btn')
+    .on({
+        'mouseover focusin': function () {
+            $(this).children('.Hdepth03').addClass('active');
+        }
+    }, '#header .header-wrap .Hdepth02 > li')
+    .on({
+        'mouseleave focusout': function () {
+            $(this).children('.Hdepth03').removeClass('active');
+        }
+    }, '#header .header-wrap .Hdepth02 > li');
 
 
-$(window).on('load', function() {
+$(window).on('load', function () {
     var lastScrollTop = 0; // 마지막 스크롤 위치 저장 변수
-    $(window).on('scroll', function() {
+    $(window).on('scroll', function () {
         var currentScrollTop = $(this).scrollTop(); // 현재 스크롤 위치 가져오기
         $('#header').toggleClass('fixed', $(document).scrollTop() > 60);
-        $('#header').toggleClass('down', currentScrollTop > lastScrollTop); 
+        $('#header').toggleClass('down', currentScrollTop > lastScrollTop);
         lastScrollTop = currentScrollTop; // 마지막 스크롤 위치 업데이트
     });
 });
 
 
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 
-const allStopBtns = document.querySelectorAll('.swiper-stop');
-      allStopBtns.forEach((btnStop) => {
+    const allStopBtns = document.querySelectorAll('.swiper-stop');
+    allStopBtns.forEach((btnStop) => {
         const root = btnStop.closest('.swiper-bx');
         if (!root) return;
         const btnPlay = root.querySelector('.swiper-play');
@@ -282,14 +292,14 @@ const allStopBtns = document.querySelectorAll('.swiper-stop');
             disableOnInteraction: false,
         },
         navigation: { nextEl: "#side-view .swiper-button-next", prevEl: "#side-view .swiper-button-prev" },
-         breakpoints: {
-            717: { spaceBetween: 25,slidesPerView: 3,},
-            1400:{ spaceBetween: 45,slidesPerView: 3,}
+        breakpoints: {
+            717: { spaceBetween: 25, slidesPerView: 3, },
+            1400: { spaceBetween: 45, slidesPerView: 3, }
         },
     });
 
 
-     document.querySelectorAll('.wave-text').forEach(el => {
+    document.querySelectorAll('.wave-text').forEach(el => {
         let idx = 0;
 
         // wave-text 안의 텍스트 노드/요소를 전부 글자 단위 span으로 변환
@@ -301,11 +311,11 @@ const allStopBtns = document.querySelectorAll('.swiper-stop');
             const parent = node.parentNode;
             const frag = document.createDocumentFragment();
             [...node.nodeValue].forEach(ch => {
-            const s = document.createElement('span');
-            s.className = 'char';
-            s.textContent = ch === ' ' ? '\u00A0' : ch;
-            s.style.setProperty('--i', idx++);
-            frag.appendChild(s);
+                const s = document.createElement('span');
+                s.className = 'char';
+                s.textContent = ch === ' ' ? '\u00A0' : ch;
+                s.style.setProperty('--i', idx++);
+                frag.appendChild(s);
             });
             parent.replaceChild(frag, node);
         });

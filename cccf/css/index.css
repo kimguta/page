@@ -61,6 +61,8 @@ button {
   display: block;
   width: 468px;
   box-shadow: 15px 15px 25px 0px rgba(0, 0, 0, .5);
+  height: 659px;
+  object-fit: cover;
 }
 
 #visual .swiper-slide .text-bx {
@@ -68,13 +70,16 @@ button {
 }
 
 #visual .swiper-slide .text-bx strong {
-  display: block;
-  word-break: keep-all;
-  font-size: 60px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  font-size: 70px;
   color: #000;
   line-height: 1.25;
   font-weight: 700;
-  max-width: 520px;
+  word-break: keep-all;
+  padding-right: 50px;
 }
 
 #visual .swiper-slide .btn-bx {
@@ -119,34 +124,48 @@ button {
 }
 
 #visual .side-remote {
-  width: 224px;
-  height: 456px;
   padding-top: 5px;
-  background: url(/page/cccf/images/main/bg-quickmenu.png) no-repeat center center /cover;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   position: absolute;
   right: 20px;
-  margin-top: -35px
+  margin-top: -63px;
 }
 
 #visual .side-remote a {
   font-family: 'NanumSquareNeo';
   display: block;
-  margin-top: 11px;
+  width: 219px;
+  position: relative;
 }
 
 #visual .side-remote a img {
   display: block;
+  width: 100%;
 }
 
-#visual .side-remote a:hover img {
+#visual .side-remote a img:last-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: all .2s;
+}
+
+#visual .side-remote a.on img:last-child,
+#visual .side-remote a:hover img:last-child {
+  opacity: 1;
+}
+
+
+
+/* #visual .side-remote a:hover img {
   animation: wobbleDecay .7s ease-out 1;
   transform-origin: center center;
   will-change: transform;
-}
+} */
 
 @keyframes wobbleDecay {
   0% {
@@ -496,6 +515,14 @@ button {
 
 #apply .apply-list a:nth-child(4) {
   transition-delay: .8s;
+}
+
+#apply .apply-list {
+  display: none;
+}
+
+#apply .apply-list.active {
+  display: grid;
 }
 
 #news {
@@ -949,6 +976,7 @@ section.scroll-show.show {
   #visual .swiper-slide img {
     width: 408px;
     box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, .35);
+    height: 575px;
   }
 
   #visual .swiper-slide .text-bx {
@@ -956,8 +984,8 @@ section.scroll-show.show {
   }
 
   #visual .swiper-slide .text-bx strong {
-    font-size: 50px;
-    max-width: 420px;
+    font-size: 60px;
+    padding-right: 20px;
   }
 
   #visual .swiper-slide .btn-bx {
@@ -1269,6 +1297,7 @@ section.scroll-show.show {
   #visual .swiper-slide img {
     width: 328px;
     box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, .35);
+    height: 462px;
   }
 
   #visual .swiper-slide .text-bx {
@@ -1276,8 +1305,7 @@ section.scroll-show.show {
   }
 
   #visual .swiper-slide .text-bx strong {
-    font-size: 40px;
-    max-width: 340px;
+    font-size: 44px;
   }
 
   #visual .swiper-slide .btn-bx {
@@ -1608,9 +1636,10 @@ section.scroll-show.show {
   }
 
   #visual .swiper-slide img {
-    width: 240px;
-    height: 340px;
+    width: 280px;
+    height: 400px;
     object-fit: cover;
+    margin: 0 auto;
   }
 
   #visual .swiper-slide .text-bx {
@@ -1618,19 +1647,25 @@ section.scroll-show.show {
   }
 
   #visual .swiper-slide .text-bx strong {
-    font-size: 27px;
-    max-width: 300px;
+    font-size: 23px;
+    max-width: 100%;
+    padding: 0 30px;
+    text-align: center;
   }
 
   #visual .swiper-slide .btn-bx {
-    padding-top: 25px;
+    padding-top: 20px;
     gap: 5px;
+    justify-content: center;
   }
 
   #visual .control-bx {
-    bottom: 6px;
+    bottom: 47px;
     left: 30px;
     transform: scale(.8);
+    justify-content: center;
+    right: 30px;
+    transform-origin: 50% 50%;
   }
 
   .title-wrap {
