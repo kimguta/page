@@ -1,3 +1,0 @@
-module.exports=[34503,a=>{"use strict";var b=a.i(3452);a.s(["default",0,function({children:a}){return(0,b.jsxs)("html",{lang:"ko",children:[(0,b.jsx)("head",{children:(0,b.jsx)("link",{rel:"icon",type:"image/svg+xml",href:"/favicon.svg"})}),(0,b.jsx)("body",{children:a})]})},"metadata",0,{title:"DQ Archive",description:"DQ UI archive built with Next.js"}])},33513,a=>{a.n(a.i(34503))}];
-
-//# sourceMappingURL=archive-ui_src_app_layout_tsx_05qsy08._.js.map
