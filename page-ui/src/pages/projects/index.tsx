@@ -17,7 +17,7 @@ export function ProjectsPage() {
     )
 
   return (
-    <div className="projects-page">
+    <section className="panel card section-layout projects-page">
       <article className="panel card projects-page__intro">
         <div className="panel__eyebrow">전체 프로젝트</div>
         <h2>저장소에 있는 사이트를 한 번에 보는 목록</h2>
@@ -75,6 +75,6 @@ export function ProjectsPage() {
           </div>
         ))}
       </section>
-    </div>
+    </section>
   )
 }

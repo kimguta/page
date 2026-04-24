@@ -64,13 +64,11 @@
   display: grid;
   gap: 0.25rem;
   padding: 0.95rem 1rem;
-  border-radius: 18px;
+  border-radius: var(--radius-lg);
   text-decoration: none;
   color: inherit;
-  background:
-    linear-gradient(180deg, rgba(21, 29, 44, 0.96), rgba(17, 24, 37, 0.96)),
-    radial-gradient(circle at top left, rgba(137, 168, 255, 0.08), transparent 28%);
-  border: 1px solid rgba(148, 163, 184, 0.12);
+  background: #ffffff;
+  border: 2px solid #7fb0e8;
   transition:
     transform 180ms ease,
     border-color 180ms ease,
@@ -79,19 +77,19 @@
 
 .projects-list a:hover {
   transform: translateY(-1px);
-  border-color: rgba(148, 163, 184, 0.24);
-  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.24);
+  border-color: var(--border);
+  box-shadow: var(--shadow-soft);
 }
 
 .projects-list__title {
   font-size: 0.98rem;
   font-weight: 700;
-  color: #f8fbff;
+  color: var(--text);
 }
 
 .projects-list__href {
   font-size: 0.82rem;
-  color: rgba(226, 232, 240, 0.6);
+  color: var(--muted);
   word-break: break-all;
 }
 
@@ -101,16 +99,16 @@
   gap: 0;
   padding: 0;
   text-align: left;
-  border-radius: 24px;
-  background:
-    linear-gradient(180deg, rgba(21, 29, 44, 0.96), rgba(17, 24, 37, 0.96)),
-    radial-gradient(circle at top left, rgba(137, 168, 255, 0.08), transparent 28%);
+  border-radius: var(--radius-xl);
+  background: #ffffff;
+  border-color: #7fb0e8;
 }
 
 .project-card__media {
   aspect-ratio: 16 / 10;
   overflow: hidden;
-  background: rgba(143, 183, 255, 0.08);
+  background: #d7ecff;
+  border-bottom: 2px solid var(--border);
 }
 
 .project-card__media img {
@@ -132,7 +130,7 @@
   display: block;
   font-size: 0.98rem;
   line-height: 1.4;
-  color: #f5f8ff;
+  color: var(--text);
 }
 
 @media (max-width: 1100px) {
@@ -147,8 +145,17 @@
 
 @media (max-width: 720px) {
   .projects-grid {
-    grid-template-columns: 1fr;
-    gap: 0.85rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.65rem;
+  }
+
+  .project-card__body {
+    padding: 0.72rem 0.75rem 0.78rem;
+  }
+
+  .project-card__body strong {
+    font-size: 0.84rem;
+    line-height: 1.35;
   }
 
   .projects-section__head {
