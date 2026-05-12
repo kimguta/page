@@ -31,37 +31,35 @@ button {
   position: relative;
   z-index: 20;
   height: calc(100vh - 80px);
-  background: url(/page/cccf/images/main/bg-mainvisual.png) no-repeat left bottom /cover;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: url(/page/cccf/images/main/bg-mainvisual.png) no-repeat left calc(50% - 0px) / cover;
 }
 
 #visual .visual-bx {
-  max-width: 1250px;
+  max-width: 1300px;
   position: relative;
   padding-top: 20px;
+  margin-right: 110px;
 }
 
 #visual .swiper-slide {
   display: flex;
   padding: 30px 30px 50px;
-  gap: 72px;
-  filter: blur(3px);
-  transition: filter .3s .35s ease-out, opacity .3s .35s ease-out;
-  opacity: .5;
+  transition: opacity .3s ease-out;
+  opacity: 0;
 }
 
-#visual .swiper-slide.swiper-slide-active {
-  filter: blur(0px);
+#visual .swiper-slide.swiper-slide-active,
+#visual .swiper-slide.swiper-slide-next {
   opacity: 1;
 }
 
 #visual .swiper-slide img {
   display: block;
-  width: 468px;
+  width: 100%;
   box-shadow: 15px 15px 25px 0px rgba(0, 0, 0, .5);
-  height: 659px;
   object-fit: cover;
 }
 
@@ -82,7 +80,7 @@ button {
   padding-right: 50px;
 }
 
-#visual .swiper-slide .btn-bx {
+/* #visual .swiper-slide .btn-bx {
   padding-top: 55px;
   display: flex;
   align-items: center;
@@ -104,7 +102,7 @@ button {
   align-items: center;
   gap: 20px;
   line-height: 0;
-}
+} */
 
 #visual .control button {
   display: flex;
@@ -117,6 +115,7 @@ button {
   font-size: 20px;
   color: #000;
   gap: 10px;
+  display: none;
 }
 
 #visual .swiper-pagination span:first-child {
@@ -131,7 +130,7 @@ button {
   flex-direction: column;
   position: absolute;
   right: 20px;
-  margin-top: -63px;
+  margin-top: -57px;
 }
 
 #visual .side-remote a {
@@ -154,11 +153,89 @@ button {
   transition: all .2s;
 }
 
+#visual .swiper-stop,
+#visual .swiper-play {
+  display: none !important;
+}
+
 #visual .side-remote a.on img:last-child,
 #visual .side-remote a:hover img:last-child {
   opacity: 1;
 }
 
+
+#visual .mainSwiper1 {
+  padding: 0 100px;
+  position: relative;
+}
+
+
+#visual .Sbtn {
+  position: absolute !important;
+  left: 0 !important;
+  top: 50% !important;
+  margin: 0 !important;
+  width: 48px !important;
+  margin-top: -40px !important
+}
+
+#visual .Sbtn img {
+  display: block;
+  width: 100%
+}
+
+#visual .Sbtn.swiper-button-next {
+  left: auto !important;
+  right: 0 !important
+}
+
+#visual .swiper-slide strong {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  height: 100px;
+  padding-bottom: 3px;
+  border-top: 3px solid #fff;
+  word-break: keep-all;
+  padding: 0 30px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #000;
+  transition: all .2s;
+  line-height: 1.4;
+}
+
+#visual .swiper-slide:hover strong {
+  color: #5a1c7e;
+  border-color: #5a1c7e;
+}
+
+#visual .eye {
+  display: block;
+  position: absolute;
+  pointer-events: none;
+  height: 384px;
+}
+
+#visual .eye1 {
+  top: 0px;
+  left: 0;
+}
+
+#visual .eye2 {
+  top: 0px;
+  right: 0;
+}
+
+#visual .eye3 {
+  bottom: 0;
+  left: 0;
+}
+
+#visual .eye4 {
+  bottom: 0;
+  right: 0;
+}
 
 
 /* #visual .side-remote a:hover img {
@@ -311,6 +388,27 @@ button {
   border-color: #000
 }
 
+.title-wrap .tab-bx a:nth-child(2).active {
+  border-color: #01b6ad;
+  color: #01b6ad
+}
+
+.title-wrap .tab-bx a:nth-child(3).active {
+  border-color: #e31c93;
+  color: #e31c93
+}
+
+.title-wrap .tab-bx a:nth-child(4).active {
+  border-color: #fcb827;
+  color: #fcb827
+}
+
+
+.title-wrap .tab-bx a:nth-child(5).active {
+  border-color: #63656a;
+  color: #63656a
+}
+
 #event {
   padding: 90px 80px 90px 0;
 }
@@ -416,7 +514,7 @@ button {
 
 
 #apply {
-  padding: 90px 80px 470px 0;
+  padding: 120px 80px 510px 0;
   background: #f1f2f7;
   border-top-left-radius: 130px;
 }
@@ -437,14 +535,15 @@ button {
   font-weight: 500;
   line-height: 1.4;
   word-break: keep-all;
-  margin: 20px 0 5px;
+  margin: 30px 0 25px;
   overflow-wrap: break-word;
-  height: 2.8em;
+  height: 4.2em;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   overflow: hidden;
   text-overflow: ellipsis;
+  padding-right: 5px;
 }
 
 #apply .apply-list .icon-bx {
@@ -487,23 +586,77 @@ button {
   color: #a2a6af
 }
 
-#apply .apply-list a:hover strong {
-  text-decoration: underline;
-  text-underline-offset: 7px;
-  text-decoration-thickness: 1px
-}
 
 #apply .apply-list a {
   opacity: 0;
   transform: scale(1.2);
   transition: opacity .5s .2s, transform .5s .2s;
   will-change: opacity, transform;
+  position: relative;
+  z-index: 1;
 }
+
+#apply .apply-list a:before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0 15px 0 0;
+  background: #01b6ad;
+
+  opacity: 0;
+  transition: opacity .2s ease-out, clip-path .25s ease-out;
+
+  /* 기본은 정상 사각형 */
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+#apply .apply-list a:hover:before {
+  opacity: 1;
+
+  /* 오른쪽만 작아지는 형태 */
+  clip-path: polygon(0 0, 100% 6%, 100% 94%, 0 100%);
+}
+
+#apply .apply-list a:has(.type.v2):before {
+  background: #e31c93;
+}
+
+#apply .apply-list a:has(.type.v3):before {
+  background: #fdb827;
+}
+
 
 #apply .apply-list.show a {
   opacity: 1;
   transform: scale(1);
 }
+
+#apply .apply-list a:hover dl.info-list dd,
+#apply .apply-list a:hover strong,
+#apply .apply-list a:hover .icon-bx i {
+  color: #fff !important;
+  border-color: #fff !important;
+}
+
+#apply .apply-list a:hover .icon-bx i.state {
+  background: #fff;
+  color: #01b6ad !important
+}
+
+#apply .apply-list a:hover .icon-bx .v2+i.state {
+  color: #e31c93 !important;
+}
+
+
+#apply .apply-list a:hover .icon-bx .v3+i.state {
+  color: #fdb827 !important;
+}
+
+
+#apply .apply-list a:hover dl.info-list dt img {
+  filter: brightness(5) grayscale(1);
+}
+
 
 #apply .apply-list a:nth-child(2) {
   transition-delay: .4s;
@@ -731,6 +884,27 @@ button {
   color: #fff;
 }
 
+#magazine .sns-link-bx {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#magazine .sns-link-bx a {
+  width: 46px
+}
+
+#magazine .sns-link-bx a img {
+  display: block;
+  width: 100%;
+}
+
+#magazine .sns-link-bx a:hover {
+  animation: shake .6s 1 both ease-out;
+}
+
+
+
 #magazine .magazine-bx {
   padding-top: 80px;
   display: flex;
@@ -848,19 +1022,53 @@ button {
   filter: invert(1);
 }
 
+#magazine h5 {
+  text-align: center;
+  color: #fff;
+  margin-top: 120px;
+  font-size: 34px;
+  font-weight: 500;
+}
+
 #magazine .sns-bx {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 75px;
-  height: 92px;
-  background: rgba(255, 255, 255, .07);
-  margin-top: 100px;
-  border-radius: 5px;
+  flex-wrap: wrap;
+  gap: 40px 80px;
+  background: rgba(0, 0, 0, .6);
+  margin-top: 40px;
+  border-radius: 25px;
+  padding: 40px 70px;
   opacity: 0;
   transform: rotateX(90deg);
   transition: opacity .35s .3s, transform .7s .3s;
 }
+
+#magazine .sns-bx a {
+  position: relative;
+  max-height: 40px
+}
+
+#magazine .sns-bx a img {
+  display: block;
+  height: 100%;
+}
+
+#magazine .sns-bx a img:last-child {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: all .2s;
+}
+
+#magazine .sns-bx a:hover img:last-child {
+  opacity: 1;
+}
+
+
+
 
 #magazine .sns-bx.show {
   opacity: 1;
@@ -891,7 +1099,7 @@ button {
 }
 
 #magazine .data-bx {
-  margin-top: 110px;
+  margin-top: 100px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   opacity: 0;
@@ -909,13 +1117,16 @@ button {
   flex-direction: column;
   align-items: flex-start;
   color: #fff;
-  padding: 20px 10px 5px 55px;
+  padding: 20px 10px 20px 155px;
   border-left: 1px solid #40403f;
+  position: relative;
+
 }
 
 #magazine .data-bx>div img {
   display: block;
-  margin-bottom: 50px;
+  position: absolute;
+  left: 30px;
 }
 
 #magazine .data-bx>div>span {
@@ -928,14 +1139,15 @@ button {
   gap: 3px;
   line-height: 1;
   align-items: center;
-  font-size: 58px;
+  font-size: 42px;
   font-weight: 700;
   padding-top: 9px;
   justify-content: flex-end;
+  white-space: nowrap;
 }
 
 #magazine .data-bx>div strong em {
-  font-size: 30px;
+  font-size: 26px;
   font-weight: 400;
   margin-top: 7px
 }
@@ -960,24 +1172,32 @@ section.scroll-show.show {
 
   #visual {
     height: calc(100vh - 60px);
+    background-size: cover;
   }
 
   #visual .visual-bx {
-    max-width: initial;
+    max-width: 100%;
     padding-top: 20px;
-    width: 100%;
+    margin: 0
+  }
+
+  #visual .mainSwiper1 {
+    padding: 0 70px 0 70px;
   }
 
   #visual .swiper-slide {
     padding: 20px 60px 50px;
-    gap: 60px;
   }
 
   #visual .swiper-slide img {
-    width: 408px;
     box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, .35);
-    height: 575px;
   }
+
+  #visual .Sbtn {
+    width: 36px !important
+  }
+
+
 
   #visual .swiper-slide .text-bx {
     padding-top: 25px;
@@ -993,12 +1213,21 @@ section.scroll-show.show {
     gap: 10px;
   }
 
-  #visual .control-bx {
+  #visual .swiper-slide strong {
+    height: 80px;
+    padding-bottom: 2px;
+    border-top: 2px solid #fff;
+    padding: 0 20px;
+    font-size: 20px;
+  }
+
+
+  /* #visual .control-bx {
     bottom: 50px;
     left: 540px;
     transform: scale(.9);
     transform-origin: 0% 100%;
-  }
+  } */
 
   #visual .side-remote {
     display: none;
@@ -1088,7 +1317,7 @@ section.scroll-show.show {
   }
 
   #apply {
-    padding: 70px 10px 300px 10px;
+    padding: 75px 10px 315px 10px;
     border-top-left-radius: 90px;
   }
 
@@ -1102,7 +1331,7 @@ section.scroll-show.show {
 
   #apply .apply-list a strong {
     font-size: 21px;
-    margin: 15px 0 5px;
+    margin: 25px 0 15px;
   }
 
   #apply .apply-list .icon-bx i {
@@ -1231,11 +1460,11 @@ section.scroll-show.show {
     transform-origin: 0% 100%;
   }
 
-  #magazine .sns-bx {
+  /* #magazine .sns-bx {
     gap: 55px;
     height: 82px;
     margin-top: 70px;
-  }
+  } */
 
   #magazine .sns-bx a {
     font-size: 17px;
@@ -1252,7 +1481,7 @@ section.scroll-show.show {
   }
 
   #magazine .data-bx {
-    margin-top: 80px;
+    margin-top: 60px;
   }
 
   #magazine .data-bx>div {
@@ -1260,28 +1489,84 @@ section.scroll-show.show {
   }
 
   #magazine .data-bx>div img {
-    margin-bottom: 35px;
+    margin-bottom: 15px;
     height: 46px;
+    position: relative;
+    left: 0;
   }
 
   #magazine .data-bx>div>span {
-    font-size: 19px;
-    ;
+    font-size: 17px;
   }
 
   #magazine .data-bx>div strong {
-    font-size: 42px;
+    font-size: 38px;
     padding-top: 8px;
   }
 
   #magazine .data-bx>div strong em {
-    font-size: 22px;
+    font-size: 20px;
     margin-top: 7px
   }
 
   section.scroll-show {
     transform: translateY(200px);
   }
+
+
+  #magazine .sns-link-bx {
+    gap: 7px;
+  }
+
+  #magazine .sns-link-bx a {
+    width: 40px
+  }
+
+  #magazine h5 {
+    margin-top: 80px;
+    font-size: 26px;
+  }
+
+  #magazine .sns-bx {
+    gap: 30px 60px;
+    margin-top: 30px;
+    border-radius: 20px;
+    padding: 30px 50px;
+  }
+
+  #magazine .sns-bx a {
+    max-height: 26px
+  }
+
+  #magazine .sns-bx a img {
+    max-height: 26px;
+  }
+
+  #visual .eye {
+    height: 244px;
+  }
+
+  #visual .eye1 {
+    top: 0px;
+    left: 0;
+  }
+
+  #visual .eye2 {
+    top: 0px;
+    right: 0;
+  }
+
+  #visual .eye3 {
+    bottom: 0;
+    left: 0;
+  }
+
+  #visual .eye4 {
+    bottom: 0;
+    right: 0;
+  }
+
+
 }
 
 @media (max-width:991px) {
@@ -1291,13 +1576,10 @@ section.scroll-show.show {
 
   #visual .swiper-slide {
     padding: 20px 30px 50px;
-    gap: 50px;
   }
 
   #visual .swiper-slide img {
-    width: 328px;
     box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, .35);
-    height: 462px;
   }
 
   #visual .swiper-slide .text-bx {
@@ -1313,11 +1595,6 @@ section.scroll-show.show {
     gap: 10px;
   }
 
-  #visual .control-bx {
-    bottom: 50px;
-    left: 420px;
-    transform: scale(.9);
-  }
 
   .title-wrap .title-bx {
     gap: 25px;
@@ -1432,7 +1709,7 @@ section.scroll-show.show {
 
   #apply .apply-list a strong {
     font-size: 19px;
-    margin: 15px 0 0px;
+    margin: 20px 0 0px;
   }
 
   #apply .apply-list .icon-bx i {
@@ -1567,11 +1844,6 @@ section.scroll-show.show {
     transform: scale(.8);
   }
 
-  #magazine .sns-bx {
-    gap: 45px;
-    height: 76px;
-    margin-top: 60px;
-  }
 
   #magazine .sns-bx a {
     font-size: 16px;
@@ -1598,23 +1870,58 @@ section.scroll-show.show {
   }
 
   #magazine .data-bx>div img {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     height: 42px;
   }
 
   #magazine .data-bx>div>span {
-    font-size: 17px;
+    font-size: 15px;
   }
 
   #magazine .data-bx>div strong {
-    font-size: 38px;
+    font-size: 34px;
     padding-top: 8px;
   }
 
   #magazine .data-bx>div strong em {
-    font-size: 19px;
+    font-size: 18px;
     margin-top: 7px
   }
+
+  #visual .swiper-slide strong {
+    height: 74px;
+    padding: 0 20px;
+    font-size: 16px;
+  }
+
+  #visual .mainSwiper1 {
+    padding: 0 50px 0 50px;
+  }
+
+  #magazine .sns-link-bx a {
+    width: 32px
+  }
+
+  #magazine h5 {
+    margin-top: 66px;
+    font-size: 24px;
+  }
+
+  #magazine .sns-bx {
+    gap: 25px 66px;
+    margin-top: 25px;
+    border-radius: 15px;
+    padding: 30px 50px;
+  }
+
+  #magazine .sns-bx a {
+    max-height: 24px
+  }
+
+  #magazine .sns-bx a img {
+    max-height: 24px;
+  }
+
 }
 
 
@@ -1622,6 +1929,8 @@ section.scroll-show.show {
   #visual {
     height: calc(100vh - 60px);
     min-height: 650px;
+    background-position: left calc(50% - 0px);
+    background-size: cover;
   }
 
   #visual .swiper {
@@ -1635,9 +1944,11 @@ section.scroll-show.show {
     flex-direction: column;
   }
 
+  #visual .swiper-slide.swiper-slide-next {
+    opacity: 0;
+  }
+
   #visual .swiper-slide img {
-    width: 280px;
-    height: 400px;
     object-fit: cover;
     margin: 0 auto;
   }
@@ -1659,25 +1970,28 @@ section.scroll-show.show {
     justify-content: center;
   }
 
-  #visual .control-bx {
-    bottom: 47px;
-    left: 30px;
-    transform: scale(.8);
-    justify-content: center;
-    right: 30px;
-    transform-origin: 50% 50%;
+  #visual .Sbtn {
+    width: 30px !important
   }
+
+  #visual .mainSwiper1 {
+    padding: 0 40px 0 40px;
+  }
+
+
 
   .title-wrap {
     flex-direction: column;
     align-items: flex-start;
-    gap: 15px;
+    gap: 0px;
   }
 
   .title-wrap .title-bx {
-    gap: 25px;
+    gap: 15px;
     justify-content: space-between;
     width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .title-wrap .title-bx h2 {
@@ -1718,8 +2032,8 @@ section.scroll-show.show {
   }
 
   .title-wrap .tab-bx a {
-    font-size: 14px;
-    height: 32px;
+    font-size: 15px;
+    height: 34px;
   }
 
   #event {
@@ -1769,7 +2083,7 @@ section.scroll-show.show {
   }
 
   #apply .apply-list {
-    margin: 25px 0px 0;
+    margin: 20px 0px 0;
     grid-template-columns: 1fr;
     gap: 0px;
   }
@@ -1784,7 +2098,7 @@ section.scroll-show.show {
 
   #apply .apply-list a strong {
     font-size: 17px;
-    margin: 15px 0 0px;
+    margin: 18px 0 4px;
     max-height: 2.8em;
     height: auto;
   }
@@ -1908,11 +2222,6 @@ section.scroll-show.show {
     padding: 15px 0 0 0px;
   }
 
-  #magazine .sns-bx {
-    gap: 45px;
-    height: 80px;
-    margin-top: 45px;
-  }
 
   #magazine .sns-bx a {
     font-size: 12px;
@@ -1930,17 +2239,17 @@ section.scroll-show.show {
   }
 
   #magazine .data-bx {
-    margin-top: 50px;
+    margin-top: 40px;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
   }
 
   #magazine .data-bx>div {
-    padding: 15px 10px 20px 20px;
+    padding: 13px 10px 16px 20px;
   }
 
   #magazine .data-bx>div img {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     height: 30px;
   }
 
@@ -1949,8 +2258,8 @@ section.scroll-show.show {
   }
 
   #magazine .data-bx>div strong {
-    font-size: 30px;
-    padding-top: 8px;
+    font-size: 28px;
+    padding-top: 5px;
   }
 
   #magazine .data-bx>div strong em {
@@ -1958,5 +2267,34 @@ section.scroll-show.show {
     margin-top: 7px
   }
 
+  #magazine .title-wrap {
+    flex-direction: row;
+  }
 
+  #magazine h5 {
+    margin-top: 35px;
+    font-size: 20px;
+  }
+
+  #magazine .sns-bx {
+    gap: 20px 30px;
+    margin-top: 20px;
+    padding: 20px 20px;
+  }
+
+  #magazine .sns-bx a {
+    max-height: 20px
+  }
+
+  #magazine .sns-bx a img {
+    max-height: 20px;
+  }
+
+  #visual .eye {
+    height: 184px;
+  }
+
+  #visual .eye3 {
+    left: -140px;
+  }
 }

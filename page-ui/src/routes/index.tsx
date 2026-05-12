@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
 import { BusinessLayout } from '../pages/business/layout'
+import { BoardPage } from '../pages/board'
 import { CompanyLayout } from '../pages/company/layout'
 import { GreetingPage } from '../pages/company/greeting'
 import { LocationPage } from '../pages/company/location'
@@ -67,6 +68,18 @@ export function resolveRoute(pathname: string): RouteResult {
         { label: '공공·행정' },
       ],
       element: <BusinessLayout />,
+    }
+  }
+
+  if (path === '/board') {
+    return {
+      title: '게시판',
+      summary: '아카이브 운영 공지와 업데이트를 확인하는 게시판입니다.',
+      breadcrumbs: [
+        { label: 'Home', href: '/' },
+        { label: '게시판' },
+      ],
+      element: <BoardPage />,
     }
   }
 

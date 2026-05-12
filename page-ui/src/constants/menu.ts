@@ -6,6 +6,7 @@ export const mainMenu: MenuItem[] = [
   { label: '공공·행정', href: '/business' },
   { label: '문화·관광', href: '/customer/faq' },
   { label: '전체 프로젝트', href: '/projects' },
+  { label: '게시판', href: '/board' },
   { label: '문의', href: '/customer/qna' },
 ]
 
@@ -15,5 +16,6 @@ export const footerMenu: MenuItem[] = [
   { label: '문화·관광', href: '/customer/faq' },
   { label: '전체 프로젝트', href: '/projects' },
   { label: '공공·행정', href: '/business' },
+  { label: '게시판', href: '/board' },
   { label: '문의', href: '/customer/qna' },
 ]

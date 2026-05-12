@@ -3597,12 +3597,17 @@ b {
 
 .sub-search-tab {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   border-width: 1px 1px 0;
   margin-bottom: 60px;
   background: #f1f1f1;
   padding: 20px 20px 20px 30px;
   gap: 10px 50px;
+}
+
+/* 4개 이상이면 2열 */
+.sub-search-tab:has(> .tab-item:nth-child(4)) {
+  grid-template-columns: repeat(2, 1fr);
 }
 
 .sub-search-tab .tab-item {
@@ -3875,10 +3880,15 @@ b {
 
 @media (max-width:1400px) {
   .sub-search-tab {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     margin-bottom: 40px;
     gap: 10px 30px;
     padding: 15px 15px 15px 20px;
+  }
+
+  /* 4개 이상이면 2열 */
+  .sub-search-tab:has(> .tab-item:nth-child(4)) {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .sub-search-tab .tab-item {
@@ -3886,7 +3896,7 @@ b {
   }
 
   .sub-search-tab label {
-    min-width: 90px;
+    min-width: 65px;
     font-size: 16px;
   }
 
@@ -4029,6 +4039,10 @@ b {
     flex-direction: column;
     align-items: flex-start;
   }
+
+  .sub-search-tab {
+    grid-template-columns: 1fr !important;
+  }
 }
 
 
@@ -4045,7 +4059,7 @@ b {
   }
 
   .sub-search-tab label {
-    min-width: 68px;
+    min-width: 62px;
     font-size: 14px;
   }
 
@@ -7295,6 +7309,28 @@ b {
   position: absolute;
   inset: -1px;
   pointer-events: none;
+}
+
+/* 휴관일 셀 스타일 */
+.calendar-table td.closed-day {
+  background-color: #f0f0f0;
+}
+
+.calendar-table td.closed-day>span {
+  color: #999;
+}
+
+.closed-reason {
+  text-align: center;
+  color: #999;
+  font-size: 13px;
+  padding: 2px 8px;
+  word-break: keep-all;
+}
+
+.legend-dot.closed {
+  background: #b0b0b0;
+  color: #fff;
 }
 
 .calendar-table td>span {

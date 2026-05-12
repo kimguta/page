@@ -984,9 +984,11 @@ button {
   padding-top: 50px;
   display: flex;
   gap: 10px;
+  position: relative;
+  width: fit-content
 }
 
-.event-land .btn-bx a {
+.event-land .btn-bx>a {
   background: #fff;
   display: flex;
   align-items: center;
@@ -999,11 +1001,11 @@ button {
   transition: all .2s;
 }
 
-.event-land .btn-bx a.view {
+.event-land .btn-bx>a.view {
   width: 305px;
 }
 
-.event-land .btn-bx a:hover {
+.event-land .btn-bx>a:hover {
   filter: invert(1);
 }
 
@@ -1023,6 +1025,38 @@ button {
   top: initial;
   bottom: 50px;
 }
+
+.event-land .btn-bx .share-bx {
+  background: #fff;
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  right: 0;
+  bottom: 60px;
+  gap: 5px;
+  width: 48px;
+  padding: 5px 0;
+}
+
+.event-land .btn-bx .share-bx a {
+  display: flex;
+  justify-content: center;
+  padding: 5px 10px;
+}
+
+.event-land .btn-bx .share-bx a img {
+  display: block;
+  max-width: 100%;
+}
+
+.event-land .share.on {
+  filter: invert(1);
+}
+
+.event-land .share.on+.share-bx {
+  display: flex;
+}
+
 
 @media (max-width:1400px) {
   #header {
@@ -1484,14 +1518,14 @@ button {
     gap: 10px;
   }
 
-  .event-land .btn-bx a {
+  .event-land .btn-bx>a {
     height: 44px;
     padding: 0 13px;
     gap: 7px;
     font-size: 16px;
   }
 
-  .event-land .btn-bx a.view {
+  .event-land .btn-bx>a.view {
     width: 205px;
   }
 
@@ -1504,6 +1538,14 @@ button {
   .event-land .close+.close {
     bottom: 50px;
   }
+
+  .event-land .btn-bx .share-bx {
+    bottom: 50px;
+    width: 44px;
+    padding: 5px 0;
+  }
+
+
 
 }
 
@@ -1944,12 +1986,12 @@ button {
     padding-top: 25px;
   }
 
-  .event-land .btn-bx a {
+  .event-land .btn-bx>a {
     height: 40px;
     font-size: 14px;
   }
 
-  .event-land .btn-bx a.view {
+  .event-land .btn-bx>a.view {
     width: 165px;
   }
 
@@ -1962,6 +2004,13 @@ button {
   .event-land .close+.close {
     bottom: 50px;
   }
+
+
+  .event-land .btn-bx .share-bx {
+    bottom: 45px;
+    width: 43px;
+  }
+
 
 }
 

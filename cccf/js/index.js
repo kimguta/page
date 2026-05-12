@@ -1,10 +1,16 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   const swipe1 = new Swiper(".mainSwiper1", {
+    slidesPerView: 2,
+    slidesPerGroup: 2,
+    spaceBetween: 110,
     speed: 500,
     loop: true,
     observer: true,
     observeParents: true,
+    observeSlideChildren: true,
+    resizeObserver: true,
+    updateOnWindowResize: true,
     navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
     autoplay: {
       delay: 5000,                // 4초마다 전환
@@ -19,6 +25,31 @@ document.addEventListener("DOMContentLoaded", () => {
       ),
       formatFractionCurrent: (number) => String(number).padStart(2, '0'),
       formatFractionTotal: (number) => String(number).padStart(2, '0'),
+    },
+    breakpoints: {
+      0: { spaceBetween: 0, slidesPerView: 1, slidesPerGroup: 1 },
+      717: { spaceBetween: 0, slidesPerView: 2, slidesPerGroup: 2 },
+      1401: { spaceBetween: 50, slidesPerView: 2, slidesPerGroup: 2 },
+    },
+    on: {
+      breakpoint(swiper) {
+        const realIndex = swiper.realIndex;
+
+        requestAnimationFrame(() => {
+          if (swiper.destroyed) return;
+
+          if (swiper.params.loop && swiper.loopDestroy && swiper.loopCreate) {
+            swiper.loopDestroy();
+            swiper.loopCreate();
+          }
+
+          swiper.update();
+
+          if (swiper.slideToLoop) {
+            swiper.slideToLoop(realIndex, 0, false);
+          }
+        });
+      },
     },
   });
 

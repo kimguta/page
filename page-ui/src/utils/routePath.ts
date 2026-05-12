@@ -1,5 +1,5 @@
 const listeners = new Set<() => void>()
-const topLevelRoutes = new Set(['business', 'company', 'product', 'projects', 'customer', 'mypage', 'content'])
+const topLevelRoutes = new Set(['business', 'board', 'company', 'product', 'projects', 'customer', 'mypage', 'content'])
 
 export function getBasePath() {
   if (typeof window === 'undefined') {

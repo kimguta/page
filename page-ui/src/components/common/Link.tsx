@@ -6,7 +6,7 @@ type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
   children: ReactNode
 }
 
-const appRoutePrefixes = ['/', '/business', '/company', '/product', '/projects', '/customer', '/mypage', '/content']
+const appRoutePrefixes = ['/', '/business', '/board', '/company', '/product', '/projects', '/customer', '/mypage', '/content']
 
 function isAppRoute(href: string) {
   if (!href.startsWith('/')) {
