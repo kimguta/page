@@ -2846,7 +2846,8 @@
           moduleFields += '<details class="builder-content-details"><summary>항목 내용 편집 <small>' + module.items.length + '개</small></summary><div class="builder-content-items">' + itemRows + '</div>' + (canAddItems ? '<button type="button" class="builder-sub-add" data-content-item-add>+ 항목 추가</button>' : '') + '</details>';
           if (module.items.length > 1) {
             var perViewOptions = [1, 2, 3, 4].map(function (count) { return '<option value="' + count + '"' + (Number(module.slider.perView || 1) === count ? ' selected' : '') + '>' + count + '개</option>'; }).join("");
-            var perViewField = /^(?:cards|quick|gallery)$/.test(module.type) ? field("PC 노출 개수", '<select data-content-slider-number="perView">' + perViewOptions + '</select><small>태블릿은 최대 2개, 모바일은 1개로 자동 조정됩니다. 좌우 이동하려면 전체 항목 수가 노출 개수보다 많아야 합니다.</small>') : '';
+            var perViewHelp = module.type === "cards" ? "카드형은 모바일 1.3개, 중간 화면 1.7개, 태블릿 2.3개 센터 모드로 자동 조정됩니다." : "태블릿은 최대 2개, 모바일은 1개로 자동 조정됩니다.";
+            var perViewField = /^(?:cards|quick|gallery)$/.test(module.type) ? field("PC 노출 개수", '<select data-content-slider-number="perView">' + perViewOptions + '</select><small>' + perViewHelp + ' 좌우 이동하려면 전체 항목 수가 노출 개수보다 많아야 합니다.</small>') : '';
             var transitionOptions = [["fade", "페이드"], ["slide", "좌우 이동"], ["vertical", "위아래 이동"], ["zoom", "확대 전환"]].map(function (transition) {
               return '<option value="' + transition[0] + '"' + (module.slider.transition === transition[0] ? ' selected' : '') + '>' + transition[1] + '</option>';
             }).join("");
