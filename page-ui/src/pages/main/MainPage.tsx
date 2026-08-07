@@ -5,6 +5,7 @@ import { Header } from '../../components/layout/Header'
 import { Link } from '../../components/common/Link'
 import { site } from '../../constants/site'
 import { cultureCards, legacyCards, projectCards, publicCards } from '../../data/archiveCards'
+import { resolvePublicPath } from '../../utils/publicPath'
 import './MainPage.css'
 
 const quickLinks = [
@@ -31,11 +32,35 @@ const quickLinks = [
 ]
 
 export function MainPage() {
+  const builderHref = resolvePublicPath('dq-builder/index.html')
+
   return (
     <div className="main-page">
       <Header currentPath="/" />
 
       <main className="main-page__main">
+        <section className="builder-promo panel" aria-labelledby="builder-promo-title">
+          <div className="builder-promo__copy">
+            <div className="panel__eyebrow">DQ Builder · Preview</div>
+            <h2 id="builder-promo-title">DQ 사이트 빌더 미리보기</h2>
+            <p>
+              헤더·푸터·콘텐츠 구성과 상세 스타일 편집 흐름을 브라우저에서 직접 테스트해
+              보세요.
+            </p>
+            <div className="builder-promo__tags" aria-label="DQ 빌더 주요 기능">
+              <span>구성 편집</span>
+              <span>상세 편집</span>
+              <span>메인·서브 미리보기</span>
+            </div>
+          </div>
+          <div className="builder-promo__action">
+            <a className="button button--primary builder-promo__link" href={builderHref}>
+              DQ 빌더 열기 <span aria-hidden="true">→</span>
+            </a>
+            <small>PC 화면 권장 · GitHub Pages에서는 임시 편집 체험용</small>
+          </div>
+        </section>
+
         <section className="hero panel panel--hero panel--sunrise">
           <div className="hero__copy">
             <div className="hero__badge">DQ UI Archive</div>
