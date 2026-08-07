@@ -1534,6 +1534,12 @@ html.is-sitemap-open {
     transition: opacity .25s ease, visibility 0s linear .25s;
   }
 
+  /* Desktop GNB mode selectors have higher specificity, so reset their
+     fixed panel height for the mobile viewport. */
+  #header[data-gnb-mode] .gnb-backdrop {
+    height: calc(100dvh - var(--header-total-height, 72px));
+  }
+
   #header.is-mobile-open .gnb-backdrop {
     opacity: 1;
     visibility: visible;

@@ -50,7 +50,7 @@
     var canvasSetupDone = false;
     var canvasWaitTimer = null;
     var lastCanvasError = null;
-    var editMode = "structure";
+    var editMode = "idle";
     var selectionMode = false;
     var hoveredCanvasElement = null;
     var selectedStructureElement = null;
@@ -684,7 +684,7 @@
       '    <button type="button" class="builder-icon-button" data-history="undo" aria-label="실행 취소">' + icon("undo") + '</button>',
       '    <button type="button" class="builder-icon-button" data-history="redo" aria-label="다시 실행">' + icon("redo") + '</button>',
       '    <div class="builder-edit-mode-switch" role="group" aria-label="편집 모드">',
-      '      <button type="button" class="builder-text-button is-active" data-builder-mode="structure" aria-pressed="true" title="다시 누르면 일반 조작 상태로 해제됩니다">' + icon("section") + '<span>구성 편집</span></button>',
+      '      <button type="button" class="builder-text-button" data-builder-mode="structure" aria-pressed="false" title="다시 누르면 일반 조작 상태로 해제됩니다">' + icon("section") + '<span>구성 편집</span></button>',
       '      <button type="button" class="builder-text-button" data-builder-mode="detail" data-builder-select aria-pressed="false" title="다시 누르면 일반 조작 상태로 해제됩니다">' + icon("edit") + '<span>상세 편집</span></button>',
       '      <button type="button" class="builder-text-button" data-builder-mode="preview" data-builder-preview aria-pressed="false">' + icon("preview") + '<span>미리보기</span></button>',
       '    </div>',
@@ -1548,7 +1548,7 @@
 
     function closeBuilder() {
       closeProjectBuild();
-      setBuilderMode("structure");
+      setBuilderMode("idle");
       clearCanvasSelectionHighlight();
       builder.classList.remove("is-open", "is-preview");
       builder.setAttribute("aria-hidden", "true");
