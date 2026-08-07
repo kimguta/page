@@ -477,10 +477,11 @@ function compileBuiltContentState(html, projectName) {
   return { html: stripBuiltElementMetadata(output), modules };
 }
 
-function contentRuntime() {
+function contentRuntime(projectName) {
   return `/** 빌드된 직접 작성 요소와 콘텐츠 모션 초기화 */
 (function (window, document) {
   "use strict";
+  var ICONS = "/page/${projectName}/images/icons/site-icons.svg";
 
   function showError(root, message) {
     var error = document.createElement("pre");
@@ -570,9 +571,86 @@ function contentRuntime() {
     });
   }
 
+  function initContentSliders(scope) {
+    Array.prototype.forEach.call(scope.querySelectorAll("[data-content-slider]"), function (slider) {
+      if (slider.swiper || typeof window.Swiper !== "function") return;
+      var module = slider.closest(".dq-module");
+      var controlRoot = module && module.querySelector("[data-slider-controls]");
+      var requested = Math.max(1, Math.min(4, Number(slider.dataset.perView) || 1));
+      var isVisual = !!(module && module.classList.contains("dq-module--visual"));
+      var gap = isVisual ? 0 : Math.max(0, Math.min(100, Number(slider.dataset.gap) || 0));
+      if (isVisual) {
+        slider.dataset.gap = "0";
+        slider.style.setProperty("--module-gap-max", "0px");
+      }
+      var transition = slider.dataset.transition || "slide";
+      var total = slider.querySelectorAll(".swiper-slide").length;
+      var currentText = controlRoot && controlRoot.querySelector("[data-slide-current]");
+      var totalText = controlRoot && controlRoot.querySelector("[data-slide-total]");
+      var playButton = controlRoot && controlRoot.querySelector("[data-slide-play]");
+      var shouldAutoplay = slider.dataset.autoplay === "true";
+      var options = {
+        slidesPerView: requested,
+        spaceBetween: gap,
+        speed: Math.max(100, Math.min(3000, Number(slider.dataset.duration) || 650)),
+        loop: slider.dataset.loop !== "false" && total > requested,
+        watchOverflow: true,
+        watchSlidesProgress: true,
+        observer: true,
+        observeParents: true,
+        keyboard: { enabled: true },
+        a11y: { enabled: true },
+        autoplay: shouldAutoplay || playButton ? { delay: Math.max(1000, Number(slider.dataset.delay) || 4500), disableOnInteraction: false } : false,
+        breakpoints: {
+          0: { slidesPerView: 1, spaceBetween: Math.min(gap, 16) },
+          641: { slidesPerView: Math.min(2, requested), spaceBetween: Math.min(gap, 24) },
+          901: { slidesPerView: requested, spaceBetween: gap }
+        }
+      };
+      if (transition === "fade" && requested === 1) {
+        options.effect = "fade";
+        options.fadeEffect = { crossFade: true };
+      } else if (transition === "vertical" && requested === 1) {
+        options.direction = "vertical";
+        options.autoHeight = true;
+      }
+      if (controlRoot) {
+        var previous = controlRoot.querySelector("[data-slide-prev]");
+        var next = controlRoot.querySelector("[data-slide-next]");
+        var pagination = controlRoot.querySelector("[data-slide-pagination]");
+        if (previous && next) options.navigation = { prevEl: previous, nextEl: next };
+        if (pagination) options.pagination = { el: pagination, clickable: true, bulletClass: "dq-content-dot", bulletActiveClass: "is-active" };
+      }
+      var instance = new window.Swiper(slider, options);
+      if (!shouldAutoplay && instance.autoplay) instance.autoplay.stop();
+      function updateCounter() {
+        if (currentText) currentText.textContent = String(instance.realIndex + 1);
+        if (totalText) totalText.textContent = String(total);
+      }
+      instance.on("slideChange", updateCounter);
+      updateCounter();
+      if (playButton) {
+        playButton.addEventListener("click", function () {
+          if (!instance.autoplay) return;
+          var playIcon = playButton.querySelector("use");
+          if (instance.autoplay.running) {
+            instance.autoplay.stop();
+            if (playIcon) playIcon.setAttribute("href", ICONS + "#play");
+            playButton.setAttribute("aria-pressed", "false");
+          } else {
+            instance.autoplay.start();
+            if (playIcon) playIcon.setAttribute("href", ICONS + "#pause");
+            playButton.setAttribute("aria-pressed", "true");
+          }
+        });
+      }
+    });
+  }
+
   function init() {
     initCodeModules(document);
     initMotion(document);
+    initContentSliders(document);
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
@@ -995,7 +1073,7 @@ async function buildProject(rawName, overwrite = false) {
     }
     await writeBuildText(tempRoot, "content/list.txt", `${contentFiles.join("\n")}\n`);
     await writeBuildText(tempRoot, "js/content-list.js", contentListRuntime(projectName));
-    await writeBuildText(tempRoot, "js/content-runtime.js", contentRuntime());
+    await writeBuildText(tempRoot, "js/content-runtime.js", contentRuntime(projectName));
     await writeBuildText(tempRoot, "css/content-picker.css", contentPickerCss());
     await writeBuildText(tempRoot, "README.md", projectReadme(projectName));
     for (const module of codeModules.values()) {
