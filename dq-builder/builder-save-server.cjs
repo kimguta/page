@@ -339,13 +339,13 @@ const BUILD_RUNTIME_FILES = [
   "js/navigation.js",
   "js/smooth-scroll.js",
   "js/components.js",
-  "js/index.js"
 ];
 
 const BUILD_EXCLUDED_FILES = new Set([
   "css/editor.css",
   "js/editor.js",
   "js/content-builder.js",
+  "js/index.js",
   "builder-save-server.cjs"
 ]);
 
@@ -365,13 +365,25 @@ function replaceBuilderPath(source, projectName) {
 function stripEditorAssets(html) {
   return String(html)
     .replace(/^\s*<link\b[^>]*\/editor\.css(?:\?[^"']*)?["'][^>]*>\s*$/gim, "")
-    .replace(/^\s*<script\b[^>]*\/editor\.js(?:\?[^"']*)?["'][^>]*><\/script>\s*$/gim, "");
+    .replace(/^\s*<script\b[^>]*\/editor\.js(?:\?[^"']*)?["'][^>]*><\/script>\s*$/gim, "")
+    .replace(/^\s*<script\b[^>]*\/js\/index\.js(?:\?[^"']*)?["'][^>]*><\/script>\s*$/gim, "");
 }
 
 function stripBuilderMetadata(html) {
   return String(html)
     .replace(/\s*<script\b(?=[^>]*\bid=["']dq-builder-overrides["'])[^>]*>[\s\S]*?<\/script>\s*/gi, "\n")
+    .replace(/\s*<!--\s*<div\b[^>]*class=["'][^"']*\bsample-switcher\b[\s\S]*?<\/div>\s*-->\s*/gi, "\n")
     .replace(/\s*<!--\s*BUILDER:[A-Z-]+:(?:START|END)\s*-->\s*/gi, "\n");
+}
+
+function stripBuiltElementMetadata(html) {
+  return String(html)
+    .replace(/\sdata-builder-page=(["'][^"']*["'])/gi, " data-page=$1")
+    .replace(/\sdata-builder-content-root(?:=["'][^"']*["'])?/gi, "")
+    .replace(/\sdata-builder-legacy=["'][^"']*["']/gi, "")
+    .replace(/\sdata-section-id=["'][^"']*["']/gi, "")
+    .replace(/\sdata-cell-id=["'][^"']*["']/gi, "")
+    .replace(/\sdata-module-type=["'][^"']*["']/gi, "");
 }
 
 function escapeHtmlAttribute(value) {
@@ -409,8 +421,8 @@ function applyBuiltRootStyle(html, state) {
   const background = String(state && state.background || "#ffffff").replace(/[;<>]/g, "");
   return String(html).replace(/<(main)\b(?=[^>]*\bdata-builder-content-root\b)([^>]*)>/i, (match, tag, attributes) => {
     const variables = `--content-section-gap:${gap}px;--content-background:${background};`;
-    if (/\bstyle=["'][^"']*["']/i.test(attributes)) {
-      return `<${tag}${attributes.replace(/\bstyle=(["'])([^"']*)\1/i, (styleMatch, quote, styleValue) => `style=${quote}${variables}${styleValue}${quote}`)}>`;
+    if (/(^|\s)style=["'][^"']*["']/i.test(attributes)) {
+      return `<${tag}${attributes.replace(/(^|\s)style=(["'])([^"']*)\2/i, (styleMatch, spacing, quote, styleValue) => `${spacing}style=${quote}${variables}${styleValue}${quote}`)}>`;
     }
     return `<${tag}${attributes} style="${variables}">`;
   });
@@ -421,7 +433,7 @@ function compileBuiltContentState(html, projectName) {
   const match = statePattern.exec(String(html));
   if (!match) {
     return {
-      html: String(html).replace(/^\s*<script\b[^>]*\/js\/content-builder\.js(?:\?[^"']*)?["'][^>]*><\/script>\s*$/gim, `  <script src="/page/${projectName}/js/content-runtime.js"></script>`),
+      html: stripBuiltElementMetadata(String(html).replace(/^\s*<script\b[^>]*\/js\/content-builder\.js(?:\?[^"']*)?["'][^>]*><\/script>\s*$/gim, `  <script src="/page/${projectName}/js/content-runtime.js"></script>`)),
       modules: []
     };
   }
@@ -462,7 +474,7 @@ function compileBuiltContentState(html, projectName) {
   output = output
     .replace(statePattern, "\n")
     .replace(/^\s*<script\b[^>]*\/js\/content-builder\.js(?:\?[^"']*)?["'][^>]*><\/script>\s*$/gim, `  <script src="/page/${projectName}/js/content-runtime.js"></script>`);
-  return { html: output, modules };
+  return { html: stripBuiltElementMetadata(output), modules };
 }
 
 function contentRuntime() {
@@ -951,6 +963,20 @@ async function buildProject(rawName, overwrite = false) {
         content = content
           .replace(/\n  function applyBuilderOverrides\(\) \{[\s\S]*?\n  \}\n\n  async function boot/, "\n  async function boot")
           .replace(/^\s*applyBuilderOverrides\(\);\s*$/gm, "");
+      }
+      if (relativePath === "js/components.js") {
+        content = content
+          .replace(/^\s*initSampleSwitcher\(\);\s*$/gm, "")
+          .replace(/\n  function initSampleSwitcher\(\) \{[\s\S]*?\n  \}\n(?=\n  function initSubContentUi)/, "\n");
+      }
+      if (relativePath === "css/app.css") {
+        content = content.replace(/\r?\n\.sample-switcher\s*\{[\s\S]*?(?=\r?\n@media)/, "\n");
+      }
+      if (relativePath === "css/content-builder.css") {
+        content = content.replace(/> \[data-section-id\] \+ \[data-section-id\]/g, "> .dq-content-section + .dq-content-section");
+      }
+      if (relativePath === "css/custom-builder.css") {
+        content = content.replace(/data-builder-page/g, "data-page");
       }
       await writeBuildText(tempRoot, relativePath, content);
     }
