@@ -9,21 +9,17 @@
   if (params.get("builderCanvas") === "1" || !window.DQTemplate) return;
 
   window.DQTemplate.use("site-builder", function (DQ) {
-    var SITE_ICONS = "/page/dq-builder/images/icons/site-icons.svg";
+    var SITE_ICONS = "/page/dq-builder/images/icons/site-icons.svg?v=3";
     var EDITOR_ICONS = "/page/dq-builder/images/icons/editor-icons.svg";
     var LOGO_IMAGE_BASE = "/page/dq-builder/images/";
     var FONT_OPTIONS = ["Pretendard", "Noto Sans KR", "Spoqa Han Sans", "GmarketSans", "S-CoreDream", "Paperlogy", "NanumSquareNeo", "Elice", "SebangGothic", "PyeongChang", "MaruBuri", "ChosunNm", "SokchoBadaDotum", "Jalnan"];
     var THEME_PRESETS = {
-      calm: { label: "차분함", description: "기관·기업에 안정적인 저채도 스타일", color1: "#416B63", color2: "#203C37", color3: "#9DBDB4", pageBackground: "#F3F7F5", surface: "#FFFFFF", surfaceAlt: "#E8F0ED", textColor: "#1E302D", mutedColor: "#657A75", lineColor: "#D8E3DF", shadow: "0 14px 38px rgba(35,69,61,.10)", radiusStyle: "soft", buttonStyle: "filled", motionStyle: "soft" },
-      bright: { label: "밝고 친근함", description: "서비스·교육에 어울리는 산뜻한 스타일", color1: "#2563EB", color2: "#172554", color3: "#F59E0B", pageBackground: "#F7FAFF", surface: "#FFFFFF", surfaceAlt: "#EAF2FF", textColor: "#172033", mutedColor: "#667085", lineColor: "#DCE6F5", shadow: "0 16px 42px rgba(37,99,235,.12)", radiusStyle: "round", buttonStyle: "filled", motionStyle: "soft" },
-      vivid: { label: "화려함", description: "행사·브랜드에 강한 색감과 깊이", color1: "#7C3AED", color2: "#2E1065", color3: "#F43F5E", pageBackground: "#FFF8FC", surface: "#FFFFFF", surfaceAlt: "#F5EAFE", textColor: "#251535", mutedColor: "#74657E", lineColor: "#E9DDF0", shadow: "0 20px 50px rgba(124,58,237,.18)", radiusStyle: "round", buttonStyle: "gradient", motionStyle: "emphasis" },
-      dynamic: { label: "역동적", description: "캠페인·프로모션에 선명하고 빠른 스타일", color1: "#FF4D00", color2: "#111827", color3: "#00B8D9", pageBackground: "#F8FAFC", surface: "#FFFFFF", surfaceAlt: "#EEF2F6", textColor: "#111827", mutedColor: "#5F6B7A", lineColor: "#D8DEE7", shadow: "8px 8px 0 rgba(17,24,39,.13)", radiusStyle: "square", buttonStyle: "gradient", motionStyle: "emphasis" },
-      dark: { label: "어두운 분위기", description: "테크·콘텐츠에 몰입감 있는 다크 스타일", color1: "#8B5CF6", color2: "#090B12", color3: "#22D3EE", pageBackground: "#0C1018", surface: "#151B26", surfaceAlt: "#1D2634", textColor: "#F4F7FB", mutedColor: "#A7B0C0", lineColor: "#2D3849", shadow: "0 20px 55px rgba(0,0,0,.38)", radiusStyle: "soft", buttonStyle: "filled", motionStyle: "soft" },
-      elegant: { label: "고급스러움", description: "문화·호텔·프리미엄 브랜드 스타일", color1: "#8A6D3B", color2: "#1D1A17", color3: "#C8B07C", pageBackground: "#F6F2EA", surface: "#FFFCF7", surfaceAlt: "#EDE5D8", textColor: "#29231C", mutedColor: "#756B5E", lineColor: "#DED3C2", shadow: "0 18px 45px rgba(59,45,28,.13)", radiusStyle: "square", buttonStyle: "outline", motionStyle: "soft" },
-      neon: { label: "네온 임팩트", description: "공연·게임·테크 홍보에 강렬한 네온 스타일", color1: "#B7FF2A", color2: "#070A12", color3: "#FF2E93", pageBackground: "#070A12", surface: "#101522", surfaceAlt: "#182033", textColor: "#F7FAFF", mutedColor: "#AEB8CC", lineColor: "#33405A", shadow: "0 0 0 1px rgba(183,255,42,.28), 0 20px 60px rgba(255,46,147,.22)", radiusStyle: "square", buttonStyle: "gradient", motionStyle: "emphasis" },
-      pop: { label: "팝 캠페인", description: "축제·이벤트·상품 홍보에 대담한 컬러 스타일", color1: "#2457FF", color2: "#171717", color3: "#FF3D8D", pageBackground: "#FFF9E8", surface: "#FFFFFF", surfaceAlt: "#FFF36D", textColor: "#171717", mutedColor: "#515151", lineColor: "#171717", shadow: "6px 6px 0 rgba(23,23,23,.92)", radiusStyle: "round", buttonStyle: "gradient", motionStyle: "emphasis" },
-      editorial: { label: "볼드 에디토리얼", description: "전시·패션·포트폴리오에 잡지 같은 대비", color1: "#E63224", color2: "#111111", color3: "#D8FF3E", pageBackground: "#F1EEE6", surface: "#FAF8F1", surfaceAlt: "#DED9CF", textColor: "#111111", mutedColor: "#5D5A54", lineColor: "#111111", shadow: "0 18px 0 rgba(17,17,17,.10)", radiusStyle: "square", buttonStyle: "filled", motionStyle: "emphasis" },
-      cinematic: { label: "시네마틱", description: "몰입형 브랜드·콘텐츠 홍보에 극적인 다크 스타일", color1: "#FF5A1F", color2: "#050816", color3: "#21D4FD", pageBackground: "#050816", surface: "#0E1426", surfaceAlt: "#17213A", textColor: "#F7F8FC", mutedColor: "#A8B2C8", lineColor: "#293550", shadow: "0 28px 80px rgba(0,0,0,.52)", radiusStyle: "soft", buttonStyle: "gradient", motionStyle: "emphasis" }
+      civic: { label: "공공 블루", description: "좌측 제목·정돈된 카드·하단 바 GNB", color1: "#1E5A96", color2: "#173A5E", color3: "#A9C2D8", pageBackground: "#F5F8FB", surface: "#FFFFFF", surfaceAlt: "#EAF1F7", textColor: "#192B3B", mutedColor: "#607384", lineColor: "#D5E0E9", shadow: "0 8px 24px rgba(23,58,94,.07)", radiusStyle: "soft", buttonStyle: "filled", motionStyle: "soft", contentMaxWidth: 1200, sectionMaxWidth: 1200, headingAlign: "left", indicatorStyle: "underline", navigationMode: "single-full", headerHeight: 84, headerMaxWidth: 1320, navigationSize: 18, sectionGap: 72, columnGap: 36 },
+      slate: { label: "뉴트럴 슬레이트", description: "무채색·각진 요소·넓은 데이터형 배치", color1: "#505A64", color2: "#262D33", color3: "#AEB5BB", pageBackground: "#F6F7F8", surface: "#FFFFFF", surfaceAlt: "#ECEFF1", textColor: "#20272D", mutedColor: "#687179", lineColor: "#D8DDE0", shadow: "none", radiusStyle: "square", buttonStyle: "outline", motionStyle: "none", contentMaxWidth: 1320, sectionMaxWidth: 1320, headingAlign: "left", indicatorStyle: "overline", navigationMode: "all", headerHeight: 76, headerMaxWidth: 1480, navigationSize: 16, sectionGap: 56, columnGap: 24 },
+      forest: { label: "포레스트", description: "중앙 제목·둥근 아이콘·여유 있는 자연형", color1: "#3F6B50", color2: "#284534", color3: "#A7BEAD", pageBackground: "#F4F8F5", surface: "#FFFFFF", surfaceAlt: "#E8F0EA", textColor: "#203329", mutedColor: "#64786B", lineColor: "#D5E1D8", shadow: "0 10px 28px rgba(40,69,52,.07)", radiusStyle: "round", buttonStyle: "filled", motionStyle: "soft", contentMaxWidth: 1160, sectionMaxWidth: 1160, headingAlign: "center", indicatorStyle: "side", navigationMode: "single", headerHeight: 88, headerMaxWidth: 1240, navigationSize: 17, sectionGap: 88, columnGap: 40 },
+      coastal: { label: "코스탈", description: "청록 포인트·가로형 퀵메뉴·넓은 관광형", color1: "#0E7180", color2: "#17444C", color3: "#8FC2C7", pageBackground: "#F2F8F9", surface: "#FFFFFF", surfaceAlt: "#E4F0F1", textColor: "#18343A", mutedColor: "#5E777C", lineColor: "#D1E2E4", shadow: "0 8px 26px rgba(23,68,76,.07)", radiusStyle: "soft", buttonStyle: "outline", motionStyle: "soft", contentMaxWidth: 1360, sectionMaxWidth: 1280, headingAlign: "left", indicatorStyle: "dot", navigationMode: "single-full", headerHeight: 90, headerMaxWidth: 1500, navigationSize: 18, sectionGap: 76, columnGap: 28 },
+      heritage: { label: "문화 아이보리", description: "중앙 명조 제목·무그림자·전시 아카이브형", color1: "#785D3E", color2: "#342E27", color3: "#BBA78A", pageBackground: "#F7F3EB", surface: "#FFFDF8", surfaceAlt: "#ECE5D9", textColor: "#2C2823", mutedColor: "#746C61", lineColor: "#DCD2C3", shadow: "none", radiusStyle: "square", buttonStyle: "outline", motionStyle: "none", contentMaxWidth: 1180, sectionMaxWidth: 1180, headingAlign: "center", indicatorStyle: "underline", navigationMode: "all", headerHeight: 94, headerMaxWidth: 1280, navigationSize: 18, sectionGap: 96, columnGap: 48 },
+      burgundy: { label: "웜 버건디", description: "중앙 제목·소프트 카드·배경 강조 GNB", color1: "#824D59", color2: "#4A2E35", color3: "#C5A2AA", pageBackground: "#FAF5F6", surface: "#FFFFFF", surfaceAlt: "#F2E9EB", textColor: "#35292C", mutedColor: "#7B686D", lineColor: "#E5D9DC", shadow: "0 12px 30px rgba(74,46,53,.09)", radiusStyle: "round", buttonStyle: "filled", motionStyle: "soft", contentMaxWidth: 1240, sectionMaxWidth: 1200, headingAlign: "center", indicatorStyle: "pill", navigationMode: "single", headerHeight: 86, headerMaxWidth: 1320, navigationSize: 17, sectionGap: 84, columnGap: 36 }
     };
     var storageKey = "dq-builder-v10:" + window.location.pathname;
     var reopenAfterSaveKey = "dq-builder-reopen-after-save:" + window.location.pathname;
@@ -277,26 +273,62 @@
       return lines.join("\n");
     }
 
+    function normalizeUtilityItems(items) {
+      var normalized = Array.isArray(items) ? items : [];
+      normalized.forEach(function (item) {
+        if (!item.id) item.id = unique("utility");
+        if (!item.kind && item.type === "button" && /로그인/.test(item.label || "")) item.kind = "login";
+        if (!item.kind) item.kind = "custom";
+        if (!item.area) item.area = item.type === "button" ? "right" : "left";
+        if (item.visible == null) item.visible = true;
+      });
+      if (!normalized.some(function (item) { return item.kind === "login"; })) normalized.push({ id: unique("utility"), type: "button", kind: "login", area: "right", visible: true, label: "로그인", href: "#" });
+      if (!normalized.some(function (item) { return item.kind === "zoom"; })) normalized.push({ id: unique("utility"), type: "control", kind: "zoom", area: "right", visible: true, label: "화면 크기", href: "#" });
+      if (!normalized.some(function (item) { return item.kind === "dark"; })) normalized.push({ id: unique("utility"), type: "control", kind: "dark", area: "right", visible: true, label: "다크모드", href: "#" });
+      return normalized;
+    }
+
+    function buildUtilityItemHtml(item) {
+      var hidden = item.visible === false ? " hidden" : "";
+      var attrs = ' data-utility-item data-utility-kind="' + escapeHtml(item.kind || "custom") + '"' + hidden;
+      if (item.kind === "zoom") {
+        return '<div class="utility-zoom"' + attrs + '><span>' + escapeHtml(item.label || "화면 크기") + '</span><button type="button" data-site-zoom="out" aria-label="화면 축소">−</button><output data-site-zoom-value>100%</output><button type="button" data-site-zoom="in" aria-label="화면 확대">+</button></div>';
+      }
+      if (item.kind === "dark") {
+        return '<button type="button" class="utility-dark-mode" data-site-dark-mode aria-pressed="false"' + attrs + '>' + siteSvg("moon") + '<span>' + escapeHtml(item.label || "다크모드") + '</span></button>';
+      }
+      if (item.type === "button") {
+        var className = item.kind === "login" ? ' class="utility-login"' : "";
+        var itemIcon = item.kind === "login" ? siteSvg("login") : "";
+        return '<a href="' + escapeHtml(item.href || "#") + '"' + className + attrs + '>' + itemIcon + '<span>' + escapeHtml(item.label || "바로가기") + '</span></a>';
+      }
+      if (item.type === "html") return '<span class="utility-html"' + attrs + '>' + safeUtilityHtml(item.html) + '</span>';
+      return '<span' + attrs + '>' + escapeHtml(item.label || "") + '</span>';
+    }
+
+    function buildUtilityInnerHtml(items) {
+      var normalized = normalizeUtilityItems(items);
+      var left = normalized.filter(function (item) { return item.area !== "right"; }).map(buildUtilityItemHtml).join("");
+      var right = normalized.filter(function (item) { return item.area === "right"; }).map(buildUtilityItemHtml).join("");
+      return '<div class="utility-content" aria-label="유틸리티 왼쪽 영역">' + left + '</div><div class="utility-links" aria-label="유틸리티 오른쪽 영역">' + right + '</div>';
+    }
+
     function buildHeaderFile() {
       var data = state.header;
+      data.utility.items = normalizeUtilityItems(data.utility.items);
       var theme = ensureThemeData(state.theme);
       var lines = [
         '<div class="site-header__config" hidden data-gnb-mode="' + escapeHtml(data.navigation.mode || "single") + '" data-gnb-indicator="' + escapeHtml(/^(?:underline|overline|side|pill|dot)$/.test(data.navigation.indicatorStyle) ? data.navigation.indicatorStyle : "underline") + '" data-gnb-indicator-use-theme="' + String(data.navigation.indicatorUseTheme !== false) + '" data-gnb-indicator-color="' + escapeHtml(data.navigation.indicatorColor || theme.color1) + '" data-scroll-hide="' + String(data.hideOnScroll !== false) + '" data-utility-mobile-visible="' + String(!!data.utility.mobileVisible) + '" data-search-mode="' + escapeHtml(data.actions.searchMode === "link" ? "link" : "panel") + '" data-search-href="' + escapeHtml(data.actions.searchHref || "#") + '" data-sitemap-layout="' + escapeHtml(data.sitemap.layout || "horizontal") + '" data-sitemap-background="' + escapeHtml(data.sitemap.background || "#1f1029") + '" data-sitemap-depth1-color="' + escapeHtml(data.sitemap.depth1Color || "#ffffff") + '" data-sitemap-depth23-color="' + escapeHtml(data.sitemap.depth23Color || "#ffffff") + '" data-sitemap-use-theme="' + String(theme.applyToSitemap !== false) + '" data-theme-design="' + escapeHtml(theme.designStyle || "custom") + '" data-theme-color-1="' + escapeHtml(theme.color1) + '" data-theme-color-2="' + escapeHtml(theme.color2) + '" data-theme-color-3="' + escapeHtml(theme.color3) + '" data-theme-font="' + escapeHtml(safeFontFamily(theme.fontFamily)) + '" data-theme-content-width="' + Math.max(960, Math.min(1600, Number(theme.contentMaxWidth) || 1200)) + '" data-theme-radius="' + escapeHtml(theme.radiusStyle || "soft") + '" data-theme-button="' + escapeHtml(theme.buttonStyle || "outline") + '" data-theme-motion="' + escapeHtml(theme.motionStyle || "soft") + '"></div>',
         '<div class="site-header__utility"' + (data.utility.visible ? "" : " hidden") + '>',
         '  <div class="site-header__inner">',
-        '    <div class="utility-content">'
+        '    ' + buildUtilityInnerHtml(data.utility.items),
+        '  </div>',
+        '</div>',
+        '',
+        '<div class="site-header__main">',
+        '  <div class="site-header__inner">',
+        '    <h1 class="site-logo">'
       ];
-
-      data.utility.items.filter(function (item) { return item.type !== "button"; }).forEach(function (item) {
-        if (item.type === "html") lines.push('      <span class="utility-html">' + safeUtilityHtml(item.html) + "</span>");
-        else lines.push("      <span>" + escapeHtml(item.label) + "</span>");
-      });
-      lines.push("    </div>", '    <div class="utility-links">');
-      data.utility.items.filter(function (item) { return item.type === "button"; }).forEach(function (item) {
-        var loginIcon = /로그인/.test(item.label || "") ? siteSvg("login") : "";
-        lines.push('      <a href="' + escapeHtml(item.href || "#") + '"' + (loginIcon ? ' class="utility-login"' : "") + ">" + loginIcon + "<span>" + escapeHtml(item.label) + "</span></a>");
-      });
-      lines.push("    </div>", "  </div>", "</div>", "", '<div class="site-header__main">', '  <div class="site-header__inner">', '    <h1 class="site-logo">');
 
       if (data.logo.useImage && data.logo.imagePath) {
         lines.push('      <a href="' + escapeHtml(data.logo.href || "#") + '"><img class="site-logo__image" src="' + escapeHtml(resolveLogoPath(data.logo.imagePath)) + '" alt="' + escapeHtml(data.logo.text || "사이트 로고") + '"></a>');
@@ -363,6 +395,7 @@
         "  --theme-button-background: " + buttonValues.background + ";",
         "  --theme-button-border: " + buttonValues.border + ";",
         "  --theme-button-color: " + buttonValues.color + ";",
+        "  --theme-on-primary: " + contrastColor(theme.color1) + ";",
         "  --theme-motion-fast: " + motionValues.fast + ";",
         "  --theme-motion-lift: " + motionValues.lift + ";",
         "  --gnb-motion-base: " + motionValues.base + ";",
@@ -604,6 +637,7 @@
 
     function ensureThemeData(theme) {
       var data = theme || {};
+      if (data.designStyle && data.designStyle !== "custom" && !THEME_PRESETS[data.designStyle]) data.designStyle = "custom";
       var preset = THEME_PRESETS[data.designStyle] || { pageBackground: "#FFFFFF", surface: "#FFFFFF", surfaceAlt: "#F5F6F8", textColor: "#222222", mutedColor: "#666666", lineColor: "#E3E5E8", shadow: "0 14px 38px rgba(0,0,0,.10)" };
       data.designStyle = data.designStyle || "custom";
       ["pageBackground", "surface", "surfaceAlt", "textColor", "mutedColor", "lineColor", "shadow"].forEach(function (key) {
@@ -618,21 +652,33 @@
       var previous = ensureThemeData(state.theme);
       var oldBackgrounds = ["#ffffff", String(previous.pageBackground || "").toLowerCase(), String(previous.surface || "").toLowerCase()];
       Object.keys(preset).forEach(function (key) {
-        if (key !== "label" && key !== "description") state.theme[key] = preset[key];
+        if (["label", "description", "sectionMaxWidth", "headingAlign", "indicatorStyle", "navigationMode", "headerHeight", "headerMaxWidth", "navigationSize", "sectionGap", "columnGap"].indexOf(key) < 0) state.theme[key] = preset[key];
       });
-      state.theme.fontFamily = { calm: "Pretendard", bright: "Paperlogy", vivid: "GmarketSans", dynamic: "S-CoreDream", dark: "Pretendard", elegant: "MaruBuri", neon: "GmarketSans", pop: "Jalnan", editorial: "S-CoreDream", cinematic: "Pretendard" }[name] || state.theme.fontFamily;
+      state.theme.fontFamily = { civic: "Pretendard", slate: "Noto Sans KR", forest: "NanumSquareNeo", coastal: "Paperlogy", heritage: "MaruBuri", burgundy: "S-CoreDream" }[name] || state.theme.fontFamily;
       state.theme.designStyle = name;
       if (state.content && Array.isArray(state.content.sections)) {
+        state.content.sectionGap = preset.sectionGap == null ? state.content.sectionGap : preset.sectionGap;
         state.content.sections.forEach(function (section) {
           if (!section.background || oldBackgrounds.indexOf(String(section.background).toLowerCase()) > -1) section.background = preset.surface;
+          if (!section.legacy) {
+            section.headingAlign = preset.headingAlign || "left";
+            if (section.width !== "full") section.maxWidth = preset.sectionMaxWidth || preset.contentMaxWidth || 1200;
+            section.columnGap = preset.columnGap == null ? section.columnGap : preset.columnGap;
+          }
         });
       }
       state.header.background = preset.surface;
       state.header.opacity = 100;
+      state.header.height = preset.headerHeight || state.header.height;
+      state.header.maxWidth = preset.headerMaxWidth || state.header.maxWidth;
       state.header.logo.color = preset.color1;
       state.header.navigation.color = preset.textColor;
       state.header.navigation.depth2Color = preset.textColor;
       state.header.navigation.depth3Color = preset.mutedColor;
+      state.header.navigation.size = preset.navigationSize || state.header.navigation.size;
+      state.header.navigation.indicatorStyle = preset.indicatorStyle || "underline";
+      state.header.navigation.indicatorUseTheme = true;
+      state.header.navigation.mode = preset.navigationMode || "single";
       state.header.utility.background = preset.surfaceAlt;
       state.header.utility.color = preset.mutedColor;
       state.header.actions.style.background = preset.surface;
@@ -680,7 +726,6 @@
       '    <button type="button" data-device="mobile" aria-label="모바일">' + icon("mobile") + '</button>',
       '  </div>',
       '  <div class="builder-topbar__actions">',
-      '    <button type="button" class="builder-text-button builder-text-button--clear" data-clear-element-styles title="상세 편집에서 직접 추가한 CSS와 스타일 효과를 모두 제거합니다">' + icon("delete") + '<span>수동 스타일 제거</span></button>',
       '    <button type="button" class="builder-icon-button" data-history="undo" aria-label="실행 취소">' + icon("undo") + '</button>',
       '    <button type="button" class="builder-icon-button" data-history="redo" aria-label="다시 실행">' + icon("redo") + '</button>',
       '    <div class="builder-edit-mode-switch" role="group" aria-label="편집 모드">',
@@ -688,9 +733,9 @@
       '      <button type="button" class="builder-text-button" data-builder-mode="detail" data-builder-select aria-pressed="false" title="다시 누르면 일반 조작 상태로 해제됩니다">' + icon("edit") + '<span>상세 편집</span></button>',
       '      <button type="button" class="builder-text-button" data-builder-mode="preview" data-builder-preview aria-pressed="false">' + icon("preview") + '<span>미리보기</span></button>',
       '    </div>',
-      '    <button type="button" class="builder-text-button builder-text-button--primary" data-builder-file-save title="페이지 요소와 헤더·푸터 편집값 저장">' + icon("download", "site") + '<span>파일 저장</span></button>',
-      '    <button type="button" class="builder-text-button builder-text-button--build" data-builder-project-build title="편집기를 제외한 실작업용 프로젝트 생성">' + icon("section") + '<span>프로젝트 빌드</span></button>',
-      '    <button type="button" class="builder-text-button" data-builder-project-download disabled title="page/common과 빌드 프로젝트를 ZIP으로 저장">' + icon("download", "site") + '<span>ZIP 저장</span></button>',
+      '    <button type="button" class="builder-text-button builder-text-button--primary" data-builder-file-save title="페이지 요소와 헤더·푸터 편집값 저장">' + icon("download", "site") + '<span>저장</span></button>',
+      '    <button type="button" class="builder-text-button builder-text-button--build" data-builder-project-build title="편집기를 제외한 실작업용 프로젝트 생성">' + icon("section") + '<span>빌드</span></button>',
+      '    <button type="button" class="builder-text-button" data-builder-project-download disabled title="page/common과 빌드 프로젝트를 ZIP으로 다운로드">' + icon("download", "site") + '<span>다운로드</span></button>',
       '  </div>',
       '</header>',
       '<div class="builder-workspace">',
@@ -757,7 +802,7 @@
       '    <label>기존 프로젝트 업데이트<select name="existingProject" data-builder-existing-project><option value="">새 프로젝트 만들기</option></select><small>기존 프로젝트를 선택하면 해당 폴더를 최신 빌드 결과로 교체합니다.</small></label>',
       '    <div class="builder-project-modal__or"><span>또는</span></div>',
       '    <label>프로젝트 폴더명<input type="text" name="projectName" required minlength="2" maxlength="49" pattern="[a-z0-9][a-z0-9_-]+" placeholder="example-project" autocomplete="off"><small>영문 소문자·숫자·하이픈·밑줄만 사용할 수 있습니다.</small></label>',
-      '    <div class="builder-project-modal__notice" data-builder-project-notice>현재 편집 내용을 먼저 <b>파일 저장</b>한 뒤 빌드해 주세요.</div>',
+      '    <div class="builder-project-modal__notice" data-builder-project-notice>현재 편집 내용을 먼저 <b>저장</b>한 뒤 빌드해 주세요.</div>',
       '    <div class="builder-project-modal__status" data-builder-project-status aria-live="polite"></div>',
       '    <div class="builder-project-modal__actions"><button type="button" data-builder-project-cancel>닫기</button><button type="submit">빌드하기</button></div>',
       '  </form>',
@@ -781,7 +826,6 @@
     desktopNotice.innerHTML = [
       '<div class="builder-desktop-notice__dialog" role="dialog" aria-modal="true" aria-labelledby="builder-desktop-notice-title">',
       '  <strong id="builder-desktop-notice-title">PC에서 사용 가능합니다.</strong>',
-      '  <p>사이트 편집기는 화면 너비 1000px보다 큰 PC 환경에서 이용해 주세요.</p>',
       '  <button type="button" data-builder-desktop-notice-close>확인</button>',
       '</div>'
     ].join("");
@@ -947,7 +991,7 @@
       } else {
         input.readOnly = false;
         submitButton.textContent = "빌드하기";
-        projectNotice.innerHTML = '현재 편집 내용을 먼저 <b>파일 저장</b>한 뒤 빌드해 주세요.';
+        projectNotice.innerHTML = '현재 편집 내용을 먼저 <b>저장</b>한 뒤 빌드해 주세요.';
       }
     }
 
@@ -1531,7 +1575,20 @@
       }, true);
     }
 
+    function isBuilderViewportSupported() {
+      return !window.matchMedia("(max-width: 1400px)").matches;
+    }
+
+    function showDesktopNotice() {
+      desktopNotice.hidden = false;
+      desktopNotice.querySelector("[data-builder-desktop-notice-close]").focus();
+    }
+
     function openBuilder() {
+      if (!isBuilderViewportSupported()) {
+        showDesktopNotice();
+        return;
+      }
       builder.classList.add("is-open");
       builder.setAttribute("aria-hidden", "false");
       document.documentElement.classList.add("is-builder-open");
@@ -1887,15 +1944,20 @@
       var footerRootWidth = canvasWindow.getComputedStyle(canvasDocument.documentElement).getPropertyValue("--footer-layout-width").trim();
 
       var utilityItems = [];
-      utility.querySelectorAll(".site-header__inner > span, .utility-content > span, .utility-links > a, .utility-links > button").forEach(function (element) {
+      utility.querySelectorAll(".utility-content > [data-utility-item], .utility-links > [data-utility-item], .utility-content > span:not([data-utility-item]), .utility-links > a:not([data-utility-item]), .utility-links > button:not([data-utility-item])").forEach(function (element) {
+        var kind = element.dataset.utilityKind || (element.classList.contains("utility-login") ? "login" : "custom");
         utilityItems.push({
           id: unique("utility"),
-          type: element.classList.contains("utility-html") ? "html" : element.matches("a, button") ? "button" : "text",
-          label: readableText(element),
+          type: kind === "zoom" || kind === "dark" ? "control" : element.classList.contains("utility-html") ? "html" : element.matches("a, button") ? "button" : "text",
+          kind: kind,
+          area: element.parentElement && element.parentElement.classList.contains("utility-links") ? "right" : "left",
+          visible: !element.hidden,
+          label: kind === "zoom" || kind === "dark" ? readableText(element.querySelector("span") || element) : readableText(element),
           html: element.classList.contains("utility-html") ? element.innerHTML : "",
           href: element.getAttribute("href") || "#"
         });
       });
+      utilityItems = normalizeUtilityItems(utilityItems);
 
       var menus = [];
       header.querySelectorAll(".gnb-depth1 > .gnb-item").forEach(function (item) {
@@ -2081,6 +2143,7 @@
       canvasDocument.documentElement.style.setProperty("--theme-button-background", buttonValues.background);
       canvasDocument.documentElement.style.setProperty("--theme-button-border", buttonValues.border);
       canvasDocument.documentElement.style.setProperty("--theme-button-color", buttonValues.color);
+      canvasDocument.documentElement.style.setProperty("--theme-on-primary", contrastColor(themeData.color1));
       canvasDocument.documentElement.style.setProperty("--theme-motion-fast", motionValues.fast);
       canvasDocument.documentElement.style.setProperty("--theme-motion-lift", motionValues.lift);
       canvasDocument.documentElement.style.setProperty("--gnb-motion-base", motionValues.base);
@@ -2133,30 +2196,8 @@
       }
       utility.style.backgroundColor = rgba(data.utility.background, data.utility.opacity);
       utility.style.color = data.utility.color;
-      utilityInner.innerHTML = "";
-      var utilityContent = canvasDocument.createElement("div");
-      utilityContent.className = "utility-content";
-      var utilityLinks = canvasDocument.createElement("div");
-      utilityLinks.className = "utility-links";
-      data.utility.items.forEach(function (item) {
-        if (item.type === "button") {
-          var link = canvasDocument.createElement("a");
-          link.href = item.href || "#";
-          link.textContent = item.label;
-          utilityLinks.appendChild(link);
-        } else if (item.type === "html") {
-          var htmlElement = canvasDocument.createElement("span");
-          htmlElement.className = "utility-html";
-          htmlElement.innerHTML = safeUtilityHtml(item.html);
-          utilityContent.appendChild(htmlElement);
-        } else {
-          var text = canvasDocument.createElement("span");
-          text.textContent = item.label;
-          utilityContent.appendChild(text);
-        }
-      });
-      utilityInner.appendChild(utilityContent);
-      utilityInner.appendChild(utilityLinks);
+      data.utility.items = normalizeUtilityItems(data.utility.items);
+      utilityInner.innerHTML = buildUtilityInnerHtml(data.utility.items);
 
       logo.innerHTML = "";
       logo.href = data.logo.href || "#";
@@ -2488,19 +2529,26 @@
     }
 
     function renderUtilityInspector() {
-      inspectorTitle.textContent = "유틸리티";
+      inspectorTitle.textContent = "헤더 유틸리티";
       var data = state.header.utility;
-      var items = data.items.map(function (item) {
+      data.items = normalizeUtilityItems(data.items);
+      function utilityRow(item) {
         var control;
         if (item.type === "html") control = '<textarea data-utility-field="html" aria-label="HTML 코드">' + escapeHtml(item.html || "") + '</textarea>';
         else if (item.type === "button") control = '<div class="builder-utility-fields"><input type="text" value="' + escapeHtml(item.label) + '" data-utility-field="label" aria-label="버튼명"><input type="text" value="' + escapeHtml(item.href || "#") + '" data-utility-field="href" aria-label="버튼 링크"></div>';
         else control = '<input type="text" value="' + escapeHtml(item.label) + '" data-utility-field="label" aria-label="유틸리티 문구">';
-        return '<div class="builder-collection-row' + (item.type === "html" ? ' is-html' : '') + '" data-utility-id="' + item.id + '">' + icon("drag") + control + '<button type="button" data-remove-utility="' + item.id + '" aria-label="삭제">' + icon("delete") + "</button></div>";
-      }).join("");
+        if (item.kind === "zoom" || item.kind === "dark") control = '<input type="text" value="' + escapeHtml(item.label) + '" data-utility-field="label" aria-label="기능 이름">';
+        var fixed = /^(?:login|zoom|dark)$/.test(item.kind || "");
+        var kindLabel = item.kind === "login" ? "로그인" : item.kind === "zoom" ? "화면 크기" : item.kind === "dark" ? "다크모드" : item.type === "html" ? "HTML" : item.type === "button" ? "링크" : "문구";
+        return '<div class="builder-collection-row is-utility-row' + (item.type === "html" ? ' is-html' : '') + (fixed ? ' is-fixed' : '') + '" data-utility-id="' + item.id + '"><label class="builder-utility-visible"><input type="checkbox" data-utility-field="visible"' + (item.visible !== false ? ' checked' : '') + '><span>' + kindLabel + '</span></label>' + control + (fixed ? '' : '<button type="button" data-remove-utility="' + item.id + '" aria-label="삭제">' + icon("delete") + '</button>') + '</div>';
+      }
+      var leftItems = data.items.filter(function (item) { return item.area !== "right"; }).map(utilityRow).join("");
+      var rightItems = data.items.filter(function (item) { return item.area === "right"; }).map(utilityRow).join("");
 
       return inspectorSection("영역", "상단 안내 영역 표시 설정", switchField("유틸리티 사용", "header.utility.visible", data.visible) + switchField("태블릿·모바일에서도 표시", "header.utility.mobileVisible", data.mobileVisible)) +
         inspectorSection("스타일", "배경과 글자색", colorField("배경색", "header.utility.background", data.background) + rangeField("투명도", "header.utility.opacity", data.opacity, 0, 100, "%") + colorField("글자색", "header.utility.color", data.color)) +
-        inspectorSection("요소", "문구·링크·안전한 HTML을 관리합니다.", '<div class="builder-collection">' + (items || '<p class="builder-empty">등록된 요소가 없습니다.</p>') + '</div><div class="builder-add-row"><button type="button" data-add-utility="text">' + icon("add") + '문구</button><button type="button" data-add-utility="button">' + icon("add") + '버튼</button><button type="button" data-add-utility="html">' + icon("add") + "HTML</button></div>");
+        inspectorSection("왼쪽 영역", "안내 문구와 보조 정보를 배치합니다.", '<div class="builder-collection">' + (leftItems || '<p class="builder-empty">표시할 요소가 없습니다.</p>') + '</div><div class="builder-add-row"><button type="button" data-add-utility="text" data-utility-area="left">' + icon("add") + '문구</button><button type="button" data-add-utility="html" data-utility-area="left">' + icon("add") + 'HTML</button></div>') +
+        inspectorSection("오른쪽 영역", "로그인·화면 크기·다크모드를 각각 표시하거나 숨길 수 있습니다.", '<div class="builder-collection">' + rightItems + '</div><div class="builder-add-row"><button type="button" data-add-utility="button" data-utility-area="right">' + icon("add") + '링크</button></div>');
     }
 
     function renderLogoInspector() {
@@ -2797,10 +2845,11 @@
             : '<p class="builder-empty">열 제목이 삭제되었습니다. 위 스위치를 켜면 다시 표시할 수 있습니다.</p>') +
           '</div>';
         if (module.type !== "empty") {
-          var variantOptions = (window.DQContentBuilder.variants[module.type] || []).map(function (variant) {
+          var availableVariants = window.DQContentBuilder.variants[module.type] || [];
+          var variantOptions = availableVariants.map(function (variant) {
             return '<option value="' + variant[0] + '"' + (module.variant === variant[0] ? ' selected' : '') + '>' + escapeHtml(variant[1]) + '</option>';
           }).join("");
-          moduleFields += field("표시 타입", '<select data-content-module-variant>' + variantOptions + '</select>');
+          if (availableVariants.length > 1) moduleFields += field("표시 타입", '<select data-content-module-variant>' + variantOptions + '</select>');
           if (module.type === "board") {
             moduleFields += field("오버 효과", '<select data-content-module-field="hoverEffect"><option value="underline"' + (module.hoverEffect === "underline" ? " selected" : "") + '>제목 밑줄</option><option value="lift"' + (module.hoverEffect === "lift" ? " selected" : "") + '>위로 살짝 이동</option><option value="background"' + (module.hoverEffect === "background" ? " selected" : "") + '>배경색 강조</option></select>');
           } else if (module.type === "quick") {
@@ -2824,6 +2873,32 @@
               field("HTML", '<textarea rows="10" spellcheck="false" data-content-module-field="html" placeholder="<div class=&quot;box&quot;>...</div>">' + escapeHtml(module.html || "") + '</textarea>') +
               field("CSS", '<textarea rows="10" spellcheck="false" data-content-module-field="css" placeholder=".box { padding: 24px; }">' + escapeHtml(module.css || "") + '</textarea>') +
               field("JS", '<textarea rows="10" spellcheck="false" data-content-module-field="js" placeholder="root.querySelector(...)">' + escapeHtml(module.js || "") + '</textarea>') + '</div>';
+          } else if (module.type === "youtube") {
+            moduleFields += field("유튜브 영상 ID", '<input type="text" data-content-module-field="videoId" value="' + escapeHtml(module.videoId || "") + '" placeholder="ZvenigmbShw"><small>유튜브 주소의 <strong>v=</strong> 뒤에 있는 11자리 ID만 입력하세요. 전체 주소를 붙여 넣어도 자동으로 처리됩니다.</small>') +
+              '<label class="builder-switch"><span>영역 진입 시 자동 재생</span><input type="checkbox" data-content-module-check="autoplayOnView"' + (module.autoplayOnView ? ' checked' : '') + '><i></i></label><small>브라우저 자동 재생 정책에 따라 음소거 상태로 재생되며, 영역을 벗어나면 일시정지됩니다.</small>';
+          } else if (module.type === "calendar") {
+            moduleFields += '<div class="builder-content-padding-grid">' +
+              field("표시 연도", '<div class="builder-range-number builder-range-number--wide"><input type="number" min="1970" max="2100" step="1" data-content-module-number="calendarYear" value="' + (module.calendarYear || new Date().getFullYear()) + '"><em>년</em></div>') +
+              field("표시 월", '<div class="builder-range-number builder-range-number--wide"><input type="number" min="1" max="12" step="1" data-content-module-number="calendarMonth" value="' + (module.calendarMonth || (new Date().getMonth() + 1)) + '"><em>월</em></div>') + '</div>';
+            var calendarRows = module.items.map(function (item, itemIndex) {
+              return '<div class="builder-content-item" data-content-item-index="' + itemIndex + '"><div class="builder-content-item__head"><strong>일정 ' + (itemIndex + 1) + '</strong><button type="button" data-content-item-remove aria-label="일정 삭제">×</button></div>' +
+                '<input type="date" data-content-item-field="text" value="' + escapeHtml(item.text || "") + '">' +
+                '<input type="text" data-content-item-field="title" value="' + escapeHtml(item.title || "") + '" placeholder="날짜에 표시할 정보">' +
+                '<input type="text" data-content-item-field="href" value="' + escapeHtml(item.href || "") + '" placeholder="클릭 시 이동할 링크 (선택)"></div>';
+            }).join("");
+            moduleFields += '<details class="builder-content-details" open><summary>날짜별 일정 <small>' + module.items.length + '개</small></summary><div class="builder-content-items">' + calendarRows + '</div><button type="button" class="builder-sub-add" data-content-item-add>+ 일정 추가</button></details>';
+          } else if (module.type === "sns") {
+            var snsPlatforms = [["instagram", "인스타그램"], ["youtube", "유튜브"], ["facebook", "페이스북"], ["blog", "블로그"], ["x", "X"]];
+            var snsRows = module.items.map(function (item, itemIndex) {
+              var platformOptions = snsPlatforms.map(function (platform) {
+                return '<option value="' + platform[0] + '"' + ((item.platform || item.icon) === platform[0] ? ' selected' : '') + '>' + platform[1] + '</option>';
+              }).join("");
+              return '<div class="builder-content-item" data-content-item-index="' + itemIndex + '"><div class="builder-content-item__head"><strong>SNS ' + (itemIndex + 1) + '</strong><button type="button" data-content-item-remove aria-label="SNS 링크 삭제">×</button></div>' +
+                '<select data-content-item-field="platform">' + platformOptions + '</select>' +
+                '<input type="text" data-content-item-field="title" value="' + escapeHtml(item.title || "") + '" placeholder="표시 이름">' +
+                '<input type="url" data-content-item-field="href" value="' + escapeHtml(item.href || "") + '" placeholder="https://..."></div>';
+            }).join("");
+            moduleFields += '<details class="builder-content-details" open><summary>SNS 링크 <small>' + module.items.length + '개</small></summary><div class="builder-content-items">' + snsRows + '</div><button type="button" class="builder-sub-add" data-content-item-add>+ SNS 추가</button></details>';
           } else {
           if (/^(?:quick|board|cards|stats|gallery)$/.test(module.type)) {
             moduleFields += field("항목 사이 간격", '<div class="builder-range-number builder-range-number--wide"><input type="number" min="0" max="100" step="2" data-content-module-number="gap" value="' + (module.gap || 24) + '"><em>px</em></div><small>화면이 작아지면 자동으로 줄어듭니다.</small>');
@@ -2846,11 +2921,15 @@
           moduleFields += '<details class="builder-content-details"><summary>항목 내용 편집 <small>' + module.items.length + '개</small></summary><div class="builder-content-items">' + itemRows + '</div>' + (canAddItems ? '<button type="button" class="builder-sub-add" data-content-item-add>+ 항목 추가</button>' : '') + '</details>';
           if (module.items.length > 1) {
             var perViewOptions = [1, 2, 3, 4].map(function (count) { return '<option value="' + count + '"' + (Number(module.slider.perView || 1) === count ? ' selected' : '') + '>' + count + '개</option>'; }).join("");
-            var perViewHelp = module.type === "cards" ? "카드형은 모바일 1.3개, 중간 화면 1.7개, 태블릿 2.3개 센터 모드로 자동 조정됩니다." : "태블릿은 최대 2개, 모바일은 1개로 자동 조정됩니다.";
+            var perViewHelp = module.type === "cards" ? "카드형은 모바일 1.5개, 중간 화면 2개, 태블릿 2.7개 센터 모드로 자동 조정됩니다." : "태블릿은 최대 2개, 모바일은 1개로 자동 조정됩니다.";
             var perViewField = /^(?:cards|quick|gallery)$/.test(module.type) ? field("PC 노출 개수", '<select data-content-slider-number="perView">' + perViewOptions + '</select><small>' + perViewHelp + ' 좌우 이동하려면 전체 항목 수가 노출 개수보다 많아야 합니다.</small>') : '';
-            var transitionOptions = [["fade", "페이드"], ["slide", "좌우 이동"], ["vertical", "위아래 이동"], ["zoom", "확대 전환"]].map(function (transition) {
+            var transitionChoices = module.type === "visual"
+              ? [["fade", "소프트 페이드"], ["page", "페이지 넘김"], ["cinematic", "시네마틱 줌"]]
+              : [["fade", "소프트 페이드"], ["slide", "좌우 이동"], ["vertical", "위아래 이동"]];
+            var transitionOptions = transitionChoices.map(function (transition) {
               return '<option value="' + transition[0] + '"' + (module.slider.transition === transition[0] ? ' selected' : '') + '>' + transition[1] + '</option>';
             }).join("");
+            var transitionHelp = module.type === "visual" ? '<small>소프트 페이드는 장면이 겹쳐 바뀌고, 페이지 넘김은 다음 장면이 화면을 덮으며, 시네마틱 줌은 이미지와 문구가 천천히 깊이감 있게 전환됩니다.</small>' : '';
             var controllerGroups = [
               ["이미지 위", [["image-capsule", "캡슐형"], ["image-split", "분리형"], ["image-minimal", "미니멀형"]]],
               ["슬라이드 하단", [["bottom-capsule", "캡슐형"], ["bottom-split", "분리형"], ["bottom-minimal", "미니멀형"]]]
@@ -2861,7 +2940,7 @@
               }).join("") + '</optgroup>';
             }).join("");
             moduleFields += '<details class="builder-content-details"><summary>슬라이드 설정</summary>' +
-              field("전환 효과", '<select data-content-slider-option="transition">' + transitionOptions + '</select>') +
+              field("전환 효과", '<select data-content-slider-option="transition">' + transitionOptions + '</select>' + transitionHelp) +
               field("컨트롤러 타입", '<select data-content-slider-option="controllerStyle">' + controllerOptions + '</select>') +
               field("전환 시간", '<div class="builder-range-number builder-range-number--wide"><input type="number" min="100" max="3000" step="50" data-content-slider-number="duration" value="' + (module.slider.duration || 650) + '"><em>ms</em></div>') +
               field("자동 재생 간격", '<div class="builder-range-number builder-range-number--wide"><input type="number" min="1000" max="15000" step="500" data-content-slider-number="delay" value="' + (module.slider.delay || 4500) + '"><em>ms</em></div>') +
@@ -2904,7 +2983,7 @@
         field("배경색", '<input type="color" data-content-section-field="background" value="' + escapeHtml(selected.background) + '">') +
         field("배경 이미지", '<input type="text" data-content-section-field="backgroundImage" value="' + escapeHtml(selected.backgroundImage || "") + '" placeholder="이미지 경로 또는 URL"><small>비워 두면 배경색만 사용합니다.</small>') +
         '<div class="builder-content-layouts"><strong>열 개수</strong><div>' + layouts + '</div></div>') +
-        inspectorSection("3. 각 열에 요소 넣기", "빈 열마다 비주얼·게시판·카드·배너 중 필요한 요소를 선택합니다.", cells);
+        inspectorSection("3. 각 열에 요소 넣기", "빈 열마다 게시판·카드·유튜브·캘린더·SNS 등 필요한 요소를 선택합니다.", cells);
       return result;
     }
 
@@ -2967,10 +3046,25 @@
         selectedLayer = "content-sections";
       } else if (itemAdd) {
         var addContext = contentContext(itemAdd);
-        if (addContext.cell) addContext.cell.module.items.push({ title: "새 항목", text: "내용을 입력해 주세요.", href: "#", image: "", alt: "", icon: addContext.cell.module.type === "quick" ? "home" : "" });
+        if (addContext.cell) {
+          var addType = addContext.cell.module.type;
+          var newItem = { title: "새 항목", text: "내용을 입력해 주세요.", href: "#", image: "", alt: "", icon: addType === "quick" ? "home" : "" };
+          if (addType === "calendar") {
+            newItem.title = "새 일정";
+            newItem.text = (addContext.cell.module.calendarYear || new Date().getFullYear()) + "-" + String(addContext.cell.module.calendarMonth || (new Date().getMonth() + 1)).padStart(2, "0") + "-01";
+            newItem.href = "";
+          } else if (addType === "sns") {
+            newItem.title = "인스타그램";
+            newItem.text = "";
+            newItem.href = "#";
+            newItem.icon = "instagram";
+            newItem.platform = "instagram";
+          }
+          addContext.cell.module.items.push(newItem);
+        }
       } else if (itemRemove) {
         var removeContext = contentContext(itemRemove);
-        if (removeContext.cell && removeContext.cell.module.items.length > 1) removeContext.cell.module.items.splice(removeContext.itemIndex, 1);
+        if (removeContext.cell && (removeContext.cell.module.items.length > 1 || /^(?:calendar|sns)$/.test(removeContext.cell.module.type))) removeContext.cell.module.items.splice(removeContext.itemIndex, 1);
       } else if (detail) {
         var detailContext = contentContext(detail);
         var detailTarget = detailContext.cell && canvasDocument.querySelector('[data-cell-id="' + detailContext.cell.id + '"]');
@@ -3041,8 +3135,8 @@
         context.cell.module[target.dataset.contentModuleField] = target.value;
       } else if (target.dataset.contentModuleNumber && context.cell) {
         var moduleNumberName = target.dataset.contentModuleNumber;
-        var moduleNumberMin = moduleNumberName === "mediaHeight" ? 120 : 0;
-        var moduleNumberMax = moduleNumberName === "mediaHeight" ? 1000 : 100;
+        var moduleNumberMin = moduleNumberName === "mediaHeight" ? 120 : moduleNumberName === "calendarYear" ? 1970 : moduleNumberName === "calendarMonth" ? 1 : 0;
+        var moduleNumberMax = moduleNumberName === "mediaHeight" ? 1000 : moduleNumberName === "calendarYear" ? 2100 : moduleNumberName === "calendarMonth" ? 12 : 100;
         context.cell.module[moduleNumberName] = Math.max(moduleNumberMin, Math.min(moduleNumberMax, Number(target.value) || moduleNumberMin));
       } else if (target.dataset.contentModuleCheck && context.cell) {
         context.cell.module[target.dataset.contentModuleCheck] = target.checked;
@@ -3054,6 +3148,15 @@
         }
       } else if (target.dataset.contentItemField && context.item) {
         context.item[target.dataset.contentItemField] = target.value;
+        if (target.dataset.contentItemField === "platform") {
+          var platformNames = { instagram: "인스타그램", youtube: "유튜브", facebook: "페이스북", blog: "블로그", x: "X" };
+          var previousNames = ["인스타그램", "유튜브", "페이스북", "블로그", "X", "새 항목"];
+          if (!context.item.title || previousNames.indexOf(context.item.title) >= 0) context.item.title = platformNames[target.value] || "SNS";
+          context.item.icon = target.value;
+          renderContentState();
+          renderInspector();
+          return true;
+        }
       } else if (target.dataset.contentSliderField && context.cell) {
         context.cell.module.slider[target.dataset.contentSliderField] = target.checked;
         if (target.dataset.contentSliderField === "autoplay" && target.checked) context.cell.module.slider.play = true;
@@ -3309,17 +3412,18 @@
     }
 
     launcher.addEventListener("click", function () {
-      if (window.matchMedia("(max-width: 1000px)").matches) {
-        desktopNotice.hidden = false;
-        desktopNotice.querySelector("[data-builder-desktop-notice-close]").focus();
-        return;
-      }
       openBuilder();
     });
     desktopNotice.addEventListener("click", function (event) {
       if (event.target === desktopNotice || event.target.closest("[data-builder-desktop-notice-close]")) desktopNotice.hidden = true;
     });
     if (params.get("openBuilder") === "1") window.setTimeout(openBuilder, 0);
+    window.addEventListener("resize", function () {
+      if (!isBuilderViewportSupported() && builder.classList.contains("is-open")) {
+        closeBuilder();
+        showDesktopNotice();
+      }
+    });
     builder.querySelector("[data-builder-close]").addEventListener("click", closeBuilder);
 
     iframe.addEventListener("load", function () {
@@ -3441,23 +3545,6 @@
         closeProjectBuild();
       } else if (event.target.closest("[data-builder-project-download]")) {
         openProjectDownload();
-      } else if (event.target.closest("[data-clear-element-styles]")) {
-        var clearedStyleCount = 0;
-        (state.elementOverrides || []).forEach(function (override) {
-          var baseStyle = override.styles && override.styles.base || {};
-          var hasValues = Object.keys(baseStyle.values || {}).some(function (key) { return !!baseStyle.values[key]; });
-          var hasEffects = Object.keys(baseStyle.effects || {}).some(function (key) { return !!baseStyle.effects[key]; });
-          if (hasValues || hasEffects || String(baseStyle.customCss || "").trim()) clearedStyleCount += 1;
-          override.styles = { base: { values: {}, customCss: "", effects: {} } };
-        });
-        applyElementOverrides();
-        if (clearedStyleCount) {
-          pushHistory();
-          renderInspector();
-          showToast("직접 추가한 수동 스타일을 모두 제거했습니다. 텍스트 변경은 유지됩니다.");
-        } else {
-          showToast("제거할 수동 스타일이 없습니다.");
-        }
       } else if (event.target.closest("[data-builder-file-save]")) {
         saveStateToFiles();
       } else if (event.target.closest("[data-remove-element-override]")) {
@@ -3501,7 +3588,7 @@
         }
       } else if (addUtilityButton) {
         var utilityType = addUtilityButton.dataset.addUtility;
-        state.header.utility.items.push({ id: unique("utility"), type: utilityType, label: utilityType === "button" ? "새 버튼" : "새 안내 문구", html: utilityType === "html" ? "<strong>새 HTML 요소</strong>" : "", href: "#" });
+        state.header.utility.items.push({ id: unique("utility"), type: utilityType, kind: "custom", area: addUtilityButton.dataset.utilityArea === "right" ? "right" : "left", visible: true, label: utilityType === "button" ? "새 링크" : "새 안내 문구", html: utilityType === "html" ? "<strong>새 HTML 요소</strong>" : "", href: "#" });
         applyState(); pushHistory(); renderInspector();
       } else if (removeUtilityButton) {
         state.header.utility.items = state.header.utility.items.filter(function (item) { return item.id !== removeUtilityButton.dataset.removeUtility; });
@@ -3674,7 +3761,7 @@
         if (label) label.textContent = selected.label;
       } else if (utilityRow && event.target.dataset.utilityField) {
         var utilityItem = state.header.utility.items.find(function (item) { return item.id === utilityRow.dataset.utilityId; });
-        if (utilityItem) utilityItem[event.target.dataset.utilityField] = event.target.value;
+        if (utilityItem) utilityItem[event.target.dataset.utilityField] = event.target.type === "checkbox" ? event.target.checked : event.target.value;
         applyState();
       } else if (depth2Row && event.target.dataset.depthField && selectedMenuId) {
         var selectedMenu = state.header.navigation.items.find(function (item) { return item.id === selectedMenuId; });

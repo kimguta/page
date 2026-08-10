@@ -8,7 +8,68 @@
     initGnb(DQ);
     initHeaderSearch();
     initHeaderScroll();
+    initUtilityTools();
   });
+
+  function initUtilityTools() {
+    var zoomKey = "dq-site-zoom";
+    var darkKey = "dq-site-dark-mode";
+    var zoomSteps = [90, 100, 110, 120, 130];
+
+    function storedValue(key, fallback) {
+      try { return window.localStorage.getItem(key) || fallback; } catch (error) { return fallback; }
+    }
+
+    function saveValue(key, value) {
+      try { window.localStorage.setItem(key, String(value)); } catch (error) {}
+    }
+
+    function applyZoom(value) {
+      var zoom = zoomSteps.indexOf(Number(value)) > -1 ? Number(value) : 100;
+      var zoomRoot = document.querySelector("#wrapper") || document.body;
+      zoomRoot.style.zoom = zoom === 100 ? "" : String(zoom / 100);
+      document.querySelectorAll("[data-site-zoom-value]").forEach(function (output) { output.textContent = zoom + "%"; });
+      document.querySelectorAll('[data-site-zoom="out"]').forEach(function (button) { button.disabled = zoom === zoomSteps[0]; });
+      document.querySelectorAll('[data-site-zoom="in"]').forEach(function (button) { button.disabled = zoom === zoomSteps[zoomSteps.length - 1]; });
+      return zoom;
+    }
+
+    function applyDarkMode(enabled) {
+      document.documentElement.classList.toggle("is-dark-mode", enabled);
+      document.querySelectorAll("[data-site-dark-mode]").forEach(function (button) {
+        button.setAttribute("aria-pressed", String(enabled));
+        button.setAttribute("aria-label", enabled ? "라이트모드로 전환" : "다크모드로 전환");
+        var use = button.querySelector("use");
+        if (use) {
+          var href = use.getAttribute("href") || "";
+          use.setAttribute("href", href.replace(/#[^#]+$/, enabled ? "#sun" : "#moon"));
+        }
+      });
+    }
+
+    var currentZoom = applyZoom(storedValue(zoomKey, "100"));
+    applyDarkMode(storedValue(darkKey, "false") === "true");
+
+    document.addEventListener("click", function (event) {
+      var zoomButton = event.target.closest("[data-site-zoom]");
+      var darkButton = event.target.closest("[data-site-dark-mode]");
+      if (zoomButton) {
+        var currentIndex = zoomSteps.indexOf(currentZoom);
+        currentIndex += zoomButton.dataset.siteZoom === "in" ? 1 : -1;
+        currentZoom = applyZoom(zoomSteps[Math.max(0, Math.min(zoomSteps.length - 1, currentIndex))]);
+        saveValue(zoomKey, currentZoom);
+      } else if (darkButton) {
+        var enabled = !document.documentElement.classList.contains("is-dark-mode");
+        applyDarkMode(enabled);
+        saveValue(darkKey, enabled);
+      }
+    });
+
+    window.addEventListener("storage", function (event) {
+      if (event.key === zoomKey) currentZoom = applyZoom(event.newValue || 100);
+      if (event.key === darkKey) applyDarkMode(event.newValue === "true");
+    });
+  }
 
   function initGnb(DQ) {
     var header = document.querySelector("#header");

@@ -21,6 +21,7 @@
   --theme-button-background: transparent;
   --theme-button-border: var(--theme-color-1);
   --theme-button-color: var(--theme-color-1);
+  --theme-on-primary: #fff;
   --theme-motion-fast: .2s;
   --theme-motion-lift: -6px;
   --color-text: #222;
@@ -242,7 +243,8 @@ ol {
 
 .utility-links {
   display: flex;
-  gap: 18px;
+  align-items: center;
+  gap: 12px;
 }
 
 .utility-content {
@@ -258,6 +260,7 @@ ol {
 }
 
 .site-header__utility[hidden],
+.site-header__utility [data-utility-item][hidden],
 .header-search[hidden],
 .site-map-toggle[hidden] {
   display: none !important;
@@ -272,6 +275,132 @@ ol {
 .utility-login svg {
   width: 16px;
   height: 16px;
+}
+
+.utility-links > a,
+.utility-links > button,
+.utility-zoom {
+  color: inherit;
+  font: inherit;
+}
+
+.utility-links > button,
+.utility-zoom button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.utility-zoom {
+  display: inline-flex;
+  height: 24px;
+  align-items: center;
+  gap: 3px;
+}
+
+.utility-zoom > span {
+  margin-right: 3px;
+}
+
+.utility-zoom button {
+  display: grid;
+  width: 22px;
+  height: 22px;
+  place-items: center;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  line-height: 1;
+}
+
+.utility-zoom output {
+  width: 34px;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+
+.utility-dark-mode {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.utility-dark-mode svg {
+  width: 16px;
+  height: 16px;
+}
+
+.utility-links > :not(:first-child) {
+  position: relative;
+  margin-left: 2px;
+}
+
+.utility-links > :not(:first-child)::before {
+  position: absolute;
+  top: 50%;
+  left: -8px;
+  width: 1px;
+  height: 12px;
+  background: currentColor;
+  content: "";
+  opacity: .25;
+  transform: translateY(-50%);
+}
+
+html.is-dark-mode {
+  color-scheme: dark;
+  --theme-page-bg: #11151a !important;
+  --theme-surface: #1b2128 !important;
+  --theme-surface-alt: #242c35 !important;
+  --theme-text: #eef2f6 !important;
+  --theme-muted: #aeb8c3 !important;
+  --theme-line: #38434f !important;
+  --theme-shadow: 0 12px 30px rgba(0, 0, 0, .26) !important;
+}
+
+html.is-dark-mode body,
+html.is-dark-mode .dq-content-builder-root {
+  color: var(--theme-text) !important;
+  background-color: var(--theme-page-bg) !important;
+}
+
+html.is-dark-mode .dq-content-section:not(.dq-content-section--legacy) {
+  --section-background: var(--theme-page-bg) !important;
+}
+
+html.is-dark-mode #header,
+html.is-dark-mode .site-header__main,
+html.is-dark-mode .header-search-panel {
+  color: var(--theme-text) !important;
+  background: #171c22 !important;
+}
+
+html.is-dark-mode #header .site-header__utility {
+  color: #c2cbd4 !important;
+  background: #0c1014 !important;
+}
+
+html.is-dark-mode #header .gnb-link,
+html.is-dark-mode #header .site-logo a,
+html.is-dark-mode #header .site-header__actions > * {
+  color: var(--theme-text) !important;
+}
+
+html.is-dark-mode #header .site-logo__image {
+  filter: brightness(0) invert(1);
+}
+
+html.is-dark-mode #header :is(.header-search, .site-map-toggle, .header-custom-action, .mobile-menu) {
+  border-color: #465464 !important;
+  background: #252d36 !important;
+  color: #f4f7fa !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .22);
+}
+
+html.is-dark-mode #header :is(.header-search, .site-map-toggle, .header-custom-action, .mobile-menu):is(:hover, :focus-visible) {
+  border-color: #718299 !important;
+  background: #313c48 !important;
 }
 
 .site-header__main > .site-header__inner {
@@ -694,6 +823,7 @@ ol {
   max-width: 100%;
   height: auto;
   object-fit: contain;
+  transition: filter .2s ease;
 }
 
 .header-search svg,
@@ -1561,6 +1691,26 @@ html.is-sitemap-open {
     min-height: 0;
     padding: 36px 0 48px;
     gap: 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  #header.is-utility-mobile-visible .site-header__utility .utility-content {
+    display: none;
+  }
+
+  #header.is-utility-mobile-visible .site-header__utility .utility-links {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .utility-zoom > span,
+  .utility-dark-mode > span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
   }
 }
 

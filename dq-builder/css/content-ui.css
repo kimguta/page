@@ -1917,11 +1917,47 @@ b {
 #sub .skinTb > tfoot > tr > td,
 #sub .skinTb-td { border-color: var(--theme-line); background-color: var(--theme-surface); }
 #sub .skinTb-data-bgEven tbody tr:nth-child(even) td { background: var(--theme-surface-alt); }
+#sub .skinTb,
+#sub .skinTb > tr > td,
+#sub .skinTb > thead > tr > td,
+#sub .skinTb > tbody > tr > td,
+#sub .skinTb > tfoot > tr > td,
+#sub .skinTb-td { color: var(--theme-text); }
+#sub .skinTb :is(a, label) { color: inherit; }
 #sub .skinTb-sbj a:hover,
 #sub .skinTb-sbj a:focus-visible { color: var(--theme-color-1); text-decoration: underline; text-underline-offset: 4px; }
 #sub .pager-link.active { border-color: color-mix(in srgb, var(--theme-color-1) 40%, var(--theme-line)); color: var(--theme-color-1); background: color-mix(in srgb, var(--theme-color-1) 12%, var(--theme-surface)); }
 #sub .pager-link:hover,
 #sub .pager-link:focus-visible { border-color: var(--theme-color-1); color: var(--theme-color-1); }
+
+html.is-dark-mode #sub .listLv > :is(li, dt, dd),
+html.is-dark-mode #sub .listLv2 > :is(li, dt, dd),
+html.is-dark-mode #sub .listLv3 > :is(li, dt, dd),
+html.is-dark-mode #sub .listLv4 > :is(li, dt, dd) { color: var(--theme-text) !important; }
+
+html.is-dark-mode #sub :is(.boMeta-pt, .ico-catego, .skinTb-name, .skinTb-date, .skinTxa-center) { color: var(--theme-text); }
+html.is-dark-mode #sub :is(.boMeta, .boMeta label, .skinTb label, .skinTb-td label) { color: var(--theme-text); }
+
+html.is-dark-mode #sub .pager-link {
+  border-color: var(--theme-line);
+  color: var(--theme-text) !important;
+  background: var(--theme-surface);
+}
+
+html.is-dark-mode #sub .pager-link.active,
+html.is-dark-mode #sub .pager-link:is(:hover, :focus-visible) {
+  border-color: color-mix(in srgb, var(--theme-color-1) 45%, #fff);
+  color: #fff !important;
+  background: color-mix(in srgb, var(--theme-color-1) 72%, var(--theme-surface));
+}
+
+html.is-dark-mode #sub :is(.skinBtnBo, .contsBtn, .design-btn1, .skinBtnBo-data-pos) {
+  border-color: color-mix(in srgb, var(--theme-color-1) 42%, var(--theme-line));
+  color: color-mix(in srgb, var(--theme-color-1) 38%, #fff);
+  background: var(--theme-surface);
+}
+
+html.is-dark-mode #sub .skinColor-fmInfo { color: color-mix(in srgb, var(--theme-color-1) 35%, #fff); }
 
 #sub .titLv2::before,
 #sub .titLv3::before { content: ""; background-image: none; background-color: var(--theme-color-1); }
