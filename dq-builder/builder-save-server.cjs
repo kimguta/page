@@ -586,9 +586,9 @@ function contentRuntime(projectName) {
       var transition = slider.dataset.transition || "slide";
       var total = slider.querySelectorAll(".swiper-slide").length;
       var isCardSlider = slider.classList.contains("dq-card-list") && total > 1;
-      var mobilePerView = isCardSlider ? Math.min(1.3, total) : 1;
-      var compactPerView = isCardSlider ? Math.min(1.7, total) : 1;
-      var tabletPerView = isCardSlider ? Math.min(2.3, total) : Math.min(2, requested);
+      var mobilePerView = isCardSlider ? Math.min(1.5, total) : 1;
+      var compactPerView = isCardSlider ? Math.min(2, total) : 1;
+      var tabletPerView = isCardSlider ? Math.min(2.7, total) : Math.min(2, requested);
       var currentText = controlRoot && controlRoot.querySelector("[data-slide-current]");
       var totalText = controlRoot && controlRoot.querySelector("[data-slide-total]");
       var playButton = controlRoot && controlRoot.querySelector("[data-slide-play]");
@@ -612,9 +612,18 @@ function contentRuntime(projectName) {
           901: { slidesPerView: requested, spaceBetween: gap, centeredSlides: false }
         }
       };
-      if (transition === "fade" && requested === 1) {
+      if (isVisual && transition === "zoom") transition = "cinematic";
+      if (isVisual && transition === "vertical") transition = "page";
+      if ((transition === "fade" || transition === "cinematic") && requested === 1) {
         options.effect = "fade";
         options.fadeEffect = { crossFade: true };
+      } else if (transition === "page" && requested === 1) {
+        options.effect = "creative";
+        options.creativeEffect = {
+          limitProgress: 2,
+          prev: { translate: ["-18%", 0, -1], scale: .94, opacity: .28 },
+          next: { translate: ["100%", 0, 0], scale: 1, opacity: 1 }
+        };
       } else if (transition === "vertical" && requested === 1) {
         options.direction = "vertical";
         options.autoHeight = true;
