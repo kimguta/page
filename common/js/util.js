@@ -2207,19 +2207,34 @@ function jf_isValidFormPassword(str) {
 	*/
 	
 	// 2종이상 혼합 10자이상으로 수정
-	var num = str.search(/[0-9]/g);
-	var eng = str.search(/[a-z]/ig);
-	var spe = str.search(/[`~!@@#$%^&*|\\\'\";:\/?]/gi);
-		
-	if (str.length < 10 || str.length > 99) { // 길이 만족 체크
-		return false;
-	}
-	
-	if( (num < 0 && eng < 0) || (eng < 0 && spe < 0) || (spe < 0 && num < 0) ) { // 혼합조건 체크, 영문,숫자,특수문자 중 2가지 이상을 혼합
-		return false;
-	}
+	// var num = str.search(/[0-9]/g);
+	// var eng = str.search(/[a-z]/ig);
+	// var spe = str.search(/[`~!@@#$%^&*|\\\'\";:\/?]/gi);
+	//
+	// if (str.length < 10 || str.length > 99) { // 길이 만족 체크
+	// 	return false;
+	// }
+	//
+	// if( (num < 0 && eng < 0) || (eng < 0 && spe < 0) || (spe < 0 && num < 0) ) { // 혼합조건 체크, 영문,숫자,특수문자 중 2가지 이상을 혼합
+	// 	return false;
+	// }
+	//
+	// return true;
 
-	return true;
+	var hasNum = (str.match(/[0-9]/g) || []).length  > 0;
+	var hasEng = (str.match(/[a-z]/ig) || []).length > 0;
+	var hasSpe = (str.match(/[`~!@@#$%^&*|\\\'\";:\/?]/gi) || []).length > 0;
+
+	var sum = 0
+	if (hasNum) sum++;
+	if (hasEng) sum++;
+	if (hasSpe) sum++;
+
+	// modify by YJ.SON :: 2020-12-11
+	if (sum >= 3 && str.length >= 8)
+		return true;
+	else
+		return false;
 }
 
 

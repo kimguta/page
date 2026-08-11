@@ -19,7 +19,7 @@
   <!-- 협의 UI 전용 스타일: content/0content-ui.html과 함께 보호합니다. -->
   <link rel="stylesheet" href="/page/dq-builder/css/content-ui.css?v=13">
   <link rel="stylesheet" href="/page/dq-builder/css/content-builder.css?v=31">
-  <link rel="stylesheet" href="/page/dq-builder/css/editor.css?v=15">
+  <link rel="stylesheet" href="/page/dq-builder/css/editor.css?v=16">
   <link rel="stylesheet" href="/page/dq-builder/css/custom-builder.css">
 
   <script type="application/json" id="dq-builder-overrides">
@@ -406,7 +406,7 @@
     "key": "page:index.html:#main > section.dq-content-section.dq-content-section--contained:nth-of-type(3) > div.dq-content-section__inner > header.dq-section-heading > h2",
     "selector": "#main > section.dq-content-section.dq-content-section--contained:nth-of-type(3) > div.dq-content-section__inner > header.dq-section-heading > h2",
     "groupSelector": "header.dq-section-heading > h2",
-    "applyToGroup": true,
+    "applyToGroup": false,
     "scope": "page",
     "page": "index.html",
     "tag": "h2",
@@ -417,7 +417,7 @@
     "styles": {
       "base": {
         "values": {},
-        "customCss": "",
+        "customCss": "color:#fff",
         "effects": {}
       }
     },
@@ -507,8 +507,8 @@
   <script src="/page/dq-builder/js/navigation.js?v=4"></script>
   <script src="/page/dq-builder/js/smooth-scroll.js"></script>
   <script src="/page/dq-builder/js/components.js?v=6"></script>
-  <script src="/page/dq-builder/js/content-builder.js?v=19"></script>
-  <script src="/page/dq-builder/js/editor.js?v=46"></script>
+  <script src="/page/dq-builder/js/content-builder.js?v=22"></script>
+  <script src="/page/dq-builder/js/editor.js?v=48"></script>
 </head>
 
 <body>
@@ -525,10 +525,10 @@
         -->
     <header id="header" data-gnb-mode="single">
       <!-- BUILDER:HEADER:START -->
-<div class="site-header__config" hidden data-gnb-mode="single-full" data-gnb-indicator="underline" data-gnb-indicator-use-theme="true" data-gnb-indicator-color="#2563EB" data-scroll-hide="true" data-utility-mobile-visible="true" data-search-mode="panel" data-search-href="#" data-sitemap-layout="vertical" data-sitemap-background="#0f2757" data-sitemap-depth1-color="#b3976f" data-sitemap-depth23-color="#b7b8a8" data-sitemap-use-theme="false" data-theme-design="civic" data-theme-color-1="#1E5A96" data-theme-color-2="#173A5E" data-theme-color-3="#A9C2D8" data-theme-font="Pretendard" data-theme-content-width="1200" data-theme-radius="soft" data-theme-button="filled" data-theme-motion="soft"></div>
+<div class="site-header__config" hidden data-gnb-mode="single-full" data-gnb-indicator="dot" data-gnb-indicator-use-theme="true" data-gnb-indicator-color="#2563EB" data-scroll-hide="true" data-utility-mobile-visible="true" data-search-mode="panel" data-search-href="#" data-sitemap-layout="vertical" data-sitemap-background="#0f2757" data-sitemap-background-image="" data-sitemap-background-filter="none" data-sitemap-depth1-color="#b3976f" data-sitemap-depth23-color="#b7b8a8" data-sitemap-use-theme="false" data-theme-design="coastal" data-theme-color-1="#0E7180" data-theme-color-2="#17444C" data-theme-color-3="#8FC2C7" data-theme-font="Paperlogy" data-theme-content-width="1360" data-theme-radius="soft" data-theme-button="outline" data-theme-motion="soft"></div>
 <div class="site-header__utility">
   <div class="site-header__inner">
-    <div class="utility-content" aria-label="유틸리티 왼쪽 영역"><span data-utility-item data-utility-kind="custom">재사용 가능한 UI 샘플</span></div><div class="utility-links" aria-label="유틸리티 오른쪽 영역"><a href="#" class="utility-login" data-utility-item data-utility-kind="login"><svg aria-hidden="true"><use href="/page/dq-builder/images/icons/site-icons.svg#login"></use></svg><span>로그인</span></a><div class="utility-zoom" data-utility-item data-utility-kind="zoom"><span>화면 크기</span><button type="button" data-site-zoom="out" aria-label="화면 축소">−</button><output data-site-zoom-value>100%</output><button type="button" data-site-zoom="in" aria-label="화면 확대">+</button></div><button type="button" class="utility-dark-mode" data-site-dark-mode aria-pressed="false" data-utility-item data-utility-kind="dark"><svg aria-hidden="true"><use href="/page/dq-builder/images/icons/site-icons.svg#moon"></use></svg><span>다크모드</span></button></div>
+    <div class="utility-content" aria-label="유틸리티 왼쪽 영역"><span data-utility-item data-utility-kind="custom">재사용 가능한 UI 샘플</span></div><div class="utility-links" aria-label="유틸리티 오른쪽 영역"><a href="#" class="utility-login" data-utility-item data-utility-kind="login"><svg aria-hidden="true"><use href="/page/dq-builder/images/icons/site-icons.svg?v=3#login"></use></svg><span>로그인</span></a><div class="utility-zoom" data-utility-item data-utility-kind="zoom"><span>화면 크기</span><button type="button" data-site-zoom="out" aria-label="화면 축소">−</button><output data-site-zoom-value>100%</output><button type="button" data-site-zoom="in" aria-label="화면 확대">+</button></div><button type="button" class="utility-dark-mode" data-site-dark-mode aria-pressed="false" data-utility-item data-utility-kind="dark"><svg aria-hidden="true"><use href="/page/dq-builder/images/icons/site-icons.svg?v=3#moon"></use></svg><span>다크모드</span></button></div>
   </div>
 </div>
 
@@ -664,17 +664,38 @@
           </ul>
         </li>
         <li class="gnb-item">
-          <a href="#" class="gnb-link" target="_blank" rel="noopener noreferrer"><span>blue</span><svg class="gnb-link__external" aria-hidden="true"><use href="/page/dq-builder/images/icons/site-icons.svg#external"></use></svg></a>
+          <a href="#" class="gnb-link"><span>blue</span></a>
+          <ul class="gnb-depth2">
+            <li>
+              <a href="#">새 2뎁스</a>
+              <ul class="gnb-depth3">
+                <li>
+                  <a href="#">새 3뎁스</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#">새 2뎁스</a>
+              <ul class="gnb-depth3">
+                <li>
+                  <a href="#">새 3뎁스</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="gnb-item">
+          <a href="#" class="gnb-link" target="_blank" rel="noopener noreferrer"><span>blue</span><svg class="gnb-link__external" aria-hidden="true"><use href="/page/dq-builder/images/icons/site-icons.svg?v=3#external"></use></svg></a>
         </li>
       </ul>
     </nav>
 
     <div class="site-header__actions">
-      <button type="button" class="header-search" data-search-mode="panel" aria-expanded="false" aria-controls="header-search-panel" aria-label="검색 열기"><svg aria-hidden="true"><use href="/page/dq-builder/images/icons/site-icons.svg#search"></use></svg><span class="blind">검색 열기</span></button>
-      <a class="header-custom-action builder-header-action" href="#" aria-label="새 버튼"><svg aria-hidden="true"><use href="/page/dq-builder/images/icons/site-icons.svg#home"></use></svg></a>
-      <a class="header-custom-action builder-header-action" href="#" aria-label="새 버튼"><svg aria-hidden="true"><use href="/page/dq-builder/images/icons/site-icons.svg#user"></use></svg></a>
-      <button type="button" class="site-map-toggle" aria-expanded="false" aria-label="사이트맵 열기"><svg aria-hidden="true"><use href="/page/dq-builder/images/icons/site-icons.svg#sitemap"></use></svg><span class="blind">사이트맵 열기</span></button>
-      <button type="button" class="mobile-menu" aria-expanded="false" aria-label="전체 메뉴 열기"><svg aria-hidden="true"><use href="/page/dq-builder/images/icons/site-icons.svg#menu"></use></svg></button>
+      <button type="button" class="header-search" data-search-mode="panel" aria-expanded="false" aria-controls="header-search-panel" aria-label="검색 열기"><svg aria-hidden="true"><use href="/page/dq-builder/images/icons/site-icons.svg?v=3#search"></use></svg><span class="blind">검색 열기</span></button>
+      <a class="header-custom-action builder-header-action" href="#" aria-label="새 버튼"><svg aria-hidden="true"><use href="/page/dq-builder/images/icons/site-icons.svg?v=3#home"></use></svg></a>
+      <a class="header-custom-action builder-header-action" href="#" aria-label="새 버튼"><svg aria-hidden="true"><use href="/page/dq-builder/images/icons/site-icons.svg?v=3#user"></use></svg></a>
+      <button type="button" class="site-map-toggle" aria-expanded="false" aria-label="사이트맵 열기"><svg aria-hidden="true"><use href="/page/dq-builder/images/icons/site-icons.svg?v=3#sitemap"></use></svg><span class="blind">사이트맵 열기</span></button>
+      <button type="button" class="mobile-menu" aria-expanded="false" aria-label="전체 메뉴 열기"><svg aria-hidden="true"><use href="/page/dq-builder/images/icons/site-icons.svg?v=3#menu"></use></svg></button>
     </div>
   </div>
 </div>
@@ -682,8 +703,8 @@
   <form class="header-search-panel__form" action="#" method="get" role="search">
     <label class="blind" for="header-search-query">검색어</label>
     <input id="header-search-query" name="q" type="search" placeholder="검색어를 입력하세요" autocomplete="off">
-    <button type="submit" class="header-search-panel__submit" aria-label="검색"><svg aria-hidden="true"><use href="/page/dq-builder/images/icons/site-icons.svg#search"></use></svg><span>검색</span></button>
-    <button type="button" class="header-search-panel__close" data-search-close aria-label="검색창 닫기"><svg aria-hidden="true"><use href="/page/dq-builder/images/icons/site-icons.svg#close"></use></svg></button>
+    <button type="submit" class="header-search-panel__submit" aria-label="검색"><svg aria-hidden="true"><use href="/page/dq-builder/images/icons/site-icons.svg?v=3#search"></use></svg><span>검색</span></button>
+    <button type="button" class="header-search-panel__close" data-search-close aria-label="검색창 닫기"><svg aria-hidden="true"><use href="/page/dq-builder/images/icons/site-icons.svg?v=3#close"></use></svg></button>
   </form>
 </div>
 <div class="gnb-backdrop"></div>

@@ -796,11 +796,13 @@ $(function(){
 		$('.list1, #prevBtn_list, #nextBtn_list, #title_list').show();
 		
 	});
-	$('.btn-calendar').on('click', function(e) {
-		e.preventDefault();
-		$('.list1, #prevBtn_list, #nextBtn_list, #title_list').hide();
-		$('.table-style5, #prevBtn_calendar, #nextBtn_calendar, #title_calendar').show();
-	});
+	
+	// $('.btn-calendar').on('click', function(e) {
+	// 	e.preventDefault();
+	// 	$('.list1, #prevBtn_list, #nextBtn_list, #title_list').hide();
+	// 	$('.table-style5, #prevBtn_calendar, #nextBtn_calendar, #title_calendar').show();
+	// });
+
 	$('.table-style5 button').on('mouseover', function() {
 		$(this).next('.tooltip1').show();
 	});

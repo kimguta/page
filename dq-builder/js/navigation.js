@@ -91,6 +91,7 @@
       if (!/^(?:underline|overline|side|pill|dot)$/.test(header.dataset.gnbIndicator)) header.dataset.gnbIndicator = "underline";
       if (config) header.style.setProperty("--gnb-indicator-color", config.dataset.gnbIndicatorUseTheme === "false" && config.dataset.gnbIndicatorColor ? config.dataset.gnbIndicatorColor : "var(--theme-color-1)");
       if (config && config.dataset.sitemapLayout) header.dataset.sitemapLayout = config.dataset.sitemapLayout;
+      header.dataset.sitemapFilter = config && /^(?:none|dark|blur|grayscale)$/.test(config.dataset.sitemapBackgroundFilter) ? config.dataset.sitemapBackgroundFilter : "none";
       if (config && config.dataset.themeDesign) document.documentElement.dataset.designTheme = config.dataset.themeDesign;
       var useSitemapTheme = !config || config.dataset.sitemapUseTheme !== "false";
       if (useSitemapTheme) {
@@ -100,6 +101,7 @@
         if (config && config.dataset.sitemapBackground) header.style.setProperty("--sitemap-background", config.dataset.sitemapBackground);
         if (config && config.dataset.sitemapDepth1Color) header.style.setProperty("--sitemap-depth1-color", config.dataset.sitemapDepth1Color);
       }
+      header.style.setProperty("--sitemap-background-image", config && config.dataset.sitemapBackgroundImage ? 'url("' + String(config.dataset.sitemapBackgroundImage).replace(/["\\]/g, "\\$&") + '")' : "none");
       if (config && config.dataset.sitemapDepth23Color) header.style.setProperty("--sitemap-depth23-color", config.dataset.sitemapDepth23Color);
       header.classList.toggle("is-utility-mobile-visible", !config || config.dataset.utilityMobileVisible !== "false");
     }

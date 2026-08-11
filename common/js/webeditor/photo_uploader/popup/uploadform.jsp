@@ -114,7 +114,7 @@ h1 {
 		<!-- container -->
 		<div id="pop_container2" class="pop_container2">
 			<!-- content -->
-			<form id="editor_upimage" name="editor_upimage" action="file_uploader.jsp" method="post" enctype="multipart/form-data" onSubmit="return false;">
+			<form id="editor_upimage" name="editor_upimage" action="../../../tinymce/popup/file_uploader.jsp" method="post" enctype="multipart/form-data" onSubmit="return false;">
 				<div id="pop_content2">
 					<input type="file" class="upload" id="uploadInputBox" name="Filedata">
 					<p class="dsc" id="info">
