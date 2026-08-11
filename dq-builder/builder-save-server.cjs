@@ -339,13 +339,13 @@ const BUILD_RUNTIME_FILES = [
   "js/navigation.js",
   "js/smooth-scroll.js",
   "js/components.js",
-  "js/content-builder.js",
-  "js/index.js"
 ];
 
 const BUILD_EXCLUDED_FILES = new Set([
   "css/editor.css",
   "js/editor.js",
+  "js/content-builder.js",
+  "js/index.js",
   "builder-save-server.cjs"
 ]);
 
@@ -365,13 +365,424 @@ function replaceBuilderPath(source, projectName) {
 function stripEditorAssets(html) {
   return String(html)
     .replace(/^\s*<link\b[^>]*\/editor\.css(?:\?[^"']*)?["'][^>]*>\s*$/gim, "")
-    .replace(/^\s*<script\b[^>]*\/editor\.js(?:\?[^"']*)?["'][^>]*><\/script>\s*$/gim, "");
+    .replace(/^\s*<script\b[^>]*\/editor\.js(?:\?[^"']*)?["'][^>]*><\/script>\s*$/gim, "")
+    .replace(/^\s*<script\b[^>]*\/js\/index\.js(?:\?[^"']*)?["'][^>]*><\/script>\s*$/gim, "");
 }
 
 function stripBuilderMetadata(html) {
   return String(html)
     .replace(/\s*<script\b(?=[^>]*\bid=["']dq-builder-overrides["'])[^>]*>[\s\S]*?<\/script>\s*/gi, "\n")
+    .replace(/\s*<!--\s*<div\b[^>]*class=["'][^"']*\bsample-switcher\b[\s\S]*?<\/div>\s*-->\s*/gi, "\n")
     .replace(/\s*<!--\s*BUILDER:[A-Z-]+:(?:START|END)\s*-->\s*/gi, "\n");
+}
+
+function stripBuiltElementMetadata(html) {
+  return String(html)
+    .replace(/\sdata-builder-page=(["'][^"']*["'])/gi, " data-page=$1")
+    .replace(/\sdata-builder-content-root(?:=["'][^"']*["'])?/gi, "")
+    .replace(/\sdata-builder-legacy=["'][^"']*["']/gi, "")
+    .replace(/\sdata-section-id=["'][^"']*["']/gi, "")
+    .replace(/\sdata-cell-id=["'][^"']*["']/gi, "")
+    .replace(/\sdata-module-type=["'][^"']*["']/gi, "");
+}
+
+function escapeHtmlAttribute(value) {
+  return String(value == null ? "" : value)
+    .replace(/&/g, "&amp;")
+    .replace(/"/g, "&quot;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
+function safeModuleFileName(value) {
+  const safe = String(value || "module").replace(/[^a-z0-9_-]+/gi, "-").replace(/^-+|-+$/g, "");
+  return safe || "module";
+}
+
+function replaceDivByAttribute(html, attribute, value, replacement) {
+  const escapedValue = String(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const openPattern = new RegExp(`<div\\b(?=[^>]*\\b${attribute}=["']${escapedValue}["'])[^>]*>`, "i");
+  const match = openPattern.exec(html);
+  if (!match) return html;
+  const tagPattern = /<\/?div\b[^>]*>/gi;
+  tagPattern.lastIndex = match.index + match[0].length;
+  let depth = 1;
+  let tag;
+  while ((tag = tagPattern.exec(html))) {
+    if (/^<\/div/i.test(tag[0])) depth -= 1;
+    else if (!/\/>$/.test(tag[0])) depth += 1;
+    if (depth === 0) return html.slice(0, match.index) + replacement + html.slice(tagPattern.lastIndex);
+  }
+  return html;
+}
+
+function applyBuiltRootStyle(html, state) {
+  const gap = Math.max(0, Math.min(200, Number(state && state.sectionGap) || 0));
+  const background = String(state && state.background || "#ffffff").replace(/[;<>]/g, "");
+  return String(html).replace(/<(main)\b(?=[^>]*\bdata-builder-content-root\b)([^>]*)>/i, (match, tag, attributes) => {
+    const variables = `--content-section-gap:${gap}px;--content-background:${background};`;
+    if (/(^|\s)style=["'][^"']*["']/i.test(attributes)) {
+      return `<${tag}${attributes.replace(/(^|\s)style=(["'])([^"']*)\2/i, (styleMatch, spacing, quote, styleValue) => `${spacing}style=${quote}${variables}${styleValue}${quote}`)}>`;
+    }
+    return `<${tag}${attributes} style="${variables}">`;
+  });
+}
+
+function compileBuiltContentState(html, projectName) {
+  const statePattern = /\s*<script\b(?=[^>]*\bdata-builder-content-state\b)[^>]*>([\s\S]*?)<\/script\s*>\s*/i;
+  const match = statePattern.exec(String(html));
+  if (!match) {
+    return {
+      html: stripBuiltElementMetadata(String(html).replace(/^\s*<script\b[^>]*\/js\/content-builder\.js(?:\?[^"']*)?["'][^>]*><\/script>\s*$/gim, `  <script src="/page/${projectName}/js/content-runtime.js"></script>`)),
+      modules: []
+    };
+  }
+
+  let state;
+  try {
+    state = JSON.parse(match[1].trim() || "{}");
+  } catch (error) {
+    throw new Error(`빌드 콘텐츠 상태를 읽지 못했습니다: ${error.message}`);
+  }
+
+  const modules = [];
+  let output = applyBuiltRootStyle(String(html), state);
+  const sections = Array.isArray(state.sections) ? state.sections : [];
+  sections.forEach(section => {
+    const cells = Array.isArray(section && section.cells) ? section.cells : [];
+    cells.forEach(cell => {
+      const module = cell && cell.module;
+      if (!module || module.type !== "code" || !module.id) return;
+      const fileName = safeModuleFileName(module.id);
+      const hasScript = !!String(module.js || "").trim();
+      const host = `<div class="dq-code-host dq-code-host--built" data-code-module-id="${escapeHtmlAttribute(module.id)}"${hasScript ? ` data-built-code-src="/page/${projectName}/modules/${fileName}.js"` : ""}>
+  <template data-built-code-template>
+    <link rel="stylesheet" href="/page/${projectName}/modules/${fileName}.css">
+    ${String(module.html || "").trim()}
+  </template>
+</div>`;
+      output = replaceDivByAttribute(output, "data-code-module-id", module.id, host);
+      modules.push({
+        id: String(module.id),
+        fileName,
+        css: `:host { display: block; min-width: 0; }\n.dq-code-error { margin: 12px 0; padding: 12px; white-space: pre-wrap; background: #fff0f0; color: #b42318; font: 12px/1.5 monospace; }\n${String(module.css || "").trim()}\n`,
+        js: String(module.js || "").trim()
+      });
+    });
+  });
+
+  output = output
+    .replace(statePattern, "\n")
+    .replace(/^\s*<script\b[^>]*\/js\/content-builder\.js(?:\?[^"']*)?["'][^>]*><\/script>\s*$/gim, `  <script src="/page/${projectName}/js/content-runtime.js"></script>`);
+  return { html: stripBuiltElementMetadata(output), modules };
+}
+
+function contentRuntime(projectName) {
+  return `/** 빌드된 직접 작성 요소와 콘텐츠 모션 초기화 */
+(function (window, document) {
+  "use strict";
+  var ICONS = "/page/${projectName}/images/icons/site-icons.svg";
+
+  function showError(root, message) {
+    var error = document.createElement("pre");
+    error.className = "dq-code-error";
+    error.textContent = "JS 오류: " + message;
+    root.appendChild(error);
+  }
+
+  function initCodeModules(scope) {
+    Array.prototype.forEach.call(scope.querySelectorAll("[data-code-module-id]"), function (host) {
+      if (host.dataset.codeReady === "true") return;
+      var template = host.querySelector("template[data-built-code-template]");
+      if (!template) return;
+      host.dataset.codeReady = "true";
+      var root = host.shadowRoot || host.attachShadow({ mode: "open" });
+      root.appendChild(template.content.cloneNode(true));
+      var source = host.getAttribute("data-built-code-src");
+      if (!source) return;
+      window.fetch(source, { cache: "no-cache" }).then(function (response) {
+        if (!response.ok) throw new Error(response.status + " " + response.statusText);
+        return response.text();
+      }).then(function (code) {
+        var cleanup = new window.Function("root", "host", '"use strict";\\n' + code)(root, host);
+        if (typeof cleanup === "function") host._dqCodeCleanup = cleanup;
+      }).catch(function (error) { showError(root, error.message); });
+    });
+  }
+
+  function runCountUp(element, reducedMotion) {
+    if (element.dataset.countReady === "true") return;
+    element.dataset.countReady = "true";
+    var original = element.textContent.trim();
+    var match = original.match(/[-+]?\\d[\\d,]*(?:\\.\\d+)?/);
+    if (!match || reducedMotion) return;
+    var target = Number(match[0].replace(/,/g, ""));
+    if (!Number.isFinite(target)) return;
+    var prefix = original.slice(0, match.index);
+    var suffix = original.slice(match.index + match[0].length);
+    var decimals = (match[0].split(".")[1] || "").length;
+    var useComma = match[0].indexOf(",") > -1;
+    var start = null;
+    function format(value) {
+      var fixed = decimals ? value.toFixed(decimals) : String(Math.round(value));
+      if (useComma) {
+        var parts = fixed.split(".");
+        parts[0] = Number(parts[0]).toLocaleString("ko-KR");
+        fixed = parts.join(".");
+      }
+      return prefix + fixed + suffix;
+    }
+    element.textContent = format(0);
+    function frame(time) {
+      if (start == null) start = time;
+      var progress = Math.min(1, (time - start) / 1200);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      element.textContent = format(target * eased);
+      if (progress < 1) window.requestAnimationFrame(frame);
+      else element.textContent = original;
+    }
+    window.requestAnimationFrame(frame);
+  }
+
+  function initMotion(scope) {
+    var reducedMotion = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+    var modules = Array.prototype.filter.call(scope.querySelectorAll(".dq-motion, .dq-module--stats"), function (module) {
+      return module.dataset.motionReady !== "true";
+    });
+    function reveal(module) {
+      module.classList.add("is-in-view");
+      Array.prototype.forEach.call(module.querySelectorAll("[data-count-up]"), function (element) { runCountUp(element, reducedMotion); });
+    }
+    if (reducedMotion || typeof window.IntersectionObserver !== "function") {
+      modules.forEach(function (module) { module.dataset.motionReady = "true"; reveal(module); });
+      return;
+    }
+    var observer = new window.IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        reveal(entry.target);
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: .14, rootMargin: "0px 0px -5%" });
+    modules.forEach(function (module) {
+      module.dataset.motionReady = "true";
+      if (module.classList.contains("dq-motion")) module.classList.add("is-motion-ready");
+      observer.observe(module);
+    });
+  }
+
+  function initContentSliders(scope) {
+    Array.prototype.forEach.call(scope.querySelectorAll("[data-content-slider]"), function (slider) {
+      if (slider.swiper || typeof window.Swiper !== "function") return;
+      var module = slider.closest(".dq-module");
+      var controlRoot = module && module.querySelector("[data-slider-controls]");
+      var requested = Math.max(1, Math.min(4, Number(slider.dataset.perView) || 1));
+      var isVisual = !!(module && module.classList.contains("dq-module--visual"));
+      var gap = isVisual ? 0 : Math.max(0, Math.min(100, Number(slider.dataset.gap) || 0));
+      if (isVisual) {
+        slider.dataset.gap = "0";
+        slider.style.setProperty("--module-gap-max", "0px");
+      }
+      var transition = slider.dataset.transition || "slide";
+      var total = slider.querySelectorAll(".swiper-slide").length;
+      var isCardSlider = slider.classList.contains("dq-card-list") && total > 1;
+      var mobilePerView = isCardSlider ? Math.min(1.5, total) : 1;
+      var compactPerView = isCardSlider ? Math.min(2, total) : 1;
+      var tabletPerView = isCardSlider ? Math.min(2.7, total) : Math.min(2, requested);
+      var currentText = controlRoot && controlRoot.querySelector("[data-slide-current]");
+      var totalText = controlRoot && controlRoot.querySelector("[data-slide-total]");
+      var playButton = controlRoot && controlRoot.querySelector("[data-slide-play]");
+      var shouldAutoplay = slider.dataset.autoplay === "true";
+      var options = {
+        slidesPerView: requested,
+        spaceBetween: gap,
+        speed: Math.max(100, Math.min(3000, Number(slider.dataset.duration) || 650)),
+        loop: slider.dataset.loop !== "false" && total > requested,
+        watchOverflow: true,
+        watchSlidesProgress: true,
+        observer: true,
+        observeParents: true,
+        keyboard: { enabled: true },
+        a11y: { enabled: true },
+        autoplay: shouldAutoplay || playButton ? { delay: Math.max(1000, Number(slider.dataset.delay) || 4500), disableOnInteraction: false } : false,
+        breakpoints: {
+          0: { slidesPerView: mobilePerView, spaceBetween: Math.min(gap, 16), centeredSlides: isCardSlider },
+          481: { slidesPerView: compactPerView, spaceBetween: Math.min(gap, 20), centeredSlides: isCardSlider },
+          641: { slidesPerView: tabletPerView, spaceBetween: Math.min(gap, 24), centeredSlides: isCardSlider },
+          901: { slidesPerView: requested, spaceBetween: gap, centeredSlides: false }
+        }
+      };
+      if (isVisual && transition === "zoom") transition = "cinematic";
+      if (isVisual && transition === "vertical") transition = "page";
+      if ((transition === "fade" || transition === "cinematic") && requested === 1) {
+        options.effect = "fade";
+        options.fadeEffect = { crossFade: true };
+      } else if (transition === "page" && requested === 1) {
+        options.effect = "creative";
+        options.creativeEffect = {
+          limitProgress: 2,
+          prev: { translate: ["-18%", 0, -1], scale: .94, opacity: .28 },
+          next: { translate: ["100%", 0, 0], scale: 1, opacity: 1 }
+        };
+      } else if (transition === "vertical" && requested === 1) {
+        options.direction = "vertical";
+        options.autoHeight = true;
+      }
+      if (controlRoot) {
+        var previous = controlRoot.querySelector("[data-slide-prev]");
+        var next = controlRoot.querySelector("[data-slide-next]");
+        var pagination = controlRoot.querySelector("[data-slide-pagination]");
+        if (previous && next) options.navigation = { prevEl: previous, nextEl: next };
+        if (pagination) options.pagination = { el: pagination, clickable: true, bulletClass: "dq-content-dot", bulletActiveClass: "is-active" };
+      }
+      var instance = new window.Swiper(slider, options);
+      if (!shouldAutoplay && instance.autoplay) instance.autoplay.stop();
+      function updateCounter() {
+        if (currentText) currentText.textContent = String(instance.realIndex + 1);
+        if (totalText) totalText.textContent = String(total);
+      }
+      instance.on("slideChange", updateCounter);
+      updateCounter();
+      if (playButton) {
+        playButton.addEventListener("click", function () {
+          if (!instance.autoplay) return;
+          var playIcon = playButton.querySelector("use");
+          if (instance.autoplay.running) {
+            instance.autoplay.stop();
+            if (playIcon) playIcon.setAttribute("href", ICONS + "#play");
+            playButton.setAttribute("aria-pressed", "false");
+          } else {
+            instance.autoplay.start();
+            if (playIcon) playIcon.setAttribute("href", ICONS + "#pause");
+            playButton.setAttribute("aria-pressed", "true");
+          }
+        });
+      }
+    });
+  }
+
+  function init() {
+    initCodeModules(document);
+    initMotion(document);
+    initContentSliders(document);
+  }
+
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
+}(window, document));
+`;
+}
+
+function formatBuiltHtml(html) {
+  const source = String(html || "").replace(/\r\n?/g, "\n").trim();
+  const rawPattern = /<!--[^]*?-->|<![^>]*>|<script\b[^>]*>[^]*?<\/script\s*>|<style\b[^>]*>[^]*?<\/style\s*>|<pre\b[^>]*>[^]*?<\/pre\s*>|<textarea\b[^>]*>[^]*?<\/textarea\s*>|<[^>]+>|[^<]+/gi;
+  const tokens = source.match(rawPattern) || [];
+  const voidTags = new Set(["area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param", "source", "track", "wbr"]);
+  const inlineTags = new Set(["a", "abbr", "b", "bdi", "bdo", "button", "cite", "code", "data", "del", "em", "i", "ins", "kbd", "label", "mark", "q", "s", "samp", "small", "span", "strong", "sub", "sup", "svg", "time", "u", "use", "var"]);
+  const simpleTextTags = new Set(["a", "button", "caption", "code", "dd", "dt", "em", "figcaption", "h1", "h2", "h3", "h4", "h5", "h6", "label", "legend", "li", "option", "p", "small", "span", "strong", "td", "th", "time", "title"]);
+  const lines = [];
+  let depth = 0;
+  let pending = "";
+
+  function indentation(level = depth) {
+    return "  ".repeat(Math.max(0, level));
+  }
+
+  function flushPending() {
+    const value = pending.trim();
+    if (value) lines.push(indentation() + value);
+    pending = "";
+  }
+
+  function normalizedTag(token) {
+    return token.replace(/\s+/g, " ").replace(/\s+>/g, ">").trim();
+  }
+
+  function tagName(token) {
+    const match = token.match(/^<\/?\s*([a-z0-9:-]+)/i);
+    return match ? match[1].toLowerCase() : "";
+  }
+
+  function writeRawScript(token) {
+    const match = token.match(/^(<script\b[^>]*>)([^]*)(<\/script\s*>)$/i);
+    if (!match || !/\btype=["']application\/json["']/i.test(match[1])) {
+      lines.push(indentation() + token.trim());
+      return;
+    }
+    lines.push(indentation() + normalizedTag(match[1]));
+    try {
+      const formatted = JSON.stringify(JSON.parse(match[2].trim() || "{}"), null, 2);
+      formatted.split("\n").forEach(line => lines.push(indentation(depth + 1) + line));
+    } catch (error) {
+      match[2].trim().split("\n").forEach(line => lines.push(indentation(depth + 1) + line));
+    }
+    lines.push(indentation() + match[3].trim());
+  }
+
+  for (let index = 0; index < tokens.length; index += 1) {
+    const token = tokens[index];
+    if (!token) continue;
+
+    if (/^<script\b/i.test(token)) {
+      flushPending();
+      writeRawScript(token);
+      continue;
+    }
+    if (/^<(?:style|pre|textarea)\b/i.test(token) || /^<!--/.test(token) || /^<![^-]/.test(token)) {
+      flushPending();
+      lines.push(indentation() + token.trim());
+      continue;
+    }
+    if (token.charAt(0) !== "<") {
+      const text = token.replace(/\s+/g, " ").trim();
+      if (text) {
+        const separator = pending && /^\s/.test(token) && !/\s$/.test(pending) ? " " : "";
+        pending += separator + text;
+      }
+      continue;
+    }
+
+    const name = tagName(token);
+    const closing = /^<\//.test(token);
+    const selfClosing = /\/\s*>$/.test(token) || voidTags.has(name);
+    const inline = inlineTags.has(name);
+    const clean = normalizedTag(token);
+
+    if (!pending && !closing && !selfClosing && simpleTextTags.has(name)) {
+      const textToken = tokens[index + 1];
+      const closeToken = tokens[index + 2];
+      if (textToken && textToken.charAt(0) !== "<" && closeToken && new RegExp(`^<\\/\\s*${name}\\s*>$`, "i").test(closeToken.trim())) {
+        flushPending();
+        const text = textToken.replace(/\s+/g, " ").trim();
+        lines.push(indentation() + clean + text + normalizedTag(closeToken));
+        index += 2;
+        continue;
+      }
+    }
+
+    if (closing) {
+      if (inline) {
+        pending += clean;
+      } else {
+        flushPending();
+        depth = Math.max(0, depth - 1);
+        lines.push(indentation() + clean);
+      }
+      continue;
+    }
+
+    if (inline || (selfClosing && inlineTags.has(name))) {
+      pending += clean;
+      continue;
+    }
+
+    flushPending();
+    lines.push(indentation() + clean);
+    if (!selfClosing) depth += 1;
+  }
+
+  flushPending();
+  return lines.join("\n") + "\n";
 }
 
 function replaceElementById(html, id, replacement) {
@@ -564,7 +975,7 @@ function contentPickerCss() {
 }
 
 function projectReadme(projectName) {
-  return `# ${projectName}\n\nDQ Builder에서 생성한 실작업용 프로젝트입니다. 편집기와 저장 서버는 포함하지 않습니다.\n\n## Live Server\n\nwebapp 폴더를 Live Server 루트로 열고 다음 주소를 사용합니다.\n\n- /page/${projectName}/index.html\n- /page/${projectName}/sub.html\n\n## 서브 콘텐츠 추가\n\n1. content 폴더에 영문 파일명으로 HTML을 생성합니다.\n2. content/list.txt에 파일명을 한 줄로 추가합니다.\n3. sub.html 하단의 콘텐츠 목록 버튼에서 선택하거나 sub.html?content=파일명.html로 엽니다. 목록 버튼은 열 때마다 list.txt를 새로 읽습니다.\n`;
+  return `# ${projectName}\n\nDQ Builder에서 생성한 실작업용 프로젝트입니다. 편집기와 저장 서버는 포함하지 않습니다.\n\n## Live Server\n\nwebapp 폴더를 Live Server 루트로 열고 다음 주소를 사용합니다.\n\n- /page/${projectName}/index.html\n- /page/${projectName}/sub.html\n\n## 직접 작성 요소\n\n직접 작성 요소의 HTML은 해당 페이지의 template 태그에, CSS와 JS는 modules 폴더에 분리되어 있습니다.\n\n## 서브 콘텐츠 추가\n\n1. content 폴더에 영문 파일명으로 HTML을 생성합니다.\n2. content/list.txt에 파일명을 한 줄로 추가합니다.\n3. sub.html 하단의 콘텐츠 목록 버튼에서 선택하거나 sub.html?content=파일명.html로 엽니다. 목록 버튼은 열 때마다 list.txt를 새로 읽습니다.\n\n## JSP·백엔드 연동 시 정리\n\nsub.html에서 \`DEV PREVIEW\` 주석으로 감싼 콘텐츠 목록 CSS·HTML·JS는 Live Server 미리보기 전용입니다. 실제 include 또는 JSP 데이터로 교체한 뒤 해당 주석 범위와 css/content-picker.css, js/content-list.js 파일을 삭제할 수 있습니다.\n`;
 }
 
 async function writeBuildText(root, relativePath, content) {
@@ -623,9 +1034,15 @@ async function buildProject(rawName, overwrite = false) {
     collectBuilderAssets(subHtml, "sub.html", assets);
     indexHtml = replaceBuilderPath(stripBuilderMetadata(stripEditorAssets(indexHtml)), projectName);
     subHtml = replaceBuilderPath(stripBuilderMetadata(stripEditorAssets(subHtml)), projectName);
-    subHtml = replaceElementById(subHtml, "contentsArea", `<div id="contentsArea" data-content-list="/page/${projectName}/content/list.txt"></div>\n          <div class="dq-built-content-picker" data-built-content-picker>\n            <button type="button" class="dq-built-content-picker__open" data-built-content-open>콘텐츠 목록</button>\n            <div class="dq-built-content-picker__modal" data-built-content-modal hidden>\n              <div class="dq-built-content-picker__dialog" role="dialog" aria-modal="true" aria-label="서브 콘텐츠 목록">\n                <div class="dq-built-content-picker__head"><div><strong>서브 콘텐츠 목록</strong><p>content/list.txt에 등록된 파일을 표시합니다.</p></div><button type="button" class="dq-built-content-picker__close" data-built-content-close aria-label="닫기">×</button></div>\n                <div class="dq-built-content-picker__list" data-built-content-list></div>\n              </div>\n            </div>\n          </div>`);
-    subHtml = subHtml.replace(/<\/head>/i, `  <link rel="stylesheet" href="/page/${projectName}/css/content-picker.css">\n</head>`);
-    subHtml = subHtml.replace(/(<script\b[^>]*\/js\/app\.js[^>]*><\/script>)/i, `<script src="/page/${projectName}/js/content-list.js"></script>\n  $1`);
+    const compiledIndex = compileBuiltContentState(indexHtml, projectName);
+    const compiledSub = compileBuiltContentState(subHtml, projectName);
+    indexHtml = compiledIndex.html;
+    subHtml = compiledSub.html;
+    const codeModules = new Map();
+    [...compiledIndex.modules, ...compiledSub.modules].forEach(module => codeModules.set(module.id, module));
+    subHtml = replaceElementById(subHtml, "contentsArea", `<!-- DEV PREVIEW: JSP·백엔드 연동 시 이 영역을 실제 콘텐츠 include로 교체하세요. -->\n          <div id="contentsArea" data-content-list="/page/${projectName}/content/list.txt"></div>\n          <div class="dq-built-content-picker" data-built-content-picker>\n            <button type="button" class="dq-built-content-picker__open" data-built-content-open>콘텐츠 목록</button>\n            <div class="dq-built-content-picker__modal" data-built-content-modal hidden>\n              <div class="dq-built-content-picker__dialog" role="dialog" aria-modal="true" aria-label="서브 콘텐츠 목록">\n                <div class="dq-built-content-picker__head"><div><strong>서브 콘텐츠 목록</strong><p>content/list.txt에 등록된 파일을 표시합니다.</p></div><button type="button" class="dq-built-content-picker__close" data-built-content-close aria-label="닫기">×</button></div>\n                <div class="dq-built-content-picker__list" data-built-content-list></div>\n              </div>\n            </div>\n          </div>\n          <!-- /DEV PREVIEW: 실제 include 적용 후 위 미리보기 UI를 삭제할 수 있습니다. -->`);
+    subHtml = subHtml.replace(/<\/head>/i, `  <!-- DEV PREVIEW: JSP·백엔드 연동 시 콘텐츠 목록 UI와 함께 삭제하세요. -->\n  <link rel="stylesheet" href="/page/${projectName}/css/content-picker.css">\n  <!-- /DEV PREVIEW -->\n</head>`);
+    subHtml = subHtml.replace(/<\/body>/i, `  <!-- DEV PREVIEW: Live Server 콘텐츠 목록용입니다. JSP·백엔드 연동 시 삭제하세요. -->\n  <script src="/page/${projectName}/js/content-list.js"></script>\n  <!-- /DEV PREVIEW -->\n</body>`);
 
     for (const relativePath of BUILD_RUNTIME_FILES) {
       const sourcePath = path.join(sourceRoot, relativePath);
@@ -638,6 +1055,20 @@ async function buildProject(rawName, overwrite = false) {
         content = content
           .replace(/\n  function applyBuilderOverrides\(\) \{[\s\S]*?\n  \}\n\n  async function boot/, "\n  async function boot")
           .replace(/^\s*applyBuilderOverrides\(\);\s*$/gm, "");
+      }
+      if (relativePath === "js/components.js") {
+        content = content
+          .replace(/^\s*initSampleSwitcher\(\);\s*$/gm, "")
+          .replace(/\n  function initSampleSwitcher\(\) \{[\s\S]*?\n  \}\n(?=\n  function initSubContentUi)/, "\n");
+      }
+      if (relativePath === "css/app.css") {
+        content = content.replace(/\r?\n\.sample-switcher\s*\{[\s\S]*?(?=\r?\n@media)/, "\n");
+      }
+      if (relativePath === "css/content-builder.css") {
+        content = content.replace(/> \[data-section-id\] \+ \[data-section-id\]/g, "> .dq-content-section + .dq-content-section");
+      }
+      if (relativePath === "css/custom-builder.css") {
+        content = content.replace(/data-builder-page/g, "data-page");
       }
       await writeBuildText(tempRoot, relativePath, content);
     }
@@ -656,8 +1087,13 @@ async function buildProject(rawName, overwrite = false) {
     }
     await writeBuildText(tempRoot, "content/list.txt", `${contentFiles.join("\n")}\n`);
     await writeBuildText(tempRoot, "js/content-list.js", contentListRuntime(projectName));
+    await writeBuildText(tempRoot, "js/content-runtime.js", contentRuntime(projectName));
     await writeBuildText(tempRoot, "css/content-picker.css", contentPickerCss());
     await writeBuildText(tempRoot, "README.md", projectReadme(projectName));
+    for (const module of codeModules.values()) {
+      await writeBuildText(tempRoot, `modules/${module.fileName}.css`, module.css);
+      if (module.js) await writeBuildText(tempRoot, `modules/${module.fileName}.js`, `${module.js}\n`);
+    }
 
     for (const relativePath of assets) {
       if (!relativePath || relativePath.startsWith("..") || relativePath.toLowerCase().endsWith(".html") || BUILD_EXCLUDED_FILES.has(relativePath) || BUILD_RUNTIME_FILES.includes(relativePath) || relativePath === "css/fonts.css") continue;
@@ -669,8 +1105,8 @@ async function buildProject(rawName, overwrite = false) {
     }
 
     // 변환된 진입 HTML은 리소스 수집이 끝난 뒤 마지막에 기록해 원본 링크가 덮어쓰지 못하게 합니다.
-    await writeBuildText(tempRoot, "index.html", indexHtml);
-    await writeBuildText(tempRoot, "sub.html", subHtml);
+    await writeBuildText(tempRoot, "index.html", formatBuiltHtml(indexHtml));
+    await writeBuildText(tempRoot, "sub.html", formatBuiltHtml(subHtml));
 
     if (targetExists) {
       const backupRoot = path.join(pageRoot, `.dq-backup-${projectName}-${Date.now()}`);

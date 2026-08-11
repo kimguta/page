@@ -9,26 +9,23 @@
   if (params.get("builderCanvas") === "1" || !window.DQTemplate) return;
 
   window.DQTemplate.use("site-builder", function (DQ) {
-    var SITE_ICONS = "/page/dq-builder/images/icons/site-icons.svg";
-    var EDITOR_ICONS = "/page/dq-builder/images/icons/editor-icons.svg";
+    var SITE_ICONS = "/page/dq-builder/images/icons/site-icons.svg?v=3";
+    var EDITOR_ICONS = "/page/dq-builder/images/icons/editor-icons.svg?v=2";
     var LOGO_IMAGE_BASE = "/page/dq-builder/images/";
     var FONT_OPTIONS = ["Pretendard", "Noto Sans KR", "Spoqa Han Sans", "GmarketSans", "S-CoreDream", "Paperlogy", "NanumSquareNeo", "Elice", "SebangGothic", "PyeongChang", "MaruBuri", "ChosunNm", "SokchoBadaDotum", "Jalnan"];
     var THEME_PRESETS = {
-      calm: { label: "차분함", description: "기관·기업에 안정적인 저채도 스타일", color1: "#416B63", color2: "#203C37", color3: "#9DBDB4", pageBackground: "#F3F7F5", surface: "#FFFFFF", surfaceAlt: "#E8F0ED", textColor: "#1E302D", mutedColor: "#657A75", lineColor: "#D8E3DF", shadow: "0 14px 38px rgba(35,69,61,.10)", radiusStyle: "soft", buttonStyle: "filled", motionStyle: "soft" },
-      bright: { label: "밝고 친근함", description: "서비스·교육에 어울리는 산뜻한 스타일", color1: "#2563EB", color2: "#172554", color3: "#F59E0B", pageBackground: "#F7FAFF", surface: "#FFFFFF", surfaceAlt: "#EAF2FF", textColor: "#172033", mutedColor: "#667085", lineColor: "#DCE6F5", shadow: "0 16px 42px rgba(37,99,235,.12)", radiusStyle: "round", buttonStyle: "filled", motionStyle: "soft" },
-      vivid: { label: "화려함", description: "행사·브랜드에 강한 색감과 깊이", color1: "#7C3AED", color2: "#2E1065", color3: "#F43F5E", pageBackground: "#FFF8FC", surface: "#FFFFFF", surfaceAlt: "#F5EAFE", textColor: "#251535", mutedColor: "#74657E", lineColor: "#E9DDF0", shadow: "0 20px 50px rgba(124,58,237,.18)", radiusStyle: "round", buttonStyle: "gradient", motionStyle: "emphasis" },
-      dynamic: { label: "역동적", description: "캠페인·프로모션에 선명하고 빠른 스타일", color1: "#FF4D00", color2: "#111827", color3: "#00B8D9", pageBackground: "#F8FAFC", surface: "#FFFFFF", surfaceAlt: "#EEF2F6", textColor: "#111827", mutedColor: "#5F6B7A", lineColor: "#D8DEE7", shadow: "8px 8px 0 rgba(17,24,39,.13)", radiusStyle: "square", buttonStyle: "gradient", motionStyle: "emphasis" },
-      dark: { label: "어두운 분위기", description: "테크·콘텐츠에 몰입감 있는 다크 스타일", color1: "#8B5CF6", color2: "#090B12", color3: "#22D3EE", pageBackground: "#0C1018", surface: "#151B26", surfaceAlt: "#1D2634", textColor: "#F4F7FB", mutedColor: "#A7B0C0", lineColor: "#2D3849", shadow: "0 20px 55px rgba(0,0,0,.38)", radiusStyle: "soft", buttonStyle: "filled", motionStyle: "soft" },
-      elegant: { label: "고급스러움", description: "문화·호텔·프리미엄 브랜드 스타일", color1: "#8A6D3B", color2: "#1D1A17", color3: "#C8B07C", pageBackground: "#F6F2EA", surface: "#FFFCF7", surfaceAlt: "#EDE5D8", textColor: "#29231C", mutedColor: "#756B5E", lineColor: "#DED3C2", shadow: "0 18px 45px rgba(59,45,28,.13)", radiusStyle: "square", buttonStyle: "outline", motionStyle: "soft" },
-      neon: { label: "네온 임팩트", description: "공연·게임·테크 홍보에 강렬한 네온 스타일", color1: "#B7FF2A", color2: "#070A12", color3: "#FF2E93", pageBackground: "#070A12", surface: "#101522", surfaceAlt: "#182033", textColor: "#F7FAFF", mutedColor: "#AEB8CC", lineColor: "#33405A", shadow: "0 0 0 1px rgba(183,255,42,.28), 0 20px 60px rgba(255,46,147,.22)", radiusStyle: "square", buttonStyle: "gradient", motionStyle: "emphasis" },
-      pop: { label: "팝 캠페인", description: "축제·이벤트·상품 홍보에 대담한 컬러 스타일", color1: "#2457FF", color2: "#171717", color3: "#FF3D8D", pageBackground: "#FFF9E8", surface: "#FFFFFF", surfaceAlt: "#FFF36D", textColor: "#171717", mutedColor: "#515151", lineColor: "#171717", shadow: "6px 6px 0 rgba(23,23,23,.92)", radiusStyle: "round", buttonStyle: "gradient", motionStyle: "emphasis" },
-      editorial: { label: "볼드 에디토리얼", description: "전시·패션·포트폴리오에 잡지 같은 대비", color1: "#E63224", color2: "#111111", color3: "#D8FF3E", pageBackground: "#F1EEE6", surface: "#FAF8F1", surfaceAlt: "#DED9CF", textColor: "#111111", mutedColor: "#5D5A54", lineColor: "#111111", shadow: "0 18px 0 rgba(17,17,17,.10)", radiusStyle: "square", buttonStyle: "filled", motionStyle: "emphasis" },
-      cinematic: { label: "시네마틱", description: "몰입형 브랜드·콘텐츠 홍보에 극적인 다크 스타일", color1: "#FF5A1F", color2: "#050816", color3: "#21D4FD", pageBackground: "#050816", surface: "#0E1426", surfaceAlt: "#17213A", textColor: "#F7F8FC", mutedColor: "#A8B2C8", lineColor: "#293550", shadow: "0 28px 80px rgba(0,0,0,.52)", radiusStyle: "soft", buttonStyle: "gradient", motionStyle: "emphasis" }
+      civic: { label: "공공 블루", description: "좌측 제목·정돈된 카드·하단 바 GNB", color1: "#1E5A96", color2: "#173A5E", color3: "#A9C2D8", pageBackground: "#F5F8FB", surface: "#FFFFFF", surfaceAlt: "#EAF1F7", textColor: "#192B3B", mutedColor: "#607384", lineColor: "#D5E0E9", shadow: "0 8px 24px rgba(23,58,94,.07)", radiusStyle: "soft", buttonStyle: "filled", motionStyle: "soft", contentMaxWidth: 1200, sectionMaxWidth: 1200, headingAlign: "left", indicatorStyle: "underline", navigationMode: "single-full", headerHeight: 84, headerMaxWidth: 1320, navigationSize: 18, sectionGap: 72, columnGap: 36 },
+      slate: { label: "뉴트럴 슬레이트", description: "무채색·각진 요소·넓은 데이터형 배치", color1: "#505A64", color2: "#262D33", color3: "#AEB5BB", pageBackground: "#F6F7F8", surface: "#FFFFFF", surfaceAlt: "#ECEFF1", textColor: "#20272D", mutedColor: "#687179", lineColor: "#D8DDE0", shadow: "none", radiusStyle: "square", buttonStyle: "outline", motionStyle: "none", contentMaxWidth: 1320, sectionMaxWidth: 1320, headingAlign: "left", indicatorStyle: "overline", navigationMode: "all", headerHeight: 76, headerMaxWidth: 1480, navigationSize: 16, sectionGap: 56, columnGap: 24 },
+      forest: { label: "포레스트", description: "중앙 제목·둥근 아이콘·여유 있는 자연형", color1: "#3F6B50", color2: "#284534", color3: "#A7BEAD", pageBackground: "#F4F8F5", surface: "#FFFFFF", surfaceAlt: "#E8F0EA", textColor: "#203329", mutedColor: "#64786B", lineColor: "#D5E1D8", shadow: "0 10px 28px rgba(40,69,52,.07)", radiusStyle: "round", buttonStyle: "filled", motionStyle: "soft", contentMaxWidth: 1160, sectionMaxWidth: 1160, headingAlign: "center", indicatorStyle: "side", navigationMode: "single", headerHeight: 88, headerMaxWidth: 1240, navigationSize: 17, sectionGap: 88, columnGap: 40 },
+      coastal: { label: "코스탈", description: "청록 포인트·가로형 퀵메뉴·넓은 관광형", color1: "#0E7180", color2: "#17444C", color3: "#8FC2C7", pageBackground: "#F2F8F9", surface: "#FFFFFF", surfaceAlt: "#E4F0F1", textColor: "#18343A", mutedColor: "#5E777C", lineColor: "#D1E2E4", shadow: "0 8px 26px rgba(23,68,76,.07)", radiusStyle: "soft", buttonStyle: "outline", motionStyle: "soft", contentMaxWidth: 1360, sectionMaxWidth: 1280, headingAlign: "left", indicatorStyle: "dot", navigationMode: "single-full", headerHeight: 90, headerMaxWidth: 1500, navigationSize: 18, sectionGap: 76, columnGap: 28 },
+      heritage: { label: "문화 아이보리", description: "중앙 명조 제목·무그림자·전시 아카이브형", color1: "#785D3E", color2: "#342E27", color3: "#BBA78A", pageBackground: "#F7F3EB", surface: "#FFFDF8", surfaceAlt: "#ECE5D9", textColor: "#2C2823", mutedColor: "#746C61", lineColor: "#DCD2C3", shadow: "none", radiusStyle: "square", buttonStyle: "outline", motionStyle: "none", contentMaxWidth: 1180, sectionMaxWidth: 1180, headingAlign: "center", indicatorStyle: "underline", navigationMode: "all", headerHeight: 94, headerMaxWidth: 1280, navigationSize: 18, sectionGap: 96, columnGap: 48 },
+      burgundy: { label: "웜 버건디", description: "중앙 제목·소프트 카드·배경 강조 GNB", color1: "#824D59", color2: "#4A2E35", color3: "#C5A2AA", pageBackground: "#FAF5F6", surface: "#FFFFFF", surfaceAlt: "#F2E9EB", textColor: "#35292C", mutedColor: "#7B686D", lineColor: "#E5D9DC", shadow: "0 12px 30px rgba(74,46,53,.09)", radiusStyle: "round", buttonStyle: "filled", motionStyle: "soft", contentMaxWidth: 1240, sectionMaxWidth: 1200, headingAlign: "center", indicatorStyle: "pill", navigationMode: "single", headerHeight: 86, headerMaxWidth: 1320, navigationSize: 17, sectionGap: 84, columnGap: 36 }
     };
     var storageKey = "dq-builder-v10:" + window.location.pathname;
     var reopenAfterSaveKey = "dq-builder-reopen-after-save:" + window.location.pathname;
     var syncReloadKey = "dq-builder-sync-reload:" + window.location.pathname;
     var uploadRecoveryKey = "dq-builder-upload-recovery:" + window.location.pathname;
+    var guideHideUntilKey = "dq-builder-guide-hide-until";
 
     function builderServerUrl(endpoint) {
       var configured = String(window.DQ_BUILDER_SERVER || document.documentElement.dataset.builderServer || "").trim();
@@ -50,7 +47,7 @@
     var canvasSetupDone = false;
     var canvasWaitTimer = null;
     var lastCanvasError = null;
-    var editMode = "structure";
+    var editMode = "idle";
     var selectionMode = false;
     var hoveredCanvasElement = null;
     var selectedStructureElement = null;
@@ -277,26 +274,62 @@
       return lines.join("\n");
     }
 
+    function normalizeUtilityItems(items) {
+      var normalized = Array.isArray(items) ? items : [];
+      normalized.forEach(function (item) {
+        if (!item.id) item.id = unique("utility");
+        if (!item.kind && item.type === "button" && /로그인/.test(item.label || "")) item.kind = "login";
+        if (!item.kind) item.kind = "custom";
+        if (!item.area) item.area = item.type === "button" ? "right" : "left";
+        if (item.visible == null) item.visible = true;
+      });
+      if (!normalized.some(function (item) { return item.kind === "login"; })) normalized.push({ id: unique("utility"), type: "button", kind: "login", area: "right", visible: true, label: "로그인", href: "#" });
+      if (!normalized.some(function (item) { return item.kind === "zoom"; })) normalized.push({ id: unique("utility"), type: "control", kind: "zoom", area: "right", visible: true, label: "화면 크기", href: "#" });
+      if (!normalized.some(function (item) { return item.kind === "dark"; })) normalized.push({ id: unique("utility"), type: "control", kind: "dark", area: "right", visible: true, label: "다크모드", href: "#" });
+      return normalized;
+    }
+
+    function buildUtilityItemHtml(item) {
+      var hidden = item.visible === false ? " hidden" : "";
+      var attrs = ' data-utility-item data-utility-kind="' + escapeHtml(item.kind || "custom") + '"' + hidden;
+      if (item.kind === "zoom") {
+        return '<div class="utility-zoom"' + attrs + '><span>' + escapeHtml(item.label || "화면 크기") + '</span><button type="button" data-site-zoom="out" aria-label="화면 축소">−</button><output data-site-zoom-value>100%</output><button type="button" data-site-zoom="in" aria-label="화면 확대">+</button></div>';
+      }
+      if (item.kind === "dark") {
+        return '<button type="button" class="utility-dark-mode" data-site-dark-mode aria-pressed="false"' + attrs + '>' + siteSvg("moon") + '<span>' + escapeHtml(item.label || "다크모드") + '</span></button>';
+      }
+      if (item.type === "button") {
+        var className = item.kind === "login" ? ' class="utility-login"' : "";
+        var itemIcon = item.kind === "login" ? siteSvg("login") : "";
+        return '<a href="' + escapeHtml(item.href || "#") + '"' + className + attrs + '>' + itemIcon + '<span>' + escapeHtml(item.label || "바로가기") + '</span></a>';
+      }
+      if (item.type === "html") return '<span class="utility-html"' + attrs + '>' + safeUtilityHtml(item.html) + '</span>';
+      return '<span' + attrs + '>' + escapeHtml(item.label || "") + '</span>';
+    }
+
+    function buildUtilityInnerHtml(items) {
+      var normalized = normalizeUtilityItems(items);
+      var left = normalized.filter(function (item) { return item.area !== "right"; }).map(buildUtilityItemHtml).join("");
+      var right = normalized.filter(function (item) { return item.area === "right"; }).map(buildUtilityItemHtml).join("");
+      return '<div class="utility-content" aria-label="유틸리티 왼쪽 영역">' + left + '</div><div class="utility-links" aria-label="유틸리티 오른쪽 영역">' + right + '</div>';
+    }
+
     function buildHeaderFile() {
       var data = state.header;
+      data.utility.items = normalizeUtilityItems(data.utility.items);
       var theme = ensureThemeData(state.theme);
       var lines = [
-        '<div class="site-header__config" hidden data-gnb-mode="' + escapeHtml(data.navigation.mode || "single") + '" data-gnb-indicator="' + escapeHtml(/^(?:underline|overline|side|pill|dot)$/.test(data.navigation.indicatorStyle) ? data.navigation.indicatorStyle : "underline") + '" data-gnb-indicator-use-theme="' + String(data.navigation.indicatorUseTheme !== false) + '" data-gnb-indicator-color="' + escapeHtml(data.navigation.indicatorColor || theme.color1) + '" data-scroll-hide="' + String(data.hideOnScroll !== false) + '" data-utility-mobile-visible="' + String(!!data.utility.mobileVisible) + '" data-search-mode="' + escapeHtml(data.actions.searchMode === "link" ? "link" : "panel") + '" data-search-href="' + escapeHtml(data.actions.searchHref || "#") + '" data-sitemap-layout="' + escapeHtml(data.sitemap.layout || "horizontal") + '" data-sitemap-background="' + escapeHtml(data.sitemap.background || "#1f1029") + '" data-sitemap-depth1-color="' + escapeHtml(data.sitemap.depth1Color || "#ffffff") + '" data-sitemap-depth23-color="' + escapeHtml(data.sitemap.depth23Color || "#ffffff") + '" data-sitemap-use-theme="' + String(theme.applyToSitemap !== false) + '" data-theme-design="' + escapeHtml(theme.designStyle || "custom") + '" data-theme-color-1="' + escapeHtml(theme.color1) + '" data-theme-color-2="' + escapeHtml(theme.color2) + '" data-theme-color-3="' + escapeHtml(theme.color3) + '" data-theme-font="' + escapeHtml(safeFontFamily(theme.fontFamily)) + '" data-theme-content-width="' + Math.max(960, Math.min(1600, Number(theme.contentMaxWidth) || 1200)) + '" data-theme-radius="' + escapeHtml(theme.radiusStyle || "soft") + '" data-theme-button="' + escapeHtml(theme.buttonStyle || "outline") + '" data-theme-motion="' + escapeHtml(theme.motionStyle || "soft") + '"></div>',
+        '<div class="site-header__config" hidden data-gnb-mode="' + escapeHtml(data.navigation.mode || "single") + '" data-gnb-indicator="' + escapeHtml(/^(?:underline|overline|side|pill|dot)$/.test(data.navigation.indicatorStyle) ? data.navigation.indicatorStyle : "underline") + '" data-gnb-indicator-use-theme="' + String(data.navigation.indicatorUseTheme !== false) + '" data-gnb-indicator-color="' + escapeHtml(data.navigation.indicatorColor || theme.color1) + '" data-scroll-hide="' + String(data.hideOnScroll !== false) + '" data-utility-mobile-visible="' + String(!!data.utility.mobileVisible) + '" data-search-mode="' + escapeHtml(data.actions.searchMode === "link" ? "link" : "panel") + '" data-search-href="' + escapeHtml(data.actions.searchHref || "#") + '" data-sitemap-layout="' + escapeHtml(data.sitemap.layout || "horizontal") + '" data-sitemap-background="' + escapeHtml(data.sitemap.background || "#1f1029") + '" data-sitemap-background-image="' + escapeHtml(data.sitemap.backgroundImage || "") + '" data-sitemap-background-filter="' + escapeHtml(data.sitemap.backgroundFilter || "none") + '" data-sitemap-depth1-color="' + escapeHtml(data.sitemap.depth1Color || "#ffffff") + '" data-sitemap-depth23-color="' + escapeHtml(data.sitemap.depth23Color || "#ffffff") + '" data-sitemap-use-theme="' + String(theme.applyToSitemap !== false) + '" data-theme-design="' + escapeHtml(theme.designStyle || "custom") + '" data-theme-color-1="' + escapeHtml(theme.color1) + '" data-theme-color-2="' + escapeHtml(theme.color2) + '" data-theme-color-3="' + escapeHtml(theme.color3) + '" data-theme-font="' + escapeHtml(safeFontFamily(theme.fontFamily)) + '" data-theme-content-width="' + Math.max(960, Math.min(1600, Number(theme.contentMaxWidth) || 1200)) + '" data-theme-radius="' + escapeHtml(theme.radiusStyle || "soft") + '" data-theme-button="' + escapeHtml(theme.buttonStyle || "outline") + '" data-theme-motion="' + escapeHtml(theme.motionStyle || "soft") + '"></div>',
         '<div class="site-header__utility"' + (data.utility.visible ? "" : " hidden") + '>',
         '  <div class="site-header__inner">',
-        '    <div class="utility-content">'
+        '    ' + buildUtilityInnerHtml(data.utility.items),
+        '  </div>',
+        '</div>',
+        '',
+        '<div class="site-header__main">',
+        '  <div class="site-header__inner">',
+        '    <h1 class="site-logo">'
       ];
-
-      data.utility.items.filter(function (item) { return item.type !== "button"; }).forEach(function (item) {
-        if (item.type === "html") lines.push('      <span class="utility-html">' + safeUtilityHtml(item.html) + "</span>");
-        else lines.push("      <span>" + escapeHtml(item.label) + "</span>");
-      });
-      lines.push("    </div>", '    <div class="utility-links">');
-      data.utility.items.filter(function (item) { return item.type === "button"; }).forEach(function (item) {
-        var loginIcon = /로그인/.test(item.label || "") ? siteSvg("login") : "";
-        lines.push('      <a href="' + escapeHtml(item.href || "#") + '"' + (loginIcon ? ' class="utility-login"' : "") + ">" + loginIcon + "<span>" + escapeHtml(item.label) + "</span></a>");
-      });
-      lines.push("    </div>", "  </div>", "</div>", "", '<div class="site-header__main">', '  <div class="site-header__inner">', '    <h1 class="site-logo">');
 
       if (data.logo.useImage && data.logo.imagePath) {
         lines.push('      <a href="' + escapeHtml(data.logo.href || "#") + '"><img class="site-logo__image" src="' + escapeHtml(resolveLogoPath(data.logo.imagePath)) + '" alt="' + escapeHtml(data.logo.text || "사이트 로고") + '"></a>');
@@ -363,6 +396,7 @@
         "  --theme-button-background: " + buttonValues.background + ";",
         "  --theme-button-border: " + buttonValues.border + ";",
         "  --theme-button-color: " + buttonValues.color + ";",
+        "  --theme-on-primary: " + contrastColor(theme.color1) + ";",
         "  --theme-motion-fast: " + motionValues.fast + ";",
         "  --theme-motion-lift: " + motionValues.lift + ";",
         "  --gnb-motion-base: " + motionValues.base + ";",
@@ -373,7 +407,7 @@
         "}",
         "html { background: var(--theme-page-bg); }",
         "body { color: var(--theme-text); background: var(--theme-page-bg); font-family: \"" + safeFontFamily(theme.fontFamily) + "\", \"Noto Sans KR\", sans-serif; }",
-        "#header { background-color: " + rgba(data.background, data.opacity) + "; --gnb-depth1-color: " + data.navigation.color + "; --gnb-indicator-color: " + (data.navigation.indicatorUseTheme !== false ? "var(--theme-color-1)" : (data.navigation.indicatorColor || theme.color1)) + "; --sitemap-background: " + (data.sitemap.background || "#1f1029") + "; --sitemap-depth1-color: " + (data.sitemap.depth1Color || "#ffffff") + "; --sitemap-depth23-color: " + (data.sitemap.depth23Color || "#ffffff") + "; }",
+        "#header { background-color: " + rgba(data.background, data.opacity) + "; --gnb-depth1-color: " + data.navigation.color + "; --gnb-indicator-color: " + (data.navigation.indicatorUseTheme !== false ? "var(--theme-color-1)" : (data.navigation.indicatorColor || theme.color1)) + "; --sitemap-background: " + (data.sitemap.background || "#1f1029") + "; --sitemap-background-image: " + (data.sitemap.backgroundImage ? 'url("' + String(data.sitemap.backgroundImage).replace(/["\\]/g, "\\$&") + '")' : "none") + "; --sitemap-depth1-color: " + (data.sitemap.depth1Color || "#ffffff") + "; --sitemap-depth23-color: " + (data.sitemap.depth23Color || "#ffffff") + "; }",
         "#header .site-header__utility { color: " + data.utility.color + "; background-color: " + rgba(data.utility.background, data.utility.opacity) + "; }",
         "#header .site-header__main > .site-header__inner { height: var(--header-main-height); }",
         "#header .site-logo a { color: " + data.logo.color + "; font-size: " + data.logo.size + "px; --logo-mobile-font-size: " + data.logo.mobileSize + "px; }",
@@ -518,8 +552,8 @@
         window.localStorage.removeItem(storageKey);
         showToast("페이지 요소와 헤더·푸터 편집값을 파일에 저장했습니다.");
         window.setTimeout(function () {
-          window.sessionStorage.removeItem(reopenAfterSaveKey);
-        }, 10000);
+          window.location.reload();
+        }, 700);
       } catch (error) {
         window.sessionStorage.removeItem(reopenAfterSaveKey);
         if (error && error.name === "AbortError") {
@@ -549,18 +583,39 @@
 
     function toHex(color, fallback) {
       if (!color || color === "transparent") return fallback;
-      if (color.charAt(0) === "#") return color.slice(0, 7);
-      var values = color.match(/\d+/g);
+      var raw = String(color).trim();
+      if (raw.charAt(0) === "#") {
+        var compact = raw.slice(1);
+        if (/^[0-9a-f]{3,4}$/i.test(compact)) compact = compact.split("").map(function (character) { return character + character; }).join("");
+        if (/^[0-9a-f]{6}(?:[0-9a-f]{2})?$/i.test(compact)) return "#" + compact.toUpperCase();
+        return fallback;
+      }
+      var values = raw.match(/[\d.]+/g);
       if (!values || values.length < 3) return fallback;
-      return "#" + values.slice(0, 3).map(function (value) {
+      var result = "#" + values.slice(0, 3).map(function (value) {
         return Number(value).toString(16).padStart(2, "0");
-      }).join("");
+      }).join("").toUpperCase();
+      if (/^rgba/i.test(raw) && values.length > 3) result += Math.round(Math.max(0, Math.min(1, Number(values[3]))) * 255).toString(16).padStart(2, "0").toUpperCase();
+      return result;
     }
 
     function alphaPercent(color) {
       if (!color || color === "transparent") return 0;
+      var hex = toHex(color, "");
+      if (hex.length === 9) return Math.round(parseInt(hex.slice(7, 9), 16) / 255 * 100);
       var match = color.match(/rgba\([^)]*,\s*([\d.]+)\)/);
       return match ? Math.round(Number(match[1]) * 100) : 100;
+    }
+
+    function colorBaseHex(color, fallback) {
+      return toHex(color, fallback || "#000000").slice(0, 7);
+    }
+
+    function colorWithOpacity(color, opacity) {
+      var base = colorBaseHex(color, "#000000");
+      var percent = Math.max(0, Math.min(100, Number(opacity)));
+      if (percent >= 100) return base;
+      return base + Math.round(percent / 100 * 255).toString(16).padStart(2, "0").toUpperCase();
     }
 
     function rgba(hex, opacity) {
@@ -604,6 +659,7 @@
 
     function ensureThemeData(theme) {
       var data = theme || {};
+      if (data.designStyle && data.designStyle !== "custom" && !THEME_PRESETS[data.designStyle]) data.designStyle = "custom";
       var preset = THEME_PRESETS[data.designStyle] || { pageBackground: "#FFFFFF", surface: "#FFFFFF", surfaceAlt: "#F5F6F8", textColor: "#222222", mutedColor: "#666666", lineColor: "#E3E5E8", shadow: "0 14px 38px rgba(0,0,0,.10)" };
       data.designStyle = data.designStyle || "custom";
       ["pageBackground", "surface", "surfaceAlt", "textColor", "mutedColor", "lineColor", "shadow"].forEach(function (key) {
@@ -618,21 +674,33 @@
       var previous = ensureThemeData(state.theme);
       var oldBackgrounds = ["#ffffff", String(previous.pageBackground || "").toLowerCase(), String(previous.surface || "").toLowerCase()];
       Object.keys(preset).forEach(function (key) {
-        if (key !== "label" && key !== "description") state.theme[key] = preset[key];
+        if (["label", "description", "sectionMaxWidth", "headingAlign", "indicatorStyle", "navigationMode", "headerHeight", "headerMaxWidth", "navigationSize", "sectionGap", "columnGap"].indexOf(key) < 0) state.theme[key] = preset[key];
       });
-      state.theme.fontFamily = { calm: "Pretendard", bright: "Paperlogy", vivid: "GmarketSans", dynamic: "S-CoreDream", dark: "Pretendard", elegant: "MaruBuri", neon: "GmarketSans", pop: "Jalnan", editorial: "S-CoreDream", cinematic: "Pretendard" }[name] || state.theme.fontFamily;
+      state.theme.fontFamily = { civic: "Pretendard", slate: "Noto Sans KR", forest: "NanumSquareNeo", coastal: "Paperlogy", heritage: "MaruBuri", burgundy: "S-CoreDream" }[name] || state.theme.fontFamily;
       state.theme.designStyle = name;
       if (state.content && Array.isArray(state.content.sections)) {
+        state.content.sectionGap = preset.sectionGap == null ? state.content.sectionGap : preset.sectionGap;
         state.content.sections.forEach(function (section) {
           if (!section.background || oldBackgrounds.indexOf(String(section.background).toLowerCase()) > -1) section.background = preset.surface;
+          if (!section.legacy) {
+            section.headingAlign = preset.headingAlign || "left";
+            if (section.width !== "full") section.maxWidth = preset.sectionMaxWidth || preset.contentMaxWidth || 1200;
+            section.columnGap = preset.columnGap == null ? section.columnGap : preset.columnGap;
+          }
         });
       }
       state.header.background = preset.surface;
       state.header.opacity = 100;
+      state.header.height = preset.headerHeight || state.header.height;
+      state.header.maxWidth = preset.headerMaxWidth || state.header.maxWidth;
       state.header.logo.color = preset.color1;
       state.header.navigation.color = preset.textColor;
       state.header.navigation.depth2Color = preset.textColor;
       state.header.navigation.depth3Color = preset.mutedColor;
+      state.header.navigation.size = preset.navigationSize || state.header.navigation.size;
+      state.header.navigation.indicatorStyle = preset.indicatorStyle || "underline";
+      state.header.navigation.indicatorUseTheme = true;
+      state.header.navigation.mode = preset.navigationMode || "single";
       state.header.utility.background = preset.surfaceAlt;
       state.header.utility.color = preset.mutedColor;
       state.header.actions.style.background = preset.surface;
@@ -680,17 +748,17 @@
       '    <button type="button" data-device="mobile" aria-label="모바일">' + icon("mobile") + '</button>',
       '  </div>',
       '  <div class="builder-topbar__actions">',
-      '    <button type="button" class="builder-text-button builder-text-button--clear" data-clear-element-styles title="상세 편집에서 직접 추가한 CSS와 스타일 효과를 모두 제거합니다">' + icon("delete") + '<span>수동 스타일 제거</span></button>',
+      '    <button type="button" class="builder-text-button builder-guide-open" data-builder-guide-open>' + icon("help") + '<span>사용 안내</span></button>',
       '    <button type="button" class="builder-icon-button" data-history="undo" aria-label="실행 취소">' + icon("undo") + '</button>',
       '    <button type="button" class="builder-icon-button" data-history="redo" aria-label="다시 실행">' + icon("redo") + '</button>',
       '    <div class="builder-edit-mode-switch" role="group" aria-label="편집 모드">',
-      '      <button type="button" class="builder-text-button is-active" data-builder-mode="structure" aria-pressed="true" title="다시 누르면 일반 조작 상태로 해제됩니다">' + icon("section") + '<span>구성 편집</span></button>',
+      '      <button type="button" class="builder-text-button" data-builder-mode="structure" aria-pressed="false" title="다시 누르면 일반 조작 상태로 해제됩니다">' + icon("section") + '<span>구성 편집</span></button>',
       '      <button type="button" class="builder-text-button" data-builder-mode="detail" data-builder-select aria-pressed="false" title="다시 누르면 일반 조작 상태로 해제됩니다">' + icon("edit") + '<span>상세 편집</span></button>',
       '      <button type="button" class="builder-text-button" data-builder-mode="preview" data-builder-preview aria-pressed="false">' + icon("preview") + '<span>미리보기</span></button>',
       '    </div>',
-      '    <button type="button" class="builder-text-button builder-text-button--primary" data-builder-file-save title="페이지 요소와 헤더·푸터 편집값 저장">' + icon("download", "site") + '<span>파일 저장</span></button>',
-      '    <button type="button" class="builder-text-button builder-text-button--build" data-builder-project-build title="편집기를 제외한 실작업용 프로젝트 생성">' + icon("section") + '<span>프로젝트 빌드</span></button>',
-      '    <button type="button" class="builder-text-button" data-builder-project-download disabled title="page/common과 빌드 프로젝트를 ZIP으로 저장">' + icon("download", "site") + '<span>ZIP 저장</span></button>',
+      '    <button type="button" class="builder-text-button builder-text-button--primary" data-builder-file-save title="페이지 요소와 헤더·푸터 편집값 저장">' + icon("download", "site") + '<span>저장</span></button>',
+      '    <button type="button" class="builder-text-button builder-text-button--build" data-builder-project-build title="편집기를 제외한 실작업용 프로젝트 생성">' + icon("section") + '<span>빌드</span></button>',
+      '    <button type="button" class="builder-text-button" data-builder-project-download disabled title="page/common과 빌드 프로젝트를 ZIP으로 다운로드">' + icon("download", "site") + '<span>다운로드</span></button>',
       '  </div>',
       '</header>',
       '<div class="builder-workspace">',
@@ -757,7 +825,7 @@
       '    <label>기존 프로젝트 업데이트<select name="existingProject" data-builder-existing-project><option value="">새 프로젝트 만들기</option></select><small>기존 프로젝트를 선택하면 해당 폴더를 최신 빌드 결과로 교체합니다.</small></label>',
       '    <div class="builder-project-modal__or"><span>또는</span></div>',
       '    <label>프로젝트 폴더명<input type="text" name="projectName" required minlength="2" maxlength="49" pattern="[a-z0-9][a-z0-9_-]+" placeholder="example-project" autocomplete="off"><small>영문 소문자·숫자·하이픈·밑줄만 사용할 수 있습니다.</small></label>',
-      '    <div class="builder-project-modal__notice" data-builder-project-notice>현재 편집 내용을 먼저 <b>파일 저장</b>한 뒤 빌드해 주세요.</div>',
+      '    <div class="builder-project-modal__notice" data-builder-project-notice>현재 편집 내용을 먼저 <b>저장</b>한 뒤 빌드해 주세요.</div>',
       '    <div class="builder-project-modal__status" data-builder-project-status aria-live="polite"></div>',
       '    <div class="builder-project-modal__actions"><button type="button" data-builder-project-cancel>닫기</button><button type="submit">빌드하기</button></div>',
       '  </form>',
@@ -775,13 +843,123 @@
     document.body.appendChild(launcherGroup);
     document.body.appendChild(builder);
 
+    var guideModal = document.createElement("div");
+    guideModal.className = "builder-guide-modal";
+    guideModal.hidden = true;
+    guideModal.innerHTML = [
+      '<div class="builder-guide-dialog" role="dialog" aria-modal="true" aria-labelledby="builder-guide-title" aria-describedby="builder-guide-description">',
+      '  <button type="button" class="builder-guide-close" data-builder-guide-close aria-label="사용 안내 닫기">' + icon("close", "site") + '</button>',
+      '  <div class="builder-guide-head">',
+      '    <span>DQ SITE BUILDER GUIDE</span>',
+      '    <strong id="builder-guide-title">처음 사용하는 분을 위한 빠른 안내</strong>',
+      '    <p id="builder-guide-description">섹션을 만들고 실제 프로젝트로 내보내는 흐름을 네 단계로 확인해 보세요.</p>',
+      '  </div>',
+      '  <div class="builder-guide-slides">',
+      '    <section class="builder-guide-slide" data-builder-guide-slide>',
+      '      <div class="builder-guide-copy"><em>STEP 01</em><h2>섹션을 만들고<br>열 구성을 정하세요.</h2><p>콘텐츠보다 먼저 영역 너비와 1·2·3열 레이아웃을 선택합니다. 섹션 순서와 간격도 여기서 조정할 수 있습니다.</p></div>',
+      '      <div class="builder-guide-visual builder-guide-visual--layout" aria-hidden="true"><span></span><div><i></i><i></i><i></i></div><b>1 · 2 · 3열</b></div>',
+      '    </section>',
+      '    <section class="builder-guide-slide" data-builder-guide-slide hidden>',
+      '      <div class="builder-guide-copy"><em>STEP 02</em><h2>각 열에 필요한<br>요소를 넣으세요.</h2><p>비주얼, 게시판, 카드, 배너, 유튜브, 캘린더, SNS 등 목적에 맞는 요소를 선택하고 항목을 추가합니다.</p></div>',
+      '      <div class="builder-guide-visual builder-guide-visual--modules" aria-hidden="true"><i>비주얼</i><i>게시판</i><i>카드</i><i>유튜브</i><i>캘린더</i><i>SNS</i></div>',
+      '    </section>',
+      '    <section class="builder-guide-slide" data-builder-guide-slide hidden>',
+      '      <div class="builder-guide-copy"><em>STEP 03</em><h2>내용과 디자인을<br>화면에서 조정하세요.</h2><p>왼쪽에서 구성 요소를 고르고 오른쪽 설정에서 문구·색상·간격을 바꿉니다. CSS 상세 편집으로 필요한 부분만 다듬을 수도 있습니다.</p></div>',
+      '      <div class="builder-guide-visual builder-guide-visual--edit" aria-hidden="true"><span></span><div><i></i><i></i><i></i></div><b><i></i><i></i><i></i></b></div>',
+      '    </section>',
+      '    <section class="builder-guide-slide" data-builder-guide-slide hidden>',
+      '      <div class="builder-guide-copy"><em>STEP 04</em><h2>저장하고 빌드한 뒤<br>다운로드하세요.</h2><p>편집 내용을 먼저 저장하고 프로젝트를 빌드합니다. 완성된 프로젝트는 ZIP으로 내려받을 수 있습니다.</p><small>편집기는 화면 너비 1400px보다 큰 PC 환경에서 사용할 수 있습니다.</small></div>',
+      '      <div class="builder-guide-visual builder-guide-visual--flow" aria-hidden="true"><i>저장</i><span>→</span><i>빌드</i><span>→</span><i>다운로드</i></div>',
+      '    </section>',
+      '  </div>',
+      '  <div class="builder-guide-footer">',
+      '    <label class="builder-guide-hide"><input type="checkbox" data-builder-guide-hide><span>일주일 동안 보지 않기</span></label>',
+      '    <div class="builder-guide-pagination"><button type="button" data-builder-guide-dot="0" class="is-active" aria-label="안내 1단계"></button><button type="button" data-builder-guide-dot="1" aria-label="안내 2단계"></button><button type="button" data-builder-guide-dot="2" aria-label="안내 3단계"></button><button type="button" data-builder-guide-dot="3" aria-label="안내 4단계"></button></div>',
+      '    <div class="builder-guide-actions"><button type="button" data-builder-guide-prev disabled>이전</button><span data-builder-guide-count aria-live="polite">1 / 4</span><button type="button" data-builder-guide-next>다음</button></div>',
+      '  </div>',
+      '</div>'
+    ].join("");
+    document.body.appendChild(guideModal);
+
+    var guideIndex = 0;
+    var guideReturnFocus = null;
+    var guideCloseTimer = null;
+    var guideSlides = Array.from(guideModal.querySelectorAll("[data-builder-guide-slide]"));
+    var guideCount = guideModal.querySelector("[data-builder-guide-count]");
+    var guidePrev = guideModal.querySelector("[data-builder-guide-prev]");
+    var guideNext = guideModal.querySelector("[data-builder-guide-next]");
+    var guideHide = guideModal.querySelector("[data-builder-guide-hide]");
+
+    function renderGuide() {
+      guideSlides.forEach(function (slide, index) {
+        slide.hidden = index !== guideIndex;
+        slide.setAttribute("aria-hidden", String(index !== guideIndex));
+      });
+      guideModal.querySelectorAll("[data-builder-guide-dot]").forEach(function (dot, index) {
+        dot.classList.toggle("is-active", index === guideIndex);
+        dot.setAttribute("aria-current", index === guideIndex ? "step" : "false");
+      });
+      guidePrev.disabled = guideIndex === 0;
+      guideNext.textContent = guideIndex === guideSlides.length - 1 ? "편집 시작하기" : "다음";
+      guideCount.textContent = (guideIndex + 1) + " / " + guideSlides.length;
+    }
+
+    function openGuide(trigger) {
+      window.clearTimeout(guideCloseTimer);
+      guideReturnFocus = trigger || document.activeElement;
+      guideIndex = 0;
+      guideHide.checked = false;
+      renderGuide();
+      guideModal.hidden = false;
+      document.documentElement.classList.add("is-builder-guide-open");
+      window.requestAnimationFrame(function () {
+        guideModal.classList.add("is-open");
+        var closeButton = guideModal.querySelector("[data-builder-guide-close]");
+        if (closeButton) closeButton.focus();
+      });
+    }
+
+    function closeGuide(startEditing) {
+      try {
+        if (guideHide.checked) window.localStorage.setItem(guideHideUntilKey, String(Date.now() + 7 * 24 * 60 * 60 * 1000));
+        else window.localStorage.removeItem(guideHideUntilKey);
+      } catch (error) {}
+      guideModal.classList.remove("is-open");
+      document.documentElement.classList.remove("is-builder-guide-open");
+      guideCloseTimer = window.setTimeout(function () {
+        guideModal.hidden = true;
+        if (startEditing) openBuilder();
+        else if (guideReturnFocus && typeof guideReturnFocus.focus === "function") guideReturnFocus.focus();
+      }, 220);
+    }
+
+    function shouldAutoOpenGuide() {
+      if (isSubPage || window.innerWidth <= 1400) return false;
+      if (params.get("showGuide") === "1") return true;
+      try { return Number(window.localStorage.getItem(guideHideUntilKey) || 0) <= Date.now(); }
+      catch (error) { return true; }
+    }
+
+    guideModal.addEventListener("click", function (event) {
+      var dot = event.target.closest("[data-builder-guide-dot]");
+      if (event.target === guideModal || event.target.closest("[data-builder-guide-close]")) closeGuide(false);
+      else if (event.target.closest("[data-builder-guide-prev]")) { guideIndex = Math.max(0, guideIndex - 1); renderGuide(); }
+      else if (event.target.closest("[data-builder-guide-next]")) {
+        if (guideIndex === guideSlides.length - 1) closeGuide(true);
+        else { guideIndex += 1; renderGuide(); }
+      } else if (dot) {
+        guideIndex = Math.max(0, Math.min(guideSlides.length - 1, Number(dot.dataset.builderGuideDot) || 0));
+        renderGuide();
+      }
+    });
+    builder.querySelector("[data-builder-guide-open]").addEventListener("click", function (event) { openGuide(event.currentTarget); });
+
     var desktopNotice = document.createElement("div");
     desktopNotice.className = "builder-desktop-notice";
     desktopNotice.hidden = true;
     desktopNotice.innerHTML = [
       '<div class="builder-desktop-notice__dialog" role="dialog" aria-modal="true" aria-labelledby="builder-desktop-notice-title">',
       '  <strong id="builder-desktop-notice-title">PC에서 사용 가능합니다.</strong>',
-      '  <p>사이트 편집기는 화면 너비 1000px보다 큰 PC 환경에서 이용해 주세요.</p>',
       '  <button type="button" data-builder-desktop-notice-close>확인</button>',
       '</div>'
     ].join("");
@@ -947,7 +1125,7 @@
       } else {
         input.readOnly = false;
         submitButton.textContent = "빌드하기";
-        projectNotice.innerHTML = '현재 편집 내용을 먼저 <b>파일 저장</b>한 뒤 빌드해 주세요.';
+        projectNotice.innerHTML = '현재 편집 내용을 먼저 <b>저장</b>한 뒤 빌드해 주세요.';
       }
     }
 
@@ -1496,7 +1674,7 @@
       if (!selectionStyle) {
         selectionStyle = canvasDocument.createElement("style");
         selectionStyle.id = "dq-builder-selection-style";
-        selectionStyle.textContent = ".dq-builder-hover{outline:2px solid #ff4d8d!important;outline-offset:-2px!important;cursor:crosshair!important}.dq-builder-selected{outline:2px solid #ff4d8d!important;outline-offset:-2px!important}.dq-builder-structure-hover{outline:2px solid #695cff!important;outline-offset:-2px!important;cursor:pointer!important}.dq-builder-structure-selected{outline:3px solid #695cff!important;outline-offset:-3px!important}";
+        selectionStyle.textContent = ".dq-builder-hover{outline:2px solid #ff4d8d!important;outline-offset:-2px!important;cursor:crosshair!important}.dq-builder-selected{outline:2px solid #ff4d8d!important;outline-offset:-2px!important}.dq-builder-structure-hover,.dq-builder-layer-hover{outline:2px solid #695cff!important;outline-offset:-2px!important;cursor:pointer!important}.dq-builder-structure-selected{outline:3px solid #695cff!important;outline-offset:-3px!important}";
         canvasDocument.head.appendChild(selectionStyle);
       }
       canvasDocument.addEventListener("mouseover", function (event) {
@@ -1531,7 +1709,20 @@
       }, true);
     }
 
+    function isBuilderViewportSupported() {
+      return !window.matchMedia("(max-width: 1400px)").matches;
+    }
+
+    function showDesktopNotice() {
+      desktopNotice.hidden = false;
+      desktopNotice.querySelector("[data-builder-desktop-notice-close]").focus();
+    }
+
     function openBuilder() {
+      if (!isBuilderViewportSupported()) {
+        showDesktopNotice();
+        return;
+      }
       builder.classList.add("is-open");
       builder.setAttribute("aria-hidden", "false");
       document.documentElement.classList.add("is-builder-open");
@@ -1548,7 +1739,7 @@
 
     function closeBuilder() {
       closeProjectBuild();
-      setBuilderMode("structure");
+      setBuilderMode("idle");
       clearCanvasSelectionHighlight();
       builder.classList.remove("is-open", "is-preview");
       builder.setAttribute("aria-hidden", "true");
@@ -1887,15 +2078,20 @@
       var footerRootWidth = canvasWindow.getComputedStyle(canvasDocument.documentElement).getPropertyValue("--footer-layout-width").trim();
 
       var utilityItems = [];
-      utility.querySelectorAll(".site-header__inner > span, .utility-content > span, .utility-links > a, .utility-links > button").forEach(function (element) {
+      utility.querySelectorAll(".utility-content > [data-utility-item], .utility-links > [data-utility-item], .utility-content > span:not([data-utility-item]), .utility-links > a:not([data-utility-item]), .utility-links > button:not([data-utility-item])").forEach(function (element) {
+        var kind = element.dataset.utilityKind || (element.classList.contains("utility-login") ? "login" : "custom");
         utilityItems.push({
           id: unique("utility"),
-          type: element.classList.contains("utility-html") ? "html" : element.matches("a, button") ? "button" : "text",
-          label: readableText(element),
+          type: kind === "zoom" || kind === "dark" ? "control" : element.classList.contains("utility-html") ? "html" : element.matches("a, button") ? "button" : "text",
+          kind: kind,
+          area: element.parentElement && element.parentElement.classList.contains("utility-links") ? "right" : "left",
+          visible: !element.hidden,
+          label: kind === "zoom" || kind === "dark" ? readableText(element.querySelector("span") || element) : readableText(element),
           html: element.classList.contains("utility-html") ? element.innerHTML : "",
           href: element.getAttribute("href") || "#"
         });
       });
+      utilityItems = normalizeUtilityItems(utilityItems);
 
       var menus = [];
       header.querySelectorAll(".gnb-depth1 > .gnb-item").forEach(function (item) {
@@ -1973,6 +2169,8 @@
           },
           sitemap: {
             background: savedConfig && savedConfig.dataset.sitemapBackground ? savedConfig.dataset.sitemapBackground : "#1f1029",
+            backgroundImage: savedConfig && savedConfig.dataset.sitemapBackgroundImage ? savedConfig.dataset.sitemapBackgroundImage : "",
+            backgroundFilter: savedConfig && /^(?:none|dark|blur|grayscale)$/.test(savedConfig.dataset.sitemapBackgroundFilter) ? savedConfig.dataset.sitemapBackgroundFilter : "none",
             title: sitemapTitle ? readableText(sitemapTitle) : "DQ PROJECT / ALL MENU",
             layout: savedConfig && savedConfig.dataset.sitemapLayout === "vertical" ? "vertical" : "horizontal",
             depth1Color: savedConfig && savedConfig.dataset.sitemapDepth1Color ? savedConfig.dataset.sitemapDepth1Color : "#ffffff",
@@ -2048,7 +2246,9 @@
       var data = state.header;
       var themeData = ensureThemeData(state.theme || { color1: "#5a1c7e", color2: "#3e1259", color3: "#c68be5", fontFamily: "Pretendard", applyToSitemap: true, contentMaxWidth: 1200, radiusStyle: "soft", buttonStyle: "outline", motionStyle: "soft", designStyle: "custom" });
       state.theme = themeData;
-      if (!data.sitemap) data.sitemap = { background: "#1f1029", title: "DQ PROJECT / ALL MENU", layout: "horizontal", depth1Color: "#ffffff", depth23Color: "#ffffff" };
+      if (!data.sitemap) data.sitemap = { background: "#1f1029", backgroundImage: "", backgroundFilter: "none", title: "DQ PROJECT / ALL MENU", layout: "horizontal", depth1Color: "#ffffff", depth23Color: "#ffffff" };
+      if (typeof data.sitemap.backgroundImage !== "string") data.sitemap.backgroundImage = "";
+      data.sitemap.backgroundFilter = /^(?:none|dark|blur|grayscale)$/.test(data.sitemap.backgroundFilter) ? data.sitemap.backgroundFilter : "none";
       if (themeData.applyToSitemap !== false) {
         data.sitemap.background = themeData.color2;
         data.sitemap.depth1Color = themeData.color3;
@@ -2081,6 +2281,7 @@
       canvasDocument.documentElement.style.setProperty("--theme-button-background", buttonValues.background);
       canvasDocument.documentElement.style.setProperty("--theme-button-border", buttonValues.border);
       canvasDocument.documentElement.style.setProperty("--theme-button-color", buttonValues.color);
+      canvasDocument.documentElement.style.setProperty("--theme-on-primary", contrastColor(themeData.color1));
       canvasDocument.documentElement.style.setProperty("--theme-motion-fast", motionValues.fast);
       canvasDocument.documentElement.style.setProperty("--theme-motion-lift", motionValues.lift);
       canvasDocument.documentElement.style.setProperty("--gnb-motion-base", motionValues.base);
@@ -2098,10 +2299,12 @@
       header.style.setProperty("--header-utility-height", provisionalUtilityHeight + "px");
       header.style.setProperty("--header-total-height", (data.height + provisionalUtilityHeight) + "px");
       header.style.setProperty("--sitemap-background", data.sitemap.background || "#1f1029");
+      header.style.setProperty("--sitemap-background-image", data.sitemap.backgroundImage ? 'url("' + String(data.sitemap.backgroundImage).replace(/["\\]/g, "\\$&") + '")' : "none");
       header.style.setProperty("--gnb-depth1-color", data.navigation.color || "#222222");
       header.style.setProperty("--sitemap-depth1-color", data.sitemap.depth1Color || "#ffffff");
       header.style.setProperty("--sitemap-depth23-color", data.sitemap.depth23Color || "#ffffff");
       header.dataset.sitemapLayout = data.sitemap.layout === "vertical" ? "vertical" : "horizontal";
+      header.dataset.sitemapFilter = data.sitemap.backgroundFilter;
       headerInner.style.height = data.height + "px";
 
       utility.hidden = !data.utility.visible;
@@ -2118,6 +2321,8 @@
         savedHeaderConfig.dataset.searchHref = data.actions.searchHref || "#";
         savedHeaderConfig.dataset.sitemapLayout = data.sitemap.layout === "vertical" ? "vertical" : "horizontal";
         savedHeaderConfig.dataset.sitemapBackground = data.sitemap.background || "#1f1029";
+        savedHeaderConfig.dataset.sitemapBackgroundImage = data.sitemap.backgroundImage || "";
+        savedHeaderConfig.dataset.sitemapBackgroundFilter = data.sitemap.backgroundFilter || "none";
         savedHeaderConfig.dataset.sitemapDepth1Color = data.sitemap.depth1Color || "#ffffff";
         savedHeaderConfig.dataset.sitemapDepth23Color = data.sitemap.depth23Color || "#ffffff";
         savedHeaderConfig.dataset.sitemapUseTheme = String(themeData.applyToSitemap !== false);
@@ -2133,30 +2338,8 @@
       }
       utility.style.backgroundColor = rgba(data.utility.background, data.utility.opacity);
       utility.style.color = data.utility.color;
-      utilityInner.innerHTML = "";
-      var utilityContent = canvasDocument.createElement("div");
-      utilityContent.className = "utility-content";
-      var utilityLinks = canvasDocument.createElement("div");
-      utilityLinks.className = "utility-links";
-      data.utility.items.forEach(function (item) {
-        if (item.type === "button") {
-          var link = canvasDocument.createElement("a");
-          link.href = item.href || "#";
-          link.textContent = item.label;
-          utilityLinks.appendChild(link);
-        } else if (item.type === "html") {
-          var htmlElement = canvasDocument.createElement("span");
-          htmlElement.className = "utility-html";
-          htmlElement.innerHTML = safeUtilityHtml(item.html);
-          utilityContent.appendChild(htmlElement);
-        } else {
-          var text = canvasDocument.createElement("span");
-          text.textContent = item.label;
-          utilityContent.appendChild(text);
-        }
-      });
-      utilityInner.appendChild(utilityContent);
-      utilityInner.appendChild(utilityLinks);
+      data.utility.items = normalizeUtilityItems(data.utility.items);
+      utilityInner.innerHTML = buildUtilityInnerHtml(data.utility.items);
 
       logo.innerHTML = "";
       logo.href = data.logo.href || "#";
@@ -2420,8 +2603,18 @@
       return '<label class="builder-field"><span>' + label + "</span>" + input + "</label>";
     }
 
+    function colorControl(value, targetAttribute, showOpacity) {
+      var normalized = toHex(value, "#000000");
+      var base = normalized.slice(0, 7);
+      var opacity = alphaPercent(normalized);
+      return '<div class="builder-color-control" data-color-control>' +
+        '<div class="builder-color-control__value"><input type="color" data-color-picker ' + targetAttribute + ' value="' + base + '" aria-label="색상 선택"><input type="text" data-color-hex ' + targetAttribute + ' value="' + base + '" maxlength="7" spellcheck="false" aria-label="HEX 색상값"></div>' +
+        (showOpacity === false ? '' : '<div class="builder-color-control__opacity"><span>투명도</span><input type="range" min="0" max="100" step="1" data-color-opacity ' + targetAttribute + ' value="' + opacity + '" aria-label="투명도"><span class="builder-color-control__opacity-number"><input type="number" min="0" max="100" step="1" data-color-opacity ' + targetAttribute + ' value="' + opacity + '" aria-label="투명도 직접 입력"><em>%</em></span></div>') + '</div>';
+    }
+
     function colorField(label, path, value) {
-      return field(label, '<input type="color" data-bind="' + path + '" value="' + escapeHtml(value) + '">');
+      var hasSeparateOpacity = path === "header.background" || path === "header.utility.background";
+      return field(label, colorControl(value, 'data-color-path="' + escapeHtml(path) + '"', !hasSeparateOpacity));
     }
 
     function rangeField(label, path, value, min, max, unit) {
@@ -2488,19 +2681,26 @@
     }
 
     function renderUtilityInspector() {
-      inspectorTitle.textContent = "유틸리티";
+      inspectorTitle.textContent = "헤더 유틸리티";
       var data = state.header.utility;
-      var items = data.items.map(function (item) {
+      data.items = normalizeUtilityItems(data.items);
+      function utilityRow(item) {
         var control;
         if (item.type === "html") control = '<textarea data-utility-field="html" aria-label="HTML 코드">' + escapeHtml(item.html || "") + '</textarea>';
         else if (item.type === "button") control = '<div class="builder-utility-fields"><input type="text" value="' + escapeHtml(item.label) + '" data-utility-field="label" aria-label="버튼명"><input type="text" value="' + escapeHtml(item.href || "#") + '" data-utility-field="href" aria-label="버튼 링크"></div>';
         else control = '<input type="text" value="' + escapeHtml(item.label) + '" data-utility-field="label" aria-label="유틸리티 문구">';
-        return '<div class="builder-collection-row' + (item.type === "html" ? ' is-html' : '') + '" data-utility-id="' + item.id + '">' + icon("drag") + control + '<button type="button" data-remove-utility="' + item.id + '" aria-label="삭제">' + icon("delete") + "</button></div>";
-      }).join("");
+        if (item.kind === "zoom" || item.kind === "dark") control = '<input type="text" value="' + escapeHtml(item.label) + '" data-utility-field="label" aria-label="기능 이름">';
+        var fixed = /^(?:login|zoom|dark)$/.test(item.kind || "");
+        var kindLabel = item.kind === "login" ? "로그인" : item.kind === "zoom" ? "화면 크기" : item.kind === "dark" ? "다크모드" : item.type === "html" ? "HTML" : item.type === "button" ? "링크" : "문구";
+        return '<div class="builder-collection-row is-utility-row' + (item.type === "html" ? ' is-html' : '') + (fixed ? ' is-fixed' : '') + '" data-utility-id="' + item.id + '"><label class="builder-utility-visible"><input type="checkbox" data-utility-field="visible"' + (item.visible !== false ? ' checked' : '') + '><span>' + kindLabel + '</span></label>' + control + (fixed ? '' : '<button type="button" data-remove-utility="' + item.id + '" aria-label="삭제">' + icon("delete") + '</button>') + '</div>';
+      }
+      var leftItems = data.items.filter(function (item) { return item.area !== "right"; }).map(utilityRow).join("");
+      var rightItems = data.items.filter(function (item) { return item.area === "right"; }).map(utilityRow).join("");
 
       return inspectorSection("영역", "상단 안내 영역 표시 설정", switchField("유틸리티 사용", "header.utility.visible", data.visible) + switchField("태블릿·모바일에서도 표시", "header.utility.mobileVisible", data.mobileVisible)) +
         inspectorSection("스타일", "배경과 글자색", colorField("배경색", "header.utility.background", data.background) + rangeField("투명도", "header.utility.opacity", data.opacity, 0, 100, "%") + colorField("글자색", "header.utility.color", data.color)) +
-        inspectorSection("요소", "문구·링크·안전한 HTML을 관리합니다.", '<div class="builder-collection">' + (items || '<p class="builder-empty">등록된 요소가 없습니다.</p>') + '</div><div class="builder-add-row"><button type="button" data-add-utility="text">' + icon("add") + '문구</button><button type="button" data-add-utility="button">' + icon("add") + '버튼</button><button type="button" data-add-utility="html">' + icon("add") + "HTML</button></div>");
+        inspectorSection("왼쪽 영역", "안내 문구와 보조 정보를 배치합니다.", '<div class="builder-collection">' + (leftItems || '<p class="builder-empty">표시할 요소가 없습니다.</p>') + '</div><div class="builder-add-row"><button type="button" data-add-utility="text" data-utility-area="left">' + icon("add") + '문구</button><button type="button" data-add-utility="html" data-utility-area="left">' + icon("add") + 'HTML</button></div>') +
+        inspectorSection("오른쪽 영역", "로그인·화면 크기·다크모드를 각각 표시하거나 숨길 수 있습니다.", '<div class="builder-collection">' + rightItems + '</div><div class="builder-add-row"><button type="button" data-add-utility="button" data-utility-area="right">' + icon("add") + '링크</button></div>');
     }
 
     function renderLogoInspector() {
@@ -2548,7 +2748,8 @@
       inspectorTitle.textContent = "사이트맵";
       var data = state.header.sitemap;
       var layoutSelect = field("메뉴 배치", '<select data-bind="header.sitemap.layout"><option value="horizontal"' + (data.layout === "horizontal" ? " selected" : "") + '>가로 배치</option><option value="vertical"' + (data.layout === "vertical" ? " selected" : "") + '>세로 배치</option></select>');
-      return inspectorSection("스타일", "전체 화면 사이트맵의 배경과 제목", colorField("배경색", "header.sitemap.background", data.background) + field("제목 문구", '<input type="text" data-bind="header.sitemap.title" value="' + escapeHtml(data.title) + '">') + colorField("1뎁스 글자색", "header.sitemap.depth1Color", data.depth1Color) + colorField("2·3뎁스 글자색", "header.sitemap.depth23Color", data.depth23Color)) +
+      var backgroundImage = backgroundImageUploadControl(data.backgroundImage || "", 'data-bind="header.sitemap.backgroundImage"', "data-sitemap-background-upload", "data-remove-sitemap-background", "업로드한 이미지는 사이트맵 전체 화면에 맞춰 채워집니다.", data.backgroundFilter || "none", 'data-bind="header.sitemap.backgroundFilter"');
+      return inspectorSection("스타일", "전체 화면 사이트맵의 배경과 제목", colorField("배경색", "header.sitemap.background", data.background) + field("배경 이미지", backgroundImage) + field("제목 문구", '<input type="text" data-bind="header.sitemap.title" value="' + escapeHtml(data.title) + '">') + colorField("1뎁스 글자색", "header.sitemap.depth1Color", data.depth1Color) + colorField("2·3뎁스 글자색", "header.sitemap.depth23Color", data.depth23Color)) +
         inspectorSection("메뉴 레이아웃", "1뎁스 메뉴의 배치 방향을 선택합니다.", layoutSelect) +
         inspectorSection("스크롤", "메뉴가 길어지면 사이트맵 전체 영역이 하나로 스크롤됩니다.", '<p class="builder-empty">각 메뉴 내부에는 별도 스크롤이 생기지 않습니다.</p>');
     }
@@ -2750,34 +2951,55 @@
       return true;
     }
 
+    function contentSectionDisplayName(section, index) {
+      var currentName = String(section && section.name || "").trim();
+      var isGenericName = !currentName || /^(?:새 레이아웃|콘텐츠 선택|새 섹션)$/.test(currentName);
+      if (!isGenericName) return currentName;
+      var moduleNames = [];
+      (section && section.cells || []).forEach(function (cell) {
+        var type = cell && cell.module && cell.module.type;
+        var label = type && type !== "empty" && window.DQContentBuilder && window.DQContentBuilder.labels[type];
+        if (label && moduleNames.indexOf(label) < 0) moduleNames.push(label);
+      });
+      return moduleNames.length ? moduleNames.join(" · ") : "빈 섹션 " + (index + 1);
+    }
+
+    function backgroundImageUploadControl(value, pathAttribute, uploadAttribute, removeAttribute, helpText, filterValue, filterAttribute) {
+      var imageValue = String(value || "");
+      var selectedFilter = /^(?:none|dark|blur|grayscale)$/.test(filterValue) ? filterValue : "none";
+      return '<div class="builder-background-upload">' +
+        '<div class="builder-content-image-field"><input type="text" ' + pathAttribute + ' value="' + escapeHtml(imageValue) + '" placeholder="이미지 경로 또는 URL"><label><span>' + (imageValue ? "이미지 교체" : "이미지 등록") + '</span><input type="file" accept="image/jpeg,image/png,image/gif,image/webp" ' + uploadAttribute + '></label></div>' +
+        (imageValue ? '<div class="builder-background-upload__preview"><img src="' + escapeHtml(imageValue) + '" alt="배경 이미지 미리보기"><button type="button" ' + removeAttribute + '>이미지 제거</button></div>' : '') +
+        '<small>' + escapeHtml(helpText) + '</small>' +
+        '<label class="builder-background-upload__filter"><span>이미지 필터</span><select ' + filterAttribute + '><option value="none"' + (selectedFilter === "none" ? " selected" : "") + '>없음</option><option value="dark"' + (selectedFilter === "dark" ? " selected" : "") + '>어둡게</option><option value="blur"' + (selectedFilter === "blur" ? " selected" : "") + '>블러</option><option value="grayscale"' + (selectedFilter === "grayscale" ? " selected" : "") + '>흑백</option></select></label></div>';
+    }
+
     function renderContentInspector() {
       inspectorTitle.textContent = "섹션 구성";
       var content = state.content || (state.content = { sections: [] });
       var sections = content.sections || (content.sections = []);
       var selected = sections.find(function (section) { return section.id === selectedContentSectionId; }) || sections[0] || null;
       if (selected && selectedContentSectionId !== selected.id) selectedContentSectionId = selected.id;
-      var listHtml = sections.map(function (section, index) {
-        return '<div class="builder-content-section-row' + (selected && selected.id === section.id ? ' is-selected' : '') + '" data-content-section-id="' + section.id + '">' +
-          '<button type="button" data-content-select><span>' + (index + 1) + '</span><strong>' + escapeHtml(section.name) + '</strong><small>' + escapeHtml(section.layout) + '열 · 최대 ' + (section.maxWidth || 1200) + 'px</small></button>' +
-          '<div><button type="button" data-content-move="up" aria-label="위로"' + (index === 0 ? ' disabled' : '') + '>↑</button><button type="button" data-content-move="down" aria-label="아래로"' + (index === sections.length - 1 ? ' disabled' : '') + '>↓</button><button type="button" class="builder-content-delete" data-content-remove>삭제</button></div></div>';
-      }).join("");
       var addLayout = '<button type="button" class="builder-layout-add" data-content-add="empty"><span class="builder-layout-add__preview"><i></i><i></i><i></i></span><strong>새 레이아웃 추가</strong><small>너비와 열을 정한 뒤 각 칸에 요소를 넣습니다.</small></button>';
       var result = inspectorSection("1. 레이아웃 만들기", "콘텐츠보다 먼저 영역의 크기와 열을 정합니다.", addLayout) +
         inspectorSection("전체 섹션 설정", "콘텐츠 영역의 배경색과 모든 섹션 사이의 간격을 조정합니다.",
-          field("콘텐츠 배경색", '<input type="color" data-content-global-field="background" value="' + escapeHtml(content.background || "#ffffff") + '">') +
+          field("콘텐츠 배경색", colorControl(content.background || "#ffffff", 'data-color-content-global="background"', true)) +
           field("섹션 간 여백", '<div class="builder-range-number builder-range-number--wide"><input type="number" min="0" max="200" step="4" data-content-global-number="sectionGap" value="' + (content.sectionGap || 0) + '"><em>px</em></div>')) +
-        inspectorSection("만든 레이아웃", "선택하거나 순서를 바꾸고 필요 없는 레이아웃은 삭제합니다.", listHtml || '<p class="builder-empty">레이아웃을 추가해 주세요.</p>');
+        '<p class="builder-content-list-guide">만든 섹션의 선택·순서 변경·삭제는 왼쪽 <strong>콘텐츠</strong> 목록에서 처리합니다.</p>';
       if (selectedLayer === "content-sections") return result;
       if (!selected) return inspectorSection("섹션 상세 설정", "섹션 구성에서 새 레이아웃을 추가해 주세요.", '<p class="builder-empty">선택된 섹션이 없습니다.</p>');
-      inspectorTitle.textContent = selected.name;
+      var selectedIndex = sections.indexOf(selected);
+      var selectedDisplayName = contentSectionDisplayName(selected, selectedIndex);
+      inspectorTitle.textContent = selectedDisplayName;
+      var contextMarkup = '<div class="builder-inspector-context"><div><button type="button" data-layer="content-sections">콘텐츠</button><span aria-hidden="true">›</span><strong>' + escapeHtml(selectedDisplayName) + '</strong></div><small>' + escapeHtml(selected.layout || "1") + '열 · 최대 ' + (selected.maxWidth || 1200) + 'px</small></div>';
       if (selected.legacy) {
-        return inspectorSection("기본 콘텐츠", "기존 페이지에 있던 콘텐츠입니다. 그대로 유지하면서 CSS 상세 편집하거나 삭제할 수 있습니다.",
+        return contextMarkup + inspectorSection("기본 콘텐츠", "기존 페이지에 있던 콘텐츠입니다. 그대로 유지하면서 CSS 상세 편집하거나 삭제할 수 있습니다.",
           '<div data-content-section-id="' + selected.id + '">' +
           field("좌측 메뉴 이름", '<input type="text" data-content-section-field="name" value="' + escapeHtml(selected.name) + '">') +
           '<div class="builder-content-cell-card' + (selected.cells[0] && selected.cells[0].id === selectedContentCellId ? ' is-canvas-selected' : '') + '" data-content-cell-index="0" data-content-cell-id="' + escapeHtml(selected.cells[0] && selected.cells[0].id || "") + '"><button type="button" class="builder-content-detail-wide" data-content-detail-edit>영역 CSS 상세 편집</button></div>' +
           '<button type="button" class="builder-element-remove" data-content-remove>이 기본 섹션 삭제</button></div>');
       }
-      result = "";
+      result = contextMarkup;
       var layouts = [
         ["1", "1열"], ["2", "2열"], ["3", "3열"]
       ].map(function (layout) {
@@ -2797,10 +3019,11 @@
             : '<p class="builder-empty">열 제목이 삭제되었습니다. 위 스위치를 켜면 다시 표시할 수 있습니다.</p>') +
           '</div>';
         if (module.type !== "empty") {
-          var variantOptions = (window.DQContentBuilder.variants[module.type] || []).map(function (variant) {
+          var availableVariants = window.DQContentBuilder.variants[module.type] || [];
+          var variantOptions = availableVariants.map(function (variant) {
             return '<option value="' + variant[0] + '"' + (module.variant === variant[0] ? ' selected' : '') + '>' + escapeHtml(variant[1]) + '</option>';
           }).join("");
-          moduleFields += field("표시 타입", '<select data-content-module-variant>' + variantOptions + '</select>');
+          if (availableVariants.length > 1) moduleFields += field("표시 타입", '<select data-content-module-variant>' + variantOptions + '</select>');
           if (module.type === "board") {
             moduleFields += field("오버 효과", '<select data-content-module-field="hoverEffect"><option value="underline"' + (module.hoverEffect === "underline" ? " selected" : "") + '>제목 밑줄</option><option value="lift"' + (module.hoverEffect === "lift" ? " selected" : "") + '>위로 살짝 이동</option><option value="background"' + (module.hoverEffect === "background" ? " selected" : "") + '>배경색 강조</option></select>');
           } else if (module.type === "quick") {
@@ -2819,16 +3042,75 @@
             return '<option value="' + animation[0] + '"' + (module.animation === animation[0] ? ' selected' : '') + '>' + animation[1] + '</option>';
           }).join("");
           moduleFields += field("등장 효과", '<select data-content-module-field="animation">' + animationOptions + '</select><small>전체 테마의 모션 강도에 맞춰 속도가 자동 조정됩니다.</small>');
-          if (module.type === "code") {
+          if (module.type === "tabs") {
+            var tabModuleTypes = ["board", "cards", "banner", "quick", "gallery", "stats"];
+            var tabRows = (module.tabs || []).map(function (tab, tabIndex) {
+              var nested = tab.module || window.DQContentBuilder.createModule("board");
+              var nestedTypeOptions = tabModuleTypes.map(function (type) {
+                return '<option value="' + type + '"' + (nested.type === type ? ' selected' : '') + '>' + escapeHtml(window.DQContentBuilder.labels[type]) + '</option>';
+              }).join("");
+              var nestedVariants = (window.DQContentBuilder.variants[nested.type] || []).filter(function (variant) { return variant[0] !== "intro-slider"; });
+              var nestedVariantOptions = nestedVariants.map(function (variant) {
+                return '<option value="' + variant[0] + '"' + (nested.variant === variant[0] ? ' selected' : '') + '>' + escapeHtml(variant[1]) + '</option>';
+              }).join("");
+              var nestedItems = (nested.items || []).map(function (item, itemIndex) {
+                return '<div class="builder-content-item" data-content-tab-item-index="' + itemIndex + '">' +
+                  '<div class="builder-content-item__head"><strong>항목 ' + (itemIndex + 1) + '</strong><button type="button" data-content-tab-item-remove aria-label="탭 항목 삭제">×</button></div>' +
+                  '<input type="text" data-content-tab-item-field="title" value="' + escapeHtml(item.title || "") + '" placeholder="제목">' +
+                  '<input type="text" data-content-tab-item-field="text" value="' + escapeHtml(item.text || "") + '" placeholder="설명 또는 날짜">' +
+                  '<input type="text" data-content-tab-item-field="href" value="' + escapeHtml(item.href || "") + '" placeholder="링크">' +
+                  '<div class="builder-content-image-field"><input type="text" data-content-tab-item-field="image" value="' + escapeHtml(item.image || "") + '" placeholder="이미지 경로"><label><span>이미지 업로드</span><input type="file" accept="image/jpeg,image/png,image/gif,image/webp" data-content-tab-item-upload></label></div>' +
+                  '<input type="text" data-content-tab-item-field="alt" value="' + escapeHtml(item.alt || "") + '" placeholder="이미지 대체텍스트">' +
+                  (nested.type === "quick" ? '<input type="text" data-content-tab-item-field="icon" value="' + escapeHtml(item.icon || "home") + '" placeholder="아이콘: home, search, user...">' : '') + '</div>';
+              }).join("");
+              return '<details class="builder-content-details builder-tab-content" data-content-tab-index="' + tabIndex + '"' + (tabIndex === 0 ? ' open' : '') + '>' +
+                '<summary><span>' + escapeHtml(tab.label || "탭 " + (tabIndex + 1)) + '</span><small>' + escapeHtml(window.DQContentBuilder.labels[nested.type] || nested.type) + '</small></summary>' +
+                '<div class="builder-tab-content__actions"><button type="button" data-content-tab-move="up"' + (tabIndex === 0 ? ' disabled' : '') + '>위로</button><button type="button" data-content-tab-move="down"' + (tabIndex === module.tabs.length - 1 ? ' disabled' : '') + '>아래로</button><button type="button" data-content-tab-remove' + (module.tabs.length <= 1 ? ' disabled' : '') + '>탭 삭제</button></div>' +
+                field("탭 이름", '<input type="text" data-content-tab-field="label" value="' + escapeHtml(tab.label || "") + '">') +
+                field("탭 안에 넣을 요소", '<select data-content-tab-module-type>' + nestedTypeOptions + '</select>') +
+                '<label class="builder-switch"><span>요소 제목 표시</span><input type="checkbox" data-content-tab-module-check="showTitle"' + (nested.showTitle !== false ? ' checked' : '') + '><i></i></label>' +
+                (nested.showTitle !== false ? field("요소 제목", '<input type="text" data-content-tab-module-field="title" value="' + escapeHtml(nested.title || "") + '">') + field("요소 설명", '<textarea rows="2" data-content-tab-module-field="description">' + escapeHtml(nested.description || "") + '</textarea>') : '') +
+                (nestedVariantOptions ? field("요소 표시 타입", '<select data-content-tab-module-variant>' + nestedVariantOptions + '</select>') : '') +
+                '<details class="builder-content-details"><summary>항목 내용 편집 <small>' + nested.items.length + '개</small></summary><div class="builder-content-items">' + nestedItems + '</div><button type="button" class="builder-sub-add" data-content-tab-item-add>+ 항목 추가</button></details>' +
+                '</details>';
+            }).join("");
+            moduleFields += '<div class="builder-tab-manager"><p>각 탭마다 게시판·카드·배너 등의 요소 하나를 넣을 수 있습니다.</p>' + tabRows + '<button type="button" class="builder-sub-add" data-content-tab-add>+ 탭 추가</button></div>';
+          } else if (module.type === "code") {
             moduleFields += '<div class="builder-code-editor"><p>이 요소 안에서 사용할 HTML·CSS·JS를 각각 입력합니다. JS에서는 <code>root</code>와 <code>host</code>를 사용할 수 있습니다. 공유 편집에서는 신뢰할 수 있는 코드만 넣어 주세요.</p>' +
               field("HTML", '<textarea rows="10" spellcheck="false" data-content-module-field="html" placeholder="<div class=&quot;box&quot;>...</div>">' + escapeHtml(module.html || "") + '</textarea>') +
               field("CSS", '<textarea rows="10" spellcheck="false" data-content-module-field="css" placeholder=".box { padding: 24px; }">' + escapeHtml(module.css || "") + '</textarea>') +
               field("JS", '<textarea rows="10" spellcheck="false" data-content-module-field="js" placeholder="root.querySelector(...)">' + escapeHtml(module.js || "") + '</textarea>') + '</div>';
+          } else if (module.type === "youtube") {
+            moduleFields += field("유튜브 영상 ID", '<input type="text" data-content-module-field="videoId" value="' + escapeHtml(module.videoId || "") + '" placeholder="ZvenigmbShw"><small>유튜브 주소의 <strong>v=</strong> 뒤에 있는 11자리 ID만 입력하세요. 전체 주소를 붙여 넣어도 자동으로 처리됩니다.</small>') +
+              '<label class="builder-switch"><span>영역 진입 시 자동 재생</span><input type="checkbox" data-content-module-check="autoplayOnView"' + (module.autoplayOnView ? ' checked' : '') + '><i></i></label><small>브라우저 자동 재생 정책에 따라 음소거 상태로 재생되며, 영역을 벗어나면 일시정지됩니다.</small>';
+          } else if (module.type === "calendar") {
+            moduleFields += '<div class="builder-content-padding-grid">' +
+              field("표시 연도", '<div class="builder-range-number builder-range-number--wide"><input type="number" min="1970" max="2100" step="1" data-content-module-number="calendarYear" value="' + (module.calendarYear || new Date().getFullYear()) + '"><em>년</em></div>') +
+              field("표시 월", '<div class="builder-range-number builder-range-number--wide"><input type="number" min="1" max="12" step="1" data-content-module-number="calendarMonth" value="' + (module.calendarMonth || (new Date().getMonth() + 1)) + '"><em>월</em></div>') + '</div>';
+            var calendarRows = module.items.map(function (item, itemIndex) {
+              return '<div class="builder-content-item" data-content-item-index="' + itemIndex + '"><div class="builder-content-item__head"><strong>일정 ' + (itemIndex + 1) + '</strong><button type="button" data-content-item-remove aria-label="일정 삭제">×</button></div>' +
+                '<input type="date" data-content-item-field="text" value="' + escapeHtml(item.text || "") + '">' +
+                '<input type="text" data-content-item-field="title" value="' + escapeHtml(item.title || "") + '" placeholder="날짜에 표시할 정보">' +
+                '<input type="text" data-content-item-field="href" value="' + escapeHtml(item.href || "") + '" placeholder="클릭 시 이동할 링크 (선택)"></div>';
+            }).join("");
+            moduleFields += '<details class="builder-content-details" open><summary>날짜별 일정 <small>' + module.items.length + '개</small></summary><div class="builder-content-items">' + calendarRows + '</div><button type="button" class="builder-sub-add" data-content-item-add>+ 일정 추가</button></details>';
+          } else if (module.type === "sns") {
+            var snsPlatforms = [["instagram", "인스타그램"], ["youtube", "유튜브"], ["facebook", "페이스북"], ["blog", "블로그"], ["x", "X"]];
+            var snsRows = module.items.map(function (item, itemIndex) {
+              var platformOptions = snsPlatforms.map(function (platform) {
+                return '<option value="' + platform[0] + '"' + ((item.platform || item.icon) === platform[0] ? ' selected' : '') + '>' + platform[1] + '</option>';
+              }).join("");
+              return '<div class="builder-content-item" data-content-item-index="' + itemIndex + '"><div class="builder-content-item__head"><strong>SNS ' + (itemIndex + 1) + '</strong><button type="button" data-content-item-remove aria-label="SNS 링크 삭제">×</button></div>' +
+                '<select data-content-item-field="platform">' + platformOptions + '</select>' +
+                '<input type="text" data-content-item-field="title" value="' + escapeHtml(item.title || "") + '" placeholder="표시 이름">' +
+                '<input type="url" data-content-item-field="href" value="' + escapeHtml(item.href || "") + '" placeholder="https://..."></div>';
+            }).join("");
+            moduleFields += '<details class="builder-content-details" open><summary>SNS 링크 <small>' + module.items.length + '개</small></summary><div class="builder-content-items">' + snsRows + '</div><button type="button" class="builder-sub-add" data-content-item-add>+ SNS 추가</button></details>';
           } else {
           if (/^(?:quick|board|cards|stats|gallery)$/.test(module.type)) {
             moduleFields += field("항목 사이 간격", '<div class="builder-range-number builder-range-number--wide"><input type="number" min="0" max="100" step="2" data-content-module-number="gap" value="' + (module.gap || 24) + '"><em>px</em></div><small>화면이 작아지면 자동으로 줄어듭니다.</small>');
           }
-          if (module.type === "cards" && selected.layout === "1") {
+          if (module.type === "cards" && selected.layout === "1" && module.variant !== "intro-slider") {
             moduleFields += '<label class="builder-switch"><span>카드만 화면 전체 너비</span><input type="checkbox" data-content-module-check="fullBleed"' + (module.fullBleed ? ' checked' : '') + '><i></i></label><small>제목은 최대 너비 안에 두고 카드 트랙만 화면 끝까지 확장합니다.</small>';
           } else if (module.type === "cards") {
             moduleFields += '<small>카드 전체 너비 기능은 1열 레이아웃에서 사용할 수 있습니다.</small>';
@@ -2844,12 +3126,17 @@
           }).join("");
           var canAddItems = !/^(?:text|imageText)$/.test(module.type);
           moduleFields += '<details class="builder-content-details"><summary>항목 내용 편집 <small>' + module.items.length + '개</small></summary><div class="builder-content-items">' + itemRows + '</div>' + (canAddItems ? '<button type="button" class="builder-sub-add" data-content-item-add>+ 항목 추가</button>' : '') + '</details>';
-          if (module.items.length > 1) {
+          if (module.items.length > 1 && /^(?:visual|cards|banner|gallery)$/.test(module.type)) {
             var perViewOptions = [1, 2, 3, 4].map(function (count) { return '<option value="' + count + '"' + (Number(module.slider.perView || 1) === count ? ' selected' : '') + '>' + count + '개</option>'; }).join("");
-            var perViewField = /^(?:cards|quick|gallery)$/.test(module.type) ? field("PC 노출 개수", '<select data-content-slider-number="perView">' + perViewOptions + '</select><small>태블릿은 최대 2개, 모바일은 1개로 자동 조정됩니다. 좌우 이동하려면 전체 항목 수가 노출 개수보다 많아야 합니다.</small>') : '';
-            var transitionOptions = [["fade", "페이드"], ["slide", "좌우 이동"], ["vertical", "위아래 이동"], ["zoom", "확대 전환"]].map(function (transition) {
+            var perViewHelp = module.type === "cards" ? "카드형은 모바일 1.5개, 중간 화면 2개, 태블릿 2.7개 센터 모드로 자동 조정됩니다." : "태블릿은 최대 2개, 모바일은 1개로 자동 조정됩니다.";
+            var perViewField = /^(?:cards|quick|gallery)$/.test(module.type) ? field("PC 노출 개수", '<select data-content-slider-number="perView">' + perViewOptions + '</select><small>' + perViewHelp + ' 좌우 이동하려면 전체 항목 수가 노출 개수보다 많아야 합니다.</small>') : '';
+            var transitionChoices = module.type === "visual"
+              ? [["fade", "소프트 페이드"], ["page", "페이지 넘김"], ["cinematic", "시네마틱 줌"]]
+              : [["fade", "소프트 페이드"], ["slide", "좌우 이동"], ["vertical", "위아래 이동"]];
+            var transitionOptions = transitionChoices.map(function (transition) {
               return '<option value="' + transition[0] + '"' + (module.slider.transition === transition[0] ? ' selected' : '') + '>' + transition[1] + '</option>';
             }).join("");
+            var transitionHelp = module.type === "visual" ? '<small>소프트 페이드는 장면이 겹쳐 바뀌고, 페이지 넘김은 다음 장면이 화면을 덮으며, 시네마틱 줌은 이미지와 문구가 천천히 깊이감 있게 전환됩니다.</small>' : '';
             var controllerGroups = [
               ["이미지 위", [["image-capsule", "캡슐형"], ["image-split", "분리형"], ["image-minimal", "미니멀형"]]],
               ["슬라이드 하단", [["bottom-capsule", "캡슐형"], ["bottom-split", "분리형"], ["bottom-minimal", "미니멀형"]]]
@@ -2860,7 +3147,7 @@
               }).join("") + '</optgroup>';
             }).join("");
             moduleFields += '<details class="builder-content-details"><summary>슬라이드 설정</summary>' +
-              field("전환 효과", '<select data-content-slider-option="transition">' + transitionOptions + '</select>') +
+              field("전환 효과", '<select data-content-slider-option="transition">' + transitionOptions + '</select>' + transitionHelp) +
               field("컨트롤러 타입", '<select data-content-slider-option="controllerStyle">' + controllerOptions + '</select>') +
               field("전환 시간", '<div class="builder-range-number builder-range-number--wide"><input type="number" min="100" max="3000" step="50" data-content-slider-number="duration" value="' + (module.slider.duration || 650) + '"><em>ms</em></div>') +
               field("자동 재생 간격", '<div class="builder-range-number builder-range-number--wide"><input type="number" min="1000" max="15000" step="500" data-content-slider-number="delay" value="' + (module.slider.delay || 4500) + '"><em>ms</em></div>') +
@@ -2877,16 +3164,16 @@
         return '<div class="builder-content-cell-card' + (cell.id === selectedContentCellId ? ' is-canvas-selected' : '') + '" data-content-cell-index="' + cellIndex + '" data-content-cell-id="' + escapeHtml(cell.id) + '"><div class="builder-content-cell-card__head"><strong>' + (cellIndex + 1) + '열</strong>' + (module.type !== "empty" ? '<button type="button" data-content-detail-edit>CSS 상세 편집</button>' : '') + '</div>' +
           '<div class="builder-content-type-field">' + field("넣을 요소", '<select data-content-module-type>' + typeOptions + '</select>') + '</div>' + moduleFields + '</div>';
       }).join("");
-      result += inspectorSection("2. 레이아웃 설정", "이 영역의 최대 너비와 열 개수를 먼저 정합니다.",
+      result += inspectorSection("1. 레이아웃 설정", "이 영역의 최대 너비와 열 개수를 먼저 정합니다.",
         field("레이아웃 이름", '<input type="text" data-content-section-field="name" value="' + escapeHtml(selected.name) + '">') +
         field("너비 방식", '<select data-content-section-field="width"><option value="wide"' + (selected.width === "wide" ? ' selected' : '') + '>배경 전체 · 내용 최대 너비</option><option value="full"' + (selected.width === "full" ? ' selected' : '') + '>내용까지 전체 화면</option><option value="contained"' + (selected.width === "contained" ? ' selected' : '') + '>최대 너비 박스</option></select>') +
         field("최대 너비", '<div class="builder-range-number builder-range-number--wide"><input type="number" min="760" max="1800" step="10" data-content-section-number="maxWidth" value="' + (selected.maxWidth || 1200) + '"><em>px</em></div>') +
         '<details class="builder-content-details" open><summary>섹션 제목 · 서브 제목</summary>' +
           '<div class="builder-content-heading-settings">' +
             '<label class="builder-switch"><span>섹션 제목 노출</span><input type="checkbox" data-content-section-check="showTitle"' + (selected.showTitle ? ' checked' : '') + '><i></i></label>' +
-            (selected.showTitle ? field("섹션 제목", '<input type="text" data-content-section-field="sectionTitle" value="' + escapeHtml(selected.sectionTitle || "") + '">') + field("제목 크기", '<div class="builder-range-number builder-range-number--wide"><input type="number" min="12" max="120" step="1" data-content-section-number="titleSize" value="' + (selected.titleSize || 42) + '"><em>px</em></div>') + field("제목 색상", '<input type="color" data-content-section-field="titleColor" value="' + escapeHtml(selected.titleColor || "#1d2530") + '">') + '<button type="button" class="builder-title-remove" data-content-section-title-remove>섹션 제목 삭제</button>' : '<p class="builder-empty">섹션 제목이 삭제되었습니다. 위 스위치를 켜면 다시 표시할 수 있습니다.</p>') +
+            (selected.showTitle ? field("섹션 제목", '<input type="text" data-content-section-field="sectionTitle" value="' + escapeHtml(selected.sectionTitle || "") + '">') + field("제목 크기", '<div class="builder-range-number builder-range-number--wide"><input type="number" min="12" max="120" step="1" data-content-section-number="titleSize" value="' + (selected.titleSize || 42) + '"><em>px</em></div>') + field("제목 색상", colorControl(selected.titleColor || "#1d2530", 'data-color-content-section="titleColor"', true)) + '<button type="button" class="builder-title-remove" data-content-section-title-remove>섹션 제목 삭제</button>' : '<p class="builder-empty">섹션 제목이 삭제되었습니다. 위 스위치를 켜면 다시 표시할 수 있습니다.</p>') +
             '<label class="builder-switch"><span>서브 제목 노출</span><input type="checkbox" data-content-section-check="showSubtitle"' + (selected.showSubtitle ? ' checked' : '') + '><i></i></label>' +
-            (selected.showSubtitle ? field("서브 제목", '<textarea rows="2" data-content-section-field="sectionSubtitle">' + escapeHtml(selected.sectionSubtitle || "") + '</textarea>') + field("서브 제목 크기", '<div class="builder-range-number builder-range-number--wide"><input type="number" min="10" max="72" step="1" data-content-section-number="subtitleSize" value="' + (selected.subtitleSize || 18) + '"><em>px</em></div>') + field("서브 제목 색상", '<input type="color" data-content-section-field="subtitleColor" value="' + escapeHtml(selected.subtitleColor || "#667080") + '">') : '') +
+            (selected.showSubtitle ? field("서브 제목", '<textarea rows="2" data-content-section-field="sectionSubtitle">' + escapeHtml(selected.sectionSubtitle || "") + '</textarea>') + field("서브 제목 크기", '<div class="builder-range-number builder-range-number--wide"><input type="number" min="10" max="72" step="1" data-content-section-number="subtitleSize" value="' + (selected.subtitleSize || 18) + '"><em>px</em></div>') + field("서브 제목 색상", colorControl(selected.subtitleColor || "#667080", 'data-color-content-section="subtitleColor"', true)) : '') +
             field("정렬", '<select data-content-section-field="headingAlign"><option value="left"' + (selected.headingAlign === "left" ? ' selected' : '') + '>왼쪽</option><option value="center"' + (selected.headingAlign === "center" ? ' selected' : '') + '>가운데</option><option value="right"' + (selected.headingAlign === "right" ? ' selected' : '') + '>오른쪽</option></select>') +
           '</div></details>' +
         (selected.layout !== "1" ? field("열 사이 간격", '<div class="builder-range-number builder-range-number--wide"><input type="number" min="0" max="120" step="2" data-content-section-number="columnGap" value="' + (selected.columnGap == null ? 40 : selected.columnGap) + '"><em>px</em></div><small>화면이 좁아지면 설정값 안에서 자동으로 줄어듭니다.</small>') : '') +
@@ -2900,10 +3187,10 @@
         '<div class="builder-content-height' + (selected.useHeight ? ' is-enabled' : '') + '">' +
           field("높이", '<div class="builder-range-number builder-range-number--wide"><input type="number" min="1" max="2000" step="1" data-content-section-number="heightValue" value="' + (selected.heightValue || 100) + '"><select data-content-section-field="heightUnit"><option value="px"' + (selected.heightUnit === "px" ? ' selected' : '') + '>px</option><option value="vh"' + (selected.heightUnit === "vh" ? ' selected' : '') + '>vh</option></select></div><small>100vh는 헤더를 제외한 실제 보이는 화면 높이에 맞춥니다.</small>') +
         '</div>' +
-        field("배경색", '<input type="color" data-content-section-field="background" value="' + escapeHtml(selected.background) + '">') +
-        field("배경 이미지", '<input type="text" data-content-section-field="backgroundImage" value="' + escapeHtml(selected.backgroundImage || "") + '" placeholder="이미지 경로 또는 URL"><small>비워 두면 배경색만 사용합니다.</small>') +
+        field("배경색", colorControl(selected.background, 'data-color-content-section="background"', true)) +
+        field("배경 이미지", backgroundImageUploadControl(selected.backgroundImage || "", 'data-content-section-field="backgroundImage"', "data-content-section-background-upload", "data-remove-content-section-background", "업로드한 이미지는 섹션 중앙에 맞춰 채워집니다. 비워 두면 배경색만 사용합니다.", selected.backgroundFilter || "none", 'data-content-section-field="backgroundFilter"')) +
         '<div class="builder-content-layouts"><strong>열 개수</strong><div>' + layouts + '</div></div>') +
-        inspectorSection("3. 각 열에 요소 넣기", "빈 열마다 비주얼·게시판·카드·배너 중 필요한 요소를 선택합니다.", cells);
+        inspectorSection("2. 각 열에 요소 넣기", "빈 열마다 게시판·카드·유튜브·캘린더·SNS 등 필요한 요소를 선택합니다.", cells);
       return result;
     }
 
@@ -2911,10 +3198,21 @@
       return state && state.content && state.content.sections.find(function (section) { return section.id === selectedContentSectionId; });
     }
 
+    function focusContentCanvasSection(sectionId, shouldScroll) {
+      if (!canvasDocument || !sectionId) return;
+      var sectionElement = canvasDocument.querySelector('[data-section-id="' + sectionId + '"]');
+      if (!sectionElement) return;
+      clearCanvasSelectionHighlight();
+      selectedStructureElement = sectionElement;
+      selectedStructureElement.classList.add("dq-builder-structure-selected");
+      if (shouldScroll) selectedStructureElement.scrollIntoView({ block: "center", behavior: "smooth" });
+    }
+
     function renderContentState() {
       if (!window.DQContentBuilder || !canvasDocument) return;
       window.DQContentBuilder.render(canvasDocument, state.content || { sections: [] });
       applyElementOverrides();
+      if (editMode === "structure" && selectedLayer === "content-section") focusContentCanvasSection(selectedContentSectionId, false);
     }
 
     function contentContext(target) {
@@ -2924,7 +3222,13 @@
       var cell = section && cellIndex >= 0 ? section.cells[cellIndex] : null;
       var itemRow = target.closest("[data-content-item-index]");
       var itemIndex = itemRow ? Number(itemRow.dataset.contentItemIndex) : -1;
-      return { section: section, cell: cell, cellIndex: cellIndex, item: cell && itemIndex >= 0 ? cell.module.items[itemIndex] : null, itemIndex: itemIndex };
+      var tabRow = target.closest("[data-content-tab-index]");
+      var tabIndex = tabRow ? Number(tabRow.dataset.contentTabIndex) : -1;
+      var tab = cell && cell.module.type === "tabs" && tabIndex >= 0 ? cell.module.tabs[tabIndex] : null;
+      var tabItemRow = target.closest("[data-content-tab-item-index]");
+      var tabItemIndex = tabItemRow ? Number(tabItemRow.dataset.contentTabItemIndex) : -1;
+      var nestedItem = tab && tab.module && tabItemIndex >= 0 ? tab.module.items[tabItemIndex] : null;
+      return { section: section, cell: cell, cellIndex: cellIndex, item: nestedItem || (cell && itemIndex >= 0 ? cell.module.items[itemIndex] : null), itemIndex: nestedItem ? tabItemIndex : itemIndex, tab: tab, tabIndex: tabIndex, tabItemIndex: tabItemIndex };
     }
 
     function handleContentClick(event) {
@@ -2938,7 +3242,12 @@
       var detail = event.target.closest("[data-content-detail-edit]");
       var sectionTitleRemove = event.target.closest("[data-content-section-title-remove]");
       var moduleTitleRemove = event.target.closest("[data-content-module-title-remove]");
-      if (!add && !select && !move && !remove && !itemAdd && !itemRemove && !detail && !sectionTitleRemove && !moduleTitleRemove) return false;
+      var tabAdd = event.target.closest("[data-content-tab-add]");
+      var tabRemove = event.target.closest("[data-content-tab-remove]");
+      var tabMove = event.target.closest("[data-content-tab-move]");
+      var tabItemAdd = event.target.closest("[data-content-tab-item-add]");
+      var tabItemRemove = event.target.closest("[data-content-tab-item-remove]");
+      if (!add && !select && !move && !remove && !itemAdd && !itemRemove && !detail && !sectionTitleRemove && !moduleTitleRemove && !tabAdd && !tabRemove && !tabMove && !tabItemAdd && !tabItemRemove) return false;
       state.content = state.content || { sections: [] };
       if (add) {
         var newSection = window.DQContentBuilder.createSection(add.dataset.contentAdd);
@@ -2949,8 +3258,8 @@
         selectedContentSectionId = row.dataset.contentSectionId;
         selectedContentCellId = null;
         selectedLayer = "content-section";
-        var selectedCanvasSection = canvasDocument.querySelector('[data-section-id="' + selectedContentSectionId + '"]');
-        if (selectedCanvasSection) selectedCanvasSection.scrollIntoView({ block: "center" });
+        setBuilderMode("structure");
+        focusContentCanvasSection(selectedContentSectionId, true);
         renderInspector();
         return true;
       } else if (move && row) {
@@ -2964,12 +3273,50 @@
         state.content.sections = state.content.sections.filter(function (section) { return section.id !== row.dataset.contentSectionId; });
         selectedContentSectionId = state.content.sections.length ? state.content.sections[0].id : null;
         selectedLayer = "content-sections";
+      } else if (tabAdd) {
+        var tabAddContext = contentContext(tabAdd);
+        if (tabAddContext.cell && tabAddContext.cell.module.type === "tabs" && tabAddContext.cell.module.tabs.length < 8) {
+          tabAddContext.cell.module.tabs.push({ id: window.DQContentBuilder.uid("tab"), label: "새 탭", module: window.DQContentBuilder.createModule("board") });
+        }
+      } else if (tabRemove) {
+        var tabRemoveContext = contentContext(tabRemove);
+        if (tabRemoveContext.cell && tabRemoveContext.cell.module.tabs.length > 1 && tabRemoveContext.tabIndex >= 0) tabRemoveContext.cell.module.tabs.splice(tabRemoveContext.tabIndex, 1);
+      } else if (tabMove) {
+        var tabMoveContext = contentContext(tabMove);
+        if (tabMoveContext.cell && tabMoveContext.tabIndex >= 0) {
+          var nextTabIndex = tabMoveContext.tabIndex + (tabMove.dataset.contentTabMove === "up" ? -1 : 1);
+          if (nextTabIndex >= 0 && nextTabIndex < tabMoveContext.cell.module.tabs.length) {
+            var movedTab = tabMoveContext.cell.module.tabs.splice(tabMoveContext.tabIndex, 1)[0];
+            tabMoveContext.cell.module.tabs.splice(nextTabIndex, 0, movedTab);
+          }
+        }
+      } else if (tabItemAdd) {
+        var tabItemAddContext = contentContext(tabItemAdd);
+        if (tabItemAddContext.tab && tabItemAddContext.tab.module) tabItemAddContext.tab.module.items.push({ title: "새 항목", text: "내용을 입력해 주세요.", href: "#", image: "", alt: "", icon: tabItemAddContext.tab.module.type === "quick" ? "home" : "" });
+      } else if (tabItemRemove) {
+        var tabItemRemoveContext = contentContext(tabItemRemove);
+        if (tabItemRemoveContext.tab && tabItemRemoveContext.tab.module.items.length > 1 && tabItemRemoveContext.tabItemIndex >= 0) tabItemRemoveContext.tab.module.items.splice(tabItemRemoveContext.tabItemIndex, 1);
       } else if (itemAdd) {
         var addContext = contentContext(itemAdd);
-        if (addContext.cell) addContext.cell.module.items.push({ title: "새 항목", text: "내용을 입력해 주세요.", href: "#", image: "", alt: "", icon: addContext.cell.module.type === "quick" ? "home" : "" });
+        if (addContext.cell) {
+          var addType = addContext.cell.module.type;
+          var newItem = { title: "새 항목", text: "내용을 입력해 주세요.", href: "#", image: "", alt: "", icon: addType === "quick" ? "home" : "" };
+          if (addType === "calendar") {
+            newItem.title = "새 일정";
+            newItem.text = (addContext.cell.module.calendarYear || new Date().getFullYear()) + "-" + String(addContext.cell.module.calendarMonth || (new Date().getMonth() + 1)).padStart(2, "0") + "-01";
+            newItem.href = "";
+          } else if (addType === "sns") {
+            newItem.title = "인스타그램";
+            newItem.text = "";
+            newItem.href = "#";
+            newItem.icon = "instagram";
+            newItem.platform = "instagram";
+          }
+          addContext.cell.module.items.push(newItem);
+        }
       } else if (itemRemove) {
         var removeContext = contentContext(itemRemove);
-        if (removeContext.cell && removeContext.cell.module.items.length > 1) removeContext.cell.module.items.splice(removeContext.itemIndex, 1);
+        if (removeContext.cell && (removeContext.cell.module.items.length > 1 || /^(?:calendar|sns)$/.test(removeContext.cell.module.type))) removeContext.cell.module.items.splice(removeContext.itemIndex, 1);
       } else if (detail) {
         var detailContext = contentContext(detail);
         var detailTarget = detailContext.cell && canvasDocument.querySelector('[data-cell-id="' + detailContext.cell.id + '"]');
@@ -3010,6 +3357,15 @@
       if (!section) return false;
       if (target.dataset.contentSectionField) {
         section[target.dataset.contentSectionField] = target.value;
+        if (target.dataset.contentSectionField === "name") {
+          var sectionIndexForLabel = state.content.sections.indexOf(section);
+          var sectionDisplayName = contentSectionDisplayName(section, sectionIndexForLabel);
+          var sectionLayerLabel = builder.querySelector('[data-content-layer-section="' + section.id + '"] .builder-layer-section-row__label strong');
+          var contextLabel = inspector.querySelector(".builder-inspector-context strong");
+          if (sectionLayerLabel) sectionLayerLabel.textContent = sectionDisplayName;
+          if (contextLabel) contextLabel.textContent = sectionDisplayName;
+          inspectorTitle.textContent = sectionDisplayName;
+        }
       } else if (target.dataset.contentSectionCheck) {
         section[target.dataset.contentSectionCheck] = target.checked;
         if (target.dataset.contentSectionCheck === "showTitle") section.titleVisibilityConfigured = true;
@@ -3034,14 +3390,50 @@
         pushHistory();
         renderInspector();
         return true;
+      } else if (target.dataset.contentTabField && context.tab) {
+        context.tab[target.dataset.contentTabField] = target.value;
+        var tabSummaryLabel = target.closest("[data-content-tab-index]").querySelector("summary span");
+        if (tabSummaryLabel) tabSummaryLabel.textContent = target.value || "이름 없는 탭";
+      } else if (target.hasAttribute("data-content-tab-module-type") && context.tab) {
+        context.tab.module = window.DQContentBuilder.createModule(target.value);
+        context.tab.module.animation = "none";
+        context.tab.module.fullBleed = false;
+        renderContentState();
+        pushHistory();
+        renderInspector();
+        return true;
+      } else if (target.hasAttribute("data-content-tab-module-variant") && context.tab) {
+        context.tab.module.variant = target.value;
+      } else if (target.dataset.contentTabModuleField && context.tab) {
+        context.tab.module[target.dataset.contentTabModuleField] = target.value;
+      } else if (target.dataset.contentTabModuleCheck && context.tab) {
+        context.tab.module[target.dataset.contentTabModuleCheck] = target.checked;
+        renderContentState();
+        pushHistory();
+        renderInspector();
+        return true;
+      } else if (target.dataset.contentTabItemField && context.item) {
+        context.item[target.dataset.contentTabItemField] = target.value;
       } else if (target.hasAttribute("data-content-module-variant") && context.cell) {
         context.cell.module.variant = target.value;
+        if (context.cell.module.type === "cards" && target.value === "intro-slider") {
+          context.cell.module.fullBleed = false;
+          context.cell.module.slider.enabled = true;
+          context.cell.module.slider.transition = "slide";
+          context.cell.module.slider.controllerStyle = "bottom-minimal";
+          context.cell.module.slider.arrows = true;
+          context.cell.module.slider.counter = true;
+        }
+        renderContentState();
+        pushHistory();
+        renderInspector();
+        return true;
       } else if (target.dataset.contentModuleField && context.cell) {
         context.cell.module[target.dataset.contentModuleField] = target.value;
       } else if (target.dataset.contentModuleNumber && context.cell) {
         var moduleNumberName = target.dataset.contentModuleNumber;
-        var moduleNumberMin = moduleNumberName === "mediaHeight" ? 120 : 0;
-        var moduleNumberMax = moduleNumberName === "mediaHeight" ? 1000 : 100;
+        var moduleNumberMin = moduleNumberName === "mediaHeight" ? 120 : moduleNumberName === "calendarYear" ? 1970 : moduleNumberName === "calendarMonth" ? 1 : 0;
+        var moduleNumberMax = moduleNumberName === "mediaHeight" ? 1000 : moduleNumberName === "calendarYear" ? 2100 : moduleNumberName === "calendarMonth" ? 12 : 100;
         context.cell.module[moduleNumberName] = Math.max(moduleNumberMin, Math.min(moduleNumberMax, Number(target.value) || moduleNumberMin));
       } else if (target.dataset.contentModuleCheck && context.cell) {
         context.cell.module[target.dataset.contentModuleCheck] = target.checked;
@@ -3053,6 +3445,15 @@
         }
       } else if (target.dataset.contentItemField && context.item) {
         context.item[target.dataset.contentItemField] = target.value;
+        if (target.dataset.contentItemField === "platform") {
+          var platformNames = { instagram: "인스타그램", youtube: "유튜브", facebook: "페이스북", blog: "블로그", x: "X" };
+          var previousNames = ["인스타그램", "유튜브", "페이스북", "블로그", "X", "새 항목"];
+          if (!context.item.title || previousNames.indexOf(context.item.title) >= 0) context.item.title = platformNames[target.value] || "SNS";
+          context.item.icon = target.value;
+          renderContentState();
+          renderInspector();
+          return true;
+        }
       } else if (target.dataset.contentSliderField && context.cell) {
         context.cell.module.slider[target.dataset.contentSliderField] = target.checked;
         if (target.dataset.contentSliderField === "autoplay" && target.checked) context.cell.module.slider.play = true;
@@ -3133,7 +3534,7 @@
     function renderContentLayerItems() {
       var group = builder.querySelector('[data-layer-group="content"]');
       if (!group) return;
-      group.querySelectorAll('[data-content-layer-section], [data-sub-content-layer-item]').forEach(function (button) { button.remove(); });
+      group.querySelectorAll('.builder-layer-section-row, [data-content-layer-section], [data-sub-content-layer-item]').forEach(function (item) { item.remove(); });
       if (isSubPage) {
         var anchor = group.querySelector('[data-layer="subpage-contents"]');
         var reference = anchor;
@@ -3150,13 +3551,13 @@
         return;
       }
       (state.content && state.content.sections || []).forEach(function (section, index) {
-        var button = document.createElement("button");
-        button.type = "button";
-        button.className = "builder-layer builder-layer--content-section";
-        button.dataset.layer = "content-section";
-        button.dataset.contentLayerSection = section.id;
-        button.innerHTML = '<span class="builder-layer__line"></span><span>' + escapeHtml(section.name || "섹션 " + (index + 1)) + '</span>';
-        group.appendChild(button);
+        var row = document.createElement("div");
+        row.className = "builder-layer-section-row";
+        row.dataset.contentSectionId = section.id;
+        row.innerHTML = '<button type="button" class="builder-layer builder-layer--content-section" data-layer="content-section" data-content-layer-section="' + escapeHtml(section.id) + '" data-content-select title="' + escapeHtml(contentSectionDisplayName(section, index)) + '">' +
+          '<span class="builder-layer__line"></span><span class="builder-layer-section-row__label"><strong>' + escapeHtml(contentSectionDisplayName(section, index)) + '</strong><small>' + escapeHtml(section.layout || "1") + '열</small></span></button>' +
+          '<div class="builder-layer-section-row__actions"><button type="button" data-content-move="up" aria-label="' + escapeHtml(contentSectionDisplayName(section, index)) + ' 위로 이동"' + (index === 0 ? ' disabled' : '') + '>↑</button><button type="button" data-content-move="down" aria-label="' + escapeHtml(contentSectionDisplayName(section, index)) + ' 아래로 이동"' + (index === (state.content.sections.length - 1) ? ' disabled' : '') + '>↓</button><button type="button" data-content-remove aria-label="' + escapeHtml(contentSectionDisplayName(section, index)) + ' 삭제">×</button></div>';
+        group.appendChild(row);
       });
     }
 
@@ -3216,6 +3617,53 @@
       var target = state;
       parts.slice(0, -1).forEach(function (part) { target = target[part]; });
       target[parts[parts.length - 1]] = value;
+    }
+
+    function getByPath(path) {
+      return path.split(".").reduce(function (target, part) { return target && target[part]; }, state);
+    }
+
+    function handleColorInput(target) {
+      if (!target.hasAttribute("data-color-picker") && !target.hasAttribute("data-color-hex") && !target.hasAttribute("data-color-opacity")) return false;
+      var path = target.dataset.colorPath;
+      var globalName = target.dataset.colorContentGlobal;
+      var sectionName = target.dataset.colorContentSection;
+      var section = sectionName ? selectedContentSection() : null;
+      var currentValue = path ? getByPath(path) : globalName ? state.content[globalName] : section && section[sectionName];
+      if (!currentValue) currentValue = "#000000";
+      var base = colorBaseHex(currentValue, "#000000");
+      var opacity = alphaPercent(currentValue);
+      if (target.hasAttribute("data-color-picker")) {
+        base = colorBaseHex(target.value, base);
+      } else if (target.hasAttribute("data-color-hex")) {
+        var typed = String(target.value || "").trim();
+        if (/^[0-9a-f]{6}$/i.test(typed)) typed = "#" + typed;
+        if (!/^#[0-9a-f]{6}$/i.test(typed)) return true;
+        base = typed.toUpperCase();
+      } else {
+        opacity = Math.max(0, Math.min(100, Number(target.value) || 0));
+      }
+      var nextValue = colorWithOpacity(base, opacity);
+      if (path) {
+        setByPath(path, nextValue);
+        if (/^header\.sitemap\.(?:background|depth1Color|depth23Color)$/.test(path) && state.theme) state.theme.applyToSitemap = false;
+        if (/^theme\.(?:color1|color2|color3)$/.test(path)) state.theme.designStyle = "custom";
+      } else if (globalName) {
+        state.content[globalName] = nextValue;
+      } else if (section && sectionName) {
+        section[sectionName] = nextValue;
+      }
+      var control = target.closest("[data-color-control]");
+      if (control) {
+        var picker = control.querySelector("[data-color-picker]");
+        var hexInput = control.querySelector("[data-color-hex]");
+        if (picker) picker.value = base;
+        if (hexInput) hexInput.value = base;
+        control.querySelectorAll("[data-color-opacity]").forEach(function (input) { input.value = opacity; });
+      }
+      if (path) applyState();
+      else renderContentState();
+      return true;
     }
 
     function setLoadingMessage(message, isError) {
@@ -3308,17 +3756,18 @@
     }
 
     launcher.addEventListener("click", function () {
-      if (window.matchMedia("(max-width: 1000px)").matches) {
-        desktopNotice.hidden = false;
-        desktopNotice.querySelector("[data-builder-desktop-notice-close]").focus();
-        return;
-      }
       openBuilder();
     });
     desktopNotice.addEventListener("click", function (event) {
       if (event.target === desktopNotice || event.target.closest("[data-builder-desktop-notice-close]")) desktopNotice.hidden = true;
     });
     if (params.get("openBuilder") === "1") window.setTimeout(openBuilder, 0);
+    window.addEventListener("resize", function () {
+      if (!isBuilderViewportSupported() && builder.classList.contains("is-open")) {
+        closeBuilder();
+        showDesktopNotice();
+      }
+    });
     builder.querySelector("[data-builder-close]").addEventListener("click", closeBuilder);
 
     iframe.addEventListener("load", function () {
@@ -3356,6 +3805,8 @@
       var removeActionButton = event.target.closest("[data-remove-action]");
       var moveActionButton = event.target.closest("[data-move-action]");
       var removeFooterLogoImageButton = event.target.closest("[data-remove-footer-logo-image]");
+      var removeContentSectionBackgroundButton = event.target.closest("[data-remove-content-section-background]");
+      var removeSitemapBackgroundButton = event.target.closest("[data-remove-sitemap-background]");
 
       if (copyUploadButton) {
         window.navigator.clipboard.writeText(copyUploadButton.dataset.copyUploadUrl).then(function () {
@@ -3363,6 +3814,23 @@
         }).catch(function () {
           showToast("주소를 복사하지 못했습니다. 입력창에서 직접 복사해 주세요.");
         });
+        return;
+      }
+      if (removeContentSectionBackgroundButton) {
+        var backgroundSection = selectedContentSection();
+        if (backgroundSection) backgroundSection.backgroundImage = "";
+        renderContentState();
+        pushHistory();
+        renderInspector();
+        showToast("섹션 배경 이미지를 제거했습니다.");
+        return;
+      }
+      if (removeSitemapBackgroundButton) {
+        state.header.sitemap.backgroundImage = "";
+        applyState();
+        pushHistory();
+        renderInspector();
+        showToast("사이트맵 배경 이미지를 제거했습니다.");
         return;
       }
       if (handleSubpageClick(event)) return;
@@ -3402,8 +3870,7 @@
           if (canvasHeaderForLayer && canvasHeaderForLayer.classList.contains("is-sitemap-open") && sitemapToggleForLayer) sitemapToggleForLayer.click();
         }
         if (selectedLayer === "content-section") {
-          var selectedContentCanvasSection = canvasDocument.querySelector('[data-section-id="' + selectedContentSectionId + '"]');
-          if (selectedContentCanvasSection) selectedContentCanvasSection.scrollIntoView({ block: "center" });
+          focusContentCanvasSection(selectedContentSectionId, true);
         } else if (selectedLayer === "subpage-contents") {
           setSubContentPreview("");
           var subContents = canvasDocument.querySelector("#contentsArea");
@@ -3440,23 +3907,6 @@
         closeProjectBuild();
       } else if (event.target.closest("[data-builder-project-download]")) {
         openProjectDownload();
-      } else if (event.target.closest("[data-clear-element-styles]")) {
-        var clearedStyleCount = 0;
-        (state.elementOverrides || []).forEach(function (override) {
-          var baseStyle = override.styles && override.styles.base || {};
-          var hasValues = Object.keys(baseStyle.values || {}).some(function (key) { return !!baseStyle.values[key]; });
-          var hasEffects = Object.keys(baseStyle.effects || {}).some(function (key) { return !!baseStyle.effects[key]; });
-          if (hasValues || hasEffects || String(baseStyle.customCss || "").trim()) clearedStyleCount += 1;
-          override.styles = { base: { values: {}, customCss: "", effects: {} } };
-        });
-        applyElementOverrides();
-        if (clearedStyleCount) {
-          pushHistory();
-          renderInspector();
-          showToast("직접 추가한 수동 스타일을 모두 제거했습니다. 텍스트 변경은 유지됩니다.");
-        } else {
-          showToast("제거할 수동 스타일이 없습니다.");
-        }
       } else if (event.target.closest("[data-builder-file-save]")) {
         saveStateToFiles();
       } else if (event.target.closest("[data-remove-element-override]")) {
@@ -3500,7 +3950,7 @@
         }
       } else if (addUtilityButton) {
         var utilityType = addUtilityButton.dataset.addUtility;
-        state.header.utility.items.push({ id: unique("utility"), type: utilityType, label: utilityType === "button" ? "새 버튼" : "새 안내 문구", html: utilityType === "html" ? "<strong>새 HTML 요소</strong>" : "", href: "#" });
+        state.header.utility.items.push({ id: unique("utility"), type: utilityType, kind: "custom", area: addUtilityButton.dataset.utilityArea === "right" ? "right" : "left", visible: true, label: utilityType === "button" ? "새 링크" : "새 안내 문구", html: utilityType === "html" ? "<strong>새 HTML 요소</strong>" : "", href: "#" });
         applyState(); pushHistory(); renderInspector();
       } else if (removeUtilityButton) {
         state.header.utility.items = state.header.utility.items.filter(function (item) { return item.id !== removeUtilityButton.dataset.removeUtility; });
@@ -3556,6 +4006,20 @@
       }
     });
 
+    builder.addEventListener("pointerover", function (event) {
+      var layerSection = event.target.closest("[data-content-layer-section]");
+      if (!layerSection || !canvasDocument) return;
+      var canvasSection = canvasDocument.querySelector('[data-section-id="' + layerSection.dataset.contentLayerSection + '"]');
+      if (canvasSection) canvasSection.classList.add("dq-builder-layer-hover");
+    });
+
+    builder.addEventListener("pointerout", function (event) {
+      var layerSection = event.target.closest("[data-content-layer-section]");
+      if (!layerSection || layerSection.contains(event.relatedTarget) || !canvasDocument) return;
+      var canvasSection = canvasDocument.querySelector('[data-section-id="' + layerSection.dataset.contentLayerSection + '"]');
+      if (canvasSection) canvasSection.classList.remove("dq-builder-layer-hover");
+    });
+
     projectModal.addEventListener("click", function (event) {
       if (event.target === projectModal) closeProjectBuild();
     });
@@ -3605,6 +4069,7 @@
 
     inspector.addEventListener("input", function (event) {
       if (!state) return;
+      if (handleColorInput(event.target)) return;
       if (handleSubpageInput(event)) return;
       if (handleContentInput(event)) return;
       var bind = event.target.dataset.bind;
@@ -3673,7 +4138,7 @@
         if (label) label.textContent = selected.label;
       } else if (utilityRow && event.target.dataset.utilityField) {
         var utilityItem = state.header.utility.items.find(function (item) { return item.id === utilityRow.dataset.utilityId; });
-        if (utilityItem) utilityItem[event.target.dataset.utilityField] = event.target.value;
+        if (utilityItem) utilityItem[event.target.dataset.utilityField] = event.target.type === "checkbox" ? event.target.checked : event.target.value;
         applyState();
       } else if (depth2Row && event.target.dataset.depthField && selectedMenuId) {
         var selectedMenu = state.header.navigation.items.find(function (item) { return item.id === selectedMenuId; });
@@ -3691,6 +4156,39 @@
     });
 
     inspector.addEventListener("change", async function (event) {
+      if (event.target.hasAttribute("data-content-section-background-upload") || event.target.hasAttribute("data-sitemap-background-upload")) {
+        var backgroundUploadInput = event.target;
+        var backgroundUploadFile = backgroundUploadInput.files && backgroundUploadInput.files[0];
+        var isSitemapBackground = backgroundUploadInput.hasAttribute("data-sitemap-background-upload");
+        var uploadSection = isSitemapBackground ? null : selectedContentSection();
+        if (!backgroundUploadFile || (!isSitemapBackground && !uploadSection)) return;
+        backgroundUploadInput.disabled = true;
+        showToast((isSitemapBackground ? "사이트맵" : "섹션") + " 배경 이미지를 업로드하는 중입니다...");
+        try {
+          var backgroundUploadUrl = await uploadContentImage(backgroundUploadFile);
+          if (isSitemapBackground) state.header.sitemap.backgroundImage = backgroundUploadUrl;
+          else uploadSection.backgroundImage = backgroundUploadUrl;
+          window.sessionStorage.setItem(uploadRecoveryKey, JSON.stringify({
+            expires: Date.now() + 12000,
+            state: state,
+            selectedLayer: selectedLayer,
+            selectedContentSectionId: selectedContentSectionId,
+            selectedSubContentId: selectedSubContentId,
+            recoveryKind: isSitemapBackground ? "sitemap-background-upload" : "section-background-upload"
+          }));
+          window.setTimeout(function () { window.sessionStorage.removeItem(uploadRecoveryKey); }, 5000);
+          if (isSitemapBackground) applyState();
+          else renderContentState();
+          pushHistory();
+          renderInspector();
+          showToast((isSitemapBackground ? "사이트맵" : "섹션") + " 배경 이미지를 적용했습니다.");
+        } catch (error) {
+          backgroundUploadInput.disabled = false;
+          backgroundUploadInput.value = "";
+          showToast("배경 이미지 업로드 실패: " + (error.message || "업로드 서버를 확인해 주세요."));
+        }
+        return;
+      }
       if (event.target.hasAttribute("data-sub-visual-upload")) {
         var visualUploadInput = event.target;
         var visualUploadFile = visualUploadInput.files && visualUploadInput.files[0];
@@ -3780,12 +4278,12 @@
         }
         return;
       }
-      if (event.target.hasAttribute("data-content-item-upload")) {
+      if (event.target.hasAttribute("data-content-item-upload") || event.target.hasAttribute("data-content-tab-item-upload")) {
         var uploadContext = contentContext(event.target);
         var uploadFile = event.target.files && event.target.files[0];
         if (!uploadContext.item || !uploadFile) return;
         var uploadInput = event.target;
-        var uploadRow = uploadInput.closest("[data-content-item-index]");
+        var uploadRow = uploadInput.closest("[data-content-item-index], [data-content-tab-item-index]");
         event.target.disabled = true;
         showToast("이미지를 업로드하는 중입니다...");
         try {
@@ -3799,7 +4297,7 @@
           window.setTimeout(function () { window.sessionStorage.removeItem(uploadRecoveryKey); }, 4000);
           renderContentState();
           pushHistory();
-          var imagePathInput = uploadRow && uploadRow.querySelector('[data-content-item-field="image"]');
+          var imagePathInput = uploadRow && uploadRow.querySelector('[data-content-item-field="image"], [data-content-tab-item-field="image"]');
           if (imagePathInput) imagePathInput.value = uploadContext.item.image;
           uploadInput.disabled = false;
           uploadInput.value = "";
@@ -3830,6 +4328,20 @@
     });
 
     document.addEventListener("keydown", function (event) {
+      if (!guideModal.hidden && event.key === "Escape") {
+        closeGuide(false);
+        return;
+      }
+      if (!guideModal.hidden && event.key === "Tab") {
+        var guideFocusable = Array.from(guideModal.querySelectorAll('button:not([disabled]), input:not([disabled])')).filter(function (element) { return !element.hidden && element.offsetParent !== null; });
+        if (guideFocusable.length) {
+          var firstGuideControl = guideFocusable[0];
+          var lastGuideControl = guideFocusable[guideFocusable.length - 1];
+          if (event.shiftKey && document.activeElement === firstGuideControl) { event.preventDefault(); lastGuideControl.focus(); }
+          else if (!event.shiftKey && document.activeElement === lastGuideControl) { event.preventDefault(); firstGuideControl.focus(); }
+        }
+        return;
+      }
       if (event.key === "Escape" && !desktopNotice.hidden) {
         desktopNotice.hidden = true;
         launcher.focus();
@@ -3849,6 +4361,8 @@
     });
 
     connectRealtimeSync();
+
+    if (shouldAutoOpenGuide()) window.setTimeout(function () { openGuide(); }, 280);
 
     try {
       var syncReload = JSON.parse(window.sessionStorage.getItem(syncReloadKey) || "null");

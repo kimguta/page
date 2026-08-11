@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ko">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>FileUploader Callback</title>
+</head>
+<body>
+<script type="text/javascript">
+    var sUrl = document.location.search.substr(1);
+    if (sUrl != "blank") {
+        var oParameter = {}; // query array
+        sUrl.replace(/([^=]+)=([^&]*)(&|$)/g, function(){
+            oParameter[arguments[1]] = arguments[2];
+            return "";
+        });
+        if ((oParameter.errstr || '').length) { // on error
+            alert("파일 업로드에 실패하였습니다.")
+        }
+        else {
+            let imgEle = `<img src="${oParameter.sFileURL}" data-mce-src="${oParameter.sFileURL}" title="${oParameter.sFileName}" style="max-width:100%; height:auto;" />`
+
+            opener.tinymce.activeEditor.execCommand("mceInsertContent",'false',imgEle);
+            opener.tinymce.activeEditor.execCommand("mceInsertNewLine");
+        }
+
+        self.close();
+    }
+</script>
+</body>
+</html>

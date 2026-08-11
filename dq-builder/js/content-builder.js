@@ -5,7 +5,7 @@
 (function (window, document) {
   "use strict";
 
-  var ICONS = "/page/dq-builder/images/icons/site-icons.svg";
+  var ICONS = "/page/dq-builder/images/icons/site-icons.svg?v=2";
   var moduleLabels = {
     empty: "콘텐츠 선택",
     visual: "큰 이미지와 소개",
@@ -18,6 +18,10 @@
     stats: "숫자 · 성과",
     faq: "질문 · 답변",
     gallery: "이미지 갤러리",
+    youtube: "유튜브",
+    calendar: "캘린더",
+    sns: "SNS 링크",
+    tabs: "탭 콘텐츠",
     code: "직접 작성 (HTML·CSS·JS)",
     custom: "기존 콘텐츠"
   };
@@ -25,13 +29,17 @@
     visual: [["cover", "이미지 전체형"], ["center", "중앙 문구형"], ["split", "이미지 분할형"]],
     quick: [["icon", "아이콘 카드형"], ["compact", "간결한 메뉴형"], ["pill", "둥근 버튼형"]],
     board: [["list", "기본 목록형"], ["date", "날짜 강조형"], ["card", "게시판 카드형"]],
-    cards: [["image", "이미지 상단형"], ["overlay", "이미지 겹침형"], ["horizontal", "가로 카드형"]],
+    cards: [["image", "이미지 상단형"], ["overlay", "이미지 겹침형"], ["horizontal", "가로 카드형"], ["intro-slider", "좌측 소개 + 우측 슬라이더"]],
     banner: [["color", "컬러 배너형"], ["image", "이미지 배너형"], ["compact", "작은 알림판형"]],
     text: [["basic", "기본 문단형"], ["center", "중앙 강조형"], ["cta", "버튼 강조형"]],
     imageText: [["image-left", "이미지 왼쪽"], ["image-right", "이미지 오른쪽"], ["stack", "이미지 위"]],
     stats: [["line", "가로 지표형"], ["card", "카드 지표형"], ["strong", "숫자 강조형"]],
     faq: [["line", "구분선형"], ["box", "박스형"]],
     gallery: [["grid", "기본 그리드"], ["masonry", "크기 강조형"], ["rounded", "둥근 이미지형"]],
+    youtube: [["embed", "기본 영상형"]],
+    calendar: [["month", "월간 달력형"]],
+    sns: [["icon", "아이콘형"], ["label", "아이콘 + 이름"]],
+    tabs: [["underline", "밑줄형"], ["pill", "버튼형"], ["box", "박스형"]],
     code: [["code", "직접 작성"]]
   };
 
@@ -83,6 +91,8 @@
     } else if (type === "cards") {
       base.animation = "stagger";
       base.fullBleed = true;
+      base.slider = defaultSlider(true);
+      base.slider.transition = "slide";
       base.title = "추천 콘텐츠";
       base.description = "주요 콘텐츠를 카드로 소개합니다.";
       base.items = [1, 2, 3, 4, 5, 6].map(function (number) {
@@ -90,6 +100,15 @@
       });
       base.slider.perView = 3;
       base.slider.controllerStyle = "bottom-capsule";
+    } else if (type === "tabs") {
+      base.showTitle = false;
+      base.title = "분야별 콘텐츠";
+      base.description = "탭을 선택해 콘텐츠를 확인하세요.";
+      base.animation = "fade-up";
+      base.tabs = [
+        { id: uid("tab"), label: "공지사항", module: createModule("board") },
+        { id: uid("tab"), label: "추천 콘텐츠", module: createModule("cards") }
+      ];
     } else if (type === "banner") {
       base.title = "알림판";
       base.slider = defaultSlider(true);
@@ -124,6 +143,27 @@
         return { title: "갤러리 이미지 " + number, text: "", href: "#", image: "", icon: "" };
       });
       base.slider.perView = 3;
+    } else if (type === "youtube") {
+      base.title = "추천 영상";
+      base.description = "유튜브 영상을 확인해 보세요.";
+      base.videoId = "ZvenigmbShw";
+      base.autoplayOnView = false;
+    } else if (type === "calendar") {
+      var today = new Date();
+      var todayText = today.getFullYear() + "-" + String(today.getMonth() + 1).padStart(2, "0") + "-" + String(today.getDate()).padStart(2, "0");
+      base.title = "행사 일정";
+      base.description = "날짜를 선택해 주요 일정을 확인하세요.";
+      base.calendarYear = today.getFullYear();
+      base.calendarMonth = today.getMonth() + 1;
+      base.items = [{ title: "일정 정보를 입력하세요", text: todayText, href: "#", image: "", icon: "" }];
+    } else if (type === "sns") {
+      base.title = "SNS";
+      base.description = "공식 SNS 채널의 새로운 소식을 만나보세요.";
+      base.animation = "stagger";
+      base.items = [
+        { title: "인스타그램", text: "", href: "#", image: "", icon: "instagram", platform: "instagram" },
+        { title: "유튜브", text: "", href: "#", image: "", icon: "youtube", platform: "youtube" }
+      ];
     } else if (type === "code") {
       base.title = "직접 작성 요소";
       base.html = '<div class="custom-box"><strong>직접 작성 요소</strong><p>HTML을 입력해 주세요.</p></div>';
@@ -148,7 +188,7 @@
     element.dataset.builderLegacy = "true";
     return {
       id: sectionId, name: legacyName(element, index), width: "full", layout: "1", legacy: true,
-      maxWidth: 1200, background: "#ffffff", backgroundImage: "",
+      maxWidth: 1200, background: "#ffffff", backgroundImage: "", backgroundFilter: "none",
       cells: [{ id: uid("cell"), module: { id: uid("module"), type: "custom", variant: "default", title: legacyName(element, index), description: "", html: element.outerHTML, items: [], slider: defaultSlider(false) } }]
     };
   }
@@ -161,7 +201,7 @@
     var type = preset || "empty";
     var section = {
       id: uid("section"), name: moduleLabels[type] || "새 섹션", width: "wide", layout: "1",
-      maxWidth: 1200, columnGap: 40, paddingTop: 0, paddingRight: 0, paddingBottom: 0, paddingLeft: 0, useHeight: false, heightValue: 100, heightUnit: "vh", background: "#ffffff", backgroundImage: "",
+      maxWidth: 1200, columnGap: 40, paddingTop: 0, paddingRight: 0, paddingBottom: 0, paddingLeft: 0, useHeight: false, heightValue: 100, heightUnit: "vh", background: "#ffffff", backgroundImage: "", backgroundFilter: "none",
       showTitle: true, titleVisibilityConfigured: true, sectionTitle: moduleLabels[type] || "섹션 제목", titleSize: 42, titleColor: "#1d2530",
       showSubtitle: false, sectionSubtitle: "섹션을 설명하는 문장을 입력하세요.", subtitleSize: 18, subtitleColor: "#667080", headingAlign: "left",
       cells: [{ id: uid("cell"), module: createModule(type) }]
@@ -179,6 +219,8 @@
     var data = state && Array.isArray(state.sections) ? clone(state) : { sections: [] };
     data.headingStructureVersion = 2;
     data.contentImageVersion = 2;
+    data.contentModuleVersion = 2;
+    data.faqMotionVersion = 1;
     data.background = data.background || "#ffffff";
     data.sectionGap = Math.max(0, Math.min(200, Number(data.sectionGap) || 0));
     data.sections.forEach(function (section) {
@@ -188,6 +230,7 @@
       section.layout = /^(?:1|2|1-2|2-1|3)$/.test(section.layout) ? section.layout : "1";
       section.background = section.background || "#ffffff";
       section.backgroundImage = section.backgroundImage || "";
+      section.backgroundFilter = /^(?:none|dark|blur|grayscale)$/.test(section.backgroundFilter) ? section.backgroundFilter : "none";
       section.maxWidth = Math.max(760, Math.min(1800, Number(section.maxWidth) || 1200));
       section.columnGap = Math.max(0, Math.min(120, section.columnGap == null ? 40 : Number(section.columnGap) || 0));
       var legacyPaddingY = Math.max(0, Math.min(200, Number(section.paddingY) || 0));
@@ -247,6 +290,7 @@
       else if (cell.module.type === "quick") cell.module.hoverEffect = /^(?:icon-scale|lift|background)$/.test(cell.module.hoverEffect) ? cell.module.hoverEffect : "icon-scale";
       else cell.module.hoverEffect = "none";
       cell.module.slider = Object.assign(defaultSlider(false), cell.module.slider || {});
+      if (!/^(?:visual|cards|banner|gallery)$/.test(cell.module.type)) cell.module.slider.enabled = false;
       cell.module.gap = Math.max(0, Math.min(100, Number(cell.module.gap) || 24));
       cell.module.fullBleed = cell.module.type === "cards" && section.layout === "1" ? cell.module.fullBleed !== false : false;
       cell.module.animation = /^(?:none|fade-up|fade|slide-left|slide-right|zoom|stagger)$/.test(cell.module.animation) ? cell.module.animation : (/^(?:quick|cards|stats|gallery)$/.test(cell.module.type) ? "stagger" : "fade-up");
@@ -254,15 +298,53 @@
       cell.module.slider.delay = Math.max(1000, Math.min(15000, Number(cell.module.slider.delay) || 4500));
       var allowedVariants = moduleVariants[cell.module.type] || [];
       if (!allowedVariants.some(function (variant) { return variant[0] === cell.module.variant; })) cell.module.variant = allowedVariants[0] ? allowedVariants[0][0] : "default";
-      if (!/^(?:fade|slide|vertical|zoom)$/.test(cell.module.slider.transition)) cell.module.slider.transition = "fade";
+      if (cell.module.type === "cards" && cell.module.variant === "intro-slider") {
+        cell.module.fullBleed = false;
+        cell.module.slider.enabled = true;
+        cell.module.slider.transition = "slide";
+        cell.module.slider.controllerStyle = "bottom-minimal";
+        cell.module.slider.arrows = true;
+        cell.module.slider.counter = true;
+      }
+      if (cell.module.type === "tabs") {
+        cell.module.tabs = Array.isArray(cell.module.tabs) && cell.module.tabs.length ? cell.module.tabs : createModule("tabs").tabs;
+        cell.module.tabs = cell.module.tabs.slice(0, 8).map(function (tab, tabIndex) {
+          var nestedType = tab && tab.module && /^(?:quick|board|cards|banner|stats|gallery)$/.test(tab.module.type) ? tab.module.type : "board";
+          var nested = Object.assign(createModule(nestedType), tab && tab.module || {});
+          nested.type = nestedType;
+          nested.showTitle = nested.showTitle !== false;
+          nested.items = Array.isArray(nested.items) ? nested.items : [];
+          nested.slider = Object.assign(defaultSlider(false), nested.slider || {});
+          if (!/^(?:cards|banner|gallery)$/.test(nested.type)) nested.slider.enabled = false;
+          nested.gap = Math.max(0, Math.min(100, Number(nested.gap) || 24));
+          nested.imageFit = /^(?:cover|contain)$/.test(nested.imageFit) ? nested.imageFit : "cover";
+          nested.animation = "none";
+          nested.fullBleed = false;
+          var nestedVariants = (moduleVariants[nested.type] || []).filter(function (variant) { return variant[0] !== "intro-slider"; });
+          if (!nestedVariants.some(function (variant) { return variant[0] === nested.variant; })) nested.variant = nestedVariants[0] ? nestedVariants[0][0] : "default";
+          return {
+            id: tab && tab.id || uid("tab"),
+            label: String(tab && tab.label || "탭 " + (tabIndex + 1)),
+            module: nested
+          };
+        });
+      }
+      if (cell.module.slider.transition === "zoom") cell.module.slider.transition = "cinematic";
+      if (cell.module.type === "visual" && cell.module.slider.transition === "vertical") cell.module.slider.transition = "page";
+      if (!/^(?:fade|slide|vertical|page|cinematic)$/.test(cell.module.slider.transition)) cell.module.slider.transition = "fade";
       var legacyControllerStyles = { overlay: "image-capsule", side: "image-split", bottom: "bottom-capsule", minimal: "bottom-minimal" };
       cell.module.slider.controllerStyle = legacyControllerStyles[cell.module.slider.controllerStyle] || cell.module.slider.controllerStyle;
       if (!/^(?:image|bottom)-(?:capsule|split|minimal)$/.test(cell.module.slider.controllerStyle)) {
         cell.module.slider.controllerStyle = /^(?:visual|banner)$/.test(cell.module.type) ? "image-capsule" : "bottom-capsule";
       }
       cell.module.items = Array.isArray(cell.module.items) ? cell.module.items : [];
+      cell.module.videoId = cell.module.videoId == null ? "" : String(cell.module.videoId);
+      cell.module.autoplayOnView = !!cell.module.autoplayOnView;
+      cell.module.calendarYear = Math.max(1970, Math.min(2100, Number(cell.module.calendarYear) || new Date().getFullYear()));
+      cell.module.calendarMonth = Math.max(1, Math.min(12, Number(cell.module.calendarMonth) || (new Date().getMonth() + 1)));
       cell.module.items.forEach(function (item) {
         item.alt = item.alt == null ? "" : String(item.alt);
+        item.platform = /^(?:instagram|youtube|facebook|blog|x)$/.test(item.platform) ? item.platform : (/^(?:instagram|youtube|facebook|blog|x)$/.test(item.icon) ? item.icon : "instagram");
       });
     });
   }
@@ -276,6 +358,65 @@
     if (item.image) return contentImage(item, className, false);
     if (item.icon) return '<span class="' + className + ' dq-content-icon"><svg aria-hidden="true"><use href="' + ICONS + '#' + escapeHtml(item.icon) + '"></use></svg></span>';
     return '<span class="' + className + ' dq-content-placeholder" aria-hidden="true">' + String(index + 1).padStart(2, "0") + '</span>';
+  }
+
+  function youtubeVideoId(value) {
+    var text = String(value || "").trim();
+    var match = text.match(/(?:youtu\.be\/|youtube(?:-nocookie)?\.com\/(?:watch\?v=|embed\/|shorts\/))([A-Za-z0-9_-]{11})/i);
+    if (match) return match[1];
+    return /^[A-Za-z0-9_-]{11}$/.test(text) ? text : "";
+  }
+
+  function calendarDateKey(year, month, day) {
+    return year + "-" + String(month).padStart(2, "0") + "-" + String(day).padStart(2, "0");
+  }
+
+  function renderCalendarMonth(year, month, items) {
+    var firstWeekday = new Date(year, month - 1, 1).getDay();
+    var lastDate = new Date(year, month, 0).getDate();
+    var eventsByDate = {};
+    items.forEach(function (item) {
+      var date = String(item.text || "").trim();
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return;
+      (eventsByDate[date] || (eventsByDate[date] = [])).push(item);
+    });
+    var today = new Date();
+    var weekdays = ["일", "월", "화", "수", "목", "금", "토"];
+    var cells = [];
+    var totalCells = Math.ceil((firstWeekday + lastDate) / 7) * 7;
+    for (var index = 0; index < totalCells; index += 1) {
+      var day = index - firstWeekday + 1;
+      if (day < 1 || day > lastDate) {
+        cells.push('<td class="is-empty" aria-hidden="true"></td>');
+        continue;
+      }
+      var key = calendarDateKey(year, month, day);
+      var dayEvents = eventsByDate[key] || [];
+      var isToday = today.getFullYear() === year && today.getMonth() + 1 === month && today.getDate() === day;
+      var firstLink = dayEvents.find(function (item) { return item.href && item.href !== "#"; });
+      var dayNumber = firstLink
+        ? '<a class="dq-calendar-day" href="' + escapeHtml(firstLink.href) + '" aria-label="' + escapeHtml(key + " " + firstLink.title) + '"' + (isToday ? ' aria-current="date"' : '') + '>' + day + '</a>'
+        : '<span class="dq-calendar-day"' + (isToday ? ' aria-current="date"' : '') + '>' + day + '</span>';
+      var cellClasses = (dayEvents.length ? "has-event " : "") + (isToday ? "is-today" : "");
+      cells.push('<td' + (cellClasses ? ' class="' + cellClasses.trim() + '"' : '') + '><time datetime="' + key + '">' + dayNumber + '</time></td>');
+    }
+    var rows = [];
+    for (var row = 0; row < cells.length; row += 7) rows.push('<tr>' + cells.slice(row, row + 7).join("") + '</tr>');
+    var monthPrefix = year + "-" + String(month).padStart(2, "0") + "-";
+    var monthEvents = items.filter(function (item) { return String(item.text || "").indexOf(monthPrefix) === 0; }).slice().sort(function (a, b) { return String(a.text).localeCompare(String(b.text)); });
+    var eventList = monthEvents.length ? '<ol>' + monthEvents.map(function (item) {
+      var dayLabel = Number(String(item.text).slice(-2)) + "일";
+      var title = escapeHtml(item.title || "일정");
+      return '<li><time datetime="' + escapeHtml(item.text) + '">' + dayLabel + '</time>' + (item.href && item.href !== "#" ? '<a href="' + escapeHtml(item.href) + '">' + title + '</a>' : '<span>' + title + '</span>') + '</li>';
+    }).join("") + '</ol>' : '<p class="dq-calendar__empty">등록된 일정이 없습니다.</p>';
+    return '<div class="dq-calendar__header"><button type="button" data-calendar-shift="-1" aria-label="이전 달"><svg aria-hidden="true"><use href="' + ICONS + '#chevron-left"></use></svg></button><div class="dq-calendar__month" aria-live="polite"><strong>' + year + '</strong><span>' + month + '월</span></div><button type="button" data-calendar-shift="1" aria-label="다음 달"><svg aria-hidden="true"><use href="' + ICONS + '#chevron-right"></use></svg></button></div><div class="dq-calendar__scroll"><table><caption>' + year + '년 ' + month + '월 일정</caption><thead><tr>' + weekdays.map(function (day) { return '<th scope="col">' + day + '</th>'; }).join("") + '</tr></thead><tbody>' + rows.join("") + '</tbody></table></div><div class="dq-calendar__events"><strong>' + month + '월 일정</strong>' + eventList + '</div>';
+  }
+
+  function renderCalendar(module) {
+    var year = Math.max(1970, Math.min(2100, Number(module.calendarYear) || new Date().getFullYear()));
+    var month = Math.max(1, Math.min(12, Number(module.calendarMonth) || (new Date().getMonth() + 1)));
+    var eventData = JSON.stringify(module.items.map(function (item) { return { title: item.title || "", text: item.text || "", href: item.href || "" }; }));
+    return '<div class="dq-calendar" data-calendar-year="' + year + '" data-calendar-month="' + month + '" data-calendar-events="' + escapeHtml(eventData) + '">' + renderCalendarMonth(year, month, module.items) + '</div>';
   }
 
   function controls(module) {
@@ -293,7 +434,7 @@
   function renderItems(module, className, itemRenderer) {
     var slider = module.slider && module.slider.enabled && module.items.length > 1;
     var perView = Math.max(1, Math.min(4, Number(module.slider && module.slider.perView) || 1));
-    var transition = /^(?:fade|slide|vertical|zoom)$/.test(module.slider && module.slider.transition) ? module.slider.transition : "fade";
+    var transition = /^(?:fade|slide|vertical|page|cinematic)$/.test(module.slider && module.slider.transition) ? module.slider.transition : (module.slider && module.slider.transition === "zoom" ? "cinematic" : "fade");
     var duration = Math.max(100, Math.min(3000, Number(module.slider && module.slider.duration) || 650));
     var delay = Math.max(1000, Math.min(15000, Number(module.slider && module.slider.delay) || 4500));
     var sliderType = perView === 1 ? ' is-slider--single' : ' is-slider--multiple';
@@ -343,6 +484,20 @@
         return '<a class="dq-card-item" href="' + escapeHtml(item.href || "#") + '">' + itemMedia(item, index, "dq-card-item__media") + '<span><strong>' + escapeHtml(item.title) + '</strong><p>' + escapeHtml(item.text) + '</p></span></a>';
       }) + '</div>';
     }
+    if (module.type === "tabs") {
+      var tabs = Array.isArray(module.tabs) ? module.tabs : [];
+      var tabButtons = tabs.map(function (tab, index) {
+        var tabId = module.id + "-tab-" + index;
+        var panelId = module.id + "-panel-" + index;
+        return '<button type="button" role="tab" id="' + escapeHtml(tabId) + '" aria-controls="' + escapeHtml(panelId) + '" aria-selected="' + String(index === 0) + '" tabindex="' + (index === 0 ? "0" : "-1") + '" data-content-tab-button="' + index + '">' + escapeHtml(tab.label || "탭 " + (index + 1)) + '</button>';
+      }).join("");
+      var tabPanels = tabs.map(function (tab, index) {
+        var tabId = module.id + "-tab-" + index;
+        var panelId = module.id + "-panel-" + index;
+        return '<div class="dq-tab-panel" role="tabpanel" id="' + escapeHtml(panelId) + '" aria-labelledby="' + escapeHtml(tabId) + '" data-content-tab-panel="' + index + '"' + (index === 0 ? "" : " hidden") + '>' + renderModule(tab.module) + '</div>';
+      }).join("");
+      return moduleOpen + heading + '<div class="dq-tab-list" role="tablist" aria-label="' + escapeHtml(module.title || "콘텐츠 분류") + '">' + tabButtons + '</div><div class="dq-tab-panels">' + tabPanels + '</div></div>';
+    }
     if (module.type === "banner") {
       return moduleOpen + heading + renderItems(module, "dq-banner-list", function (item, index) {
         return '<a class="dq-banner-item" href="' + escapeHtml(item.href || "#") + '">' + contentImage(item, "dq-banner-item__image", index === 0) + '<span>NOTICE ' + String(index + 1).padStart(2, "0") + '</span><strong>' + escapeHtml(item.title) + '</strong><p>' + escapeHtml(item.text) + '</p></a>';
@@ -363,13 +518,30 @@
     }
     if (module.type === "faq") {
       return moduleOpen + heading + '<div class="dq-faq-list">' + module.items.map(function (item, index) {
-        return '<details class="dq-faq-item"' + (index === 0 ? ' open' : '') + '><summary>' + escapeHtml(item.title) + '</summary><div>' + escapeHtml(item.text) + '</div></details>';
+        return '<details class="dq-faq-item"' + (index === 0 ? ' open' : '') + '><summary>' + escapeHtml(item.title) + '</summary><div class="dq-faq-answer"><div class="dq-faq-answer__inner"><p>' + escapeHtml(item.text) + '</p></div></div></details>';
       }).join("") + '</div></div>';
     }
     if (module.type === "gallery") {
       return moduleOpen + heading + renderItems(module, "dq-gallery-list", function (item, index) {
         return '<a class="dq-gallery-item" href="' + escapeHtml(item.href || "#") + '">' + contentImage(item, "dq-gallery-item__image", false) + '<span>' + escapeHtml(item.title || ("이미지 " + (index + 1))) + '</span></a>';
       }) + '</div>';
+    }
+    if (module.type === "youtube") {
+      var videoId = youtubeVideoId(module.videoId);
+      var videoTitle = module.title || "유튜브 영상";
+      return moduleOpen + heading + (videoId
+        ? '<div class="dq-youtube" data-youtube-autoplay="' + String(!!module.autoplayOnView) + '"><iframe src="https://www.youtube-nocookie.com/embed/' + escapeHtml(videoId) + '?enablejsapi=1&playsinline=1" title="' + escapeHtml(videoTitle) + '" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>'
+        : '<div class="dq-content-empty"><strong>영상 ID를 입력해 주세요.</strong><span>예: ZvenigmbShw</span></div>') + '</div>';
+    }
+    if (module.type === "calendar") {
+      return moduleOpen + heading + renderCalendar(module) + '</div>';
+    }
+    if (module.type === "sns") {
+      return moduleOpen + heading + '<div class="dq-sns-list">' + module.items.map(function (item) {
+        var platform = /^(?:instagram|youtube|facebook|blog|x)$/.test(item.platform) ? item.platform : "instagram";
+        var label = item.title || ({ instagram: "인스타그램", youtube: "유튜브", facebook: "페이스북", blog: "블로그", x: "X" }[platform]);
+        return '<a class="dq-sns-item dq-sns-item--' + platform + '" href="' + escapeHtml(item.href || "#") + '" target="_blank" rel="noopener noreferrer" aria-label="' + escapeHtml(label + " 새 창") + '"><span class="dq-sns-item__icon"><svg aria-hidden="true"><use href="' + ICONS + '#' + platform + '"></use></svg></span><strong>' + escapeHtml(label) + '</strong></a>';
+      }).join("") + '</div></div>';
     }
     if (module.type === "code") {
       return moduleOpen + heading + '<div class="dq-code-host" data-code-module-id="' + escapeHtml(module.id) + '"><div class="dq-code-loading">직접 작성 요소를 불러오는 중입니다.</div></div></div>';
@@ -392,11 +564,11 @@
         }
         return;
       }
-      var sectionImage = section.backgroundImage ? ';background-image:url(\'' + escapeHtml(section.backgroundImage).replace(/'/g, "%27") + '\')' : '';
+      var sectionImage = section.backgroundImage ? ';--section-background-image:url(\'' + escapeHtml(section.backgroundImage).replace(/'/g, "%27") + '\')' : ';--section-background-image:none';
       var sectionHeight = section.useHeight ? ';--section-min-height:' + section.heightValue + section.heightUnit : ';--section-min-height:auto';
       var viewportHeight = section.useHeight && section.heightUnit === "vh" && Number(section.heightValue) === 100;
       var fullBleed = section.cells.some(function (cell) { return cell.module && cell.module.type === "cards" && cell.module.fullBleed; });
-      html += '<section class="dq-content-section dq-content-section--' + escapeHtml(section.width) + (section.useHeight ? ' has-custom-height' : '') + (viewportHeight ? ' is-viewport-height' : '') + (fullBleed ? ' has-full-bleed' : '') + '" data-section-id="' + escapeHtml(section.id) + '" style="--section-background:' + escapeHtml(section.background) + ';--section-max-width:' + section.maxWidth + 'px;--section-column-gap:' + section.columnGap + 'px;--section-padding-top:' + section.paddingTop + 'px;--section-padding-right:' + section.paddingRight + 'px;--section-padding-bottom:' + section.paddingBottom + 'px;--section-padding-left:' + section.paddingLeft + 'px' + sectionHeight + sectionImage + '">';
+      html += '<section class="dq-content-section dq-content-section--' + escapeHtml(section.width) + (section.useHeight ? ' has-custom-height' : '') + (viewportHeight ? ' is-viewport-height' : '') + (fullBleed ? ' has-full-bleed' : '') + '" data-section-id="' + escapeHtml(section.id) + '" data-background-filter="' + escapeHtml(section.backgroundFilter || "none") + '" style="--section-background:' + escapeHtml(section.background) + ';--section-max-width:' + section.maxWidth + 'px;--section-column-gap:' + section.columnGap + 'px;--section-padding-top:' + section.paddingTop + 'px;--section-padding-right:' + section.paddingRight + 'px;--section-padding-bottom:' + section.paddingBottom + 'px;--section-padding-left:' + section.paddingLeft + 'px' + sectionHeight + sectionImage + '">';
       html += '<div class="dq-content-section__inner">';
       if (section.showTitle || section.showSubtitle) {
         html += '<header class="dq-section-heading is-' + escapeHtml(section.headingAlign) + '" style="--section-title-size:' + section.titleSize + 'px;--section-title-color:' + escapeHtml(section.titleColor) + ';--section-subtitle-size:' + section.subtitleSize + 'px;--section-subtitle-color:' + escapeHtml(section.subtitleColor) + '">';
@@ -441,6 +613,9 @@
       if (typeof host._dqCodeCleanup === "function") {
         try { host._dqCodeCleanup(); } catch (error) {}
       }
+    });
+    root.querySelectorAll('[data-youtube-autoplay="true"]').forEach(function (youtube) {
+      if (youtube._dqYoutubeObserver) youtube._dqYoutubeObserver.disconnect();
     });
     var preservedLegacy = {};
     root.querySelectorAll('[data-builder-legacy="true"][data-section-id]').forEach(function (element) {
@@ -554,6 +729,133 @@
     });
   }
 
+  function initFaqAccordions(root) {
+    var scope = root || document;
+    var view = (scope.ownerDocument && scope.ownerDocument.defaultView) || window;
+    var reducedMotion = !!(view.matchMedia && view.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    scope.querySelectorAll('.dq-faq-item').forEach(function (details) {
+      if (details.dataset.faqMotionReady === "true") return;
+      var summary = details.querySelector('summary');
+      var answerInner = details.querySelector('.dq-faq-answer__inner');
+      if (!summary || !answerInner) return;
+      details.dataset.faqMotionReady = "true";
+      summary.addEventListener('click', function (event) {
+        if (reducedMotion || typeof details.animate !== "function") return;
+        event.preventDefault();
+        if (details.dataset.faqAnimating === "true") return;
+        details.dataset.faqAnimating = "true";
+        var opening = !details.open;
+        if (opening) details.open = true;
+        var startHeight = opening ? summary.offsetHeight : details.offsetHeight;
+        var endHeight = opening ? summary.offsetHeight + answerInner.scrollHeight : summary.offsetHeight;
+        details.style.height = startHeight + 'px';
+        details.style.overflow = 'hidden';
+        var animation = details.animate([
+          { height: startHeight + 'px' },
+          { height: endHeight + 'px' }
+        ], { duration: 420, easing: 'cubic-bezier(.22, 1, .36, 1)' });
+        animation.onfinish = function () {
+          if (!opening) details.open = false;
+          details.style.removeProperty('height');
+          details.style.removeProperty('overflow');
+          delete details.dataset.faqAnimating;
+        };
+        animation.oncancel = function () {
+          details.style.removeProperty('height');
+          details.style.removeProperty('overflow');
+          delete details.dataset.faqAnimating;
+        };
+      });
+    });
+  }
+
+  function initCalendars(scope) {
+    Array.from((scope || document).querySelectorAll('.dq-calendar')).forEach(function (calendar) {
+      if (calendar.dataset.calendarReady === "true") return;
+      calendar.dataset.calendarReady = "true";
+      var items;
+      try { items = JSON.parse(calendar.dataset.calendarEvents || "[]"); }
+      catch (error) { items = []; }
+      calendar.addEventListener("click", function (event) {
+        var button = event.target.closest('[data-calendar-shift]');
+        if (!button) return;
+        var year = Number(calendar.dataset.calendarYear);
+        var month = Number(calendar.dataset.calendarMonth) + Number(button.dataset.calendarShift || 0);
+        if (month < 1) { year -= 1; month = 12; }
+        if (month > 12) { year += 1; month = 1; }
+        year = Math.max(1970, Math.min(2100, year));
+        calendar.dataset.calendarYear = String(year);
+        calendar.dataset.calendarMonth = String(month);
+        calendar.innerHTML = renderCalendarMonth(year, month, items);
+      });
+    });
+  }
+
+  function initYouTubeAutoplay(scope) {
+    var view = (scope && scope.ownerDocument && scope.ownerDocument.defaultView) || window;
+    Array.from((scope || document).querySelectorAll('[data-youtube-autoplay="true"]')).forEach(function (youtube) {
+      if (youtube.dataset.youtubeReady === "true") return;
+      youtube.dataset.youtubeReady = "true";
+      var frame = youtube.querySelector("iframe");
+      if (!frame) return;
+      function command(name) {
+        if (!frame.contentWindow) return;
+        frame.contentWindow.postMessage(JSON.stringify({ event: "command", func: name, args: [] }), "*");
+      }
+      function play() { command("mute"); command("playVideo"); }
+      if (typeof view.IntersectionObserver !== "function") { frame.addEventListener("load", play, { once: true }); return; }
+      var inView = false;
+      frame.addEventListener("load", function () { if (inView) play(); });
+      var observer = new view.IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          inView = entry.isIntersecting && entry.intersectionRatio >= .55;
+          if (inView) play();
+          else command("pauseVideo");
+        });
+      }, { threshold: [0, .55] });
+      youtube._dqYoutubeObserver = observer;
+      observer.observe(youtube);
+    });
+  }
+
+  function initContentTabs(root) {
+    var view = (root && root.ownerDocument && root.ownerDocument.defaultView) || window;
+    (root || document).querySelectorAll('.dq-module--tabs').forEach(function (tabsModule) {
+      if (tabsModule.dataset.tabsReady === "true") return;
+      tabsModule.dataset.tabsReady = "true";
+      var buttons = Array.from(tabsModule.querySelectorAll(':scope > .dq-tab-list > [role="tab"]'));
+      var panels = Array.from(tabsModule.querySelectorAll(':scope > .dq-tab-panels > [role="tabpanel"]'));
+      function activate(index, focus) {
+        if (index < 0 || index >= buttons.length) return;
+        buttons.forEach(function (button, buttonIndex) {
+          var active = buttonIndex === index;
+          button.setAttribute("aria-selected", String(active));
+          button.tabIndex = active ? 0 : -1;
+        });
+        panels.forEach(function (panel, panelIndex) { panel.hidden = panelIndex !== index; });
+        if (focus) buttons[index].focus();
+        view.requestAnimationFrame(function () {
+          panels[index].querySelectorAll('.swiper-initialized').forEach(function (slider) {
+            if (slider.swiper && typeof slider.swiper.update === "function") slider.swiper.update();
+          });
+        });
+      }
+      buttons.forEach(function (button, index) {
+        button.addEventListener("click", function () { activate(index, false); });
+        button.addEventListener("keydown", function (event) {
+          var nextIndex = index;
+          if (event.key === "ArrowRight") nextIndex = (index + 1) % buttons.length;
+          else if (event.key === "ArrowLeft") nextIndex = (index - 1 + buttons.length) % buttons.length;
+          else if (event.key === "Home") nextIndex = 0;
+          else if (event.key === "End") nextIndex = buttons.length - 1;
+          else return;
+          event.preventDefault();
+          activate(nextIndex, true);
+        });
+      });
+    });
+  }
+
   function init(root) {
     var view = (root && root.ownerDocument && root.ownerDocument.defaultView) || window;
     var managedRoots = root && root.matches && root.matches('[data-builder-content-root]') ? [root] : Array.from((root || document).querySelectorAll('[data-builder-content-root]'));
@@ -564,6 +866,8 @@
         var parsedData = JSON.parse(savedState.textContent || "{}");
         var needsHeadingStructure = Number(parsedData.headingStructureVersion) !== 2;
         var needsContentImageMarkup = Number(parsedData.contentImageVersion) !== 2;
+        var needsContentModuleMarkup = Number(parsedData.contentModuleVersion) !== 2;
+        var needsFaqMotionMarkup = Number(parsedData.faqMotionVersion) !== 1;
         var savedData = normalize(parsedData);
         managedRoot.style.setProperty('--content-section-gap', Math.max(0, Math.min(200, Number(savedData.sectionGap) || 0)) + 'px');
         managedRoot.style.setProperty('--content-background', savedData.background);
@@ -588,7 +892,7 @@
         }) && !managedRoot.querySelector('.dq-motion');
         var needsDirectionalPadding = !!managedRoot.querySelector('[data-section-id][style*="--section-padding-y:"]');
         var needsSectionTitleDedup = savedData.sections.some(function (section) { return !section.legacy && section.showTitle; }) && !!managedRoot.querySelector('.dq-section-heading + .dq-content-grid .dq-content-heading h2');
-        if (managedRoot.querySelector('[data-content-slider]:not(.swiper)') || oldController || misplacedImageController || needsViewportHeight || needsMotionMarkup || needsDirectionalPadding || needsSectionTitleDedup || needsHeadingStructure || needsContentImageMarkup) {
+        if (managedRoot.querySelector('[data-content-slider]:not(.swiper)') || oldController || misplacedImageController || needsViewportHeight || needsMotionMarkup || needsDirectionalPadding || needsSectionTitleDedup || needsHeadingStructure || needsContentImageMarkup || needsContentModuleMarkup || needsFaqMotionMarkup) {
           render(managedRoot.ownerDocument, savedData);
           return;
         }
@@ -596,6 +900,10 @@
         initContentMotion(managedRoot);
       } catch (error) {}
     });
+    initFaqAccordions(root || document);
+    initCalendars(root || document);
+    initYouTubeAutoplay(root || document);
+    initContentTabs(root || document);
     (root || document).querySelectorAll('[data-content-slider]').forEach(function (slider) {
       if (slider.swiper || typeof view.Swiper !== "function") return;
       var module = slider.closest('.dq-module');
@@ -611,6 +919,10 @@
       }
       var transition = slider.dataset.transition || "slide";
       var total = slider.querySelectorAll('.swiper-slide').length;
+      var isCardSlider = slider.classList.contains('dq-card-list') && total > 1;
+      var mobilePerView = isCardSlider ? Math.min(1.5, total) : 1;
+      var compactPerView = isCardSlider ? Math.min(2, total) : 1;
+      var tabletPerView = isCardSlider ? Math.min(2.7, total) : Math.min(2, requested);
       var currentText = controlRoot && controlRoot.querySelector('[data-slide-current]');
       var totalText = controlRoot && controlRoot.querySelector('[data-slide-total]');
       var playButton = controlRoot && controlRoot.querySelector('[data-slide-play]');
@@ -628,14 +940,24 @@
         a11y: { enabled: true },
         autoplay: shouldAutoplay || playButton ? { delay: Math.max(1000, Number(slider.dataset.delay) || 4500), disableOnInteraction: false } : false,
         breakpoints: {
-          0: { slidesPerView: 1, spaceBetween: Math.min(gap, 16) },
-          641: { slidesPerView: Math.min(2, requested), spaceBetween: Math.min(gap, 24) },
-          901: { slidesPerView: requested, spaceBetween: gap }
+          0: { slidesPerView: mobilePerView, spaceBetween: Math.min(gap, 16), centeredSlides: isCardSlider },
+          481: { slidesPerView: compactPerView, spaceBetween: Math.min(gap, 20), centeredSlides: isCardSlider },
+          641: { slidesPerView: tabletPerView, spaceBetween: Math.min(gap, 24), centeredSlides: isCardSlider },
+          901: { slidesPerView: requested, spaceBetween: gap, centeredSlides: false }
         }
       };
-      if (transition === "fade" && requested === 1) {
+      if (isVisual && transition === "zoom") transition = "cinematic";
+      if (isVisual && transition === "vertical") transition = "page";
+      if ((transition === "fade" || transition === "cinematic") && requested === 1) {
         options.effect = "fade";
         options.fadeEffect = { crossFade: true };
+      } else if (transition === "page" && requested === 1) {
+        options.effect = "creative";
+        options.creativeEffect = {
+          limitProgress: 2,
+          prev: { translate: ["-18%", 0, -1], scale: .94, opacity: .28 },
+          next: { translate: ["100%", 0, 0], scale: 1, opacity: 1 }
+        };
       } else if (transition === "vertical" && requested === 1) {
         options.direction = "vertical";
         options.autoHeight = true;
@@ -676,7 +998,7 @@
   window.DQContentBuilder = {
     labels: moduleLabels,
     variants: moduleVariants,
-    presets: ["visual", "quick", "board", "cards", "banner", "text", "imageText", "stats", "faq", "gallery", "code"],
+    presets: ["visual", "quick", "board", "cards", "banner", "text", "imageText", "stats", "faq", "gallery", "youtube", "calendar", "sns", "tabs", "code"],
     createModule: createModule,
     createSection: createSection,
     setLayout: setLayout,
