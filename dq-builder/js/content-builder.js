@@ -21,6 +21,7 @@
     youtube: "유튜브",
     calendar: "캘린더",
     sns: "SNS 링크",
+    tabs: "탭 콘텐츠",
     code: "직접 작성 (HTML·CSS·JS)",
     custom: "기존 콘텐츠"
   };
@@ -28,7 +29,7 @@
     visual: [["cover", "이미지 전체형"], ["center", "중앙 문구형"], ["split", "이미지 분할형"]],
     quick: [["icon", "아이콘 카드형"], ["compact", "간결한 메뉴형"], ["pill", "둥근 버튼형"]],
     board: [["list", "기본 목록형"], ["date", "날짜 강조형"], ["card", "게시판 카드형"]],
-    cards: [["image", "이미지 상단형"], ["overlay", "이미지 겹침형"], ["horizontal", "가로 카드형"]],
+    cards: [["image", "이미지 상단형"], ["overlay", "이미지 겹침형"], ["horizontal", "가로 카드형"], ["intro-slider", "좌측 소개 + 우측 슬라이더"]],
     banner: [["color", "컬러 배너형"], ["image", "이미지 배너형"], ["compact", "작은 알림판형"]],
     text: [["basic", "기본 문단형"], ["center", "중앙 강조형"], ["cta", "버튼 강조형"]],
     imageText: [["image-left", "이미지 왼쪽"], ["image-right", "이미지 오른쪽"], ["stack", "이미지 위"]],
@@ -38,6 +39,7 @@
     youtube: [["embed", "기본 영상형"]],
     calendar: [["month", "월간 달력형"]],
     sns: [["icon", "아이콘형"], ["label", "아이콘 + 이름"]],
+    tabs: [["underline", "밑줄형"], ["pill", "버튼형"], ["box", "박스형"]],
     code: [["code", "직접 작성"]]
   };
 
@@ -98,6 +100,15 @@
       });
       base.slider.perView = 3;
       base.slider.controllerStyle = "bottom-capsule";
+    } else if (type === "tabs") {
+      base.showTitle = false;
+      base.title = "분야별 콘텐츠";
+      base.description = "탭을 선택해 콘텐츠를 확인하세요.";
+      base.animation = "fade-up";
+      base.tabs = [
+        { id: uid("tab"), label: "공지사항", module: createModule("board") },
+        { id: uid("tab"), label: "추천 콘텐츠", module: createModule("cards") }
+      ];
     } else if (type === "banner") {
       base.title = "알림판";
       base.slider = defaultSlider(true);
@@ -177,7 +188,7 @@
     element.dataset.builderLegacy = "true";
     return {
       id: sectionId, name: legacyName(element, index), width: "full", layout: "1", legacy: true,
-      maxWidth: 1200, background: "#ffffff", backgroundImage: "",
+      maxWidth: 1200, background: "#ffffff", backgroundImage: "", backgroundFilter: "none",
       cells: [{ id: uid("cell"), module: { id: uid("module"), type: "custom", variant: "default", title: legacyName(element, index), description: "", html: element.outerHTML, items: [], slider: defaultSlider(false) } }]
     };
   }
@@ -190,7 +201,7 @@
     var type = preset || "empty";
     var section = {
       id: uid("section"), name: moduleLabels[type] || "새 섹션", width: "wide", layout: "1",
-      maxWidth: 1200, columnGap: 40, paddingTop: 0, paddingRight: 0, paddingBottom: 0, paddingLeft: 0, useHeight: false, heightValue: 100, heightUnit: "vh", background: "#ffffff", backgroundImage: "",
+      maxWidth: 1200, columnGap: 40, paddingTop: 0, paddingRight: 0, paddingBottom: 0, paddingLeft: 0, useHeight: false, heightValue: 100, heightUnit: "vh", background: "#ffffff", backgroundImage: "", backgroundFilter: "none",
       showTitle: true, titleVisibilityConfigured: true, sectionTitle: moduleLabels[type] || "섹션 제목", titleSize: 42, titleColor: "#1d2530",
       showSubtitle: false, sectionSubtitle: "섹션을 설명하는 문장을 입력하세요.", subtitleSize: 18, subtitleColor: "#667080", headingAlign: "left",
       cells: [{ id: uid("cell"), module: createModule(type) }]
@@ -209,6 +220,7 @@
     data.headingStructureVersion = 2;
     data.contentImageVersion = 2;
     data.contentModuleVersion = 2;
+    data.faqMotionVersion = 1;
     data.background = data.background || "#ffffff";
     data.sectionGap = Math.max(0, Math.min(200, Number(data.sectionGap) || 0));
     data.sections.forEach(function (section) {
@@ -218,6 +230,7 @@
       section.layout = /^(?:1|2|1-2|2-1|3)$/.test(section.layout) ? section.layout : "1";
       section.background = section.background || "#ffffff";
       section.backgroundImage = section.backgroundImage || "";
+      section.backgroundFilter = /^(?:none|dark|blur|grayscale)$/.test(section.backgroundFilter) ? section.backgroundFilter : "none";
       section.maxWidth = Math.max(760, Math.min(1800, Number(section.maxWidth) || 1200));
       section.columnGap = Math.max(0, Math.min(120, section.columnGap == null ? 40 : Number(section.columnGap) || 0));
       var legacyPaddingY = Math.max(0, Math.min(200, Number(section.paddingY) || 0));
@@ -277,6 +290,7 @@
       else if (cell.module.type === "quick") cell.module.hoverEffect = /^(?:icon-scale|lift|background)$/.test(cell.module.hoverEffect) ? cell.module.hoverEffect : "icon-scale";
       else cell.module.hoverEffect = "none";
       cell.module.slider = Object.assign(defaultSlider(false), cell.module.slider || {});
+      if (!/^(?:visual|cards|banner|gallery)$/.test(cell.module.type)) cell.module.slider.enabled = false;
       cell.module.gap = Math.max(0, Math.min(100, Number(cell.module.gap) || 24));
       cell.module.fullBleed = cell.module.type === "cards" && section.layout === "1" ? cell.module.fullBleed !== false : false;
       cell.module.animation = /^(?:none|fade-up|fade|slide-left|slide-right|zoom|stagger)$/.test(cell.module.animation) ? cell.module.animation : (/^(?:quick|cards|stats|gallery)$/.test(cell.module.type) ? "stagger" : "fade-up");
@@ -284,6 +298,37 @@
       cell.module.slider.delay = Math.max(1000, Math.min(15000, Number(cell.module.slider.delay) || 4500));
       var allowedVariants = moduleVariants[cell.module.type] || [];
       if (!allowedVariants.some(function (variant) { return variant[0] === cell.module.variant; })) cell.module.variant = allowedVariants[0] ? allowedVariants[0][0] : "default";
+      if (cell.module.type === "cards" && cell.module.variant === "intro-slider") {
+        cell.module.fullBleed = false;
+        cell.module.slider.enabled = true;
+        cell.module.slider.transition = "slide";
+        cell.module.slider.controllerStyle = "bottom-minimal";
+        cell.module.slider.arrows = true;
+        cell.module.slider.counter = true;
+      }
+      if (cell.module.type === "tabs") {
+        cell.module.tabs = Array.isArray(cell.module.tabs) && cell.module.tabs.length ? cell.module.tabs : createModule("tabs").tabs;
+        cell.module.tabs = cell.module.tabs.slice(0, 8).map(function (tab, tabIndex) {
+          var nestedType = tab && tab.module && /^(?:quick|board|cards|banner|stats|gallery)$/.test(tab.module.type) ? tab.module.type : "board";
+          var nested = Object.assign(createModule(nestedType), tab && tab.module || {});
+          nested.type = nestedType;
+          nested.showTitle = nested.showTitle !== false;
+          nested.items = Array.isArray(nested.items) ? nested.items : [];
+          nested.slider = Object.assign(defaultSlider(false), nested.slider || {});
+          if (!/^(?:cards|banner|gallery)$/.test(nested.type)) nested.slider.enabled = false;
+          nested.gap = Math.max(0, Math.min(100, Number(nested.gap) || 24));
+          nested.imageFit = /^(?:cover|contain)$/.test(nested.imageFit) ? nested.imageFit : "cover";
+          nested.animation = "none";
+          nested.fullBleed = false;
+          var nestedVariants = (moduleVariants[nested.type] || []).filter(function (variant) { return variant[0] !== "intro-slider"; });
+          if (!nestedVariants.some(function (variant) { return variant[0] === nested.variant; })) nested.variant = nestedVariants[0] ? nestedVariants[0][0] : "default";
+          return {
+            id: tab && tab.id || uid("tab"),
+            label: String(tab && tab.label || "탭 " + (tabIndex + 1)),
+            module: nested
+          };
+        });
+      }
       if (cell.module.slider.transition === "zoom") cell.module.slider.transition = "cinematic";
       if (cell.module.type === "visual" && cell.module.slider.transition === "vertical") cell.module.slider.transition = "page";
       if (!/^(?:fade|slide|vertical|page|cinematic)$/.test(cell.module.slider.transition)) cell.module.slider.transition = "fade";
@@ -439,6 +484,20 @@
         return '<a class="dq-card-item" href="' + escapeHtml(item.href || "#") + '">' + itemMedia(item, index, "dq-card-item__media") + '<span><strong>' + escapeHtml(item.title) + '</strong><p>' + escapeHtml(item.text) + '</p></span></a>';
       }) + '</div>';
     }
+    if (module.type === "tabs") {
+      var tabs = Array.isArray(module.tabs) ? module.tabs : [];
+      var tabButtons = tabs.map(function (tab, index) {
+        var tabId = module.id + "-tab-" + index;
+        var panelId = module.id + "-panel-" + index;
+        return '<button type="button" role="tab" id="' + escapeHtml(tabId) + '" aria-controls="' + escapeHtml(panelId) + '" aria-selected="' + String(index === 0) + '" tabindex="' + (index === 0 ? "0" : "-1") + '" data-content-tab-button="' + index + '">' + escapeHtml(tab.label || "탭 " + (index + 1)) + '</button>';
+      }).join("");
+      var tabPanels = tabs.map(function (tab, index) {
+        var tabId = module.id + "-tab-" + index;
+        var panelId = module.id + "-panel-" + index;
+        return '<div class="dq-tab-panel" role="tabpanel" id="' + escapeHtml(panelId) + '" aria-labelledby="' + escapeHtml(tabId) + '" data-content-tab-panel="' + index + '"' + (index === 0 ? "" : " hidden") + '>' + renderModule(tab.module) + '</div>';
+      }).join("");
+      return moduleOpen + heading + '<div class="dq-tab-list" role="tablist" aria-label="' + escapeHtml(module.title || "콘텐츠 분류") + '">' + tabButtons + '</div><div class="dq-tab-panels">' + tabPanels + '</div></div>';
+    }
     if (module.type === "banner") {
       return moduleOpen + heading + renderItems(module, "dq-banner-list", function (item, index) {
         return '<a class="dq-banner-item" href="' + escapeHtml(item.href || "#") + '">' + contentImage(item, "dq-banner-item__image", index === 0) + '<span>NOTICE ' + String(index + 1).padStart(2, "0") + '</span><strong>' + escapeHtml(item.title) + '</strong><p>' + escapeHtml(item.text) + '</p></a>';
@@ -459,7 +518,7 @@
     }
     if (module.type === "faq") {
       return moduleOpen + heading + '<div class="dq-faq-list">' + module.items.map(function (item, index) {
-        return '<details class="dq-faq-item"' + (index === 0 ? ' open' : '') + '><summary>' + escapeHtml(item.title) + '</summary><div>' + escapeHtml(item.text) + '</div></details>';
+        return '<details class="dq-faq-item"' + (index === 0 ? ' open' : '') + '><summary>' + escapeHtml(item.title) + '</summary><div class="dq-faq-answer"><div class="dq-faq-answer__inner"><p>' + escapeHtml(item.text) + '</p></div></div></details>';
       }).join("") + '</div></div>';
     }
     if (module.type === "gallery") {
@@ -505,11 +564,11 @@
         }
         return;
       }
-      var sectionImage = section.backgroundImage ? ';background-image:url(\'' + escapeHtml(section.backgroundImage).replace(/'/g, "%27") + '\')' : '';
+      var sectionImage = section.backgroundImage ? ';--section-background-image:url(\'' + escapeHtml(section.backgroundImage).replace(/'/g, "%27") + '\')' : ';--section-background-image:none';
       var sectionHeight = section.useHeight ? ';--section-min-height:' + section.heightValue + section.heightUnit : ';--section-min-height:auto';
       var viewportHeight = section.useHeight && section.heightUnit === "vh" && Number(section.heightValue) === 100;
       var fullBleed = section.cells.some(function (cell) { return cell.module && cell.module.type === "cards" && cell.module.fullBleed; });
-      html += '<section class="dq-content-section dq-content-section--' + escapeHtml(section.width) + (section.useHeight ? ' has-custom-height' : '') + (viewportHeight ? ' is-viewport-height' : '') + (fullBleed ? ' has-full-bleed' : '') + '" data-section-id="' + escapeHtml(section.id) + '" style="--section-background:' + escapeHtml(section.background) + ';--section-max-width:' + section.maxWidth + 'px;--section-column-gap:' + section.columnGap + 'px;--section-padding-top:' + section.paddingTop + 'px;--section-padding-right:' + section.paddingRight + 'px;--section-padding-bottom:' + section.paddingBottom + 'px;--section-padding-left:' + section.paddingLeft + 'px' + sectionHeight + sectionImage + '">';
+      html += '<section class="dq-content-section dq-content-section--' + escapeHtml(section.width) + (section.useHeight ? ' has-custom-height' : '') + (viewportHeight ? ' is-viewport-height' : '') + (fullBleed ? ' has-full-bleed' : '') + '" data-section-id="' + escapeHtml(section.id) + '" data-background-filter="' + escapeHtml(section.backgroundFilter || "none") + '" style="--section-background:' + escapeHtml(section.background) + ';--section-max-width:' + section.maxWidth + 'px;--section-column-gap:' + section.columnGap + 'px;--section-padding-top:' + section.paddingTop + 'px;--section-padding-right:' + section.paddingRight + 'px;--section-padding-bottom:' + section.paddingBottom + 'px;--section-padding-left:' + section.paddingLeft + 'px' + sectionHeight + sectionImage + '">';
       html += '<div class="dq-content-section__inner">';
       if (section.showTitle || section.showSubtitle) {
         html += '<header class="dq-section-heading is-' + escapeHtml(section.headingAlign) + '" style="--section-title-size:' + section.titleSize + 'px;--section-title-color:' + escapeHtml(section.titleColor) + ';--section-subtitle-size:' + section.subtitleSize + 'px;--section-subtitle-color:' + escapeHtml(section.subtitleColor) + '">';
@@ -670,6 +729,46 @@
     });
   }
 
+  function initFaqAccordions(root) {
+    var scope = root || document;
+    var view = (scope.ownerDocument && scope.ownerDocument.defaultView) || window;
+    var reducedMotion = !!(view.matchMedia && view.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    scope.querySelectorAll('.dq-faq-item').forEach(function (details) {
+      if (details.dataset.faqMotionReady === "true") return;
+      var summary = details.querySelector('summary');
+      var answerInner = details.querySelector('.dq-faq-answer__inner');
+      if (!summary || !answerInner) return;
+      details.dataset.faqMotionReady = "true";
+      summary.addEventListener('click', function (event) {
+        if (reducedMotion || typeof details.animate !== "function") return;
+        event.preventDefault();
+        if (details.dataset.faqAnimating === "true") return;
+        details.dataset.faqAnimating = "true";
+        var opening = !details.open;
+        if (opening) details.open = true;
+        var startHeight = opening ? summary.offsetHeight : details.offsetHeight;
+        var endHeight = opening ? summary.offsetHeight + answerInner.scrollHeight : summary.offsetHeight;
+        details.style.height = startHeight + 'px';
+        details.style.overflow = 'hidden';
+        var animation = details.animate([
+          { height: startHeight + 'px' },
+          { height: endHeight + 'px' }
+        ], { duration: 420, easing: 'cubic-bezier(.22, 1, .36, 1)' });
+        animation.onfinish = function () {
+          if (!opening) details.open = false;
+          details.style.removeProperty('height');
+          details.style.removeProperty('overflow');
+          delete details.dataset.faqAnimating;
+        };
+        animation.oncancel = function () {
+          details.style.removeProperty('height');
+          details.style.removeProperty('overflow');
+          delete details.dataset.faqAnimating;
+        };
+      });
+    });
+  }
+
   function initCalendars(scope) {
     Array.from((scope || document).querySelectorAll('.dq-calendar')).forEach(function (calendar) {
       if (calendar.dataset.calendarReady === "true") return;
@@ -719,6 +818,44 @@
     });
   }
 
+  function initContentTabs(root) {
+    var view = (root && root.ownerDocument && root.ownerDocument.defaultView) || window;
+    (root || document).querySelectorAll('.dq-module--tabs').forEach(function (tabsModule) {
+      if (tabsModule.dataset.tabsReady === "true") return;
+      tabsModule.dataset.tabsReady = "true";
+      var buttons = Array.from(tabsModule.querySelectorAll(':scope > .dq-tab-list > [role="tab"]'));
+      var panels = Array.from(tabsModule.querySelectorAll(':scope > .dq-tab-panels > [role="tabpanel"]'));
+      function activate(index, focus) {
+        if (index < 0 || index >= buttons.length) return;
+        buttons.forEach(function (button, buttonIndex) {
+          var active = buttonIndex === index;
+          button.setAttribute("aria-selected", String(active));
+          button.tabIndex = active ? 0 : -1;
+        });
+        panels.forEach(function (panel, panelIndex) { panel.hidden = panelIndex !== index; });
+        if (focus) buttons[index].focus();
+        view.requestAnimationFrame(function () {
+          panels[index].querySelectorAll('.swiper-initialized').forEach(function (slider) {
+            if (slider.swiper && typeof slider.swiper.update === "function") slider.swiper.update();
+          });
+        });
+      }
+      buttons.forEach(function (button, index) {
+        button.addEventListener("click", function () { activate(index, false); });
+        button.addEventListener("keydown", function (event) {
+          var nextIndex = index;
+          if (event.key === "ArrowRight") nextIndex = (index + 1) % buttons.length;
+          else if (event.key === "ArrowLeft") nextIndex = (index - 1 + buttons.length) % buttons.length;
+          else if (event.key === "Home") nextIndex = 0;
+          else if (event.key === "End") nextIndex = buttons.length - 1;
+          else return;
+          event.preventDefault();
+          activate(nextIndex, true);
+        });
+      });
+    });
+  }
+
   function init(root) {
     var view = (root && root.ownerDocument && root.ownerDocument.defaultView) || window;
     var managedRoots = root && root.matches && root.matches('[data-builder-content-root]') ? [root] : Array.from((root || document).querySelectorAll('[data-builder-content-root]'));
@@ -730,6 +867,7 @@
         var needsHeadingStructure = Number(parsedData.headingStructureVersion) !== 2;
         var needsContentImageMarkup = Number(parsedData.contentImageVersion) !== 2;
         var needsContentModuleMarkup = Number(parsedData.contentModuleVersion) !== 2;
+        var needsFaqMotionMarkup = Number(parsedData.faqMotionVersion) !== 1;
         var savedData = normalize(parsedData);
         managedRoot.style.setProperty('--content-section-gap', Math.max(0, Math.min(200, Number(savedData.sectionGap) || 0)) + 'px');
         managedRoot.style.setProperty('--content-background', savedData.background);
@@ -754,7 +892,7 @@
         }) && !managedRoot.querySelector('.dq-motion');
         var needsDirectionalPadding = !!managedRoot.querySelector('[data-section-id][style*="--section-padding-y:"]');
         var needsSectionTitleDedup = savedData.sections.some(function (section) { return !section.legacy && section.showTitle; }) && !!managedRoot.querySelector('.dq-section-heading + .dq-content-grid .dq-content-heading h2');
-        if (managedRoot.querySelector('[data-content-slider]:not(.swiper)') || oldController || misplacedImageController || needsViewportHeight || needsMotionMarkup || needsDirectionalPadding || needsSectionTitleDedup || needsHeadingStructure || needsContentImageMarkup || needsContentModuleMarkup) {
+        if (managedRoot.querySelector('[data-content-slider]:not(.swiper)') || oldController || misplacedImageController || needsViewportHeight || needsMotionMarkup || needsDirectionalPadding || needsSectionTitleDedup || needsHeadingStructure || needsContentImageMarkup || needsContentModuleMarkup || needsFaqMotionMarkup) {
           render(managedRoot.ownerDocument, savedData);
           return;
         }
@@ -762,8 +900,10 @@
         initContentMotion(managedRoot);
       } catch (error) {}
     });
+    initFaqAccordions(root || document);
     initCalendars(root || document);
     initYouTubeAutoplay(root || document);
+    initContentTabs(root || document);
     (root || document).querySelectorAll('[data-content-slider]').forEach(function (slider) {
       if (slider.swiper || typeof view.Swiper !== "function") return;
       var module = slider.closest('.dq-module');
@@ -858,7 +998,7 @@
   window.DQContentBuilder = {
     labels: moduleLabels,
     variants: moduleVariants,
-    presets: ["visual", "quick", "board", "cards", "banner", "text", "imageText", "stats", "faq", "gallery", "youtube", "calendar", "sns", "code"],
+    presets: ["visual", "quick", "board", "cards", "banner", "text", "imageText", "stats", "faq", "gallery", "youtube", "calendar", "sns", "tabs", "code"],
     createModule: createModule,
     createSection: createSection,
     setLayout: setLayout,

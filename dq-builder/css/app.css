@@ -933,15 +933,38 @@ html.is-sitemap-open {
   overflow-y: auto;
   position: fixed;
   z-index: 1000;
+  isolation: isolate;
   inset: 0;
   width: 100vw;
   height: 100vh;
   height: 100dvh;
   padding: clamp(80px, 10vh, 120px) 40px 60px;
   color: #fff;
-  background: var(--sitemap-background, #1f1029);
+  background-color: var(--sitemap-background, #1f1029);
   animation: sitemap-open .3s ease both;
 }
+
+#header.is-sitemap-open .gnb::before {
+  position: fixed;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  content: "";
+  pointer-events: none;
+  background-image: var(--sitemap-background-image, none);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#header.is-sitemap-open :is(.sitemap-title, .gnb-depth1) { position: relative; z-index: 1; }
+
+#header[data-sitemap-filter="dark"].is-sitemap-open .gnb::before { filter: brightness(.48); }
+#header[data-sitemap-filter="blur"].is-sitemap-open .gnb::before { inset: -12px; filter: blur(8px); }
+#header[data-sitemap-filter="grayscale"].is-sitemap-open .gnb::before { filter: grayscale(1); }
 
 #header.is-sitemap-open .sitemap-title {
   display: block;
