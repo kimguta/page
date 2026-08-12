@@ -936,6 +936,7 @@
       '      </div>',
       '    </nav>',
       '    <div class="builder-sidebar-tools">',
+      '      <button type="button" class="builder-validation-start" data-builder-validation>' + icon("settings") + '<span>오류 검사</span></button>',
       '      <button type="button" class="builder-accessibility-start" data-builder-accessibility>' + icon("help") + '<span>접근성 검사</span></button>',
       '      <div class="builder-share">',
       '        <button type="button" class="builder-share__start" data-builder-share>' + icon("preview") + '<span>공유 작업</span></button>',
@@ -961,6 +962,15 @@
       '  </aside>',
       '</div>',
       '<div class="builder-toast" role="status" aria-live="polite"></div>',
+      '<div class="builder-project-modal builder-validation-modal" data-builder-validation-modal hidden>',
+      '  <div class="builder-project-modal__dialog builder-accessibility-dialog builder-validation-dialog" role="dialog" aria-modal="true" aria-labelledby="builder-validation-title" aria-describedby="builder-validation-description" data-lenis-prevent data-lenis-prevent-wheel data-lenis-prevent-touch>',
+      '    <strong id="builder-validation-title">오류 및 밸리데이션 검사 결과</strong>',
+      '    <p id="builder-validation-description">현재 미리보기의 구조, 연결, 입력값과 실행 상태를 검사합니다.</p>',
+      '    <div class="builder-accessibility-summary builder-validation-summary" data-builder-validation-summary aria-live="polite"></div>',
+      '    <div class="builder-accessibility-results builder-validation-results" data-builder-validation-results data-lenis-prevent data-lenis-prevent-wheel data-lenis-prevent-touch></div>',
+      '    <div class="builder-project-modal__actions"><button type="button" data-builder-validation-close>닫기</button><button type="button" data-builder-validation-rerun>다시 검사</button><button type="button" class="builder-accessibility-apply builder-validation-apply" data-builder-validation-apply>선택 항목 수정</button></div>',
+      '  </div>',
+      '</div>',
       '<div class="builder-project-modal builder-accessibility-modal" data-builder-accessibility-modal hidden>',
       '  <div class="builder-project-modal__dialog builder-accessibility-dialog" role="dialog" aria-modal="true" aria-labelledby="builder-accessibility-title" aria-describedby="builder-accessibility-description" data-lenis-prevent data-lenis-prevent-wheel data-lenis-prevent-touch>',
       '    <strong id="builder-accessibility-title">접근성 검사 결과</strong>',
@@ -1126,6 +1136,13 @@
     var sharePanel = builder.querySelector("[data-builder-share-panel]");
     var shareStatus = builder.querySelector("[data-builder-share-status]");
     var shareUrlInput = builder.querySelector("[data-builder-share-url]");
+    var validationButton = builder.querySelector("[data-builder-validation]");
+    var validationModal = builder.querySelector("[data-builder-validation-modal]");
+    var validationSummary = builder.querySelector("[data-builder-validation-summary]");
+    var validationResults = builder.querySelector("[data-builder-validation-results]");
+    var validationApplyButton = builder.querySelector("[data-builder-validation-apply]");
+    var validationIssues = [];
+    var validationRuntimeErrors = [];
     var accessibilityButton = builder.querySelector("[data-builder-accessibility]");
     var accessibilityModal = builder.querySelector("[data-builder-accessibility-modal]");
     var accessibilitySummary = builder.querySelector("[data-builder-accessibility-summary]");
@@ -1445,6 +1462,265 @@
       return String(element.getAttribute("aria-label") || labelledText || element.getAttribute("alt") || element.getAttribute("title") || element.textContent || childName || "").replace(/\s+/g, " ").trim();
     }
 
+    function bindValidationRuntimeCapture() {
+      validationRuntimeErrors = [];
+      if (!canvasWindow) return;
+      canvasWindow.addEventListener("error", function (event) {
+        var target = event.target;
+        var resourceUrl = target && target !== canvasWindow && (target.currentSrc || target.src || target.href);
+        var message = resourceUrl ? "리소스를 불러오지 못했습니다: " + resourceUrl : String(event.message || "알 수 없는 실행 오류");
+        if (!validationRuntimeErrors.some(function (item) { return item.message === message; })) {
+          validationRuntimeErrors.push({ message: message, element: target && target.nodeType === 1 ? target : null });
+        }
+      }, true);
+      canvasWindow.addEventListener("unhandledrejection", function (event) {
+        var reason = event.reason;
+        var message = "처리되지 않은 Promise 오류: " + String(reason && reason.message || reason || "원인을 확인할 수 없습니다.");
+        if (!validationRuntimeErrors.some(function (item) { return item.message === message; })) validationRuntimeErrors.push({ message: message, element: null });
+      });
+    }
+
+    function runValidationAudit() {
+      var issues = [];
+      var issueKeys = {};
+      function add(severity, category, title, detail, element, fix) {
+        var target = accessibilityElementName(element);
+        var key = [severity, category, title, target].join("|");
+        if (issueKeys[key]) return;
+        issueKeys[key] = true;
+        issues.push({ severity: severity, category: category, title: title, detail: detail, target: target, element: element || null, fix: fix || null });
+      }
+
+      validationRuntimeErrors.forEach(function (runtimeIssue) {
+        add("error", "실행", "실행 중 오류가 발생했습니다.", runtimeIssue.message, runtimeIssue.element || canvasDocument.body);
+      });
+
+      var seenIds = {};
+      canvasDocument.querySelectorAll("[id]").forEach(function (element) {
+        var id = String(element.id || "").trim();
+        if (!id) {
+          add("warning", "구조", "비어 있는 ID가 있습니다.", "빈 id 속성은 연결 대상으로 사용할 수 없으므로 제거하거나 고유한 값을 지정해 주세요.", element);
+          return;
+        }
+        if (seenIds[id]) add("error", "구조", "중복 ID가 있습니다.", 'id="' + id + '"가 여러 요소에 사용되어 링크와 스크립트 연결이 잘못될 수 있습니다.', element);
+        else seenIds[id] = element;
+      });
+
+      canvasDocument.querySelectorAll("label[for]").forEach(function (label) {
+        var targetId = String(label.getAttribute("for") || "").trim();
+        if (!targetId || canvasDocument.getElementById(targetId)) return;
+        var nestedControl = label.querySelector("input, select, textarea");
+        var repairId = nestedControl && (nestedControl.id || unique("field"));
+        add("error", "연결", "label의 입력 대상이 없습니다.", 'for="' + targetId + '"와 일치하는 입력 요소를 찾을 수 없습니다.', label, nestedControl ? function () {
+          rememberAccessibilityAttributes(nestedControl, { id: repairId });
+          rememberAccessibilityAttributes(label, { "for": repairId });
+        } : null);
+      });
+
+      ["aria-controls", "aria-labelledby", "aria-describedby"].forEach(function (attributeName) {
+        canvasDocument.querySelectorAll("[" + attributeName + "]").forEach(function (element) {
+          var ids = String(element.getAttribute(attributeName) || "").trim().split(/\s+/).filter(Boolean);
+          if (!ids.length) return;
+          var validIds = ids.filter(function (id) { return !!canvasDocument.getElementById(id); });
+          var missingIds = ids.filter(function (id) { return validIds.indexOf(id) < 0; });
+          if (!missingIds.length) return;
+          add("error", "연결", attributeName + " 연결 대상이 없습니다.", "찾을 수 없는 ID: " + missingIds.join(", "), element, validIds.length ? function () {
+            var attributes = {};
+            attributes[attributeName] = validIds.join(" ");
+            rememberAccessibilityAttributes(element, attributes);
+          } : null);
+        });
+      });
+
+      canvasDocument.querySelectorAll("button").forEach(function (button) {
+        if (button.hasAttribute("type")) return;
+        add("warning", "폼", "버튼의 type이 지정되지 않았습니다.", "폼 안에서 의도하지 않은 제출이 발생하지 않도록 type을 명시합니다.", button, function () {
+          rememberAccessibilityAttributes(button, { type: "button" });
+        });
+      });
+
+      canvasDocument.querySelectorAll("a:not([href])").forEach(function (link) {
+        add("error", "링크", "href가 없는 링크 요소가 있습니다.", "이동 기능이면 주소를 지정하고, 동작 기능이면 button 요소를 사용해 주세요.", link);
+      });
+      canvasDocument.querySelectorAll("a a, a button, button a, button button, label a, label button").forEach(function (control) {
+        add("error", "구조", "조작 요소가 서로 중첩되어 있습니다.", "링크·버튼 같은 조작 요소를 중첩하면 클릭과 키보드 동작이 불안정해집니다.", control);
+      });
+
+      canvasDocument.querySelectorAll("form input:not([type=button]):not([type=submit]):not([type=reset]), form select, form textarea").forEach(function (control, index) {
+        if (String(control.getAttribute("name") || "").trim()) return;
+        var suggestedName = String(control.id || control.getAttribute("aria-label") || control.getAttribute("placeholder") || "field-" + (index + 1)).trim().replace(/[^a-z0-9_-]+/gi, "-").replace(/^-+|-+$/g, "").toLowerCase() || "field-" + (index + 1);
+        add("warning", "폼", "입력 항목의 name이 없습니다.", "제출 데이터에서 이 입력값을 구분할 수 있도록 name을 지정합니다.", control, function () {
+          rememberAccessibilityAttributes(control, { name: suggestedName });
+        });
+      });
+
+      canvasDocument.querySelectorAll('a[target="_blank"]').forEach(function (link) {
+        var relValues = String(link.getAttribute("rel") || "").toLowerCase().split(/\s+/);
+        if (relValues.indexOf("noopener") >= 0) return;
+        add("warning", "링크", "새 창 링크에 보안 속성이 없습니다.", 'target="_blank" 링크에는 rel="noopener noreferrer"를 함께 사용하는 것이 안전합니다.', link, function () {
+          rememberAccessibilityAttributes(link, { rel: "noopener noreferrer" });
+        });
+      });
+
+      var placeholderLinks = [];
+      canvasDocument.querySelectorAll("a[href]").forEach(function (link) {
+        var href = String(link.getAttribute("href") || "").trim();
+        if (!href || href === "#") {
+          placeholderLinks.push(link);
+        } else if (/^javascript:/i.test(href)) {
+          add("error", "링크", "javascript: 링크가 사용되었습니다.", "스크립트 URL 대신 버튼 이벤트나 안전한 주소를 사용해야 합니다.", link, function () {
+            rememberAccessibilityAttributes(link, { href: "#" });
+          });
+        } else if (/^#.+/.test(href) && !canvasDocument.getElementById(href.slice(1))) {
+          add("error", "연결", "페이지 내 링크 대상이 없습니다.", 'href="' + href + '"와 일치하는 ID를 찾을 수 없습니다.', link);
+        }
+      });
+      if (placeholderLinks.length) add("warning", "링크", "이동 대상이 비어 있는 링크가 있습니다.", "href가 비어 있거나 #인 링크가 " + placeholderLinks.length + "개 있습니다. 대표 위치부터 실제 주소나 페이지 내 대상 ID를 지정해 주세요.", placeholderLinks[0]);
+
+      canvasDocument.querySelectorAll("input[type=number], input[type=range]").forEach(function (input) {
+        if (input.value === "" || !Number.isFinite(Number(input.value))) return;
+        var value = Number(input.value);
+        var min = input.min === "" ? -Infinity : Number(input.min);
+        var max = input.max === "" ? Infinity : Number(input.max);
+        if (value >= min && value <= max) return;
+        var corrected = Math.min(max, Math.max(min, value));
+        add("error", "입력값", "허용 범위를 벗어난 숫자값이 있습니다.", "현재 값 " + value + "을(를) " + corrected + "(으)로 보정할 수 있습니다.", input, function () {
+          input.value = String(corrected);
+          rememberAccessibilityAttributes(input, { value: String(corrected) });
+        });
+      });
+
+      canvasDocument.querySelectorAll("img").forEach(function (image) {
+        var src = String(image.getAttribute("src") || "").trim();
+        if (!src) add("error", "리소스", "이미지 경로가 비어 있습니다.", "이미지를 다시 등록하거나 해당 요소를 제거해 주세요.", image);
+        else if (image.complete && image.naturalWidth === 0) add("error", "리소스", "이미지를 불러오지 못했습니다.", src, image);
+      });
+      canvasDocument.querySelectorAll("iframe").forEach(function (frame) {
+        var src = String(frame.getAttribute("src") || "").trim();
+        if (!src || src === "about:blank") add("warning", "리소스", "iframe 주소가 비어 있습니다.", "표시할 외부 콘텐츠 주소를 확인해 주세요.", frame);
+      });
+
+      if (state && state.content && Array.isArray(state.content.sections)) {
+        var sectionIds = {};
+        state.content.sections.forEach(function (section, sectionIndex) {
+          if (!section.id || sectionIds[section.id]) add("error", "편집 데이터", "콘텐츠 섹션 식별자가 중복되거나 비어 있습니다.", (sectionIndex + 1) + "번째 섹션의 내부 식별자를 확인해 주세요.", canvasDocument.querySelectorAll("[data-section-id]")[sectionIndex]);
+          sectionIds[section.id] = true;
+          if (!Array.isArray(section.cells) || !section.cells.length) add("warning", "편집 데이터", "비어 있는 콘텐츠 섹션이 있습니다.", "콘텐츠 모듈을 추가하거나 필요하지 않은 섹션을 삭제해 주세요.", canvasDocument.querySelector('[data-section-id="' + section.id + '"]'));
+        });
+      }
+
+      var viewportWidth = canvasDocument.documentElement.clientWidth;
+      if (canvasDocument.documentElement.scrollWidth > viewportWidth + 2) {
+        var overflowElement = Array.from(canvasDocument.body.querySelectorAll("*")).find(function (element) {
+          if (element.closest(".dq-brand-ambient")) return false;
+          var rect = element.getBoundingClientRect();
+          return rect.width > 0 && (rect.right > viewportWidth + 2 || rect.left < -2);
+        });
+        add("warning", "레이아웃", "가로 화면을 벗어나는 요소가 있습니다.", "의도하지 않은 가로 스크롤이 생길 수 있으므로 너비와 좌우 위치를 확인해 주세요.", overflowElement || canvasDocument.body);
+      }
+      return issues;
+    }
+
+    function renderValidationResults(message) {
+      var errors = validationIssues.filter(function (issue) { return issue.severity === "error"; }).length;
+      var warnings = validationIssues.filter(function (issue) { return issue.severity === "warning"; }).length;
+      var info = validationIssues.length - errors - warnings;
+      var fixable = validationIssues.filter(function (issue) { return typeof issue.fix === "function"; }).length;
+      validationSummary.innerHTML = '<strong>' + (validationIssues.length ? "확인 필요 " + validationIssues.length + "건" : "검사 통과") + '</strong><span>오류 ' + errors + ' · 경고 ' + warnings + ' · 확인 ' + info + ' · 자동 수정 ' + fixable + '</span>' +
+        (fixable ? '<label class="builder-accessibility-select-all"><input type="checkbox" data-builder-validation-select-all><span>수정 가능 항목 전체 선택</span></label>' : '') +
+        '<b data-builder-validation-selected-count>선택 0건</b>' + (message ? '<small>' + escapeHtml(message) + '</small>' : '');
+      validationResults.innerHTML = validationIssues.length ? validationIssues.map(function (issue, index) {
+        var selector = issue.fix ? '<label class="builder-accessibility-check"><input type="checkbox" data-builder-validation-issue="' + index + '"' + (issue.selected ? ' checked' : '') + '><span>이 항목 선택</span></label>' : '<span class="builder-accessibility-manual">직접 확인</span>';
+        var severityLabel = issue.severity === "error" ? "오류" : issue.severity === "warning" ? "경고" : "확인";
+        var locate = issue.element && issue.element.isConnected && canvasDocument.body.contains(issue.element) ? '<button type="button" class="builder-validation-locate" data-builder-validation-locate="' + index + '">위치 보기</button>' : '<span>' + (issue.fix ? "선택 수정 가능" : "자동 수정 불가") + '</span>';
+        return '<article class="builder-accessibility-item builder-validation-item is-' + issue.severity + '"><div>' + selector + '<em>' + severityLabel + '</em><strong>' + escapeHtml(issue.title) + '</strong>' + locate + '</div><p><b>' + escapeHtml(issue.category) + '</b> · ' + escapeHtml(issue.detail) + '</p><code>' + escapeHtml(issue.target) + '</code></article>';
+      }).join("") : '<div class="builder-accessibility-empty"><strong>주요 오류와 밸리데이션 항목을 통과했습니다.</strong><p>저장 전 실제 링크와 외부 서비스 연결은 최종 환경에서 한 번 더 확인해 주세요.</p></div>';
+      updateValidationSelectionState();
+    }
+
+    function updateValidationSelectionState() {
+      var fixableIssues = validationIssues.filter(function (issue) { return typeof issue.fix === "function"; });
+      var selectedCount = fixableIssues.filter(function (issue) { return issue.selected; }).length;
+      var selectedOutput = validationSummary.querySelector("[data-builder-validation-selected-count]");
+      var selectAll = validationSummary.querySelector("[data-builder-validation-select-all]");
+      if (selectedOutput) selectedOutput.textContent = "선택 " + selectedCount + "건";
+      if (selectAll) {
+        selectAll.checked = fixableIssues.length > 0 && selectedCount === fixableIssues.length;
+        selectAll.indeterminate = selectedCount > 0 && selectedCount < fixableIssues.length;
+      }
+      validationApplyButton.disabled = selectedCount === 0 || validationApplyButton.dataset.busy === "true";
+      if (validationApplyButton.dataset.busy !== "true") validationApplyButton.textContent = selectedCount ? "선택 항목 수정 (" + selectedCount + ")" : "선택 항목 수정";
+    }
+
+    function rerunValidationAudit(message) {
+      validationIssues = runValidationAudit();
+      validationIssues.forEach(function (issue) { issue.selected = false; });
+      renderValidationResults(message || "");
+    }
+
+    function openValidationAudit() {
+      if (!canvasDocument) { showToast("미리보기를 불러온 뒤 다시 검사해 주세요."); return; }
+      rerunValidationAudit("");
+      validationModal.hidden = false;
+      window.setTimeout(function () {
+        var firstCheck = validationModal.querySelector("[data-builder-validation-issue]");
+        (firstCheck || validationModal.querySelector("[data-builder-validation-close]")).focus();
+      }, 0);
+    }
+
+    function closeValidationAudit(restoreFocus) {
+      validationModal.hidden = true;
+      if (restoreFocus !== false) validationButton.focus();
+    }
+
+    function locateValidationIssue(index) {
+      var issue = validationIssues[index];
+      var element = issue && issue.element;
+      if (!element || !element.isConnected || !canvasDocument.body.contains(element)) return;
+      closeValidationAudit(false);
+      element.scrollIntoView({ block: "center", inline: "nearest" });
+      var context = structureContext(element);
+      if (context) {
+        setBuilderMode("structure");
+        selectCanvasStructure(element);
+      } else {
+        setBuilderMode("detail");
+        selectCanvasElement(element);
+      }
+    }
+
+    function applyValidationFixes() {
+      var fixes = validationIssues.filter(function (issue) { return typeof issue.fix === "function" && issue.selected; });
+      if (!fixes.length || validationApplyButton.dataset.busy === "true") { showToast("수정할 항목을 먼저 선택해 주세요."); return; }
+      validationApplyButton.dataset.busy = "true";
+      validationApplyButton.disabled = true;
+      validationApplyButton.textContent = "수정 중...";
+      window.requestAnimationFrame(function () {
+        var applied = 0;
+        var failed = 0;
+        fixes.forEach(function (issue) {
+          try { issue.fix(); applied += 1; }
+          catch (error) { failed += 1; console.warn("오류 검사 자동 수정 실패", error); }
+        });
+        try {
+          if (applied) {
+            applyElementOverrides();
+            pushHistory();
+          }
+          rerunValidationAudit(applied + "건을 편집 내용에 적용했습니다." + (failed ? " " + failed + "건은 수정하지 못했습니다." : "") + " 최종 반영은 상단 저장 버튼을 눌러 주세요.");
+          showToast("선택한 오류 수정 " + applied + "건을 적용했습니다.");
+        } catch (error) {
+          renderValidationResults("수정 중 오류가 발생했습니다: " + (error.message || "다시 시도해 주세요."));
+          showToast("오류 수정 적용에 실패했습니다.");
+        } finally {
+          delete validationApplyButton.dataset.busy;
+          updateValidationSelectionState();
+          var closeButton = validationModal.querySelector("[data-builder-validation-close]");
+          if (closeButton) closeButton.focus();
+        }
+      });
+    }
+
     function rememberAccessibilityAttributes(element, attributes) {
       if (!element || !state) return;
       var selector = buildElementSelector(element);
@@ -1737,6 +2013,8 @@
 
     inspector.addEventListener("wheel", isolateInspectorScroll, { passive: true });
     inspector.addEventListener("touchmove", isolateInspectorScroll, { passive: true });
+    validationModal.querySelector(".builder-validation-dialog").addEventListener("wheel", isolateInspectorScroll, { passive: true });
+    validationModal.querySelector(".builder-validation-dialog").addEventListener("touchmove", isolateInspectorScroll, { passive: true });
     accessibilityModal.querySelector(".builder-accessibility-dialog").addEventListener("wheel", isolateInspectorScroll, { passive: true });
     accessibilityModal.querySelector(".builder-accessibility-dialog").addEventListener("touchmove", isolateInspectorScroll, { passive: true });
 
@@ -1970,6 +2248,27 @@
       if (canvasHeader) canvasHeader.classList.remove("is-scroll-hidden");
     }
 
+    function setCanvasSitemapPreview(shouldOpen) {
+      if (!canvasDocument) return;
+      var canvasHeader = canvasDocument.querySelector("#header");
+      if (!canvasHeader) return;
+      var sitemapToggle = canvasHeader.querySelector(".site-map-toggle");
+      var mobileToggle = canvasHeader.querySelector(".mobile-menu");
+      var menuItems = canvasHeader.querySelectorAll(".gnb-depth1 > .gnb-item");
+      canvasHeader.classList.toggle("is-sitemap-open", !!shouldOpen);
+      canvasDocument.documentElement.classList.toggle("is-sitemap-open", !!shouldOpen);
+      if (sitemapToggle) {
+        sitemapToggle.setAttribute("aria-expanded", String(!!shouldOpen));
+        sitemapToggle.setAttribute("aria-label", shouldOpen ? "사이트맵 닫기" : "사이트맵 열기");
+      }
+      if (shouldOpen) {
+        canvasHeader.classList.remove("is-mobile-open", "is-gnb-open", "is-search-open");
+        if (mobileToggle) mobileToggle.setAttribute("aria-expanded", "false");
+      }
+      menuItems.forEach(function (item) { item.classList.toggle("is-open", !!shouldOpen); });
+      resetCanvasHeaderPosition();
+    }
+
     function resetPageHeaderPosition() {
       var pageHeader = document.querySelector("#header");
       if (pageHeader) pageHeader.classList.remove("is-scroll-hidden");
@@ -2080,6 +2379,7 @@
       selectedStructureElement = context.element;
       clearCanvasSelectionHighlight();
       renderInspector();
+      setCanvasSitemapPreview(selectedLayer === "sitemap");
       revealStructureInspector(context);
       revealSelectedLayer();
       if (isSubPage) setSubContentPreview(context.subContentId || "");
@@ -2992,6 +3292,8 @@
         customButton.insertAdjacentHTML("beforeend", '<svg aria-hidden="true"><use href="' + SITE_ICONS + '#' + actionIcon + '"></use></svg>');
         actionArea.insertBefore(customButton, sitemapButton || mobileButton);
       });
+
+      if (selectedLayer === "sitemap" && editMode !== "preview") setCanvasSitemapPreview(true);
 
       footer.style.backgroundColor = footerData.background;
       footer.style.setProperty("--footer-background-image", footerData.backgroundImage ? 'url("' + String(footerData.backgroundImage).replace(/["\\]/g, "\\$&") + '")' : "none");
@@ -4211,6 +4513,7 @@
       readBasicUiSource(document);
       rememberSubContentSources(document);
       readBasicUiSource(canvasDocument);
+      bindValidationRuntimeCapture();
 
       var initialState = captureState();
       state = pendingUploadRecovery && pendingUploadRecovery.state ? pendingUploadRecovery.state : initialState;
@@ -4432,14 +4735,10 @@
         if (selectedLayer !== "element") clearCanvasSelectionHighlight();
         renderInspector();
         if (isSubPage && selectedLayer !== "subpage-content-item") setSubContentPreview("");
-        var canvasHeaderForLayer = canvasDocument.querySelector("#header");
-        var sitemapToggleForLayer = canvasHeaderForLayer && canvasHeaderForLayer.querySelector(".site-map-toggle");
         if (selectedLayer === "sitemap") {
           canvasWindow.scrollTo(0, 0);
-          if (canvasHeaderForLayer && !canvasHeaderForLayer.classList.contains("is-sitemap-open") && sitemapToggleForLayer) sitemapToggleForLayer.click();
-        } else {
-          if (canvasHeaderForLayer && canvasHeaderForLayer.classList.contains("is-sitemap-open") && sitemapToggleForLayer) sitemapToggleForLayer.click();
         }
+        setCanvasSitemapPreview(selectedLayer === "sitemap");
         if (selectedLayer === "content-section") {
           focusContentCanvasSection(selectedContentSectionId, true);
         } else if (selectedLayer === "subpage-contents") {
@@ -4463,6 +4762,16 @@
         resetCanvasHeaderPosition();
       } else if (historyButton) {
         restoreHistory(historyIndex + (historyButton.dataset.history === "undo" ? -1 : 1));
+      } else if (event.target.closest("[data-builder-validation]")) {
+        openValidationAudit();
+      } else if (event.target.closest("[data-builder-validation-apply]")) {
+        applyValidationFixes();
+      } else if (event.target.closest("[data-builder-validation-rerun]")) {
+        rerunValidationAudit("다시 검사한 결과입니다.");
+      } else if (event.target.closest("[data-builder-validation-locate]")) {
+        locateValidationIssue(Number(event.target.closest("[data-builder-validation-locate]").dataset.builderValidationLocate));
+      } else if (event.target.closest("[data-builder-validation-close]") || event.target === validationModal) {
+        closeValidationAudit();
       } else if (event.target.closest("[data-builder-accessibility]")) {
         openAccessibilityAudit();
       } else if (event.target.closest("[data-builder-accessibility-apply]")) {
@@ -4736,9 +5045,21 @@
     });
 
     builder.addEventListener("change", function (event) {
+      var validationIssueInput = event.target.closest("[data-builder-validation-issue]");
+      var validationSelectAllInput = event.target.closest("[data-builder-validation-select-all]");
       var issueInput = event.target.closest("[data-builder-accessibility-issue]");
       var selectAllInput = event.target.closest("[data-builder-accessibility-select-all]");
-      if (issueInput) {
+      if (validationIssueInput) {
+        var validationIssueIndex = Number(validationIssueInput.dataset.builderValidationIssue);
+        if (validationIssues[validationIssueIndex] && typeof validationIssues[validationIssueIndex].fix === "function") validationIssues[validationIssueIndex].selected = validationIssueInput.checked;
+        updateValidationSelectionState();
+      } else if (validationSelectAllInput) {
+        validationIssues.forEach(function (issue) {
+          if (typeof issue.fix === "function") issue.selected = validationSelectAllInput.checked;
+        });
+        validationResults.querySelectorAll("[data-builder-validation-issue]").forEach(function (input) { input.checked = validationSelectAllInput.checked; });
+        updateValidationSelectionState();
+      } else if (issueInput) {
         var issueIndex = Number(issueInput.dataset.builderAccessibilityIssue);
         if (accessibilityIssues[issueIndex] && typeof accessibilityIssues[issueIndex].fix === "function") accessibilityIssues[issueIndex].selected = issueInput.checked;
         updateAccessibilitySelectionState();
@@ -4752,12 +5073,14 @@
     });
 
     document.addEventListener("keydown", function (event) {
-      if (!accessibilityModal || accessibilityModal.hidden) return;
+      var activeAuditModal = validationModal && !validationModal.hidden ? validationModal : (accessibilityModal && !accessibilityModal.hidden ? accessibilityModal : null);
+      if (!activeAuditModal) return;
       if (event.key === "Escape") {
         event.preventDefault();
-        closeAccessibilityAudit();
+        if (activeAuditModal === validationModal) closeValidationAudit();
+        else closeAccessibilityAudit();
       } else if (event.key === "Tab") {
-        var modalFocusables = Array.from(accessibilityModal.querySelectorAll('button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])')).filter(function (element) {
+        var modalFocusables = Array.from(activeAuditModal.querySelectorAll('button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])')).filter(function (element) {
           return element.getClientRects().length > 0;
         });
         if (!modalFocusables.length) return;
@@ -4769,7 +5092,7 @@
         } else if (!event.shiftKey && document.activeElement === lastFocusable) {
           event.preventDefault();
           firstFocusable.focus();
-        } else if (!accessibilityModal.contains(document.activeElement)) {
+        } else if (!activeAuditModal.contains(document.activeElement)) {
           event.preventDefault();
           firstFocusable.focus();
         }
