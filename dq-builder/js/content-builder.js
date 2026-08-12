@@ -202,6 +202,7 @@
     var section = {
       id: uid("section"), name: moduleLabels[type] || "새 섹션", width: "wide", layout: "1",
       maxWidth: 1200, columnGap: 40, paddingTop: 0, paddingRight: 0, paddingBottom: 0, paddingLeft: 0, useHeight: false, heightValue: 100, heightUnit: "vh", background: "#ffffff", backgroundImage: "", backgroundFilter: "none",
+      signature: "default", titleTreatment: "default", accentText: "",
       showTitle: true, titleVisibilityConfigured: true, sectionTitle: moduleLabels[type] || "섹션 제목", titleSize: 42, titleColor: "#1d2530",
       showSubtitle: false, sectionSubtitle: "섹션을 설명하는 문장을 입력하세요.", subtitleSize: 18, subtitleColor: "#667080", headingAlign: "left",
       cells: [{ id: uid("cell"), module: createModule(type) }]
@@ -222,6 +223,8 @@
     data.contentModuleVersion = 2;
     data.faqMotionVersion = 1;
     data.background = data.background || "#ffffff";
+    data.backgroundImage = data.backgroundImage || "";
+    data.backgroundFilter = /^(?:none|dark|blur|grayscale)$/.test(data.backgroundFilter) ? data.backgroundFilter : "none";
     data.sectionGap = Math.max(0, Math.min(200, Number(data.sectionGap) || 0));
     data.sections.forEach(function (section) {
       section.id = section.id || uid("section");
@@ -231,6 +234,9 @@
       section.background = section.background || "#ffffff";
       section.backgroundImage = section.backgroundImage || "";
       section.backgroundFilter = /^(?:none|dark|blur|grayscale)$/.test(section.backgroundFilter) ? section.backgroundFilter : "none";
+      section.signature = /^(?:default|editorial|overlap|impact|immersive|framed)$/.test(section.signature) ? section.signature : "default";
+      section.titleTreatment = /^(?:default|oversized|outline|backdrop)$/.test(section.titleTreatment) ? section.titleTreatment : "default";
+      section.accentText = section.accentText == null ? "" : String(section.accentText).slice(0, 40);
       section.maxWidth = Math.max(760, Math.min(1800, Number(section.maxWidth) || 1200));
       section.columnGap = Math.max(0, Math.min(120, section.columnGap == null ? 40 : Number(section.columnGap) || 0));
       var legacyPaddingY = Math.max(0, Math.min(200, Number(section.paddingY) || 0));
@@ -568,10 +574,10 @@
       var sectionHeight = section.useHeight ? ';--section-min-height:' + section.heightValue + section.heightUnit : ';--section-min-height:auto';
       var viewportHeight = section.useHeight && section.heightUnit === "vh" && Number(section.heightValue) === 100;
       var fullBleed = section.cells.some(function (cell) { return cell.module && cell.module.type === "cards" && cell.module.fullBleed; });
-      html += '<section class="dq-content-section dq-content-section--' + escapeHtml(section.width) + (section.useHeight ? ' has-custom-height' : '') + (viewportHeight ? ' is-viewport-height' : '') + (fullBleed ? ' has-full-bleed' : '') + '" data-section-id="' + escapeHtml(section.id) + '" data-background-filter="' + escapeHtml(section.backgroundFilter || "none") + '" style="--section-background:' + escapeHtml(section.background) + ';--section-max-width:' + section.maxWidth + 'px;--section-column-gap:' + section.columnGap + 'px;--section-padding-top:' + section.paddingTop + 'px;--section-padding-right:' + section.paddingRight + 'px;--section-padding-bottom:' + section.paddingBottom + 'px;--section-padding-left:' + section.paddingLeft + 'px' + sectionHeight + sectionImage + '">';
+      html += '<section class="dq-content-section dq-content-section--' + escapeHtml(section.width) + (section.useHeight ? ' has-custom-height' : '') + (viewportHeight ? ' is-viewport-height' : '') + (fullBleed ? ' has-full-bleed' : '') + '" data-section-id="' + escapeHtml(section.id) + '" data-background-filter="' + escapeHtml(section.backgroundFilter || "none") + '" data-signature="' + escapeHtml(section.signature || "default") + '" data-title-treatment="' + escapeHtml(section.titleTreatment || "default") + '" data-accent-text="' + escapeHtml(section.accentText || "") + '" style="--section-background:' + escapeHtml(section.background) + ';--section-max-width:' + section.maxWidth + 'px;--section-column-gap:' + section.columnGap + 'px;--section-padding-top:' + section.paddingTop + 'px;--section-padding-right:' + section.paddingRight + 'px;--section-padding-bottom:' + section.paddingBottom + 'px;--section-padding-left:' + section.paddingLeft + 'px' + sectionHeight + sectionImage + '">';
       html += '<div class="dq-content-section__inner">';
       if (section.showTitle || section.showSubtitle) {
-        html += '<header class="dq-section-heading is-' + escapeHtml(section.headingAlign) + '" style="--section-title-size:' + section.titleSize + 'px;--section-title-color:' + escapeHtml(section.titleColor) + ';--section-subtitle-size:' + section.subtitleSize + 'px;--section-subtitle-color:' + escapeHtml(section.subtitleColor) + '">';
+        html += '<header class="dq-section-heading is-' + escapeHtml(section.headingAlign) + '" data-accent-text="' + escapeHtml(section.accentText || "") + '" style="--section-title-size:' + section.titleSize + 'px;--section-title-color:' + escapeHtml(section.titleColor) + ';--section-subtitle-size:' + section.subtitleSize + 'px;--section-subtitle-color:' + escapeHtml(section.subtitleColor) + '">';
         if (section.showTitle) html += '<h2>' + escapeHtml(section.sectionTitle) + '</h2>';
         if (section.showSubtitle) html += '<p>' + escapeHtml(section.sectionSubtitle) + '</p>';
         html += '</header>';
@@ -623,6 +629,8 @@
     });
     root.style.setProperty('--content-section-gap', data.sectionGap + 'px');
     root.style.setProperty('--content-background', data.background);
+    root.style.setProperty('--content-background-image', data.backgroundImage ? 'url("' + String(data.backgroundImage).replace(/["\\]/g, "\\$&") + '")' : 'none');
+    root.dataset.backgroundFilter = data.backgroundFilter;
     root.innerHTML = buildInner(data);
     Object.keys(preservedLegacy).forEach(function (sectionId) {
       var placeholder = root.querySelector('[data-builder-legacy="true"][data-section-id="' + sectionId + '"]');
@@ -871,6 +879,8 @@
         var savedData = normalize(parsedData);
         managedRoot.style.setProperty('--content-section-gap', Math.max(0, Math.min(200, Number(savedData.sectionGap) || 0)) + 'px');
         managedRoot.style.setProperty('--content-background', savedData.background);
+        managedRoot.style.setProperty('--content-background-image', savedData.backgroundImage ? 'url("' + String(savedData.backgroundImage).replace(/["\\]/g, "\\$&") + '")' : 'none');
+        managedRoot.dataset.backgroundFilter = savedData.backgroundFilter;
         var hasLegacyContent = !savedData.sections.length && Array.from(managedRoot.children).some(function (element) {
           return !element.matches('[data-builder-content-state]');
         });
