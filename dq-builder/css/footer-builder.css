@@ -1,9 +1,13 @@
 /* 사이트 편집기에서 생성한 푸터 스타일입니다. */
 :root { --footer-layout-width: 1920px; }
-#footer { color: #FFFFFF; background-color: #17444C; }
+#footer { position: relative; isolation: isolate; overflow: hidden; color: #FFFFFF; background-color: #173A5E; --footer-background-image: url("/page/dq-builder/images/uploads/visual1-1786493908299-0s741e.jpg"); }
+#footer::before { position: absolute; z-index: -1; inset: 0; content: ""; pointer-events: none; background-image: var(--footer-background-image, none); background-position: center; background-size: cover; background-repeat: no-repeat; filter: brightness(.52); }
+#footer[data-background-filter="dark"]::before { filter: brightness(.52); }
+#footer[data-background-filter="blur"]::before { inset: -10px; filter: blur(7px); }
+#footer[data-background-filter="grayscale"]::before { filter: grayscale(1); }
 #footer .footer-links a, #footer .footer-info, #footer .copyright { color: #FFFFFF; }
 #footer .footer-links a:first-child, #footer .family-site__toggle, #footer .footer-brand strong { color: #FFFFFF; }
-#footer .family-site__toggle { background-color: #17444C; }
+#footer .family-site__toggle { background-color: #173A5E; }
 #footer .site-footer__bottom .site-footer__inner { min-height: 132px; }
 #footer .footer-brand { width: 180px; min-width: 0; }
 #footer .footer-brand__image { display: block; width: 180px; max-width: 100%; height: auto; }

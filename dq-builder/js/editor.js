@@ -13,6 +13,50 @@
     var EDITOR_ICONS = "/page/dq-builder/images/icons/editor-icons.svg?v=2";
     var LOGO_IMAGE_BASE = "/page/dq-builder/images/";
     var FONT_OPTIONS = ["Pretendard", "Noto Sans KR", "Spoqa Han Sans", "GmarketSans", "S-CoreDream", "Paperlogy", "NanumSquareNeo", "Elice", "SebangGothic", "PyeongChang", "MaruBuri", "ChosunNm", "SokchoBadaDotum", "Jalnan"];
+
+    function normalizeFontOption(value) {
+      var name = String(value || "").trim();
+      var quote = name.charAt(0);
+      if ((quote === '"' || quote === "'") && name.charAt(name.length - 1) === quote) {
+        name = name.slice(1, -1).trim();
+      }
+      if (!name || name.length > 80 || /[{};<>\\]/.test(name)) return "";
+      return name;
+    }
+
+    function refreshFontOptionsFromCss(sourceDocument) {
+      var discovered = [];
+      function remember(value) {
+        var name = normalizeFontOption(value);
+        if (name && discovered.indexOf(name) === -1) discovered.push(name);
+      }
+      function inspectRules(rules) {
+        Array.from(rules || []).forEach(function (rule) {
+          if (rule.type === 5 && rule.style) remember(rule.style.getPropertyValue("font-family"));
+          else if (rule.cssRules) inspectRules(rule.cssRules);
+        });
+      }
+
+      Array.from(sourceDocument.styleSheets || []).forEach(function (sheet) {
+        var href = String(sheet.href || "");
+        if (!/(?:^|\/)fonts?\.css(?:[?#]|$)/i.test(href)) return;
+        try { inspectRules(sheet.cssRules); }
+        catch (error) { /* Cross-origin stylesheets are intentionally ignored. */ }
+      });
+
+      if (sourceDocument.fonts && sourceDocument.fonts.forEach) {
+        sourceDocument.fonts.forEach(function (face) { remember(face.family); });
+      }
+
+      var nextOptions = [];
+      ["Pretendard"].concat(discovered, FONT_OPTIONS).forEach(function (fontName) {
+        var normalized = normalizeFontOption(fontName);
+        if (normalized && nextOptions.indexOf(normalized) === -1) nextOptions.push(normalized);
+      });
+      FONT_OPTIONS = nextOptions;
+    }
+
+    refreshFontOptionsFromCss(document);
     var THEME_PRESETS = {
       civic: { label: "공공 블루", description: "좌측 제목·정돈된 카드·하단 바 GNB", color1: "#1E5A96", color2: "#173A5E", color3: "#A9C2D8", pageBackground: "#F5F8FB", surface: "#FFFFFF", surfaceAlt: "#EAF1F7", textColor: "#192B3B", mutedColor: "#607384", lineColor: "#D5E0E9", shadow: "0 8px 24px rgba(23,58,94,.07)", radiusStyle: "soft", buttonStyle: "filled", motionStyle: "soft", contentMaxWidth: 1200, sectionMaxWidth: 1200, headingAlign: "left", indicatorStyle: "underline", navigationMode: "single-full", headerHeight: 84, headerMaxWidth: 1320, navigationSize: 18, sectionGap: 72, columnGap: 36 },
       slate: { label: "뉴트럴 슬레이트", description: "무채색·각진 요소·넓은 데이터형 배치", color1: "#505A64", color2: "#262D33", color3: "#AEB5BB", pageBackground: "#F6F7F8", surface: "#FFFFFF", surfaceAlt: "#ECEFF1", textColor: "#20272D", mutedColor: "#687179", lineColor: "#D8DDE0", shadow: "none", radiusStyle: "square", buttonStyle: "outline", motionStyle: "none", contentMaxWidth: 1320, sectionMaxWidth: 1320, headingAlign: "left", indicatorStyle: "overline", navigationMode: "all", headerHeight: 76, headerMaxWidth: 1480, navigationSize: 16, sectionGap: 56, columnGap: 24 },
@@ -319,7 +363,7 @@
       data.utility.items = normalizeUtilityItems(data.utility.items);
       var theme = ensureThemeData(state.theme);
       var lines = [
-        '<div class="site-header__config" hidden data-gnb-mode="' + escapeHtml(data.navigation.mode || "single") + '" data-gnb-indicator="' + escapeHtml(/^(?:underline|overline|side|pill|dot)$/.test(data.navigation.indicatorStyle) ? data.navigation.indicatorStyle : "underline") + '" data-gnb-indicator-use-theme="' + String(data.navigation.indicatorUseTheme !== false) + '" data-gnb-indicator-color="' + escapeHtml(data.navigation.indicatorColor || theme.color1) + '" data-scroll-hide="' + String(data.hideOnScroll !== false) + '" data-utility-mobile-visible="' + String(!!data.utility.mobileVisible) + '" data-search-mode="' + escapeHtml(data.actions.searchMode === "link" ? "link" : "panel") + '" data-search-href="' + escapeHtml(data.actions.searchHref || "#") + '" data-sitemap-layout="' + escapeHtml(data.sitemap.layout || "horizontal") + '" data-sitemap-background="' + escapeHtml(data.sitemap.background || "#1f1029") + '" data-sitemap-background-image="' + escapeHtml(data.sitemap.backgroundImage || "") + '" data-sitemap-background-filter="' + escapeHtml(data.sitemap.backgroundFilter || "none") + '" data-sitemap-depth1-color="' + escapeHtml(data.sitemap.depth1Color || "#ffffff") + '" data-sitemap-depth23-color="' + escapeHtml(data.sitemap.depth23Color || "#ffffff") + '" data-sitemap-use-theme="' + String(theme.applyToSitemap !== false) + '" data-theme-design="' + escapeHtml(theme.designStyle || "custom") + '" data-theme-color-1="' + escapeHtml(theme.color1) + '" data-theme-color-2="' + escapeHtml(theme.color2) + '" data-theme-color-3="' + escapeHtml(theme.color3) + '" data-theme-font="' + escapeHtml(safeFontFamily(theme.fontFamily)) + '" data-theme-content-width="' + Math.max(960, Math.min(1600, Number(theme.contentMaxWidth) || 1200)) + '" data-theme-radius="' + escapeHtml(theme.radiusStyle || "soft") + '" data-theme-button="' + escapeHtml(theme.buttonStyle || "outline") + '" data-theme-motion="' + escapeHtml(theme.motionStyle || "soft") + '"></div>',
+        '<div class="site-header__config" hidden data-gnb-mode="' + escapeHtml(data.navigation.mode || "single") + '" data-gnb-indicator="' + escapeHtml(/^(?:underline|overline|side|pill|dot)$/.test(data.navigation.indicatorStyle) ? data.navigation.indicatorStyle : "underline") + '" data-gnb-indicator-use-theme="' + String(data.navigation.indicatorUseTheme !== false) + '" data-gnb-indicator-color="' + escapeHtml(data.navigation.indicatorColor || theme.color1) + '" data-scroll-hide="' + String(data.hideOnScroll !== false) + '" data-utility-mobile-visible="' + String(!!data.utility.mobileVisible) + '" data-search-mode="' + escapeHtml(data.actions.searchMode === "link" ? "link" : "panel") + '" data-search-href="' + escapeHtml(data.actions.searchHref || "#") + '" data-sitemap-layout="' + escapeHtml(data.sitemap.layout || "horizontal") + '" data-sitemap-background="' + escapeHtml(data.sitemap.background || "#1f1029") + '" data-sitemap-background-image="' + escapeHtml(data.sitemap.backgroundImage || "") + '" data-sitemap-background-filter="' + escapeHtml(data.sitemap.backgroundFilter || "none") + '" data-sitemap-depth1-color="' + escapeHtml(data.sitemap.depth1Color || "#ffffff") + '" data-sitemap-depth23-color="' + escapeHtml(data.sitemap.depth23Color || "#ffffff") + '" data-sitemap-use-theme="' + String(theme.applyToSitemap !== false) + '" data-theme-design="' + escapeHtml(theme.designStyle || "custom") + '" data-theme-art-direction="' + escapeHtml(theme.artDirection || "classic") + '" data-theme-motif="' + escapeHtml(theme.motif || "none") + '" data-theme-motif-images="' + escapeHtml(JSON.stringify(theme.motifImages || [])) + '" data-theme-motif-motion="' + escapeHtml(theme.motifMotion || "reveal") + '" data-theme-motif-ambient="' + escapeHtml(theme.motifAmbient || "none") + '" data-theme-motif-ambient-images="' + escapeHtml(JSON.stringify(theme.motifAmbientImages || [])) + '" data-theme-motif-ambient-color="' + escapeHtml(theme.motifAmbientColor || theme.color3) + '" data-theme-motif-ambient-layer="' + escapeHtml(theme.motifAmbientLayer || "front") + '" data-theme-color-1="' + escapeHtml(theme.color1) + '" data-theme-color-2="' + escapeHtml(theme.color2) + '" data-theme-color-3="' + escapeHtml(theme.color3) + '" data-theme-font="' + escapeHtml(safeFontFamily(theme.fontFamily)) + '" data-theme-content-width="' + Math.max(960, Math.min(1600, Number(theme.contentMaxWidth) || 1200)) + '" data-theme-radius="' + escapeHtml(theme.radiusStyle || "soft") + '" data-theme-button="' + escapeHtml(theme.buttonStyle || "outline") + '" data-theme-motion="' + escapeHtml(theme.motionStyle || "soft") + '"></div>',
         '<div class="site-header__utility"' + (data.utility.visible ? "" : " hidden") + '>',
         '  <div class="site-header__inner">',
         '    ' + buildUtilityInnerHtml(data.utility.items),
@@ -432,6 +476,7 @@
     function buildFooterFile() {
       var data = state.footer;
       var lines = [
+        '<div class="site-footer__config" hidden data-background-image="' + escapeHtml(data.backgroundImage || "") + '" data-background-filter="' + escapeHtml(data.backgroundFilter || "none") + '"></div>',
         '<div class="site-footer__top">',
         '  <div class="site-footer__inner">',
         '    <nav class="footer-links" aria-label="하단 메뉴">'
@@ -456,10 +501,17 @@
     function buildFooterCssFile() {
       var data = state.footer;
       var logoWidth = Math.max(60, Math.min(400, Number(data.logo.imageWidth) || 180));
+      var footerBackgroundImage = data.backgroundImage ? 'url("' + String(data.backgroundImage).replace(/["\\]/g, "\\$&") + '")' : "none";
+      var footerBackgroundFilter = data.backgroundFilter === "dark" ? "brightness(.52)" : data.backgroundFilter === "blur" ? "blur(7px)" : data.backgroundFilter === "grayscale" ? "grayscale(1)" : "none";
+      var footerBackgroundInset = data.backgroundFilter === "blur" ? "-10px" : "0";
       return [
         "/* 사이트 편집기에서 생성한 푸터 스타일입니다. */",
         ":root { --footer-layout-width: " + Math.max(960, Math.min(1920, Number(data.maxWidth) || 1280)) + "px; }",
-        "#footer { color: " + data.color + "; background-color: " + data.background + "; }",
+        "#footer { position: relative; isolation: isolate; overflow: hidden; color: " + data.color + "; background-color: " + data.background + "; --footer-background-image: " + footerBackgroundImage + "; }",
+        "#footer::before { position: absolute; z-index: -1; inset: " + footerBackgroundInset + "; content: \"\"; pointer-events: none; background-image: var(--footer-background-image, none); background-position: center; background-size: cover; background-repeat: no-repeat; filter: " + footerBackgroundFilter + "; }",
+        "#footer[data-background-filter=\"dark\"]::before { filter: brightness(.52); }",
+        "#footer[data-background-filter=\"blur\"]::before { inset: -10px; filter: blur(7px); }",
+        "#footer[data-background-filter=\"grayscale\"]::before { filter: grayscale(1); }",
         "#footer .footer-links a, #footer .footer-info, #footer .copyright { color: " + data.color + "; }",
         "#footer .footer-links a:first-child, #footer .family-site__toggle, #footer .footer-brand strong { color: " + data.color + "; }",
         "#footer .family-site__toggle { background-color: " + data.background + "; }",
@@ -662,10 +714,98 @@
       if (data.designStyle && data.designStyle !== "custom" && !THEME_PRESETS[data.designStyle]) data.designStyle = "custom";
       var preset = THEME_PRESETS[data.designStyle] || { pageBackground: "#FFFFFF", surface: "#FFFFFF", surfaceAlt: "#F5F6F8", textColor: "#222222", mutedColor: "#666666", lineColor: "#E3E5E8", shadow: "0 14px 38px rgba(0,0,0,.10)" };
       data.designStyle = data.designStyle || "custom";
+      data.artDirection = /^(?:classic|editorial|premium|culture|impact)$/.test(data.artDirection) ? data.artDirection : "classic";
+      if (data.motif === "arch") data.motif = "circle";
+      data.motif = /^(?:none|circle|square|triangle|custom)$/.test(data.motif) ? data.motif : "none";
+      data.motifImages = normalizeMotifImages(data.motifImages);
+      data.motifMotion = /^(?:none|reveal|grow|deepen)$/.test(data.motifMotion) ? data.motifMotion : "reveal";
+      data.motifAmbient = /^(?:none|snow|petal)$/.test(data.motifAmbient) ? data.motifAmbient : "none";
+      data.motifAmbientImages = normalizeMotifImages(data.motifAmbientImages).slice(0, 8);
+      data.motifAmbientColor = /^#[0-9a-f]{6}(?:[0-9a-f]{2})?$/i.test(data.motifAmbientColor || "") ? data.motifAmbientColor : (data.color3 || "#c68be5");
+      data.motifAmbientLayer = /^(?:front|back)$/.test(data.motifAmbientLayer) ? data.motifAmbientLayer : "front";
       ["pageBackground", "surface", "surfaceAlt", "textColor", "mutedColor", "lineColor", "shadow"].forEach(function (key) {
         if (!data[key]) data[key] = preset[key];
       });
       return data;
+    }
+
+    function normalizeMotifImages(value) {
+      if (typeof value === "string") {
+        try { value = JSON.parse(value); } catch (error) { value = []; }
+      }
+      return Array.isArray(value) ? value.filter(function (url) { return typeof url === "string" && url.trim(); }).slice(0, 12) : [];
+    }
+
+    function renderBrandMotifs(doc, theme) {
+      if (!doc || !doc.documentElement) return;
+      var root = doc.documentElement;
+      var sections = Array.from(doc.querySelectorAll(".dq-content-section:not(.dq-content-section--legacy)"));
+      doc.querySelectorAll(".dq-brand-motif-assets, .dq-brand-ambient").forEach(function (node) { node.remove(); });
+      sections.forEach(function (section) { section.classList.remove("dq-motif-visible"); });
+
+      var images = normalizeMotifImages(theme.motifImages);
+      if (theme.motif === "custom" && images.length) {
+        sections.forEach(function (section, sectionIndex) {
+          var layer = doc.createElement("div");
+          var image = doc.createElement("img");
+          layer.className = "dq-brand-motif-assets";
+          layer.setAttribute("aria-hidden", "true");
+          image.src = images[sectionIndex % images.length];
+          image.alt = "";
+          image.loading = "lazy";
+          image.decoding = "async";
+          layer.appendChild(image);
+          section.appendChild(layer);
+        });
+      }
+
+      if (theme.motif !== "none" && theme.motifMotion !== "none" && "IntersectionObserver" in doc.defaultView) {
+        var observer = new doc.defaultView.IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              (function (target) {
+                doc.defaultView.requestAnimationFrame(function () {
+                  doc.defaultView.requestAnimationFrame(function () {
+                    doc.defaultView.setTimeout(function () { target.classList.add("dq-motif-visible"); }, 700);
+                  });
+                });
+              }(entry.target));
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: .16, rootMargin: "0px 0px -8% 0px" });
+        sections.forEach(function (section) { observer.observe(section); });
+      } else {
+        sections.forEach(function (section) { section.classList.add("dq-motif-visible"); });
+      }
+
+      if (theme.motifAmbient !== "none") {
+        var ambient = doc.createElement("div");
+        var ambientImages = normalizeMotifImages(theme.motifAmbientImages).slice(0, 8);
+        ambient.className = "dq-brand-ambient dq-brand-ambient--" + theme.motifAmbient + " dq-brand-ambient--" + theme.motifAmbientLayer;
+        ambient.style.setProperty("--dq-ambient-color", theme.motifAmbientColor || theme.color3);
+        if (ambientImages.length) ambient.classList.add("has-custom-particles");
+        ambient.setAttribute("aria-hidden", "true");
+        for (var i = 0; i < 24; i += 1) {
+          var particle = doc.createElement("i");
+          particle.style.setProperty("--particle-x", ((i * 37 + 7) % 101) + "vw");
+          particle.style.setProperty("--particle-delay", (-((i * 1.73) % 24)) + "s");
+          particle.style.setProperty("--particle-duration", (15 + (i * 7 % 13)) + "s");
+          particle.style.setProperty("--particle-drift", ((i % 2 ? 1 : -1) * (24 + i * 3)) + "px");
+          particle.style.setProperty("--particle-size", (6 + i % 7) + "px");
+          if (ambientImages.length) {
+            var particleImage = doc.createElement("img");
+            particleImage.src = ambientImages[i % ambientImages.length];
+            particleImage.alt = "";
+            particle.appendChild(particleImage);
+          }
+          ambient.appendChild(particle);
+        }
+        doc.body.appendChild(ambient);
+      }
+      root.dataset.motifMotion = theme.motifMotion || "reveal";
+      root.dataset.motifAmbient = theme.motifAmbient || "none";
+      root.dataset.motifAmbientLayer = theme.motifAmbientLayer || "front";
     }
 
     function applyThemePreset(name) {
@@ -795,12 +935,15 @@
       '        <button type="button" class="builder-layer" data-layer="footer-related"><span class="builder-layer__line"></span><span>관련 사이트</span></button>',
       '      </div>',
       '    </nav>',
-      '    <div class="builder-share">',
-      '      <button type="button" class="builder-share__start" data-builder-share>' + icon("preview") + '<span>공유 작업</span></button>',
-      '      <div class="builder-share__panel" data-builder-share-panel hidden>',
-      '        <strong data-builder-share-status>외부 공유가 꺼져 있습니다.</strong>',
-      '        <input type="text" data-builder-share-url readonly aria-label="외부 공유 주소">',
-      '        <div><button type="button" data-builder-share-copy>주소 복사</button><button type="button" data-builder-share-stop>공유 종료</button></div>',
+      '    <div class="builder-sidebar-tools">',
+      '      <button type="button" class="builder-accessibility-start" data-builder-accessibility>' + icon("help") + '<span>접근성 검사</span></button>',
+      '      <div class="builder-share">',
+      '        <button type="button" class="builder-share__start" data-builder-share>' + icon("preview") + '<span>공유 작업</span></button>',
+      '        <div class="builder-share__panel" data-builder-share-panel hidden>',
+      '          <strong data-builder-share-status>외부 공유가 꺼져 있습니다.</strong>',
+      '          <input type="text" data-builder-share-url readonly aria-label="외부 공유 주소">',
+      '          <div><button type="button" data-builder-share-copy>주소 복사</button><button type="button" data-builder-share-stop>공유 종료</button></div>',
+      '        </div>',
       '      </div>',
       '    </div>',
       '    <p class="builder-sidebar__note">상위 메뉴를 눌러 편집 항목을 열고 닫을 수 있습니다.</p>',
@@ -818,6 +961,15 @@
       '  </aside>',
       '</div>',
       '<div class="builder-toast" role="status" aria-live="polite"></div>',
+      '<div class="builder-project-modal builder-accessibility-modal" data-builder-accessibility-modal hidden>',
+      '  <div class="builder-project-modal__dialog builder-accessibility-dialog" role="dialog" aria-modal="true" aria-labelledby="builder-accessibility-title" aria-describedby="builder-accessibility-description" data-lenis-prevent data-lenis-prevent-wheel data-lenis-prevent-touch>',
+      '    <strong id="builder-accessibility-title">접근성 검사 결과</strong>',
+      '    <p id="builder-accessibility-description">현재 미리보기에서 확인된 항목과 권장 수정 내용을 보여드립니다.</p>',
+      '    <div class="builder-accessibility-summary" data-builder-accessibility-summary aria-live="polite"></div>',
+      '    <div class="builder-accessibility-results" data-builder-accessibility-results data-lenis-prevent data-lenis-prevent-wheel data-lenis-prevent-touch></div>',
+      '    <div class="builder-project-modal__actions"><button type="button" data-builder-accessibility-close>닫기</button><button type="button" class="builder-accessibility-apply" data-builder-accessibility-apply>적용</button></div>',
+      '  </div>',
+      '</div>',
       '<div class="builder-project-modal" data-builder-project-modal hidden>',
       '  <form class="builder-project-modal__dialog" data-builder-project-form role="dialog" aria-modal="true" aria-labelledby="builder-project-title" aria-describedby="builder-project-description">',
       '    <strong id="builder-project-title">실작업 프로젝트 빌드</strong>',
@@ -974,6 +1126,12 @@
     var sharePanel = builder.querySelector("[data-builder-share-panel]");
     var shareStatus = builder.querySelector("[data-builder-share-status]");
     var shareUrlInput = builder.querySelector("[data-builder-share-url]");
+    var accessibilityButton = builder.querySelector("[data-builder-accessibility]");
+    var accessibilityModal = builder.querySelector("[data-builder-accessibility-modal]");
+    var accessibilitySummary = builder.querySelector("[data-builder-accessibility-summary]");
+    var accessibilityResults = builder.querySelector("[data-builder-accessibility-results]");
+    var accessibilityApplyButton = builder.querySelector("[data-builder-accessibility-apply]");
+    var accessibilityIssues = [];
     var projectModal = builder.querySelector("[data-builder-project-modal]");
     var projectForm = builder.querySelector("[data-builder-project-form]");
     var projectStatus = builder.querySelector("[data-builder-project-status]");
@@ -1268,12 +1426,319 @@
       showToast("외부 공유 주소를 복사했습니다.");
     }
 
+    function accessibilityElementName(element) {
+      if (!element) return "문서";
+      var tag = element.tagName.toLowerCase();
+      var identity = element.id ? "#" + element.id : (element.classList.length ? "." + Array.from(element.classList).slice(0, 2).join(".") : "");
+      var text = String(element.textContent || element.getAttribute("alt") || "").replace(/\s+/g, " ").trim();
+      return "<" + tag + identity + ">" + (text ? " · " + text.slice(0, 42) : "");
+    }
+
+    function accessibilityName(element) {
+      var labelledBy = element.getAttribute("aria-labelledby");
+      var labelledText = labelledBy ? labelledBy.split(/\s+/).map(function (id) {
+        var label = canvasDocument.getElementById(id);
+        return label ? label.textContent : "";
+      }).join(" ") : "";
+      var namedChild = element.querySelector && element.querySelector("img[alt], svg title");
+      var childName = namedChild ? (namedChild.getAttribute("alt") || namedChild.textContent || "") : "";
+      return String(element.getAttribute("aria-label") || labelledText || element.getAttribute("alt") || element.getAttribute("title") || element.textContent || childName || "").replace(/\s+/g, " ").trim();
+    }
+
+    function rememberAccessibilityAttributes(element, attributes) {
+      if (!element || !state) return;
+      var selector = buildElementSelector(element);
+      var scope = elementScope(element);
+      var currentPage = pageName(canvasWindow);
+      var key = scope + ":" + (scope === "shared" ? "all" : currentPage) + ":" + selector;
+      var overrides = state.elementOverrides || (state.elementOverrides = []);
+      var override = overrides.find(function (item) { return item.key === key; });
+      if (!override) {
+        override = {
+          key: key, selector: selector, groupSelector: buildCommonElementSelector(element), applyToGroup: false,
+          scope: scope, page: currentPage, tag: element.tagName.toLowerCase(), label: "접근성 자동 수정",
+          attributes: {}, originalAttributes: {}, styles: { base: { values: {}, customCss: "", effects: {} } }
+        };
+        overrides.push(override);
+      }
+      override.attributes = override.attributes || {};
+      override.originalAttributes = override.originalAttributes || {};
+      Object.keys(attributes).forEach(function (name) {
+        if (!(name in override.originalAttributes)) override.originalAttributes[name] = element.getAttribute(name);
+        override.attributes[name] = attributes[name];
+        element.setAttribute(name, attributes[name]);
+      });
+    }
+
+    function suggestedImageAlt(image) {
+      var context = image.closest("a, article, figure, .dq-content-slide, .dq-content-cell");
+      var label = context && context.querySelector("h1, h2, h3, h4, strong, figcaption");
+      var text = String(label && label.textContent || "").replace(/\s+/g, " ").trim();
+      if (text) return text.slice(0, 80);
+      var fileName = String(image.getAttribute("src") || "").split(/[?#]/)[0].split("/").pop() || "";
+      fileName = fileName.replace(/[-_][a-z0-9]{5,}$/i, "").replace(/\.[a-z0-9]+$/i, "").replace(/[-_]+/g, " ").trim();
+      return fileName || "콘텐츠 이미지";
+    }
+
+    function parseAuditColor(value) {
+      var values = String(value || "").match(/[\d.]+/g);
+      if (!values || values.length < 3) return null;
+      return { r: Number(values[0]), g: Number(values[1]), b: Number(values[2]), a: values[3] == null ? 1 : Number(values[3]) };
+    }
+
+    function auditLuminance(color) {
+      return [color.r, color.g, color.b].map(function (channel) {
+        channel /= 255;
+        return channel <= .03928 ? channel / 12.92 : Math.pow((channel + .055) / 1.055, 2.4);
+      }).reduce(function (sum, channel, index) { return sum + channel * [.2126, .7152, .0722][index]; }, 0);
+    }
+
+    function auditContrastRatio(foreground, background) {
+      var light = Math.max(auditLuminance(foreground), auditLuminance(background));
+      var dark = Math.min(auditLuminance(foreground), auditLuminance(background));
+      return (light + .05) / (dark + .05);
+    }
+
+    function auditBackgroundColor(element) {
+      var current = element;
+      while (current && current !== canvasDocument.documentElement) {
+        var style = canvasWindow.getComputedStyle(current);
+        var sectionImage = String(style.getPropertyValue("--section-background-image") || "").trim();
+        var contentImage = String(style.getPropertyValue("--content-background-image") || "").trim();
+        if ((sectionImage && sectionImage !== "none") || (contentImage && contentImage !== "none")) return null;
+        if (style.backgroundImage && style.backgroundImage !== "none") return null;
+        var color = parseAuditColor(style.backgroundColor);
+        if (color && color.a >= .95) return color;
+        current = current.parentElement;
+      }
+      return { r: 255, g: 255, b: 255, a: 1 };
+    }
+
+    function auditFocusIndicator(element) {
+      var before = canvasWindow.getComputedStyle(element);
+      var beforeValues = {
+        boxShadow: before.boxShadow,
+        borderColor: before.borderColor,
+        backgroundColor: before.backgroundColor
+      };
+      try { element.focus({ preventScroll: true }); } catch (error) { element.focus(); }
+      var focused = canvasWindow.getComputedStyle(element);
+      var outlineWidth = parseFloat(focused.outlineWidth) || 0;
+      return (focused.outlineStyle !== "none" && outlineWidth >= 1)
+        || (focused.boxShadow !== "none" && focused.boxShadow !== beforeValues.boxShadow)
+        || focused.borderColor !== beforeValues.borderColor
+        || focused.backgroundColor !== beforeValues.backgroundColor;
+    }
+
+    function runAccessibilityAudit() {
+      var issues = [];
+      function add(severity, title, detail, element, fix) {
+        issues.push({ severity: severity, title: title, detail: detail, target: accessibilityElementName(element), fix: fix || null });
+      }
+      if (!String(canvasDocument.documentElement.lang || "").trim()) add("error", "문서 언어가 지정되지 않았습니다.", "html 요소에 lang=\"ko\" 같은 주 언어 설정이 필요합니다.", canvasDocument.documentElement);
+      if (!String(canvasDocument.title || "").trim()) add("error", "페이지 제목이 없습니다.", "브라우저와 보조기술이 페이지 목적을 알 수 있도록 title을 입력해 주세요.", canvasDocument.head);
+      var mains = canvasDocument.querySelectorAll("main:not([hidden])");
+      if (mains.length !== 1) add("error", "main 영역은 한 개여야 합니다.", "현재 " + mains.length + "개가 확인되었습니다. 페이지의 핵심 본문을 하나의 main으로 정리해 주세요.", canvasDocument.body);
+
+      canvasDocument.querySelectorAll("img").forEach(function (image) {
+        if (!image.hasAttribute("alt")) {
+          var altText = suggestedImageAlt(image);
+          add("error", "이미지 대체 텍스트가 없습니다.", "이미지의 목적을 설명하는 alt가 필요합니다. 자동 제안: “" + altText + "”", image, function () { rememberAccessibilityAttributes(image, { alt: altText }); });
+        } else if (!image.getAttribute("alt").trim() && image.closest("a, button")) {
+          var linkedAlt = suggestedImageAlt(image);
+          add("warning", "링크 이미지의 대체 텍스트가 비어 있습니다.", "링크 목적을 알 수 있도록 대체 텍스트를 제공해 주세요.", image, function () { rememberAccessibilityAttributes(image, { alt: linkedAlt }); });
+        }
+      });
+
+      canvasDocument.querySelectorAll("a, button, input, select, textarea").forEach(function (control) {
+        if (control.disabled || control.type === "hidden" || control.closest("[hidden]")) return;
+        if (accessibilityName(control)) return;
+        var controlLabel = String(control.getAttribute("placeholder") || control.getAttribute("name") || control.getAttribute("value") || "").trim();
+        controlLabel = controlLabel || (control.tagName === "A" ? "링크" : control.tagName === "BUTTON" ? "버튼" : "입력 항목");
+        add("error", "조작 요소에 접근 가능한 이름이 없습니다.", "화면 낭독기가 용도를 읽을 수 있도록 이름을 지정해야 합니다.", control, function () { rememberAccessibilityAttributes(control, { "aria-label": controlLabel }); });
+      });
+
+      canvasDocument.querySelectorAll("iframe").forEach(function (frame) {
+        if (String(frame.getAttribute("title") || "").trim()) return;
+        add("error", "iframe 제목이 없습니다.", "삽입된 외부 콘텐츠의 목적을 설명하는 title이 필요합니다.", frame, function () { rememberAccessibilityAttributes(frame, { title: "외부 콘텐츠" }); });
+      });
+
+      var seenIds = {};
+      canvasDocument.querySelectorAll("[id]").forEach(function (element) {
+        if (!seenIds[element.id]) seenIds[element.id] = element;
+        else add("error", "중복된 ID가 있습니다.", "id=\"" + element.id + "\"가 두 번 이상 사용되었습니다. 연결된 label·aria 속성과 함께 고유하게 변경해 주세요.", element);
+      });
+
+      var previousHeadingLevel = 0;
+      canvasDocument.querySelectorAll("h1, h2, h3, h4, h5, h6").forEach(function (heading) {
+        if (heading.closest("[hidden]") || canvasWindow.getComputedStyle(heading).display === "none") return;
+        var level = Number(heading.tagName.slice(1));
+        if (previousHeadingLevel && level > previousHeadingLevel + 1) add("warning", "제목 단계가 건너뛰었습니다.", "h" + previousHeadingLevel + " 다음에 h" + level + "이 나옵니다. 문서 구조에 맞게 순서를 조정해 주세요.", heading);
+        previousHeadingLevel = level;
+      });
+
+      canvasDocument.querySelectorAll("table").forEach(function (table) {
+        if (!table.querySelector("caption")) add("warning", "표 제목이 없습니다.", "표의 목적을 설명하는 caption을 추가해 주세요.", table);
+        if (!table.querySelector("th")) add("warning", "표 머리글이 없습니다.", "행 또는 열의 의미를 나타내는 th를 사용해 주세요.", table);
+      });
+
+      canvasDocument.querySelectorAll('[role="button"], [role="link"]').forEach(function (element) {
+        if (element.closest("[hidden]") || element.tabIndex >= 0) return;
+        add("error", "키보드로 포커스할 수 없는 조작 요소입니다.", "role이 지정된 요소는 Tab 키로 접근할 수 있도록 tabindex=\"0\"이 필요합니다.", element, function () { rememberAccessibilityAttributes(element, { tabindex: "0" }); });
+      });
+
+      var focusableElements = Array.from(canvasDocument.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]):not([type="hidden"]), select:not([disabled]), textarea:not([disabled]), [tabindex]')).filter(function (element) {
+        var style = canvasWindow.getComputedStyle(element);
+        var rect = element.getBoundingClientRect();
+        return !element.closest("[hidden]") && style.display !== "none" && style.visibility !== "hidden" && rect.width > 0 && rect.height > 0;
+      });
+      focusableElements.forEach(function (element) {
+        var explicitTabIndex = element.getAttribute("tabindex");
+        if (explicitTabIndex != null && Number(explicitTabIndex) > 0) {
+          add("warning", "양수 tabindex가 포커스 순서를 바꿉니다.", "DOM의 자연스러운 읽기 순서와 달라질 수 있습니다. tabindex=\"0\" 사용을 권장합니다.", element, function () { rememberAccessibilityAttributes(element, { tabindex: "0" }); });
+        }
+        if (element.tagName === "A" && /^#.+/.test(element.getAttribute("href") || "")) {
+          var targetId = (element.getAttribute("href") || "").slice(1);
+          if (!canvasDocument.getElementById(targetId)) add("error", "포커스 이동 대상이 없습니다.", "href=\"#" + targetId + "\"가 가리키는 요소가 없습니다. 대상 ID를 확인해 주세요.", element);
+        }
+        var controlsId = element.getAttribute("aria-controls");
+        if (controlsId && !canvasDocument.getElementById(controlsId)) add("error", "aria-controls 대상이 없습니다.", "aria-controls=\"" + controlsId + "\"와 일치하는 요소 ID가 필요합니다.", element);
+      });
+
+      var firstContentLink = canvasDocument.querySelector('a[href="#main"], a[href="#contents"], a[href="#contentsArea"]');
+      if (!firstContentLink) add("warning", "본문 바로가기 링크가 없습니다.", "키보드 사용자가 반복 메뉴를 건너뛸 수 있는 본문 바로가기 링크를 제공해 주세요.", canvasDocument.body);
+
+      var originalFocusedElement = canvasDocument.activeElement;
+      var focusIndicatorKeys = {};
+      var focusIndicatorCount = 0;
+      focusableElements.slice(0, 60).forEach(function (element) {
+        if (focusIndicatorCount >= 8 || element.tabIndex < 0) return;
+        var key = element.tagName + "." + Array.from(element.classList).slice(0, 2).join(".");
+        if (focusIndicatorKeys[key]) return;
+        focusIndicatorKeys[key] = true;
+        if (!auditFocusIndicator(element)) {
+          focusIndicatorCount += 1;
+          add("warning", "포커스 표시가 명확하지 않습니다.", "Tab 키로 이동했을 때 현재 위치를 알 수 있도록 outline이나 테두리 변화를 제공해 주세요.", element);
+        }
+      });
+      if (originalFocusedElement && typeof originalFocusedElement.focus === "function") {
+        try { originalFocusedElement.focus({ preventScroll: true }); } catch (error) { originalFocusedElement.focus(); }
+      }
+
+      var contrastKeys = {};
+      var contrastCount = 0;
+      canvasDocument.querySelectorAll("h1, h2, h3, h4, h5, h6, p, a, button, label, strong").forEach(function (element) {
+        if (contrastCount >= 12 || !String(element.textContent || "").trim() || element.closest("[hidden]")) return;
+        var rect = element.getBoundingClientRect();
+        var style = canvasWindow.getComputedStyle(element);
+        if (!rect.width || !rect.height || style.visibility === "hidden" || Number(style.opacity) < .6) return;
+        var foreground = parseAuditColor(style.color);
+        var background = auditBackgroundColor(element);
+        if (!foreground || !background || foreground.a < .95) return;
+        var fontSize = parseFloat(style.fontSize) || 16;
+        var fontWeight = parseInt(style.fontWeight, 10) || 400;
+        var required = fontSize >= 24 || (fontSize >= 18.66 && fontWeight >= 700) ? 3 : 4.5;
+        var ratio = auditContrastRatio(foreground, background);
+        var key = [foreground.r, foreground.g, foreground.b, background.r, background.g, background.b, required].join("-");
+        if (ratio < required && !contrastKeys[key]) {
+          contrastKeys[key] = true;
+          contrastCount += 1;
+          add("warning", "텍스트 명암 대비가 낮습니다.", "현재 약 " + ratio.toFixed(2) + ":1이며 이 크기에는 " + required + ":1 이상을 권장합니다. 글자색이나 배경색을 조정해 주세요.", element);
+        }
+      });
+      return issues;
+    }
+
+    function renderAccessibilityResults(message) {
+      var errors = accessibilityIssues.filter(function (issue) { return issue.severity === "error"; }).length;
+      var warnings = accessibilityIssues.length - errors;
+      var fixable = accessibilityIssues.filter(function (issue) { return typeof issue.fix === "function"; }).length;
+      accessibilitySummary.innerHTML = '<strong>' + (accessibilityIssues.length ? "확인 필요 " + accessibilityIssues.length + "건" : "검사 통과") + '</strong><span>오류 ' + errors + ' · 권고 ' + warnings + ' · 선택 적용 가능 ' + fixable + '</span>' +
+        (fixable ? '<label class="builder-accessibility-select-all"><input type="checkbox" data-builder-accessibility-select-all><span>수정 가능 항목 전체 선택</span></label>' : '') +
+        '<b data-builder-accessibility-selected-count>선택 0건</b>' + (message ? '<small>' + escapeHtml(message) + '</small>' : '');
+      accessibilityResults.innerHTML = accessibilityIssues.length ? accessibilityIssues.map(function (issue, index) {
+        var selector = issue.fix ? '<label class="builder-accessibility-check"><input type="checkbox" data-builder-accessibility-issue="' + index + '"' + (issue.selected ? ' checked' : '') + '><span>이 항목 선택</span></label>' : '<span class="builder-accessibility-manual">직접 확인</span>';
+        return '<article class="builder-accessibility-item is-' + issue.severity + '"><div>' + selector + '<em>' + (issue.severity === "error" ? "오류" : "권고") + '</em><strong>' + escapeHtml(issue.title) + '</strong>' + (issue.fix ? '<span>선택 적용 가능</span>' : '<span>자동 수정 불가</span>') + '</div><p>' + escapeHtml(issue.detail) + '</p><code>' + escapeHtml(issue.target) + '</code></article>';
+      }).join("") : '<div class="builder-accessibility-empty"><strong>주요 접근성 항목을 통과했습니다.</strong><p>자동 검사로 확인하기 어려운 문맥과 키보드 사용성은 최종 검수에서 한 번 더 확인해 주세요.</p></div>';
+      updateAccessibilitySelectionState();
+    }
+
+    function updateAccessibilitySelectionState() {
+      var fixableIssues = accessibilityIssues.filter(function (issue) { return typeof issue.fix === "function"; });
+      var selectedCount = fixableIssues.filter(function (issue) { return issue.selected; }).length;
+      var selectedOutput = accessibilitySummary.querySelector("[data-builder-accessibility-selected-count]");
+      var selectAll = accessibilitySummary.querySelector("[data-builder-accessibility-select-all]");
+      if (selectedOutput) selectedOutput.textContent = "선택 " + selectedCount + "건";
+      if (selectAll) {
+        selectAll.checked = fixableIssues.length > 0 && selectedCount === fixableIssues.length;
+        selectAll.indeterminate = selectedCount > 0 && selectedCount < fixableIssues.length;
+      }
+      accessibilityApplyButton.disabled = selectedCount === 0 || accessibilityApplyButton.dataset.busy === "true";
+      if (accessibilityApplyButton.dataset.busy !== "true") accessibilityApplyButton.textContent = selectedCount ? "선택 항목 적용 (" + selectedCount + ")" : "선택 항목 적용";
+    }
+
+    function openAccessibilityAudit() {
+      if (!canvasDocument) { showToast("미리보기를 불러온 뒤 다시 검사해 주세요."); return; }
+      accessibilityIssues = runAccessibilityAudit();
+      accessibilityIssues.forEach(function (issue) { issue.selected = false; });
+      renderAccessibilityResults("");
+      accessibilityModal.hidden = false;
+      window.setTimeout(function () {
+        var firstCheck = accessibilityModal.querySelector("[data-builder-accessibility-issue]");
+        (firstCheck || accessibilityModal.querySelector("[data-builder-accessibility-close]")).focus();
+      }, 0);
+    }
+
+    function closeAccessibilityAudit() {
+      accessibilityModal.hidden = true;
+      accessibilityButton.focus();
+    }
+
+    function applyAccessibilityFixes() {
+      var fixes = accessibilityIssues.filter(function (issue) { return typeof issue.fix === "function" && issue.selected; });
+      if (!fixes.length || accessibilityApplyButton.dataset.busy === "true") {
+        showToast("적용할 항목을 먼저 선택해 주세요.");
+        return;
+      }
+      accessibilityApplyButton.dataset.busy = "true";
+      accessibilityApplyButton.disabled = true;
+      accessibilityApplyButton.textContent = "적용 중...";
+      window.requestAnimationFrame(function () {
+        var applied = 0;
+        var failed = 0;
+        fixes.forEach(function (issue) {
+          try { issue.fix(); applied += 1; }
+          catch (error) { failed += 1; console.warn("접근성 자동 수정 실패", error); }
+        });
+        try {
+          if (applied) {
+            applyElementOverrides();
+            pushHistory();
+          }
+          accessibilityIssues = runAccessibilityAudit();
+          accessibilityIssues.forEach(function (issue) { issue.selected = false; });
+          renderAccessibilityResults(applied + "건을 편집 내용에 적용했습니다." + (failed ? " " + failed + "건은 적용하지 못했습니다." : "") + " 최종 반영은 상단 저장 버튼을 눌러 주세요.");
+          showToast("선택한 접근성 수정 " + applied + "건을 적용했습니다.");
+        } catch (error) {
+          renderAccessibilityResults("적용 중 오류가 발생했습니다: " + (error.message || "다시 시도해 주세요."));
+          showToast("접근성 수정 적용에 실패했습니다.");
+        } finally {
+          delete accessibilityApplyButton.dataset.busy;
+          updateAccessibilitySelectionState();
+          var closeButton = accessibilityModal.querySelector("[data-builder-accessibility-close]");
+          if (closeButton) closeButton.focus();
+        }
+      });
+    }
+
     function isolateInspectorScroll(event) {
       event.stopPropagation();
     }
 
     inspector.addEventListener("wheel", isolateInspectorScroll, { passive: true });
     inspector.addEventListener("touchmove", isolateInspectorScroll, { passive: true });
+    accessibilityModal.querySelector(".builder-accessibility-dialog").addEventListener("wheel", isolateInspectorScroll, { passive: true });
+    accessibilityModal.querySelector(".builder-accessibility-dialog").addEventListener("touchmove", isolateInspectorScroll, { passive: true });
 
     function canvasUrl() {
       var url = new URL(window.location.href);
@@ -1476,12 +1941,12 @@
         if (!element) return;
         if (typeof override.text === "string") element.textContent = override.text;
         Object.keys(override.attributes || {}).forEach(function (name) {
-          if (["href", "src", "alt", "title"].indexOf(name) > -1) element.setAttribute(name, override.attributes[name]);
+          if (["href", "src", "alt", "title", "aria-label", "tabindex"].indexOf(name) > -1) element.setAttribute(name, override.attributes[name]);
         });
       });
       var selected = getSelectedOverride();
       clearCanvasSelectionHighlight();
-      if (selected && selectedLayer === "element" && !builder.classList.contains("is-preview")) {
+      if (selected && selectedLayer === "element" && editMode === "detail" && !builder.classList.contains("is-preview")) {
         var highlightSelector = (selected.applyToGroup ? selected.groupSelector : selected.selector) || selected.selector;
         try {
           canvasDocument.querySelectorAll(highlightSelector).forEach(function (element) { element.classList.add("dq-builder-selected"); });
@@ -1656,7 +2121,7 @@
       override.styles.base.effects = override.styles.base.effects || {};
       override.canEditText = isTextEditable(element);
       override.currentText = override.canEditText ? element.textContent : "";
-      ["href", "src", "alt", "title"].forEach(function (name) {
+      ["href", "src", "alt", "title", "aria-label", "tabindex"].forEach(function (name) {
         if (element.hasAttribute(name) && override.attributes[name] == null) {
           override.attributes[name] = element.getAttribute(name);
           override.originalAttributes[name] = element.getAttribute(name);
@@ -2073,6 +2538,7 @@
       var footerBottomInner = footer.querySelector(".site-footer__bottom .site-footer__inner");
       var footerBrand = footer.querySelector(".footer-brand strong");
       var footerLogoImage = footerBrand && footerBrand.querySelector("img");
+      var footerConfig = footer.querySelector(".site-footer__config");
       var familySite = footer.querySelector(".family-site");
       var footerInfo = footer.querySelector(".footer-info");
       var footerRootWidth = canvasWindow.getComputedStyle(canvasDocument.documentElement).getPropertyValue("--footer-layout-width").trim();
@@ -2112,6 +2578,14 @@
         subpage: captureSubpageState(),
         theme: {
           designStyle: savedConfig && savedConfig.dataset.themeDesign || "custom",
+          artDirection: savedConfig && savedConfig.dataset.themeArtDirection || "classic",
+          motif: savedConfig && savedConfig.dataset.themeMotif || "none",
+          motifImages: normalizeMotifImages(savedConfig && savedConfig.dataset.themeMotifImages || "[]"),
+          motifMotion: savedConfig && savedConfig.dataset.themeMotifMotion || "reveal",
+          motifAmbient: savedConfig && savedConfig.dataset.themeMotifAmbient || "none",
+          motifAmbientImages: normalizeMotifImages(savedConfig && savedConfig.dataset.themeMotifAmbientImages || "[]").slice(0, 8),
+          motifAmbientColor: savedConfig && savedConfig.dataset.themeMotifAmbientColor || "#c68be5",
+          motifAmbientLayer: savedConfig && savedConfig.dataset.themeMotifAmbientLayer || "front",
           color1: toHex(savedConfig && savedConfig.dataset.themeColor1 || rootStyles.getPropertyValue("--theme-color-1").trim(), "#5a1c7e"),
           color2: toHex(savedConfig && savedConfig.dataset.themeColor2 || rootStyles.getPropertyValue("--theme-color-2").trim(), "#3e1259"),
           color3: toHex(savedConfig && savedConfig.dataset.themeColor3 || rootStyles.getPropertyValue("--theme-color-3").trim(), "#c68be5"),
@@ -2205,6 +2679,8 @@
         },
         footer: {
           background: toHex(canvasWindow.getComputedStyle(footer).backgroundColor, "#24262b"),
+          backgroundImage: footerConfig && footerConfig.dataset.backgroundImage || footer.dataset.backgroundImage || "",
+          backgroundFilter: footerConfig && /^(?:none|dark|blur|grayscale)$/.test(footerConfig.dataset.backgroundFilter) ? footerConfig.dataset.backgroundFilter : /^(?:none|dark|blur|grayscale)$/.test(footer.dataset.backgroundFilter) ? footer.dataset.backgroundFilter : "none",
           color: toHex(canvasWindow.getComputedStyle(footer).color, "#c8cbd1"),
           maxWidth: /px$/i.test(footerRootWidth) ? parseInt(footerRootWidth, 10) : Math.round(footerBottomInner.getBoundingClientRect().width),
           height: Math.round(footerBottomInner.getBoundingClientRect().height) || 180,
@@ -2256,6 +2732,8 @@
       }
       var footer = canvasDocument.querySelector("#footer");
       var footerData = state.footer;
+      if (typeof footerData.backgroundImage !== "string") footerData.backgroundImage = "";
+      footerData.backgroundFilter = /^(?:none|dark|blur|grayscale)$/.test(footerData.backgroundFilter) ? footerData.backgroundFilter : "none";
       var utilityShouldDisplay = data.utility.visible && (canvasWindow.innerWidth > DQ.config.mobileBreakpoint || data.utility.mobileVisible);
       var provisionalUtilityHeight = utilityShouldDisplay ? 36 : 0;
       var radiusValues = themeRadiusValues(themeData.radiusStyle);
@@ -2273,6 +2751,11 @@
       canvasDocument.documentElement.style.setProperty("--theme-line", themeData.lineColor);
       canvasDocument.documentElement.style.setProperty("--theme-shadow", themeData.shadow);
       canvasDocument.documentElement.dataset.designTheme = themeData.designStyle || "custom";
+      canvasDocument.documentElement.dataset.artDirection = themeData.artDirection || "classic";
+      canvasDocument.documentElement.dataset.brandMotif = themeData.motif || "none";
+      canvasDocument.documentElement.dataset.motifMotion = themeData.motifMotion || "reveal";
+      canvasDocument.documentElement.dataset.motifAmbient = themeData.motifAmbient || "none";
+      canvasDocument.documentElement.dataset.motifAmbientLayer = themeData.motifAmbientLayer || "front";
       canvasDocument.documentElement.style.setProperty("--content-layout-width", themeData.contentMaxWidth + "px");
       canvasDocument.documentElement.style.setProperty("--theme-radius-sm", radiusValues.small);
       canvasDocument.documentElement.style.setProperty("--theme-radius-md", radiusValues.medium);
@@ -2327,6 +2810,14 @@
         savedHeaderConfig.dataset.sitemapDepth23Color = data.sitemap.depth23Color || "#ffffff";
         savedHeaderConfig.dataset.sitemapUseTheme = String(themeData.applyToSitemap !== false);
         savedHeaderConfig.dataset.themeDesign = themeData.designStyle || "custom";
+        savedHeaderConfig.dataset.themeArtDirection = themeData.artDirection || "classic";
+        savedHeaderConfig.dataset.themeMotif = themeData.motif || "none";
+        savedHeaderConfig.dataset.themeMotifImages = JSON.stringify(themeData.motifImages || []);
+        savedHeaderConfig.dataset.themeMotifMotion = themeData.motifMotion || "reveal";
+        savedHeaderConfig.dataset.themeMotifAmbient = themeData.motifAmbient || "none";
+        savedHeaderConfig.dataset.themeMotifAmbientImages = JSON.stringify(themeData.motifAmbientImages || []);
+        savedHeaderConfig.dataset.themeMotifAmbientColor = themeData.motifAmbientColor || themeData.color3;
+        savedHeaderConfig.dataset.themeMotifAmbientLayer = themeData.motifAmbientLayer || "front";
         savedHeaderConfig.dataset.themeColor1 = themeData.color1;
         savedHeaderConfig.dataset.themeColor2 = themeData.color2;
         savedHeaderConfig.dataset.themeColor3 = themeData.color3;
@@ -2503,6 +2994,18 @@
       });
 
       footer.style.backgroundColor = footerData.background;
+      footer.style.setProperty("--footer-background-image", footerData.backgroundImage ? 'url("' + String(footerData.backgroundImage).replace(/["\\]/g, "\\$&") + '")' : "none");
+      footer.dataset.backgroundImage = footerData.backgroundImage;
+      footer.dataset.backgroundFilter = footerData.backgroundFilter;
+      var footerConfig = footer.querySelector(".site-footer__config");
+      if (!footerConfig) {
+        footerConfig = canvasDocument.createElement("div");
+        footerConfig.className = "site-footer__config";
+        footerConfig.hidden = true;
+        footer.insertBefore(footerConfig, footer.firstChild);
+      }
+      footerConfig.dataset.backgroundImage = footerData.backgroundImage;
+      footerConfig.dataset.backgroundFilter = footerData.backgroundFilter;
       footer.style.color = footerData.color;
       canvasDocument.documentElement.style.setProperty("--footer-layout-width", footerData.maxWidth + "px");
       footer.querySelectorAll(".footer-links a, .copyright").forEach(function (element) {
@@ -2556,6 +3059,7 @@
         if (liveSubpage && liveSubpage.blocks && liveSubpage.blocks.length) state.subpage.blocks = liveSubpage.blocks;
       }
       if (window.DQContentBuilder) window.DQContentBuilder.render(canvasDocument, state.content || { sections: [] });
+      renderBrandMotifs(canvasDocument, themeData);
       applySubpageState();
       syncLegacySubSections();
       applyElementOverrides();
@@ -2637,7 +3141,29 @@
         return '<label class="builder-theme-preset"><input type="radio" name="design-theme" data-bind="theme.designStyle" value="' + key + '"' + (data.designStyle === key ? ' checked' : '') + '><span><i><b style="background:' + preset.color1 + '"></b><b style="background:' + preset.color2 + '"></b><b style="background:' + preset.color3 + '"></b></i><strong>' + preset.label + '</strong><small>' + preset.description + '</small></span></label>';
       }).join("");
       var preview = '<div class="builder-theme-preview"><i style="background:' + data.color1 + '"></i><i style="background:' + data.color2 + '"></i><i style="background:' + data.color3 + '"></i></div>';
+      var artDescriptions = {
+        classic: "정보가 안정적으로 읽히는 기본형입니다.",
+        editorial: "큰 제목과 비대칭 여백으로 매거진처럼 연출합니다.",
+        premium: "넓은 여백, 가는 선, 절제된 카드로 고급스럽게 정돈합니다.",
+        culture: "섹션별 리듬과 이미지 비율을 달리해 전시 포스터처럼 구성합니다.",
+        impact: "굵은 제목과 컬러 밴드, 강한 숫자 대비로 메시지를 강조합니다."
+      };
+      var artDirection = field("전체 레이아웃 분위기", '<select data-bind="theme.artDirection"><option value="classic"' + (data.artDirection === "classic" ? " selected" : "") + '>정돈형</option><option value="editorial"' + (data.artDirection === "editorial" ? " selected" : "") + '>매거진형</option><option value="premium"' + (data.artDirection === "premium" ? " selected" : "") + '>프리미엄형</option><option value="culture"' + (data.artDirection === "culture" ? " selected" : "") + '>전시·문화형</option><option value="impact"' + (data.artDirection === "impact" ? " selected" : "") + '>임팩트형</option></select><small class="builder-field-help">' + artDescriptions[data.artDirection] + '</small>');
+      var motifItems = data.motifImages.map(function (url, index) {
+        return '<div class="builder-motif-image"><img src="' + escapeHtml(url) + '" alt="등록 모티프 ' + (index + 1) + '"><button type="button" data-remove-theme-motif-image="' + index + '">삭제</button></div>';
+      }).join("");
+      var ambientImageItems = data.motifAmbientImages.map(function (url, index) {
+        return '<div class="builder-motif-image"><img src="' + escapeHtml(url) + '" alt="낙하 효과 이미지 ' + (index + 1) + '"><button type="button" data-remove-theme-ambient-image="' + index + '">삭제</button></div>';
+      }).join("");
+      var motif = field("브랜드 모티프", '<select data-bind="theme.motif"><option value="none"' + (data.motif === "none" ? " selected" : "") + '>없음</option><option value="circle"' + (data.motif === "circle" ? " selected" : "") + '>원형</option><option value="square"' + (data.motif === "square" ? " selected" : "") + '>사각형</option><option value="triangle"' + (data.motif === "triangle" ? " selected" : "") + '>삼각형</option><option value="custom"' + (data.motif === "custom" ? " selected" : "") + '>등록 이미지</option></select>') +
+        '<div class="builder-motif-upload"><strong>모티프 이미지</strong><div class="builder-motif-images">' + (motifItems || '<span>등록된 이미지가 없습니다.</span>') + '</div><label class="builder-motif-upload__button">이미지 여러 장 추가<input type="file" accept="image/jpeg,image/png,image/gif,image/webp" multiple data-theme-motif-upload></label><small>최대 12장까지 등록되며 섹션마다 순서대로 반복됩니다.</small></div>' +
+        field("화면에 나타날 때", '<select data-bind="theme.motifMotion"><option value="none"' + (data.motifMotion === "none" ? " selected" : "") + '>바로 표시</option><option value="reveal"' + (data.motifMotion === "reveal" ? " selected" : "") + '>아래에서 부드럽게 등장</option><option value="grow"' + (data.motifMotion === "grow" ? " selected" : "") + '>작게 시작해 커지기</option><option value="deepen"' + (data.motifMotion === "deepen" ? " selected" : "") + '>투명하게 시작해 선명해지기</option></select>') +
+        field("계속 떨어지는 효과", '<select data-bind="theme.motifAmbient"><option value="none"' + (data.motifAmbient === "none" ? " selected" : "") + '>없음</option><option value="snow"' + (data.motifAmbient === "snow" ? " selected" : "") + '>잔잔한 눈</option><option value="petal"' + (data.motifAmbient === "petal" ? " selected" : "") + '>천천히 흩날리는 꽃잎</option></select>') +
+        colorField("눈·꽃잎 색상", "theme.motifAmbientColor", data.motifAmbientColor) +
+        '<div class="builder-field builder-ambient-layer-field"><span>낙하 효과 위치</span>' + switchField("요소 위로 표시", "theme.motifAmbientAbove", data.motifAmbientLayer === "front").replace('data-bind="theme.motifAmbientAbove"', 'data-theme-ambient-layer-toggle') + '<small>스위치를 끄면 눈·꽃잎이 제목, 카드, 버튼 등의 요소 밑으로 지나갑니다.</small></div>' +
+        '<div class="builder-motif-upload"><strong>눈송이·꽃잎 이미지</strong><div class="builder-motif-images">' + (ambientImageItems || '<span>기본 눈송이·꽃잎 모양을 사용합니다.</span>') + '</div><label class="builder-motif-upload__button">낙하 이미지 여러 장 추가<input type="file" accept="image/jpeg,image/png,image/gif,image/webp" multiple data-theme-ambient-upload></label><small>투명 PNG·WebP를 권장합니다. 최대 8장이 번갈아 떨어집니다.</small></div>';
       return inspectorSection("전체 디자인 테마", "색상·배경·카드·버튼·모션 분위기를 한 번에 바꿉니다.", '<div class="builder-theme-presets">' + presets + '</div>' + (data.designStyle === "custom" ? '<p class="builder-empty">현재 개별 조정된 사용자 테마입니다.</p>' : '')) +
+        inspectorSection("디자인 특징", "레이아웃의 인상과 사이트 전체에 반복되는 모티프·움직임을 정합니다.", artDirection + motif) +
         inspectorSection("테마 팔레트", "프리셋 적용 후 프로젝트 색상에 맞게 다시 조정할 수 있습니다.", preview + colorField("테마색 1 · 주색", "theme.color1", data.color1) + colorField("테마색 2 · 진한 배경", "theme.color2", data.color2) + colorField("테마색 3 · 강조색", "theme.color3", data.color3) + switchField("사이트맵에 테마 자동 적용", "theme.applyToSitemap", data.applyToSitemap !== false)) +
         inspectorSection("적용 범위", "테마색은 GNB 상태·막대기·호버와 사이트맵 기본 배경·포인트에 적용됩니다.", '<p class="builder-empty">개별 메뉴나 사이트맵에서 설정한 값은 이후 별도로 조정할 수 있습니다.</p>');
     }
@@ -2774,7 +3300,8 @@
     function renderFooterInspector() {
       inspectorTitle.textContent = "푸터 기본 스타일";
       var data = state.footer;
-      return inspectorSection("스타일", "푸터 전체의 폭·배경·글자색", rangeField("최대 너비", "footer.maxWidth", data.maxWidth, 960, 1920, "px") + colorField("배경색", "footer.background", data.background) + colorField("글자색", "footer.color", data.color) + rangeField("푸터 본문 높이", "footer.height", data.height, 120, 360, "px"));
+      var backgroundImage = backgroundImageUploadControl(data.backgroundImage || "", 'data-bind="footer.backgroundImage"', "data-footer-background-upload", "data-remove-footer-background", "업로드한 이미지는 푸터 전체 영역의 중앙에 맞춰 채워집니다.", data.backgroundFilter || "none", 'data-bind="footer.backgroundFilter"');
+      return inspectorSection("스타일", "푸터 전체의 폭·배경·글자색", rangeField("최대 너비", "footer.maxWidth", data.maxWidth, 960, 1920, "px") + colorField("배경색", "footer.background", data.background) + field("전체 배경 이미지", backgroundImage) + colorField("글자색", "footer.color", data.color) + rangeField("푸터 본문 높이", "footer.height", data.height, 120, 360, "px"));
     }
 
     function renderFooterLogoInspector() {
@@ -2984,6 +3511,7 @@
       var result = inspectorSection("1. 레이아웃 만들기", "콘텐츠보다 먼저 영역의 크기와 열을 정합니다.", addLayout) +
         inspectorSection("전체 섹션 설정", "콘텐츠 영역의 배경색과 모든 섹션 사이의 간격을 조정합니다.",
           field("콘텐츠 배경색", colorControl(content.background || "#ffffff", 'data-color-content-global="background"', true)) +
+          field("전체 배경 이미지", backgroundImageUploadControl(content.backgroundImage || "", 'data-content-global-field="backgroundImage"', "data-content-global-background-upload", "data-remove-content-global-background", "업로드한 이미지는 메인 콘텐츠 전체 영역의 중앙에 맞춰 채워집니다.", content.backgroundFilter || "none", 'data-content-global-field="backgroundFilter"')) +
           field("섹션 간 여백", '<div class="builder-range-number builder-range-number--wide"><input type="number" min="0" max="200" step="4" data-content-global-number="sectionGap" value="' + (content.sectionGap || 0) + '"><em>px</em></div>')) +
         '<p class="builder-content-list-guide">만든 섹션의 선택·순서 변경·삭제는 왼쪽 <strong>콘텐츠</strong> 목록에서 처리합니다.</p>';
       if (selectedLayer === "content-sections") return result;
@@ -3166,12 +3694,13 @@
       }).join("");
       result += inspectorSection("1. 레이아웃 설정", "이 영역의 최대 너비와 열 개수를 먼저 정합니다.",
         field("레이아웃 이름", '<input type="text" data-content-section-field="name" value="' + escapeHtml(selected.name) + '">') +
+        field("시그니처 디자인", '<select data-content-section-field="signature"><option value="default"' + (selected.signature === "default" ? " selected" : "") + '>일반 레이아웃</option><option value="editorial"' + (selected.signature === "editorial" ? " selected" : "") + '>에디토리얼</option><option value="overlap"' + (selected.signature === "overlap" ? " selected" : "") + '>비대칭 오버랩</option><option value="impact"' + (selected.signature === "impact" ? " selected" : "") + '>임팩트</option><option value="immersive"' + (selected.signature === "immersive" ? " selected" : "") + '>몰입형 비주얼</option><option value="framed"' + (selected.signature === "framed" ? " selected" : "") + '>프레임드</option></select><small>제목과 콘텐츠 배치에 완성형 디자인 문법을 적용합니다.</small>') +
         field("너비 방식", '<select data-content-section-field="width"><option value="wide"' + (selected.width === "wide" ? ' selected' : '') + '>배경 전체 · 내용 최대 너비</option><option value="full"' + (selected.width === "full" ? ' selected' : '') + '>내용까지 전체 화면</option><option value="contained"' + (selected.width === "contained" ? ' selected' : '') + '>최대 너비 박스</option></select>') +
         field("최대 너비", '<div class="builder-range-number builder-range-number--wide"><input type="number" min="760" max="1800" step="10" data-content-section-number="maxWidth" value="' + (selected.maxWidth || 1200) + '"><em>px</em></div>') +
         '<details class="builder-content-details" open><summary>섹션 제목 · 서브 제목</summary>' +
           '<div class="builder-content-heading-settings">' +
             '<label class="builder-switch"><span>섹션 제목 노출</span><input type="checkbox" data-content-section-check="showTitle"' + (selected.showTitle ? ' checked' : '') + '><i></i></label>' +
-            (selected.showTitle ? field("섹션 제목", '<input type="text" data-content-section-field="sectionTitle" value="' + escapeHtml(selected.sectionTitle || "") + '">') + field("제목 크기", '<div class="builder-range-number builder-range-number--wide"><input type="number" min="12" max="120" step="1" data-content-section-number="titleSize" value="' + (selected.titleSize || 42) + '"><em>px</em></div>') + field("제목 색상", colorControl(selected.titleColor || "#1d2530", 'data-color-content-section="titleColor"', true)) + '<button type="button" class="builder-title-remove" data-content-section-title-remove>섹션 제목 삭제</button>' : '<p class="builder-empty">섹션 제목이 삭제되었습니다. 위 스위치를 켜면 다시 표시할 수 있습니다.</p>') +
+            (selected.showTitle ? field("섹션 제목", '<input type="text" data-content-section-field="sectionTitle" value="' + escapeHtml(selected.sectionTitle || "") + '">') + field("제목 연출", '<select data-content-section-field="titleTreatment"><option value="default"' + (selected.titleTreatment === "default" ? " selected" : "") + '>기본</option><option value="oversized"' + (selected.titleTreatment === "oversized" ? " selected" : "") + '>초대형 제목</option><option value="outline"' + (selected.titleTreatment === "outline" ? " selected" : "") + '>윤곽선 제목</option><option value="backdrop"' + (selected.titleTreatment === "backdrop" ? " selected" : "") + '>배경 키워드</option></select>') + (selected.titleTreatment === "backdrop" ? field("배경 키워드", '<input type="text" maxlength="40" data-content-section-field="accentText" value="' + escapeHtml(selected.accentText || "") + '" placeholder="OUR STORY">') : '') + field("제목 크기", '<div class="builder-range-number builder-range-number--wide"><input type="number" min="12" max="120" step="1" data-content-section-number="titleSize" value="' + (selected.titleSize || 42) + '"><em>px</em></div>') + field("제목 색상", colorControl(selected.titleColor || "#1d2530", 'data-color-content-section="titleColor"', true)) + '<button type="button" class="builder-title-remove" data-content-section-title-remove>섹션 제목 삭제</button>' : '<p class="builder-empty">섹션 제목이 삭제되었습니다. 위 스위치를 켜면 다시 표시할 수 있습니다.</p>') +
             '<label class="builder-switch"><span>서브 제목 노출</span><input type="checkbox" data-content-section-check="showSubtitle"' + (selected.showSubtitle ? ' checked' : '') + '><i></i></label>' +
             (selected.showSubtitle ? field("서브 제목", '<textarea rows="2" data-content-section-field="sectionSubtitle">' + escapeHtml(selected.sectionSubtitle || "") + '</textarea>') + field("서브 제목 크기", '<div class="builder-range-number builder-range-number--wide"><input type="number" min="10" max="72" step="1" data-content-section-number="subtitleSize" value="' + (selected.subtitleSize || 18) + '"><em>px</em></div>') + field("서브 제목 색상", colorControl(selected.subtitleColor || "#667080", 'data-color-content-section="subtitleColor"', true)) : '') +
             field("정렬", '<select data-content-section-field="headingAlign"><option value="left"' + (selected.headingAlign === "left" ? ' selected' : '') + '>왼쪽</option><option value="center"' + (selected.headingAlign === "center" ? ' selected' : '') + '>가운데</option><option value="right"' + (selected.headingAlign === "right" ? ' selected' : '') + '>오른쪽</option></select>') +
@@ -3211,6 +3740,7 @@
     function renderContentState() {
       if (!window.DQContentBuilder || !canvasDocument) return;
       window.DQContentBuilder.render(canvasDocument, state.content || { sections: [] });
+      renderBrandMotifs(canvasDocument, ensureThemeData(state.theme));
       applyElementOverrides();
       if (editMode === "structure" && selectedLayer === "content-section") focusContentCanvasSection(selectedContentSectionId, false);
     }
@@ -3806,7 +4336,11 @@
       var moveActionButton = event.target.closest("[data-move-action]");
       var removeFooterLogoImageButton = event.target.closest("[data-remove-footer-logo-image]");
       var removeContentSectionBackgroundButton = event.target.closest("[data-remove-content-section-background]");
+      var removeContentGlobalBackgroundButton = event.target.closest("[data-remove-content-global-background]");
+      var removeFooterBackgroundButton = event.target.closest("[data-remove-footer-background]");
       var removeSitemapBackgroundButton = event.target.closest("[data-remove-sitemap-background]");
+      var removeThemeMotifImageButton = event.target.closest("[data-remove-theme-motif-image]");
+      var removeThemeAmbientImageButton = event.target.closest("[data-remove-theme-ambient-image]");
 
       if (copyUploadButton) {
         window.navigator.clipboard.writeText(copyUploadButton.dataset.copyUploadUrl).then(function () {
@@ -3816,6 +4350,27 @@
         });
         return;
       }
+      if (removeThemeMotifImageButton) {
+        var motifImageIndex = Number(removeThemeMotifImageButton.dataset.removeThemeMotifImage);
+        state.theme.motifImages = normalizeMotifImages(state.theme.motifImages);
+        if (motifImageIndex >= 0 && motifImageIndex < state.theme.motifImages.length) state.theme.motifImages.splice(motifImageIndex, 1);
+        if (!state.theme.motifImages.length && state.theme.motif === "custom") state.theme.motif = "none";
+        applyState();
+        pushHistory();
+        renderInspector();
+        showToast("모티프 이미지를 삭제했습니다.");
+        return;
+      }
+      if (removeThemeAmbientImageButton) {
+        var ambientImageIndex = Number(removeThemeAmbientImageButton.dataset.removeThemeAmbientImage);
+        state.theme.motifAmbientImages = normalizeMotifImages(state.theme.motifAmbientImages).slice(0, 8);
+        if (ambientImageIndex >= 0 && ambientImageIndex < state.theme.motifAmbientImages.length) state.theme.motifAmbientImages.splice(ambientImageIndex, 1);
+        applyState();
+        pushHistory();
+        renderInspector();
+        showToast("낙하 효과 이미지를 삭제했습니다.");
+        return;
+      }
       if (removeContentSectionBackgroundButton) {
         var backgroundSection = selectedContentSection();
         if (backgroundSection) backgroundSection.backgroundImage = "";
@@ -3823,6 +4378,22 @@
         pushHistory();
         renderInspector();
         showToast("섹션 배경 이미지를 제거했습니다.");
+        return;
+      }
+      if (removeContentGlobalBackgroundButton) {
+        state.content.backgroundImage = "";
+        renderContentState();
+        pushHistory();
+        renderInspector();
+        showToast("메인 콘텐츠 전체 배경 이미지를 제거했습니다.");
+        return;
+      }
+      if (removeFooterBackgroundButton) {
+        state.footer.backgroundImage = "";
+        applyState();
+        pushHistory();
+        renderInspector();
+        showToast("푸터 전체 배경 이미지를 제거했습니다.");
         return;
       }
       if (removeSitemapBackgroundButton) {
@@ -3892,6 +4463,12 @@
         resetCanvasHeaderPosition();
       } else if (historyButton) {
         restoreHistory(historyIndex + (historyButton.dataset.history === "undo" ? -1 : 1));
+      } else if (event.target.closest("[data-builder-accessibility]")) {
+        openAccessibilityAudit();
+      } else if (event.target.closest("[data-builder-accessibility-apply]")) {
+        applyAccessibilityFixes();
+      } else if (event.target.closest("[data-builder-accessibility-close]") || event.target === accessibilityModal) {
+        closeAccessibilityAudit();
       } else if (event.target.closest("[data-builder-share]")) {
         if (shareButton.classList.contains("is-active")) sharePanel.hidden = !sharePanel.hidden;
         else startExternalShare();
@@ -3916,7 +4493,10 @@
             var removedElement = canvasDocument.querySelector(removedOverride.selector);
             if (removedElement) {
               if (typeof removedOverride.originalText === "string") removedElement.textContent = removedOverride.originalText;
-              Object.keys(removedOverride.originalAttributes || {}).forEach(function (name) { removedElement.setAttribute(name, removedOverride.originalAttributes[name]); });
+              Object.keys(removedOverride.originalAttributes || {}).forEach(function (name) {
+                if (removedOverride.originalAttributes[name] == null) removedElement.removeAttribute(name);
+                else removedElement.setAttribute(name, removedOverride.originalAttributes[name]);
+              });
             }
           } catch (error) {}
         }
@@ -4155,18 +4735,131 @@
       }
     });
 
+    builder.addEventListener("change", function (event) {
+      var issueInput = event.target.closest("[data-builder-accessibility-issue]");
+      var selectAllInput = event.target.closest("[data-builder-accessibility-select-all]");
+      if (issueInput) {
+        var issueIndex = Number(issueInput.dataset.builderAccessibilityIssue);
+        if (accessibilityIssues[issueIndex] && typeof accessibilityIssues[issueIndex].fix === "function") accessibilityIssues[issueIndex].selected = issueInput.checked;
+        updateAccessibilitySelectionState();
+      } else if (selectAllInput) {
+        accessibilityIssues.forEach(function (issue) {
+          if (typeof issue.fix === "function") issue.selected = selectAllInput.checked;
+        });
+        accessibilityResults.querySelectorAll("[data-builder-accessibility-issue]").forEach(function (input) { input.checked = selectAllInput.checked; });
+        updateAccessibilitySelectionState();
+      }
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (!accessibilityModal || accessibilityModal.hidden) return;
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeAccessibilityAudit();
+      } else if (event.key === "Tab") {
+        var modalFocusables = Array.from(accessibilityModal.querySelectorAll('button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])')).filter(function (element) {
+          return element.getClientRects().length > 0;
+        });
+        if (!modalFocusables.length) return;
+        var firstFocusable = modalFocusables[0];
+        var lastFocusable = modalFocusables[modalFocusables.length - 1];
+        if (event.shiftKey && document.activeElement === firstFocusable) {
+          event.preventDefault();
+          lastFocusable.focus();
+        } else if (!event.shiftKey && document.activeElement === lastFocusable) {
+          event.preventDefault();
+          firstFocusable.focus();
+        } else if (!accessibilityModal.contains(document.activeElement)) {
+          event.preventDefault();
+          firstFocusable.focus();
+        }
+      }
+    });
+
     inspector.addEventListener("change", async function (event) {
-      if (event.target.hasAttribute("data-content-section-background-upload") || event.target.hasAttribute("data-sitemap-background-upload")) {
+      if (event.target.hasAttribute("data-theme-ambient-layer-toggle")) {
+        state.theme.motifAmbientLayer = event.target.checked ? "front" : "back";
+        applyState();
+        pushHistory();
+        renderInspector();
+        return;
+      }
+      if (event.target.hasAttribute("data-theme-ambient-upload")) {
+        var ambientUploadInput = event.target;
+        var ambientUploadFiles = Array.from(ambientUploadInput.files || []);
+        var ambientSlots = 8 - normalizeMotifImages(state.theme.motifAmbientImages).length;
+        if (!ambientUploadFiles.length || ambientSlots <= 0) {
+          showToast(ambientSlots <= 0 ? "낙하 효과 이미지는 최대 8장까지 등록할 수 있습니다." : "추가할 이미지를 선택해 주세요.");
+          ambientUploadInput.value = "";
+          return;
+        }
+        ambientUploadFiles = ambientUploadFiles.slice(0, ambientSlots);
+        ambientUploadInput.disabled = true;
+        showToast("낙하 효과 이미지 " + ambientUploadFiles.length + "장을 업로드하는 중입니다...");
+        try {
+          var uploadedAmbientImages = [];
+          for (var ambientFileIndex = 0; ambientFileIndex < ambientUploadFiles.length; ambientFileIndex += 1) {
+            uploadedAmbientImages.push(await uploadContentImage(ambientUploadFiles[ambientFileIndex]));
+          }
+          state.theme.motifAmbientImages = normalizeMotifImages(state.theme.motifAmbientImages).concat(uploadedAmbientImages).slice(0, 8);
+          if (state.theme.motifAmbient === "none") state.theme.motifAmbient = "petal";
+          applyState();
+          pushHistory();
+          renderInspector();
+          showToast("낙하 효과 이미지가 추가되었습니다.");
+        } catch (error) {
+          ambientUploadInput.disabled = false;
+          ambientUploadInput.value = "";
+          showToast("낙하 효과 이미지 업로드 실패: " + (error.message || "업로드 서버를 확인해 주세요."));
+        }
+        return;
+      }
+      if (event.target.hasAttribute("data-theme-motif-upload")) {
+        var motifUploadInput = event.target;
+        var motifUploadFiles = Array.from(motifUploadInput.files || []);
+        var availableSlots = 12 - normalizeMotifImages(state.theme.motifImages).length;
+        if (!motifUploadFiles.length || availableSlots <= 0) {
+          showToast(availableSlots <= 0 ? "모티프 이미지는 최대 12장까지 등록할 수 있습니다." : "추가할 이미지를 선택해 주세요.");
+          motifUploadInput.value = "";
+          return;
+        }
+        motifUploadFiles = motifUploadFiles.slice(0, availableSlots);
+        motifUploadInput.disabled = true;
+        showToast("모티프 이미지 " + motifUploadFiles.length + "장을 업로드하는 중입니다...");
+        try {
+          var uploadedMotifs = [];
+          for (var motifFileIndex = 0; motifFileIndex < motifUploadFiles.length; motifFileIndex += 1) {
+            uploadedMotifs.push(await uploadContentImage(motifUploadFiles[motifFileIndex]));
+          }
+          state.theme.motifImages = normalizeMotifImages(state.theme.motifImages).concat(uploadedMotifs).slice(0, 12);
+          state.theme.motif = "custom";
+          applyState();
+          pushHistory();
+          renderInspector();
+          showToast("모티프 이미지가 추가되었습니다.");
+        } catch (error) {
+          motifUploadInput.disabled = false;
+          motifUploadInput.value = "";
+          showToast("모티프 이미지 업로드 실패: " + (error.message || "업로드 서버를 확인해 주세요."));
+        }
+        return;
+      }
+      if (event.target.hasAttribute("data-content-section-background-upload") || event.target.hasAttribute("data-content-global-background-upload") || event.target.hasAttribute("data-footer-background-upload") || event.target.hasAttribute("data-sitemap-background-upload")) {
         var backgroundUploadInput = event.target;
         var backgroundUploadFile = backgroundUploadInput.files && backgroundUploadInput.files[0];
         var isSitemapBackground = backgroundUploadInput.hasAttribute("data-sitemap-background-upload");
-        var uploadSection = isSitemapBackground ? null : selectedContentSection();
-        if (!backgroundUploadFile || (!isSitemapBackground && !uploadSection)) return;
+        var isContentGlobalBackground = backgroundUploadInput.hasAttribute("data-content-global-background-upload");
+        var isFooterBackground = backgroundUploadInput.hasAttribute("data-footer-background-upload");
+        var backgroundTargetLabel = isSitemapBackground ? "사이트맵" : isContentGlobalBackground ? "메인 콘텐츠 전체" : isFooterBackground ? "푸터 전체" : "섹션";
+        var uploadSection = isSitemapBackground || isContentGlobalBackground || isFooterBackground ? null : selectedContentSection();
+        if (!backgroundUploadFile || (!isSitemapBackground && !isContentGlobalBackground && !isFooterBackground && !uploadSection)) return;
         backgroundUploadInput.disabled = true;
-        showToast((isSitemapBackground ? "사이트맵" : "섹션") + " 배경 이미지를 업로드하는 중입니다...");
+        showToast(backgroundTargetLabel + " 배경 이미지를 업로드하는 중입니다...");
         try {
           var backgroundUploadUrl = await uploadContentImage(backgroundUploadFile);
           if (isSitemapBackground) state.header.sitemap.backgroundImage = backgroundUploadUrl;
+          else if (isContentGlobalBackground) state.content.backgroundImage = backgroundUploadUrl;
+          else if (isFooterBackground) state.footer.backgroundImage = backgroundUploadUrl;
           else uploadSection.backgroundImage = backgroundUploadUrl;
           window.sessionStorage.setItem(uploadRecoveryKey, JSON.stringify({
             expires: Date.now() + 12000,
@@ -4174,14 +4867,14 @@
             selectedLayer: selectedLayer,
             selectedContentSectionId: selectedContentSectionId,
             selectedSubContentId: selectedSubContentId,
-            recoveryKind: isSitemapBackground ? "sitemap-background-upload" : "section-background-upload"
+            recoveryKind: isSitemapBackground ? "sitemap-background-upload" : isContentGlobalBackground ? "content-global-background-upload" : isFooterBackground ? "footer-background-upload" : "section-background-upload"
           }));
           window.setTimeout(function () { window.sessionStorage.removeItem(uploadRecoveryKey); }, 5000);
-          if (isSitemapBackground) applyState();
+          if (isSitemapBackground || isFooterBackground) applyState();
           else renderContentState();
           pushHistory();
           renderInspector();
-          showToast((isSitemapBackground ? "사이트맵" : "섹션") + " 배경 이미지를 적용했습니다.");
+          showToast(backgroundTargetLabel + " 배경 이미지를 적용했습니다.");
         } catch (error) {
           backgroundUploadInput.disabled = false;
           backgroundUploadInput.value = "";
@@ -4313,6 +5006,8 @@
       if (event.target.dataset.subContentCheck === "saveAsFile" || event.target.dataset.subContentField === "title" || event.target.dataset.subContentField === "fileName") {
         renderInspector();
       } else if (event.target.dataset.contentSectionField === "name") {
+        renderInspector();
+      } else if (/^(?:signature|titleTreatment)$/.test(event.target.dataset.contentSectionField || "")) {
         renderInspector();
       } else if (event.target.dataset.bind === "header.logo.useImage" || event.target.dataset.bind === "header.logo.imagePath") {
         renderInspector();
