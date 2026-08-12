@@ -11,6 +11,85 @@
     initUtilityTools();
   });
 
+  function parseMotifImages(value) {
+    try {
+      var images = JSON.parse(value || "[]");
+      return Array.isArray(images) ? images.filter(function (url) { return typeof url === "string" && url.trim(); }).slice(0, 12) : [];
+    } catch (error) { return []; }
+  }
+
+  function renderBrandMotifs(config) {
+    var motif = document.documentElement.dataset.brandMotif || "none";
+    var motion = document.documentElement.dataset.motifMotion || "reveal";
+    var ambientMode = document.documentElement.dataset.motifAmbient || "none";
+    var images = parseMotifImages(config && config.dataset.themeMotifImages);
+    var ambientImages = parseMotifImages(config && config.dataset.themeMotifAmbientImages).slice(0, 8);
+    var ambientColor = config && /^#[0-9a-f]{6}(?:[0-9a-f]{2})?$/i.test(config.dataset.themeMotifAmbientColor || "") ? config.dataset.themeMotifAmbientColor : "#c68be5";
+    var ambientLayer = config && /^(?:front|back)$/.test(config.dataset.themeMotifAmbientLayer) ? config.dataset.themeMotifAmbientLayer : "front";
+    var sections = Array.from(document.querySelectorAll(".dq-content-section:not(.dq-content-section--legacy)"));
+    document.querySelectorAll(".dq-brand-motif-assets, .dq-brand-ambient").forEach(function (node) { node.remove(); });
+    sections.forEach(function (section) { section.classList.remove("dq-motif-visible"); });
+
+    if (motif === "custom" && images.length) {
+      sections.forEach(function (section, index) {
+        var layer = document.createElement("div");
+        var image = document.createElement("img");
+        layer.className = "dq-brand-motif-assets";
+        layer.setAttribute("aria-hidden", "true");
+        image.src = images[index % images.length];
+        image.alt = "";
+        image.loading = "lazy";
+        image.decoding = "async";
+        layer.appendChild(image);
+        section.appendChild(layer);
+      });
+    }
+
+    if (motif !== "none" && motion !== "none" && "IntersectionObserver" in window) {
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            (function (target) {
+              window.requestAnimationFrame(function () {
+                window.requestAnimationFrame(function () {
+                  window.setTimeout(function () { target.classList.add("dq-motif-visible"); }, 700);
+                });
+              });
+            }(entry.target));
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: .16, rootMargin: "0px 0px -8% 0px" });
+      sections.forEach(function (section) { observer.observe(section); });
+    } else {
+      sections.forEach(function (section) { section.classList.add("dq-motif-visible"); });
+    }
+
+    if (ambientMode !== "none") {
+      var ambient = document.createElement("div");
+      ambient.className = "dq-brand-ambient dq-brand-ambient--" + ambientMode + " dq-brand-ambient--" + ambientLayer;
+      ambient.style.setProperty("--dq-ambient-color", ambientColor);
+      if (ambientImages.length) ambient.classList.add("has-custom-particles");
+      ambient.setAttribute("aria-hidden", "true");
+      for (var i = 0; i < 24; i += 1) {
+        var particle = document.createElement("i");
+        particle.style.setProperty("--particle-x", ((i * 37 + 7) % 101) + "vw");
+        particle.style.setProperty("--particle-delay", (-((i * 1.73) % 24)) + "s");
+        particle.style.setProperty("--particle-duration", (15 + (i * 7 % 13)) + "s");
+        particle.style.setProperty("--particle-drift", ((i % 2 ? 1 : -1) * (24 + i * 3)) + "px");
+        particle.style.setProperty("--particle-size", (6 + i % 7) + "px");
+        if (ambientImages.length) {
+          var particleImage = document.createElement("img");
+          particleImage.src = ambientImages[i % ambientImages.length];
+          particleImage.alt = "";
+          particle.appendChild(particleImage);
+        }
+        ambient.appendChild(particle);
+      }
+      document.body.appendChild(ambient);
+    }
+  }
+
   function initUtilityTools() {
     var zoomKey = "dq-site-zoom";
     var darkKey = "dq-site-dark-mode";
@@ -93,6 +172,11 @@
       if (config && config.dataset.sitemapLayout) header.dataset.sitemapLayout = config.dataset.sitemapLayout;
       header.dataset.sitemapFilter = config && /^(?:none|dark|blur|grayscale)$/.test(config.dataset.sitemapBackgroundFilter) ? config.dataset.sitemapBackgroundFilter : "none";
       if (config && config.dataset.themeDesign) document.documentElement.dataset.designTheme = config.dataset.themeDesign;
+      document.documentElement.dataset.artDirection = config && /^(?:classic|editorial|premium|culture|impact)$/.test(config.dataset.themeArtDirection) ? config.dataset.themeArtDirection : "classic";
+      document.documentElement.dataset.brandMotif = config && /^(?:none|circle|square|triangle|custom)$/.test(config.dataset.themeMotif) ? config.dataset.themeMotif : (config && config.dataset.themeMotif === "arch" ? "circle" : "none");
+      document.documentElement.dataset.motifMotion = config && /^(?:none|reveal|grow|deepen)$/.test(config.dataset.themeMotifMotion) ? config.dataset.themeMotifMotion : "reveal";
+      document.documentElement.dataset.motifAmbient = config && /^(?:none|snow|petal)$/.test(config.dataset.themeMotifAmbient) ? config.dataset.themeMotifAmbient : "none";
+      document.documentElement.dataset.motifAmbientLayer = config && /^(?:front|back)$/.test(config.dataset.themeMotifAmbientLayer) ? config.dataset.themeMotifAmbientLayer : "front";
       var useSitemapTheme = !config || config.dataset.sitemapUseTheme !== "false";
       if (useSitemapTheme) {
         header.style.setProperty("--sitemap-background", "var(--theme-color-2)");
@@ -104,6 +188,7 @@
       header.style.setProperty("--sitemap-background-image", config && config.dataset.sitemapBackgroundImage ? 'url("' + String(config.dataset.sitemapBackgroundImage).replace(/["\\]/g, "\\$&") + '")' : "none");
       if (config && config.dataset.sitemapDepth23Color) header.style.setProperty("--sitemap-depth23-color", config.dataset.sitemapDepth23Color);
       header.classList.toggle("is-utility-mobile-visible", !config || config.dataset.utilityMobileVisible !== "false");
+      renderBrandMotifs(config);
     }
 
     applySavedHeaderConfig();

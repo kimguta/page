@@ -103,7 +103,7 @@
 
       if (typeof override.text === "string") element.textContent = override.text;
       if (override.attributes && typeof override.attributes === "object") {
-        ["href", "src", "alt", "title"].forEach(function (name) {
+        ["href", "src", "alt", "title", "aria-label", "tabindex"].forEach(function (name) {
           if (typeof override.attributes[name] === "string") element.setAttribute(name, override.attributes[name]);
         });
       }
