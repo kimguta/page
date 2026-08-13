@@ -1837,7 +1837,7 @@ b {
 
 #sub .skinBtnBo.ctrlFile-btnFile:hover,
 #sub .skinBtnBo.ctrlFile-btnFile:focus-visible {
-  color: var(--theme-button-color) !important;
+  color: var(--theme-on-primary, #fff) !important;
   background: var(--theme-color-1) !important;
 }
 
@@ -1962,14 +1962,14 @@ html.is-dark-mode #sub .skinColor-fmInfo { color: color-mix(in srgb, var(--theme
 #sub .titLv2::before,
 #sub .titLv3::before { content: ""; background-image: none; background-color: var(--theme-color-1); }
 
-#sub[data-sub-title2-style="symbol"] .titLv2::before { width: 18px; height: 18px; margin-top: 2px; border: 5px solid var(--theme-surface-alt); border-radius: 50%; box-shadow: 0 0 0 2px var(--theme-color-1); }
+#sub[data-sub-title2-style="symbol"] .titLv2::before { width: 18px; height: 18px; margin-top: 0; border: 5px solid var(--theme-surface-alt); border-radius: 50%; box-shadow: 0 0 0 2px var(--theme-color-1); }
 #sub[data-sub-title2-style="bar"] .titLv2 { padding-left: 16px; border-left: 5px solid var(--theme-color-1); }
 #sub[data-sub-title2-style="bar"] .titLv2::before { display: none; }
 #sub[data-sub-title2-style="underline"] .titLv2 { width: fit-content; padding-bottom: 7px; border-bottom: 3px solid var(--theme-color-1); }
 #sub[data-sub-title2-style="underline"] .titLv2::before { display: none; }
 #sub[data-sub-title2-style="box"] .titLv2 { width: fit-content; padding: 7px 13px; border-radius: var(--theme-radius-sm); color: var(--theme-color-2); background: var(--theme-surface-alt); }
 #sub[data-sub-title2-style="box"] .titLv2::before { display: none; }
-#sub[data-sub-title2-style="diamond"] .titLv2::before { width: 12px; height: 12px; margin: 6px 12px 0 3px; transform: rotate(45deg); }
+#sub[data-sub-title2-style="diamond"] .titLv2::before { width: 12px; height: 12px; margin: 0 12px 0 3px; transform: rotate(45deg); }
 
 #sub[data-sub-title3-style="dot"] .titLv3::before { width: 8px; height: 8px; border-radius: 50%; }
 #sub[data-sub-title3-style="dash"] .titLv3::before { width: 16px; height: 3px; border-radius: 99px; }
@@ -2006,7 +2006,7 @@ html.is-dark-mode #sub .skinColor-fmInfo { color: color-mix(in srgb, var(--theme
   display: block;
   width: 24px;
   height: 24px;
-  margin: 1px 10px 0 0;
+  margin: 0 10px 0 0;
   border: 0;
   background: var(--sub-title2-image) no-repeat center / contain;
   box-shadow: none;
@@ -2045,6 +2045,27 @@ html.is-dark-mode #sub .skinColor-fmInfo { color: color-mix(in srgb, var(--theme
   transform: none;
 }
 
+/* 목록 블릿은 화면 크기나 글자 배율과 무관하게 각 항목의 첫 줄 중앙에 맞춥니다. */
+#sub :is(p.listLv, div.listLv, span.listLv, .listLv > li, .listLv > dt)::before {
+  top: calc(.8rem + .75em);
+  transform: translateY(-50%);
+}
+
+#sub :is(p.listLv2, div.listLv2, span.listLv2, .listLv2 > li, .listLv2 > dt)::before,
+#sub :is(p.listLv3, div.listLv3, span.listLv3, .listLv3 > li, .listLv3 > dt)::before,
+#sub :is(p.listLv4, div.listLv4, span.listLv4, .listLv4 > li, .listLv4 > dt)::before {
+  top: .75em;
+  transform: translateY(-50%);
+}
+
+#sub[data-sub-list-style="check"] .listLv > li::before {
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+#sub[data-sub-list-style="diamond"] .listLv > li::before {
+  transform: translateY(-50%) rotate(45deg);
+}
+
 #sub .design-btn1 {
   display: inline-flex;
   align-items: center;
@@ -2065,7 +2086,7 @@ html.is-dark-mode #sub .skinColor-fmInfo { color: color-mix(in srgb, var(--theme
 #sub .design-btn1:hover,
 #sub .design-btn1:focus-visible {
   border-color: var(--theme-color-1);
-  color: var(--theme-button-color);
+  color: var(--theme-on-primary, #fff);
   background: var(--theme-color-1);
   transform: translateY(-2px);
 }
