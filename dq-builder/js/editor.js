@@ -888,9 +888,9 @@
       '    <button type="button" data-device="mobile" aria-label="모바일">' + icon("mobile") + '</button>',
       '  </div>',
       '  <div class="builder-topbar__actions">',
-      '    <button type="button" class="builder-text-button builder-guide-open" data-builder-guide-open>' + icon("help") + '<span>사용 안내</span></button>',
       '    <button type="button" class="builder-icon-button" data-history="undo" aria-label="실행 취소">' + icon("undo") + '</button>',
       '    <button type="button" class="builder-icon-button" data-history="redo" aria-label="다시 실행">' + icon("redo") + '</button>',
+      '    <button type="button" class="builder-text-button builder-guide-open" data-builder-guide-open>' + icon("help") + '<span>사용 안내</span></button>',
       '    <div class="builder-edit-mode-switch" role="group" aria-label="편집 모드">',
       '      <button type="button" class="builder-text-button" data-builder-mode="structure" aria-pressed="false" title="다시 누르면 일반 조작 상태로 해제됩니다">' + icon("section") + '<span>구성 편집</span></button>',
       '      <button type="button" class="builder-text-button" data-builder-mode="detail" data-builder-select aria-pressed="false" title="다시 누르면 일반 조작 상태로 해제됩니다">' + icon("edit") + '<span>상세 편집</span></button>',
@@ -3445,12 +3445,12 @@
       var preview = '<div class="builder-theme-preview"><i style="background:' + data.color1 + '"></i><i style="background:' + data.color2 + '"></i><i style="background:' + data.color3 + '"></i></div>';
       var artDescriptions = {
         classic: "정보가 안정적으로 읽히는 기본형입니다.",
-        editorial: "큰 제목과 비대칭 여백으로 매거진처럼 연출합니다.",
-        premium: "넓은 여백, 가는 선, 절제된 카드로 고급스럽게 정돈합니다.",
-        culture: "섹션별 리듬과 이미지 비율을 달리해 전시 포스터처럼 구성합니다.",
-        impact: "굵은 제목과 컬러 밴드, 강한 숫자 대비로 메시지를 강조합니다."
+        editorial: "굵은 제목과 절제된 선으로 매거진처럼 표현합니다.",
+        premium: "가는 선과 차분한 제목으로 고급스럽게 정돈합니다.",
+        culture: "문화 콘텐츠에 어울리는 타이포그래피와 색으로 표현합니다.",
+        impact: "굵은 제목과 강조선, 강한 숫자 대비로 메시지를 강조합니다."
       };
-      var artDirection = field("전체 레이아웃 분위기", '<select data-bind="theme.artDirection"><option value="classic"' + (data.artDirection === "classic" ? " selected" : "") + '>정돈형</option><option value="editorial"' + (data.artDirection === "editorial" ? " selected" : "") + '>매거진형</option><option value="premium"' + (data.artDirection === "premium" ? " selected" : "") + '>프리미엄형</option><option value="culture"' + (data.artDirection === "culture" ? " selected" : "") + '>전시·문화형</option><option value="impact"' + (data.artDirection === "impact" ? " selected" : "") + '>임팩트형</option></select><small class="builder-field-help">' + artDescriptions[data.artDirection] + '</small>');
+      var artDirection = field("전체 표현 분위기", '<select data-bind="theme.artDirection"><option value="classic"' + (data.artDirection === "classic" ? " selected" : "") + '>정돈형</option><option value="editorial"' + (data.artDirection === "editorial" ? " selected" : "") + '>매거진형</option><option value="premium"' + (data.artDirection === "premium" ? " selected" : "") + '>프리미엄형</option><option value="culture"' + (data.artDirection === "culture" ? " selected" : "") + '>전시·문화형</option><option value="impact"' + (data.artDirection === "impact" ? " selected" : "") + '>임팩트형</option></select><small class="builder-field-help">' + artDescriptions[data.artDirection] + '</small>');
       var motifItems = data.motifImages.map(function (url, index) {
         return '<div class="builder-motif-image"><img src="' + escapeHtml(url) + '" alt="등록 모티프 ' + (index + 1) + '"><button type="button" data-remove-theme-motif-image="' + index + '">삭제</button></div>';
       }).join("");
@@ -3465,7 +3465,7 @@
         '<div class="builder-field builder-ambient-layer-field"><span>낙하 효과 위치</span>' + switchField("요소 위로 표시", "theme.motifAmbientAbove", data.motifAmbientLayer === "front").replace('data-bind="theme.motifAmbientAbove"', 'data-theme-ambient-layer-toggle') + '<small>스위치를 끄면 눈·꽃잎이 제목, 카드, 버튼 등의 요소 밑으로 지나갑니다.</small></div>' +
         '<div class="builder-motif-upload"><strong>눈송이·꽃잎 이미지</strong><div class="builder-motif-images">' + (ambientImageItems || '<span>기본 눈송이·꽃잎 모양을 사용합니다.</span>') + '</div><label class="builder-motif-upload__button">낙하 이미지 여러 장 추가<input type="file" accept="image/jpeg,image/png,image/gif,image/webp" multiple data-theme-ambient-upload></label><small>투명 PNG·WebP를 권장합니다. 최대 8장이 번갈아 떨어집니다.</small></div>';
       return inspectorSection("전체 디자인 테마", "색상·배경·카드·버튼·모션 분위기를 한 번에 바꿉니다.", '<div class="builder-theme-presets">' + presets + '</div>' + (data.designStyle === "custom" ? '<p class="builder-empty">현재 개별 조정된 사용자 테마입니다.</p>' : '')) +
-        inspectorSection("디자인 특징", "레이아웃의 인상과 사이트 전체에 반복되는 모티프·움직임을 정합니다.", artDirection + motif) +
+        inspectorSection("디자인 특징", "타이포그래피와 표면 표현, 사이트 전체에 반복되는 모티프·움직임을 정합니다.", artDirection + motif) +
         inspectorSection("테마 팔레트", "프리셋 적용 후 프로젝트 색상에 맞게 다시 조정할 수 있습니다.", preview + colorField("테마색 1 · 주색", "theme.color1", data.color1) + colorField("테마색 2 · 진한 배경", "theme.color2", data.color2) + colorField("테마색 3 · 강조색", "theme.color3", data.color3) + switchField("사이트맵에 테마 자동 적용", "theme.applyToSitemap", data.applyToSitemap !== false)) +
         inspectorSection("적용 범위", "테마색은 GNB 상태·막대기·호버와 사이트맵 기본 배경·포인트에 적용됩니다.", '<p class="builder-empty">개별 메뉴나 사이트맵에서 설정한 값은 이후 별도로 조정할 수 있습니다.</p>');
     }
