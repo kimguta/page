@@ -238,7 +238,9 @@ function normalizeSubpageConfig(config) {
   normalized.visualFilterEnabled = config.visualFilterEnabled !== false;
   ["visualBackgroundImage", "title2Image", "title3Image", "listImage"].forEach(key => {
     const value = String(config[key] || "").trim();
-    if (value && !/^\/(?:page\/ui\/images\/uploads\/)[a-zA-Z0-9._-]+$/.test(value)) throw new Error("업로드 이미지 경로가 올바르지 않습니다.");
+    if (value && !/^\/page\/(?:dq-builder|ui)\/images\/uploads\/[a-zA-Z0-9._-]+$/.test(value)) {
+      throw new Error("업로드 이미지 경로가 올바르지 않습니다.");
+    }
     normalized[key] = value;
   });
   return normalized;
